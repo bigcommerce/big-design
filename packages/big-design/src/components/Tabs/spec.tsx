@@ -19,16 +19,21 @@ jest.mock('../../utils', () => ({
 }));
 
 test('render Tabs', () => {
-  const { container } = render(<Tabs items={items} />);
+  render(<Tabs items={items} />);
 
-  expect(container.firstChild).toMatchSnapshot();
+  const tablist = screen.getByRole('tablist');
+
+  expect(tablist).toMatchSnapshot();
 });
 
 test('render Tabs with disabled item', () => {
   const disabledItems: TabItem[] = [...items, { id: 'tab3', title: 'Tab 3', disabled: true }];
-  const { container } = render(<Tabs items={disabledItems} />);
 
-  expect(container.firstChild).toMatchSnapshot();
+  render(<Tabs items={disabledItems} />);
+
+  const tablist = screen.getByRole('tablist');
+
+  expect(tablist).toMatchSnapshot();
 });
 
 test('Tabs has a role', () => {
@@ -107,12 +112,12 @@ test("clicking a disabled tab doesn't set the active tab", async () => {
 });
 
 test('does not forward styles', () => {
-  const { container } = render(
-    <Tabs className="test" items={items} style={{ background: 'red' }} />,
-  );
+  render(<Tabs className="test" items={items} style={{ background: 'red' }} />);
 
-  expect(container.getElementsByClassName('test')).toHaveLength(0);
-  expect(container.firstChild).not.toHaveStyle('background: red');
+  const tablist = screen.getByRole('tablist');
+
+  expect(tablist).not.toHaveClass('test');
+  expect(tablist).not.toHaveStyle('background: red');
 });
 
 test('passes the ariaControls prop to the tabs', () => {
@@ -120,8 +125,8 @@ test('passes the ariaControls prop to the tabs', () => {
 
   const tabs = screen.getAllByRole('tab');
 
-  expect(tabs[0].getAttribute('aria-controls')).toBe('content1');
-  expect(tabs[1].getAttribute('aria-controls')).toBe('content2');
+  expect(tabs[0]).toHaveAttribute('aria-controls', 'content1');
+  expect(tabs[1]).toHaveAttribute('aria-controls', 'content2');
 });
 
 test('active tab has aria-selected', () => {
@@ -129,8 +134,8 @@ test('active tab has aria-selected', () => {
 
   const tabs = screen.getAllByRole('tab');
 
-  expect(tabs[0].getAttribute('aria-selected')).toBe('true');
-  expect(tabs[1].getAttribute('aria-selected')).toBe('false');
+  expect(tabs[0]).toHaveAttribute('aria-selected', 'true');
+  expect(tabs[1]).toHaveAttribute('aria-selected', 'false');
 });
 
 test('shows a warning if ariaControls is missing or fallback id does not exist', () => {

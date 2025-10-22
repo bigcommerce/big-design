@@ -8,12 +8,12 @@ import { DropdownItem } from '../Dropdown/types';
 import { StyledFile, StyledImage, StyledText } from './styled';
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
-  actions?: DropdownItem[];
-  isValid: boolean;
-  name: string;
-  idx: number;
+  readonly actions?: DropdownItem[];
+  readonly isValid: boolean;
+  readonly name: string;
+  readonly idx: number;
   onRemove(name: string): void;
-  previewSrc: string | null;
+  readonly previewSrc: string | null;
 }
 
 export const File = ({ actions, name, idx, isValid, previewSrc, onRemove, ...props }: Props) => {

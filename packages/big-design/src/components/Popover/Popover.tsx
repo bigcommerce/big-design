@@ -19,17 +19,17 @@ type BoxPropsWithoutMargins = Omit<
 >;
 
 export interface PopoverProps extends BoxPropsWithoutMargins {
-  anchorElement: Element | null;
-  children?: React.ReactNode;
-  closeOnClickOutside?: boolean;
-  closeOnEscKey?: boolean;
-  isOpen: boolean;
-  label: string;
-  matchAnchorElementWidth?: boolean;
-  skidding?: number;
-  distance?: number;
+  readonly anchorElement: Element | null;
+  readonly children?: React.ReactNode;
+  readonly closeOnClickOutside?: boolean;
+  readonly closeOnEscKey?: boolean;
+  readonly isOpen: boolean;
+  readonly label: string;
+  readonly matchAnchorElementWidth?: boolean;
+  readonly skidding?: number;
+  readonly distance?: number;
   onClose?(): void;
-  placement?: Placement;
+  readonly placement?: Placement;
 }
 
 export const Popover: React.FC<PopoverProps> = ({

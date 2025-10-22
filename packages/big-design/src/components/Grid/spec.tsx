@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React, { createRef } from 'react';
 import 'jest-styled-components';
 
@@ -14,8 +14,8 @@ test('render Grid', () => {
   / 120px 1fr;
 `;
 
-  const { container } = render(
-    <Grid gridTemplate={template}>
+  render(
+    <Grid data-testid="grid" gridTemplate={template}>
       <GridItem gridArea="head">Header</GridItem>
       <GridItem gridArea="nav">Sidebar</GridItem>
       <GridItem gridArea="main">Content</GridItem>
@@ -23,43 +23,43 @@ test('render Grid', () => {
     </Grid>,
   );
 
-  expect(container.firstChild).toMatchSnapshot();
+  expect(screen.getByTestId('grid')).toMatchSnapshot();
 });
 
 test('has display grid', () => {
-  const { container } = render(<Grid />);
+  render(<Grid data-testid="grid" />);
 
-  expect(container.firstChild).toHaveStyle('display: grid');
+  expect(screen.getByTestId('grid')).toHaveStyle('display: grid');
 });
 
 test('has gap properties', () => {
-  const { container, rerender } = render(<Grid gridGap="3rem" />);
+  const { rerender } = render(<Grid data-testid="grid" gridGap="3rem" />);
 
-  expect(container.firstChild).toHaveStyle('gap: 3rem');
+  expect(screen.getByTestId('grid')).toHaveStyle('gap: 3rem');
 
-  rerender(<Grid gridColumnGap="1rem" gridRowGap="2rem" />);
+  rerender(<Grid data-testid="grid" gridColumnGap="1rem" gridRowGap="2rem" />);
 
-  expect(container.firstChild).toHaveStyle({ 'row-gap': '2rem', 'column-gap': '1rem' });
+  expect(screen.getByTestId('grid')).toHaveStyle({ 'row-gap': '2rem', 'column-gap': '1rem' });
 });
 
 test('Grid forwards styles', () => {
-  const { container } = render(<Grid className="test" style={{ background: 'red' }} />);
+  render(<Grid className="test" data-testid="grid" style={{ background: 'red' }} />);
 
-  expect(container.getElementsByClassName('test')).toHaveLength(1);
-  expect(container.firstChild).toHaveStyle('background: red');
+  expect(screen.getByTestId('grid')).toHaveClass('test');
+  expect(screen.getByTestId('grid')).toHaveStyle('background: red');
 });
 
 test('Grid item forwards styles', () => {
-  const { container } = render(<GridItem className="test" style={{ background: 'red' }} />);
+  render(<GridItem className="test" data-testid="grid-item" style={{ background: 'red' }} />);
 
-  expect(container.getElementsByClassName('test')).toHaveLength(1);
-  expect(container.firstChild).toHaveStyle('background: red');
+  expect(screen.getByTestId('grid-item')).toHaveClass('test');
+  expect(screen.getByTestId('grid-item')).toHaveStyle('background: red');
 });
 
 test('rendering as another element retains inherited props and styles', () => {
-  const { getByTestId } = render(<Grid as="section" data-testid="grid" margin="medium" />);
+  render(<Grid as="section" data-testid="grid" margin="medium" />);
 
-  const grid = getByTestId('grid');
+  const grid = screen.getByTestId('grid');
 
   expect(grid.tagName).toBe('SECTION');
   expect(grid).toHaveStyle(`margin: 1rem`);
@@ -67,8 +67,10 @@ test('rendering as another element retains inherited props and styles', () => {
 
 test('grid forwards ref', () => {
   const ref = createRef<HTMLDivElement>();
-  const { getByTestId } = render(<Grid data-testid="grid" ref={ref} />);
-  const grid = getByTestId('grid');
+
+  render(<Grid data-testid="grid" ref={ref} />);
+
+  const grid = screen.getByTestId('grid');
 
   expect(grid).toBe(ref.current);
 });

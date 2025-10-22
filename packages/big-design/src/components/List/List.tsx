@@ -24,27 +24,27 @@ import { ListItem } from './Item';
 import { StyledList, StyledListOverflowWrapper } from './styled';
 
 export interface ListProps<T> extends ComponentPropsWithoutRef<'ul'> {
-  action?: SelectAction;
-  autoWidth: boolean;
-  filteredItems?: Array<SelectOption<T> | SelectAction>;
-  highlightedIndex: number;
-  isOpen: boolean;
-  items: DropdownProps['items'] | SelectProps<T>['options'];
-  isDropdown?: boolean;
-  maxHeight?: number;
-  selectedItem?: SelectOption<T> | null;
-  selectedItems?: Array<SelectOption<T>> | null;
-  selectAll?: boolean;
+  readonly action?: SelectAction;
+  readonly autoWidth: boolean;
+  readonly filteredItems?: Array<SelectOption<T> | SelectAction>;
+  readonly highlightedIndex: number;
+  readonly isOpen: boolean;
+  readonly items: DropdownProps['items'] | SelectProps<T>['options'];
+  readonly isDropdown?: boolean;
+  readonly maxHeight?: number;
+  readonly selectedItem?: SelectOption<T> | null;
+  readonly selectedItems?: Array<SelectOption<T>> | null;
+  readonly selectAll?: boolean;
   addItem?(item: SelectOption<T>): void;
   updateItems?(items: Array<SelectOption<T>>): void;
-  getItemProps:
+  readonly getItemProps:
     | UseSelectPropGetters<any>['getItemProps']
     | UseComboboxPropGetters<any>['getItemProps'];
-  getMenuProps:
+  readonly getMenuProps:
     | UseSelectPropGetters<any>['getMenuProps']
     | UseComboboxPropGetters<any>['getMenuProps'];
-  update: (() => Promise<Partial<State>>) | null;
-  localization?: { selectAll: MultiSelectLocalization['selectAll'] };
+  readonly update: (() => Promise<Partial<State>>) | null;
+  readonly localization?: { selectAll: MultiSelectLocalization['selectAll'] };
   removeItem?(item: SelectOption<T>): void;
 }
 

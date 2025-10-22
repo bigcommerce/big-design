@@ -18,8 +18,8 @@ import { useFormContext } from '../useFormContext';
 import { StyledError, StyledGroup, StyledInlineGroup } from './styled';
 
 export interface FormGroupProps extends ComponentPropsWithoutRef<'div'> {
-  children?: React.ReactNode;
-  errors?: React.ReactNode | React.ReactNode[];
+  readonly children?: React.ReactNode;
+  readonly errors?: React.ReactNode | React.ReactNode[];
 }
 
 type Errors = Record<string, React.ReactNode | React.ReactNode[]>;

@@ -10,9 +10,9 @@ import { Cell, WorksheetItem, WorksheetModalColumn } from '../../types';
 import { StyledButton, StyledFlexItem } from './styled';
 
 export interface ModalEditorProps<Item> {
-  cell: Cell<Item>;
-  isEditing: boolean;
-  formatting?: WorksheetModalColumn<Item>['formatting'];
+  readonly cell: Cell<Item>;
+  readonly isEditing: boolean;
+  readonly formatting?: WorksheetModalColumn<Item>['formatting'];
 }
 
 const InternalModalEditor = <T extends WorksheetItem>({

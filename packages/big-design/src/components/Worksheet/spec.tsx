@@ -277,11 +277,9 @@ beforeEach(() => {
 });
 
 test('renders worksheet', () => {
-  const { container } = render(
-    <Worksheet columns={columns} items={items} onChange={handleChange} />,
-  );
+  render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-  expect(container.firstChild).toMatchSnapshot();
+  expect(screen.getByRole('table')).toMatchSnapshot();
 });
 
 describe('selection', () => {
@@ -289,6 +287,7 @@ describe('selection', () => {
     render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
     const foundElement = await screen.findByText('Shoes Name One');
+    // eslint-disable-next-line testing-library/no-node-access
     const cell = foundElement.parentElement;
 
     if (cell) {
@@ -296,6 +295,7 @@ describe('selection', () => {
     }
 
     expect(cell).toHaveStyle(`border-color: ${theme.colors.primary}`);
+    // eslint-disable-next-line testing-library/no-node-access
     expect(cell?.parentElement?.firstChild).toHaveStyle(
       `background-color: ${theme.colors.primary}`,
     );
@@ -305,8 +305,10 @@ describe('selection', () => {
     render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
     const firstRowElement = await screen.findByText('Shoes Name Three');
+    // eslint-disable-next-line testing-library/no-node-access
     const firstCell = firstRowElement.parentElement;
     const lastRowElement = await screen.findByText('Shoes Name One');
+    // eslint-disable-next-line testing-library/no-node-access
     const lastCell = lastRowElement.parentElement;
 
     if (firstCell) {
@@ -320,6 +322,7 @@ describe('selection', () => {
     }
 
     expect(firstCell).toHaveStyle(`border-color: ${theme.colors.primary}`);
+    // eslint-disable-next-line testing-library/no-node-access
     expect(firstCell?.parentElement?.firstChild).toHaveStyle(
       `background-color: ${theme.colors.primary}`,
     );
@@ -332,8 +335,10 @@ describe('selection', () => {
     render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
     const firstRowElement = await screen.findByText('Shoes Name Three');
+    // eslint-disable-next-line testing-library/no-node-access
     const firstCell = firstRowElement.parentElement;
     const lastRowElement = await screen.findByText('Shoes Name One');
+    // eslint-disable-next-line testing-library/no-node-access
     const lastCell = lastRowElement.parentElement;
 
     if (firstCell) {
@@ -343,6 +348,7 @@ describe('selection', () => {
     await userEvent.keyboard('{Shift>}{ArrowDown>2}{/Shift}');
 
     expect(firstCell).toHaveStyle(`border-color: ${theme.colors.primary}`);
+    // eslint-disable-next-line testing-library/no-node-access
     expect(firstCell?.parentElement?.firstChild).toHaveStyle(
       `background-color: ${theme.colors.primary}`,
     );
@@ -355,6 +361,7 @@ describe('selection', () => {
     render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
     const firstRowElement = await screen.findByText('Shoes Name Three');
+    // eslint-disable-next-line testing-library/no-node-access
     const firstCell = firstRowElement.parentElement;
 
     if (firstCell) {
@@ -395,46 +402,42 @@ describe('selection', () => {
 
 describe('edition', () => {
   test('onChange is not called when value does not change', () => {
-    const { getByDisplayValue, getByText } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
     let cell;
 
-    cell = getByText('Shoes Name One');
+    cell = screen.getByText('Shoes Name One');
 
-    fireEvent.doubleClick(getByText('Shoes Name One'));
+    fireEvent.doubleClick(screen.getByText('Shoes Name One'));
 
-    const input = getByDisplayValue('Shoes Name One');
+    const input = screen.getByDisplayValue('Shoes Name One');
 
     fireEvent.change(input, { target: { value: 'Shoes Name One' } });
     fireEvent.keyDown(input, { key: 'Enter' });
 
-    cell = getByText('Shoes Name One');
+    cell = screen.getByText('Shoes Name One');
 
-    expect(cell).toBeDefined();
+    expect(cell).toBeInTheDocument();
     expect(handleChange).not.toHaveBeenCalled();
   });
 
   test('onChange is called when value changes', () => {
-    const { getByDisplayValue, getByText } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
     let cell;
 
-    cell = getByText('Shoes Name One');
+    cell = screen.getByText('Shoes Name One');
 
     fireEvent.doubleClick(cell);
 
-    const input = getByDisplayValue('Shoes Name One');
+    const input = screen.getByDisplayValue('Shoes Name One');
 
     fireEvent.change(input, { target: { value: 'Shoes Name One Edit' } });
     fireEvent.keyDown(input, { key: 'Enter' });
 
-    cell = getByText('Shoes Name One Edit');
+    cell = screen.getByText('Shoes Name One Edit');
 
-    expect(cell).toBeDefined();
+    expect(cell).toBeInTheDocument();
     expect(handleChange).toHaveBeenCalledWith([
       {
         id: 3,
@@ -447,17 +450,15 @@ describe('edition', () => {
   });
 
   test('onChange is called when value changes after focus out', () => {
-    const { getByText, getByRole, getByDisplayValue } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    fireEvent.click(getByText('Shoes Name Three'));
+    fireEvent.click(screen.getByText('Shoes Name Three'));
 
-    fireEvent.keyDown(getByRole('table'), { key: 'H' });
+    fireEvent.keyDown(screen.getByRole('table'), { key: 'H' });
 
-    expect(getByDisplayValue('H')).toBeDefined();
+    expect(screen.getByDisplayValue('H')).toBeInTheDocument();
 
-    fireEvent.blur(getByDisplayValue('H'));
+    fireEvent.blur(screen.getByDisplayValue('H'));
 
     expect(handleChange).toHaveBeenCalledWith([
       {
@@ -472,15 +473,13 @@ describe('edition', () => {
   });
 
   test('regains focus when it stops editing', () => {
-    const { getByText, getByDisplayValue, getByRole } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    const table = getByRole('table');
+    const table = screen.getByRole('table');
 
-    fireEvent.doubleClick(getByText('Shoes Name Three'));
+    fireEvent.doubleClick(screen.getByText('Shoes Name Three'));
 
-    fireEvent.keyDown(getByDisplayValue('Shoes Name Three'), { key: 'Escape' });
+    fireEvent.keyDown(screen.getByDisplayValue('Shoes Name Three'), { key: 'Escape' });
 
     expect(table).toHaveFocus();
   });
@@ -598,14 +597,17 @@ describe('edition', () => {
 
 describe('validation', () => {
   test('invalid cells have the red border', () => {
-    const { getByText } = render(
+    render(
       <Worksheet columns={columns} items={items} onChange={handleChange} onErrors={handleErrors} />,
     );
 
-    const cell = getByText('$49.00').parentElement;
+    // eslint-disable-next-line testing-library/no-node-access
+    const cell = screen.getByText('$49.00').parentElement;
+    // eslint-disable-next-line testing-library/no-node-access
     const row = cell?.parentElement;
 
     expect(cell).toHaveStyle(`border-color: ${theme.colors.danger}`);
+    // eslint-disable-next-line testing-library/no-node-access
     expect(row?.firstChild).toHaveStyle(`background-color: ${theme.colors.danger}`);
   });
 
@@ -613,7 +615,7 @@ describe('validation', () => {
     let cell;
     let input;
 
-    const { getByText } = render(
+    render(
       <Worksheet columns={columns} items={items} onChange={handleChange} onErrors={handleErrors} />,
     );
 
@@ -638,7 +640,7 @@ describe('validation', () => {
       },
     ]);
 
-    cell = getByText('$49.00');
+    cell = screen.getByText('$49.00');
 
     fireEvent.doubleClick(cell);
 
@@ -668,7 +670,7 @@ describe('validation', () => {
       },
     ]);
 
-    cell = getByText('$40.00');
+    cell = screen.getByText('$40.00');
 
     fireEvent.doubleClick(cell);
 
@@ -691,30 +693,26 @@ describe('validation', () => {
 
 describe('formatting', () => {
   test('formats values', () => {
-    const { getAllByText } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    expect(getAllByText('$50.00')).toHaveLength(7);
+    expect(screen.getAllByText('$50.00')).toHaveLength(7);
   });
 });
 
 describe('notation', () => {
   test('indicates the cell', () => {
-    const { getByDisplayValue, getByText, getByRole } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    const cell = getByText('Shoes Name One');
+    const cell = screen.getByText('Shoes Name One');
 
     fireEvent.doubleClick(cell);
 
-    const input = getByDisplayValue('Shoes Name One');
+    const input = screen.getByDisplayValue('Shoes Name One');
 
     fireEvent.change(input, { target: { value: 'Shoes Name One Edit' } });
     fireEvent.keyDown(input, { key: 'Enter' });
 
-    expect(getByRole('note')).toBeInTheDocument();
+    expect(screen.getByRole('note')).toBeInTheDocument();
   });
 });
 
@@ -831,184 +829,170 @@ describe('Column action', () => {
 
 describe('keyboard navigation', () => {
   test('navigates with arrow keys', () => {
-    const { getAllByText, getByText } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    let cell = getByText('Shoes Name Three');
+    let cell = screen.getByText('Shoes Name Three');
 
     fireEvent.click(cell);
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
 
     fireEvent.keyDown(cell, { key: 'ArrowLeft' });
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
 
     fireEvent.keyDown(cell, { key: 'ArrowDown' });
 
-    cell = getByText('Shoes Name Two');
+    cell = screen.getByText('Shoes Name Two');
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
 
     fireEvent.keyDown(cell, { key: 'ArrowUp' });
 
-    cell = getByText('Shoes Name Three');
+    cell = screen.getByText('Shoes Name Three');
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
 
     fireEvent.keyDown(cell, { key: 'ArrowRight' });
     fireEvent.keyDown(cell, { key: 'ArrowRight' });
 
-    const cells = getAllByText('Text');
+    const cells = screen.getAllByText('Text');
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(cells[0].parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
   });
 
   test('navigates with tab', () => {
-    const { getAllByText, getByText } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    const cell = getByText('Shoes Name Three');
+    const cell = screen.getByText('Shoes Name Three');
 
     fireEvent.click(cell);
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
 
     fireEvent.keyDown(cell, { key: 'Tab' });
     fireEvent.keyDown(cell, { key: 'Tab' });
 
-    const cells = getAllByText('Text');
+    const cells = screen.getAllByText('Text');
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(cells[0].parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
 
     fireEvent.keyDown(cell, { key: 'Tab', shiftKey: true });
     fireEvent.keyDown(cell, { key: 'Tab', shiftKey: true });
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
   });
 
   test('enter starts editing the cell', () => {
-    const { getByDisplayValue, getByText, getByRole } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    const worksheet = getByRole('table');
-    const cell = getByText('Shoes Name Three');
+    const worksheet = screen.getByRole('table');
+    const cell = screen.getByText('Shoes Name Three');
 
     fireEvent.click(cell);
     fireEvent.keyDown(worksheet, { key: 'Enter' });
 
-    expect(getByDisplayValue('Shoes Name Three')).toBeDefined();
+    expect(screen.getByDisplayValue('Shoes Name Three')).toBeInTheDocument();
   });
 
   test('tab finish editing the cell', () => {
-    const { getByDisplayValue, getByText, getByRole } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    const worksheet = getByRole('table');
-    const cell = getByText('Shoes Name Three');
+    const worksheet = screen.getByRole('table');
+    const cell = screen.getByText('Shoes Name Three');
 
     fireEvent.click(cell);
     fireEvent.keyDown(worksheet, { key: 'a' });
 
-    expect(getByDisplayValue('a')).toBeDefined();
+    expect(screen.getByDisplayValue('a')).toBeInTheDocument();
 
     fireEvent.keyDown(cell, { key: 'Tab' });
   });
 
   test('typing starts editing the cell', () => {
-    const { getByDisplayValue, getByText, getByRole } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    const worksheet = getByRole('table');
-    const cell = getByText('Shoes Name Three');
+    const worksheet = screen.getByRole('table');
+    const cell = screen.getByText('Shoes Name Three');
 
     fireEvent.click(cell);
     fireEvent.keyDown(worksheet, { key: 'a' });
 
-    expect(getByDisplayValue('a')).toBeDefined();
+    expect(screen.getByDisplayValue('a')).toBeInTheDocument();
   });
 
   test('cell is not editted when key length is greater than 1', async () => {
-    const { getByText, queryByDisplayValue } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    const cell = getByText('Shoes Name Three');
+    const cell = screen.getByText('Shoes Name Three');
 
     await userEvent.click(cell);
     await userEvent.keyboard('{capslock}');
 
-    expect(getByText('Shoes Name Three')).toBeInTheDocument();
-    expect(queryByDisplayValue('capslock')).not.toBeInTheDocument();
+    expect(screen.getByText('Shoes Name Three')).toBeInTheDocument();
+    expect(screen.queryByDisplayValue('capslock')).not.toBeInTheDocument();
   });
 
   test('cell is not start to edit when using Meta key', async () => {
-    const { getByText, queryByDisplayValue } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    const cell = getByText('Shoes Name Three');
+    const cell = screen.getByText('Shoes Name Three');
 
     await userEvent.click(cell);
     await userEvent.keyboard('{meta}');
 
-    expect(queryByDisplayValue('Shoes Name Three')).toBeNull();
-    expect(cell).toBeDefined();
+    expect(screen.queryByDisplayValue('Shoes Name Three')).not.toBeInTheDocument();
+    expect(cell).toBeInTheDocument();
   });
 
   test('cell is not editted when using Control key', async () => {
-    const { getByText, getByDisplayValue, queryByDisplayValue } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    const cell = getByText('Shoes Name Three');
+    const cell = screen.getByText('Shoes Name Three');
 
     await userEvent.click(cell);
     await userEvent.keyboard('{control}');
 
-    expect(getByDisplayValue('Shoes Name Three')).toBeDefined();
-    expect(queryByDisplayValue('Control')).not.toBeInTheDocument();
+    expect(screen.getByDisplayValue('Shoes Name Three')).toBeInTheDocument();
+    expect(screen.queryByDisplayValue('Control')).not.toBeInTheDocument();
   });
 
   test('current content in cell is not deleted when double cliking and copy new text in the cell', async () => {
-    const { getByText, getByDisplayValue } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    const cell = getByText('Shoes Name Three');
+    const cell = screen.getByText('Shoes Name Three');
 
     await userEvent.dblClick(cell);
     await userEvent.paste('hello');
 
-    expect(getByDisplayValue('Shoes Name Threehello')).toBeDefined();
+    expect(screen.getByDisplayValue('Shoes Name Threehello')).toBeInTheDocument();
   });
 
   test('space starts editing the cell', () => {
-    const { getByDisplayValue, getByText, getByRole } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    const worksheet = getByRole('table');
-    const cell = getByText('Shoes Name Three');
+    const worksheet = screen.getByRole('table');
+    const cell = screen.getByText('Shoes Name Three');
 
     fireEvent.click(cell);
     fireEvent.keyDown(worksheet, { key: ' ' });
 
-    expect(getByDisplayValue('Shoes Name Three')).toBeDefined();
+    expect(screen.getByDisplayValue('Shoes Name Three')).toBeInTheDocument();
   });
 
   test('enter/space on checkbox navigates down and toggles value', () => {
-    const { getAllByLabelText, getByRole } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    const worksheet = getByRole('table');
-    const cells = getAllByLabelText('Checked');
+    const worksheet = screen.getByRole('table');
+    const cells = screen.getAllByLabelText('Checked');
 
     fireEvent.click(cells[0]);
     fireEvent.keyDown(worksheet, { key: 'Enter' });
@@ -1024,6 +1008,7 @@ describe('keyboard navigation', () => {
         numberField: 50,
       },
     ]);
+    // eslint-disable-next-line testing-library/no-node-access
     expect(cells[1].parentElement?.parentElement?.parentElement).toHaveStyle(
       `border-color: ${theme.colors.primary};`,
     );
@@ -1054,29 +1039,26 @@ describe('keyboard navigation', () => {
 
 describe('TextEditor', () => {
   test('renders TextEditor', async () => {
-    const { getByText } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    const cell = getByText('Shoes Name One');
+    const cell = screen.getByText('Shoes Name One');
 
     fireEvent.doubleClick(cell);
 
     const input = await screen.findByDisplayValue<HTMLInputElement>('Shoes Name One');
 
-    expect(input).toBeDefined();
+    expect(input).toBeInTheDocument();
   });
 
   test('TextEditor is editable', async () => {
-    const { getByText } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
     let input;
     let cell;
 
-    cell = getByText('Shoes Name One');
+    cell = screen.getByText('Shoes Name One');
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(cell.parentNode).toHaveStyle(`background-color: ${theme.colors.inherit};`);
 
     fireEvent.doubleClick(cell);
@@ -1099,8 +1081,9 @@ describe('TextEditor', () => {
       },
     ]);
 
-    cell = getByText('Shoes Name One Edit');
+    cell = screen.getByText('Shoes Name One Edit');
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(cell.parentNode).toHaveStyle(`background-color: ${theme.colors.warning10};`);
 
     fireEvent.doubleClick(cell);
@@ -1111,11 +1094,9 @@ describe('TextEditor', () => {
   });
 
   test('column type number returns number', async () => {
-    const { getByText } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    const cell = getByText('$49.00');
+    const cell = screen.getByText('$49.00');
 
     fireEvent.doubleClick(cell);
 
@@ -1147,25 +1128,25 @@ describe('TextEditor', () => {
 
 describe('SelectEditor', () => {
   test('renders SelectEditor', async () => {
-    const { findAllByRole } = render(
+    render(
       <Worksheet columns={selectableColumns} items={selectableItems} onChange={handleChange} />,
     );
 
-    const cells = await findAllByRole('combobox');
+    const cells = await screen.findAllByRole('combobox');
 
     expect(cells).toHaveLength(2);
   });
 
   test('SelectEditor is editable', async () => {
-    const { findAllByRole, findAllByDisplayValue } = render(
+    render(
       <Worksheet columns={selectableColumns} items={selectableItems} onChange={handleChange} />,
     );
 
-    const cells = await findAllByDisplayValue('Value 1');
+    const cells = await screen.findAllByDisplayValue('Value 1');
 
     await userEvent.click(cells[0]);
 
-    const options = await findAllByRole('option');
+    const options = await screen.findAllByRole('option');
 
     await userEvent.click(options[2]);
 
@@ -1211,35 +1192,35 @@ describe('SelectEditor', () => {
 
     const cell = await screen.findAllByDisplayValue('Value 1');
 
-    expect(cell[0]).toHaveAttribute('disabled');
+    expect(cell[0]).toBeDisabled();
   });
 });
 
 describe('MultiSelectEditor', () => {
   test('renders MultiSelectEditor', async () => {
-    const { findAllByRole } = render(
+    render(
       <Worksheet columns={multiSelectColumns} items={multiSelectItems} onChange={handleChange} />,
     );
 
-    const cells = await findAllByRole('combobox');
+    const cells = await screen.findAllByRole('combobox');
 
     expect(cells).toHaveLength(2);
   });
 
   test('MultiSelectEditor is editable', async () => {
-    const { findAllByRole, findByLabelText } = render(
+    render(
       <Worksheet columns={multiSelectColumns} items={multiSelectItems} onChange={handleChange} />,
     );
 
-    const cells = await findAllByRole('combobox');
+    const cells = await screen.findAllByRole('combobox');
 
     await userEvent.click(cells[0]);
 
-    const options = await findAllByRole('option');
+    const options = await screen.findAllByRole('option');
 
     await userEvent.click(options[2]);
 
-    const deleteButtons = await findByLabelText('Remove Multi 2');
+    const deleteButtons = await screen.findByLabelText('Remove Multi 2');
 
     await userEvent.click(deleteButtons);
 
@@ -1259,7 +1240,7 @@ describe('MultiSelectEditor', () => {
   });
 
   test('renders in disabled state', async () => {
-    const { findAllByRole } = render(
+    render(
       <Worksheet
         columns={[
           {
@@ -1288,33 +1269,29 @@ describe('MultiSelectEditor', () => {
       />,
     );
 
-    const cells = await findAllByRole('combobox');
+    const cells = await screen.findAllByRole('combobox');
 
-    expect(cells[0]).toHaveAttribute('disabled');
+    expect(cells[0]).toBeDisabled();
   });
 });
 
 describe('CheckboxEditor', () => {
   test('renders CheckboxEditor', () => {
-    const { getAllByLabelText } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    let cells = getAllByLabelText('Checked');
+    let cells = screen.getAllByLabelText('Checked');
 
     expect(cells).toHaveLength(6);
 
-    cells = getAllByLabelText('Unchecked');
+    cells = screen.getAllByLabelText('Unchecked');
 
     expect(cells).toHaveLength(3);
   });
 
   test('CheckboxEditor is editable', () => {
-    const { getAllByLabelText } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    const cells = getAllByLabelText('Checked');
+    const cells = screen.getAllByLabelText('Checked');
     const cell = cells[0];
 
     fireEvent.click(cell);
@@ -1337,41 +1314,39 @@ describe('CheckboxEditor', () => {
 
     const cell = screen.getAllByLabelText('Checked');
 
-    expect(cell[0]).toHaveAttribute('disabled');
+    expect(cell[0]).toBeDisabled();
   });
 });
 
 describe('ModalEditor', () => {
   test('renders ModalEditor', () => {
-    const { getAllByText } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    const buttons = getAllByText('Edit');
+    const buttons = screen.getAllByText('Edit');
 
     expect(buttons).toHaveLength(9);
   });
 
   test('ModalEditor is editable', () => {
-    const { getAllByText, getByText } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    const buttons = getAllByText('Edit');
+    const buttons = screen.getAllByText('Edit');
 
     expect(buttons).toHaveLength(9);
 
     fireEvent.click(buttons[3]);
 
     // Find checkbox to click
-    const parent = getByText('Category 0').parentNode?.parentNode;
+    // eslint-disable-next-line testing-library/no-node-access
+    const parent = screen.getByText('Category 0').parentNode?.parentNode;
+    // eslint-disable-next-line testing-library/no-node-access
     const checkbox = parent?.querySelector('label');
 
     if (checkbox) {
       fireEvent.click(checkbox);
     }
 
-    const save = getByText('Save');
+    const save = screen.getByText('Save');
 
     fireEvent.click(save);
 
@@ -1387,6 +1362,7 @@ describe('ModalEditor', () => {
       },
     ]);
 
+    // eslint-disable-next-line testing-library/no-node-access
     const cell = buttons[3].parentNode?.parentNode?.parentNode;
 
     expect(cell).toHaveStyle(`background-color: ${theme.colors.warning10};`);
@@ -1397,7 +1373,7 @@ describe('ModalEditor', () => {
 
     const buttons = screen.getAllByRole('button', { name: /edit/i });
 
-    expect(buttons[0]).toHaveAttribute('disabled');
+    expect(buttons[0]).toBeDisabled();
   });
 });
 
@@ -1409,22 +1385,26 @@ describe('disable', () => {
 
     fireEvent.click(cell);
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
 
     fireEvent.keyDown(cell, { key: 'ArrowLeft' });
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
 
     fireEvent.keyDown(cell, { key: 'ArrowDown' });
 
     cell = screen.getByText('Shoes Name Two');
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
 
     fireEvent.keyDown(cell, { key: 'ArrowUp' });
 
     cell = screen.getByText('Shoes Name Three');
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
 
     fireEvent.keyDown(cell, { key: 'ArrowRight' });
@@ -1432,6 +1412,7 @@ describe('disable', () => {
 
     const cells = screen.getAllByText('Text');
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(cells[0].parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
   });
 
@@ -1445,7 +1426,7 @@ describe('disable', () => {
     fireEvent.click(cell);
     fireEvent.keyDown(worksheet, { key: 'Enter' });
 
-    expect(screen.queryByDisplayValue('Shoes Name Three')).toBeNull();
+    expect(screen.queryByDisplayValue('Shoes Name Three')).not.toBeInTheDocument();
   });
 
   test('space does not start editing the cell', () => {
@@ -1458,7 +1439,7 @@ describe('disable', () => {
     fireEvent.click(cell);
     fireEvent.keyDown(worksheet, { key: ' ' });
 
-    expect(screen.queryByDisplayValue('Shoes Name Three')).toBeNull();
+    expect(screen.queryByDisplayValue('Shoes Name Three')).not.toBeInTheDocument();
   });
 
   test('mouse will not trigger input field', () => {
@@ -1466,7 +1447,7 @@ describe('disable', () => {
 
     fireEvent.doubleClick(screen.getByText('Shoes Name One'));
 
-    expect(screen.queryByDisplayValue('Shoes Name One')).toBeNull();
+    expect(screen.queryByDisplayValue('Shoes Name One')).not.toBeInTheDocument();
   });
 });
 
@@ -1480,22 +1461,26 @@ describe('disable rows', () => {
 
     fireEvent.click(cell);
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
 
     fireEvent.keyDown(cell, { key: 'ArrowLeft' });
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
 
     fireEvent.keyDown(cell, { key: 'ArrowDown' });
 
     cell = screen.getByText('Shoes Name Two');
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
 
     fireEvent.keyDown(cell, { key: 'ArrowUp' });
 
     cell = screen.getByText('Shoes Name Three');
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
 
     fireEvent.keyDown(cell, { key: 'ArrowRight' });
@@ -1503,6 +1488,7 @@ describe('disable rows', () => {
 
     const cells = screen.getAllByText('Text');
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(cells[0].parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
   });
 
@@ -1518,7 +1504,7 @@ describe('disable rows', () => {
     fireEvent.click(cell);
     fireEvent.keyDown(worksheet, { key: 'Enter' });
 
-    expect(screen.queryByDisplayValue('Shoes Name Three')).toBeNull();
+    expect(screen.queryByDisplayValue('Shoes Name Three')).not.toBeInTheDocument();
   });
 
   test('space does not start editing the cell', () => {
@@ -1533,7 +1519,7 @@ describe('disable rows', () => {
     fireEvent.click(cell);
     fireEvent.keyDown(worksheet, { key: ' ' });
 
-    expect(screen.queryByDisplayValue('Shoes Name Three')).toBeNull();
+    expect(screen.queryByDisplayValue('Shoes Name Three')).not.toBeInTheDocument();
   });
 
   test('mouse will not trigger input field', () => {
@@ -1543,7 +1529,7 @@ describe('disable rows', () => {
 
     fireEvent.doubleClick(screen.getByText('Shoes Name One'));
 
-    expect(screen.queryByDisplayValue('Shoes Name One')).toBeNull();
+    expect(screen.queryByDisplayValue('Shoes Name One')).not.toBeInTheDocument();
   });
 
   test('enables column within disabled row', () => {
@@ -1606,7 +1592,7 @@ describe('expandable', () => {
 
     fireEvent.click(buttons[0]);
 
-    expect(screen.queryByRole('row', { name: /shoes name one/i })).toBeInTheDocument();
+    expect(screen.getByRole('row', { name: /shoes name one/i })).toBeInTheDocument();
 
     // expect(screen.queryAllByRole('row').length).toBe(8);
 
@@ -1615,8 +1601,8 @@ describe('expandable', () => {
 
     fireEvent.click(buttons[1]);
 
-    expect(screen.queryByRole('row', { name: /variant 2/i })).toBeInTheDocument();
-    expect(screen.queryByRole('row', { name: /variant 2/i })).toBeInTheDocument();
+    expect(screen.getByRole('row', { name: /variant 2/i })).toBeInTheDocument();
+    expect(screen.getByRole('row', { name: /variant 2/i })).toBeInTheDocument();
     // expect(screen.queryAllByRole('row').length).toBe(10);
 
     fireEvent.click(buttons[1]);
@@ -1629,8 +1615,8 @@ describe('expandable', () => {
     fireEvent.keyDown(buttons[1], { key: 'Enter' });
 
     // expect(screen.queryAllByRole('row').length).toBe(10);
-    expect(screen.queryByRole('row', { name: /variant 2/i })).toBeInTheDocument();
-    expect(screen.queryByRole('row', { name: /variant 2/i })).toBeInTheDocument();
+    expect(screen.getByRole('row', { name: /variant 2/i })).toBeInTheDocument();
+    expect(screen.getByRole('row', { name: /variant 2/i })).toBeInTheDocument();
   });
 
   test('keyboard navigates correctly', () => {
@@ -1649,16 +1635,19 @@ describe('expandable', () => {
 
     fireEvent.click(cell);
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
 
     fireEvent.keyDown(cell, { key: 'ArrowDown' });
 
     const variant = screen.getByText('Variant 1');
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(variant.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
 
     fireEvent.keyDown(cell, { key: 'ArrowUp' });
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
 
     fireEvent.click(buttons[0]);
@@ -1668,6 +1657,7 @@ describe('expandable', () => {
 
     cell = screen.getByText('Shoes Name One');
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
   });
 });
@@ -1714,19 +1704,15 @@ describe('column widths', () => {
 
 describe('Header tooltip', () => {
   test('renders column with tooltip icon', () => {
-    const { getByTitle } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    expect(getByTitle('Hover or focus for additional context.')).toBeTruthy();
+    expect(screen.getByTitle('Hover or focus for additional context.')).toBeInTheDocument();
   });
 
   test('renders tooltip when hovering on icon', async () => {
-    const { getByTitle } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    await userEvent.hover(getByTitle('Hover or focus for additional context.'));
+    await userEvent.hover(screen.getByTitle('Hover or focus for additional context.'));
 
     const result = screen.getByText('Info about number field');
 
@@ -1750,25 +1736,24 @@ test('renders localized labels', () => {
 
 describe('useKeyEvents coverage improvements', () => {
   test('Shift+Tab navigates left when editing', async () => {
-    const { getAllByText, getAllByLabelText, getByRole, getByDisplayValue } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    const worksheet = getByRole('table');
-    const cells = getAllByText('Text');
+    const worksheet = screen.getByRole('table');
+    const cells = screen.getAllByText('Text');
     const cell = cells[0];
 
     fireEvent.click(cell);
     fireEvent.keyDown(worksheet, { key: 'a' });
 
     // Now in editing mode with input showing 'a'
-    const input = getByDisplayValue('a');
+    const input = screen.getByDisplayValue('a');
 
     // Press Shift+Tab to finish editing and navigate left to the checkbox column
     fireEvent.keyDown(input, { key: 'Tab', shiftKey: true });
 
     // Should navigate to previous column (visibleOnStorefront checkbox) after finishing edit
-    const checkboxes = getAllByLabelText('Checked');
+    const checkboxes = screen.getAllByLabelText('Checked');
+    // eslint-disable-next-line testing-library/no-node-access
     const prevCell = checkboxes[0].parentElement?.parentElement?.parentElement;
 
     expect(prevCell).toHaveStyle(`border-color: ${theme.colors.primary}`);
@@ -1778,6 +1763,7 @@ describe('useKeyEvents coverage improvements', () => {
     render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
     const firstRowElement = await screen.findByText('Shoes Name Three');
+    // eslint-disable-next-line testing-library/no-node-access
     const firstCell = firstRowElement.parentElement;
 
     if (firstCell) {
@@ -1792,6 +1778,7 @@ describe('useKeyEvents coverage improvements', () => {
 
     // Selection should be reduced by one cell
     const secondRowElement = await screen.findByText('Shoes Name Two');
+    // eslint-disable-next-line testing-library/no-node-access
     const secondCell = secondRowElement.parentElement;
 
     expect(firstCell).toHaveStyle(`border-color: ${theme.colors.primary}`);
@@ -1799,13 +1786,12 @@ describe('useKeyEvents coverage improvements', () => {
   });
 
   test('Meta key triggers editSelectedCell when cell is selected', async () => {
-    const { getByText, getByRole } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    const cellText = getByText('Shoes Name Three');
+    const cellText = screen.getByText('Shoes Name Three');
+    // eslint-disable-next-line testing-library/no-node-access
     const cell = cellText.parentElement;
-    const worksheet = getByRole('table');
+    const worksheet = screen.getByRole('table');
 
     if (cell) {
       await userEvent.click(cell);
@@ -1820,13 +1806,12 @@ describe('useKeyEvents coverage improvements', () => {
   });
 
   test('Control key triggers editSelectedCell when cell is selected', async () => {
-    const { getByText, getByRole } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    const cellText = getByText('Shoes Name Three');
+    const cellText = screen.getByText('Shoes Name Three');
+    // eslint-disable-next-line testing-library/no-node-access
     const cell = cellText.parentElement;
-    const worksheet = getByRole('table');
+    const worksheet = screen.getByRole('table');
 
     if (cell) {
       await userEvent.click(cell);
@@ -1840,30 +1825,26 @@ describe('useKeyEvents coverage improvements', () => {
   });
 
   test('Meta key does nothing when no cell is selected', async () => {
-    const { getByRole, queryByDisplayValue } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    const worksheet = getByRole('table');
+    const worksheet = screen.getByRole('table');
 
     // Press Meta key without selecting a cell first
     fireEvent.keyDown(worksheet, { key: 'Meta' });
 
     // No cell should be editing
-    expect(queryByDisplayValue('Shoes Name Three')).toBeNull();
+    expect(screen.queryByDisplayValue('Shoes Name Three')).not.toBeInTheDocument();
   });
 
   test('Control key does nothing when no cell is selected', async () => {
-    const { getByRole, queryByDisplayValue } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    const worksheet = getByRole('table');
+    const worksheet = screen.getByRole('table');
 
     // Press Control key without selecting a cell first
     fireEvent.keyDown(worksheet, { key: 'Control' });
 
     // No cell should be editing
-    expect(queryByDisplayValue('Shoes Name Three')).toBeNull();
+    expect(screen.queryByDisplayValue('Shoes Name Three')).not.toBeInTheDocument();
   });
 });

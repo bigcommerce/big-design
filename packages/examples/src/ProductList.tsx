@@ -5,7 +5,7 @@ import React from 'react';
 import { Product } from './data';
 
 interface Props {
-  products: Product[];
+  readonly products: Product[];
   onDelete(product: Product): void;
 }
 

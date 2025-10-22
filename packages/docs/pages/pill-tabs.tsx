@@ -37,10 +37,10 @@ const PillTabsPage = () => {
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const [activePills, setActivePills] = useState<string[]>([]);
-                    const Card: React.FC<{ name: string; description: string }> = ({
-                      name,
-                      description,
-                    }) => (
+                    const Card: React.FC<{
+                      readonly name: string;
+                      readonly description: string;
+                    }> = ({ name, description }) => (
                       <Flex
                         border="box"
                         borderRadius="normal"

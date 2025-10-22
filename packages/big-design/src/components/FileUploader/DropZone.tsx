@@ -23,12 +23,12 @@ import { Action, Localization } from './types';
 import { validateFileFormat } from './utils';
 
 export interface Props extends ComponentPropsWithoutRef<'input'> {
-  action?: Action;
-  description?: string;
-  viewType?: 'row' | 'block';
-  icon?: React.ReactNode;
-  label?: string;
-  localization: Localization;
+  readonly action?: Action;
+  readonly description?: string;
+  readonly viewType?: 'row' | 'block';
+  readonly icon?: React.ReactNode;
+  readonly label?: string;
+  readonly localization: Localization;
   onFilesChange(files: FileList | null): void;
 }
 

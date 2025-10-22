@@ -112,11 +112,10 @@ test('if defaultExpanded is set to true, accordion panel is expanded', async () 
 test('it renders icon if iconLeft prop is defined', async () => {
   render(<TestComponentWithDefault />);
 
-  const icons = (await screen.findByRole('button')).querySelectorAll('svg');
+  const button = await screen.findByRole('button');
 
-  const icon = icons[0];
-
-  expect(icon).toBeVisible();
+  // eslint-disable-next-line testing-library/no-node-access
+  expect(button.querySelector('svg')).toBeInTheDocument();
 });
 
 test('it renders header and children accordion elements without hook', async () => {

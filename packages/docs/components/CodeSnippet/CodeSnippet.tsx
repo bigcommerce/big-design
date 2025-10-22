@@ -8,9 +8,9 @@ import { SnippetControls } from '../SnippetControls';
 import { CodeEditorContext } from '../StoryWrapper/StoryWrapper';
 
 interface EditorProps {
-  children?: React.ReactNode;
-  language?: Language;
-  showControls?: boolean;
+  readonly children?: React.ReactNode;
+  readonly language?: Language;
+  readonly showControls?: boolean;
 }
 
 function formatCode(code: string) {
@@ -29,7 +29,7 @@ function formatCode(code: string) {
   // Number of whitespaces to remove from each line
   const padding = lines[0].search(/\S|$/);
 
-  return lines.map((line) => line.substr(padding)).join('\n');
+  return lines.map((line) => line.substring(padding)).join('\n');
 }
 
 function getCode(children: React.ReactNode) {

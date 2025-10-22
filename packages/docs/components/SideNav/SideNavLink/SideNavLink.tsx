@@ -6,9 +6,9 @@ import styled from 'styled-components';
 import { List } from '../../';
 
 interface Props {
-  children?: React.ReactNode;
-  href: string;
-  target?: string;
+  readonly children?: React.ReactNode;
+  readonly href: string;
+  readonly target?: string;
 }
 
 const StyledLink = styled(Link)`
@@ -23,8 +23,8 @@ const StyledLink = styled(Link)`
 
 export const SideNavLink: React.FC<Props> = ({ children, href, target }) => (
   <List.Item>
-    <NextLink href={href} legacyBehavior passHref target={target}>
-      <StyledLink href="">{children}</StyledLink>
-    </NextLink>
+    <StyledLink as={NextLink} href={href} target={target}>
+      {children}
+    </StyledLink>
   </List.Item>
 );

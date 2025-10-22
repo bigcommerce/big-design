@@ -30,14 +30,13 @@ describe('warning', () => {
     expect(console.warn).toHaveBeenCalledTimes(2);
   });
 
-  test('should not call console.warn in production environment', () => {
+  test('should not call console.warn in production environment', async () => {
     jest.resetModules();
     jest.doMock('../env', () => ({
       isProduction: true,
     }));
 
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const { warning: prodWarning } = require('./warning');
+    const { warning: prodWarning } = await import('./warning');
     const mockWarn = jest.fn();
 
     jest.spyOn(console, 'warn').mockImplementation(mockWarn);

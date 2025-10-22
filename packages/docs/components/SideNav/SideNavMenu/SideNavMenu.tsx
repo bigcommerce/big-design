@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 
 import { StyledMenu, StyledNavigation } from './styled';
 
-export const SideNavMenu: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
+export const SideNavMenu: React.FC<{ readonly children?: React.ReactNode }> = ({ children }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const handleClick = () => setIsExpanded(!isExpanded);
 

@@ -65,16 +65,15 @@ function getResponsiveSpacings<T extends string>(
 
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   return (breakpointKeys as Array<keyof Breakpoints>).map(
-    (breakpointKey) =>
-      css`
-        ${theme.breakpoints[breakpointKey]} {
-          ${getSimpleSpacings(
-            // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-            responsiveSpacing[breakpointKey] as keyof Spacing,
-            theme,
-            spacingKeys,
-          )}
-        }
-      `,
+    (breakpointKey) => css`
+      ${theme.breakpoints[breakpointKey]} {
+        ${getSimpleSpacings(
+          // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+          responsiveSpacing[breakpointKey] as keyof Spacing,
+          theme,
+          spacingKeys,
+        )}
+      }
+    `,
   );
 }

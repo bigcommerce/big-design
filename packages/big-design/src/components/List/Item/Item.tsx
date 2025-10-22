@@ -11,17 +11,17 @@ import { Content } from './Content';
 import { StyledListItem } from './styled';
 
 export interface ListItemProps<T> extends ComponentPropsWithoutRef<'li'> {
-  actionType?: 'normal' | 'destructive';
-  autoWidth?: boolean;
-  disabled?: boolean;
-  index: number;
-  isAction?: boolean;
-  isChecked?: boolean;
-  isHighlighted: boolean;
-  isIndeterminate?: boolean;
-  isSelected?: boolean;
-  item: DropdownItem | DropdownLinkItem | SelectOption<T> | SelectAction;
-  getItemProps:
+  readonly actionType?: 'normal' | 'destructive';
+  readonly autoWidth?: boolean;
+  readonly disabled?: boolean;
+  readonly index: number;
+  readonly isAction?: boolean;
+  readonly isChecked?: boolean;
+  readonly isHighlighted: boolean;
+  readonly isIndeterminate?: boolean;
+  readonly isSelected?: boolean;
+  readonly item: DropdownItem | DropdownLinkItem | SelectOption<T> | SelectAction;
+  readonly getItemProps:
     | UseSelectPropGetters<any>['getItemProps']
     | UseComboboxPropGetters<any>['getItemProps'];
   addItem?(item: SelectOption<T>): void;

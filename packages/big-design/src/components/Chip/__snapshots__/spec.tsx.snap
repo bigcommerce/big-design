@@ -162,6 +162,7 @@ exports[`renders with close button if onRemove is present 1`] = `
 
 <div
   class="c0 c1"
+  data-testid="chip"
 >
   <p
     class="c2"
@@ -245,6 +246,7 @@ exports[`renders without close button 1`] = `
 
 <div
   class="c0 c1"
+  data-testid="chip"
 >
   <p
     class="c2"

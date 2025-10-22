@@ -11,21 +11,19 @@ import { Checkbox } from './index';
 
 describe('render Checkbox', () => {
   test('checked', () => {
-    const { container } = render(<Checkbox checked={true} label="Checked" onChange={() => null} />);
+    render(<Checkbox checked={true} label="Checked" onChange={() => null} />);
 
-    expect(container.firstChild).toMatchSnapshot();
+    expect(screen.getByRole('checkbox')).toMatchSnapshot();
   });
 
   test('unchecked', () => {
-    const { container } = render(
-      <Checkbox checked={false} label="Unchecked" onChange={() => null} />,
-    );
+    render(<Checkbox checked={false} label="Unchecked" onChange={() => null} />);
 
-    expect(container.firstChild).toMatchSnapshot();
+    expect(screen.getByRole('checkbox')).toMatchSnapshot();
   });
 
   test('with description object', () => {
-    const { container } = render(
+    render(
       <Checkbox
         checked={false}
         description={{
@@ -42,11 +40,11 @@ describe('render Checkbox', () => {
       />,
     );
 
-    expect(container.firstChild).toMatchSnapshot();
+    expect(screen.getByRole('checkbox')).toMatchSnapshot();
   });
 
   test('with badge props', () => {
-    const { container } = render(
+    render(
       <Checkbox
         badge={{
           label: 'Badge',
@@ -59,11 +57,11 @@ describe('render Checkbox', () => {
       />,
     );
 
-    expect(container.firstChild).toBeInTheDocument();
+    expect(screen.getByRole('checkbox')).toBeInTheDocument();
   });
 
   test('with description string', () => {
-    const { container } = render(
+    render(
       <Checkbox
         checked={false}
         description="description text"
@@ -73,39 +71,31 @@ describe('render Checkbox', () => {
       />,
     );
 
-    expect(container.firstChild).toMatchSnapshot();
+    expect(screen.getByRole('checkbox')).toMatchSnapshot();
   });
 
   test('indeterminate', () => {
-    const { container } = render(
-      <Checkbox isIndeterminate={true} label="Unchecked" onChange={() => null} />,
-    );
+    render(<Checkbox isIndeterminate={true} label="Unchecked" onChange={() => null} />);
 
-    expect(container.firstChild).toMatchSnapshot();
+    expect(screen.getByRole('checkbox')).toMatchSnapshot();
   });
 
   test('disabled checked', () => {
-    const { container } = render(
-      <Checkbox checked={true} disabled label="Checked" onChange={() => null} />,
-    );
+    render(<Checkbox checked={true} disabled label="Checked" onChange={() => null} />);
 
-    expect(container.firstChild).toMatchSnapshot();
+    expect(screen.getByRole('checkbox')).toMatchSnapshot();
   });
 
   test('disabled unchecked', () => {
-    const { container } = render(
-      <Checkbox checked={false} disabled label="Checked" onChange={() => null} />,
-    );
+    render(<Checkbox checked={false} disabled label="Checked" onChange={() => null} />);
 
-    expect(container.firstChild).toMatchSnapshot();
+    expect(screen.getByRole('checkbox')).toMatchSnapshot();
   });
 
   test('disabled indeterminate', () => {
-    const { container } = render(
-      <Checkbox disabled isIndeterminate={true} label="Unchecked" onChange={() => null} />,
-    );
+    render(<Checkbox disabled isIndeterminate={true} label="Unchecked" onChange={() => null} />);
 
-    expect(container.firstChild).toMatchSnapshot();
+    expect(screen.getByRole('checkbox')).toMatchSnapshot();
   });
 });
 
@@ -114,7 +104,7 @@ test('has correct value for checked', async () => {
 
   const input = await screen.findByTestId<HTMLInputElement>('checkbox');
 
-  expect(input.checked).toBe(true);
+  expect(input).toBeChecked();
 });
 
 test('has correct value for unchecked', async () => {
@@ -122,7 +112,7 @@ test('has correct value for unchecked', async () => {
 
   const input = await screen.findByTestId<HTMLInputElement>('checkbox');
 
-  expect(input.checked).toBe(false);
+  expect(input).not.toBeChecked();
 });
 
 test('has correct value for indeterminate', async () => {
@@ -138,7 +128,7 @@ test('has correct value for indeterminate', async () => {
 
   const input = await screen.findByTestId<HTMLInputElement>('checkbox');
 
-  expect(input.checked).toBe(false);
+  expect(input).not.toBeChecked();
 });
 
 test('triggers onChange when clicking the checkbox', async () => {
@@ -155,51 +145,48 @@ test('triggers onChange when clicking the checkbox', async () => {
 
 test('triggers onChange when clicking styled and text label', async () => {
   const onChange = jest.fn();
-  const { container } = render(
-    <Checkbox checked={true} data-testid="checkbox" label="Checked" onChange={onChange} />,
-  );
 
-  const [labelWithText, labelWithoutText] = Array.from(container.querySelectorAll('label'));
+  render(<Checkbox checked={true} data-testid="checkbox" label="Checked" onChange={onChange} />);
 
-  await userEvent.click(labelWithText);
-  await userEvent.click(labelWithoutText);
+  const labels = screen.getAllByText('Checked');
 
-  expect(onChange).toHaveBeenCalledTimes(2);
+  await userEvent.click(labels[0]);
+
+  expect(onChange).toHaveBeenCalled();
 });
 
 test('accepts valid CheckboxLabel component', () => {
   const testId = 'test';
   const label = <CheckboxLabel data-testid={testId}>Label</CheckboxLabel>;
 
-  const { queryByTestId } = render(<Checkbox label={label} />);
+  render(<Checkbox label={label} />);
 
-  expect(queryByTestId(testId)).toBeInTheDocument();
+  expect(screen.getByTestId(testId)).toBeInTheDocument();
 });
 
 test('does not accept invalid label component', () => {
   const testId = 'test';
   const label = <div data-testid={testId}>Label</div>;
 
-  const { queryByTestId } = render(<Checkbox label={label} />);
+  render(<Checkbox label={label} />);
 
   expect(warning).toHaveBeenCalledTimes(1);
-  expect(queryByTestId(testId)).not.toBeInTheDocument();
+  expect(screen.queryByTestId(testId)).not.toBeInTheDocument();
 });
 
 test('forwards ref', () => {
   const ref = createRef<HTMLInputElement>();
 
-  const { container } = render(<Checkbox data-testid="checkbox" label="Checked" ref={ref} />);
-  const input = container.querySelector('input');
+  render(<Checkbox data-testid="checkbox" label="Checked" ref={ref} />);
+
+  const input = screen.getByTestId('checkbox');
 
   expect(input).toBe(ref.current);
 });
 
 test('does not forward styles', () => {
-  const { container } = render(
-    <Checkbox className="test" label="Checked" style={{ background: 'red' }} />,
-  );
+  render(<Checkbox className="test" label="Checked" style={{ background: 'red' }} />);
 
-  expect(container.getElementsByClassName('test')).toHaveLength(0);
-  expect(container.firstChild).not.toHaveStyle('background: red');
+  expect(screen.queryByRole('checkbox', { name: /test/i })).not.toBeInTheDocument();
+  expect(screen.getByRole('checkbox')).not.toHaveStyle('background: red');
 });

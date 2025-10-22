@@ -26,6 +26,7 @@ exports[`responsive and non responsive combination 1`] = `
 
 <div
   class="c0"
+  data-testid="test-component"
 />
 `;
 
@@ -50,6 +51,7 @@ exports[`responsive margin 1`] = `
 
 <div
   class="c0"
+  data-testid="test-component"
 />
 `;
 
@@ -74,6 +76,7 @@ exports[`responsive marginBottom 1`] = `
 
 <div
   class="c0"
+  data-testid="test-component"
 />
 `;
 
@@ -101,6 +104,7 @@ exports[`responsive marginHorizontal 1`] = `
 
 <div
   class="c0"
+  data-testid="test-component"
 />
 `;
 
@@ -125,6 +129,7 @@ exports[`responsive marginLeft 1`] = `
 
 <div
   class="c0"
+  data-testid="test-component"
 />
 `;
 
@@ -149,6 +154,7 @@ exports[`responsive marginRight 1`] = `
 
 <div
   class="c0"
+  data-testid="test-component"
 />
 `;
 
@@ -173,6 +179,7 @@ exports[`responsive marginTop 1`] = `
 
 <div
   class="c0"
+  data-testid="test-component"
 />
 `;
 
@@ -200,5 +207,6 @@ exports[`responsive marginVertical 1`] = `
 
 <div
   class="c0"
+  data-testid="test-component"
 />
 `;

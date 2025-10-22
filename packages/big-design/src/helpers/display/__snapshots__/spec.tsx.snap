@@ -18,6 +18,7 @@ exports[`responsive display 1`] = `
 
 <div
   class="c0"
+  data-testid="display-responsive"
   display="[object Object]"
 />
 `;

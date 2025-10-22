@@ -4,14 +4,14 @@ import { createLocalizationProvider, getTimeIntervals } from '../../utils';
 import { Select } from '../Select';
 
 interface Props {
-  error?: React.ReactNode;
-  label?: React.ReactChild;
-  locale?: string;
+  readonly error?: React.ReactNode;
+  readonly label?: React.ReactNode;
+  readonly locale?: string;
   onTimeChange(date: string): void;
 }
 
 interface PrivateProps {
-  forwardedRef: Ref<HTMLInputElement>;
+  readonly forwardedRef: Ref<HTMLInputElement>;
 }
 
 export type TimepickerProps = Props & ComponentPropsWithoutRef<'input'>;

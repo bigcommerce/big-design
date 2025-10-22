@@ -14,9 +14,9 @@ test('passes id to tooltip wrapper', async () => {
 
   fireEvent.mouseOver(trigger);
 
-  const testing = await screen.findByText('Testing');
+  await screen.findByText('Testing');
 
-  expect(testing.parentElement).toHaveAttribute('id', 'test-id');
+  expect(screen.getByRole('tooltip')).toHaveAttribute('id', 'test-id');
 });
 
 test('hides tooltip by mouse leave', async () => {
@@ -38,7 +38,7 @@ test('hides tooltip by mouse leave', async () => {
 
   testing = screen.queryByText('Testing');
 
-  expect(testing).toBeNull();
+  expect(testing).not.toBeInTheDocument();
 });
 
 test('hides tooltip by Escape', async () => {
@@ -60,5 +60,5 @@ test('hides tooltip by Escape', async () => {
 
   testing = screen.queryByText('Testing');
 
-  expect(testing).toBeNull();
+  expect(testing).not.toBeInTheDocument();
 });

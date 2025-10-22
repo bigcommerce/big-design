@@ -7,7 +7,7 @@ import { useTableFocus, useUpdateItems, useWorksheetStore } from '../hooks';
 import { WorksheetItem, WorksheetModalColumn } from '../types';
 
 interface WorksheetModalProps<Item> {
-  column: WorksheetModalColumn<Item>;
+  readonly column: WorksheetModalColumn<Item>;
 }
 
 const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetModalProps<T>) => {

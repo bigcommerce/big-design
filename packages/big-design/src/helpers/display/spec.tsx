@@ -1,6 +1,6 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import 'jest-styled-components';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -14,13 +14,15 @@ const TestComponent = styled.div<DisplayProps>`
 TestComponent.defaultProps = { theme: defaultTheme };
 
 test('display', () => {
-  const { container } = render(<TestComponent display="inline-block" />);
+  render(<TestComponent data-testid="display-test" display="inline-block" />);
 
-  expect(container.firstChild).toHaveStyle('display: inline-block');
+  expect(screen.getByTestId('display-test')).toHaveStyle('display: inline-block');
 });
 
 test('responsive display', () => {
-  const { container } = render(<TestComponent display={{ mobile: 'none', tablet: 'flex' }} />);
+  render(
+    <TestComponent data-testid="display-responsive" display={{ mobile: 'none', tablet: 'flex' }} />,
+  );
 
-  expect(container.firstChild).toMatchSnapshot();
+  expect(screen.getByTestId('display-responsive')).toMatchSnapshot();
 });

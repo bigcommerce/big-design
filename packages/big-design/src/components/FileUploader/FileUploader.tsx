@@ -43,16 +43,16 @@ interface FileValidationError {
 }
 
 interface Props {
-  actions?: FileAction[];
-  description?: React.ReactNode;
-  dropzoneConfig?: DropzoneConfig;
-  error?: string | string[];
-  files: File[];
-  label?: React.ReactNode;
-  labelId?: string;
-  localization?: Localization;
-  previewHidden?: boolean;
-  validators?: ValidatorConfig[];
+  readonly actions?: FileAction[];
+  readonly description?: React.ReactNode;
+  readonly dropzoneConfig?: DropzoneConfig;
+  readonly error?: string | string[];
+  readonly files: File[];
+  readonly label?: React.ReactNode;
+  readonly labelId?: string;
+  readonly localization?: Localization;
+  readonly previewHidden?: boolean;
+  readonly validators?: ValidatorConfig[];
   onFilesChange(files: File[]): void;
   onFilesError?(errors: FileValidationError[]): void;
 }

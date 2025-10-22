@@ -8,8 +8,8 @@ import { Text } from '../Typography';
 import { Panel } from './Panel';
 
 test('render panel', () => {
-  const { container } = render(
-    <Panel>
+  render(
+    <Panel data-testid="panel">
       Dolore proident eiusmod sint est enim laboris anim minim quis ut adipisicing consectetur
       officia ex. Ipsum eiusmod fugiat amet pariatur culpa tempor aliquip tempor nisi. Irure esse
       deserunt nostrud ipsum id adipisicing enim velit labore. Nulla exercitation laborum laboris
@@ -17,18 +17,22 @@ test('render panel', () => {
     </Panel>,
   );
 
-  expect(container.firstChild).toMatchSnapshot();
+  const panel = screen.getByTestId('panel');
+
+  expect(panel).toMatchSnapshot();
 });
 
 test('render panel with only a heading and no content', () => {
-  const { container } = render(<Panel header="Test Header" />);
+  render(<Panel data-testid="panel" header="Test Header" />);
 
-  expect(container.firstChild).toMatchSnapshot();
+  const panel = screen.getByTestId('panel');
+
+  expect(panel).toMatchSnapshot();
 });
 
 test('does not forward styles', () => {
-  const { container } = render(
-    <Panel className="test" style={{ background: 'red' }}>
+  render(
+    <Panel className="test" data-testid="panel" style={{ background: 'red' }}>
       Dolore proident eiusmod sint est enim laboris anim minim quis ut adipisicing consectetur
       officia ex. Ipsum eiusmod fugiat amet pariatur culpa tempor aliquip tempor nisi. Irure esse
       deserunt nostrud ipsum id adipisicing enim velit labore. Nulla exercitation laborum laboris
@@ -36,12 +40,14 @@ test('does not forward styles', () => {
     </Panel>,
   );
 
-  expect(container.getElementsByClassName('test')).toHaveLength(0);
-  expect(container.firstChild).not.toHaveStyle('background: red');
+  const panel = screen.getByTestId('panel');
+
+  expect(screen.queryByText('test')).not.toBeInTheDocument();
+  expect(panel).not.toHaveStyle('background: red');
 });
 
 test('renders a header and action', () => {
-  const { getByRole } = render(
+  render(
     <Panel action={{ text: 'Test Action' }} header="Test Header">
       Dolore proident eiusmod sint est enim laboris anim minim quis ut adipisicing consectetur
       officia ex. Ipsum eiusmod fugiat amet pariatur culpa tempor aliquip tempor nisi. Irure esse
@@ -50,19 +56,19 @@ test('renders a header and action', () => {
     </Panel>,
   );
 
-  const header = getByRole('heading');
+  const header = screen.getByRole('heading');
 
   expect(header).toBeInTheDocument();
-  expect(header.textContent).toBe('Test Header');
+  expect(header).toHaveTextContent('Test Header');
 
-  const actionButton = getByRole('button');
+  const actionButton = screen.getByRole('button');
 
   expect(actionButton).toBeInTheDocument();
-  expect(actionButton.textContent).toBe('Test Action');
+  expect(actionButton).toHaveTextContent('Test Action');
 });
 
 test('renders a badge and header', () => {
-  const { getByRole, getByText } = render(
+  render(
     <Panel badge={{ label: 'danger', variant: 'danger' }} header="Test Header">
       Dolore proident eiusmod sint est enim laboris anim minim quis ut adipisicing consectetur
       officia ex. Ipsum eiusmod fugiat amet pariatur culpa tempor aliquip tempor nisi. Irure esse
@@ -71,11 +77,11 @@ test('renders a badge and header', () => {
     </Panel>,
   );
 
-  const header = getByRole('heading');
+  const header = screen.getByRole('heading');
 
   expect(header).toBeInTheDocument();
 
-  const badge = getByText('danger');
+  const badge = screen.getByText('danger');
 
   expect(badge).toBeInTheDocument();
 });
@@ -119,26 +125,26 @@ describe('description', () => {
 test('action options get forwarded to button', () => {
   const onClick = jest.fn();
 
-  const { getByRole } = render(
+  render(
     <Panel action={{ text: 'Test Action', onClick }} header="Test Header">
       Dolore proident eiusmod sint est enim laboris anim minim quis ut adipisicing consectetur
       officia ex. Ipsum eiusmod
     </Panel>,
   );
 
-  fireEvent.click(getByRole('button'));
+  fireEvent.click(screen.getByRole('button'));
 
   expect(onClick).toHaveBeenCalled();
 });
 
 test('forwards data attributes', () => {
-  const { getByTestId } = render(
+  render(
     <Panel data-testid="panel" header="Test Header">
       Dolore proident eiusmod sint est enim laboris
     </Panel>,
   );
 
-  const panel = getByTestId('panel');
+  const panel = screen.getByTestId('panel');
 
   expect(panel).toBeInTheDocument();
 });
@@ -146,45 +152,46 @@ test('forwards data attributes', () => {
 test('forwards ref', () => {
   const ref = createRef<HTMLDivElement>();
 
-  const { container } = render(<Panel ref={ref} />);
-  const panel = container.querySelector('div');
+  render(<Panel data-testid="panel" ref={ref} />);
+
+  const panel = screen.getByTestId('panel');
 
   expect(panel).toBe(ref.current);
 });
 
 test('ignores padding props', () => {
-  const { getByTestId } = render(
+  render(
     // @ts-expect-error - ignoring since paddingRight is not a valid prop
     <Panel data-testid="panel" header="Test Header" paddingRight="xxxLarge">
       Dolore proident eiusmod sint est enim laboris
     </Panel>,
   );
 
-  const panel = getByTestId('panel');
+  const panel = screen.getByTestId('panel');
 
   expect(panel).not.toHaveStyle(`padding-right: ${theme.spacing.xxxLarge}`);
 });
 
 test("panel action doesn't go to full width", () => {
-  const { getByRole } = render(
+  render(
     <Panel action={{ text: 'Test Action' }} header="Test Header">
       Test
     </Panel>,
   );
 
-  const button = getByRole('button');
+  const button = screen.getByRole('button');
 
   expect(button).toHaveStyle('width: auto');
 });
 
 test('forwards headerId to heading', () => {
-  const { getByText } = render(
+  render(
     <Panel header="Test Header" headerId="test-header">
       Test
     </Panel>,
   );
 
-  expect(getByText('Test Header')).toHaveAttribute('id', 'test-header');
+  expect(screen.getByText('Test Header')).toHaveAttribute('id', 'test-header');
 });
 
 test('applies the right border radius values', async () => {

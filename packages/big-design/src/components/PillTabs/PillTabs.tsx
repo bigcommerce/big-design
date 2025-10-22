@@ -24,10 +24,10 @@ interface Pill {
 }
 
 export interface PillTabsProps {
-  items: PillTabItem[];
-  activePills: string[];
-  onPillClick: (itemId: string) => void;
-  dropdownItems?: DropdownProps['items'];
+  readonly items: PillTabItem[];
+  readonly activePills: string[];
+  readonly onPillClick: (itemId: string) => void;
+  readonly dropdownItems?: DropdownProps['items'];
 }
 
 export const PillTabs: React.FC<PillTabsProps> = ({

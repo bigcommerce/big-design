@@ -15,8 +15,8 @@ import {
 } from '../types';
 
 interface RowProps<Item> {
-  columns: Array<InternalWorksheetColumn<Item>>;
-  rowIndex: number;
+  readonly columns: Array<InternalWorksheetColumn<Item>>;
+  readonly rowIndex: number;
 }
 
 const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>) => {

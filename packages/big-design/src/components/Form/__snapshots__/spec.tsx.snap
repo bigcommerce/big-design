@@ -162,6 +162,7 @@ exports[`simple form render 1`] = `
 }
 
 <form
+  aria-label="Test form"
   class=""
 >
   <fieldset

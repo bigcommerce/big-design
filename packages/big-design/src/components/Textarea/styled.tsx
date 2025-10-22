@@ -32,10 +32,9 @@ export const StyledTextarea = styled.textarea<TextareaProps>`
           resize: none;
         `};
 
-  ${({ error, theme }) =>
-    css`
-      border: ${error ? theme.border.boxError : theme.border.box};
-    `};
+  ${({ error, theme }) => css`
+    border: ${error ? theme.border.boxError : theme.border.box};
+  `};
 
   &:hover:not([disabled]) {
     ${({ error, theme }) =>

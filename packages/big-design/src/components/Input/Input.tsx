@@ -17,17 +17,17 @@ import { useInputErrors } from '../Form/useInputErrors';
 import { StyledIconWrapper, StyledInput, StyledInputContent, StyledInputWrapper } from './styled';
 
 export interface Props {
-  chips?: ChipProps[];
-  description?: React.ReactChild;
-  error?: React.ReactNode | React.ReactNode[];
-  iconLeft?: React.ReactNode;
-  iconRight?: React.ReactNode;
-  label?: React.ReactChild;
-  labelId?: string;
+  readonly chips?: ChipProps[];
+  readonly description?: React.ReactNode;
+  readonly error?: React.ReactNode | React.ReactNode[];
+  readonly iconLeft?: React.ReactNode;
+  readonly iconRight?: React.ReactNode;
+  readonly label?: React.ReactNode;
+  readonly labelId?: string;
 }
 
 interface PrivateProps {
-  forwardedRef: Ref<HTMLInputElement>;
+  readonly forwardedRef: Ref<HTMLInputElement>;
 }
 
 export type InputProps = Props & ComponentPropsWithoutRef<'input'>;
@@ -147,7 +147,17 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
     <div>
       {renderedLabel}
       {renderedDescription}
-      <StyledInputWrapper disabled={disabled} error={errors} focus={focus}>
+      <StyledInputWrapper
+        data-testid={
+          'data-testid' in props && props['data-testid']
+            ? // eslint-disable-next-line @typescript-eslint/no-base-to-string
+              `${props['data-testid']}-wrapper`
+            : undefined
+        }
+        disabled={disabled}
+        error={errors}
+        focus={focus}
+      >
         {renderedIconLeft}
         <StyledInputContent chips={chips}>
           {renderedChips}

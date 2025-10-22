@@ -9,13 +9,13 @@ export interface DataCellProps
   extends ComponentPropsWithoutRef<'td'>,
     TableColumnDisplayProps,
     PaddingProps {
-  align?: 'left' | 'center' | 'right';
-  children?: React.ReactNode;
-  isExpandable?: boolean;
-  isCheckbox?: boolean;
-  verticalAlign?: 'top' | 'middle';
-  width?: number | string;
-  withBorder?: boolean;
+  readonly align?: 'left' | 'center' | 'right';
+  readonly children?: React.ReactNode;
+  readonly isExpandable?: boolean;
+  readonly isCheckbox?: boolean;
+  readonly verticalAlign?: 'top' | 'middle';
+  readonly width?: number | string;
+  readonly withBorder?: boolean;
 }
 
 export const DataCell: React.FC<DataCellProps> = memo(

@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 import 'jest-styled-components';
 
@@ -10,33 +10,36 @@ import { FormGroup } from './';
 test('renders a form group', () => {
   const { container } = render(<FormGroup />);
 
+  // eslint-disable-next-line testing-library/no-node-access
   expect(container.firstChild).toMatchSnapshot();
 });
 
 test('renders group with input', () => {
-  const { container } = render(
+  render(
     <FormGroup>
       <Input />
     </FormGroup>,
   );
 
-  expect(container.querySelector('input')).toBeInTheDocument();
+  expect(screen.getByRole('textbox')).toBeInTheDocument();
 });
 
 test('renders group and input with error', () => {
   const error = 'Error';
-  const { getByText } = render(
+
+  render(
     <FormGroup>
       <Input error={error} />
     </FormGroup>,
   );
 
-  expect(getByText(error)).toBeInTheDocument();
+  expect(screen.getByText(error)).toBeInTheDocument();
 });
 
 test('renders group and nested input with error', () => {
   const error = 'Error';
-  const { getByText } = render(
+
+  render(
     <FormGroup>
       <div>
         <Input error={error} />
@@ -44,41 +47,44 @@ test('renders group and nested input with error', () => {
     </FormGroup>,
   );
 
-  expect(getByText(error)).toBeInTheDocument();
+  expect(screen.getByText(error)).toBeInTheDocument();
 });
 
 test('renders group with error prop', () => {
   const error = 'Error';
-  const { getByText } = render(
+
+  render(
     <FormGroup errors={error}>
       <Input />
     </FormGroup>,
   );
 
-  expect(getByText(error)).toBeInTheDocument();
+  expect(screen.getByText(error)).toBeInTheDocument();
 });
 
 test('renders error prop with an array of errors', () => {
   const errors = ['Error 1', 'Error 2', 'Error 3'];
-  const { getByText } = render(
+
+  render(
     <FormGroup errors={errors}>
       <Input />
     </FormGroup>,
   );
 
-  errors.forEach((error) => expect(getByText(error)).toBeInTheDocument());
+  errors.forEach((error) => expect(screen.getByText(error)).toBeInTheDocument());
 });
 
 test('renders error with FormControlError element', () => {
   const testId = 'test';
   const errors = <FormControlError data-testid={testId}>Error</FormControlError>;
-  const { getByTestId } = render(
+
+  render(
     <FormGroup errors={errors}>
       <Input />
     </FormGroup>,
   );
 
-  expect(getByTestId(testId)).toBeInTheDocument();
+  expect(screen.getByTestId(testId)).toBeInTheDocument();
 });
 
 test('renders error prop with an array of FormControlError elements', () => {
@@ -88,13 +94,14 @@ test('renders error prop with an array of FormControlError elements', () => {
       Error
     </FormControlError>
   ));
-  const { getByTestId } = render(
+
+  render(
     <FormGroup errors={errors}>
       <Input />
     </FormGroup>,
   );
 
-  testIds.forEach((id) => expect(getByTestId(id)).toBeInTheDocument());
+  testIds.forEach((id) => expect(screen.getByTestId(id)).toBeInTheDocument());
 });
 
 test('does not render invalid errors', () => {
@@ -106,11 +113,12 @@ test('does not render invalid errors', () => {
       Error
     </div>,
   ];
-  const { queryByTestId } = render(
+
+  render(
     <FormGroup errors={errors}>
       <Input />
     </FormGroup>,
   );
 
-  expect(queryByTestId(testId)).not.toBeInTheDocument();
+  expect(screen.queryByTestId(testId)).not.toBeInTheDocument();
 });

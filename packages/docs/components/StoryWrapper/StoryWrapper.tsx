@@ -19,7 +19,7 @@ export const CodeEditorContext = createContext<Context>({
   toggleTheme: () => {},
 });
 
-export const StoryWrapper: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
+export const StoryWrapper: React.FC<{ readonly children?: React.ReactNode }> = ({ children }) => {
   const [editorTheme, setEditorTheme] = useState(themes.oceanicNext);
   const [language, setLanguage] = useState<Language>('tsx');
   const toggleEditorTheme = () =>

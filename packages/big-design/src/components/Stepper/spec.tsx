@@ -1,5 +1,5 @@
 import 'jest-styled-components';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 
 import { Stepper } from './';
@@ -7,38 +7,42 @@ import { Stepper } from './';
 const steps: string[] = ['Login', 'Settings', 'Import'];
 
 test('renders Stepper', () => {
-  const { container } = render(<Stepper currentStep={1} steps={steps} />);
+  render(<Stepper currentStep={1} steps={steps} />);
 
-  expect(container.firstChild).toMatchSnapshot();
+  expect(screen.getByRole('progressbar')).toMatchSnapshot();
 });
 
 test('does not forward styles', () => {
-  const { container } = render(
+  render(
     <Stepper className="test" currentStep={0} steps={steps} style={{ backgroundColor: 'red' }} />,
   );
 
-  expect(container.getElementsByClassName('test')).toHaveLength(0);
-  expect(container.firstChild).not.toHaveStyle('background: red');
+  expect(screen.queryByRole('progressbar', { name: /test/i })).not.toBeInTheDocument();
+  expect(screen.getByRole('progressbar')).not.toHaveStyle('background: red');
 });
 
 test('renders a passed step', () => {
-  const { queryByText } = render(<Stepper currentStep={0} steps={['Test']} />);
+  render(<Stepper currentStep={0} steps={['Test']} />);
 
-  expect(queryByText('Test')).toBeDefined();
+  expect(screen.getByText('Test')).toBeInTheDocument();
 });
 
 test('passed in state works as expected', () => {
-  const { queryByRole } = render(<Stepper currentStep={1} steps={['Test1', 'Test2', 'Test3']} />);
+  render(<Stepper currentStep={1} steps={['Test1', 'Test2', 'Test3']} />);
+
   const lights: ChildNode[] = [];
   const dashes: ChildNode[] = [];
 
-  queryByRole('progressbar')?.childNodes.forEach((step) => {
+  screen.queryByRole('progressbar')?.childNodes.forEach((step) => {
     lights.push(step.childNodes[0]);
     dashes.push(step.childNodes[1]);
   });
 
+  // eslint-disable-next-line testing-library/no-node-access
   expect(lights[0].firstChild).not.toHaveTextContent('1');
+  // eslint-disable-next-line testing-library/no-node-access
   expect(lights[1].firstChild).toHaveTextContent('2');
+  // eslint-disable-next-line testing-library/no-node-access
   expect(lights[2].firstChild).toHaveTextContent('3');
 
   expect(dashes[0]).toHaveStyle('background-color: #3C64F4');

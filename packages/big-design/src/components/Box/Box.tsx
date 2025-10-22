@@ -10,21 +10,21 @@ export interface BoxProps
     DisplayProps,
     MarginProps,
     PaddingProps {
-  as?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
-  backgroundColor?: keyof Colors;
-  shadow?: keyof Shadow;
-  border?: keyof Border;
-  borderBottom?: keyof Border;
-  borderLeft?: keyof Border;
-  borderRight?: keyof Border;
-  borderTop?: keyof Border;
-  borderRadius?: keyof BorderRadius;
-  clearfix?: boolean;
-  zIndex?: keyof ZIndex;
+  readonly as?: keyof React.JSX.IntrinsicElements | React.ComponentType<any>;
+  readonly backgroundColor?: keyof Colors;
+  readonly shadow?: keyof Shadow;
+  readonly border?: keyof Border;
+  readonly borderBottom?: keyof Border;
+  readonly borderLeft?: keyof Border;
+  readonly borderRight?: keyof Border;
+  readonly borderTop?: keyof Border;
+  readonly borderRadius?: keyof BorderRadius;
+  readonly clearfix?: boolean;
+  readonly zIndex?: keyof ZIndex;
 }
 
 interface PrivateProps {
-  forwardedRef: React.Ref<HTMLDivElement>;
+  readonly forwardedRef: React.Ref<HTMLDivElement>;
 }
 
 const RawBox: React.FC<BoxProps & PrivateProps> = (props) => (

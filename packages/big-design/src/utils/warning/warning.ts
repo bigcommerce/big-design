@@ -27,6 +27,6 @@ export const warning = (message: string): void => {
     try {
       throw Error(text);
       // eslint-disable-next-line no-empty
-    } catch (x) {}
+    } catch {}
   }
 };

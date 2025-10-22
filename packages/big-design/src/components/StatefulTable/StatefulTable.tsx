@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useMemo, useReducer } from 'react';
 import { useDidUpdate } from '../../hooks';
 import { typedMemo } from '../../utils';
 import { Box } from '../Box';
-import { PaginationProps } from '../OffsetPagination';
+import { OffsetPaginationProps } from '../OffsetPagination';
 import { OffsetPaginationLocalization } from '../OffsetPagination/OffsetPagination';
 import { PillTabItem, PillTabs, PillTabsProps } from '../PillTabs';
 import { Search } from '../Search';
@@ -54,16 +54,16 @@ export interface StatefulTableProps<T>
     | 'onRowDrop'
     | 'localization'
   > {
-  columns: Array<StatefulTableColumn<T>>;
-  localization?: Localization;
-  pagination?: boolean;
-  filters?: StatefulTablePillTabFilter<T>;
-  selectable?: boolean;
-  defaultSelected?: T[];
-  search?: boolean;
-  getRangeLabel?: PaginationProps['getRangeLabel'];
+  readonly columns: Array<StatefulTableColumn<T>>;
+  readonly localization?: Localization;
+  readonly pagination?: boolean;
+  readonly filters?: StatefulTablePillTabFilter<T>;
+  readonly selectable?: boolean;
+  readonly defaultSelected?: T[];
+  readonly search?: boolean;
+  readonly getRangeLabel?: OffsetPaginationProps['getRangeLabel'];
   onRowDrop?(items: T[]): void;
-  onSelectionChange?: TableSelectable<T>['onSelectionChange'];
+  readonly onSelectionChange?: TableSelectable<T>['onSelectionChange'];
 }
 
 const swapArrayElements = <T,>(array: T[], sourceIndex: number, destinationIndex: number) => {

@@ -22,11 +22,11 @@ import {
 } from './styled';
 
 interface Props {
-  hiddenLabel?: boolean;
-  isIndeterminate?: boolean;
-  label: React.ReactChild;
-  description?: CheckboxDescription | string;
-  badge?: BadgeProps;
+  readonly hiddenLabel?: boolean;
+  readonly isIndeterminate?: boolean;
+  readonly label: React.ReactNode;
+  readonly description?: CheckboxDescription | string;
+  readonly badge?: BadgeProps;
 }
 
 interface CheckboxDescription {
@@ -35,7 +35,7 @@ interface CheckboxDescription {
 }
 
 interface PrivateProps {
-  forwardedRef: Ref<HTMLInputElement>;
+  readonly forwardedRef: Ref<HTMLInputElement>;
 }
 
 export type CheckboxProps = Props & ComponentPropsWithoutRef<'input'>;

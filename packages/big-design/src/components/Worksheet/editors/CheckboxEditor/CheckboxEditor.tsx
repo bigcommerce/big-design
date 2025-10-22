@@ -7,8 +7,8 @@ import { Cell, WorksheetItem } from '../../types';
 import { CheckboxWrapper } from './styled';
 
 export interface CheckboxEditorProps<Item> {
-  cell: Cell<Item>;
-  toggle: boolean;
+  readonly cell: Cell<Item>;
+  readonly toggle: boolean;
   onBlur(): void;
   onChange(value: unknown): void;
 }

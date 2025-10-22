@@ -6,10 +6,10 @@ import { Button } from '../Button';
 import { Text } from '../Typography';
 
 interface HeaderProps {
-  date?: Date;
-  nextMonthButtonDisabled?: boolean;
-  months: string[];
-  prevMonthButtonDisabled?: boolean;
+  readonly date?: Date;
+  readonly nextMonthButtonDisabled?: boolean;
+  readonly months: string[];
+  readonly prevMonthButtonDisabled?: boolean;
   decreaseMonth?(): void;
   increaseMonth?(): void;
 }

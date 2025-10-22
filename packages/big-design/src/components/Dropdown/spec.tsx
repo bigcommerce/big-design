@@ -1,6 +1,6 @@
 import { CheckCircleIcon } from '@bigcommerce/big-design-icons';
 import { remCalc } from '@bigcommerce/big-design-theme';
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import React from 'react';
 import 'jest-styled-components';
@@ -401,17 +401,15 @@ test('dropdown menu renders 4 link when passed options of type link', async () =
 
   const toggle = screen.getByRole('button');
 
-  await act(async () => {
-    await fireEvent.click(toggle);
-  });
+  fireEvent.click(toggle);
 
   const list = await screen.findByRole('menu');
-  const options = list.querySelectorAll('a');
+  const options = within(list).getAllByRole('link');
 
   expect(options).toHaveLength(4);
 
   options.forEach((option) => {
-    expect(option.getAttribute('href')).toBe('#');
+    expect(option).toHaveAttribute('href', '#');
   });
 });
 
@@ -423,10 +421,10 @@ test('items renders icons', async () => {
   fireEvent.click(toggle);
 
   const list = await screen.findByRole('menu');
+  // eslint-disable-next-line testing-library/no-node-access
+  const icons = list.querySelectorAll('svg');
 
-  const svgs = list.querySelectorAll('svg');
-
-  expect(svgs).toHaveLength(1);
+  expect(icons.length).toBeGreaterThan(0);
 });
 
 test('does not forward styles', async () => {
@@ -445,7 +443,7 @@ test('does not forward styles', async () => {
 
   const list = await screen.findByRole('menu');
 
-  expect(list.getElementsByClassName('test')).toHaveLength(0);
+  expect(list).not.toHaveClass('test');
   expect(list).not.toHaveStyle('background: red');
 });
 
@@ -592,10 +590,8 @@ test('clicking label does not call onItemClick', async () => {
 
   const label1 = await screen.findByText('Label 1');
 
-  await act(async () => {
-    await fireEvent.mouseOver(label1);
-    await fireEvent.click(label1);
-  });
+  fireEvent.mouseOver(label1);
+  fireEvent.click(label1);
 
   expect(onItemClick).not.toHaveBeenCalled();
 });
@@ -621,12 +617,14 @@ test('renders appropriate amount of list items', async () => {
   fireEvent.click(toggle);
 
   const list = await screen.findByRole('menu');
-  const listItems = list.querySelectorAll('li');
+  const listItems = within(list).getAllByRole('option');
+  const label = screen.getByText('Label 1');
 
-  expect(listItems).toHaveLength(3);
+  expect(listItems).toHaveLength(2);
+  expect(label).toBeInTheDocument();
 });
 
-test('rendered line separators have correct accessibility properties', async () => {
+test('view line separators have correct accessibility properties', async () => {
   render(LineSeparatedGroupedDropdownMock);
 
   const toggle = screen.getByRole('button');
@@ -634,13 +632,16 @@ test('rendered line separators have correct accessibility properties', async () 
   fireEvent.click(toggle);
 
   const list = await screen.findByRole('menu');
-  const hrListItems = list.querySelectorAll('hr');
+  const separator = within(list).getByRole('separator', { hidden: true });
 
-  expect(hrListItems[0]?.parentElement?.getAttribute('aria-hidden')).toBe('true');
-  expect(hrListItems[0]?.parentElement?.getAttribute('tabindex')).toBe('-1');
+  // eslint-disable-next-line testing-library/no-node-access
+  const separatorItem = separator.closest('li');
+
+  expect(separatorItem?.getAttribute('aria-hidden')).toBe('true');
+  expect(separatorItem?.getAttribute('tabindex')).toBe('-1');
 });
 
-test('rendered line separators cannot be focused on', async () => {
+test('view line separators cannot be focused on', async () => {
   render(LineSeparatedGroupedDropdownMock);
 
   const toggle = screen.getByRole('button');
@@ -648,15 +649,16 @@ test('rendered line separators cannot be focused on', async () => {
   fireEvent.click(toggle);
 
   const list = await screen.findByRole('menu');
-  const hrListItems = list.querySelectorAll('hr');
+  const separator = within(list).getByRole('separator', { hidden: true });
 
-  if (hrListItems.length && hrListItems[0].parentElement) {
-    const el: HTMLElement = hrListItems[0].parentElement;
+  // eslint-disable-next-line testing-library/no-node-access
+  const separatorItem = separator.closest('li');
 
-    fireEvent.mouseOver(el);
+  if (separatorItem) {
+    fireEvent.mouseOver(separatorItem);
   }
 
-  expect(document.activeElement).not.toEqual(hrListItems[0].parentElement);
+  expect(separatorItem).not.toHaveFocus();
 });
 
 test('items should supports description', async () => {

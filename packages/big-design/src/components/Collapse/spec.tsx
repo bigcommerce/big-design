@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import React from 'react';
 import 'jest-styled-components';
@@ -50,13 +50,14 @@ test('title button has aria-controls', () => {
   const button = screen.getByRole('button');
   const panelId = screen.getByRole('region', { hidden: true }).id;
 
-  expect(button.getAttribute('aria-controls')).toBe(panelId);
+  expect(button).toHaveAttribute('aria-controls', panelId);
 });
 
 test('title button has icon', () => {
   render(CollapseWithStaticTitleMock);
 
-  const icon = screen.getByRole('button').querySelector('svg');
+  const button = screen.getByRole('button');
+  const icon = within(button).getByLabelText('title');
 
   expect(icon).toBeInTheDocument();
 });
@@ -64,7 +65,8 @@ test('title button has icon', () => {
 test('title button icon in initially collapsed state', () => {
   render(CollapseWithStaticTitleMock);
 
-  const icon = screen.getByRole('button').querySelector('svg');
+  const button = screen.getByRole('button');
+  const icon = within(button).getByLabelText('title');
 
   expect(icon).not.toHaveStyle('transform: rotate(-180deg)');
 });
@@ -72,7 +74,8 @@ test('title button icon in initially collapsed state', () => {
 test('title button icon in initially expanded state', () => {
   render(CollapseWithVisiblePanelMock);
 
-  const icon = screen.getByRole('button').querySelector('svg');
+  const button = screen.getByRole('button');
+  const icon = within(button).getByLabelText('show more');
 
   expect(icon).toHaveStyle('transform: rotate(-180deg)');
 });
@@ -81,7 +84,7 @@ test('title button icon toggles on title click', async () => {
   render(CollapseWithStaticTitleMock);
 
   const trigger = screen.getByRole('button');
-  const icon = trigger.querySelector('svg');
+  const icon = within(trigger).getByLabelText('title');
 
   await userEvent.click(trigger);
 
@@ -95,9 +98,9 @@ test('title button icon toggles on title click', async () => {
 test('panel has id', () => {
   render(CollapseWithStaticTitleMock);
 
-  const panelId = screen.getByRole('region', { hidden: true }).id;
+  const panel = screen.getByRole('region', { hidden: true });
 
-  expect(panelId).toBeDefined();
+  expect(panel).toBeInTheDocument();
 });
 
 test('panel has aria-labelledby attribute', () => {
@@ -105,7 +108,7 @@ test('panel has aria-labelledby attribute', () => {
 
   const panel = screen.getByRole('region', { hidden: true });
 
-  expect(panel.getAttribute('aria-labelledby')).toBeDefined();
+  expect(panel).toHaveAttribute('aria-labelledby');
 });
 
 test('panel has role attribute', () => {
@@ -161,11 +164,11 @@ test('click on title toggles aria-expanded attribute on title button', async () 
 
   await userEvent.click(trigger);
 
-  expect(trigger.getAttribute('aria-expanded')).toBe('true');
+  expect(trigger).toHaveAttribute('aria-expanded', 'true');
 
   await userEvent.click(trigger);
 
-  expect(trigger.getAttribute('aria-expanded')).toBe('false');
+  expect(trigger).toHaveAttribute('aria-expanded', 'false');
 });
 
 test('onCollapseChange is called', async () => {

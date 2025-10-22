@@ -8,14 +8,14 @@ import { Cell, WorksheetItem, WorksheetTextColumn } from '../../types';
 import { ActionButton, StyledInput } from './styled';
 
 export interface TextEditorProps<Item> {
-  cell: Cell<Item>;
-  initialValue?: string;
-  isEdited: boolean;
+  readonly cell: Cell<Item>;
+  readonly initialValue?: string;
+  readonly isEdited: boolean;
   onBlur(event?: React.FocusEvent<HTMLInputElement>, cell?: Cell<Item>): void;
-  onKeyDown: EditableCellOnKeyDown;
-  isMetaKey: boolean;
-  isControlKey: boolean;
-  action?: WorksheetTextColumn<WorksheetItem>['action'];
+  readonly onKeyDown: EditableCellOnKeyDown;
+  readonly isMetaKey: boolean;
+  readonly isControlKey: boolean;
+  readonly action?: WorksheetTextColumn<WorksheetItem>['action'];
 }
 
 const InternalTextEditor = <T extends WorksheetItem>({
@@ -83,8 +83,32 @@ const InternalTextEditor = <T extends WorksheetItem>({
             const blurEvent = blurEventRef.current;
 
             if (blurEvent) {
+              // Create a new target object that properly implements the value property
+              const newTarget = Object.create(Object.getPrototypeOf(blurEvent.target));
+
+              Object.keys(blurEvent.target).forEach((key) => {
+                try {
+                  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/consistent-type-assertions
+                  newTarget[key] = blurEvent.target[key as keyof EventTarget];
+                } catch {
+                  // Some properties might not be copyable, skip them
+                }
+              });
+
+              // Define value as a writable property
+              Object.defineProperty(newTarget, 'value', {
+                value: transformedValue,
+                writable: true,
+                enumerable: true,
+                configurable: true,
+              });
+
               onBlur(
-                { ...blurEvent, target: { ...blurEvent.target, value: transformedValue } },
+                // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+                {
+                  ...blurEvent,
+                  target: newTarget,
+                } as React.FocusEvent<HTMLInputElement>,
                 cell,
               );
             }

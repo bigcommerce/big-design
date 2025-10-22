@@ -24,7 +24,7 @@ const defaultScope = {
   styled,
 };
 
-type CodePreviewChildren = React.ReactNode | (() => JSX.Element);
+type CodePreviewChildren = React.ReactNode | (() => React.JSX.Element);
 
 function getInitialCode(children: CodePreviewChildren, language: Language): string {
   if (typeof children !== 'string') {
@@ -59,14 +59,14 @@ function transformCode(input: string): string {
     });
 
     return transformResult.code ?? input;
-  } catch (e) {
+  } catch {
     return input;
   }
 }
 
 export interface CodePreviewProps {
-  children?: CodePreviewChildren;
-  scope?: Record<string, unknown>;
+  readonly children?: CodePreviewChildren;
+  readonly scope?: Record<string, unknown>;
 }
 
 export const CodePreview: React.FC<CodePreviewProps> = (props) => {

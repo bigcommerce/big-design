@@ -18,6 +18,7 @@ test('throws if is not wrapped in UpdateItemsProvider', () => {
         error = err;
       }
       override render() {
+        // eslint-disable-next-line testing-library/no-node-access
         return this.props.children;
       }
     },

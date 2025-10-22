@@ -10,15 +10,15 @@ import { DiscriminatedTablePaginationProps, TableItem, TableSelectable } from '.
 import { StyledFlex } from './styled';
 
 export interface ActionsProps<T> {
-  customActions?: React.ReactNode;
-  forwardedRef: RefObject<HTMLDivElement>;
-  itemName?: string;
-  items: T[];
-  pagination?: DiscriminatedTablePaginationProps;
-  onSelectionChange?: TableSelectable<T>['onSelectionChange'];
-  selectedItems: Set<T>;
-  stickyHeader?: boolean;
-  tableId: string;
+  readonly customActions?: React.ReactNode;
+  readonly forwardedRef: RefObject<HTMLDivElement>;
+  readonly itemName?: string;
+  readonly items: T[];
+  readonly pagination?: DiscriminatedTablePaginationProps;
+  readonly onSelectionChange?: TableSelectable<T>['onSelectionChange'];
+  readonly selectedItems: Set<T>;
+  readonly stickyHeader?: boolean;
+  readonly tableId: string;
 }
 
 const InternalActions = <T extends TableItem>({

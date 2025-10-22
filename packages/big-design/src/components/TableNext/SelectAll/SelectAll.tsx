@@ -14,16 +14,16 @@ import {
 import { useSelectAllState } from './useSelectAllState';
 
 export interface SelectAllProps<T> {
-  getChildren?: TableExpandable<T>['getChildren'];
-  items: T[];
-  onChange?: TableSelectable['onSelectionChange'];
-  selectedItems: TableSelectable['selectedItems'];
-  totalItems?: number;
-  pagination?: TablePaginationProps;
-  getRowId: NonNullable<TableProps<T>['getRowId']>;
-  setSelectedParentRowsCrossPages: Dispatch<SetStateAction<Set<string>>>;
-  selectedParentRowsCrossPages: Set<string>;
-  isChildrenRowsSelectable?: boolean;
+  readonly getChildren?: TableExpandable<T>['getChildren'];
+  readonly items: T[];
+  readonly onChange?: TableSelectable['onSelectionChange'];
+  readonly selectedItems: TableSelectable['selectedItems'];
+  readonly totalItems?: number;
+  readonly pagination?: TablePaginationProps;
+  readonly getRowId: NonNullable<TableProps<T>['getRowId']>;
+  readonly setSelectedParentRowsCrossPages: Dispatch<SetStateAction<Set<string>>>;
+  readonly selectedParentRowsCrossPages: Set<string>;
+  readonly isChildrenRowsSelectable?: boolean;
 }
 
 export const SelectAll = <T extends TableItem>(props: SelectAllProps<T>) => {

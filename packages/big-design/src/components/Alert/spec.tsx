@@ -73,7 +73,8 @@ test('renders with external link', () => {
   expect(link).toBeInTheDocument();
   expect(link.href).toBe('http://localhost/#');
   expect(link.target).toBe('_blank');
-  expect(link.querySelector('svg')).toBeDefined();
+  // eslint-disable-next-line testing-library/no-node-access
+  expect(document.querySelector('svg')).toBeInTheDocument();
 });
 
 test('renders header', () => {
@@ -83,7 +84,7 @@ test('renders header', () => {
   const heading = screen.getByRole('heading', { name: /header/i });
 
   expect(alert).toMatchSnapshot();
-  expect(heading).toBeDefined();
+  expect(heading).toBeInTheDocument();
 });
 
 test('uses the header as an accessibility label for the alert', () => {
@@ -99,7 +100,7 @@ test('renders close button', () => {
   const button = screen.getByRole('button');
 
   expect(alert).toMatchSnapshot();
-  expect(button).toBeDefined();
+  expect(button).toBeInTheDocument();
 });
 
 test('trigger onClose', async () => {
@@ -115,11 +116,10 @@ test('trigger onClose', async () => {
 });
 
 test('does not forward styles', () => {
-  const { container } = render(
-    <Alert className="test" messages={[{ text: 'Success' }]} style={{ background: 'red' }} />,
-  );
+  render(<Alert className="test" messages={[{ text: 'Success' }]} style={{ background: 'red' }} />);
+
   const alert = screen.getByRole('alert');
 
-  expect(container.getElementsByClassName('test')).toHaveLength(0);
+  expect(screen.queryByRole('alert', { name: /test/i })).not.toBeInTheDocument();
   expect(alert).not.toHaveStyle('background: red');
 });

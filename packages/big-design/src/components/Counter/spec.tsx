@@ -95,10 +95,11 @@ test('create unique ids if not provided', async () => {
     </>,
   );
 
-  const [item1, item2] = await screen.findAllByLabelText<HTMLInputElement>('Test Label');
+  const items = await screen.findAllByLabelText<HTMLInputElement>('Test Label');
+  const [item1, item2] = items;
 
-  expect(item1).toBeDefined();
-  expect(item2).toBeDefined();
+  expect(item1).toBeInTheDocument();
+  expect(item2).toBeInTheDocument();
   expect(item1.id).not.toBe(item2.id);
 });
 
@@ -249,9 +250,9 @@ test('does not accept non-Error Components', () => {
 });
 
 test('renders both the add and subtract icons', () => {
-  const { getAllByRole } = render(counterMock(requiredAttributes));
+  render(counterMock(requiredAttributes));
 
-  const buttons = getAllByRole('button');
+  const buttons = screen.getAllByRole('button');
 
   expect(buttons).toHaveLength(2);
 });
@@ -261,13 +262,13 @@ test('buttons are disabled when value hits max or min', async () => {
 
   const [decreaseButton, increaseButton] = await screen.findAllByRole('button');
 
-  expect(decreaseButton).toHaveProperty('disabled', true);
-  expect(increaseButton).toHaveProperty('disabled', false);
+  expect(decreaseButton).toBeDisabled();
+  expect(increaseButton).toBeEnabled();
 
   rerender(counterMock({ ...requiredAttributes, value: 10 }));
 
-  expect(decreaseButton).toHaveProperty('disabled', false);
-  expect(increaseButton).toHaveProperty('disabled', true);
+  expect(decreaseButton).toBeEnabled();
+  expect(increaseButton).toBeDisabled();
 });
 
 test('value prop only accepts whole numbers', async () => {
@@ -407,11 +408,10 @@ test('input counter value does not change when using it inside a form', async ()
 describe('error does not show when invalid type', () => {
   test('single element', () => {
     const error = <div data-testid="err">Error</div>;
-    const { queryByTestId } = render(
-      <FormGroup>{counterMock({ error, ...requiredAttributes })}</FormGroup>,
-    );
 
-    const maybeError = queryByTestId('err');
+    render(<FormGroup>{counterMock({ error, ...requiredAttributes })}</FormGroup>);
+
+    const maybeError = screen.queryByTestId('err');
 
     expect(maybeError).not.toBeInTheDocument();
   });
@@ -425,11 +425,9 @@ describe('error does not show when invalid type', () => {
       </div>,
     ];
 
-    const { queryByTestId } = render(
-      <FormGroup>{counterMock({ error: errors, ...requiredAttributes })}</FormGroup>,
-    );
+    render(<FormGroup>{counterMock({ error: errors, ...requiredAttributes })}</FormGroup>);
 
-    const maybeError = queryByTestId('err');
+    const maybeError = screen.queryByTestId('err');
 
     expect(maybeError).not.toBeInTheDocument();
   });
@@ -593,9 +591,9 @@ test('does not change value when manual input below min', async () => {
 });
 
 test('renders without label when label is not provided', () => {
-  const { container } = render(<Counter onCountChange={handleChange} value={5} />);
+  render(<Counter onCountChange={handleChange} value={5} />);
 
-  const label = container.querySelector('label');
+  const label = screen.queryByRole('label', { hidden: true });
 
   expect(label).not.toBeInTheDocument();
 });

@@ -20,8 +20,8 @@ import {
 } from './styled';
 
 interface Props {
-  label: React.ReactChild;
-  description?: RadioDescription | string;
+  readonly label: React.ReactNode;
+  readonly description?: RadioDescription | string;
 }
 
 interface RadioDescription {
@@ -30,7 +30,7 @@ interface RadioDescription {
 }
 
 interface PrivateProps {
-  forwardedRef: Ref<HTMLInputElement>;
+  readonly forwardedRef: Ref<HTMLInputElement>;
 }
 
 export type RadioProps = Props & ComponentPropsWithoutRef<'input'>;

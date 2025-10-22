@@ -2,41 +2,6 @@
 
 exports[`renders all together 1`] = `
 .c0 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.5rem;
-  margin: 0 0 0.5rem;
-}
-
-.c2 {
-  color: #313440;
-  margin: 0 0 1rem;
-  color: #5E637A;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.25rem;
-  margin: 0 0 0.75rem;
-}
-
-.c2:last-child {
-  margin-bottom: 0;
-}
-
-.c3 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-}
-
-.c4 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: border,box-shadow;
@@ -53,69 +18,46 @@ exports[`renders all together 1`] = `
   border: 1px solid #D9DCE9;
 }
 
-.c4:hover:not([disabled]) {
+.c0:hover:not([disabled]) {
   border: 1px solid #B4BAD1;
 }
 
-.c4:focus {
+.c0:focus {
   outline: none;
   box-shadow: 0 0 0 4px #DBE3FE;
 }
 
-.c4[disabled] {
+.c0[disabled] {
   background-color: #ECEEF5;
 }
 
-.c4::-webkit-input-placeholder {
+.c0::-webkit-input-placeholder {
   color: #B4BAD1;
   line-height: 1.5rem;
   font-size: 1rem;
 }
 
-.c4::-moz-placeholder {
+.c0::-moz-placeholder {
   color: #B4BAD1;
   line-height: 1.5rem;
   font-size: 1rem;
 }
 
-.c4:-ms-input-placeholder {
+.c0:-ms-input-placeholder {
   color: #B4BAD1;
   line-height: 1.5rem;
   font-size: 1rem;
 }
 
-.c4::placeholder {
+.c0::placeholder {
   color: #B4BAD1;
   line-height: 1.5rem;
   font-size: 1rem;
 }
 
-.c1 {
-  cursor: pointer;
-  display: inline-block;
-  margin-bottom: 0.25rem;
-}
-
-<div>
-  <label
-    class="c0 c1"
-    for=":rp:"
-  >
-    This is a label
-  </label>
-  <p
-    class="c2"
-  >
-    This is a description
-  </p>
-  <span
-    class="c3"
-  >
-    <textarea
-      class="c4"
-      id=":rp:"
-      rows="3"
-    />
-  </span>
-</div>
+<textarea
+  class="c0"
+  id=":rp:"
+  rows="3"
+/>
 `;

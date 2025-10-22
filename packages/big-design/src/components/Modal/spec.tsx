@@ -10,42 +10,44 @@ import { Modal } from './Modal';
 
 test('render open modal', () => {
   const text = 'This is a modal';
-  const { queryByText } = render(<Modal isOpen={true}>{text}</Modal>);
+
+  render(<Modal isOpen={true}>{text}</Modal>);
 
   expect(document.body).toMatchSnapshot();
-  expect(queryByText(text)).toBeInTheDocument();
+  expect(screen.getByText(text)).toBeInTheDocument();
 });
 
 test('render open modal without backdrop', () => {
   const text = 'This is a modal';
-  const { queryByText } = render(
+
+  render(
     <Modal backdrop={false} isOpen={true}>
       {text}
     </Modal>,
   );
 
   expect(document.body).toMatchSnapshot();
-  expect(queryByText(text)).toBeInTheDocument();
+  expect(screen.getByText(text)).toBeInTheDocument();
 });
 
 test('render closed modal', () => {
   const text = 'This is a modal';
 
-  const { queryByText } = render(<Modal isOpen={false}>{text}</Modal>);
+  render(<Modal isOpen={false}>{text}</Modal>);
 
   expect(document.body).toMatchSnapshot();
-  expect(queryByText(text)).not.toBeInTheDocument();
+  expect(screen.queryByText(text)).not.toBeInTheDocument();
 });
 
 test('open/hides when props changes', () => {
   const text = 'This is a modal';
-  const { queryByText, rerender } = render(<Modal isOpen={false}>{text}</Modal>);
+  const { rerender } = render(<Modal isOpen={false}>{text}</Modal>);
 
-  expect(queryByText(text)).not.toBeInTheDocument();
+  expect(screen.queryByText(text)).not.toBeInTheDocument();
 
   rerender(<Modal isOpen={true}>{text}</Modal>);
 
-  expect(queryByText(text)).toBeInTheDocument();
+  expect(screen.getByText(text)).toBeInTheDocument();
 });
 
 test('triggers onClose when pressing esc', async () => {
@@ -136,32 +138,32 @@ test('render close button on modal variation', () => {
   const text = 'This is a modal';
   const onClose = jest.fn();
 
-  const { queryByTitle } = render(
+  render(
     <Modal isOpen={true} onClose={onClose} variant="modal">
       {text}
     </Modal>,
   );
 
-  expect(queryByTitle('Close')).toBeInTheDocument();
+  expect(screen.getByTitle('Close')).toBeInTheDocument();
 });
 
 test('do not render close button on dialog variation', () => {
   const text = 'This is a modal';
   const onClose = jest.fn();
 
-  const { queryByTitle, queryByText } = render(
+  render(
     <Modal isOpen={true} onClose={onClose} variant="dialog">
       {text}
     </Modal>,
   );
 
-  expect(queryByText(text)).toBeInTheDocument();
-  expect(queryByTitle('Close')).not.toBeInTheDocument();
+  expect(screen.getByText(text)).toBeInTheDocument();
+  expect(screen.queryByTitle('Close')).not.toBeInTheDocument();
 });
 
 test('do not pull focus to open modal that is rerendered', async () => {
   const text = 'This is a modal';
-  const { queryByText, queryByRole, rerender } = render(
+  const { rerender } = render(
     <Modal isOpen={false}>
       {text}
       <input id="focusTest" />
@@ -169,7 +171,7 @@ test('do not pull focus to open modal that is rerendered', async () => {
   );
 
   // Modal not opened
-  expect(queryByText(text)).not.toBeInTheDocument();
+  expect(screen.queryByText(text)).not.toBeInTheDocument();
 
   // Modal Opened
   rerender(
@@ -180,10 +182,11 @@ test('do not pull focus to open modal that is rerendered', async () => {
   );
 
   // Expect Modal to have focus
-  expect(queryByText(text)).toBeInTheDocument();
+  expect(screen.getByText(text)).toBeInTheDocument();
 
-  await waitFor(() => expect(document.activeElement).toBe(queryByRole('dialog')));
+  await waitFor(() => expect(screen.queryByRole('dialog')).toHaveFocus());
 
+  // eslint-disable-next-line testing-library/no-node-access
   const input = document.getElementById('focusTest');
 
   // Focus on input
@@ -202,50 +205,49 @@ test('do not pull focus to open modal that is rerendered', async () => {
 
     // Expect input to still have focus and not modal
     expect(input).toHaveFocus();
-    expect(document.activeElement).not.toBe(queryByRole('dialog'));
+    expect(screen.queryByRole('dialog')).not.toHaveFocus();
   }
 });
 
 test('body has scroll locked on modal open', () => {
   const { rerender } = render(<Modal isOpen={false} />);
 
-  expect(document.body.style.overflowY).toBe('');
+  expect(document.body).toHaveStyle({ overflowY: '' });
 
   rerender(<Modal isOpen={true} />);
 
-  expect(document.body.style.overflowY).toBe('hidden');
+  expect(document.body).toHaveStyle({ overflowY: 'hidden' });
 
   rerender(<Modal isOpen={false} />);
 
-  expect(document.body.style.overflowY).toBe('');
+  expect(document.body).toHaveStyle({ overflowY: '' });
 });
 
 test('renders header', () => {
-  const { getByText } = render(<Modal header="Header Title" isOpen={true} />);
+  render(<Modal header="Header Title" isOpen={true} />);
 
-  expect(getByText('Header Title')).toBeInTheDocument();
+  expect(screen.getByText('Header Title')).toBeInTheDocument();
 });
 
 test('header ignores components', () => {
   // @ts-expect-error ignoring since header={Component} is not a valid prop
-  const { container } = render(<Modal header={<Text>Header Title</Text>} isOpen={true} />);
+  render(<Modal header={<Text>Header Title</Text>} isOpen={true} />);
 
-  expect(container.querySelector('h2')).toBeNull();
+  expect(screen.queryByRole('heading', { level: 2 })).not.toBeInTheDocument();
 });
 
 test('renders actions', () => {
-  const { getAllByRole } = render(
-    <Modal actions={[{ text: 'Cancel' }, { text: 'Apply' }]} isOpen={true} />,
-  );
+  render(<Modal actions={[{ text: 'Cancel' }, { text: 'Apply' }]} isOpen={true} />);
 
-  expect(getAllByRole('button')).toHaveLength(3);
+  expect(screen.getAllByRole('button')).toHaveLength(3);
 });
 
 test('action button triggers onClick', () => {
   const onClick = jest.fn();
 
-  const { getAllByRole } = render(<Modal actions={[{ text: 'Apply', onClick }]} isOpen={true} />);
-  const button = getAllByRole('button')[1];
+  render(<Modal actions={[{ text: 'Apply', onClick }]} isOpen={true} />);
+
+  const button = screen.getAllByRole('button')[1];
 
   fireEvent.click(button);
 
@@ -253,26 +255,24 @@ test('action button triggers onClick', () => {
 });
 
 test('renders secondary action button', () => {
-  const { getAllByRole } = render(
-    <Modal actions={[{ text: 'Apply', variant: 'secondary' }]} isOpen={true} />,
-  );
-  const button = getAllByRole('button')[1];
+  render(<Modal actions={[{ text: 'Apply', variant: 'secondary' }]} isOpen={true} />);
+
+  const button = screen.getAllByRole('button')[1];
 
   expect(button).toMatchSnapshot();
 });
 
 test('renders destructive action button', () => {
-  const { getAllByRole } = render(
-    <Modal actions={[{ text: 'Apply', actionType: 'destructive' }]} isOpen={true} />,
-  );
-  const button = getAllByRole('button')[1];
+  render(<Modal actions={[{ text: 'Apply', actionType: 'destructive' }]} isOpen={true} />);
+
+  const button = screen.getAllByRole('button')[1];
 
   expect(button).toMatchSnapshot();
 });
 
 test('unmounts appropriately', () => {
   const onClick = jest.fn();
-  const { getByTestId, unmount } = render(<Modal isOpen={true} />);
+  const { unmount } = render(<Modal isOpen={true} />);
 
   unmount();
 
@@ -282,7 +282,7 @@ test('unmounts appropriately', () => {
     </Button>,
   );
 
-  const button = getByTestId('button');
+  const button = screen.getByTestId('button');
 
   button.click();
 
@@ -293,9 +293,9 @@ test('unmounts appropriately', () => {
 test('body overflowY should reset on unmount', () => {
   const { unmount } = render(<Modal isOpen={true} />);
 
-  expect(document.body.style.overflowY).toBe('hidden');
+  expect(document.body).toHaveStyle({ overflowY: 'hidden' });
 
   unmount();
 
-  expect(document.body.style.overflowY).toBe('');
+  expect(document.body).toHaveStyle({ overflowY: '' });
 });

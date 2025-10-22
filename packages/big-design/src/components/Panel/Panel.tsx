@@ -20,12 +20,12 @@ export interface PanelAction extends Omit<ButtonProps, 'children'> {
 }
 
 export interface PanelProps extends ComponentPropsWithoutRef<'div'>, MarginProps {
-  children?: React.ReactNode;
-  description?: React.ReactNode;
-  header?: string;
-  headerId?: string;
-  action?: PanelAction;
-  badge?: BadgeProps;
+  readonly children?: React.ReactNode;
+  readonly description?: React.ReactNode;
+  readonly header?: string;
+  readonly headerId?: string;
+  readonly action?: PanelAction;
+  readonly badge?: BadgeProps;
 }
 
 export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRef, ...props }) => {

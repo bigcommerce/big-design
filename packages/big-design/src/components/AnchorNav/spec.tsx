@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { useInView } from 'react-intersection-observer';
@@ -26,7 +26,6 @@ describe('AnchorNav Component', () => {
   });
 
   afterEach(() => {
-    cleanup();
     history.replaceState(null, '', '#');
     jest.clearAllMocks();
     jest.useRealTimers();
@@ -47,9 +46,10 @@ describe('AnchorNav Component', () => {
     const navLink1 = screen.getByText('Section 1');
 
     // Get the element for "section1" and assign a fresh mock.
-    const section1El = document.getElementById('section1');
+    // eslint-disable-next-line testing-library/no-node-access
+    const section1El = screen.getByText('Content 1').parentElement;
 
-    expect(section1El).toBeDefined();
+    expect(section1El).toBeInTheDocument();
 
     if (section1El) {
       section1El.scrollIntoView = jest.fn();
@@ -62,7 +62,7 @@ describe('AnchorNav Component', () => {
     expect(section1El?.scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth' });
     expect(replaceStateSpy).toHaveBeenCalledWith(null, '', '#section1');
     expect(navLink1).toHaveClass('active');
-    expect(navLink1.getAttribute('aria-current')).toBe('true');
+    expect(navLink1).toHaveAttribute('aria-current', 'true');
   });
 
   it('activates a section based on the observer inView value', () => {
@@ -80,7 +80,7 @@ describe('AnchorNav Component', () => {
     const navLink2 = screen.getByText('Section 2');
 
     expect(navLink2).toHaveClass('active');
-    expect(navLink2.getAttribute('aria-current')).toBe('true');
+    expect(navLink2).toHaveAttribute('aria-current', 'true');
   });
 
   it('scrolls to the section corresponding to the initial URL hash on load', () => {
@@ -90,9 +90,10 @@ describe('AnchorNav Component', () => {
     render(<AnchorNav elements={elements} />);
 
     // Get the element for section2.
-    const section2El = document.getElementById('section2');
+    // eslint-disable-next-line testing-library/no-node-access
+    const section2El = screen.getByText('Content 2').parentElement;
 
-    expect(section2El).toBeDefined();
+    expect(section2El).toBeInTheDocument();
 
     expect(section2El?.scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth' });
   });
@@ -103,9 +104,11 @@ describe('AnchorNav Component', () => {
     render(<AnchorNav elements={elements} />);
 
     const navLink1 = screen.getByText('Section 1');
-    const section1El = document.getElementById('section1');
 
-    expect(section1El).toBeDefined();
+    // eslint-disable-next-line testing-library/no-node-access
+    const section1El = screen.getByText('Content 1').parentElement;
+
+    expect(section1El).toBeInTheDocument();
 
     if (section1El) {
       section1El.scrollIntoView = jest.fn();
@@ -123,8 +126,10 @@ describe('AnchorNav Component', () => {
   });
 
   it('matches the snapshot', () => {
-    const { container } = render(<AnchorNav elements={elements} />);
+    render(<AnchorNav elements={elements} />);
 
-    expect(container.firstChild).toMatchSnapshot();
+    const nav = screen.getByRole('navigation', { hidden: true });
+
+    expect(nav).toMatchSnapshot();
   });
 });

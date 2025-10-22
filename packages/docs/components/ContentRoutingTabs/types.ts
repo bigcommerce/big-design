@@ -1,7 +1,8 @@
 import { PillTabItem } from '@bigcommerce/big-design';
+import React from 'react';
 
 export interface Route extends PillTabItem {
-  render(): JSX.Element;
+  render(): React.JSX.Element;
 }
 
 export interface ContentRoutingTabsProps {

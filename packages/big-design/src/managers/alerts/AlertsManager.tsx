@@ -5,7 +5,7 @@ import { Alert, AlertProps } from '../../components';
 import { createAlertsManager } from './manager';
 
 export interface AlertsManagerProps {
-  manager: ReturnType<typeof createAlertsManager>;
+  readonly manager: ReturnType<typeof createAlertsManager>;
 }
 
 export const AlertsManager: React.FC<AlertsManagerProps> = ({ manager }) => {

@@ -3,11 +3,11 @@ import React, { ComponentPropsWithoutRef, forwardRef, memo } from 'react';
 import { StyledTableBody } from './styled';
 
 export interface BodyProps extends ComponentPropsWithoutRef<'tbody'> {
-  withFirstRowBorder?: boolean;
+  readonly withFirstRowBorder?: boolean;
 }
 
 interface PrivateProps {
-  forwardedRef?: React.Ref<HTMLTableSectionElement>;
+  readonly forwardedRef?: React.Ref<HTMLTableSectionElement>;
 }
 
 const RawBody: React.FC<BodyProps & PrivateProps> = (props) => (

@@ -8,7 +8,7 @@ import { GridedProps } from './types';
 export type GridProps = BoxProps & GridedProps;
 
 interface PrivateProps {
-  forwardedRef: React.Ref<HTMLDivElement>;
+  readonly forwardedRef: React.Ref<HTMLDivElement>;
 }
 
 const RawGrid: React.FC<GridProps & PrivateProps> = ({ as, forwardedRef, ...rest }) => (

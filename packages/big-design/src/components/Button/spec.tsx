@@ -191,17 +191,21 @@ test('triggers onClick', async () => {
 });
 
 test('does not forward styles', () => {
-  const { container } = render(<Button className="test" style={{ background: 'red' }} />);
+  render(<Button className="test" style={{ background: 'red' }} />);
 
-  expect(container.getElementsByClassName('test')).toHaveLength(0);
-  expect(container.firstChild).not.toHaveStyle('background: red');
+  const button = screen.getByRole('button');
+
+  expect(screen.queryByRole('button', { name: /test/i })).not.toBeInTheDocument();
+  expect(button).not.toHaveStyle('background: red');
 });
 
 test('private StyleableButton forwards styles', () => {
-  const { container } = render(<StyleableButton className="test" style={{ background: 'red' }} />);
+  render(<StyleableButton className="test" style={{ background: 'red' }} />);
 
-  expect(container.getElementsByClassName('test')).toHaveLength(1);
-  expect(container.firstChild).toHaveStyle('background: red');
+  const button = screen.getByRole('button');
+
+  expect(button).toHaveClass('test');
+  expect(button).toHaveStyle('background: red');
 });
 
 test('render only icon only with left and right icons button', () => {

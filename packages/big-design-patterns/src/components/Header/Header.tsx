@@ -21,7 +21,7 @@ import { warning } from '../../utils';
 import { StyledActionsWrapper, StyledBackLink } from './styled';
 
 interface BackLinkProps extends ComponentPropsWithoutRef<'a'> {
-  text: string;
+  readonly text: string;
 }
 
 const BackLink = ({ text, className, style, ...props }: BackLinkProps) => {
@@ -42,7 +42,7 @@ interface ActionDropdownProps extends Omit<DropdownProps, 'toggle'> {
 }
 
 interface ActionProps {
-  actions: Array<ActionButtonProps | ActionDropdownProps>;
+  readonly actions: Array<ActionButtonProps | ActionDropdownProps>;
 }
 
 function validateActions(actions: Array<ActionButtonProps | ActionDropdownProps>) {
@@ -101,7 +101,7 @@ const Actions = ({ actions }: ActionProps) => {
 type Description = string | ReactNode;
 
 interface DescriptionProps {
-  description: Description;
+  readonly description: Description;
 }
 
 const Description = ({ description }: DescriptionProps) => {
@@ -117,13 +117,13 @@ const Description = ({ description }: DescriptionProps) => {
 };
 
 export interface HeaderProps {
-  actions?: Array<ActionButtonProps | ActionDropdownProps>;
-  backLink?: BackLinkProps;
-  badge?: BadgeProps;
-  description?: Description;
-  icon?: ReactNode;
-  lozenge?: LozengeProps;
-  title: string;
+  readonly actions?: Array<ActionButtonProps | ActionDropdownProps>;
+  readonly backLink?: BackLinkProps;
+  readonly badge?: BadgeProps;
+  readonly description?: Description;
+  readonly icon?: ReactNode;
+  readonly lozenge?: LozengeProps;
+  readonly title: string;
 }
 
 export const Header = memo(

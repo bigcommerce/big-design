@@ -6,11 +6,11 @@ import { Text } from '../../Typography';
 import { TableItem, TablePaginationProps, TableSelectable } from '../types';
 
 export interface SelectAllProps<T> {
-  items: T[];
-  totalItems?: number;
-  onChange?: TableSelectable<T>['onSelectionChange'];
-  pagination?: TablePaginationProps;
-  selectedItems: Set<T>;
+  readonly items: T[];
+  readonly totalItems?: number;
+  readonly onChange?: TableSelectable<T>['onSelectionChange'];
+  readonly pagination?: TablePaginationProps;
+  readonly selectedItems: Set<T>;
 }
 
 export const SelectAll = <T extends TableItem>({

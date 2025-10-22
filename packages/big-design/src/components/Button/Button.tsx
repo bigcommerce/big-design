@@ -10,14 +10,14 @@ interface PrivateProps {
 }
 
 export interface ButtonProps extends ComponentPropsWithoutRef<'button'>, MarginProps {
-  actionType?: 'normal' | 'destructive';
-  children?: React.ReactNode;
-  iconLeft?: React.ReactNode;
-  iconOnly?: React.ReactNode;
-  iconRight?: React.ReactNode;
-  isLoading?: boolean;
-  mobileWidth?: 'auto' | '100%';
-  variant?: 'primary' | 'secondary' | 'subtle' | 'utility';
+  readonly actionType?: 'normal' | 'destructive';
+  readonly children?: React.ReactNode;
+  readonly iconLeft?: React.ReactNode;
+  readonly iconOnly?: React.ReactNode;
+  readonly iconRight?: React.ReactNode;
+  readonly isLoading?: boolean;
+  readonly mobileWidth?: 'auto' | '100%';
+  readonly variant?: 'primary' | 'secondary' | 'subtle' | 'utility';
 }
 
 const LoadingSpinner = () => (

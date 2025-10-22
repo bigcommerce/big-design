@@ -15,16 +15,16 @@ import { useInputErrors } from '../Form/useInputErrors';
 import { StyledTextarea, StyledTextareaWrapper } from './styled';
 
 export interface Props {
-  description?: React.ReactChild;
-  error?: React.ReactNode | React.ReactNode[];
-  label?: React.ReactChild;
-  labelId?: string;
-  rows?: 1 | 2 | 3 | 4 | 5 | 6 | 7;
-  resize?: boolean;
+  readonly description?: React.ReactNode;
+  readonly error?: React.ReactNode | React.ReactNode[];
+  readonly label?: React.ReactNode;
+  readonly labelId?: string;
+  readonly rows?: 1 | 2 | 3 | 4 | 5 | 6 | 7;
+  readonly resize?: boolean;
 }
 
 interface PrivateProps {
-  forwardedRef: Ref<HTMLTextAreaElement>;
+  readonly forwardedRef: Ref<HTMLTextAreaElement>;
 }
 
 export type TextareaProps = Props & ComponentPropsWithoutRef<'textarea'>;
@@ -91,7 +91,14 @@ const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
     <div>
       {renderedLabel}
       {renderedDescription}
-      <StyledTextareaWrapper>
+      <StyledTextareaWrapper
+        data-testid={
+          'data-testid' in props && props['data-testid']
+            ? // eslint-disable-next-line @typescript-eslint/no-base-to-string
+              `${props['data-testid']}-wrapper`
+            : undefined
+        }
+      >
         <StyledTextarea
           {...props}
           error={errors}
