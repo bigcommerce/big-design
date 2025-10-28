@@ -498,8 +498,8 @@ importers:
         specifier: ^7.27.1
         version: 7.27.1(@babel/core@7.28.0)
       '@babel/standalone':
-        specifier: ^7.28.4
-        version: 7.28.4
+        specifier: ^7.28.5
+        version: 7.28.5
       '@bigcommerce/big-design':
         specifier: workspace:^
         version: link:../big-design
@@ -1350,8 +1350,8 @@ packages:
     resolution: {integrity: sha512-KHp2IflsnGywDjBWDkR9iEqiWSpc8GIi0lgTT3mOElT0PP1tG26P4tmFI2YvAdzgq9RGyoHZQEIEdZy6Ec5xCA==}
     engines: {node: '>=6.9.0'}
 
-  '@babel/standalone@7.28.4':
-    resolution: {integrity: sha512-Qc1BNCfuJZBKs2SC5lqRmSYOw7Ka0X7urZQ7oVsGIax4eGDUIHX+CDg752N4jDxC2rbBh3li098ReGOtjT0x4g==}
+  '@babel/standalone@7.28.5':
+    resolution: {integrity: sha512-1DViPYJpRU50irpGMfLBQ9B4kyfQuL6X7SS7pwTeWeZX0mNkjzPi0XFqxCjSdddZXUQy4AhnQnnesA/ZHnvAdw==}
     engines: {node: '>=6.9.0'}
 
   '@babel/template@7.27.2':
@@ -7476,7 +7476,7 @@ snapshots:
 
   '@babel/runtime@7.28.2': {}
 
-  '@babel/standalone@7.28.4': {}
+  '@babel/standalone@7.28.5': {}
 
   '@babel/template@7.27.2':
     dependencies:
