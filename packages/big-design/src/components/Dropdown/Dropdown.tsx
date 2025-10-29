@@ -6,7 +6,7 @@ import React, {
   useCallback,
   useId,
   useMemo,
-  useState,
+  useRef,
 } from 'react';
 import { createPortal } from 'react-dom';
 import { usePopper } from 'react-popper';
@@ -114,28 +114,32 @@ export const Dropdown = memo(
         toggleButtonId: toggle.props.id,
       });
 
-    const [referenceElement, setReferenceElement] = useState<HTMLElement | null>(null);
-    const [popperElement, setPopperElement] = useState<HTMLElement | null>(null);
+    const referenceElement = useRef<HTMLElement | null>(null);
+    const popperElement = useRef<HTMLDivElement | null>(null);
 
-    const { attributes, styles, update } = usePopper(referenceElement, popperElement, {
-      modifiers: [
-        {
-          name: 'eventListeners',
-          options: {
-            scroll: isOpen,
-            resize: isOpen,
+    const { attributes, styles, update } = usePopper(
+      referenceElement.current,
+      popperElement.current,
+      {
+        modifiers: [
+          {
+            name: 'eventListeners',
+            options: {
+              scroll: isOpen,
+              resize: isOpen,
+            },
           },
-        },
-        {
-          name: 'offset',
-          options: {
-            offset: [0, 4],
+          {
+            name: 'offset',
+            options: {
+              offset: [0, 4],
+            },
           },
-        },
-      ],
-      placement,
-      strategy: positionFixed ? 'fixed' : 'absolute',
-    });
+        ],
+        placement,
+        strategy: positionFixed ? 'fixed' : 'absolute',
+      },
+    );
 
     const clonedToggle =
       isValidElement(toggle) &&
@@ -145,7 +149,7 @@ export const Dropdown = memo(
           // Downshift sets this to a label id that doesn't exist
           'aria-labelledby': undefined,
           disabled,
-          ref: setReferenceElement,
+          ref: referenceElement,
           role: 'button',
         }),
       });
@@ -155,12 +159,7 @@ export const Dropdown = memo(
         {clonedToggle}
         {isOpen ? (
           createPortal(
-            <Box
-              ref={setPopperElement}
-              style={styles.popper}
-              {...attributes.popper}
-              zIndex="popover"
-            >
+            <Box ref={popperElement} style={styles.popper} {...attributes.popper} zIndex="popover">
               <List
                 {...props}
                 autoWidth={autoWidth}
@@ -179,7 +178,13 @@ export const Dropdown = memo(
           )
         ) : (
           // We need to render the menu hidden to ensure it has a reference for popper
-          <Box style={styles.popper} {...attributes.popper} display="none" zIndex="popover">
+          <Box
+            ref={popperElement}
+            style={styles.popper}
+            {...attributes.popper}
+            display="none"
+            zIndex="popover"
+          >
             <List
               {...props}
               autoWidth={autoWidth}

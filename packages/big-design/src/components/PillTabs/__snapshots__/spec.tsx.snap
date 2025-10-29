@@ -1164,8 +1164,11 @@ exports[`only the pills that fit are visible 1`] = `
       </button>
       <div
         class="c9"
+        data-popper-escaped="true"
+        data-popper-placement="bottom-start"
+        data-popper-reference-hidden="true"
         display="none"
-        style="position: absolute; left: 0px; top: 0px;"
+        style="position: absolute; left: 0px; top: 0px; right: auto; bottom: auto; transform: translate(0px, 4px);"
       >
         <div
           class="c10"
@@ -1580,8 +1583,11 @@ exports[`only the pills that fit are visible 2 1`] = `
       </button>
       <div
         class="c9"
+        data-popper-escaped="true"
+        data-popper-placement="bottom-start"
+        data-popper-reference-hidden="true"
         display="none"
-        style="position: absolute; left: 0px; top: 0px;"
+        style="position: absolute; left: 0px; top: 0px; right: auto; bottom: auto; transform: translate(0px, 4px);"
       >
         <div
           class="c10"
@@ -1995,8 +2001,11 @@ exports[`renders all the filters if they fit 1`] = `
       </button>
       <div
         class="c9"
+        data-popper-escaped="true"
+        data-popper-placement="bottom-start"
+        data-popper-reference-hidden="true"
         display="none"
-        style="position: absolute; left: 0px; top: 0px;"
+        style="position: absolute; left: 0px; top: 0px; right: auto; bottom: auto; transform: translate(0px, 4px);"
       >
         <div
           class="c10"
@@ -2396,8 +2405,11 @@ exports[`renders dropdown if items do not fit 1`] = `
       </button>
       <div
         class="c9"
+        data-popper-escaped="true"
+        data-popper-placement="bottom-start"
+        data-popper-reference-hidden="true"
         display="none"
-        style="position: absolute; left: 0px; top: 0px;"
+        style="position: absolute; left: 0px; top: 0px; right: auto; bottom: auto; transform: translate(0px, 4px);"
       >
         <div
           class="c10"
