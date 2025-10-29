@@ -1,4 +1,4 @@
 export interface GuidelinesTableProps {
-  recommended: Array<JSX.Element | string>;
-  discouraged: Array<JSX.Element | string>;
+  recommended: Array<React.JSX.Element | string>;
+  discouraged: Array<React.JSX.Element | string>;
 }

@@ -157,7 +157,7 @@ const InternalTable = <T extends TableItem>(
 
         {columns.map((column, index) => {
           const { display, hash, header, isSortable, hideHeader, width } = column;
-          const isSorted = isSortable && sortable && hash === sortable.columnHash;
+          const isSorted = isSortable && hash === sortable?.columnHash;
           const sortDirection = sortable?.direction;
           const headerCellWidth = headerCellWidths[index + 1];
           const widthColumn = headerCellWidth ?? width;

@@ -412,7 +412,7 @@ test('dropdown menu renders 4 link when passed options of type link', async () =
   expect(options).toHaveLength(4);
 
   options.forEach((option) => {
-    expect(option.getAttribute('href')).toBe('#');
+    expect(option).toHaveAttribute('href', '#');
   });
 });
 
@@ -657,7 +657,7 @@ test('rendered line separators cannot be focused on', async () => {
     fireEvent.mouseOver(el);
   }
 
-  expect(document.activeElement).not.toEqual(hrListItems[0].parentElement);
+  expect(hrListItems[0].parentElement).not.toHaveFocus();
 });
 
 test('items should supports description', async () => {

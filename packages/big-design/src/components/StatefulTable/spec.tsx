@@ -76,7 +76,7 @@ test('dragAndDrop can be enabled', async () => {
   let names = getAllByTestId('name');
 
   // Item at index 0 has product name Product A - 1
-  expect(names[0].textContent).toBe(name);
+  expect(names[0]).toHaveTextContent(name);
 
   dragEls[0].focus();
 
@@ -91,7 +91,7 @@ test('dragAndDrop can be enabled', async () => {
   names = getAllByTestId('name');
 
   // After drag and drop item at index 1 has product name Product A - 1
-  expect(names[1].textContent).toBe(name);
+  expect(names[1]).toHaveTextContent(name);
   expect(onRowDrop).toHaveBeenCalled();
 });
 
@@ -127,7 +127,7 @@ test('items are unselected by default', async () => {
 
   const checkboxes = await screen.findAllByRole<HTMLInputElement>('checkbox');
 
-  expect(checkboxes[0].checked).toBe(false);
+  expect(checkboxes[0]).not.toBeChecked();
 });
 
 test('items can be selected by default', async () => {
@@ -138,7 +138,7 @@ test('items can be selected by default', async () => {
 
   const checkboxes = await screen.findAllByRole<HTMLInputElement>('checkbox');
 
-  expect(checkboxes[0].checked).toBe(true);
+  expect(checkboxes[0]).toBeChecked();
 });
 
 test('onSelectionChange gets called when an item selection happens', async () => {

@@ -13,7 +13,7 @@ test('render open modal', () => {
   const { queryByText } = render(<Modal isOpen={true}>{text}</Modal>);
 
   expect(document.body).toMatchSnapshot();
-  expect(queryByText(text)).toBeInTheDocument();
+  expect(getByText(text)).toBeInTheDocument();
 });
 
 test('render open modal without backdrop', () => {
@@ -25,7 +25,7 @@ test('render open modal without backdrop', () => {
   );
 
   expect(document.body).toMatchSnapshot();
-  expect(queryByText(text)).toBeInTheDocument();
+  expect(getByText(text)).toBeInTheDocument();
 });
 
 test('render closed modal', () => {
@@ -45,7 +45,7 @@ test('open/hides when props changes', () => {
 
   rerender(<Modal isOpen={true}>{text}</Modal>);
 
-  expect(queryByText(text)).toBeInTheDocument();
+  expect(getByText(text)).toBeInTheDocument();
 });
 
 test('triggers onClose when pressing esc', async () => {
@@ -142,7 +142,7 @@ test('render close button on modal variation', () => {
     </Modal>,
   );
 
-  expect(queryByTitle('Close')).toBeInTheDocument();
+  expect(getByTitle('Close')).toBeInTheDocument();
 });
 
 test('do not render close button on dialog variation', () => {
@@ -155,7 +155,7 @@ test('do not render close button on dialog variation', () => {
     </Modal>,
   );
 
-  expect(queryByText(text)).toBeInTheDocument();
+  expect(getByText(text)).toBeInTheDocument();
   expect(queryByTitle('Close')).not.toBeInTheDocument();
 });
 
@@ -180,9 +180,9 @@ test('do not pull focus to open modal that is rerendered', async () => {
   );
 
   // Expect Modal to have focus
-  expect(queryByText(text)).toBeInTheDocument();
+  expect(getByText(text)).toBeInTheDocument();
 
-  await waitFor(() => expect(document.activeElement).toBe(queryByRole('dialog')));
+  await waitFor(() => expect(queryByRole('dialog')).toHaveFocus());
 
   const input = document.getElementById('focusTest');
 
@@ -202,22 +202,22 @@ test('do not pull focus to open modal that is rerendered', async () => {
 
     // Expect input to still have focus and not modal
     expect(input).toHaveFocus();
-    expect(document.activeElement).not.toBe(queryByRole('dialog'));
+    expect(queryByRole('dialog')).not.toHaveFocus();
   }
 });
 
 test('body has scroll locked on modal open', () => {
   const { rerender } = render(<Modal isOpen={false} />);
 
-  expect(document.body.style.overflowY).toBe('');
+  expect(document.body).toHaveStyle({ overflowY: '' });
 
   rerender(<Modal isOpen={true} />);
 
-  expect(document.body.style.overflowY).toBe('hidden');
+  expect(document.body).toHaveStyle({ overflowY: 'hidden' });
 
   rerender(<Modal isOpen={false} />);
 
-  expect(document.body.style.overflowY).toBe('');
+  expect(document.body).toHaveStyle({ overflowY: '' });
 });
 
 test('renders header', () => {
@@ -293,9 +293,9 @@ test('unmounts appropriately', () => {
 test('body overflowY should reset on unmount', () => {
   const { unmount } = render(<Modal isOpen={true} />);
 
-  expect(document.body.style.overflowY).toBe('hidden');
+  expect(document.body).toHaveStyle({ overflowY: 'hidden' });
 
   unmount();
 
-  expect(document.body.style.overflowY).toBe('');
+  expect(document.body).toHaveStyle({ overflowY: '' });
 });

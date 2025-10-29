@@ -156,7 +156,8 @@ const ModalPage = () => {
               <Code primary>Modals</Code> should block other content on a page.
             </>,
             <>
-              User should have the option to come back without any <Code primary>actions</Code>.{' '}
+              User should have the option to come back without any <Code primary>actions</Code>
+              .{' '}
             </>,
             <>Header and content should be left aligned, footer right aligned.</>,
             <>

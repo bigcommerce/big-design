@@ -1,6 +1,5 @@
 import { theme } from '@bigcommerce/big-design-theme';
-import { waitFor } from '@testing-library/dom';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import React from 'react';
 
@@ -146,7 +145,9 @@ describe('FileUploader', () => {
 
     render(<FileUploader files={files} label="Upload your images" onFilesChange={jest.fn()} />);
 
-    await waitFor(() => expect(screen.queryByRole('button', { name: /dropzone/i })).toBeNull());
+    await waitFor(() =>
+      expect(screen.queryByRole('button', { name: /dropzone/i })).not.toBeInTheDocument(),
+    );
   });
 
   it('renders with files list', async () => {
@@ -169,10 +170,10 @@ describe('FileUploader', () => {
 
     render(<FileUploader files={files} label="Upload your images" onFilesChange={jest.fn()} />);
 
-    await waitFor(() => expect(screen.queryByRole('list')).toBeNull());
+    await waitFor(() => expect(screen.queryByRole('list')).not.toBeInTheDocument());
 
     expect(screen.getByText(/file1/i)).toBeVisible();
-    expect(screen.queryByRole('button', { name: /dropzone/i })).toBeNull();
+    expect(screen.queryByRole('button', { name: /dropzone/i })).not.toBeInTheDocument();
   });
 
   it('renders only DropZone without preview', () => {

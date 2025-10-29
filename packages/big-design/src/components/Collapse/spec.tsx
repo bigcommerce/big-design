@@ -50,7 +50,7 @@ test('title button has aria-controls', () => {
   const button = screen.getByRole('button');
   const panelId = screen.getByRole('region', { hidden: true }).id;
 
-  expect(button.getAttribute('aria-controls')).toBe(panelId);
+  expect(button).toHaveAttribute('aria-controls', panelId);
 });
 
 test('title button has icon', () => {
@@ -97,7 +97,7 @@ test('panel has id', () => {
 
   const panelId = screen.getByRole('region', { hidden: true }).id;
 
-  expect(panelId).toBeDefined();
+  expect(panelId).toBeInTheDocument();
 });
 
 test('panel has aria-labelledby attribute', () => {
@@ -161,11 +161,11 @@ test('click on title toggles aria-expanded attribute on title button', async () 
 
   await userEvent.click(trigger);
 
-  expect(trigger.getAttribute('aria-expanded')).toBe('true');
+  expect(trigger).toHaveAttribute('aria-expanded', 'true');
 
   await userEvent.click(trigger);
 
-  expect(trigger.getAttribute('aria-expanded')).toBe('false');
+  expect(trigger).toHaveAttribute('aria-expanded', 'false');
 });
 
 test('onCollapseChange is called', async () => {

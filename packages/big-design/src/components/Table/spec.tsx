@@ -122,7 +122,7 @@ test('renders column with tooltip icon', () => {
     }),
   );
 
-  expect(getByTitle('Hover or focus for additional context.')).toBeTruthy();
+  expect(getByTitle('Hover or focus for additional context.')).toBeInTheDocument();
 });
 
 test('renders tooltip when hovering on icon', async () => {
@@ -468,7 +468,7 @@ describe('selectable', () => {
     const [selectAllCheckbox] = await screen.findAllByRole<HTMLInputElement>('checkbox');
 
     // Select All
-    expect(selectAllCheckbox.checked).toBe(false);
+    expect(selectAllCheckbox).not.toBeChecked();
 
     fireEvent.click(selectAllCheckbox);
 
@@ -497,7 +497,7 @@ describe('selectable', () => {
     const [selectAllCheckbox] = await screen.findAllByRole<HTMLInputElement>('checkbox');
 
     // Select All
-    expect(selectAllCheckbox.checked).toBe(false);
+    expect(selectAllCheckbox).not.toBeChecked();
 
     fireEvent.click(selectAllCheckbox);
 
@@ -520,7 +520,7 @@ describe('selectable', () => {
     const [selectAllCheckbox] = await screen.findAllByRole<HTMLInputElement>('checkbox');
 
     // Deselect all
-    expect(selectAllCheckbox.checked).toBe(true);
+    expect(selectAllCheckbox).toBeChecked();
 
     fireEvent.click(selectAllCheckbox);
 
@@ -549,7 +549,7 @@ describe('selectable', () => {
     const [selectAllCheckbox] = await screen.findAllByRole<HTMLInputElement>('checkbox');
 
     // Deselect all
-    expect(selectAllCheckbox.checked).toBe(true);
+    expect(selectAllCheckbox).toBeChecked();
 
     fireEvent.click(selectAllCheckbox);
 
@@ -807,7 +807,7 @@ test('renders localized descending label', async () => {
     />,
   );
 
-  const descSortIcon = await screen.queryByTitle('Orden descendiente');
+  const descSortIcon = screen.queryByTitle('Orden descendiente');
 
   expect(descSortIcon).toBeInTheDocument();
 });

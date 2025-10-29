@@ -1,7 +1,7 @@
 import { GlobalStyles } from '@bigcommerce/big-design';
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import React from 'react';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 import { App } from './App';
@@ -15,13 +15,18 @@ const AppGlobalStyles = createGlobalStyle`
   }
 `;
 
-render(
-  <ThemeProvider theme={defaultTheme}>
-    <>
-      <AppGlobalStyles />
-      <GlobalStyles />
-      <App />
-    </>
-  </ThemeProvider>,
-  document.getElementById('root'),
-);
+const rootElement = document.getElementById('root');
+
+if (rootElement) {
+  const root = createRoot(rootElement);
+
+  root.render(
+    <ThemeProvider theme={defaultTheme}>
+      <>
+        <AppGlobalStyles />
+        <GlobalStyles />
+        <App />
+      </>
+    </ThemeProvider>,
+  );
+}

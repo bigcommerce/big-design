@@ -29,7 +29,7 @@ test('renders an textarea with matched label', () => {
   const { queryByLabelText } = render(<Textarea label="Test Label" />);
 
   // This one checks for matching id and htmlFor
-  expect(queryByLabelText('Test Label')).toBeInTheDocument();
+  expect(getByLabelText('Test Label')).toBeInTheDocument();
 });
 
 test('create unique ids if not provided', async () => {
@@ -47,8 +47,8 @@ test('create unique ids if not provided', async () => {
   const item1 = await screen.findByTestId('item1');
   const item2 = await screen.findByTestId('item2');
 
-  expect(item1).toBeDefined();
-  expect(item2).toBeDefined();
+  expect(item1).toBeInTheDocument();
+  expect(item2).toBeInTheDocument();
   expect(item1.id).not.toBe(item2.id);
 });
 
@@ -80,7 +80,7 @@ test('renders a description', () => {
   const descriptionText = 'This is a description';
   const { queryByText } = render(<Textarea description={descriptionText} />);
 
-  expect(queryByText(descriptionText)).toBeInTheDocument();
+  expect(getByText(descriptionText)).toBeInTheDocument();
 });
 
 test('renders an error', () => {
@@ -92,7 +92,7 @@ test('renders an error', () => {
   );
   const textarea = container.querySelector('textarea');
 
-  expect(queryByText(errorText)).toBeInTheDocument();
+  expect(getByText(errorText)).toBeInTheDocument();
   expect(textarea).toHaveStyleRule('border', errorBorderStyle);
 });
 
@@ -108,7 +108,7 @@ test('accepts a Label Component', () => {
 
   const { queryByTestId } = render(<Textarea label={CustomLabel} />);
 
-  expect(queryByTestId('test')).toBeInTheDocument();
+  expect(getByTestId('test')).toBeInTheDocument();
 });
 
 test('does not accept non-Label Components', () => {
@@ -138,7 +138,7 @@ test('accepts a Description Component', () => {
 
   const { queryByTestId } = render(<Textarea description={CustomDescription} />);
 
-  expect(queryByTestId('test')).toBeInTheDocument();
+  expect(getByTestId('test')).toBeInTheDocument();
 });
 
 test('does not accept non-Description Components', () => {
@@ -173,7 +173,7 @@ test('accepts an Error Component', () => {
   );
   const textarea = container.querySelector('textarea');
 
-  expect(queryByTestId('test')).toBeInTheDocument();
+  expect(getByTestId('test')).toBeInTheDocument();
   expect(textarea).toHaveStyleRule('border', errorBorderStyle);
 });
 
@@ -242,7 +242,7 @@ test('accepts valid row property', async () => {
 
   const textarea = await screen.findByTestId('test-rows');
 
-  expect(textarea.getAttribute('rows')).toBe(`${rows}`);
+  expect(textarea).toHaveAttribute('rows', `${rows}`);
 });
 
 test('does not accept invalid row property', async () => {
