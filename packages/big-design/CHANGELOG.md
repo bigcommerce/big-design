@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.3.1
+
+### Patch Changes
+
+- 1ee977b: Update the Dropdown ref from a state value to the stable ref.
+
 ## 2.3.0
 
 ### Minor Changes
