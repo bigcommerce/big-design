@@ -24,7 +24,7 @@ test('does not forward styles', () => {
 test('renders a passed step', () => {
   const { queryByText } = render(<Stepper currentStep={0} steps={['Test']} />);
 
-  expect(queryByText('Test')).toBeDefined();
+  expect(getByText('Test')).toBeInTheDocument();
 });
 
 test('passed in state works as expected', () => {

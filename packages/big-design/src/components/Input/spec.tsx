@@ -30,7 +30,7 @@ test('renders an input with matched label', () => {
   const { queryByLabelText } = render(<Input label="Test Label" />);
 
   // This one checks for matching id and htmlFor
-  expect(queryByLabelText('Test Label')).toBeInTheDocument();
+  expect(getByLabelText('Test Label')).toBeInTheDocument();
 });
 
 test('create unique ids if not provided', async () => {
@@ -44,8 +44,8 @@ test('create unique ids if not provided', async () => {
   const item1 = await screen.findByTestId('item1');
   const item2 = await screen.findByTestId('item2');
 
-  expect(item1).toBeDefined();
-  expect(item2).toBeDefined();
+  expect(item1).toBeInTheDocument();
+  expect(item2).toBeInTheDocument();
   expect(item1.id).not.toBe(item2.id);
 });
 
@@ -77,7 +77,7 @@ test('renders a description', () => {
   const descriptionText = 'This is a description';
   const { queryByText } = render(<Input description={descriptionText} />);
 
-  expect(queryByText(descriptionText)).toBeInTheDocument();
+  expect(getByText(descriptionText)).toBeInTheDocument();
 });
 
 test('renders an error', () => {
@@ -89,7 +89,7 @@ test('renders an error', () => {
   );
   const styledInputWrapper = container.querySelector('[class*="StyledInputWrapper"]');
 
-  expect(queryByText(errorText)).toBeInTheDocument();
+  expect(getByText(errorText)).toBeInTheDocument();
   expect(styledInputWrapper).toHaveStyleRule('border', errorBorderStyle);
 });
 
@@ -105,7 +105,7 @@ test('accepts a Label Component', () => {
 
   const { queryByTestId } = render(<Input label={CustomLabel} />);
 
-  expect(queryByTestId('test')).toBeInTheDocument();
+  expect(getByTestId('test')).toBeInTheDocument();
 });
 
 test('does not accept non-Label Components', () => {
@@ -135,7 +135,7 @@ test('accepts a Description Component', () => {
 
   const { queryByTestId } = render(<Input description={CustomDescription} />);
 
-  expect(queryByTestId('test')).toBeInTheDocument();
+  expect(getByTestId('test')).toBeInTheDocument();
 });
 
 test('does not accept non-Description Components', () => {
@@ -170,7 +170,7 @@ test('accepts an Error Component', () => {
   );
   const styledInputWrapper = container.querySelector('[class*="StyledInputWrapper"]');
 
-  expect(queryByTestId('test')).toBeInTheDocument();
+  expect(getByTestId('test')).toBeInTheDocument();
   expect(styledInputWrapper).toHaveStyleRule('border', errorBorderStyle);
 });
 
@@ -198,13 +198,13 @@ test('does not accept non-Error Components', () => {
 test('renders iconLeft', () => {
   const { queryByTestId } = render(<Input iconLeft={<AddIcon data-testid="icon" />} />);
 
-  expect(queryByTestId('icon')).toBeInTheDocument();
+  expect(getByTestId('icon')).toBeInTheDocument();
 });
 
 test('renders iconRight', () => {
   const { queryByTestId } = render(<Input iconRight={<AddIcon data-testid="icon" />} />);
 
-  expect(queryByTestId('icon')).toBeInTheDocument();
+  expect(getByTestId('icon')).toBeInTheDocument();
 });
 
 test('renders both icons', () => {
@@ -215,8 +215,8 @@ test('renders both icons', () => {
     />,
   );
 
-  expect(queryByTestId('icon-left')).toBeInTheDocument();
-  expect(queryByTestId('icon-right')).toBeInTheDocument();
+  expect(getByTestId('icon-left')).toBeInTheDocument();
+  expect(getByTestId('icon-right')).toBeInTheDocument();
 });
 
 test('renders all together', () => {

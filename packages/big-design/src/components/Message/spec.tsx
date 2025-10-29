@@ -90,7 +90,7 @@ test('renders header', () => {
   );
 
   expect(container.firstChild).toMatchSnapshot();
-  expect(queryByText('Header')).toBeDefined();
+  expect(getByText('Header')).toBeInTheDocument();
 });
 
 test('renders close button', () => {
@@ -99,7 +99,7 @@ test('renders close button', () => {
   );
 
   expect(container.firstChild).toMatchSnapshot();
-  expect(queryByRole('button')).toBeDefined();
+  expect(getByRole('button')).toBeInTheDocument();
 });
 
 test('trigger onClose', async () => {

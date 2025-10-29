@@ -62,7 +62,7 @@ describe('AnchorNav Component', () => {
     expect(section1El?.scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth' });
     expect(replaceStateSpy).toHaveBeenCalledWith(null, '', '#section1');
     expect(navLink1).toHaveClass('active');
-    expect(navLink1.getAttribute('aria-current')).toBe('true');
+    expect(navLink1).toHaveAttribute('aria-current', 'true');
   });
 
   it('activates a section based on the observer inView value', () => {
@@ -80,7 +80,7 @@ describe('AnchorNav Component', () => {
     const navLink2 = screen.getByText('Section 2');
 
     expect(navLink2).toHaveClass('active');
-    expect(navLink2.getAttribute('aria-current')).toBe('true');
+    expect(navLink2).toHaveAttribute('aria-current', 'true');
   });
 
   it('scrolls to the section corresponding to the initial URL hash on load', () => {

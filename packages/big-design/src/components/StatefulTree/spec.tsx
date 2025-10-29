@@ -60,7 +60,7 @@ test('defaultExpanded items are expanded by default', () => {
 
   expect(getAllByRole('treeitem')).toHaveLength(6);
   expect(getByText('Test Node 5')).toBeVisible();
-  expect(queryByText('Test Node 6')).toBeNull();
+  expect(queryByText('Test Node 6')).not.toBeInTheDocument();
 });
 
 test('onExpandedChange gets called when an item expansion happens', () => {

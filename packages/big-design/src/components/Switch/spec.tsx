@@ -35,7 +35,7 @@ describe('render Switch', () => {
 
     const input = await screen.findByTestId<HTMLInputElement>('switch');
 
-    expect(input.checked).toBe(true);
+    expect(input).toBeChecked();
   });
 
   test('has correct value for unchecked', async () => {
@@ -43,7 +43,7 @@ describe('render Switch', () => {
 
     const input = await screen.findByTestId<HTMLInputElement>('switch');
 
-    expect(input.checked).toBe(false);
+    expect(input).not.toBeChecked();
   });
 
   test('triggers onChange when clicking the checkbox', async () => {

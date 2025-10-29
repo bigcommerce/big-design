@@ -95,13 +95,13 @@ test('render Lozenge with tooltip', async () => {
 
   const lozenge = screen.getByText('Lozenge');
 
-  userEvent.hover(lozenge);
+  await userEvent.hover(lozenge);
 
   const tooltip = await screen.findByText('Tooltip content');
 
   expect(tooltip).toBeVisible();
 
-  userEvent.unhover(lozenge);
+  await userEvent.unhover(lozenge);
   await waitFor(() => expect(tooltip).not.toBeVisible());
 });
 
@@ -181,13 +181,13 @@ test('Lozenge forwards refs for div and button renders', () => {
 test('Lozenge tooltip path only when tooltipContent is a non-empty string', async () => {
   const { rerender } = render(<Lozenge label="X" tooltipContent="Tip!" />);
 
-  userEvent.hover(screen.getByText('X'));
+  await userEvent.hover(screen.getByText('X'));
 
   expect(await screen.findByText('Tip!')).toBeVisible();
 
   // Empty string -> falls back to plain lozenge (no tooltip)
   rerender(<Lozenge label="Y" tooltipContent="" />);
-  userEvent.hover(screen.getByText('Y'));
+  await userEvent.hover(screen.getByText('Y'));
   await waitFor(() => {
     expect(screen.queryByText('Tip!')).not.toBeInTheDocument();
   });

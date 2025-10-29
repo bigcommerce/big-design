@@ -302,7 +302,7 @@ describe('AlertsManager', () => {
       alertsManager.add(successAlert);
     });
 
-    expect(queryByRole('alert')).toBeInTheDocument();
+    expect(getByRole('alert')).toBeInTheDocument();
   });
 
   // May need to write this differently
@@ -327,19 +327,19 @@ describe('AlertsManager', () => {
       });
     });
 
-    expect(queryByText(errorAlert.messages[0].text)).toBeInTheDocument();
+    expect(getByText(errorAlert.messages[0].text)).toBeInTheDocument();
 
     act(() => {
       alertsManager.remove(errorAlert.key);
     });
 
-    expect(queryByText(successAlert.messages[0].text)).toBeInTheDocument();
+    expect(getByText(successAlert.messages[0].text)).toBeInTheDocument();
 
     act(() => {
       alertsManager.remove(successAlert.key);
     });
 
-    expect(queryByText(infoAlert.messages[0].text)).toBeInTheDocument();
+    expect(getByText(infoAlert.messages[0].text)).toBeInTheDocument();
   });
 
   test('closes an alert with close button', async () => {
@@ -351,11 +351,11 @@ describe('AlertsManager', () => {
       alertsManager.add(successAlert);
     });
 
-    expect(queryByRole('alert')).toBeInTheDocument();
+    expect(getByRole('alert')).toBeInTheDocument();
 
     const closeButton = await screen.findByRole('button');
 
-    expect(closeButton).toBeDefined();
+    expect(closeButton).toBeInTheDocument();
 
     act(() => {
       fireEvent.click(closeButton);
@@ -375,7 +375,7 @@ describe('AlertsManager', () => {
       key = alertsManager.add(successAlert);
     });
 
-    expect(queryByRole('alert')).toBeInTheDocument();
+    expect(getByRole('alert')).toBeInTheDocument();
 
     act(() => {
       removedAlert = alertsManager.remove(key);
@@ -400,7 +400,7 @@ describe('AlertsManager', () => {
       });
     });
 
-    expect(queryByRole('alert')).toBeInTheDocument();
+    expect(getByRole('alert')).toBeInTheDocument();
     expect(subscriber).toHaveBeenCalledTimes(alerts.length);
 
     for (let index = 0; index < alerts.length; index++) {
@@ -434,7 +434,7 @@ describe('AlertsManager', () => {
       });
     });
 
-    expect(queryByRole('alert')).toBeInTheDocument();
+    expect(getByRole('alert')).toBeInTheDocument();
     expect(subscriber).toHaveBeenCalledTimes(alerts.length);
 
     alerts.forEach((alert, index) => {

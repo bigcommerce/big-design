@@ -23,7 +23,7 @@ test('calls onSubmit', async () => {
 
   const form = await screen.findByRole('form');
 
-  await waitFor(() => fireEvent.submit(form));
+  fireEvent.submit(form);
 
   expect(onSubmit).toHaveBeenCalled();
 });

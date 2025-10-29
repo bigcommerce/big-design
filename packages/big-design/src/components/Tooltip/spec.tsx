@@ -38,7 +38,7 @@ test('hides tooltip by mouse leave', async () => {
 
   testing = screen.queryByText('Testing');
 
-  expect(testing).toBeNull();
+  expect(testing).not.toBeInTheDocument();
 });
 
 test('hides tooltip by Escape', async () => {
@@ -60,5 +60,5 @@ test('hides tooltip by Escape', async () => {
 
   testing = screen.queryByText('Testing');
 
-  expect(testing).toBeNull();
+  expect(testing).not.toBeInTheDocument();
 });

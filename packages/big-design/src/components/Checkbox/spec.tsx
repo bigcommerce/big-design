@@ -114,7 +114,7 @@ test('has correct value for checked', async () => {
 
   const input = await screen.findByTestId<HTMLInputElement>('checkbox');
 
-  expect(input.checked).toBe(true);
+  expect(input).toBeChecked();
 });
 
 test('has correct value for unchecked', async () => {
@@ -122,7 +122,7 @@ test('has correct value for unchecked', async () => {
 
   const input = await screen.findByTestId<HTMLInputElement>('checkbox');
 
-  expect(input.checked).toBe(false);
+  expect(input).not.toBeChecked();
 });
 
 test('has correct value for indeterminate', async () => {
@@ -138,7 +138,7 @@ test('has correct value for indeterminate', async () => {
 
   const input = await screen.findByTestId<HTMLInputElement>('checkbox');
 
-  expect(input.checked).toBe(false);
+  expect(input).not.toBeChecked();
 });
 
 test('triggers onChange when clicking the checkbox', async () => {
@@ -173,7 +173,7 @@ test('accepts valid CheckboxLabel component', () => {
 
   const { queryByTestId } = render(<Checkbox label={label} />);
 
-  expect(queryByTestId(testId)).toBeInTheDocument();
+  expect(getByTestId(testId)).toBeInTheDocument();
 });
 
 test('does not accept invalid label component', () => {

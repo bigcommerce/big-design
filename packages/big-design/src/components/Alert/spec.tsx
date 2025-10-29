@@ -83,7 +83,7 @@ test('renders header', () => {
   const heading = screen.getByRole('heading', { name: /header/i });
 
   expect(alert).toMatchSnapshot();
-  expect(heading).toBeDefined();
+  expect(heading).toBeInTheDocument();
 });
 
 test('uses the header as an accessibility label for the alert', () => {
@@ -99,7 +99,7 @@ test('renders close button', () => {
   const button = screen.getByRole('button');
 
   expect(alert).toMatchSnapshot();
-  expect(button).toBeDefined();
+  expect(button).toBeInTheDocument();
 });
 
 test('trigger onClose', async () => {

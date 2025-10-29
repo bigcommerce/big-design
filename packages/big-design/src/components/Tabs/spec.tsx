@@ -120,8 +120,8 @@ test('passes the ariaControls prop to the tabs', () => {
 
   const tabs = screen.getAllByRole('tab');
 
-  expect(tabs[0].getAttribute('aria-controls')).toBe('content1');
-  expect(tabs[1].getAttribute('aria-controls')).toBe('content2');
+  expect(tabs[0]).toHaveAttribute('aria-controls', 'content1');
+  expect(tabs[1]).toHaveAttribute('aria-controls', 'content2');
 });
 
 test('active tab has aria-selected', () => {
@@ -129,8 +129,8 @@ test('active tab has aria-selected', () => {
 
   const tabs = screen.getAllByRole('tab');
 
-  expect(tabs[0].getAttribute('aria-selected')).toBe('true');
-  expect(tabs[1].getAttribute('aria-selected')).toBe('false');
+  expect(tabs[0]).toHaveAttribute('aria-selected', 'true');
+  expect(tabs[1]).toHaveAttribute('aria-selected', 'false');
 });
 
 test('shows a warning if ariaControls is missing or fallback id does not exist', () => {

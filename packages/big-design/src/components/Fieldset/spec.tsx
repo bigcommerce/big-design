@@ -27,7 +27,7 @@ test('renders description', () => {
   const descriptionText = 'description text';
   const { queryByText } = render(<Fieldset description={descriptionText} />);
 
-  expect(queryByText(descriptionText)).toBeInTheDocument();
+  expect(getByText(descriptionText)).toBeInTheDocument();
 });
 
 test('accepts a Legend Component', () => {
@@ -42,7 +42,7 @@ test('accepts a Legend Component', () => {
 
   const { queryByTestId } = render(<Fieldset legend={CustomLegend} />);
 
-  expect(queryByTestId('test')).toBeInTheDocument();
+  expect(getByTestId('test')).toBeInTheDocument();
 });
 
 test('does not accept non-Legend Components', () => {
@@ -80,7 +80,7 @@ test('accepts a Description Component', () => {
 
   const { queryByTestId } = render(<Fieldset description={CustomDescription} />);
 
-  expect(queryByTestId('test')).toBeInTheDocument();
+  expect(getByTestId('test')).toBeInTheDocument();
 });
 
 test('does not accept non-Description Components', () => {

@@ -393,7 +393,7 @@ test('allows to add new items', async () => {
 
   const inStock2 = await screen.findByText('In stock');
   const notInStock2 = await screen.findByText('Not in stock');
-  const onSale2 = await screen.queryByText('On sale');
+  const onSale2 = screen.queryByText('On sale');
 
   expect(inStock2).toBeInTheDocument();
   expect(notInStock2).toBeInTheDocument();
@@ -433,8 +433,8 @@ test('allows to remove items', async () => {
   rerender(<TestComponent activePills={[]} items={newItems} onPillClick={onClick} />);
 
   const inStock2 = await screen.findByText('In stock');
-  const notInStock2 = await screen.queryByText('Not in stock');
-  const onSale2 = await screen.queryByText('On sale');
+  const notInStock2 = screen.queryByText('Not in stock');
+  const onSale2 = screen.queryByText('On sale');
 
   expect(inStock2).toBeInTheDocument();
   expect(notInStock2).not.toBeInTheDocument();
@@ -481,7 +481,7 @@ test('allows to swap items keeping the same length', async () => {
 
   const inStock2 = await screen.findByText('In stock');
   const notInStock2 = await screen.findByText('Not in stock');
-  const onSale2 = await screen.queryByText('On sale');
+  const onSale2 = screen.queryByText('On sale');
   const featured2 = await screen.findByText('Featured');
 
   expect(inStock2).toBeInTheDocument();
@@ -528,7 +528,7 @@ test('sends the right id to the handler after swapping', async () => {
 test('it does not render when provided an empty list of items', () => {
   const { container } = render(<PillTabs activePills={[]} items={[]} onPillClick={jest.fn()} />);
 
-  expect(container.firstChild).toBeNull();
+  expect(container).toBeEmptyDOMElement();
 });
 
 describe('when using dropdown items', () => {

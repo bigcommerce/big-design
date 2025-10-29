@@ -53,12 +53,12 @@ test('renders a header and action', () => {
   const header = getByRole('heading');
 
   expect(header).toBeInTheDocument();
-  expect(header.textContent).toBe('Test Header');
+  expect(header).toHaveTextContent('Test Header');
 
   const actionButton = getByRole('button');
 
   expect(actionButton).toBeInTheDocument();
-  expect(actionButton.textContent).toBe('Test Action');
+  expect(actionButton).toHaveTextContent('Test Action');
 });
 
 test('renders a badge and header', () => {

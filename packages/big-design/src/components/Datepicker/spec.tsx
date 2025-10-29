@@ -56,12 +56,10 @@ test('no error when input date value manually', async () => {
 
   const input = await screen.findByRole('textbox');
 
-  await waitFor(() => {
-    fireEvent.input(input, {
-      target: {
-        value: dateString.toDateString(),
-      },
-    });
+  fireEvent.input(input, {
+    target: {
+      value: dateString.toDateString(),
+    },
   });
 
   expect(changeFunction).toHaveBeenCalled();
