@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { useInView } from 'react-intersection-observer';
@@ -26,7 +26,6 @@ describe('AnchorNav Component', () => {
   });
 
   afterEach(() => {
-    cleanup();
     history.replaceState(null, '', '#');
     jest.clearAllMocks();
     jest.useRealTimers();

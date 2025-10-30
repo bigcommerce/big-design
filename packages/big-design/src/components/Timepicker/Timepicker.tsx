@@ -5,7 +5,7 @@ import { Select } from '../Select';
 
 interface Props {
   error?: React.ReactNode;
-  label?: React.ReactChild;
+  label?: React.ReactNode;
   locale?: string;
   onTimeChange(date: string): void;
 }

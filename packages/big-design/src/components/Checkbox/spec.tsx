@@ -171,19 +171,19 @@ test('accepts valid CheckboxLabel component', () => {
   const testId = 'test';
   const label = <CheckboxLabel data-testid={testId}>Label</CheckboxLabel>;
 
-  const { queryByTestId } = render(<Checkbox label={label} />);
+  render(<Checkbox label={label} />);
 
-  expect(getByTestId(testId)).toBeInTheDocument();
+  expect(screen.getByTestId(testId)).toBeInTheDocument();
 });
 
 test('does not accept invalid label component', () => {
   const testId = 'test';
   const label = <div data-testid={testId}>Label</div>;
 
-  const { queryByTestId } = render(<Checkbox label={label} />);
+  render(<Checkbox label={label} />);
 
   expect(warning).toHaveBeenCalledTimes(1);
-  expect(queryByTestId(testId)).not.toBeInTheDocument();
+  expect(screen.queryByTestId(testId)).not.toBeInTheDocument();
 });
 
 test('forwards ref', () => {

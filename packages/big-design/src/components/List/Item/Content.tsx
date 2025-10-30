@@ -43,7 +43,7 @@ export const Content = memo(({ item, isHighlighted }: ContentProps) => {
   );
 
   const wrapInLink = useCallback(
-    (linkItem: DropdownLinkItem, content: React.ReactChild) => (
+    (linkItem: DropdownLinkItem, content: React.ReactNode) => (
       <StyledLink href={linkItem.url} tabIndex={-1} target={linkItem.target}>
         {content}
       </StyledLink>

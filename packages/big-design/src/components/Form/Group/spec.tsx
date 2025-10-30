@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 import 'jest-styled-components';
 
@@ -31,7 +31,7 @@ test('renders group and input with error', () => {
     </FormGroup>,
   );
 
-  expect(getByText(error)).toBeInTheDocument();
+  expect(screen.getByText(error)).toBeInTheDocument();
 });
 
 test('renders group and nested input with error', () => {
@@ -44,7 +44,7 @@ test('renders group and nested input with error', () => {
     </FormGroup>,
   );
 
-  expect(getByText(error)).toBeInTheDocument();
+  expect(screen.getByText(error)).toBeInTheDocument();
 });
 
 test('renders group with error prop', () => {
@@ -55,7 +55,7 @@ test('renders group with error prop', () => {
     </FormGroup>,
   );
 
-  expect(getByText(error)).toBeInTheDocument();
+  expect(screen.getByText(error)).toBeInTheDocument();
 });
 
 test('renders error prop with an array of errors', () => {
@@ -66,7 +66,7 @@ test('renders error prop with an array of errors', () => {
     </FormGroup>,
   );
 
-  errors.forEach((error) => expect(getByText(error)).toBeInTheDocument());
+  errors.forEach((error) => expect(screen.getByText(error)).toBeInTheDocument());
 });
 
 test('renders error with FormControlError element', () => {
@@ -78,7 +78,7 @@ test('renders error with FormControlError element', () => {
     </FormGroup>,
   );
 
-  expect(getByTestId(testId)).toBeInTheDocument();
+  expect(screen.getByTestId(testId)).toBeInTheDocument();
 });
 
 test('renders error prop with an array of FormControlError elements', () => {
@@ -94,7 +94,7 @@ test('renders error prop with an array of FormControlError elements', () => {
     </FormGroup>,
   );
 
-  testIds.forEach((id) => expect(getByTestId(id)).toBeInTheDocument());
+  testIds.forEach((id) => expect(screen.getByTestId(id)).toBeInTheDocument());
 });
 
 test('does not render invalid errors', () => {
@@ -112,5 +112,5 @@ test('does not render invalid errors', () => {
     </FormGroup>,
   );
 
-  expect(queryByTestId(testId)).not.toBeInTheDocument();
+  expect(screen.queryByTestId(testId)).not.toBeInTheDocument();
 });

@@ -92,14 +92,13 @@ export const useAutoFilling = <T extends WorksheetItem>(cell: Cell<T>) => {
   const onFillFullColumn = useCallback(() => {
     const cells: Array<Cell<T>> = rows.reduce(
       (accum, row, idx) =>
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         idx > cell.rowIndex && !disabledRows.includes(row.id)
           ? [
               ...accum,
               {
                 ...cell,
                 rowIndex: idx,
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+
                 value: row[cell.hash],
               },
             ]
@@ -129,7 +128,7 @@ export const useAutoFilling = <T extends WorksheetItem>(cell: Cell<T>) => {
             rowIndex: i,
             hash,
             type,
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+
             value: rows[i][firstSelectedCell.hash],
           });
         }
@@ -141,14 +140,13 @@ export const useAutoFilling = <T extends WorksheetItem>(cell: Cell<T>) => {
 
   useEffect(() => {
     if (!isBlockedFillOut && !isAutoFillActive && selectedCells.length > 1) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       const selectedRowsIds = selectedCells.map(({ rowIndex }) => rows[rowIndex].id);
       const availableCells = getAvailableCells(selectedRowsIds);
       const sourceRow = rows[selectedCells[0].rowIndex];
 
       updateItems(
         availableCells,
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+
         availableCells.map(({ hash }) => sourceRow[hash]),
       );
 

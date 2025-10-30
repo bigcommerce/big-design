@@ -15,9 +15,9 @@ import { useInputErrors } from '../Form/useInputErrors';
 import { StyledTextarea, StyledTextareaWrapper } from './styled';
 
 export interface Props {
-  description?: React.ReactChild;
+  description?: React.ReactNode;
   error?: React.ReactNode | React.ReactNode[];
-  label?: React.ReactChild;
+  label?: React.ReactNode;
   labelId?: string;
   rows?: 1 | 2 | 3 | 4 | 5 | 6 | 7;
   resize?: boolean;
