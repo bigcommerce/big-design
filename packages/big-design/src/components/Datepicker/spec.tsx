@@ -1,6 +1,6 @@
 import 'jest-styled-components';
 
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import React, { createRef } from 'react';
 import { default as ReactDatePicker } from 'react-datepicker';

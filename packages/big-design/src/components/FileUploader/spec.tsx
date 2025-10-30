@@ -1,5 +1,5 @@
 import { theme } from '@bigcommerce/big-design-theme';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import React from 'react';
 
@@ -28,6 +28,10 @@ describe('FileUploader', () => {
   it('renders FileUploader', async () => {
     // Smoke test - just checking component renders without crashing
     render(<FileUploader files={[]} label="Upload your images" onFilesChange={jest.fn()} />);
+
+    await waitFor(() => {
+      expect(screen.getByText('Upload your images')).toBeInTheDocument();
+    });
   });
 
   it('renders with label', async () => {
@@ -54,6 +58,10 @@ describe('FileUploader', () => {
 
     // Smoke test - invalid labels should not render
     render(<FileUploader files={[]} label={label} onFilesChange={jest.fn()} />);
+
+    await waitFor(() => {
+      expect(screen.queryByTestId(testId)).not.toBeInTheDocument();
+    });
   });
 
   it('renders with description', async () => {
@@ -69,6 +77,10 @@ describe('FileUploader', () => {
         onFilesChange={jest.fn()}
       />,
     );
+
+    await waitFor(() => {
+      expect(screen.queryByTestId(testId)).not.toBeInTheDocument();
+    });
   });
 
   it('renders with custom description', async () => {
@@ -81,6 +93,12 @@ describe('FileUploader', () => {
         onFilesChange={jest.fn()}
       />,
     );
+
+    await waitFor(() => {
+      expect(
+        screen.getByText(/file types: jpg, gif, png. recommended size: 250x100px./i),
+      ).toBeInTheDocument();
+    });
   });
 
   it('renders with dropZoneLabel', async () => {
@@ -433,7 +451,13 @@ describe('FileUploader', () => {
 
   it('renders without label when label is not provided', async () => {
     // Smoke test - renders without label
-    render(<FileUploader files={[]} onFilesChange={jest.fn()} />);
+    const { container } = render(<FileUploader files={[]} onFilesChange={jest.fn()} />);
+
+    await waitFor(() => {
+      const label = container.querySelector('label');
+
+      expect(label).not.toBeInTheDocument();
+    });
   });
 
   it('renders with valid FormControlDescription component', async () => {
@@ -448,6 +472,10 @@ describe('FileUploader', () => {
         onFilesChange={jest.fn()}
       />,
     );
+
+    await waitFor(() => {
+      expect(screen.getByText('Custom description')).toBeInTheDocument();
+    });
   });
 
   it('calls action onItemClick with file and index', async () => {

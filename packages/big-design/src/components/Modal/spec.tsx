@@ -10,6 +10,7 @@ import { Modal } from './Modal';
 
 test('render open modal', () => {
   const text = 'This is a modal';
+
   render(<Modal isOpen={true}>{text}</Modal>);
 
   expect(document.body).toMatchSnapshot();
