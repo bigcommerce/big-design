@@ -95,9 +95,10 @@ test('title button icon toggles on title click', async () => {
 test('panel has id', () => {
   render(CollapseWithStaticTitleMock);
 
-  const panelId = screen.getByRole('region', { hidden: true }).id;
+  const panel = screen.getByRole('region', { hidden: true });
 
-  expect(panelId).toBeInTheDocument();
+  expect(panel.id).toBeDefined();
+  expect(panel.id).not.toBe('');
 });
 
 test('panel has aria-labelledby attribute', () => {

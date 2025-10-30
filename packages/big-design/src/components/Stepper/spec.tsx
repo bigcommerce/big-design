@@ -29,10 +29,11 @@ test('renders a passed step', () => {
 
 test('passed in state works as expected', () => {
   render(<Stepper currentStep={1} steps={['Test1', 'Test2', 'Test3']} />);
+
   const lights: ChildNode[] = [];
   const dashes: ChildNode[] = [];
 
-  queryByRole('progressbar')?.childNodes.forEach((step) => {
+  screen.queryByRole('progressbar')?.childNodes.forEach((step) => {
     lights.push(step.childNodes[0]);
     dashes.push(step.childNodes[1]);
   });

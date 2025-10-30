@@ -75,6 +75,7 @@ test('respects provided labelId', async () => {
 
 test('renders a description', () => {
   const descriptionText = 'This is a description';
+
   render(<Input description={descriptionText} />);
 
   expect(screen.getByText(descriptionText)).toBeInTheDocument();

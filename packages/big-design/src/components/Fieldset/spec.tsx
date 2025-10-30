@@ -25,6 +25,7 @@ test('renders legend', () => {
 
 test('renders description', () => {
   const descriptionText = 'description text';
+
   render(<Fieldset description={descriptionText} />);
 
   expect(screen.getByText(descriptionText)).toBeInTheDocument();

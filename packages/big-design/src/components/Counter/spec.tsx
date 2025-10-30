@@ -95,7 +95,8 @@ test('create unique ids if not provided', async () => {
     </>,
   );
 
-  const [item1, item2] = await screen.findByLabelText<HTMLInputElement>('Test Label');
+  const item1 = await screen.findByTestId<HTMLInputElement>('item1');
+  const item2 = await screen.findByTestId<HTMLInputElement>('item2');
 
   expect(item1).toBeInTheDocument();
   expect(item2).toBeInTheDocument();
