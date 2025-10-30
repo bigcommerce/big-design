@@ -89,7 +89,7 @@ test('renders header', () => {
   );
 
   expect(container.firstChild).toMatchSnapshot();
-  expect(getByText('Header')).toBeInTheDocument();
+  expect(screen.getByText('Header')).toBeInTheDocument();
 });
 
 test('renders close button', () => {
@@ -98,7 +98,7 @@ test('renders close button', () => {
   );
 
   expect(container.firstChild).toMatchSnapshot();
-  expect(getByRole('button')).toBeInTheDocument();
+  expect(screen.getByRole('button')).toBeInTheDocument();
 });
 
 test('trigger onClose', async () => {

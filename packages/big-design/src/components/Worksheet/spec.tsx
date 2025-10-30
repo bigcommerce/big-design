@@ -714,7 +714,7 @@ describe('notation', () => {
     fireEvent.change(input, { target: { value: 'Shoes Name One Edit' } });
     fireEvent.keyDown(input, { key: 'Enter' });
 
-    expect(getByRole('note')).toBeInTheDocument();
+    expect(screen.getByRole('note')).toBeInTheDocument();
   });
 });
 
@@ -943,7 +943,7 @@ describe('keyboard navigation', () => {
     await userEvent.click(cell);
     await userEvent.keyboard('{capslock}');
 
-    expect(getByText('Shoes Name Three')).toBeInTheDocument();
+    expect(screen.getByText('Shoes Name Three')).toBeInTheDocument();
     expect(queryByDisplayValue('capslock')).not.toBeInTheDocument();
   });
 

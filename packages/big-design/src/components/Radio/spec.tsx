@@ -116,19 +116,19 @@ test('accepts valid RadioLabel component', () => {
   const testId = 'test';
   const label = <RadioLabel data-testid={testId}>Label</RadioLabel>;
 
-  const { queryByTestId } = render(<Radio label={label} />);
+  render(<Radio label={label} />);
 
-  expect(getByTestId(testId)).toBeInTheDocument();
+  expect(screen.getByTestId(testId)).toBeInTheDocument();
 });
 
 test('does not accept invalid label component', () => {
   const testId = 'test';
   const label = <div data-testid={testId}>Label</div>;
 
-  const { queryByTestId } = render(<Radio label={label} />);
+  render(<Radio label={label} />);
 
   expect(warning).toHaveBeenCalledTimes(1);
-  expect(queryByTestId(testId)).not.toBeInTheDocument();
+  expect(screen.queryByTestId(testId)).not.toBeInTheDocument();
 });
 
 test('forwards ref', () => {

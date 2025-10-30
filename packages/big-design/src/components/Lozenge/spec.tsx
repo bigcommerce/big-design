@@ -18,7 +18,7 @@ test('render default Lozenge', () => {
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.success20}`);
   expect(container.querySelector('svg')).toBeInTheDocument();
   expect(container.firstChild?.nodeName).toBe('DIV');
-  expect(getByText('Lozenge')).toBeInTheDocument();
+  expect(screen.getByText('Lozenge')).toBeInTheDocument();
 });
 
 test('StyledLozenge renders with correct styles', () => {
@@ -43,7 +43,7 @@ test('render alpha Lozenge', () => {
   expect(container.firstChild).toHaveStyle(`color: ${theme.colors.secondary70}`);
   expect(container.querySelector('svg')).toBeInTheDocument();
   expect(container.firstChild?.nodeName).toBe('DIV');
-  expect(getByText('Alpha')).toBeInTheDocument();
+  expect(screen.getByText('Alpha')).toBeInTheDocument();
 });
 
 test('render beta Lozenge', () => {
@@ -54,7 +54,7 @@ test('render beta Lozenge', () => {
   expect(container.firstChild).toHaveStyle(`color: ${theme.colors.primary50}`);
   expect(container.querySelector('svg')).toBeInTheDocument();
   expect(container.firstChild?.nodeName).toBe('DIV');
-  expect(getByText('Beta')).toBeInTheDocument();
+  expect(screen.getByText('Beta')).toBeInTheDocument();
 });
 
 test('render deprecated Lozenge', () => {
@@ -65,7 +65,7 @@ test('render deprecated Lozenge', () => {
   expect(container.firstChild).toHaveStyle(`color: ${theme.colors.danger70}`);
   expect(container.querySelector('svg')).toBeInTheDocument();
   expect(container.firstChild?.nodeName).toBe('DIV');
-  expect(getByText('Deprecated')).toBeInTheDocument();
+  expect(screen.getByText('Deprecated')).toBeInTheDocument();
 });
 
 test('render legacy Lozenge', () => {
@@ -76,7 +76,7 @@ test('render legacy Lozenge', () => {
   expect(container.firstChild).toHaveStyle(`color: ${theme.colors.secondary70}`);
   expect(container.querySelector('svg')).toBeInTheDocument();
   expect(container.firstChild?.nodeName).toBe('DIV');
-  expect(getByText('Legacy')).toBeInTheDocument();
+  expect(screen.getByText('Legacy')).toBeInTheDocument();
 });
 
 test('render new Lozenge', () => {
@@ -87,7 +87,7 @@ test('render new Lozenge', () => {
   expect(container.firstChild).toHaveStyle(`color: ${theme.colors.success70}`);
   expect(container.querySelector('svg')).toBeInTheDocument();
   expect(container.firstChild?.nodeName).toBe('DIV');
-  expect(getByText('New')).toBeInTheDocument();
+  expect(screen.getByText('New')).toBeInTheDocument();
 });
 
 test('render Lozenge with tooltip', async () => {
@@ -113,7 +113,7 @@ test('render Lozenge as button (popover variant)', () => {
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild?.nodeName).toBe('BUTTON');
-  expect(getByText('Popover')).toBeInTheDocument();
+  expect(screen.getByText('Popover')).toBeInTheDocument();
   expect(container.querySelector('svg')).toBeInTheDocument();
 });
 

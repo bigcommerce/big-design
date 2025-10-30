@@ -1465,7 +1465,7 @@ describe('sortable', () => {
       />,
     );
 
-    expect(getByTestId('asc-icon')).toBeInTheDocument();
+    expect(screen.getByTestId('asc-icon')).toBeInTheDocument();
   });
 
   test('calls onSort when pressing a sortable header', () => {

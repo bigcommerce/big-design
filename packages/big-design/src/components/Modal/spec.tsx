@@ -10,10 +10,10 @@ import { Modal } from './Modal';
 
 test('render open modal', () => {
   const text = 'This is a modal';
-  const { queryByText } = render(<Modal isOpen={true}>{text}</Modal>);
+  render(<Modal isOpen={true}>{text}</Modal>);
 
   expect(document.body).toMatchSnapshot();
-  expect(getByText(text)).toBeInTheDocument();
+  expect(screen.getByText(text)).toBeInTheDocument();
 });
 
 test('render open modal without backdrop', () => {
@@ -25,27 +25,27 @@ test('render open modal without backdrop', () => {
   );
 
   expect(document.body).toMatchSnapshot();
-  expect(getByText(text)).toBeInTheDocument();
+  expect(screen.getByText(text)).toBeInTheDocument();
 });
 
 test('render closed modal', () => {
   const text = 'This is a modal';
 
-  const { queryByText } = render(<Modal isOpen={false}>{text}</Modal>);
+  render(<Modal isOpen={false}>{text}</Modal>);
 
   expect(document.body).toMatchSnapshot();
-  expect(queryByText(text)).not.toBeInTheDocument();
+  expect(screen.queryByText(text)).not.toBeInTheDocument();
 });
 
 test('open/hides when props changes', () => {
   const text = 'This is a modal';
   const { queryByText, rerender } = render(<Modal isOpen={false}>{text}</Modal>);
 
-  expect(queryByText(text)).not.toBeInTheDocument();
+  expect(screen.queryByText(text)).not.toBeInTheDocument();
 
   rerender(<Modal isOpen={true}>{text}</Modal>);
 
-  expect(getByText(text)).toBeInTheDocument();
+  expect(screen.getByText(text)).toBeInTheDocument();
 });
 
 test('triggers onClose when pressing esc', async () => {
@@ -142,7 +142,7 @@ test('render close button on modal variation', () => {
     </Modal>,
   );
 
-  expect(getByTitle('Close')).toBeInTheDocument();
+  expect(screen.getByTitle('Close')).toBeInTheDocument();
 });
 
 test('do not render close button on dialog variation', () => {
@@ -155,7 +155,7 @@ test('do not render close button on dialog variation', () => {
     </Modal>,
   );
 
-  expect(getByText(text)).toBeInTheDocument();
+  expect(screen.getByText(text)).toBeInTheDocument();
   expect(queryByTitle('Close')).not.toBeInTheDocument();
 });
 
@@ -169,7 +169,7 @@ test('do not pull focus to open modal that is rerendered', async () => {
   );
 
   // Modal not opened
-  expect(queryByText(text)).not.toBeInTheDocument();
+  expect(screen.queryByText(text)).not.toBeInTheDocument();
 
   // Modal Opened
   rerender(
@@ -180,9 +180,9 @@ test('do not pull focus to open modal that is rerendered', async () => {
   );
 
   // Expect Modal to have focus
-  expect(getByText(text)).toBeInTheDocument();
+  expect(screen.getByText(text)).toBeInTheDocument();
 
-  await waitFor(() => expect(queryByRole('dialog')).toHaveFocus());
+  await waitFor(() => expect(screen.queryByRole('dialog')).toHaveFocus());
 
   const input = document.getElementById('focusTest');
 
@@ -202,7 +202,7 @@ test('do not pull focus to open modal that is rerendered', async () => {
 
     // Expect input to still have focus and not modal
     expect(input).toHaveFocus();
-    expect(queryByRole('dialog')).not.toHaveFocus();
+    expect(screen.queryByRole('dialog')).not.toHaveFocus();
   }
 });
 
@@ -223,7 +223,7 @@ test('body has scroll locked on modal open', () => {
 test('renders header', () => {
   const { getByText } = render(<Modal header="Header Title" isOpen={true} />);
 
-  expect(getByText('Header Title')).toBeInTheDocument();
+  expect(screen.getByText('Header Title')).toBeInTheDocument();
 });
 
 test('header ignores components', () => {

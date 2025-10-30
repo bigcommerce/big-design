@@ -24,7 +24,7 @@ import {
 interface Props {
   hiddenLabel?: boolean;
   isIndeterminate?: boolean;
-  label: React.ReactChild;
+  label: React.ReactNode;
   description?: CheckboxDescription | string;
   badge?: BadgeProps;
 }

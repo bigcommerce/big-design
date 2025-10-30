@@ -1,6 +1,6 @@
 import 'jest-styled-components';
 
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import React, { createRef } from 'react';
 import { default as ReactDatePicker } from 'react-datepicker';
@@ -28,7 +28,7 @@ test('renders select label', () => {
     <Datepicker data-testid="datepicker" label="test" onDateChange={jest.fn()} />,
   );
 
-  expect(getByText('test')).toBeInTheDocument();
+  expect(screen.getByText('test')).toBeInTheDocument();
 });
 
 test('calls onDateChange function when a date cell is clicked', async () => {
@@ -73,7 +73,7 @@ test('renders an error if one is provided', () => {
     </FormGroup>,
   );
 
-  expect(getByText('Required')).toBeInTheDocument();
+  expect(screen.getByText('Required')).toBeInTheDocument();
 });
 
 test('appends * text to label if select is required', () => {

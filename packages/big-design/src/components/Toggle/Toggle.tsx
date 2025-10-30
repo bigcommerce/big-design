@@ -30,7 +30,7 @@ export interface ToggleProps<T> {
   id?: string;
   value: T;
   items: Array<ToggleItemType<T>>;
-  label?: React.ReactChild;
+  label?: React.ReactNode;
   labelId?: string;
   disabled?: boolean;
   onChange(id: T): void;

@@ -184,7 +184,7 @@ test('forwards headerId to heading', () => {
     </Panel>,
   );
 
-  expect(getByText('Test Header')).toHaveAttribute('id', 'test-header');
+  expect(screen.getByText('Test Header')).toHaveAttribute('id', 'test-header');
 });
 
 test('applies the right border radius values', async () => {

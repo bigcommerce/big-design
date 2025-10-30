@@ -140,7 +140,7 @@ export const useKeyEvents = () => {
                   {
                     ...lastSelectedCell,
                     rowIndex: lastSelectedCell.rowIndex + 1,
-                    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+
                     value: nextRow[lastSelectedCell.hash],
                   },
                 ]);
