@@ -84,16 +84,14 @@ test('renders with external link', async () => {
 });
 
 test('renders header', () => {
-  const { queryByText, container } = render(
-    <InlineMessage header="Header" messages={[{ text: 'Success' }]} />,
-  );
+  const { container } = render(<InlineMessage header="Header" messages={[{ text: 'Success' }]} />);
 
   expect(container.firstChild).toMatchSnapshot();
   expect(screen.getByText('Header')).toBeInTheDocument();
 });
 
 test('renders close button', () => {
-  const { queryByRole, container } = render(
+  const { container } = render(
     <InlineMessage messages={[{ text: 'Success' }]} onClose={() => null} />,
   );
 

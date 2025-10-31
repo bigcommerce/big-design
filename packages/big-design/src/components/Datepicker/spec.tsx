@@ -24,9 +24,7 @@ test('should use the passed in ref object if provided', async () => {
 });
 
 test('renders select label', () => {
-  const { getByText } = render(
-    <Datepicker data-testid="datepicker" label="test" onDateChange={jest.fn()} />,
-  );
+  render(<Datepicker data-testid="datepicker" label="test" onDateChange={jest.fn()} />);
 
   expect(screen.getByText('test')).toBeInTheDocument();
 });
@@ -67,7 +65,7 @@ test('no error when input date value manually', async () => {
 });
 
 test('renders an error if one is provided', () => {
-  const { getByText } = render(
+  render(
     <FormGroup>
       <Datepicker error="Required" onDateChange={jest.fn()} />
     </FormGroup>,

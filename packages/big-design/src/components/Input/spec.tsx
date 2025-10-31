@@ -282,7 +282,7 @@ describe('error shows when an array of strings', () => {
 
   test('array with valid strings', () => {
     const errors = ['Error 0', 'Error 1'];
-    const { container, getByText } = render(
+    const { container } = render(
       <FormGroup>
         <Input error={errors} />
       </FormGroup>,

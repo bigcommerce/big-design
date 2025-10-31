@@ -1,5 +1,5 @@
 import { theme } from '@bigcommerce/big-design-theme';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import React from 'react';
 import 'jest-styled-components';
 

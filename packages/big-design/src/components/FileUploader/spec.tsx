@@ -3,7 +3,6 @@ import { render, screen, waitFor } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import React from 'react';
 
-import { warning } from '../../utils';
 import { FormControlLabel, FormGroup } from '../Form';
 
 import { defaultLocalization } from './constants';
@@ -502,6 +501,10 @@ describe('FileUploader', () => {
     const dropdownToggle = dropdownButtons.find((button) =>
       button.querySelector('[aria-hidden="true"]'),
     );
+
+    if (!dropdownToggle) {
+      throw new Error('Dropdown toggle not found');
+    }
 
     await userEvent.click(dropdownToggle);
 

@@ -1453,7 +1453,7 @@ describe('sortable', () => {
   });
 
   test('renders ASC header icon', () => {
-    const { getByTestId } = render(
+    render(
       <TableNext
         columns={columns}
         items={items}
