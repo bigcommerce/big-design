@@ -18,11 +18,11 @@ import { StyledIconWrapper, StyledInput, StyledInputContent, StyledInputWrapper 
 
 export interface Props {
   chips?: ChipProps[];
-  description?: React.ReactChild;
+  description?: React.ReactNode;
   error?: React.ReactNode | React.ReactNode[];
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
-  label?: React.ReactChild;
+  label?: React.ReactNode;
   labelId?: string;
 }
 

@@ -203,7 +203,7 @@ test('renders expanded nodes', () => {
   const node9 = screen.getByText('Test Node 9');
 
   expect(node5).toBeVisible();
-  expect(node6).toBeNull();
+  expect(node6).not.toBeInTheDocument();
   expect(node9).toBeVisible();
 });
 

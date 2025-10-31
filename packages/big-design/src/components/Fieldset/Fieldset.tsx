@@ -8,8 +8,8 @@ import { StyledFieldset } from './styled';
 
 export interface FieldsetProps extends ComponentPropsWithoutRef<'fieldset'> {
   children?: React.ReactNode;
-  legend?: React.ReactChild;
-  description?: React.ReactChild;
+  legend?: React.ReactNode;
+  description?: React.ReactNode;
 }
 
 export const Fieldset: React.FC<FieldsetProps> = memo(

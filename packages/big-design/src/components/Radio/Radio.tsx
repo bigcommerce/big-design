@@ -20,7 +20,7 @@ import {
 } from './styled';
 
 interface Props {
-  label: React.ReactChild;
+  label: React.ReactNode;
   description?: RadioDescription | string;
 }
 

@@ -420,7 +420,7 @@ export const MultiSelect = typedMemo(
                     if (!isOpen) {
                       openMenu();
                       // https://github.com/downshift-js/downshift/issues/734
-                      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions, @typescript-eslint/no-unsafe-member-access
+                      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
                       (event.nativeEvent as any).preventDownshiftDefault = true;
                     }
 

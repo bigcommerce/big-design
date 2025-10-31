@@ -23,6 +23,7 @@ const StyledLink = styled(Link)`
 
 export const SideNavLink: React.FC<Props> = ({ children, href, target }) => (
   <List.Item>
+    {/* eslint-disable-next-line @typescript-eslint/no-deprecated */}
     <NextLink href={href} legacyBehavior passHref target={target}>
       <StyledLink href="">{children}</StyledLink>
     </NextLink>

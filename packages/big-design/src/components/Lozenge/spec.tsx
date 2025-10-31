@@ -12,13 +12,13 @@ import { Lozenge } from './index';
 const noop = jest.fn();
 
 test('render default Lozenge', () => {
-  const { container, getByText } = render(<Lozenge label="Lozenge" />);
+  const { container } = render(<Lozenge label="Lozenge" />);
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.success20}`);
   expect(container.querySelector('svg')).toBeInTheDocument();
   expect(container.firstChild?.nodeName).toBe('DIV');
-  expect(getByText('Lozenge')).toBeInTheDocument();
+  expect(screen.getByText('Lozenge')).toBeInTheDocument();
 });
 
 test('StyledLozenge renders with correct styles', () => {
@@ -36,58 +36,58 @@ test('StyledLozengeButton renders with correct styles', () => {
 });
 
 test('render alpha Lozenge', () => {
-  const { container, getByText } = render(<Lozenge label="Alpha" variant="alpha" />);
+  const { container } = render(<Lozenge label="Alpha" variant="alpha" />);
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.warning20}`);
   expect(container.firstChild).toHaveStyle(`color: ${theme.colors.secondary70}`);
   expect(container.querySelector('svg')).toBeInTheDocument();
   expect(container.firstChild?.nodeName).toBe('DIV');
-  expect(getByText('Alpha')).toBeInTheDocument();
+  expect(screen.getByText('Alpha')).toBeInTheDocument();
 });
 
 test('render beta Lozenge', () => {
-  const { container, getByText } = render(<Lozenge label="Beta" variant="beta" />);
+  const { container } = render(<Lozenge label="Beta" variant="beta" />);
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.primary20}`);
   expect(container.firstChild).toHaveStyle(`color: ${theme.colors.primary50}`);
   expect(container.querySelector('svg')).toBeInTheDocument();
   expect(container.firstChild?.nodeName).toBe('DIV');
-  expect(getByText('Beta')).toBeInTheDocument();
+  expect(screen.getByText('Beta')).toBeInTheDocument();
 });
 
 test('render deprecated Lozenge', () => {
-  const { container, getByText } = render(<Lozenge label="Deprecated" variant="deprecated" />);
+  const { container } = render(<Lozenge label="Deprecated" variant="deprecated" />);
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.danger20}`);
   expect(container.firstChild).toHaveStyle(`color: ${theme.colors.danger70}`);
   expect(container.querySelector('svg')).toBeInTheDocument();
   expect(container.firstChild?.nodeName).toBe('DIV');
-  expect(getByText('Deprecated')).toBeInTheDocument();
+  expect(screen.getByText('Deprecated')).toBeInTheDocument();
 });
 
 test('render legacy Lozenge', () => {
-  const { container, getByText } = render(<Lozenge label="Legacy" variant="legacy" />);
+  const { container } = render(<Lozenge label="Legacy" variant="legacy" />);
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.secondary30}`);
   expect(container.firstChild).toHaveStyle(`color: ${theme.colors.secondary70}`);
   expect(container.querySelector('svg')).toBeInTheDocument();
   expect(container.firstChild?.nodeName).toBe('DIV');
-  expect(getByText('Legacy')).toBeInTheDocument();
+  expect(screen.getByText('Legacy')).toBeInTheDocument();
 });
 
 test('render new Lozenge', () => {
-  const { container, getByText } = render(<Lozenge label="New" variant="new" />);
+  const { container } = render(<Lozenge label="New" variant="new" />);
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.success20}`);
   expect(container.firstChild).toHaveStyle(`color: ${theme.colors.success70}`);
   expect(container.querySelector('svg')).toBeInTheDocument();
   expect(container.firstChild?.nodeName).toBe('DIV');
-  expect(getByText('New')).toBeInTheDocument();
+  expect(screen.getByText('New')).toBeInTheDocument();
 });
 
 test('render Lozenge with tooltip', async () => {
@@ -95,25 +95,25 @@ test('render Lozenge with tooltip', async () => {
 
   const lozenge = screen.getByText('Lozenge');
 
-  userEvent.hover(lozenge);
+  await userEvent.hover(lozenge);
 
   const tooltip = await screen.findByText('Tooltip content');
 
   expect(tooltip).toBeVisible();
 
-  userEvent.unhover(lozenge);
+  await userEvent.unhover(lozenge);
   await waitFor(() => expect(tooltip).not.toBeVisible());
 });
 
 test('render Lozenge as button (popover variant)', () => {
   const handleClick = jest.fn();
-  const { container, getByText } = render(
+  const { container } = render(
     <Lozenge isOpen={false} label="Popover" onClick={handleClick} variant="new" />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild?.nodeName).toBe('BUTTON');
-  expect(getByText('Popover')).toBeInTheDocument();
+  expect(screen.getByText('Popover')).toBeInTheDocument();
   expect(container.querySelector('svg')).toBeInTheDocument();
 });
 
@@ -181,13 +181,13 @@ test('Lozenge forwards refs for div and button renders', () => {
 test('Lozenge tooltip path only when tooltipContent is a non-empty string', async () => {
   const { rerender } = render(<Lozenge label="X" tooltipContent="Tip!" />);
 
-  userEvent.hover(screen.getByText('X'));
+  await userEvent.hover(screen.getByText('X'));
 
   expect(await screen.findByText('Tip!')).toBeVisible();
 
   // Empty string -> falls back to plain lozenge (no tooltip)
   rerender(<Lozenge label="Y" tooltipContent="" />);
-  userEvent.hover(screen.getByText('Y'));
+  await userEvent.hover(screen.getByText('Y'));
   await waitFor(() => {
     expect(screen.queryByText('Tip!')).not.toBeInTheDocument();
   });

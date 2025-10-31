@@ -294,26 +294,28 @@ describe('AlertsManager', () => {
   const alerts: KeyedAlertProps[] = [infoAlert, errorAlert, successAlert];
 
   test('renders alert', () => {
-    const { queryByRole } = render(<AlertsManager manager={alertsManager} />);
+    render(<AlertsManager manager={alertsManager} />);
 
-    expect(queryByRole('alert')).not.toBeInTheDocument();
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
 
     act(() => {
       alertsManager.add(successAlert);
     });
 
-    expect(queryByRole('alert')).toBeInTheDocument();
+    expect(screen.getByRole('alert')).toBeInTheDocument();
   });
 
   // May need to write this differently
   test('renders alerts in proper order', () => {
     let displayedAlert: AlertProps;
-    const { queryByRole, queryByText } = render(<AlertsManager manager={alertsManager} />);
+
+    render(<AlertsManager manager={alertsManager} />);
+
     const subscriber = jest.fn((alert) => (displayedAlert = alert));
 
     alertsManager.subscribe(subscriber);
 
-    expect(queryByRole('alert')).not.toBeInTheDocument();
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
 
     act(() => {
       alerts.forEach((alert, index) => {
@@ -327,55 +329,56 @@ describe('AlertsManager', () => {
       });
     });
 
-    expect(queryByText(errorAlert.messages[0].text)).toBeInTheDocument();
+    expect(screen.getByText(errorAlert.messages[0].text)).toBeInTheDocument();
 
     act(() => {
       alertsManager.remove(errorAlert.key);
     });
 
-    expect(queryByText(successAlert.messages[0].text)).toBeInTheDocument();
+    expect(screen.getByText(successAlert.messages[0].text)).toBeInTheDocument();
 
     act(() => {
       alertsManager.remove(successAlert.key);
     });
 
-    expect(queryByText(infoAlert.messages[0].text)).toBeInTheDocument();
+    expect(screen.getByText(infoAlert.messages[0].text)).toBeInTheDocument();
   });
 
   test('closes an alert with close button', async () => {
-    const { queryByRole } = render(<AlertsManager manager={alertsManager} />);
+    render(<AlertsManager manager={alertsManager} />);
 
-    expect(queryByRole('alert')).not.toBeInTheDocument();
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
 
     act(() => {
       alertsManager.add(successAlert);
     });
 
-    expect(queryByRole('alert')).toBeInTheDocument();
+    expect(screen.getByRole('alert')).toBeInTheDocument();
 
     const closeButton = await screen.findByRole('button');
 
-    expect(closeButton).toBeDefined();
+    expect(closeButton).toBeInTheDocument();
 
     act(() => {
       fireEvent.click(closeButton);
     });
 
-    expect(queryByRole('alert')).not.toBeInTheDocument();
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
   });
 
   test('closes an alert with alertsManager', () => {
     let key: string;
     let removedAlert: AlertProps | undefined;
-    const { queryByRole } = render(<AlertsManager manager={alertsManager} />);
 
-    expect(queryByRole('alert')).not.toBeInTheDocument();
+    render(<AlertsManager manager={alertsManager} />);
+
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
 
     act(() => {
       key = alertsManager.add(successAlert);
     });
 
-    expect(queryByRole('alert')).toBeInTheDocument();
+    expect(screen.getByRole('alert')).toBeInTheDocument();
 
     act(() => {
       removedAlert = alertsManager.remove(key);
@@ -383,16 +386,17 @@ describe('AlertsManager', () => {
       expect(removedAlert).toBeDefined();
     });
 
-    expect(queryByRole('alert')).not.toBeInTheDocument();
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
   });
 
   test('closes multiple alerts with close button', async () => {
     const subscriber = jest.fn();
-    const { queryByRole } = render(<AlertsManager manager={alertsManager} />);
+
+    render(<AlertsManager manager={alertsManager} />);
 
     alertsManager.subscribe(subscriber);
 
-    expect(queryByRole('alert')).not.toBeInTheDocument();
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
 
     act(() => {
       alerts.forEach((alert) => {
@@ -400,7 +404,7 @@ describe('AlertsManager', () => {
       });
     });
 
-    expect(queryByRole('alert')).toBeInTheDocument();
+    expect(screen.getByRole('alert')).toBeInTheDocument();
     expect(subscriber).toHaveBeenCalledTimes(alerts.length);
 
     for (let index = 0; index < alerts.length; index++) {
@@ -417,16 +421,17 @@ describe('AlertsManager', () => {
     }
 
     expect(subscriber).toHaveBeenCalledTimes(alerts.length * 2);
-    expect(queryByRole('alert')).not.toBeInTheDocument();
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
   });
 
   test('closes multiple alerts', () => {
     const subscriber = jest.fn();
-    const { queryByRole } = render(<AlertsManager manager={alertsManager} />);
+
+    render(<AlertsManager manager={alertsManager} />);
 
     alertsManager.subscribe(subscriber);
 
-    expect(queryByRole('alert')).not.toBeInTheDocument();
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
 
     act(() => {
       alerts.forEach((alert) => {
@@ -434,7 +439,7 @@ describe('AlertsManager', () => {
       });
     });
 
-    expect(queryByRole('alert')).toBeInTheDocument();
+    expect(screen.getByRole('alert')).toBeInTheDocument();
     expect(subscriber).toHaveBeenCalledTimes(alerts.length);
 
     alerts.forEach((alert, index) => {
@@ -446,6 +451,6 @@ describe('AlertsManager', () => {
     });
 
     expect(subscriber).toHaveBeenCalledTimes(alerts.length * 2);
-    expect(queryByRole('alert')).not.toBeInTheDocument();
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
   });
 });

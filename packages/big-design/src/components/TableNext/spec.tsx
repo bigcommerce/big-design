@@ -146,7 +146,7 @@ test('renders column with tooltip icon', () => {
     }),
   );
 
-  expect(getByTitle('Hover or focus for additional context.')).toBeTruthy();
+  expect(getByTitle('Hover or focus for additional context.')).toBeInTheDocument();
 });
 
 test('renders tooltip when hovering on icon', async () => {
@@ -917,7 +917,7 @@ describe('selectable', () => {
       );
 
       // Select All
-      expect(selectAllCheckbox.checked).toBe(false);
+      expect(selectAllCheckbox).not.toBeChecked();
 
       fireEvent.click(selectAllCheckbox);
 
@@ -950,7 +950,7 @@ describe('selectable', () => {
       const [selectAllCheckbox] = await screen.findAllByRole<HTMLInputElement>('checkbox');
 
       // Deselect all
-      expect(selectAllCheckbox.checked).toBe(true);
+      expect(selectAllCheckbox).toBeChecked();
 
       fireEvent.click(selectAllCheckbox);
 
@@ -982,7 +982,7 @@ describe('selectable', () => {
       const checkbox = await within(parentRow).findByRole<HTMLInputElement>('checkbox');
 
       // Select all
-      expect(checkbox.checked).toBe(false);
+      expect(checkbox).not.toBeChecked();
 
       await userEvent.click(checkbox);
 
@@ -1015,7 +1015,7 @@ describe('selectable', () => {
       }, {});
 
       // Select All
-      expect(selectAllCheckbox.checked).toBe(false);
+      expect(selectAllCheckbox).not.toBeChecked();
 
       fireEvent.click(selectAllCheckbox);
 
@@ -1085,7 +1085,7 @@ describe('selectable', () => {
       }, {});
 
       // Select All
-      expect(selectAllCheckbox.checked).toBe(false);
+      expect(selectAllCheckbox).not.toBeChecked();
 
       fireEvent.click(selectAllCheckbox);
 
@@ -1128,7 +1128,7 @@ describe('selectable', () => {
       const [selectAllCheckbox] = await screen.findAllByRole<HTMLInputElement>('checkbox');
 
       // Deselect all
-      expect(selectAllCheckbox.checked).toBe(true);
+      expect(selectAllCheckbox).toBeChecked();
 
       fireEvent.click(selectAllCheckbox);
 
@@ -1158,7 +1158,7 @@ describe('selectable', () => {
       const checkbox = await within(parentRow).findByRole<HTMLInputElement>('checkbox');
 
       // Select all
-      expect(checkbox.checked).toBe(false);
+      expect(checkbox).not.toBeChecked();
 
       await userEvent.click(checkbox);
 
@@ -1199,7 +1199,7 @@ describe('selectable', () => {
       const checkbox = await within(parentRow).findByRole<HTMLInputElement>('checkbox');
 
       // Deselect all
-      expect(checkbox.checked).toBe(true);
+      expect(checkbox).toBeChecked();
 
       await userEvent.click(checkbox);
 
@@ -1232,7 +1232,7 @@ describe('selectable', () => {
         smallSmithJournalChildrenRow,
       ).findByRole<HTMLInputElement>('checkbox');
 
-      expect(childRowCheckbox.checked).toBe(false);
+      expect(childRowCheckbox).not.toBeChecked();
 
       await userEvent.click(childRowCheckbox);
 
@@ -1268,7 +1268,7 @@ describe('selectable', () => {
         smallSmithJournalChildrenRow,
       ).findByRole<HTMLInputElement>('checkbox');
 
-      expect(childRowCheckbox.checked).toBe(true);
+      expect(childRowCheckbox).toBeChecked();
 
       await userEvent.click(childRowCheckbox);
 
@@ -1311,7 +1311,7 @@ describe('selectable', () => {
         smallSmithJournalChildrenRow,
       ).findByRole<HTMLInputElement>('checkbox');
 
-      expect(childRowCheckbox.checked).toBe(false);
+      expect(childRowCheckbox).not.toBeChecked();
 
       await userEvent.click(childRowCheckbox);
 
@@ -1355,7 +1355,7 @@ describe('selectable', () => {
       const checkbox = await within(parentRow).findByRole<HTMLInputElement>('checkbox');
 
       // Select all
-      expect(checkbox.checked).toBe(false);
+      expect(checkbox).not.toBeChecked();
 
       await userEvent.click(checkbox);
 
@@ -1422,7 +1422,7 @@ describe('selectable', () => {
       }, {});
 
       // Select All
-      expect(selectAllCheckbox.checked).toBe(false);
+      expect(selectAllCheckbox).not.toBeChecked();
 
       fireEvent.click(selectAllCheckbox);
 
@@ -1453,7 +1453,7 @@ describe('sortable', () => {
   });
 
   test('renders ASC header icon', () => {
-    const { getByTestId } = render(
+    render(
       <TableNext
         columns={columns}
         items={items}
@@ -1465,7 +1465,7 @@ describe('sortable', () => {
       />,
     );
 
-    expect(getByTestId('asc-icon')).toBeInTheDocument();
+    expect(screen.getByTestId('asc-icon')).toBeInTheDocument();
   });
 
   test('calls onSort when pressing a sortable header', () => {
@@ -1897,7 +1897,7 @@ test('renders localized descending label', async () => {
     />,
   );
 
-  const descSortIcon = await screen.queryByTitle('Orden descendiente');
+  const descSortIcon = screen.queryByTitle('Orden descendiente');
 
   expect(descSortIcon).toBeInTheDocument();
 });

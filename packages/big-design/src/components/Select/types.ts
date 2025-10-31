@@ -7,12 +7,12 @@ interface BaseSelect extends Omit<ComponentPropsWithoutRef<'input'>, 'children' 
   action?: SelectAction;
   autoComplete?: string;
   autoWidth?: boolean;
-  description?: React.ReactChild;
+  description?: React.ReactNode;
   disabled?: boolean;
   error?: InputProps['error'];
   filterable?: boolean;
   inputRef?: RefObject<HTMLInputElement> | React.Ref<HTMLInputElement>;
-  label?: React.ReactChild;
+  label?: React.ReactNode;
   labelId?: string;
   maxHeight?: number;
   name?: string;

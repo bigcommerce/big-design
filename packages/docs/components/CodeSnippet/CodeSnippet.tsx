@@ -29,7 +29,7 @@ function formatCode(code: string) {
   // Number of whitespaces to remove from each line
   const padding = lines[0].search(/\S|$/);
 
-  return lines.map((line) => line.substr(padding)).join('\n');
+  return lines.map((line) => line.slice(padding)).join('\n');
 }
 
 function getCode(children: React.ReactNode) {

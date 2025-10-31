@@ -185,8 +185,8 @@ export const createReducer =
         const items = sortKey
           ? sort(state.items, direction, sortKey)
           : sortFn
-          ? sort(state.items, direction, sortFn)
-          : state.items;
+            ? sort(state.items, direction, sortFn)
+            : state.items;
 
         const currentItems = getItems(items, state.isPaginationEnabled, {
           currentPage: 1,

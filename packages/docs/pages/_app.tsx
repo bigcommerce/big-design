@@ -61,6 +61,7 @@ const App = ({ Component, pageProps }) => {
           rel="stylesheet"
         />
       </Head>
+      {/* eslint-disable-next-line react/no-unknown-property */}
       <style global jsx>
         {`
           body {

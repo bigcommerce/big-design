@@ -193,7 +193,7 @@ test('select label has for attribute', async () => {
 
   const countries = await screen.findByText('Countries');
 
-  expect(countries.hasAttribute('for')).toBe(true);
+  expect(countries).toHaveAttribute('for');
 });
 
 test('renders select input', async () => {
@@ -232,7 +232,7 @@ test('select input has placeholder text', async () => {
 
   const placeholder = await screen.findByPlaceholderText('Choose country');
 
-  expect(placeholder).toBeDefined();
+  expect(placeholder).toBeInTheDocument();
 });
 
 test('select input has aria-controls', async () => {
@@ -244,7 +244,7 @@ test('select input has aria-controls', async () => {
 
   const listbox = await screen.findByRole('listbox');
 
-  expect(input.getAttribute('aria-controls')).toBe(listbox.id);
+  expect(input).toHaveAttribute('aria-controls', listbox.id);
 });
 
 test('select input has autocomplete=off', async () => {
@@ -252,7 +252,7 @@ test('select input has autocomplete=off', async () => {
 
   const select = await screen.findByTestId('multi-select');
 
-  expect(select.getAttribute('autocomplete')).toBe('off');
+  expect(select).toHaveAttribute('autocomplete', 'off');
 });
 
 test('renders input button', async () => {
@@ -378,18 +378,18 @@ test('up/down arrows should change select item selection', async () => {
 
   const options = await screen.findAllByRole('option');
 
-  expect(options[0].getAttribute('aria-selected')).toBe('true');
-  expect(input.getAttribute('aria-activedescendant')).toEqual(options[0].id);
+  expect(options[0]).toHaveAttribute('aria-selected', 'true');
+  expect(input).toHaveAttribute('aria-activedescendant', options[0].id);
 
   await userEvent.keyboard('{arrowdown}');
 
-  expect(options[1].getAttribute('aria-selected')).toBe('true');
-  expect(input.getAttribute('aria-activedescendant')).toEqual(options[1].id);
+  expect(options[1]).toHaveAttribute('aria-selected', 'true');
+  expect(input).toHaveAttribute('aria-activedescendant', options[1].id);
 
   await userEvent.keyboard(`{arrowup}`);
 
-  expect(options[0].getAttribute('aria-selected')).toBe('true');
-  expect(input.getAttribute('aria-activedescendant')).toEqual(options[0].id);
+  expect(options[0]).toHaveAttribute('aria-selected', 'true');
+  expect(input).toHaveAttribute('aria-activedescendant', options[0].id);
 });
 
 test('home should select first select item', async () => {
@@ -403,12 +403,12 @@ test('home should select first select item', async () => {
 
   await userEvent.keyboard('{arrowup}');
 
-  expect(options[5].getAttribute('aria-selected')).toBe('true');
+  expect(options[5]).toHaveAttribute('aria-selected', 'true');
 
   await userEvent.keyboard('{home}');
 
-  expect(options[0].getAttribute('aria-selected')).toBe('true');
-  expect(input.getAttribute('aria-activedescendant')).toEqual(options[0].id);
+  expect(options[0]).toHaveAttribute('aria-selected', 'true');
+  expect(input).toHaveAttribute('aria-activedescendant', options[0].id);
 });
 
 test('end should select last select item', async () => {
@@ -422,12 +422,12 @@ test('end should select last select item', async () => {
 
   await userEvent.keyboard('{arrowdown}');
 
-  expect(options[1].getAttribute('aria-selected')).toBe('true');
+  expect(options[1]).toHaveAttribute('aria-selected', 'true');
 
   await userEvent.keyboard('{end}');
 
-  expect(options[5].getAttribute('aria-selected')).toBe('true');
-  expect(input.getAttribute('aria-activedescendant')).toEqual(options[5].id);
+  expect(options[5]).toHaveAttribute('aria-selected', 'true');
+  expect(input).toHaveAttribute('aria-activedescendant', options[5].id);
 });
 
 test('enter should trigger onOptionsChange', async () => {
@@ -570,7 +570,7 @@ test('select should have a required attr if set as required', async () => {
 
   const inputs = await screen.findAllByLabelText('Countries *');
 
-  expect(inputs[0].getAttribute('required')).toBe('');
+  expect(inputs[0]).toBeRequired();
 });
 
 test('select should not have a required attr if not set as required', async () => {
@@ -591,7 +591,7 @@ test('select should not have a required attr if not set as required', async () =
 
   const inputs = await screen.findAllByLabelText('Countries');
 
-  expect(inputs[0].getAttribute('required')).toBeNull();
+  expect(inputs[0]).not.toBeRequired();
 });
 
 test('required attr should be removed when item is selected', async () => {
@@ -599,7 +599,7 @@ test('required attr should be removed when item is selected', async () => {
 
   const input = await screen.findByTestId('multi-select');
 
-  expect(input.getAttribute('required')).toBeNull();
+  expect(input).not.toBeRequired();
 });
 
 test('select should have a disabled attr if set as disabled', async () => {
@@ -621,7 +621,7 @@ test('select should have a disabled attr if set as disabled', async () => {
 
   const inputs = await screen.findAllByLabelText('Countries');
 
-  expect(inputs[0].getAttribute('disabled')).toBe('');
+  expect(inputs[0]).toBeDisabled();
 });
 
 test('select should not have a disabled attr if not set as disabled', async () => {
@@ -629,7 +629,7 @@ test('select should not have a disabled attr if not set as disabled', async () =
 
   const inputs = await screen.findAllByLabelText('Countries *');
 
-  expect(inputs[0].getAttribute('disabled')).toBeNull();
+  expect(inputs[0]).toBeEnabled();
 });
 
 test('appends * text to label if select is required', async () => {
@@ -700,7 +700,7 @@ test('should render a non filterable select', async () => {
 
   const inputs = await screen.findAllByLabelText('Countries');
 
-  expect(inputs[0].getAttribute('readonly')).toBe('');
+  expect(inputs[0]).toHaveAttribute('readonly', '');
 });
 
 test('should accept a maxHeight prop', async () => {
@@ -874,15 +874,15 @@ test('chips should be rendered', async () => {
   expect(await screen.findAllByText('Mexico')).toHaveLength(1);
 
   expect(
-    await screen.getByRole('button', {
+    screen.getByRole('button', {
       name: /remove united states/i,
     }),
-  ).toBeDefined();
+  ).toBeInTheDocument();
   expect(
-    await screen.getByRole('button', {
+    screen.getByRole('button', {
       name: /remove mexico/i,
     }),
-  ).toBeDefined();
+  ).toBeInTheDocument();
 });
 
 test('chips should be rendered without close button when MultiSelect is disabled', async () => {
@@ -892,16 +892,16 @@ test('chips should be rendered without close button when MultiSelect is disabled
   await screen.findAllByText('Mexico');
 
   expect(
-    await screen.queryByRole('button', {
+    screen.queryByRole('button', {
       name: /remove united states/i,
     }),
-  ).toBeNull();
+  ).not.toBeInTheDocument();
 
   expect(
-    await screen.queryByRole('button', {
+    screen.queryByRole('button', {
       name: /remove mexico/i,
     }),
-  ).toBeNull();
+  ).not.toBeInTheDocument();
 });
 
 test('options should allow icons', async () => {
@@ -967,17 +967,17 @@ test('group labels should be skipped when using keyboard to navigate options', a
   const options = await screen.findAllByRole('option');
 
   expect(options).toHaveLength(6);
-  expect(options[0].getAttribute('aria-selected')).toBe('true');
+  expect(options[0]).toHaveAttribute('aria-selected', 'true');
 
   await userEvent.keyboard('{arrowdown}');
 
-  expect(options[1].getAttribute('aria-selected')).toBe('true');
-  expect(input.getAttribute('aria-activedescendant')).toEqual(options[1].id);
+  expect(options[1]).toHaveAttribute('aria-selected', 'true');
+  expect(input).toHaveAttribute('aria-activedescendant', options[1].id);
 
   await userEvent.keyboard('{arrowdown}{arrowdown}');
 
-  expect(options[3].getAttribute('aria-selected')).toBe('true');
-  expect(input.getAttribute('aria-activedescendant')).toEqual(options[3].id);
+  expect(options[3]).toHaveAttribute('aria-selected', 'true');
+  expect(input).toHaveAttribute('aria-activedescendant', options[3].id);
 });
 
 test('group labels should still render when filtering options', async () => {
@@ -1006,8 +1006,8 @@ test('autoselects first matching option when filtering', async () => {
   const options = await screen.findAllByRole('option');
 
   expect(options).toHaveLength(2);
-  expect(options[0].getAttribute('aria-selected')).toBe('true');
-  expect(options[1].getAttribute('aria-selected')).toBe('false');
+  expect(options[0]).toHaveAttribute('aria-selected', 'true');
+  expect(options[1]).toHaveAttribute('aria-selected', 'false');
 });
 
 test('does not autoselect first matching option when it is disabled', async () => {
@@ -1020,8 +1020,8 @@ test('does not autoselect first matching option when it is disabled', async () =
   const options = await screen.findAllByRole('option');
 
   expect(options).toHaveLength(2);
-  expect(options[0].getAttribute('aria-selected')).toBe('false');
-  expect(options[1].getAttribute('aria-selected')).toBe('true');
+  expect(options[0]).toHaveAttribute('aria-selected', 'false');
+  expect(options[1]).toHaveAttribute('aria-selected', 'true');
 });
 
 test('after clearing the input value, first option is always selected', async () => {
@@ -1034,14 +1034,14 @@ test('after clearing the input value, first option is always selected', async ()
 
   const canadaOption = await screen.findByRole('option', { name: 'Canada' });
 
-  expect(canadaOption.getAttribute('aria-selected')).toBe('true');
+  expect(canadaOption).toHaveAttribute('aria-selected', 'true');
 
   await userEvent.clear(input);
 
   const options = await screen.findAllByRole('option');
 
   expect(options).toHaveLength(6);
-  expect(options[0].getAttribute('aria-selected')).toBe('true');
+  expect(options[0]).toHaveAttribute('aria-selected', 'true');
 });
 
 test('select option should supports description', async () => {

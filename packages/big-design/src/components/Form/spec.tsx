@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React, { createRef } from 'react';
 import 'jest-styled-components';
 
@@ -23,7 +23,7 @@ test('calls onSubmit', async () => {
 
   const form = await screen.findByRole('form');
 
-  await waitFor(() => fireEvent.submit(form));
+  fireEvent.submit(form);
 
   expect(onSubmit).toHaveBeenCalled();
 });

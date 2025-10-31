@@ -84,6 +84,7 @@ const InternalTextEditor = <T extends WorksheetItem>({
 
             if (blurEvent) {
               onBlur(
+                // eslint-disable-next-line @typescript-eslint/no-misused-spread
                 { ...blurEvent, target: { ...blurEvent.target, value: transformedValue } },
                 cell,
               );

@@ -10,7 +10,7 @@ export interface BoxProps
     DisplayProps,
     MarginProps,
     PaddingProps {
-  as?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
+  as?: keyof React.JSX.IntrinsicElements | React.ComponentType<any>;
   backgroundColor?: keyof Colors;
   shadow?: keyof Shadow;
   border?: keyof Border;

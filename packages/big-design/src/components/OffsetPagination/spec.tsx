@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import React from 'react';
 
@@ -159,7 +159,7 @@ test('trigger page decrease', async () => {
   const button = span?.parentNode ?? null;
 
   if (button) {
-    await waitFor(() => fireEvent.click(button));
+    fireEvent.click(button);
   }
 
   title = await screen.findByTitle('Previous page');
@@ -190,7 +190,7 @@ test('trigger page increase', async () => {
   const button = span?.parentNode ?? null;
 
   if (button) {
-    await waitFor(() => fireEvent.click(button));
+    fireEvent.click(button);
   }
 
   title = await screen.findByTitle('Next page');
