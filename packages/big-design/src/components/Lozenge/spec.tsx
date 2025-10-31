@@ -12,7 +12,7 @@ import { Lozenge } from './index';
 const noop = jest.fn();
 
 test('render default Lozenge', () => {
-  const { container, getByText } = render(<Lozenge label="Lozenge" />);
+  const { container } = render(<Lozenge label="Lozenge" />);
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.success20}`);
@@ -36,7 +36,7 @@ test('StyledLozengeButton renders with correct styles', () => {
 });
 
 test('render alpha Lozenge', () => {
-  const { container, getByText } = render(<Lozenge label="Alpha" variant="alpha" />);
+  const { container } = render(<Lozenge label="Alpha" variant="alpha" />);
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.warning20}`);
@@ -47,7 +47,7 @@ test('render alpha Lozenge', () => {
 });
 
 test('render beta Lozenge', () => {
-  const { container, getByText } = render(<Lozenge label="Beta" variant="beta" />);
+  const { container } = render(<Lozenge label="Beta" variant="beta" />);
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.primary20}`);
@@ -58,7 +58,7 @@ test('render beta Lozenge', () => {
 });
 
 test('render deprecated Lozenge', () => {
-  const { container, getByText } = render(<Lozenge label="Deprecated" variant="deprecated" />);
+  const { container } = render(<Lozenge label="Deprecated" variant="deprecated" />);
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.danger20}`);
@@ -69,7 +69,7 @@ test('render deprecated Lozenge', () => {
 });
 
 test('render legacy Lozenge', () => {
-  const { container, getByText } = render(<Lozenge label="Legacy" variant="legacy" />);
+  const { container } = render(<Lozenge label="Legacy" variant="legacy" />);
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.secondary30}`);
@@ -80,7 +80,7 @@ test('render legacy Lozenge', () => {
 });
 
 test('render new Lozenge', () => {
-  const { container, getByText } = render(<Lozenge label="New" variant="new" />);
+  const { container } = render(<Lozenge label="New" variant="new" />);
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.success20}`);
@@ -107,7 +107,7 @@ test('render Lozenge with tooltip', async () => {
 
 test('render Lozenge as button (popover variant)', () => {
   const handleClick = jest.fn();
-  const { container, getByText } = render(
+  const { container } = render(
     <Lozenge isOpen={false} label="Popover" onClick={handleClick} variant="new" />,
   );
 

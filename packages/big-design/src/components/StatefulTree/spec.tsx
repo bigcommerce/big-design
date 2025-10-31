@@ -54,9 +54,7 @@ test('renders non-selectable Tree by default', () => {
 });
 
 test('defaultExpanded items are expanded by default', () => {
-  const { getAllByRole, getByText, queryByText } = render(
-    getSimpleTree({ defaultExpanded: ['0'] }),
-  );
+  const { getAllByRole } = render(getSimpleTree({ defaultExpanded: ['0'] }));
 
   expect(getAllByRole('treeitem')).toHaveLength(6);
   expect(screen.getByText('Test Node 5')).toBeVisible();

@@ -701,7 +701,7 @@ describe('formatting', () => {
 
 describe('notation', () => {
   test('indicates the cell', () => {
-    const { getByDisplayValue, getByText, getByRole } = render(
+    const { getByDisplayValue, getByText } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} />,
     );
 

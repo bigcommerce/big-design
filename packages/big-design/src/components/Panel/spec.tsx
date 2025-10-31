@@ -178,7 +178,7 @@ test("panel action doesn't go to full width", () => {
 });
 
 test('forwards headerId to heading', () => {
-  const { getByText } = render(
+  render(
     <Panel header="Test Header" headerId="test-header">
       Test
     </Panel>,

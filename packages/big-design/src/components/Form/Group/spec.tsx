@@ -25,7 +25,8 @@ test('renders group with input', () => {
 
 test('renders group and input with error', () => {
   const error = 'Error';
-  const { getByText } = render(
+
+  render(
     <FormGroup>
       <Input error={error} />
     </FormGroup>,
@@ -36,7 +37,8 @@ test('renders group and input with error', () => {
 
 test('renders group and nested input with error', () => {
   const error = 'Error';
-  const { getByText } = render(
+
+  render(
     <FormGroup>
       <div>
         <Input error={error} />
@@ -49,7 +51,8 @@ test('renders group and nested input with error', () => {
 
 test('renders group with error prop', () => {
   const error = 'Error';
-  const { getByText } = render(
+
+  render(
     <FormGroup errors={error}>
       <Input />
     </FormGroup>,
@@ -60,7 +63,8 @@ test('renders group with error prop', () => {
 
 test('renders error prop with an array of errors', () => {
   const errors = ['Error 1', 'Error 2', 'Error 3'];
-  const { getByText } = render(
+
+  render(
     <FormGroup errors={errors}>
       <Input />
     </FormGroup>,
@@ -72,7 +76,8 @@ test('renders error prop with an array of errors', () => {
 test('renders error with FormControlError element', () => {
   const testId = 'test';
   const errors = <FormControlError data-testid={testId}>Error</FormControlError>;
-  const { getByTestId } = render(
+
+  render(
     <FormGroup errors={errors}>
       <Input />
     </FormGroup>,
@@ -88,7 +93,8 @@ test('renders error prop with an array of FormControlError elements', () => {
       Error
     </FormControlError>
   ));
-  const { getByTestId } = render(
+
+  render(
     <FormGroup errors={errors}>
       <Input />
     </FormGroup>,
@@ -106,7 +112,8 @@ test('does not render invalid errors', () => {
       Error
     </div>,
   ];
-  const { queryByTestId } = render(
+
+  render(
     <FormGroup errors={errors}>
       <Input />
     </FormGroup>,

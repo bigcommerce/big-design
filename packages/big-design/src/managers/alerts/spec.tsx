@@ -294,7 +294,7 @@ describe('AlertsManager', () => {
   const alerts: KeyedAlertProps[] = [infoAlert, errorAlert, successAlert];
 
   test('renders alert', () => {
-    const { queryByRole } = render(<AlertsManager manager={alertsManager} />);
+    render(<AlertsManager manager={alertsManager} />);
 
     expect(screen.queryByRole('alert')).not.toBeInTheDocument();
 
@@ -308,7 +308,9 @@ describe('AlertsManager', () => {
   // May need to write this differently
   test('renders alerts in proper order', () => {
     let displayedAlert: AlertProps;
-    const { queryByRole, queryByText } = render(<AlertsManager manager={alertsManager} />);
+
+    render(<AlertsManager manager={alertsManager} />);
+
     const subscriber = jest.fn((alert) => (displayedAlert = alert));
 
     alertsManager.subscribe(subscriber);
@@ -343,7 +345,7 @@ describe('AlertsManager', () => {
   });
 
   test('closes an alert with close button', async () => {
-    const { queryByRole } = render(<AlertsManager manager={alertsManager} />);
+    render(<AlertsManager manager={alertsManager} />);
 
     expect(screen.queryByRole('alert')).not.toBeInTheDocument();
 
@@ -367,7 +369,8 @@ describe('AlertsManager', () => {
   test('closes an alert with alertsManager', () => {
     let key: string;
     let removedAlert: AlertProps | undefined;
-    const { queryByRole } = render(<AlertsManager manager={alertsManager} />);
+
+    render(<AlertsManager manager={alertsManager} />);
 
     expect(screen.queryByRole('alert')).not.toBeInTheDocument();
 
@@ -388,7 +391,8 @@ describe('AlertsManager', () => {
 
   test('closes multiple alerts with close button', async () => {
     const subscriber = jest.fn();
-    const { queryByRole } = render(<AlertsManager manager={alertsManager} />);
+
+    render(<AlertsManager manager={alertsManager} />);
 
     alertsManager.subscribe(subscriber);
 
@@ -422,7 +426,8 @@ describe('AlertsManager', () => {
 
   test('closes multiple alerts', () => {
     const subscriber = jest.fn();
-    const { queryByRole } = render(<AlertsManager manager={alertsManager} />);
+
+    render(<AlertsManager manager={alertsManager} />);
 
     alertsManager.subscribe(subscriber);
 

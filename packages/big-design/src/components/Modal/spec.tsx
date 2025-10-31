@@ -19,7 +19,8 @@ test('render open modal', () => {
 
 test('render open modal without backdrop', () => {
   const text = 'This is a modal';
-  const { queryByText } = render(
+
+  render(
     <Modal backdrop={false} isOpen={true}>
       {text}
     </Modal>,
@@ -40,7 +41,7 @@ test('render closed modal', () => {
 
 test('open/hides when props changes', () => {
   const text = 'This is a modal';
-  const { queryByText, rerender } = render(<Modal isOpen={false}>{text}</Modal>);
+  const { rerender } = render(<Modal isOpen={false}>{text}</Modal>);
 
   expect(screen.queryByText(text)).not.toBeInTheDocument();
 
@@ -137,7 +138,7 @@ test('render close button on modal variation', () => {
   const text = 'This is a modal';
   const onClose = jest.fn();
 
-  const { queryByTitle } = render(
+  render(
     <Modal isOpen={true} onClose={onClose} variant="modal">
       {text}
     </Modal>,
@@ -150,7 +151,7 @@ test('do not render close button on dialog variation', () => {
   const text = 'This is a modal';
   const onClose = jest.fn();
 
-  const { queryByTitle, queryByText } = render(
+  const { queryByTitle } = render(
     <Modal isOpen={true} onClose={onClose} variant="dialog">
       {text}
     </Modal>,
@@ -162,7 +163,7 @@ test('do not render close button on dialog variation', () => {
 
 test('do not pull focus to open modal that is rerendered', async () => {
   const text = 'This is a modal';
-  const { queryByText, queryByRole, rerender } = render(
+  const { rerender } = render(
     <Modal isOpen={false}>
       {text}
       <input id="focusTest" />
@@ -222,7 +223,7 @@ test('body has scroll locked on modal open', () => {
 });
 
 test('renders header', () => {
-  const { getByText } = render(<Modal header="Header Title" isOpen={true} />);
+  render(<Modal header="Header Title" isOpen={true} />);
 
   expect(screen.getByText('Header Title')).toBeInTheDocument();
 });
