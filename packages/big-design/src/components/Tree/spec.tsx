@@ -58,7 +58,7 @@ const renderDefaultTree = (
   focusable: TreeFocusable;
   onKeyDown: TreeOnKeyDown<unknown>;
 } => {
-  const rendered = render(
+  const view = render(
     <Tree
       expandable={expandable}
       focusable={focusable}
@@ -69,7 +69,7 @@ const renderDefaultTree = (
   );
 
   return {
-    ...rendered,
+    ...view,
     expandable,
     focusable,
     onKeyDown,

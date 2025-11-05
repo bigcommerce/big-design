@@ -359,9 +359,7 @@ describe('AlertsManager', () => {
 
     expect(closeButton).toBeInTheDocument();
 
-    act(() => {
-      fireEvent.click(closeButton);
-    });
+    fireEvent.click(closeButton);
 
     expect(screen.queryByRole('alert')).not.toBeInTheDocument();
   });
@@ -413,9 +411,7 @@ describe('AlertsManager', () => {
 
       expect(closeButtons[0]).toBeDefined();
 
-      act(() => {
-        fireEvent.click(closeButtons[0]);
-      });
+      fireEvent.click(closeButtons[0]);
 
       expect(subscriber).toHaveBeenCalledTimes(alerts.length + index + 1);
     }

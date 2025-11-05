@@ -106,7 +106,7 @@ test('panel has aria-labelledby attribute', () => {
 
   const panel = screen.getByRole('region', { hidden: true });
 
-  expect(panel.getAttribute('aria-labelledby')).toBeDefined();
+  expect(panel).toHaveAttribute('aria-labelledby');
 });
 
 test('panel has role attribute', () => {

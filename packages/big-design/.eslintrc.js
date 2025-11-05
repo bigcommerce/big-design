@@ -9,14 +9,8 @@ module.exports = {
     'testing-library/no-node-access': 'off',
     'testing-library/no-container': 'off',
     'testing-library/prefer-screen-queries': 'off',
-    'testing-library/no-unnecessary-act': 'off',
-    'testing-library/no-await-sync-events': 'off',
-    'testing-library/no-manual-cleanup': 'off',
-    'testing-library/render-result-naming-convention': 'off',
     // Disable specific rules that are too strict for this codebase
     '@typescript-eslint/no-unsafe-member-access': 'off',
-    'jest-dom/prefer-to-have-attribute': 'off',
-    '@typescript-eslint/no-unused-vars': 'off',
   },
   overrides: [
     {

@@ -1,6 +1,6 @@
 import { CheckCircleIcon } from '@bigcommerce/big-design-icons';
 import { remCalc } from '@bigcommerce/big-design-theme';
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import React from 'react';
 import 'jest-styled-components';
@@ -402,9 +402,7 @@ test('dropdown menu renders 4 link when passed options of type link', async () =
 
   const toggle = screen.getByRole('button');
 
-  await act(async () => {
-    await fireEvent.click(toggle);
-  });
+  fireEvent.click(toggle);
 
   const list = await screen.findByRole('menu');
   const options = list.querySelectorAll('a');
@@ -593,10 +591,8 @@ test('clicking label does not call onItemClick', async () => {
 
   const label1 = await screen.findByText('Label 1');
 
-  await act(async () => {
-    await fireEvent.mouseOver(label1);
-    await fireEvent.click(label1);
-  });
+  fireEvent.mouseOver(label1);
+  fireEvent.click(label1);
 
   expect(onItemClick).not.toHaveBeenCalled();
 });

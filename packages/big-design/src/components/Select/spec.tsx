@@ -1,6 +1,6 @@
 import { ArrowBackIcon, ArrowForwardIcon, DeleteIcon } from '@bigcommerce/big-design-icons';
 import { remCalc } from '@bigcommerce/big-design-theme';
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import 'jest-styled-components';
 import React, { createRef } from 'react';
@@ -522,12 +522,12 @@ test('enter should trigger onOptionChange', async () => {
 
   fireEvent.click(input);
 
-  await act(async () => {
-    fireEvent.keyDown(input, { key: 'ArrowDown' });
-    fireEvent.keyDown(input, { key: 'Enter' });
-  });
+  fireEvent.keyDown(input, { key: 'ArrowDown' });
+  fireEvent.keyDown(input, { key: 'Enter' });
 
-  expect(onChange).toHaveBeenCalledWith(mockOptions[2].value, mockOptions[2]);
+  await waitFor(() => {
+    expect(onChange).toHaveBeenCalledWith(mockOptions[2].value, mockOptions[2]);
+  });
 });
 
 test('clicking on select options should trigger onOptionChange', async () => {
@@ -539,11 +539,12 @@ test('clicking on select options should trigger onOptionChange', async () => {
 
   const options = await screen.findAllByRole('option');
 
-  await act(async () => {
-    fireEvent.click(options[3]);
+  fireEvent.click(options[3]);
+
+  await waitFor(() => {
+    expect(onChange).toHaveBeenCalledWith(mockOptions[3].value, mockOptions[3]);
   });
 
-  expect(onChange).toHaveBeenCalledWith(mockOptions[3].value, mockOptions[3]);
   expect(onChange).toHaveBeenCalledTimes(1);
 });
 
@@ -566,11 +567,11 @@ test('opening the Select triggers onOpen', async () => {
 
   const button = await screen.findByLabelText('toggle menu');
 
-  await act(async () => {
-    fireEvent.click(button);
-  });
+  fireEvent.click(button);
 
-  expect(onOpen).toHaveBeenCalled();
+  await waitFor(() => {
+    expect(onOpen).toHaveBeenCalled();
+  });
 });
 
 test('closing the Select triggers onClose', async () => {
@@ -604,11 +605,11 @@ test('select action should call onActionClick', async () => {
 
   const options = await screen.findAllByRole('option');
 
-  await act(async () => {
-    fireEvent.click(options[5]);
-  });
+  fireEvent.click(options[5]);
 
-  expect(onActionClick).toHaveBeenCalled();
+  await waitFor(() => {
+    expect(onActionClick).toHaveBeenCalled();
+  });
 });
 
 test('select action supports icons', async () => {
@@ -880,13 +881,13 @@ test('options should allow icons', async () => {
 
   const inputs = await screen.findAllByLabelText('Countries');
 
-  await act(async () => {
-    await fireEvent.click(inputs[0]);
+  fireEvent.click(inputs[0]);
+
+  await waitFor(() => {
+    const svg = container.querySelectorAll('svg');
+
+    expect(svg).toHaveLength(5);
   });
-
-  const svg = container.querySelectorAll('svg');
-
-  expect(svg).toHaveLength(5);
 });
 
 test('grouped select should render group labels, render uppercased', async () => {
@@ -911,12 +912,10 @@ test('group labels should be grayed out', async () => {
 
   const input = screen.getByTestId('group-select');
 
-  await act(async () => {
-    fireEvent.click(input);
-  });
+  fireEvent.click(input);
 
-  const label1 = screen.getByText('Label 1');
-  const label2 = screen.getByText('Label 2');
+  const label1 = await screen.findByText('Label 1');
+  const label2 = await screen.findByText('Label 2');
 
   expect(label1).toHaveStyle('color: #8C93AD');
   expect(label2).toHaveStyle('color: #8C93AD');
