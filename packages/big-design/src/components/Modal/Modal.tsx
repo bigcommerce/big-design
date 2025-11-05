@@ -96,7 +96,23 @@ const InternalModal: React.FC<ModalProps> = ({
   // Setup focus-trap
   useEffect(() => {
     if (modalRef && internalTrap.current === null) {
-      internalTrap.current = createFocusTrap(modalRef, { fallbackFocus: modalRef });
+      internalTrap.current = createFocusTrap(modalRef, {
+        allowOutsideClick: (event) => {
+          const target = event.target;
+
+          // Allow clicks on portaled menu/listbox elements (e.g., Dropdown, Select)
+          /* istanbul ignore next */
+          if (target instanceof Element) {
+            return (
+              target.closest('[role="menu"]') !== null ||
+              target.closest('[role="listbox"]') !== null
+            );
+          }
+
+          return false;
+        },
+        fallbackFocus: modalRef,
+      });
       internalTrap.current.activate();
     }
 

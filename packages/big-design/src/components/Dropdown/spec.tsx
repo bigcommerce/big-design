@@ -6,6 +6,7 @@ import React from 'react';
 import 'jest-styled-components';
 
 import { Button } from '../Button';
+import { Modal } from '../Modal';
 
 import { Dropdown } from './';
 
@@ -683,4 +684,21 @@ test("dropdown toggle doesn't trigger onItemClick", async () => {
   await userEvent.click(document.body);
 
   expect(onItemClick).not.toHaveBeenCalled();
+});
+
+test('dropdown onItemClick triggers inside a modal', async () => {
+  onItemClick.mockClear();
+
+  render(<Modal isOpen={true}>{DropdownMock}</Modal>);
+
+  const toggle = await screen.findByRole('button', { name: 'Button' });
+
+  await userEvent.click(toggle);
+
+  const options = await screen.findAllByRole('option');
+
+  await userEvent.click(options[1]);
+
+  expect(onItemClick).toHaveBeenCalledTimes(1);
+  expect(onItemClick).toHaveBeenCalledWith({ content: 'Option 2', onItemClick });
 });
