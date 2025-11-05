@@ -59,7 +59,7 @@
     "@types/styled-components": "^5.1.34",
     "babel-plugin-styled-components": "^2.0.7",
     "camelcase": "^6.3.0",
-    "flag-icons": "^7.3.2",
+    "flag-icons": "^7.5.0",
     "fs-extra": "^11.3.0",
     "glob": "^11.0.1",
     "inquirer": "^8.2.7",
