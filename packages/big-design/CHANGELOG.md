@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.3.2
+
+### Patch Changes
+
+- 4c97c49: fix(component): dropdown items click not firing inside modal
+
 ## 2.3.1
 
 ### Patch Changes
