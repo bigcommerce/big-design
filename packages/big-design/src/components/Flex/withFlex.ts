@@ -67,12 +67,11 @@ const getResponsiveFlex = (
 
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   return (breakpointKeys as Array<keyof Breakpoints>).map(
-    (breakpointKey) =>
-      css`
-        ${theme.breakpoints[breakpointKey]} {
-          ${/* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access */ ''}
-          ${getSimpleFlex(flexedProp[breakpointKey], cssKey)}
-        }
-      `,
+    (breakpointKey) => css`
+      ${theme.breakpoints[breakpointKey]} {
+        ${''}
+        ${getSimpleFlex(flexedProp[breakpointKey], cssKey)}
+      }
+    `,
   );
 };

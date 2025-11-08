@@ -25,7 +25,7 @@ export const Collapsible: React.FC<CollapsibleProps> = ({ children, title }) => 
         alignItems="center"
         marginBottom="xSmall"
         onClick={toggleIsCollapsed}
-        onKeyPress={handleKeyPressed}
+        onKeyDown={handleKeyPressed}
         tabIndex={0}
       >
         {isCollapsed ? <ChevronRightIcon title="Expand" /> : <ExpandMoreIcon title="Collapse" />}

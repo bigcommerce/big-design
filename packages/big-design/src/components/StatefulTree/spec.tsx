@@ -54,13 +54,11 @@ test('renders non-selectable Tree by default', () => {
 });
 
 test('defaultExpanded items are expanded by default', () => {
-  const { getAllByRole, getByText, queryByText } = render(
-    getSimpleTree({ defaultExpanded: ['0'] }),
-  );
+  const { getAllByRole } = render(getSimpleTree({ defaultExpanded: ['0'] }));
 
   expect(getAllByRole('treeitem')).toHaveLength(6);
-  expect(getByText('Test Node 5')).toBeVisible();
-  expect(queryByText('Test Node 6')).toBeNull();
+  expect(screen.getByText('Test Node 5')).toBeVisible();
+  expect(screen.queryByText('Test Node 6')).not.toBeInTheDocument();
 });
 
 test('onExpandedChange gets called when an item expansion happens', () => {

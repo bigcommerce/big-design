@@ -30,7 +30,7 @@ interface InternalRowContainerProps<T>
   parentRowIndex: number;
   getRowId: NonNullable<TableProps<T>['getRowId']>;
   onItemSelect?: OnItemSelectFn;
-  onExpandedRow?(parentRowId?: string | undefined): void;
+  onExpandedRow?(parentRowId?: string): void;
 }
 
 interface PrivateProps {

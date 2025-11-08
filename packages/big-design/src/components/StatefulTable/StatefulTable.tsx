@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useMemo, useReducer } from 'react';
 import { useDidUpdate } from '../../hooks';
 import { typedMemo } from '../../utils';
 import { Box } from '../Box';
-import { PaginationProps } from '../OffsetPagination';
+import { OffsetPaginationProps } from '../OffsetPagination';
 import { OffsetPaginationLocalization } from '../OffsetPagination/OffsetPagination';
 import { PillTabItem, PillTabs, PillTabsProps } from '../PillTabs';
 import { Search } from '../Search';
@@ -61,7 +61,7 @@ export interface StatefulTableProps<T>
   selectable?: boolean;
   defaultSelected?: T[];
   search?: boolean;
-  getRangeLabel?: PaginationProps['getRangeLabel'];
+  getRangeLabel?: OffsetPaginationProps['getRangeLabel'];
   onRowDrop?(items: T[]): void;
   onSelectionChange?: TableSelectable<T>['onSelectionChange'];
 }

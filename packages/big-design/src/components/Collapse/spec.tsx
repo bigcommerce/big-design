@@ -50,7 +50,7 @@ test('title button has aria-controls', () => {
   const button = screen.getByRole('button');
   const panelId = screen.getByRole('region', { hidden: true }).id;
 
-  expect(button.getAttribute('aria-controls')).toBe(panelId);
+  expect(button).toHaveAttribute('aria-controls', panelId);
 });
 
 test('title button has icon', () => {
@@ -95,9 +95,10 @@ test('title button icon toggles on title click', async () => {
 test('panel has id', () => {
   render(CollapseWithStaticTitleMock);
 
-  const panelId = screen.getByRole('region', { hidden: true }).id;
+  const panel = screen.getByRole('region', { hidden: true });
 
-  expect(panelId).toBeDefined();
+  expect(panel.id).toBeDefined();
+  expect(panel.id).not.toBe('');
 });
 
 test('panel has aria-labelledby attribute', () => {
@@ -105,7 +106,7 @@ test('panel has aria-labelledby attribute', () => {
 
   const panel = screen.getByRole('region', { hidden: true });
 
-  expect(panel.getAttribute('aria-labelledby')).toBeDefined();
+  expect(panel).toHaveAttribute('aria-labelledby');
 });
 
 test('panel has role attribute', () => {
@@ -161,11 +162,11 @@ test('click on title toggles aria-expanded attribute on title button', async () 
 
   await userEvent.click(trigger);
 
-  expect(trigger.getAttribute('aria-expanded')).toBe('true');
+  expect(trigger).toHaveAttribute('aria-expanded', 'true');
 
   await userEvent.click(trigger);
 
-  expect(trigger.getAttribute('aria-expanded')).toBe('false');
+  expect(trigger).toHaveAttribute('aria-expanded', 'false');
 });
 
 test('onCollapseChange is called', async () => {

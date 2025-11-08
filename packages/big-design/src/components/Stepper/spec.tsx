@@ -1,5 +1,5 @@
 import 'jest-styled-components';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 
 import { Stepper } from './';
@@ -22,17 +22,18 @@ test('does not forward styles', () => {
 });
 
 test('renders a passed step', () => {
-  const { queryByText } = render(<Stepper currentStep={0} steps={['Test']} />);
+  render(<Stepper currentStep={0} steps={['Test']} />);
 
-  expect(queryByText('Test')).toBeDefined();
+  expect(screen.getByText('Test')).toBeInTheDocument();
 });
 
 test('passed in state works as expected', () => {
-  const { queryByRole } = render(<Stepper currentStep={1} steps={['Test1', 'Test2', 'Test3']} />);
+  render(<Stepper currentStep={1} steps={['Test1', 'Test2', 'Test3']} />);
+
   const lights: ChildNode[] = [];
   const dashes: ChildNode[] = [];
 
-  queryByRole('progressbar')?.childNodes.forEach((step) => {
+  screen.queryByRole('progressbar')?.childNodes.forEach((step) => {
     lights.push(step.childNodes[0]);
     dashes.push(step.childNodes[1]);
   });

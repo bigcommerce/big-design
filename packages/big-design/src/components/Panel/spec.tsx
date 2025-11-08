@@ -53,12 +53,12 @@ test('renders a header and action', () => {
   const header = getByRole('heading');
 
   expect(header).toBeInTheDocument();
-  expect(header.textContent).toBe('Test Header');
+  expect(header).toHaveTextContent('Test Header');
 
   const actionButton = getByRole('button');
 
   expect(actionButton).toBeInTheDocument();
-  expect(actionButton.textContent).toBe('Test Action');
+  expect(actionButton).toHaveTextContent('Test Action');
 });
 
 test('renders a badge and header', () => {
@@ -178,13 +178,13 @@ test("panel action doesn't go to full width", () => {
 });
 
 test('forwards headerId to heading', () => {
-  const { getByText } = render(
+  render(
     <Panel header="Test Header" headerId="test-header">
       Test
     </Panel>,
   );
 
-  expect(getByText('Test Header')).toHaveAttribute('id', 'test-header');
+  expect(screen.getByText('Test Header')).toHaveAttribute('id', 'test-header');
 });
 
 test('applies the right border radius values', async () => {

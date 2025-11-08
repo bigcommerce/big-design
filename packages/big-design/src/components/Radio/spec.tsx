@@ -78,7 +78,7 @@ test('has correct value when checked', async () => {
 
   const radio = await screen.findByTestId<HTMLInputElement>('radio');
 
-  expect(radio.checked).toBe(true);
+  expect(radio).toBeChecked();
 });
 
 test('has correct value when unchecked', async () => {
@@ -86,7 +86,7 @@ test('has correct value when unchecked', async () => {
 
   const radio = await screen.findByTestId<HTMLInputElement>('radio');
 
-  expect(radio.checked).toBe(false);
+  expect(radio).not.toBeChecked();
 });
 
 test('triggers onChange when clicking the radio button', async () => {
@@ -116,19 +116,19 @@ test('accepts valid RadioLabel component', () => {
   const testId = 'test';
   const label = <RadioLabel data-testid={testId}>Label</RadioLabel>;
 
-  const { queryByTestId } = render(<Radio label={label} />);
+  render(<Radio label={label} />);
 
-  expect(queryByTestId(testId)).toBeInTheDocument();
+  expect(screen.getByTestId(testId)).toBeInTheDocument();
 });
 
 test('does not accept invalid label component', () => {
   const testId = 'test';
   const label = <div data-testid={testId}>Label</div>;
 
-  const { queryByTestId } = render(<Radio label={label} />);
+  render(<Radio label={label} />);
 
   expect(warning).toHaveBeenCalledTimes(1);
-  expect(queryByTestId(testId)).not.toBeInTheDocument();
+  expect(screen.queryByTestId(testId)).not.toBeInTheDocument();
 });
 
 test('forwards ref', () => {

@@ -95,10 +95,11 @@ test('create unique ids if not provided', async () => {
     </>,
   );
 
-  const [item1, item2] = await screen.findAllByLabelText<HTMLInputElement>('Test Label');
+  const item1 = await screen.findByTestId<HTMLInputElement>('item1');
+  const item2 = await screen.findByTestId<HTMLInputElement>('item2');
 
-  expect(item1).toBeDefined();
-  expect(item2).toBeDefined();
+  expect(item1).toBeInTheDocument();
+  expect(item2).toBeInTheDocument();
   expect(item1.id).not.toBe(item2.id);
 });
 
@@ -261,13 +262,13 @@ test('buttons are disabled when value hits max or min', async () => {
 
   const [decreaseButton, increaseButton] = await screen.findAllByRole('button');
 
-  expect(decreaseButton).toHaveProperty('disabled', true);
-  expect(increaseButton).toHaveProperty('disabled', false);
+  expect(decreaseButton).toBeDisabled();
+  expect(increaseButton).toBeEnabled();
 
   rerender(counterMock({ ...requiredAttributes, value: 10 }));
 
-  expect(decreaseButton).toHaveProperty('disabled', false);
-  expect(increaseButton).toHaveProperty('disabled', true);
+  expect(decreaseButton).toBeEnabled();
+  expect(increaseButton).toBeDisabled();
 });
 
 test('value prop only accepts whole numbers', async () => {

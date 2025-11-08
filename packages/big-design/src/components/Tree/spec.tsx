@@ -58,7 +58,7 @@ const renderDefaultTree = (
   focusable: TreeFocusable;
   onKeyDown: TreeOnKeyDown<unknown>;
 } => {
-  const rendered = render(
+  const view = render(
     <Tree
       expandable={expandable}
       focusable={focusable}
@@ -69,7 +69,7 @@ const renderDefaultTree = (
   );
 
   return {
-    ...rendered,
+    ...view,
     expandable,
     focusable,
     onKeyDown,
@@ -203,7 +203,7 @@ test('renders expanded nodes', () => {
   const node9 = screen.getByText('Test Node 9');
 
   expect(node5).toBeVisible();
-  expect(node6).toBeNull();
+  expect(node6).not.toBeInTheDocument();
   expect(node9).toBeVisible();
 });
 

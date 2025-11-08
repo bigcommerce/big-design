@@ -48,6 +48,7 @@ test('renders with background', () => {
   };
 
   const { container } = render(<Page background={backgroundProps}>Page content</Page>);
+  // eslint-disable-next-line testing-library/no-node-access
   const firstChild = container.firstElementChild;
 
   if (!firstChild) {
@@ -68,6 +69,7 @@ test('renders with default background styles', () => {
   };
 
   const { container } = render(<Page background={backgroundProps}>Page content</Page>);
+  // eslint-disable-next-line testing-library/no-node-access
   const firstChild = container.firstElementChild;
 
   if (!firstChild) {
@@ -86,6 +88,7 @@ test('renders without background by default', () => {
   render(<Page>Page content</Page>);
 
   const { container } = render(<Page>Page content</Page>);
+  // eslint-disable-next-line testing-library/no-node-access
   const firstChild = container.firstElementChild;
 
   if (!firstChild) {

@@ -20,7 +20,7 @@
     "yup": "1.7.0"
   },
   "devDependencies": {
-    "@bigcommerce/eslint-config": "2.9.1",
+    "@bigcommerce/eslint-config": "2.12.0",
     "@types/node": "20.12.7",
     "@types/react": "18.2.73",
     "@types/react-dom": "18.2.23",

@@ -1,6 +1,6 @@
 import 'jest-styled-components';
 
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import React, { createRef } from 'react';
 import { default as ReactDatePicker } from 'react-datepicker';
@@ -24,11 +24,9 @@ test('should use the passed in ref object if provided', async () => {
 });
 
 test('renders select label', () => {
-  const { getByText } = render(
-    <Datepicker data-testid="datepicker" label="test" onDateChange={jest.fn()} />,
-  );
+  render(<Datepicker data-testid="datepicker" label="test" onDateChange={jest.fn()} />);
 
-  expect(getByText('test')).toBeInTheDocument();
+  expect(screen.getByText('test')).toBeInTheDocument();
 });
 
 test('calls onDateChange function when a date cell is clicked', async () => {
@@ -56,12 +54,10 @@ test('no error when input date value manually', async () => {
 
   const input = await screen.findByRole('textbox');
 
-  await waitFor(() => {
-    fireEvent.input(input, {
-      target: {
-        value: dateString.toDateString(),
-      },
-    });
+  fireEvent.input(input, {
+    target: {
+      value: dateString.toDateString(),
+    },
   });
 
   expect(changeFunction).toHaveBeenCalled();
@@ -69,13 +65,13 @@ test('no error when input date value manually', async () => {
 });
 
 test('renders an error if one is provided', () => {
-  const { getByText } = render(
+  render(
     <FormGroup>
       <Datepicker error="Required" onDateChange={jest.fn()} />
     </FormGroup>,
   );
 
-  expect(getByText('Required')).toBeInTheDocument();
+  expect(screen.getByText('Required')).toBeInTheDocument();
 });
 
 test('appends * text to label if select is required', () => {

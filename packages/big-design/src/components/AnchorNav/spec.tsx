@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { useInView } from 'react-intersection-observer';
@@ -26,7 +26,6 @@ describe('AnchorNav Component', () => {
   });
 
   afterEach(() => {
-    cleanup();
     history.replaceState(null, '', '#');
     jest.clearAllMocks();
     jest.useRealTimers();
@@ -62,7 +61,7 @@ describe('AnchorNav Component', () => {
     expect(section1El?.scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth' });
     expect(replaceStateSpy).toHaveBeenCalledWith(null, '', '#section1');
     expect(navLink1).toHaveClass('active');
-    expect(navLink1.getAttribute('aria-current')).toBe('true');
+    expect(navLink1).toHaveAttribute('aria-current', 'true');
   });
 
   it('activates a section based on the observer inView value', () => {
@@ -80,7 +79,7 @@ describe('AnchorNav Component', () => {
     const navLink2 = screen.getByText('Section 2');
 
     expect(navLink2).toHaveClass('active');
-    expect(navLink2.getAttribute('aria-current')).toBe('true');
+    expect(navLink2).toHaveAttribute('aria-current', 'true');
   });
 
   it('scrolls to the section corresponding to the initial URL hash on load', () => {

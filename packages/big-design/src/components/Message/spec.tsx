@@ -85,21 +85,17 @@ test('renders with external link', async () => {
 });
 
 test('renders header', () => {
-  const { queryByText, container } = render(
-    <Message header="Header" messages={[{ text: 'Success' }]} />,
-  );
+  const { container } = render(<Message header="Header" messages={[{ text: 'Success' }]} />);
 
   expect(container.firstChild).toMatchSnapshot();
-  expect(queryByText('Header')).toBeDefined();
+  expect(screen.getByText('Header')).toBeInTheDocument();
 });
 
 test('renders close button', () => {
-  const { queryByRole, container } = render(
-    <Message messages={[{ text: 'Success' }]} onClose={() => null} />,
-  );
+  const { container } = render(<Message messages={[{ text: 'Success' }]} onClose={() => null} />);
 
   expect(container.firstChild).toMatchSnapshot();
-  expect(queryByRole('button')).toBeDefined();
+  expect(screen.getByRole('button')).toBeInTheDocument();
 });
 
 test('trigger onClose', async () => {

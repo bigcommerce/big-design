@@ -412,7 +412,7 @@ describe('edition', () => {
 
     cell = getByText('Shoes Name One');
 
-    expect(cell).toBeDefined();
+    expect(cell).toBeInTheDocument();
     expect(handleChange).not.toHaveBeenCalled();
   });
 
@@ -434,7 +434,7 @@ describe('edition', () => {
 
     cell = getByText('Shoes Name One Edit');
 
-    expect(cell).toBeDefined();
+    expect(cell).toBeInTheDocument();
     expect(handleChange).toHaveBeenCalledWith([
       {
         id: 3,
@@ -455,7 +455,7 @@ describe('edition', () => {
 
     fireEvent.keyDown(getByRole('table'), { key: 'H' });
 
-    expect(getByDisplayValue('H')).toBeDefined();
+    expect(getByDisplayValue('H')).toBeInTheDocument();
 
     fireEvent.blur(getByDisplayValue('H'));
 
@@ -701,7 +701,7 @@ describe('formatting', () => {
 
 describe('notation', () => {
   test('indicates the cell', () => {
-    const { getByDisplayValue, getByText, getByRole } = render(
+    const { getByDisplayValue, getByText } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} />,
     );
 
@@ -714,7 +714,7 @@ describe('notation', () => {
     fireEvent.change(input, { target: { value: 'Shoes Name One Edit' } });
     fireEvent.keyDown(input, { key: 'Enter' });
 
-    expect(getByRole('note')).toBeInTheDocument();
+    expect(screen.getByRole('note')).toBeInTheDocument();
   });
 });
 
@@ -900,7 +900,7 @@ describe('keyboard navigation', () => {
     fireEvent.click(cell);
     fireEvent.keyDown(worksheet, { key: 'Enter' });
 
-    expect(getByDisplayValue('Shoes Name Three')).toBeDefined();
+    expect(getByDisplayValue('Shoes Name Three')).toBeInTheDocument();
   });
 
   test('tab finish editing the cell', () => {
@@ -914,7 +914,7 @@ describe('keyboard navigation', () => {
     fireEvent.click(cell);
     fireEvent.keyDown(worksheet, { key: 'a' });
 
-    expect(getByDisplayValue('a')).toBeDefined();
+    expect(getByDisplayValue('a')).toBeInTheDocument();
 
     fireEvent.keyDown(cell, { key: 'Tab' });
   });
@@ -930,7 +930,7 @@ describe('keyboard navigation', () => {
     fireEvent.click(cell);
     fireEvent.keyDown(worksheet, { key: 'a' });
 
-    expect(getByDisplayValue('a')).toBeDefined();
+    expect(getByDisplayValue('a')).toBeInTheDocument();
   });
 
   test('cell is not editted when key length is greater than 1', async () => {
@@ -943,7 +943,7 @@ describe('keyboard navigation', () => {
     await userEvent.click(cell);
     await userEvent.keyboard('{capslock}');
 
-    expect(getByText('Shoes Name Three')).toBeInTheDocument();
+    expect(screen.getByText('Shoes Name Three')).toBeInTheDocument();
     expect(queryByDisplayValue('capslock')).not.toBeInTheDocument();
   });
 
@@ -957,8 +957,8 @@ describe('keyboard navigation', () => {
     await userEvent.click(cell);
     await userEvent.keyboard('{meta}');
 
-    expect(queryByDisplayValue('Shoes Name Three')).toBeNull();
-    expect(cell).toBeDefined();
+    expect(queryByDisplayValue('Shoes Name Three')).not.toBeInTheDocument();
+    expect(cell).toBeInTheDocument();
   });
 
   test('cell is not editted when using Control key', async () => {
@@ -971,7 +971,7 @@ describe('keyboard navigation', () => {
     await userEvent.click(cell);
     await userEvent.keyboard('{control}');
 
-    expect(getByDisplayValue('Shoes Name Three')).toBeDefined();
+    expect(getByDisplayValue('Shoes Name Three')).toBeInTheDocument();
     expect(queryByDisplayValue('Control')).not.toBeInTheDocument();
   });
 
@@ -985,7 +985,7 @@ describe('keyboard navigation', () => {
     await userEvent.dblClick(cell);
     await userEvent.paste('hello');
 
-    expect(getByDisplayValue('Shoes Name Threehello')).toBeDefined();
+    expect(getByDisplayValue('Shoes Name Threehello')).toBeInTheDocument();
   });
 
   test('space starts editing the cell', () => {
@@ -999,7 +999,7 @@ describe('keyboard navigation', () => {
     fireEvent.click(cell);
     fireEvent.keyDown(worksheet, { key: ' ' });
 
-    expect(getByDisplayValue('Shoes Name Three')).toBeDefined();
+    expect(getByDisplayValue('Shoes Name Three')).toBeInTheDocument();
   });
 
   test('enter/space on checkbox navigates down and toggles value', () => {
@@ -1064,7 +1064,7 @@ describe('TextEditor', () => {
 
     const input = await screen.findByDisplayValue<HTMLInputElement>('Shoes Name One');
 
-    expect(input).toBeDefined();
+    expect(input).toBeInTheDocument();
   });
 
   test('TextEditor is editable', async () => {
@@ -1211,7 +1211,7 @@ describe('SelectEditor', () => {
 
     const cell = await screen.findAllByDisplayValue('Value 1');
 
-    expect(cell[0]).toHaveAttribute('disabled');
+    expect(cell[0]).toBeDisabled();
   });
 });
 
@@ -1290,7 +1290,7 @@ describe('MultiSelectEditor', () => {
 
     const cells = await findAllByRole('combobox');
 
-    expect(cells[0]).toHaveAttribute('disabled');
+    expect(cells[0]).toBeDisabled();
   });
 });
 
@@ -1337,7 +1337,7 @@ describe('CheckboxEditor', () => {
 
     const cell = screen.getAllByLabelText('Checked');
 
-    expect(cell[0]).toHaveAttribute('disabled');
+    expect(cell[0]).toBeDisabled();
   });
 });
 
@@ -1397,7 +1397,7 @@ describe('ModalEditor', () => {
 
     const buttons = screen.getAllByRole('button', { name: /edit/i });
 
-    expect(buttons[0]).toHaveAttribute('disabled');
+    expect(buttons[0]).toBeDisabled();
   });
 });
 
@@ -1445,7 +1445,7 @@ describe('disable', () => {
     fireEvent.click(cell);
     fireEvent.keyDown(worksheet, { key: 'Enter' });
 
-    expect(screen.queryByDisplayValue('Shoes Name Three')).toBeNull();
+    expect(screen.queryByDisplayValue('Shoes Name Three')).not.toBeInTheDocument();
   });
 
   test('space does not start editing the cell', () => {
@@ -1458,7 +1458,7 @@ describe('disable', () => {
     fireEvent.click(cell);
     fireEvent.keyDown(worksheet, { key: ' ' });
 
-    expect(screen.queryByDisplayValue('Shoes Name Three')).toBeNull();
+    expect(screen.queryByDisplayValue('Shoes Name Three')).not.toBeInTheDocument();
   });
 
   test('mouse will not trigger input field', () => {
@@ -1466,7 +1466,7 @@ describe('disable', () => {
 
     fireEvent.doubleClick(screen.getByText('Shoes Name One'));
 
-    expect(screen.queryByDisplayValue('Shoes Name One')).toBeNull();
+    expect(screen.queryByDisplayValue('Shoes Name One')).not.toBeInTheDocument();
   });
 });
 
@@ -1518,7 +1518,7 @@ describe('disable rows', () => {
     fireEvent.click(cell);
     fireEvent.keyDown(worksheet, { key: 'Enter' });
 
-    expect(screen.queryByDisplayValue('Shoes Name Three')).toBeNull();
+    expect(screen.queryByDisplayValue('Shoes Name Three')).not.toBeInTheDocument();
   });
 
   test('space does not start editing the cell', () => {
@@ -1533,7 +1533,7 @@ describe('disable rows', () => {
     fireEvent.click(cell);
     fireEvent.keyDown(worksheet, { key: ' ' });
 
-    expect(screen.queryByDisplayValue('Shoes Name Three')).toBeNull();
+    expect(screen.queryByDisplayValue('Shoes Name Three')).not.toBeInTheDocument();
   });
 
   test('mouse will not trigger input field', () => {
@@ -1543,7 +1543,7 @@ describe('disable rows', () => {
 
     fireEvent.doubleClick(screen.getByText('Shoes Name One'));
 
-    expect(screen.queryByDisplayValue('Shoes Name One')).toBeNull();
+    expect(screen.queryByDisplayValue('Shoes Name One')).not.toBeInTheDocument();
   });
 
   test('enables column within disabled row', () => {
@@ -1606,7 +1606,7 @@ describe('expandable', () => {
 
     fireEvent.click(buttons[0]);
 
-    expect(screen.queryByRole('row', { name: /shoes name one/i })).toBeInTheDocument();
+    expect(screen.getByRole('row', { name: /shoes name one/i })).toBeInTheDocument();
 
     // expect(screen.queryAllByRole('row').length).toBe(8);
 
@@ -1615,8 +1615,8 @@ describe('expandable', () => {
 
     fireEvent.click(buttons[1]);
 
-    expect(screen.queryByRole('row', { name: /variant 2/i })).toBeInTheDocument();
-    expect(screen.queryByRole('row', { name: /variant 2/i })).toBeInTheDocument();
+    expect(screen.getByRole('row', { name: /variant 2/i })).toBeInTheDocument();
+    expect(screen.getByRole('row', { name: /variant 2/i })).toBeInTheDocument();
     // expect(screen.queryAllByRole('row').length).toBe(10);
 
     fireEvent.click(buttons[1]);
@@ -1629,8 +1629,8 @@ describe('expandable', () => {
     fireEvent.keyDown(buttons[1], { key: 'Enter' });
 
     // expect(screen.queryAllByRole('row').length).toBe(10);
-    expect(screen.queryByRole('row', { name: /variant 2/i })).toBeInTheDocument();
-    expect(screen.queryByRole('row', { name: /variant 2/i })).toBeInTheDocument();
+    expect(screen.getByRole('row', { name: /variant 2/i })).toBeInTheDocument();
+    expect(screen.getByRole('row', { name: /variant 2/i })).toBeInTheDocument();
   });
 
   test('keyboard navigates correctly', () => {
@@ -1718,7 +1718,7 @@ describe('Header tooltip', () => {
       <Worksheet columns={columns} items={items} onChange={handleChange} />,
     );
 
-    expect(getByTitle('Hover or focus for additional context.')).toBeTruthy();
+    expect(getByTitle('Hover or focus for additional context.')).toBeInTheDocument();
   });
 
   test('renders tooltip when hovering on icon', async () => {
@@ -1850,7 +1850,7 @@ describe('useKeyEvents coverage improvements', () => {
     fireEvent.keyDown(worksheet, { key: 'Meta' });
 
     // No cell should be editing
-    expect(queryByDisplayValue('Shoes Name Three')).toBeNull();
+    expect(queryByDisplayValue('Shoes Name Three')).not.toBeInTheDocument();
   });
 
   test('Control key does nothing when no cell is selected', async () => {
@@ -1864,6 +1864,6 @@ describe('useKeyEvents coverage improvements', () => {
     fireEvent.keyDown(worksheet, { key: 'Control' });
 
     // No cell should be editing
-    expect(queryByDisplayValue('Shoes Name Three')).toBeNull();
+    expect(queryByDisplayValue('Shoes Name Three')).not.toBeInTheDocument();
   });
 });

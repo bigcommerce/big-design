@@ -19,7 +19,7 @@ export type TreeOnNodeClick = (e: React.MouseEvent<HTMLLIElement>, nodeId: TreeN
 
 export interface TreeNodeProps<T> {
   children?: Array<TreeNodeProps<T>>;
-  icon?: React.ReactChild | null;
+  icon?: React.ReactNode | null;
   id: TreeNodeId;
   label: string;
   value?: T;

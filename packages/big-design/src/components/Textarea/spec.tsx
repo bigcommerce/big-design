@@ -26,10 +26,10 @@ test('renders an texarea tag', () => {
 });
 
 test('renders an textarea with matched label', () => {
-  const { queryByLabelText } = render(<Textarea label="Test Label" />);
+  render(<Textarea label="Test Label" />);
 
   // This one checks for matching id and htmlFor
-  expect(queryByLabelText('Test Label')).toBeInTheDocument();
+  expect(screen.getByLabelText('Test Label')).toBeInTheDocument();
 });
 
 test('create unique ids if not provided', async () => {
@@ -47,8 +47,8 @@ test('create unique ids if not provided', async () => {
   const item1 = await screen.findByTestId('item1');
   const item2 = await screen.findByTestId('item2');
 
-  expect(item1).toBeDefined();
-  expect(item2).toBeDefined();
+  expect(item1).toBeInTheDocument();
+  expect(item2).toBeInTheDocument();
   expect(item1.id).not.toBe(item2.id);
 });
 
@@ -78,21 +78,22 @@ test('respects provided labelId', async () => {
 
 test('renders a description', () => {
   const descriptionText = 'This is a description';
-  const { queryByText } = render(<Textarea description={descriptionText} />);
 
-  expect(queryByText(descriptionText)).toBeInTheDocument();
+  render(<Textarea description={descriptionText} />);
+
+  expect(screen.getByText(descriptionText)).toBeInTheDocument();
 });
 
 test('renders an error', () => {
   const errorText = 'This is an error';
-  const { container, queryByText } = render(
+  const { container } = render(
     <FormGroup>
       <Textarea error={errorText} />
     </FormGroup>,
   );
   const textarea = container.querySelector('textarea');
 
-  expect(queryByText(errorText)).toBeInTheDocument();
+  expect(screen.getByText(errorText)).toBeInTheDocument();
   expect(textarea).toHaveStyleRule('border', errorBorderStyle);
 });
 
@@ -106,9 +107,9 @@ test('accepts a Label Component', () => {
     </FormControlLabel>
   );
 
-  const { queryByTestId } = render(<Textarea label={CustomLabel} />);
+  render(<Textarea label={CustomLabel} />);
 
-  expect(queryByTestId('test')).toBeInTheDocument();
+  expect(screen.getByTestId('test')).toBeInTheDocument();
 });
 
 test('does not accept non-Label Components', () => {
@@ -121,9 +122,9 @@ test('does not accept non-Label Components', () => {
     </div>
   );
 
-  const { queryByTestId } = render(<Textarea label={NotALabel} />);
+  render(<Textarea label={NotALabel} />);
 
-  expect(queryByTestId('test')).not.toBeInTheDocument();
+  expect(screen.queryByTestId('test')).not.toBeInTheDocument();
 });
 
 test('accepts a Description Component', () => {
@@ -136,9 +137,9 @@ test('accepts a Description Component', () => {
     </FormControlDescription>
   );
 
-  const { queryByTestId } = render(<Textarea description={CustomDescription} />);
+  render(<Textarea description={CustomDescription} />);
 
-  expect(queryByTestId('test')).toBeInTheDocument();
+  expect(screen.getByTestId('test')).toBeInTheDocument();
 });
 
 test('does not accept non-Description Components', () => {
@@ -151,9 +152,9 @@ test('does not accept non-Description Components', () => {
     </div>
   );
 
-  const { queryByTestId } = render(<Textarea description={NotADescription} />);
+  render(<Textarea description={NotADescription} />);
 
-  expect(queryByTestId('test')).not.toBeInTheDocument();
+  expect(screen.queryByTestId('test')).not.toBeInTheDocument();
 });
 
 test('accepts an Error Component', () => {
@@ -166,14 +167,14 @@ test('accepts an Error Component', () => {
     </FormControlError>
   );
 
-  const { container, queryByTestId } = render(
+  const { container } = render(
     <FormGroup>
       <Textarea error={CustomError} />
     </FormGroup>,
   );
   const textarea = container.querySelector('textarea');
 
-  expect(queryByTestId('test')).toBeInTheDocument();
+  expect(screen.getByTestId('test')).toBeInTheDocument();
   expect(textarea).toHaveStyleRule('border', errorBorderStyle);
 });
 
@@ -187,21 +188,21 @@ test('does not accept non-Error Components', () => {
     </div>
   );
 
-  const { container, queryByTestId } = render(
+  const { container } = render(
     <FormGroup>
       <Textarea error={NotAnError} />
     </FormGroup>,
   );
   const textarea = container.querySelector('textarea');
 
-  expect(queryByTestId('test')).not.toBeInTheDocument();
+  expect(screen.queryByTestId('test')).not.toBeInTheDocument();
   expect(textarea).toHaveStyleRule('border', basicBorderStyle);
 });
 
 describe('error does not show when invalid type', () => {
   test('single element', () => {
     const error = <div data-testid="err">Error</div>;
-    const { container, queryByTestId } = render(
+    const { container } = render(
       <FormGroup>
         <Textarea error={error} />
       </FormGroup>,
@@ -209,7 +210,7 @@ describe('error does not show when invalid type', () => {
     const textarea = container.querySelector('textarea');
 
     expect(warning).toHaveBeenCalledTimes(1);
-    expect(queryByTestId('err')).not.toBeInTheDocument();
+    expect(screen.queryByTestId('err')).not.toBeInTheDocument();
     expect(textarea).toHaveStyleRule('border', basicBorderStyle);
   });
 
@@ -222,7 +223,7 @@ describe('error does not show when invalid type', () => {
       </div>,
     ];
 
-    const { container, queryByTestId } = render(
+    const { container } = render(
       <FormGroup>
         <Textarea error={errors} />
       </FormGroup>,
@@ -230,7 +231,7 @@ describe('error does not show when invalid type', () => {
     const textarea = container.querySelector('textarea');
 
     expect(warning).toHaveBeenCalledTimes(1);
-    expect(queryByTestId('err')).not.toBeInTheDocument();
+    expect(screen.queryByTestId('err')).not.toBeInTheDocument();
     expect(textarea).toHaveStyleRule('border', errorBorderStyle);
   });
 });
@@ -242,7 +243,7 @@ test('accepts valid row property', async () => {
 
   const textarea = await screen.findByTestId('test-rows');
 
-  expect(textarea.getAttribute('rows')).toBe(`${rows}`);
+  expect(textarea).toHaveAttribute('rows', `${rows}`);
 });
 
 test('does not accept invalid row property', async () => {
@@ -302,7 +303,7 @@ describe('error shows when an array of strings', () => {
 
   test('array with valid strings', () => {
     const errors = ['Error 0', 'Error 1'];
-    const { container, getByText } = render(
+    const { container } = render(
       <FormGroup>
         <Textarea error={errors} />
       </FormGroup>,
@@ -311,6 +312,6 @@ describe('error shows when an array of strings', () => {
 
     expect(textarea).toHaveStyleRule('border', errorBorderStyle);
 
-    errors.forEach((error) => expect(getByText(error)).toBeInTheDocument());
+    errors.forEach((error) => expect(screen.getByText(error)).toBeInTheDocument());
   });
 });
