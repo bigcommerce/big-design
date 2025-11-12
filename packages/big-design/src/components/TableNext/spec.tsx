@@ -1579,6 +1579,7 @@ describe('draggable', () => {
 
   beforeEach(() => {
     onRowDrop = jest.fn();
+    onExpandedChange = jest.fn();
     items = [
       {
         sku: 'SM13',

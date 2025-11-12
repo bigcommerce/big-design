@@ -118,7 +118,7 @@ test('dropdown item on click callback receives synthetic event', async () => {
   // accessibility name is an empty string if the element is hidden
   const button = await screen.findByRole('button', {
     name: (_, element) => {
-      return Boolean(element.textContent?.match(/button 4/i));
+      return Boolean(/button 4/i.exec(element.textContent ?? ''));
     },
     hidden: true,
   });
