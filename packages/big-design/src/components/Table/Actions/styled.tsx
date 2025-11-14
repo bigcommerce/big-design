@@ -9,7 +9,11 @@ export const StyledFlex = styled.div<FlexProps & { stickyHeader?: boolean }>`
 
   background-color: ${({ theme }) => theme.colors.white};
   display: flex;
-  padding: ${({ theme }) => `${theme.spacing.small} ${theme.spacing.xLarge}`};
+  padding: ${({ theme }) => `${theme.spacing.small} ${theme.spacing.small}`};
+
+  ${({ theme }) => theme.breakpoints.tablet} {
+    padding: ${({ theme }) => `${theme.spacing.small} ${theme.spacing.xLarge}`};
+  }
 
   ${({ theme, stickyHeader }) =>
     stickyHeader &&
