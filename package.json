@@ -19,7 +19,7 @@
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
     "@types/babel__standalone": "^7.1.9",
-    "turbo": "^2.5.8",
+    "turbo": "^2.6.1",
     "typescript": "^5.9.3"
   },
   "pnpm": {
