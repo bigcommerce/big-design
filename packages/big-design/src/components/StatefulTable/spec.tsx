@@ -235,14 +235,19 @@ test('unselect all should unselect all items in page', async () => {
 });
 
 test('sorts alphabetically', () => {
-  const { getAllByTestId, getByText } = render(getSimpleTable({ pagination: false }));
+  const { getAllByTestId, container } = render(getSimpleTable({ pagination: false }));
 
   let items = getAllByTestId('name');
   let firstItemContent = items[0].textContent;
   let lastItemContent = items[items.length - 1].textContent;
 
+  // Find the clickable Name header in the th element (not the mobile headers in td elements)
+  const nameHeader = container.querySelector('th[id="header-cell-0"]');
+
+  expect(nameHeader).toBeInTheDocument();
+
   // Descending order
-  fireEvent.click(getByText('Name'));
+  fireEvent.click(nameHeader!);
   items = getAllByTestId('name');
   firstItemContent = items[0].textContent;
   lastItemContent = items[items.length - 1].textContent;
@@ -251,7 +256,7 @@ test('sorts alphabetically', () => {
   expect(lastItemContent).toBe('Product A - 1');
 
   // Ascending order
-  fireEvent.click(getByText('Name'));
+  fireEvent.click(nameHeader!);
   items = getAllByTestId('name');
   firstItemContent = items[0].textContent;
   lastItemContent = items[items.length - 1].textContent;
@@ -261,14 +266,19 @@ test('sorts alphabetically', () => {
 });
 
 test('sorts numerically', () => {
-  const { getAllByTestId, getByText } = render(getSimpleTable({ pagination: false }));
+  const { getAllByTestId, container } = render(getSimpleTable({ pagination: false }));
 
   let items = getAllByTestId('stock');
   let firstItemContent = items[0].textContent;
   let lastItemContent = items[items.length - 1].textContent;
 
+  // Find the clickable Stock header in the th element (not the mobile headers in td elements)
+  const stockHeader = container.querySelector('th[id="header-cell-1"]');
+
+  expect(stockHeader).toBeInTheDocument();
+
   // Descending order
-  fireEvent.click(getByText('Stock'));
+  fireEvent.click(stockHeader!);
   items = getAllByTestId('stock');
   firstItemContent = items[0].textContent;
   lastItemContent = items[items.length - 1].textContent;
@@ -277,7 +287,7 @@ test('sorts numerically', () => {
   expect(lastItemContent).toBe('1');
 
   // Ascending order
-  fireEvent.click(getByText('Stock'));
+  fireEvent.click(stockHeader!);
   items = getAllByTestId('stock');
   firstItemContent = items[0].textContent;
   lastItemContent = items[items.length - 1].textContent;
@@ -287,7 +297,7 @@ test('sorts numerically', () => {
 });
 
 test('sorts using a custom sorting function', () => {
-  const { getAllByTestId, getByText } = render(
+  const { getAllByTestId, container } = render(
     getSimpleTable({
       columns: [
         {
@@ -311,8 +321,13 @@ test('sorts using a custom sorting function', () => {
   let firstItemContent = items[0].textContent;
   let lastItemContent = items[items.length - 1].textContent;
 
+  // Find the clickable Stock header in the th element (not the mobile headers in td elements)
+  const stockHeader = container.querySelector('th[id="header-cell-1"]');
+
+  expect(stockHeader).toBeInTheDocument();
+
   // Descending order
-  fireEvent.click(getByText('Stock'));
+  fireEvent.click(stockHeader!);
 
   items = getAllByTestId('stock');
   firstItemContent = items[0].textContent;
@@ -322,7 +337,7 @@ test('sorts using a custom sorting function', () => {
   expect(lastItemContent).toBe('1');
 
   // Ascending order
-  fireEvent.click(getByText('Stock'));
+  fireEvent.click(stockHeader!);
   items = getAllByTestId('stock');
   firstItemContent = items[0].textContent;
   lastItemContent = items[items.length - 1].textContent;
@@ -345,7 +360,7 @@ test('renders custom actions', () => {
 test('renders headers by default and hides then via prop', () => {
   const { container, rerender } = render(getSimpleTable());
 
-  expect(container.querySelector('th')).toBeVisible();
+  expect(container.querySelector('th')).toBeInTheDocument();
 
   rerender(getSimpleTable({ headerless: true }));
 

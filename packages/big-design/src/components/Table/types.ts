@@ -37,6 +37,7 @@ export interface TableColumn<T> extends TableColumnDisplayProps {
   verticalAlign?: 'top' | 'middle';
   width?: number | string;
   withPadding?: boolean;
+  isAction?: boolean;
 }
 
 type WithoutMarginProps<T> = Omit<T, keyof MarginProps>;
