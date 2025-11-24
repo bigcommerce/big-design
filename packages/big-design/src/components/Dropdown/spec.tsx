@@ -698,3 +698,56 @@ test('dropdown onItemClick triggers inside a modal', async () => {
   expect(onItemClick).toHaveBeenCalledTimes(1);
   expect(onItemClick).toHaveBeenCalledWith({ content: 'Option 2', onItemClick });
 });
+
+test('disabled item does not trigger onItemClick via keyboard Enter', async () => {
+  onItemClick.mockClear();
+
+  render(
+    <Dropdown
+      items={[
+        { content: 'Enabled 1', onItemClick },
+        { content: 'Disabled 2', onItemClick, disabled: true },
+        { content: 'Enabled 3', onItemClick },
+      ]}
+      toggle={<Button>Button</Button>}
+    />,
+  );
+
+  const toggle = screen.getByRole('button');
+
+  await userEvent.click(toggle);
+
+  // Move highlight to the disabled item (index 1)
+  await userEvent.keyboard('{ArrowDown}');
+
+  // Press Enter; onItemClick should NOT fire
+  await userEvent.keyboard('{Enter}');
+
+  expect(onItemClick).not.toHaveBeenCalled();
+});
+
+test('disabled item does not trigger onItemClick via mouse click', async () => {
+  onItemClick.mockClear();
+
+  render(
+    <Dropdown
+      items={[
+        { content: 'Enabled 1', onItemClick },
+        { content: 'Disabled 2', onItemClick, disabled: true },
+        { content: 'Enabled 3', onItemClick },
+      ]}
+      toggle={<Button>Button</Button>}
+    />,
+  );
+
+  const toggle = screen.getByRole('button');
+
+  await userEvent.click(toggle);
+
+  const options = await screen.findAllByRole('option');
+
+  // Click the disabled option (index 1)
+  await userEvent.click(options[1]);
+
+  expect(onItemClick).not.toHaveBeenCalled();
+});
