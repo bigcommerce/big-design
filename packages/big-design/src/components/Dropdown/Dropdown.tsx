@@ -63,6 +63,7 @@ export const Dropdown = memo(
       ({ selectedItem }: Partial<UseSelectState<DropdownItem | DropdownLinkItem | null>>) => {
         if (
           selectedItem &&
+          !selectedItem.disabled &&
           selectedItem.type !== 'link' &&
           typeof selectedItem.onItemClick === 'function'
         ) {
