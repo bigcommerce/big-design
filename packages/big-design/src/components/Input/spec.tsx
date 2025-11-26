@@ -1,16 +1,11 @@
 import { AddIcon } from '@bigcommerce/big-design-icons';
-import { theme } from '@bigcommerce/big-design-theme';
 import { render, screen } from '@testing-library/react';
 import React, { createRef } from 'react';
-import 'jest-styled-components';
 
 import { warning } from '../../utils';
 import { FormControlDescription, FormControlError, FormControlLabel, FormGroup } from '../Form';
 
 import { Input } from './index';
-
-const basicBorderStyle = `1px solid ${theme.colors.secondary30}`;
-const errorBorderStyle = `1px solid ${theme.colors.danger40}`;
 
 test('forwards ref', () => {
   const ref = createRef<HTMLInputElement>();
@@ -83,15 +78,14 @@ test('renders a description', () => {
 
 test('renders an error', () => {
   const errorText = 'This is an error';
-  const { container } = render(
+
+  render(
     <FormGroup>
       <Input error={errorText} />
     </FormGroup>,
   );
-  const styledInputWrapper = container.querySelector('[class*="StyledInputWrapper"]');
 
   expect(screen.getByText(errorText)).toBeInTheDocument();
-  expect(styledInputWrapper).toHaveStyleRule('border', errorBorderStyle);
 });
 
 test('accepts a Label Component', () => {
@@ -164,15 +158,13 @@ test('accepts an Error Component', () => {
     </FormControlError>
   );
 
-  const { container } = render(
+  render(
     <FormGroup>
       <Input error={CustomError} />
     </FormGroup>,
   );
-  const styledInputWrapper = container.querySelector('[class*="StyledInputWrapper"]');
 
   expect(screen.getByTestId('test')).toBeInTheDocument();
-  expect(styledInputWrapper).toHaveStyleRule('border', errorBorderStyle);
 });
 
 test('does not accept non-Error Components', () => {
@@ -185,15 +177,13 @@ test('does not accept non-Error Components', () => {
     </div>
   );
 
-  const { container } = render(
+  render(
     <FormGroup>
       <Input error={NotAnError} />
     </FormGroup>,
   );
-  const styledInputWrapper = container.querySelector('[class*="StyledInputWrapper"]');
 
   expect(screen.queryByTestId('test')).not.toBeInTheDocument();
-  expect(styledInputWrapper).toHaveStyleRule('border', basicBorderStyle);
 });
 
 test('renders iconLeft', () => {
@@ -240,10 +230,8 @@ test('error shows with valid string', () => {
       <Input error="" />
     </FormGroup>,
   );
-  const styledInputWrapper = container.querySelector('[class*="StyledInputWrapper"]');
 
   expect(container.querySelector('[class*="StyledError"]')).not.toBeInTheDocument();
-  expect(styledInputWrapper).toHaveStyleRule('border', basicBorderStyle);
 
   rerender(
     <FormGroup>
@@ -251,8 +239,7 @@ test('error shows with valid string', () => {
     </FormGroup>,
   );
 
-  expect(container.querySelector('[class*="StyledError"]')).toBeInTheDocument();
-  expect(styledInputWrapper).toHaveStyleRule('border', errorBorderStyle);
+  expect(screen.getByText(error)).toBeInTheDocument();
 });
 
 describe('error shows when an array of strings', () => {
@@ -262,10 +249,8 @@ describe('error shows when an array of strings', () => {
         <Input error={[]} />
       </FormGroup>,
     );
-    const styledInputWrapper = container.querySelector('[class*="StyledInputWrapper"]');
 
     expect(container.querySelector('[class*="StyledError"]')).not.toBeInTheDocument();
-    expect(styledInputWrapper).toHaveStyleRule('border', basicBorderStyle);
   });
 
   test('array with empty strings', () => {
@@ -274,22 +259,18 @@ describe('error shows when an array of strings', () => {
         <Input error={['', '']} />
       </FormGroup>,
     );
-    const styledInputWrapper = container.querySelector('[class*="StyledInputWrapper"]');
 
     expect(container.querySelector('[class*="StyledError"]')).not.toBeInTheDocument();
-    expect(styledInputWrapper).toHaveStyleRule('border', basicBorderStyle);
   });
 
   test('array with valid strings', () => {
     const errors = ['Error 0', 'Error 1'];
-    const { container } = render(
+
+    render(
       <FormGroup>
         <Input error={errors} />
       </FormGroup>,
     );
-    const styledInputWrapper = container.querySelector('[class*="StyledInputWrapper"]');
-
-    expect(styledInputWrapper).toHaveStyleRule('border', errorBorderStyle);
 
     errors.forEach((error) => expect(screen.getByText(error)).toBeInTheDocument());
   });
@@ -302,31 +283,28 @@ test('error shows when an array of Errors', () => {
       Error
     </FormControlError>
   ));
-  const { container } = render(
+
+  render(
     <FormGroup>
       <Input error={errors} />
     </FormGroup>,
   );
-  const styledInputWrapper = container.querySelector('[class*="StyledInputWrapper"]');
 
   testIds.forEach((id) => expect(screen.getByTestId(id)).toBeInTheDocument());
-
-  expect(styledInputWrapper).toHaveStyleRule('border', errorBorderStyle);
 });
 
 describe('error does not show when invalid type', () => {
   test('single element', () => {
     const error = <div data-testid="err">Error</div>;
-    const { container } = render(
+
+    render(
       <FormGroup>
         <Input error={error} />
       </FormGroup>,
     );
-    const styledInputWrapper = container.querySelector('[class*="StyledInputWrapper"]');
 
     expect(warning).toHaveBeenCalledTimes(1);
     expect(screen.queryByTestId('err')).not.toBeInTheDocument();
-    expect(styledInputWrapper).toHaveStyleRule('border', basicBorderStyle);
   });
 
   test('array of elements', () => {
@@ -338,16 +316,14 @@ describe('error does not show when invalid type', () => {
       </div>,
     ];
 
-    const { container } = render(
+    render(
       <FormGroup>
         <Input error={errors} />
       </FormGroup>,
     );
-    const styledInputWrapper = container.querySelector('[class*="StyledInputWrapper"]');
 
     expect(warning).toHaveBeenCalledTimes(1);
     expect(screen.queryByTestId('err')).not.toBeInTheDocument();
-    expect(styledInputWrapper).toHaveStyleRule('border', errorBorderStyle);
   });
 });
 

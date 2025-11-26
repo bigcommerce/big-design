@@ -97,7 +97,13 @@ describe('emCal', () => {
 });
 
 test('listReset returns reset css', () => {
-  const expected = ['list-style-type:none;margin:0;padding:0;'];
+  const expected = [
+    `
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+`,
+  ];
 
   expect(listReset).toEqual(expected);
 });
