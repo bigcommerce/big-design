@@ -78,11 +78,13 @@ test('renders a description', () => {
 
 test('renders an error', () => {
   const errorText = 'This is an error';
-  const { container } = render(
+
+  render(
     <FormGroup>
       <Input error={errorText} />
     </FormGroup>,
   );
+
   expect(screen.getByText(errorText)).toBeInTheDocument();
 });
 
@@ -156,11 +158,12 @@ test('accepts an Error Component', () => {
     </FormControlError>
   );
 
-  const { container } = render(
+  render(
     <FormGroup>
       <Input error={CustomError} />
     </FormGroup>,
   );
+
   expect(screen.getByTestId('test')).toBeInTheDocument();
 });
 
@@ -174,11 +177,12 @@ test('does not accept non-Error Components', () => {
     </div>
   );
 
-  const { container } = render(
+  render(
     <FormGroup>
       <Input error={NotAnError} />
     </FormGroup>,
   );
+
   expect(screen.queryByTestId('test')).not.toBeInTheDocument();
 });
 
@@ -261,6 +265,7 @@ describe('error shows when an array of strings', () => {
 
   test('array with valid strings', () => {
     const errors = ['Error 0', 'Error 1'];
+
     render(
       <FormGroup>
         <Input error={errors} />
@@ -278,6 +283,7 @@ test('error shows when an array of Errors', () => {
       Error
     </FormControlError>
   ));
+
   render(
     <FormGroup>
       <Input error={errors} />
@@ -290,6 +296,7 @@ test('error shows when an array of Errors', () => {
 describe('error does not show when invalid type', () => {
   test('single element', () => {
     const error = <div data-testid="err">Error</div>;
+
     render(
       <FormGroup>
         <Input error={error} />
