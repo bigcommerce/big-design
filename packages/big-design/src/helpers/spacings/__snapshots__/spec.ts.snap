@@ -3,25 +3,40 @@
 exports[`multiple responsive spacing 1`] = `
 [
   [
+    "
+      ",
     "@media (min-width: 0px)",
-    "{",
+    " {
+        ",
     "border: 0;",
     "padding-right: 0;",
-    "}",
+    "
+      }
+    ",
   ],
   [
+    "
+      ",
     "@media (min-width: 720px)",
-    "{",
+    " {
+        ",
     "border: 0.75rem;",
     "padding-right: 0.75rem;",
-    "}",
+    "
+      }
+    ",
   ],
   [
+    "
+      ",
     "@media (min-width: 1025px)",
-    "{",
+    " {
+        ",
     "border: 1rem;",
     "padding-right: 1rem;",
-    "}",
+    "
+      }
+    ",
   ],
 ]
 `;
@@ -29,22 +44,37 @@ exports[`multiple responsive spacing 1`] = `
 exports[`responsive spacing 1`] = `
 [
   [
+    "
+      ",
     "@media (min-width: 0px)",
-    "{",
+    " {
+        ",
     "border: 0;",
-    "}",
+    "
+      }
+    ",
   ],
   [
+    "
+      ",
     "@media (min-width: 720px)",
-    "{",
+    " {
+        ",
     "border: 0.75rem;",
-    "}",
+    "
+      }
+    ",
   ],
   [
+    "
+      ",
     "@media (min-width: 1025px)",
-    "{",
+    " {
+        ",
     "border: 1rem;",
-    "}",
+    "
+      }
+    ",
   ],
 ]
 `;

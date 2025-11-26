@@ -46,8 +46,8 @@ exports[`render indeterminant progress bar 1`] = `
   background-color: #3C64F4;
   height: 100%;
   overflow: hidden;
-  -webkit-animation: cdRApH 2s ease-in-out infinite;
-  animation: cdRApH 2s ease-in-out infinite;
+  -webkit-animation: iMijwL 2s ease-in-out infinite;
+  animation: iMijwL 2s ease-in-out infinite;
   position: relative;
   width: 6.25%;
 }
