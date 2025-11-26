@@ -1,8 +1,61 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`it renders accordion panel header 1`] = `
+.c0 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 2rem;
+  margin-bottom: 0;
+}
+
+.c1 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c1 ~ .bd-button {
+  width: auto;
+  margin-top: 0;
+}
+
+@media (min-width:0px) {
+
+}
+
+@media (min-width:720px) {
+
+}
+
+@media (min-width:0px) {
+
+}
+
+@media (min-width:720px) {
+
+}
+
+@media (min-width:720px) {
+
+}
+
+@media (min-width:720px) {
+
+}
+
+@media (min-width:720px) {
+
+}
+
+@media (min-width:720px) {
+
+}
+
 <h2
-  class="styled__StyledH2-sc-218b28a9-2 styled__StyledH2-sc-93a30afd-1 hCxYWp jbcAKv"
+  class="c0 c1"
 >
   Accordion Panel Header
 </h2>

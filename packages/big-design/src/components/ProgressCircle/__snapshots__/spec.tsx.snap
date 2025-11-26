@@ -152,8 +152,8 @@ exports[`render indeterminant progress bar 1`] = `
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: dfVSSu 1s ease-out infinite;
-  animation: dfVSSu 1s ease-out infinite;
+  -webkit-animation: fDkqgS 1s ease-out infinite;
+  animation: fDkqgS 1s ease-out infinite;
   stroke-dashoffset: 138.23007675795088;
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -201,8 +201,8 @@ exports[`render large progress circle 1`] = `
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: krEchf 1s ease-out infinite;
-  animation: krEchf 1s ease-out infinite;
+  -webkit-animation: ddiDZL 1s ease-out infinite;
+  animation: ddiDZL 1s ease-out infinite;
   stroke-dashoffset: 226.1946710584651;
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -250,8 +250,8 @@ exports[`render medium progress circle 1`] = `
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: dfVSSu 1s ease-out infinite;
-  animation: dfVSSu 1s ease-out infinite;
+  -webkit-animation: fDkqgS 1s ease-out infinite;
+  animation: fDkqgS 1s ease-out infinite;
   stroke-dashoffset: 138.23007675795088;
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -299,8 +299,8 @@ exports[`render small progress circle 1`] = `
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: kpuuIv 1s ease-out infinite;
-  animation: kpuuIv 1s ease-out infinite;
+  -webkit-animation: cLjUWD 1s ease-out infinite;
+  animation: cLjUWD 1s ease-out infinite;
   stroke-dashoffset: 87.96459430051421;
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -348,8 +348,8 @@ exports[`render xSmall progress circle 1`] = `
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: hiqbsE 1s ease-out infinite;
-  animation: hiqbsE 1s ease-out infinite;
+  -webkit-animation: jUmmOw 1s ease-out infinite;
+  animation: jUmmOw 1s ease-out infinite;
   stroke-dashoffset: 65.97344572538566;
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -397,8 +397,8 @@ exports[`render xSmall progress circle 2`] = `
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: fxwtRW 1s ease-out infinite;
-  animation: fxwtRW 1s ease-out infinite;
+  -webkit-animation: dcgSPO 1s ease-out infinite;
+  animation: dcgSPO 1s ease-out infinite;
   stroke-dashoffset: 43.982297150257104;
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
