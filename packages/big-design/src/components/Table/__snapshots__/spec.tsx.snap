@@ -308,7 +308,7 @@ exports[`offset pagination renders a pagination component 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 0.75rem;
 }
 
 @media (min-width:720px) {
@@ -337,6 +337,28 @@ exports[`offset pagination renders a pagination component 1`] = `
     padding: 0;
     min-width: 2.25rem;
   }
+}
+
+@media (min-width:720px) {
+  .c0 {
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+@media (min-width:720px) {
+
+}
+
+@media (min-width:720px) {
+
+}
+
+@media (max-width:720px) {
+
+}
+
+@media (min-width:720px) {
+
 }
 
 <div
@@ -490,11 +512,11 @@ exports[`offset pagination renders a pagination component 1`] = `
 `;
 
 exports[`renders a simple table 1`] = `
-.c2 {
+.c3 {
   box-sizing: border-box;
 }
 
-.c3 {
+.c4 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
   align-content: stretch;
@@ -519,6 +541,18 @@ exports[`renders a simple table 1`] = `
 }
 
 .c1 {
+  position: absolute;
+  opacity: 0;
+  display: block;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+
+.c2 {
   background-color: #FFFFFF;
   border-bottom: 1px solid #D9DCE9;
   border-top: 1px solid #D9DCE9;
@@ -529,48 +563,54 @@ exports[`renders a simple table 1`] = `
   white-space: nowrap;
 }
 
-.c1:first-of-type {
+.c2:first-of-type {
   padding-left: 1.5rem;
 }
 
-.c1:last-of-type {
+.c2:last-of-type {
   padding-right: 1.5rem;
 }
 
-.c4 {
+.c5 {
   -webkit-box-pack: start;
   -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
   justify-content: flex-start;
 }
 
-.c6 {
-  background-color: #FFFFFF;
+.c7 {
+  display: block;
   box-sizing: border-box;
   color: #313440;
   font-size: 1rem;
   padding: 0.75rem;
-  border-bottom: 1px solid #D9DCE9;
 }
 
-.c6:first-of-type {
-  padding-left: 1.5rem;
+.c7:first-of-type {
+  padding-inline-start: 0.75rem;
 }
 
-.c6:last-of-type {
-  padding-right: 1.5rem;
+.c7:last-of-type {
+  padding-inline-end: 1.5rem;
 }
 
-.c5 {
+.c8 {
+  display: none;
+}
+
+.c6 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color;
   transition-property: background-color;
-  display: table-row;
+  display: block;
+  position: relative;
+  max-width: 100%;
+  border-block-start: 1px solid #D9DCE9;
   background-color: transparent;
 }
 
-.c5:hover {
+.c6:hover {
   background-color: #F6F7FC;
 }
 
@@ -582,40 +622,79 @@ exports[`renders a simple table 1`] = `
   width: 100%;
 }
 
+@media (min-width:720px) {
+  .c1 {
+    position: static;
+    opacity: 1;
+    display: table-header-group;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    z-index: 1;
+  }
+}
+
+@media (min-width:720px) {
+  .c7 {
+    display: table-cell;
+    border-bottom: 1px solid #D9DCE9;
+  }
+
+  .c7:first-of-type {
+    padding-inline-start: 1.5rem;
+  }
+}
+
+@media (max-width:720px) {
+  .c8 {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c6 {
+    display: table-row;
+    position: relative;
+    border-block-start: none;
+  }
+}
+
 <table
   class="c0"
   id=":r0:"
 >
   <thead
-    class=""
+    class="c1"
   >
     <tr>
       <th
-        class="c1"
+        class="c2"
         id="header-cell-0"
       >
         <div
-          class="c2 c3 c4"
+          class="c3 c4 c5"
         >
           Sku
         </div>
       </th>
       <th
-        class="c1"
+        class="c2"
         id="header-cell-1"
       >
         <div
-          class="c2 c3 c4"
+          class="c3 c4 c5"
         >
           Name
         </div>
       </th>
       <th
-        class="c1"
+        class="c2"
         id="header-cell-2"
       >
         <div
-          class="c2 c3 c4"
+          class="c3 c4 c5"
         >
           Stock
         </div>
@@ -626,97 +705,187 @@ exports[`renders a simple table 1`] = `
     class=""
   >
     <tr
-      class="c5"
+      class="c6"
     >
       <td
-        class="c6"
+        class="c7"
       >
+        <div
+          aria-hidden="true"
+          class="c8"
+        >
+          Sku
+        </div>
         SM13
       </td>
       <td
-        class="c6"
+        class="c7"
       >
+        <div
+          aria-hidden="true"
+          class="c8"
+        >
+          Name
+        </div>
         [Sample] Smith Journal 13
       </td>
       <td
-        class="c6"
+        class="c7"
       >
+        <div
+          aria-hidden="true"
+          class="c8"
+        >
+          Stock
+        </div>
         25
       </td>
     </tr>
     <tr
-      class="c5"
+      class="c6"
     >
       <td
-        class="c6"
+        class="c7"
       >
+        <div
+          aria-hidden="true"
+          class="c8"
+        >
+          Sku
+        </div>
         DPB
       </td>
       <td
-        class="c6"
+        class="c7"
       >
+        <div
+          aria-hidden="true"
+          class="c8"
+        >
+          Name
+        </div>
         [Sample] Dustpan & Brush
       </td>
       <td
-        class="c6"
+        class="c7"
       >
+        <div
+          aria-hidden="true"
+          class="c8"
+        >
+          Stock
+        </div>
         34
       </td>
     </tr>
     <tr
-      class="c5"
+      class="c6"
     >
       <td
-        class="c6"
+        class="c7"
       >
+        <div
+          aria-hidden="true"
+          class="c8"
+        >
+          Sku
+        </div>
         OFSUC
       </td>
       <td
-        class="c6"
+        class="c7"
       >
+        <div
+          aria-hidden="true"
+          class="c8"
+        >
+          Name
+        </div>
         [Sample] Utility Caddy
       </td>
       <td
-        class="c6"
+        class="c7"
       >
+        <div
+          aria-hidden="true"
+          class="c8"
+        >
+          Stock
+        </div>
         45
       </td>
     </tr>
     <tr
-      class="c5"
+      class="c6"
     >
       <td
-        class="c6"
+        class="c7"
       >
+        <div
+          aria-hidden="true"
+          class="c8"
+        >
+          Sku
+        </div>
         CLC
       </td>
       <td
-        class="c6"
+        class="c7"
       >
+        <div
+          aria-hidden="true"
+          class="c8"
+        >
+          Name
+        </div>
         [Sample] Canvas Laundry Cart
       </td>
       <td
-        class="c6"
+        class="c7"
       >
+        <div
+          aria-hidden="true"
+          class="c8"
+        >
+          Stock
+        </div>
         2
       </td>
     </tr>
     <tr
-      class="c5"
+      class="c6"
     >
       <td
-        class="c6"
+        class="c7"
       >
+        <div
+          aria-hidden="true"
+          class="c8"
+        >
+          Sku
+        </div>
         CGLD
       </td>
       <td
-        class="c6"
+        class="c7"
       >
+        <div
+          aria-hidden="true"
+          class="c8"
+        >
+          Name
+        </div>
         [Sample] Laundry Detergent
       </td>
       <td
-        class="c6"
+        class="c7"
       >
+        <div
+          aria-hidden="true"
+          class="c8"
+        >
+          Stock
+        </div>
         29
       </td>
     </tr>
@@ -950,7 +1119,37 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 0.75rem;
+}
+
+@media (min-width:720px) {
+  .c0 {
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+@media (min-width:720px) {
+
+}
+
+@media (min-width:720px) {
+
+}
+
+@media (min-width:720px) {
+
+}
+
+@media (min-width:720px) {
+
+}
+
+@media (max-width:720px) {
+
+}
+
+@media (min-width:720px) {
+
 }
 
 <div

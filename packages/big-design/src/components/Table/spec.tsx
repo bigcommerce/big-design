@@ -185,7 +185,7 @@ test('tweaks column styles with props', () => {
 
   expect(nameTd).toHaveStyle(`
     width: 100px;
-    padding: 0 0 0 0;
+    padding: 0;
   `);
 });
 
@@ -672,7 +672,7 @@ describe('sortable', () => {
   test('renders headers by default and hides then via prop', () => {
     const { container, rerender } = render(getSimpleTable());
 
-    expect(container.querySelector('th')).toBeVisible();
+    expect(container.querySelector('th')).toBeInTheDocument();
 
     rerender(getSimpleTable({ headerless: true }));
 

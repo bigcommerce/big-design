@@ -24,5 +24,13 @@ export const StyledTable = styled.table`
   width: 100%;
 `;
 
+export const StyledTableCaption = styled.caption`
+  color: ${({ theme }) => theme.colors.secondary70};
+  padding-block: ${({ theme }) => theme.spacing.small};
+  padding-inline: ${({ theme }) => theme.spacing.xLarge};
+  border-block-start: ${({ theme }) => theme.border.box};
+`;
+
 StyledTableFigure.defaultProps = { theme: defaultTheme };
 StyledTable.defaultProps = { theme: defaultTheme };
+StyledTableCaption.defaultProps = { theme: defaultTheme };
