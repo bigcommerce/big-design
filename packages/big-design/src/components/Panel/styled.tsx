@@ -14,6 +14,7 @@ export const StyledPanel = styled(Box)`
 
 export const StyledH2 = styled(StyleableH2)`
   flex-grow: 1;
+  flex-shrink: 1;
 
   & ~ .bd-button {
     width: auto;

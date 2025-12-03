@@ -1,5 +1,6 @@
 import { theme } from '@bigcommerce/big-design-theme';
 import { fireEvent, render, screen } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
 import React, { createRef } from 'react';
 import 'jest-styled-components';
 
@@ -40,7 +41,7 @@ test('does not forward styles', () => {
   expect(container.firstChild).not.toHaveStyle('background: red');
 });
 
-test('renders a header and action', () => {
+test('renders a header and a button action', () => {
   const { getByRole } = render(
     <Panel action={{ text: 'Test Action' }} header="Test Header">
       Dolore proident eiusmod sint est enim laboris anim minim quis ut adipisicing consectetur
@@ -61,6 +62,33 @@ test('renders a header and action', () => {
   expect(actionButton).toHaveTextContent('Test Action');
 });
 
+test('renders a header and a dropdown action', async () => {
+  const dropdownItemCallback = jest.fn();
+  const { getByRole } = render(
+    <Panel
+      action={{
+        items: [{ content: 'Action 1', onItemClick: dropdownItemCallback }],
+        toggle: {
+          text: 'Toggle Dropdown',
+        },
+      }}
+      header="Test Header"
+    >
+      Lorem Ipsum
+    </Panel>,
+  );
+
+  const dropdownToggle = getByRole('button');
+
+  expect(dropdownToggle).toBeInTheDocument();
+  expect(dropdownToggle.textContent).toBe('Toggle Dropdown');
+
+  await userEvent.click(dropdownToggle);
+  await userEvent.click(screen.getByRole('option', { name: 'Action 1' }));
+
+  expect(dropdownItemCallback).toHaveBeenCalled();
+});
+
 test('renders a badge and header', () => {
   const { getByRole, getByText } = render(
     <Panel badge={{ label: 'danger', variant: 'danger' }} header="Test Header">
@@ -78,6 +106,25 @@ test('renders a badge and header', () => {
   const badge = getByText('danger');
 
   expect(badge).toBeInTheDocument();
+});
+
+test('renders a lozenge and header', () => {
+  const { getByRole, getByText } = render(
+    <Panel header="Test Header" lozenge={{ label: 'Beta', variant: 'beta' }}>
+      Dolore proident eiusmod sint est enim laboris anim minim quis ut adipisicing consectetur
+      officia ex. Ipsum eiusmod fugiat amet pariatur culpa tempor aliquip tempor nisi. Irure esse
+      deserunt nostrud ipsum id adipisicing enim velit labore. Nulla exercitation laborum laboris
+      Lorem irure sit esse nulla mollit aliquip consectetur velit
+    </Panel>,
+  );
+
+  const header = getByRole('heading');
+
+  expect(header).toBeInTheDocument();
+
+  const lozenge = getByText('Beta');
+
+  expect(lozenge).toBeInTheDocument();
 });
 
 describe('description', () => {
