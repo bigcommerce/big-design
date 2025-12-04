@@ -18,8 +18,8 @@ exports[`isLoading render loading button 1`] = `
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: dcgSPO 1s ease-out infinite;
-  animation: dcgSPO 1s ease-out infinite;
+  -webkit-animation: fxwtRW 1s ease-out infinite;
+  animation: fxwtRW 1s ease-out infinite;
   stroke-dashoffset: 43.982297150257104;
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
