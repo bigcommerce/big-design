@@ -39,7 +39,7 @@
     "@bigcommerce/configs": "workspace:^",
     "@styled/typescript-styled-plugin": "^1.0.1",
     "@types/gtag.js": "^0.0.20",
-    "@types/node": "^20.12.7",
+    "@types/node": "^20.19.25",
     "@types/prettier": "^2.0.1",
     "@types/react": "^18.2.73",
     "@types/react-beautiful-dnd": "^13.1.8",
@@ -47,7 +47,7 @@
     "@types/styled-components": "^5.1.34",
     "eslint-plugin-mdx": "^3.6.2",
     "jsx-to-string-loader": "^1.2.0",
-    "next": "^15.5.0",
+    "next": "^15.5.7",
     "typescript": "^5.9.3"
   }
 }
