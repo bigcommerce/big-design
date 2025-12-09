@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.7.0
+
+### Minor Changes
+
+- 1f83e7e: added circle_dashed, flare, Products and RadioButton icons
+
 ## 1.6.0
 
 ### Minor Changes
