@@ -26,6 +26,27 @@ module.exports = {
   compiler: {
     styledComponents: true,
   },
+  // Turbopack configuration (used by default in Next.js 16+)
+  turbopack: {
+    rules: {
+      '*.{ts,tsx}': {
+        condition: {
+          all: [
+            { not: 'foreign' }, // Exclude node_modules
+            {
+              any: [
+                { path: /^packages\/docs\/pages\// },
+                { path: /^packages\/docs\/components\// },
+                { path: /^packages\/docs\/PropTables\// },
+              ],
+            },
+          ],
+        },
+        loaders: ['jsx-to-string-loader'],
+      },
+    },
+  },
+  // Webpack configuration (fallback when using --webpack flag)
   webpack: (config) => {
     return {
       ...config,
