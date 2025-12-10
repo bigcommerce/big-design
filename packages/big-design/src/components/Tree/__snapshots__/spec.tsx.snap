@@ -1,27 +1,173 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`renders simple tree 1`] = `
+.c0 {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c0 > li > ul {
+  padding-left: 1.75rem;
+}
+
+.c8 {
+  vertical-align: middle;
+  color: #5E637A;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.c11 {
+  vertical-align: middle;
+  color: #9EB3FC;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.c2 {
+  box-sizing: border-box;
+}
+
+.c9 {
+  margin-left: 0.25rem;
+  box-sizing: border-box;
+}
+
+.c3 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c6 {
+  -webkit-align-self: auto;
+  -ms-flex-item-align: auto;
+  align-self: auto;
+  -webkit-flex-basis: auto;
+  -ms-flex-preferred-size: auto;
+  flex-basis: auto;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-order: 0;
+  -ms-flex-order: 0;
+  order: 0;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c12 {
+  color: #313440;
+  margin: 0 0 1rem;
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin-left: 0.25rem;
+}
+
+.c12:last-child {
+  margin-bottom: 0;
+}
+
+.c1 {
+  outline: 0;
+}
+
+.c7 {
+  z-index: 1;
+}
+
+.c5 {
+  cursor: pointer;
+  min-height: 2.5rem;
+  position: relative;
+}
+
+li:focus > .c4::after,
+.c5:hover::after {
+  bottom: 0;
+  content: '';
+  left: -1000px;
+  right: 0;
+  position: absolute;
+  top: 0;
+  z-index: 0;
+  background-color: #F6F7FC;
+}
+
+.c5 label,
+.c5 svg {
+  vertical-align: middle;
+}
+
+.c10 {
+  z-index: 1;
+}
+
+.c14 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.c13 {
+  z-index: 1;
+}
+
 <ul
   aria-multiselectable="false"
-  class="styled__StyledUl-sc-3526f150-0 jXgIr"
+  class="c0"
   role="tree"
   style="overflow: hidden;"
 >
   <li
     aria-expanded="false"
-    class="styled__StyledLi-sc-912cb84-0 ddOgUf"
+    class="c1"
     role="treeitem"
     tabindex="-1"
   >
     <div
-      class="styled__StyledBox-sc-12d4dbf-0 imudcb styled__StyledFlex-sc-3a1154b6-0 dNPsOo styled__StyledFlex-sc-912cb84-3 gknWxS"
+      class="c2 c3 c4 c5"
     >
       <div
-        class="styled__StyledBox-sc-12d4dbf-0 imudcb styled__StyledFlexItem-sc-2b88929e-0 jCGHbT styled__StyledArrowWrapper-sc-912cb84-1 lpeGLF"
+        class="c2 c6 c7"
       >
         <svg
           aria-hidden="true"
-          class="base__StyledIcon-sc-a9u0e1-0 PHcub"
+          class="c8"
           color="secondary60"
           fill="currentColor"
           focusable="false"
@@ -41,11 +187,11 @@ exports[`renders simple tree 1`] = `
         </svg>
       </div>
       <div
-        class="styled__StyledBox-sc-12d4dbf-0 jlecRx styled__StyledFlexItem-sc-2b88929e-0 jCGHbT styled__StyledFlexItem-sc-912cb84-4 eopNjs"
+        class="c9 c6 c10"
       >
         <svg
           aria-hidden="true"
-          class="base__StyledIcon-sc-a9u0e1-0 cjbLvM"
+          class="c11"
           color="primary30"
           fill="currentColor"
           height="24"
@@ -64,7 +210,7 @@ exports[`renders simple tree 1`] = `
         </svg>
       </div>
       <span
-        class="styled__StyledText-sc-218b28a9-5 styled__StyledText-sc-912cb84-6 ffENPD ebpimB"
+        class="c12 c13"
         color="secondary70"
       >
         Test Node 0
@@ -73,19 +219,19 @@ exports[`renders simple tree 1`] = `
   </li>
   <li
     aria-expanded="false"
-    class="styled__StyledLi-sc-912cb84-0 ddOgUf"
+    class="c1"
     role="treeitem"
     tabindex="-1"
   >
     <div
-      class="styled__StyledBox-sc-12d4dbf-0 imudcb styled__StyledFlex-sc-3a1154b6-0 dNPsOo styled__StyledFlex-sc-912cb84-3 gknWxS"
+      class="c2 c3 c4 c5"
     >
       <div
-        class="styled__StyledBox-sc-12d4dbf-0 imudcb styled__StyledFlexItem-sc-2b88929e-0 jCGHbT styled__StyledArrowWrapper-sc-912cb84-1 lpeGLF"
+        class="c2 c6 c7"
       >
         <svg
           aria-hidden="true"
-          class="base__StyledIcon-sc-a9u0e1-0 PHcub"
+          class="c8"
           color="secondary60"
           fill="currentColor"
           focusable="false"
@@ -105,11 +251,11 @@ exports[`renders simple tree 1`] = `
         </svg>
       </div>
       <div
-        class="styled__StyledBox-sc-12d4dbf-0 jlecRx styled__StyledFlexItem-sc-2b88929e-0 jCGHbT styled__StyledFlexItem-sc-912cb84-4 eopNjs"
+        class="c9 c6 c10"
       >
         <svg
           aria-hidden="true"
-          class="base__StyledIcon-sc-a9u0e1-0 cjbLvM"
+          class="c11"
           color="primary30"
           fill="currentColor"
           height="24"
@@ -128,7 +274,7 @@ exports[`renders simple tree 1`] = `
         </svg>
       </div>
       <span
-        class="styled__StyledText-sc-218b28a9-5 styled__StyledText-sc-912cb84-6 ffENPD ebpimB"
+        class="c12 c13"
         color="secondary70"
       >
         Test Node 1
@@ -137,22 +283,22 @@ exports[`renders simple tree 1`] = `
   </li>
   <li
     aria-expanded="false"
-    class="styled__StyledLi-sc-912cb84-0 ddOgUf"
+    class="c1"
     role="treeitem"
     tabindex="-1"
   >
     <div
-      class="styled__StyledBox-sc-12d4dbf-0 imudcb styled__StyledFlex-sc-3a1154b6-0 dNPsOo styled__StyledFlex-sc-912cb84-3 gknWxS"
+      class="c2 c3 c4 c5"
     >
       <div
-        class="styled__StyledGap-sc-912cb84-5 jrVihD"
+        class="c14"
       />
       <div
-        class="styled__StyledBox-sc-12d4dbf-0 jlecRx styled__StyledFlexItem-sc-2b88929e-0 jCGHbT styled__StyledFlexItem-sc-912cb84-4 eopNjs"
+        class="c9 c6 c10"
       >
         <svg
           aria-hidden="true"
-          class="base__StyledIcon-sc-a9u0e1-0 cjbLvM"
+          class="c11"
           color="primary30"
           fill="currentColor"
           height="24"
@@ -171,7 +317,7 @@ exports[`renders simple tree 1`] = `
         </svg>
       </div>
       <span
-        class="styled__StyledText-sc-218b28a9-5 styled__StyledText-sc-912cb84-6 ffENPD ebpimB"
+        class="c12 c13"
         color="secondary70"
       >
         Category
@@ -180,19 +326,19 @@ exports[`renders simple tree 1`] = `
   </li>
   <li
     aria-expanded="false"
-    class="styled__StyledLi-sc-912cb84-0 ddOgUf"
+    class="c1"
     role="treeitem"
     tabindex="-1"
   >
     <div
-      class="styled__StyledBox-sc-12d4dbf-0 imudcb styled__StyledFlex-sc-3a1154b6-0 dNPsOo styled__StyledFlex-sc-912cb84-3 gknWxS"
+      class="c2 c3 c4 c5"
     >
       <div
-        class="styled__StyledBox-sc-12d4dbf-0 imudcb styled__StyledFlexItem-sc-2b88929e-0 jCGHbT styled__StyledArrowWrapper-sc-912cb84-1 lpeGLF"
+        class="c2 c6 c7"
       >
         <svg
           aria-hidden="true"
-          class="base__StyledIcon-sc-a9u0e1-0 PHcub"
+          class="c8"
           color="secondary60"
           fill="currentColor"
           focusable="false"
@@ -212,11 +358,11 @@ exports[`renders simple tree 1`] = `
         </svg>
       </div>
       <div
-        class="styled__StyledBox-sc-12d4dbf-0 jlecRx styled__StyledFlexItem-sc-2b88929e-0 jCGHbT styled__StyledFlexItem-sc-912cb84-4 eopNjs"
+        class="c9 c6 c10"
       >
         <svg
           aria-hidden="true"
-          class="base__StyledIcon-sc-a9u0e1-0 cjbLvM"
+          class="c11"
           color="primary30"
           fill="currentColor"
           height="24"
@@ -235,7 +381,7 @@ exports[`renders simple tree 1`] = `
         </svg>
       </div>
       <span
-        class="styled__StyledText-sc-218b28a9-5 styled__StyledText-sc-912cb84-6 ffENPD ebpimB"
+        class="c12 c13"
         color="secondary70"
       >
         Test Node 3
@@ -244,19 +390,19 @@ exports[`renders simple tree 1`] = `
   </li>
   <li
     aria-expanded="false"
-    class="styled__StyledLi-sc-912cb84-0 ddOgUf"
+    class="c1"
     role="treeitem"
     tabindex="-1"
   >
     <div
-      class="styled__StyledBox-sc-12d4dbf-0 imudcb styled__StyledFlex-sc-3a1154b6-0 dNPsOo styled__StyledFlex-sc-912cb84-3 gknWxS"
+      class="c2 c3 c4 c5"
     >
       <div
-        class="styled__StyledBox-sc-12d4dbf-0 imudcb styled__StyledFlexItem-sc-2b88929e-0 jCGHbT styled__StyledArrowWrapper-sc-912cb84-1 lpeGLF"
+        class="c2 c6 c7"
       >
         <svg
           aria-hidden="true"
-          class="base__StyledIcon-sc-a9u0e1-0 PHcub"
+          class="c8"
           color="secondary60"
           fill="currentColor"
           focusable="false"
@@ -276,11 +422,11 @@ exports[`renders simple tree 1`] = `
         </svg>
       </div>
       <div
-        class="styled__StyledBox-sc-12d4dbf-0 jlecRx styled__StyledFlexItem-sc-2b88929e-0 jCGHbT styled__StyledFlexItem-sc-912cb84-4 eopNjs"
+        class="c9 c6 c10"
       >
         <svg
           aria-hidden="true"
-          class="base__StyledIcon-sc-a9u0e1-0 cjbLvM"
+          class="c11"
           color="primary30"
           fill="currentColor"
           height="24"
@@ -299,7 +445,7 @@ exports[`renders simple tree 1`] = `
         </svg>
       </div>
       <span
-        class="styled__StyledText-sc-218b28a9-5 styled__StyledText-sc-912cb84-6 ffENPD ebpimB"
+        class="c12 c13"
         color="secondary70"
       >
         Test Node 4
