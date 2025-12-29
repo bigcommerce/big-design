@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.8.0
+
+### Minor Changes
+
+- a1b0b0b: Adding missing chat icons
+
 ## 1.7.0
 
 ### Minor Changes
