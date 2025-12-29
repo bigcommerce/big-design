@@ -32,11 +32,6 @@ jobs:
           cache: "pnpm"
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Debug npm auth with OIDC
-        run: |
-          npm config list
-          npm whoami --registry=https://registry.npmjs.org || echo "whoami failed"
-
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
