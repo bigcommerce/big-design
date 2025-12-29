@@ -2,7 +2,7 @@
   "name": "big-design",
   "private": true,
   "license": "SEE LICENSE IN LICENSE.md",
-  "packageManager": "pnpm@9.10.0",
+  "packageManager": "pnpm@10.26.2",
   "scripts": {
     "build": "turbo build",
     "build:icons": "turbo build --filter @bigcommerce/big-design-icons",
