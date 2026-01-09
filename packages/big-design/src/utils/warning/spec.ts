@@ -36,6 +36,7 @@ describe('warning', () => {
       isProduction: true,
     }));
 
+    // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
     const { warning: prodWarning } = require('./warning');
     const mockWarn = jest.fn();
 
