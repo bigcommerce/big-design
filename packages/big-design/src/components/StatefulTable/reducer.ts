@@ -1,6 +1,6 @@
 import { Reducer } from 'react';
 
-import { PillTabItem, PillTabsProps } from '../PillTabs';
+import { isPillTabItemGroupArray, PillTabItem, PillTabsProps } from '../PillTabs';
 import { TableSortDirection } from '../Table';
 
 import {
@@ -322,8 +322,17 @@ function sort<T>(
   });
 }
 
-function getActivePills(pillTabs: PillTabItem[], activePills: string[], pillId: string): string[] {
-  const toggledPill = pillTabs.find((pill) => pill.id === pillId);
+function getActivePills(
+  pillTabs: PillTabsProps['items'],
+  activePills: string[],
+  pillId: string,
+): string[] {
+  // Flatten groups into a flat array of items
+  const flatItems: PillTabItem[] = isPillTabItemGroupArray(pillTabs)
+    ? pillTabs.flatMap((group) => group.items)
+    : pillTabs;
+
+  const toggledPill = flatItems.find((pill) => pill.id === pillId);
 
   if (!toggledPill) {
     return activePills;

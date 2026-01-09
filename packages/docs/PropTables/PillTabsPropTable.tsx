@@ -11,19 +11,39 @@ const pillTabsPropTable: Prop[] = [
   {
     description: (
       <>
-        See{' '}
+        Accepts either a flat array of{' '}
         <NextLink href={{ hash: 'pill-tabs-items-prop-table', query: { props: 'pill-tab-item' } }}>
           PillTabItem
         </NextLink>{' '}
-        for usage.
+        or an array of{' '}
+        <NextLink
+          href={{
+            hash: 'pill-tabs-item-group-prop-table',
+            query: { props: 'pill-tab-item-group' },
+          }}
+        >
+          PillTabItemGroup
+        </NextLink>{' '}
+        for grouped pills with visual separators.
       </>
     ),
     name: 'items',
     required: true,
     types: (
-      <NextLink href={{ hash: 'pill-tabs-items-prop-table', query: { props: 'pill-tab-item' } }}>
-        PillTabItem[]
-      </NextLink>
+      <>
+        <NextLink href={{ hash: 'pill-tabs-items-prop-table', query: { props: 'pill-tab-item' } }}>
+          PillTabItem[]
+        </NextLink>{' '}
+        |{' '}
+        <NextLink
+          href={{
+            hash: 'pill-tabs-item-group-prop-table',
+            query: { props: 'pill-tab-item-group' },
+          }}
+        >
+          PillTabItemGroup[]
+        </NextLink>
+      </>
     ),
   },
   {
@@ -64,4 +84,27 @@ const tabItemProps: Prop[] = [
 
 export const PillTabItemPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable propList={tabItemProps} title="PillTabs[PillTabItem]" {...props} />
+);
+
+const tabItemGroupProps: Prop[] = [
+  {
+    name: 'items',
+    types: 'PillTabItem[]',
+    description: 'Array of pill tab items within this group.',
+    required: true,
+  },
+  {
+    name: 'label',
+    types: 'string',
+    description: 'Optional label displayed as a header in the dropdown when items overflow.',
+  },
+  {
+    name: 'separated',
+    types: 'boolean',
+    description: 'Whether to show a separator before this group in the dropdown.',
+  },
+];
+
+export const PillTabItemGroupPropTable: React.FC<PropTableWrapper> = (props) => (
+  <PropTable propList={tabItemGroupProps} title="PillTabs[PillTabItemGroup]" {...props} />
 );
