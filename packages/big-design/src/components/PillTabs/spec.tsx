@@ -618,3 +618,247 @@ describe('when using dropdown items', () => {
     });
   });
 });
+
+describe('when using item groups', () => {
+  test('renders pills from multiple groups', async () => {
+    const groups = [
+      {
+        items: [
+          { title: 'All', id: 'all' },
+          { title: 'Out of stock', id: 'out-of-stock' },
+        ],
+      },
+      {
+        items: [
+          { title: 'Millennials', id: 'millennials' },
+          { title: 'Elders', id: 'elders' },
+        ],
+      },
+    ];
+
+    render(<TestComponent activePills={[]} items={groups} onPillClick={jest.fn()} />);
+
+    expect(await screen.findByText('All')).toBeInTheDocument();
+    expect(screen.getByText('Out of stock')).toBeInTheDocument();
+    expect(screen.getByText('Millennials')).toBeInTheDocument();
+    expect(screen.getByText('Elders')).toBeInTheDocument();
+  });
+
+  test('renders vertical separator between visible groups', async () => {
+    Object.defineProperties(window.HTMLElement.prototype, {
+      offsetWidth: {
+        get(this: HTMLElement) {
+          if (this.dataset.testid === 'pilltabs-wrapper') {
+            return 600;
+          }
+
+          return parseFloat(this.style.width) || 50;
+        },
+      },
+    });
+
+    const groups = [
+      {
+        items: [
+          { title: 'All', id: 'all' },
+          { title: 'Out of stock', id: 'out-of-stock' },
+        ],
+      },
+      {
+        items: [
+          { title: 'Millennials', id: 'millennials' },
+          { title: 'Elders', id: 'elders' },
+        ],
+      },
+    ];
+
+    render(<TestComponent activePills={[]} items={groups} onPillClick={jest.fn()} />);
+
+    // Separator should appear between groups (after pill index 1, before pill index 2)
+    const separator = await screen.findByTestId('pilltabs-separator-2');
+
+    expect(separator).toBeInTheDocument();
+    expect(separator).not.toHaveStyle(HIDDEN_STYLES);
+  });
+
+  test('does not render separator for single group', async () => {
+    const groups = [
+      {
+        items: [
+          { title: 'All', id: 'all' },
+          { title: 'Out of stock', id: 'out-of-stock' },
+        ],
+      },
+    ];
+
+    render(<TestComponent activePills={[]} items={groups} onPillClick={jest.fn()} />);
+
+    // Wait for component to settle
+    await screen.findByText('All');
+
+    const separator = screen.queryByTestId(/pilltabs-separator/);
+
+    expect(separator).not.toBeInTheDocument();
+  });
+
+  test('does not render separator for flat items', async () => {
+    const items = [
+      { title: 'All', id: 'all' },
+      { title: 'Out of stock', id: 'out-of-stock' },
+    ];
+
+    render(<TestComponent activePills={[]} items={items} onPillClick={jest.fn()} />);
+
+    // Wait for component to settle
+    await screen.findByText('All');
+
+    const separator = screen.queryByTestId(/pilltabs-separator/);
+
+    expect(separator).not.toBeInTheDocument();
+  });
+
+  test('hides separator when group boundary pills are hidden', async () => {
+    Object.defineProperties(window.HTMLElement.prototype, {
+      offsetWidth: {
+        get(this: HTMLElement) {
+          switch (this.dataset.testid) {
+            case 'pilltabs-wrapper':
+              return 200;
+
+            case 'pilltabs-dropdown-toggle':
+              return 50;
+
+            case 'pilltabs-pill-0':
+              return 80;
+
+            case 'pilltabs-pill-1':
+              return 80;
+
+            // Group 2 pills don't fit
+            case 'pilltabs-pill-2':
+              return 80;
+
+            case 'pilltabs-pill-3':
+              return 80;
+
+            default:
+              return parseFloat(this.style.width) || 0;
+          }
+        },
+      },
+    });
+
+    const groups = [
+      {
+        items: [
+          { title: 'All', id: 'all' },
+          { title: 'Out of stock', id: 'out-of-stock' },
+        ],
+      },
+      {
+        items: [
+          { title: 'Millennials', id: 'millennials' },
+          { title: 'Elders', id: 'elders' },
+        ],
+      },
+    ];
+
+    render(<TestComponent activePills={[]} items={groups} onPillClick={jest.fn()} />);
+
+    // The separator exists but should be hidden since group 2 pills are hidden
+    const separator = await screen.findByTestId('pilltabs-separator-2');
+
+    expect(separator).toHaveStyle(HIDDEN_STYLES);
+  });
+
+  test('executes callback with correct id when clicking grouped pill', async () => {
+    Object.defineProperties(window.HTMLElement.prototype, {
+      offsetWidth: {
+        get(this: HTMLElement) {
+          if (this.dataset.testid === 'pilltabs-wrapper') {
+            return 600;
+          }
+
+          return parseFloat(this.style.width) || 50;
+        },
+      },
+    });
+
+    const onClick = jest.fn();
+    const groups = [
+      {
+        items: [{ title: 'All', id: 'all' }],
+      },
+      {
+        items: [{ title: 'Millennials', id: 'millennials' }],
+      },
+    ];
+
+    render(<TestComponent activePills={[]} items={groups} onPillClick={onClick} />);
+
+    await userEvent.click(await screen.findByText('Millennials'));
+
+    expect(onClick).toHaveBeenCalledWith('millennials');
+  });
+
+  describe('when some group items overflow into dropdown', () => {
+    beforeEach(() => {
+      Object.defineProperties(window.HTMLElement.prototype, {
+        offsetWidth: {
+          get(this: HTMLElement) {
+            switch (this.dataset.testid) {
+              case 'pilltabs-wrapper':
+                return 200;
+
+              case 'pilltabs-dropdown-toggle':
+                return 50;
+
+              case 'pilltabs-pill-0':
+                return 80;
+
+              case 'pilltabs-pill-1':
+                return 80;
+
+              case 'pilltabs-pill-2':
+                return 80;
+
+              case 'pilltabs-pill-3':
+                return 80;
+
+              default:
+                return parseFloat(this.style.width) || 0;
+            }
+          },
+        },
+      });
+    });
+
+    test('renders hidden group items in dropdown with group labels', async () => {
+      const groups = [
+        {
+          label: 'Status',
+          items: [
+            { title: 'All', id: 'all' },
+            { title: 'Out of stock', id: 'out-of-stock' },
+          ],
+        },
+        {
+          label: 'Demographics',
+          items: [
+            { title: 'Millennials', id: 'millennials' },
+            { title: 'Elders', id: 'elders' },
+          ],
+        },
+      ];
+
+      render(<TestComponent activePills={[]} items={groups} onPillClick={jest.fn()} />);
+
+      await userEvent.click(await screen.findByRole('button', { name: 'add' }));
+
+      // Hidden items should appear in dropdown with group label
+      expect(await screen.findByText('Demographics')).toBeInTheDocument();
+      expect(screen.getByRole('option', { name: 'Millennials' })).toBeInTheDocument();
+      expect(screen.getByRole('option', { name: 'Elders' })).toBeInTheDocument();
+    });
+  });
+});
