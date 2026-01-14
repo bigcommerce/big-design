@@ -560,9 +560,9 @@ describe('when using dropdown items', () => {
           get(this: HTMLElement) {
             switch (this.dataset.testid) {
               case 'pilltabs-wrapper':
-                return 260;
+                return 270;
 
-              // only enough space for 2 pills
+              // only enough space for 2 pills (including margins)
               case 'pilltabs-dropdown-toggle':
                 return 50;
 

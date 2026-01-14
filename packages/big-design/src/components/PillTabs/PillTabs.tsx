@@ -11,6 +11,10 @@ import { toDropdownItem } from './toDropDownItem';
 import { toDropdownItemGroups } from './toDropdownItemGroups';
 import { useAvailableWidth } from './useAvailableWidth';
 
+// Constants for width calculations
+const PILL_MARGIN_RIGHT = 8; // xSmall spacing from theme
+const SEPARATOR_WIDTH = 17; // border (1px) + margins (8px + 8px)
+
 export interface PillTabItem {
   id: string;
   title: string;
@@ -101,11 +105,26 @@ export const PillTabs: React.FC<PillTabsProps> = ({
     }
   }, [pillsData.length, availableWidth, pillWidths]);
 
+  // Check if we have multiple groups (for separator rendering)
+  const hasMultipleGroups = groups.length > 1;
+
   // Calculate visibility using stored widths
   const { pills } = pillsData.reduce<{ pills: Pill[]; widthBudget: number }>(
     (acc, item, index) => {
       const pillWidth = pillWidths[index] || 0;
-      const widthBudget = acc.widthBudget - pillWidth;
+
+      // Calculate space needed for this pill (including margin)
+      let spaceNeeded = pillWidth + PILL_MARGIN_RIGHT;
+
+      // Add separator width if this is first pill in a new group
+      const previousPill = acc.pills[index - 1];
+      const isFirstInGroup = previousPill && previousPill.groupIndex !== item.groupIndex;
+
+      if (hasMultipleGroups && isFirstInGroup) {
+        spaceNeeded += SEPARATOR_WIDTH;
+      }
+
+      const widthBudget = acc.widthBudget - spaceNeeded;
       const pill: Pill = {
         title: item.title,
         onClick: () => onPillClick(item.id),
@@ -162,9 +181,6 @@ export const PillTabs: React.FC<PillTabsProps> = ({
   if (pills.length === 0) {
     return null;
   }
-
-  // Check if we have multiple groups (for separator rendering)
-  const hasMultipleGroups = groups.length > 1;
 
   return (
     <Flex
