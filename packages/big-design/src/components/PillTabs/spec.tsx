@@ -31,7 +31,7 @@ const HIDDEN_STYLES = {
   visibility: 'hidden',
 };
 
-test('it renders the given tabs', () => {
+test('it renders the given tabs', async () => {
   const onClick = jest.fn();
   const items = [
     {
@@ -42,14 +42,14 @@ test('it renders the given tabs', () => {
 
   render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
 
-  const inStock = screen.getByText('In stock');
+  const inStock = await screen.findByText('In stock');
   const list = screen.getByRole('list');
 
   expect(list).toMatchSnapshot();
   expect(inStock).not.toHaveStyle(HIDDEN_STYLES);
 });
 
-test('dropdown is not visible if items fit', () => {
+test('dropdown is not visible if items fit', async () => {
   Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: {
       get(this: HTMLElement) {
@@ -76,7 +76,7 @@ test('dropdown is not visible if items fit', () => {
 
   render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
 
-  const inStock = screen.getByText('In stock');
+  const inStock = await screen.findByText('In stock');
   const dropdownToggle = screen.queryByTestId('pilltabs-dropdown-toggle');
   const list = screen.getByRole('list');
 

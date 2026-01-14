@@ -1,9 +1,10 @@
 import { MoreHorizIcon } from '@bigcommerce/big-design-icons';
-import React, { createRef, Fragment, useMemo } from 'react';
+import React, { Fragment, useCallback, useMemo, useRef, useState } from 'react';
 
 import { Button } from '../Button';
 import { Dropdown, DropdownProps } from '../Dropdown';
 import { Flex } from '../Flex';
+import { useIsomorphicLayoutEffect } from '../../hooks';
 
 import { StyledFlexItem, StyledGroupSeparator, StyledPillTab } from './styled';
 import { toDropdownItem } from './toDropDownItem';
@@ -24,7 +25,6 @@ export interface PillTabItemGroup {
 interface Pill {
   title: string;
   isVisible: boolean;
-  ref: React.RefObject<HTMLDivElement>;
   onClick: () => void;
   isActive: boolean;
   groupIndex: number;
@@ -49,34 +49,72 @@ export const PillTabs: React.FC<PillTabsProps> = ({
   onPillClick,
   dropdownItems: customDropdownItems = [],
 }) => {
-  const refs = { parent: createRef<HTMLDivElement>(), dropdown: createRef<HTMLDivElement>() };
+  // Stable refs for parent and dropdown
+  const parentRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Stable refs for pill elements - stored in a ref to persist across renders
+  const pillRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  // State to store measured widths - triggers re-render when measurements change
+  const [pillWidths, setPillWidths] = useState<number[]>([]);
+
+  const refs = { parent: parentRef, dropdown: dropdownRef };
   const availableWidth = useAvailableWidth(refs);
 
   // Normalize items into groups format
   const groups = useMemo(() => (isPillTabItemGroupArray(items) ? items : [{ items }]), [items]);
 
   // Flatten items with group metadata
-  const pillsWithoutVisibility = useMemo(
+  const pillsData = useMemo(
     () =>
       groups.flatMap((group, groupIndex) =>
         group.items.map(({ title, id }) => ({
           title,
-          onClick: () => onPillClick(id),
-          isActive: activePills.includes(id),
-          ref: createRef<HTMLDivElement>(),
+          id,
           groupIndex,
           groupLabel: group.label,
           groupSeparated: group.separated,
         })),
       ),
-    [groups, activePills, onPillClick],
+    [groups],
   );
 
-  const { pills } = pillsWithoutVisibility.reduce<{ pills: Pill[]; widthBudget: number }>(
-    (acc, item) => {
-      const pillWidth = item.ref.current?.offsetWidth || 0;
+  // Callback ref setter for each pill
+  const setPillRef = useCallback(
+    (index: number) => (el: HTMLDivElement | null) => {
+      pillRefs.current[index] = el;
+    },
+    [],
+  );
+
+  // Measure pill widths after DOM render
+  useIsomorphicLayoutEffect(() => {
+    const widths = pillRefs.current.slice(0, pillsData.length).map((ref) => ref?.offsetWidth || 0);
+
+    // Only update state if widths actually changed to avoid infinite loops
+    const widthsChanged =
+      widths.length !== pillWidths.length || widths.some((w, i) => w !== pillWidths[i]);
+
+    if (widthsChanged) {
+      setPillWidths(widths);
+    }
+  }, [pillsData.length, availableWidth, pillWidths]);
+
+  // Calculate visibility using stored widths
+  const { pills } = pillsData.reduce<{ pills: Pill[]; widthBudget: number }>(
+    (acc, item, index) => {
+      const pillWidth = pillWidths[index] || 0;
       const widthBudget = acc.widthBudget - pillWidth;
-      const pill = { ...item, isVisible: widthBudget >= 0 };
+      const pill: Pill = {
+        title: item.title,
+        onClick: () => onPillClick(item.id),
+        isActive: activePills.includes(item.id),
+        groupIndex: item.groupIndex,
+        groupLabel: item.groupLabel,
+        groupSeparated: item.groupSeparated,
+        isVisible: widthBudget >= 0,
+      };
 
       return { pills: [...acc.pills, pill], widthBudget };
     },
@@ -136,7 +174,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({
       ref={refs.parent}
       role="list"
     >
-      {pills.map(({ isVisible, ref, title, isActive, onClick, groupIndex }, index) => {
+      {pills.map(({ isVisible, title, isActive, onClick, groupIndex }, index) => {
         const previousPill = pills[index - 1];
         const isFirstInGroup = previousPill && previousPill.groupIndex !== groupIndex;
         const showSeparator = hasMultipleGroups && isFirstInGroup;
@@ -154,7 +192,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({
             <StyledFlexItem
               data-testid={`pilltabs-pill-${index}`}
               isVisible={isVisible}
-              ref={ref}
+              ref={setPillRef(index)}
               role="listitem"
             >
               <StyledPillTab
