@@ -1,10 +1,10 @@
 import { MoreHorizIcon } from '@bigcommerce/big-design-icons';
 import React, { Fragment, useCallback, useMemo, useRef, useState } from 'react';
 
+import { useIsomorphicLayoutEffect } from '../../hooks';
 import { Button } from '../Button';
 import { Dropdown, DropdownProps } from '../Dropdown';
 import { Flex } from '../Flex';
-import { useIsomorphicLayoutEffect } from '../../hooks';
 
 import { StyledFlexItem, StyledGroupSeparator, StyledPillTab } from './styled';
 import { toDropdownItem } from './toDropDownItem';
@@ -54,7 +54,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Stable refs for pill elements - stored in a ref to persist across renders
-  const pillRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const pillRefs = useRef<Array<HTMLDivElement | null>>([]);
 
   // State to store measured widths - triggers re-render when measurements change
   const [pillWidths, setPillWidths] = useState<number[]>([]);

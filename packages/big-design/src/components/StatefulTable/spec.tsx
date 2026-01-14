@@ -353,13 +353,13 @@ test('renders headers by default and hides then via prop', () => {
   expect(container.querySelector('th')).not.toBeVisible();
 });
 
-test('renders pill tabs with the pillTabFilters prop', () => {
+test('renders pill tabs with the pillTabFilters prop', async () => {
   const filters: StatefulTablePillTabFilter<TestItem> = {
     pillTabs: [{ title: 'In stock', id: 'in_stock' }],
     filter: (_itemId, items) => items.filter((item) => item.stock > 0),
   };
-  const { getByText } = render(getSimpleTable({ filters }));
-  const customFilter = getByText('In stock');
+  const { findByText } = render(getSimpleTable({ filters }));
+  const customFilter = await findByText('In stock');
 
   expect(customFilter).toBeInTheDocument();
   expect(customFilter).toBeVisible();

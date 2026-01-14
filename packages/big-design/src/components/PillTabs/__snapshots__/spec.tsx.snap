@@ -283,7 +283,7 @@ exports[`dropdown is not visible if items fit 1`] = `
   .c7 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
-
+  }
 }
 
 @media (min-width:720px) {
