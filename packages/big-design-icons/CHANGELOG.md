@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.9.0
+
+### Minor Changes
+
+- 9a7e558: Added Play and Stop icons needed for chatbot interfaces
+
 ## 1.8.0
 
 ### Minor Changes
