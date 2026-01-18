@@ -3,7 +3,7 @@ import { DeleteIcon } from '@bigcommerce/big-design-icons';
 import React, { useState } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
-import { PillTabItemPropTable, PillTabsPropTable } from '../PropTables';
+import { PillTabItemGroupPropTable, PillTabItemPropTable, PillTabsPropTable } from '../PropTables';
 
 const PillTabsPage = () => {
   return (
@@ -117,6 +117,55 @@ const PillTabsPage = () => {
               ),
             },
             {
+              id: 'with-item-groups',
+              title: 'Item Groups',
+              render: () => (
+                <CodePreview>
+                  {/* jsx-to-string:start */}
+                  {function Example() {
+                    const [activePills, setActivePills] = useState<string[]>([]);
+
+                    const itemGroups = [
+                      {
+                        label: 'Status',
+                        items: [
+                          { title: 'All', id: 'all' },
+                          { title: 'Out of stock', id: 'out-of-stock' },
+                          { title: 'Low stock', id: 'low-stock' },
+                        ],
+                      },
+                      {
+                        label: 'Categories',
+                        items: [
+                          { title: 'Electronics', id: 'electronics' },
+                          { title: 'Clothing', id: 'clothing' },
+                          { title: 'Home & Garden', id: 'home-garden' },
+                        ],
+                      },
+                    ];
+
+                    const onPillClick = (pillId: string) => {
+                      const isPillActive = !activePills.includes(pillId);
+                      const updatedPills = isPillActive
+                        ? [...activePills, pillId]
+                        : activePills.filter((activePillId) => activePillId !== pillId);
+
+                      setActivePills(updatedPills);
+                    };
+
+                    return (
+                      <PillTabs
+                        activePills={activePills}
+                        items={itemGroups}
+                        onPillClick={onPillClick}
+                      />
+                    );
+                  }}
+                  {/* jsx-to-string:end */}
+                </CodePreview>
+              ),
+            },
+            {
               id: 'with-dropdown-items',
               title: 'Dropdown Items',
               render: () => (
@@ -187,6 +236,11 @@ const PillTabsPage = () => {
               id: 'pill-tab-item',
               title: 'PillTabItem',
               render: () => <PillTabItemPropTable id="pill-tabs-items-prop-table" />,
+            },
+            {
+              id: 'pill-tab-item-group',
+              title: 'PillTabItemGroup',
+              render: () => <PillTabItemGroupPropTable id="pill-tabs-item-group-prop-table" />,
             },
           ]}
         />

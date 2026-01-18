@@ -30,5 +30,20 @@ export const StyledFlexItem = styled(FlexItem)<StyledFlexItemProps>`
     `}
 `;
 
+export const StyledGroupSeparator = styled.div<StyledFlexItemProps>`
+  align-self: stretch;
+  border-left: ${({ theme }) => theme.border.box};
+  margin: ${({ theme }) => `${theme.spacing.xxSmall} ${theme.spacing.xSmall}`};
+
+  ${(props) =>
+    !props.isVisible &&
+    css`
+      position: absolute;
+      visibility: hidden;
+      z-index: ${({ theme }) => -theme.zIndex.tooltip};
+    `}
+`;
+
 StyledPillTab.defaultProps = { theme: defaultTheme };
 StyledFlexItem.defaultProps = { theme: defaultTheme };
+StyledGroupSeparator.defaultProps = { theme: defaultTheme };
