@@ -122,6 +122,9 @@ export const PillTabs: React.FC<PillTabsProps> = ({
   const hasMultipleGroups = groups.length > 1;
 
   // Calculate visibility using stored widths
+  // When availableWidth is 0, measurements haven't completed yet - show all pills
+  const hasMeasurements = availableWidth > 0;
+
   const { pills } = pillsData.reduce<{ pills: Pill[]; widthBudget: number }>(
     (acc, item, index) => {
       const pillWidth = pillWidths[index] || 0;
@@ -146,7 +149,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({
         groupIndex: item.groupIndex,
         groupLabel: item.groupLabel,
         groupSeparated: item.groupSeparated,
-        isVisible: widthBudget >= 0,
+        isVisible: !hasMeasurements || widthBudget >= 0,
       };
 
       return { pills: [...acc.pills, pill], widthBudget };
