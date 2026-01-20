@@ -123,7 +123,7 @@ test('dropdown is not visible if items fit', async () => {
   // Dropdown toggle is hidden since all pills fit - use hidden: true to query it
   const listItems = screen.getAllByRole('listitem', { hidden: true });
 
-  expect(listItems.at(-1)).toHaveStyle(HIDDEN_STYLES);
+  expect(listItems[listItems.length - 1]).toHaveStyle(HIDDEN_STYLES);
 });
 
 test('renders dropdown if items do not fit', async () => {
@@ -165,7 +165,7 @@ test('renders dropdown if items do not fit', async () => {
 
   const inStock = await screen.findByText('Long filter name');
   const listItems = screen.getAllByRole('listitem');
-  const dropdownToggle = listItems.at(-1);
+  const dropdownToggle = listItems[listItems.length - 1];
   const list = screen.getByRole('list');
 
   expect(list).toMatchSnapshot();
@@ -237,7 +237,7 @@ test('renders all the filters if they fit', async () => {
   // Dropdown toggle is hidden since all pills fit - use hidden: true to query it
   const listItems = screen.getAllByRole('listitem', { hidden: true });
 
-  expect(listItems.at(-1)).toHaveStyle(HIDDEN_STYLES);
+  expect(listItems[listItems.length - 1]).toHaveStyle(HIDDEN_STYLES);
 });
 
 test('only the pills that fit are visible', async () => {
@@ -292,11 +292,12 @@ test('only the pills that fit are visible', async () => {
   render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
 
   await screen.findByText('In stock');
+
   const listItems = screen.getAllByRole('listitem', { hidden: true });
   const inStock = listItems[0];
   const filter2 = listItems[1];
   const filter3 = listItems[2];
-  const dropdownToggle = listItems.at(-1);
+  const dropdownToggle = listItems[listItems.length - 1];
   const list = screen.getByRole('list');
 
   expect(list).toMatchSnapshot();
@@ -358,11 +359,12 @@ test('only the pills that fit are visible 2', async () => {
   render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
 
   await screen.findByText('In stock');
+
   const listItems = screen.getAllByRole('listitem', { hidden: true });
   const inStock = listItems[0];
   const filter2 = listItems[1];
   const filter3 = listItems[2];
-  const dropdownToggle = listItems.at(-1);
+  const dropdownToggle = listItems[listItems.length - 1];
   const list = screen.getByRole('list');
 
   expect(list).toMatchSnapshot();
