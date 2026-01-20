@@ -8,12 +8,13 @@ interface Refs {
 }
 
 export const useAvailableWidth = ({ parent, dropdown }: Refs) => {
-  const [value, setValue] = useState<number>(Infinity);
+  const [value, setValue] = useState<number>(0);
   const update = useCallback(() => {
     const parentWidth = parent.current?.offsetWidth;
     const dropdownWidth = dropdown.current?.offsetWidth;
 
-    if (!parentWidth || !dropdownWidth) {
+    // Check for undefined/null (refs not attached) rather than falsy (0 is valid)
+    if (parentWidth == null || dropdownWidth == null) {
       return;
     }
 

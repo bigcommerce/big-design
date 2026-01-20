@@ -96,14 +96,14 @@ export const PillTabs: React.FC<PillTabsProps> = ({
   useIsomorphicLayoutEffect(() => {
     const widths = pillRefs.current.slice(0, pillsData.length).map((ref) => ref?.offsetWidth || 0);
 
-    // Only update state if widths actually changed to avoid infinite loops
-    const widthsChanged =
-      widths.length !== pillWidths.length || widths.some((w, i) => w !== pillWidths[i]);
+    // Use functional update to avoid including pillWidths in dependencies
+    setPillWidths((prevWidths) => {
+      const widthsChanged =
+        widths.length !== prevWidths.length || widths.some((w, i) => w !== prevWidths[i]);
 
-    if (widthsChanged) {
-      setPillWidths(widths);
-    }
-  }, [pillsData.length, availableWidth, pillWidths]);
+      return widthsChanged ? widths : prevWidths;
+    });
+  }, [pillsData.length, availableWidth]);
 
   // Check if we have multiple groups (for separator rendering)
   const hasMultipleGroups = groups.length > 1;

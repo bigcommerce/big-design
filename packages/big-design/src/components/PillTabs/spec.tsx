@@ -32,6 +32,26 @@ const HIDDEN_STYLES = {
 };
 
 test('it renders the given tabs', async () => {
+  Object.defineProperties(window.HTMLElement.prototype, {
+    offsetWidth: {
+      get(this: HTMLElement) {
+        if (this.dataset.testid === 'pilltabs-wrapper') {
+          return 400;
+        }
+
+        if (this.dataset.testid === 'pilltabs-dropdown-toggle') {
+          return 50;
+        }
+
+        if (this.dataset.testid === 'pilltabs-pill-0') {
+          return 100;
+        }
+
+        return parseFloat(this.style.width) || 0;
+      },
+    },
+  });
+
   const onClick = jest.fn();
   const items = [
     {
@@ -55,6 +75,10 @@ test('dropdown is not visible if items fit', async () => {
       get(this: HTMLElement) {
         if (this.dataset.testid === 'pilltabs-wrapper') {
           return 400;
+        }
+
+        if (this.dataset.testid === 'pilltabs-dropdown-toggle') {
+          return 50;
         }
 
         if (this.dataset.testid === 'pilltabs-pill-0') {
