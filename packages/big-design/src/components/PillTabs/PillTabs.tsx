@@ -43,9 +43,11 @@ export interface PillTabsProps {
   dropdownItems?: DropdownProps['items'];
 }
 
+// Type guard to determine if the provided items are PillTabItemGroup[]
 export const isPillTabItemGroupArray = (
   items: PillTabItem[] | PillTabItemGroup[],
-): items is PillTabItemGroup[] => items.every((item) => 'items' in item && !('title' in item));
+): items is PillTabItemGroup[] =>
+  items.length > 0 && items.every((item) => 'items' in item && !('title' in item));
 
 export const PillTabs: React.FC<PillTabsProps> = ({
   activePills,
