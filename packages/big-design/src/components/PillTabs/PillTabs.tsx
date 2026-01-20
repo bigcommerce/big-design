@@ -12,8 +12,18 @@ import { toDropdownItemGroups } from './toDropdownItemGroups';
 import { useAvailableWidth } from './useAvailableWidth';
 
 // Constants for width calculations
-const PILL_MARGIN_RIGHT = 8; // xSmall spacing from theme
-const SEPARATOR_WIDTH = 17; // border (1px) + margins (8px + 8px)
+// NOTE:
+// - PILL_MARGIN_RIGHT is intentionally tied to the design-system's xSmall horizontal spacing token.
+//   At the time of writing, theme.spacing.xSmall resolves to 8px, which is what we hard-code here.
+// - SEPARATOR_WIDTH is the total horizontal space taken by the group separator:
+//   1px border + left margin (8px) + right margin (8px) = 17px.
+//
+// These values are hard-coded to avoid pulling theme values at module load time and to keep the
+// width calculations referentially transparent. If the theme's xSmall spacing or the separator's
+// border/margin specs change, these constants MUST be updated to match the new design tokens to
+// prevent layout regressions in PillTabs.
+const PILL_MARGIN_RIGHT = 8;
+const SEPARATOR_WIDTH = 17;
 
 export interface PillTabItem {
   id: string;
