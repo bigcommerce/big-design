@@ -3,7 +3,7 @@ import React, { Fragment, useCallback, useMemo, useRef, useState } from 'react';
 
 import { useIsomorphicLayoutEffect } from '../../hooks';
 import { Button } from '../Button';
-import { Dropdown, DropdownProps } from '../Dropdown';
+import { Dropdown, DropdownItem, DropdownProps } from '../Dropdown';
 import { Flex } from '../Flex';
 
 import { StyledFlexItem, StyledGroupSeparator, StyledPillTab } from './styled';
@@ -37,6 +37,7 @@ export interface PillTabItemGroup {
 }
 
 interface Pill {
+  id: string;
   title: string;
   isVisible: boolean;
   onClick: () => void;
@@ -138,6 +139,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({
 
       const widthBudget = acc.widthBudget - spaceNeeded;
       const pill: Pill = {
+        id: item.id,
         title: item.title,
         onClick: () => onPillClick(item.id),
         isActive: activePills.includes(item.id),
@@ -153,37 +155,23 @@ export const PillTabs: React.FC<PillTabsProps> = ({
   );
 
   // Create dropdown groups from hidden pills, preserving group structure
-  interface HiddenPillGroup {
-    label?: string;
-    separated?: boolean;
-    pills: typeof pills;
-  }
-
-  const hiddenPillsByGroup = pills
+  const overflowGroups = pills
     .filter(({ isVisible }) => !isVisible)
-    .reduce<Map<number, HiddenPillGroup>>((acc, pill) => {
-      const existing = acc.get(pill.groupIndex);
+    .reduce<Array<{ label?: string; separated?: boolean; items: DropdownItem[] }>>((acc, pill) => {
+      const existing = acc.find((group) => group.label === pill.groupLabel);
 
       if (existing) {
-        existing.pills.push(pill);
+        existing.items.push(toDropdownItem(pill));
       } else {
-        acc.set(pill.groupIndex, {
+        acc.push({
           label: pill.groupLabel,
           separated: pill.groupSeparated,
-          pills: [pill],
+          items: [toDropdownItem(pill)],
         });
       }
 
       return acc;
-    }, new Map());
-
-  const overflowGroups = Array.from(hiddenPillsByGroup.values()).map(
-    ({ label, separated, pills: groupPills }) => ({
-      label,
-      separated,
-      items: groupPills.map(toDropdownItem),
-    }),
-  );
+    }, []);
 
   const dropdownItemGroups = toDropdownItemGroups({
     overflow: overflowGroups,
@@ -195,14 +183,8 @@ export const PillTabs: React.FC<PillTabsProps> = ({
   }
 
   return (
-    <Flex
-      data-testid="pilltabs-wrapper"
-      flexDirection="row"
-      flexWrap="nowrap"
-      ref={refs.parent}
-      role="list"
-    >
-      {pills.map(({ isVisible, title, isActive, onClick, groupIndex }, index) => {
+    <Flex flexDirection="row" flexWrap="nowrap" ref={refs.parent} role="list">
+      {pills.map(({ id, isVisible, title, isActive, onClick, groupIndex }, index) => {
         const previousPill = pills[index - 1];
         const isFirstInGroup = previousPill && previousPill.groupIndex !== groupIndex;
         const showSeparator = hasMultipleGroups && isFirstInGroup;
@@ -210,19 +192,11 @@ export const PillTabs: React.FC<PillTabsProps> = ({
         const separatorVisible = isVisible && previousPill?.isVisible;
 
         return (
-          <Fragment key={index}>
+          <Fragment key={id}>
             {showSeparator && (
-              <StyledGroupSeparator
-                data-testid={`pilltabs-separator-${index}`}
-                isVisible={separatorVisible}
-              />
+              <StyledGroupSeparator isVisible={separatorVisible} role="separator" />
             )}
-            <StyledFlexItem
-              data-testid={`pilltabs-pill-${index}`}
-              isVisible={isVisible}
-              ref={setPillRef(index)}
-              role="listitem"
-            >
+            <StyledFlexItem isVisible={isVisible} ref={setPillRef(index)} role="listitem">
               <StyledPillTab
                 disabled={!isVisible}
                 isActive={isActive}
@@ -237,12 +211,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({
           </Fragment>
         );
       })}
-      <StyledFlexItem
-        data-testid="pilltabs-dropdown-toggle"
-        isVisible={dropdownItemGroups.length > 0}
-        ref={refs.dropdown}
-        role="listitem"
-      >
+      <StyledFlexItem isVisible={dropdownItemGroups.length > 0} ref={refs.dropdown} role="listitem">
         <Dropdown
           items={dropdownItemGroups}
           toggle={

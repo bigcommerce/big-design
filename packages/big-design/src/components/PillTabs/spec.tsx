@@ -35,15 +35,17 @@ test('it renders the given tabs', async () => {
   Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: {
       get(this: HTMLElement) {
-        if (this.dataset.testid === 'pilltabs-wrapper') {
+        if (this.getAttribute('role') === 'list') {
           return 400;
         }
 
-        if (this.dataset.testid === 'pilltabs-dropdown-toggle') {
-          return 50;
-        }
+        if (this.getAttribute('role') === 'listitem') {
+          // Dropdown toggle contains a button with aria-haspopup
+          if (this.querySelector('[aria-haspopup]')) {
+            return 50;
+          }
 
-        if (this.dataset.testid === 'pilltabs-pill-0') {
+          // All pills are 100px wide
           return 100;
         }
 
@@ -70,19 +72,31 @@ test('it renders the given tabs', async () => {
 });
 
 test('dropdown is not visible if items fit', async () => {
+  const pillWidths: Record<string, number> = {
+    'In stock': 100,
+  };
+  const dropdownWidth = 50;
+  const containerWidth = 400;
+
   Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: {
       get(this: HTMLElement) {
-        if (this.dataset.testid === 'pilltabs-wrapper') {
-          return 400;
+        if (this.getAttribute('role') === 'list') {
+          return containerWidth;
         }
 
-        if (this.dataset.testid === 'pilltabs-dropdown-toggle') {
-          return 50;
-        }
+        if (this.getAttribute('role') === 'listitem') {
+          const text = (this.textContent || '').trim();
 
-        if (this.dataset.testid === 'pilltabs-pill-0') {
-          return 100;
+          // Check if this is a pill by matching known text
+          for (const [pillText, width] of Object.entries(pillWidths)) {
+            if (text.includes(pillText)) {
+              return width;
+            }
+          }
+
+          // If no pill matches, this is the dropdown toggle
+          return dropdownWidth;
         }
 
         return parseFloat(this.style.width) || 0;
@@ -101,23 +115,36 @@ test('dropdown is not visible if items fit', async () => {
   render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
 
   const inStock = await screen.findByText('In stock');
-  const dropdownToggle = screen.queryByTestId('pilltabs-dropdown-toggle');
   const list = screen.getByRole('list');
 
   expect(list).toMatchSnapshot();
   expect(inStock).not.toHaveStyle(HIDDEN_STYLES);
-  expect(dropdownToggle).toHaveStyle(HIDDEN_STYLES);
+
+  // Dropdown toggle is hidden since all pills fit - use hidden: true to query it
+  const listItems = screen.getAllByRole('listitem', { hidden: true });
+
+  expect(listItems.at(-1)).toHaveStyle(HIDDEN_STYLES);
 });
 
 test('renders dropdown if items do not fit', async () => {
   Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: {
       get(this: HTMLElement) {
-        if (this.dataset.testid === 'pilltabs-wrapper') {
+        if (this.getAttribute('role') === 'list') {
           return 400;
         }
 
-        return parseFloat(this.style.width) || 300;
+        if (this.getAttribute('role') === 'listitem') {
+          // Dropdown toggle contains a button with aria-haspopup
+          if (this.querySelector('[aria-haspopup]')) {
+            return 50;
+          }
+
+          // All pills are 300px wide
+          return 300;
+        }
+
+        return parseFloat(this.style.width) || 0;
       },
     },
   });
@@ -126,20 +153,19 @@ test('renders dropdown if items do not fit', async () => {
   const items = [
     {
       title: 'In stock',
-
       id: 'filter1',
     },
     {
       title: 'Long filter name',
-
-      id: 'filter1',
+      id: 'filter2',
     },
   ];
 
   render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
 
   const inStock = await screen.findByText('Long filter name');
-  const dropdownToggle = screen.queryByTestId('pilltabs-dropdown-toggle');
+  const listItems = screen.getAllByRole('listitem');
+  const dropdownToggle = listItems.at(-1);
   const list = screen.getByRole('list');
 
   expect(list).toMatchSnapshot();
@@ -148,74 +174,31 @@ test('renders dropdown if items do not fit', async () => {
 });
 
 test('renders all the filters if they fit', async () => {
+  const pillWidths: Record<string, number> = {
+    'In stock': 50,
+    'Filter 2': 50,
+    'Filter 3': 50,
+  };
+  const dropdownWidth = 50;
+  const containerWidth = 400;
+
   Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: {
       get(this: HTMLElement) {
-        if (this.dataset.testid === 'pilltabs-wrapper') {
-          return 400;
+        if (this.getAttribute('role') === 'list') {
+          return containerWidth;
         }
 
-        return parseFloat(this.style.width) || 50;
-      },
-    },
-  });
+        if (this.getAttribute('role') === 'listitem') {
+          const text = (this.textContent || '').trim();
 
-  const onClick = jest.fn();
-  const items = [
-    {
-      title: 'In stock',
+          for (const [pillText, width] of Object.entries(pillWidths)) {
+            if (text.includes(pillText)) {
+              return width;
+            }
+          }
 
-      id: 'filter1',
-    },
-    {
-      title: 'Filter 2',
-
-      id: 'filter1',
-    },
-    {
-      title: 'Filter 3',
-
-      id: 'filter1',
-    },
-  ];
-
-  render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
-
-  const inStock = await screen.findByText('In stock');
-  const filter2 = await screen.findByText('Filter 2');
-  const filter3 = await screen.findByText('Filter 3');
-  const dropdownToggle = screen.queryByTestId('pilltabs-dropdown-toggle');
-  const list = screen.getByRole('list');
-
-  expect(list).toMatchSnapshot();
-  expect(inStock).not.toHaveStyle(HIDDEN_STYLES);
-  expect(filter2).not.toHaveStyle(HIDDEN_STYLES);
-  expect(filter3).not.toHaveStyle(HIDDEN_STYLES);
-  expect(dropdownToggle).toHaveStyle(HIDDEN_STYLES);
-});
-
-test('only the pills that fit are visible', async () => {
-  Object.defineProperties(window.HTMLElement.prototype, {
-    offsetWidth: {
-      get(this: HTMLElement) {
-        if (this.dataset.testid === 'pilltabs-wrapper') {
-          return 400;
-        }
-
-        if (this.dataset.testid === 'pilltabs-dropdown-toggle') {
-          return 50;
-        }
-
-        if (this.dataset.testid === 'pilltabs-pill-0') {
-          return 300;
-        }
-
-        if (this.dataset.testid === 'pilltabs-pill-1') {
-          return 300;
-        }
-
-        if (this.dataset.testid === 'pilltabs-pill-2') {
-          return 300;
+          return dropdownWidth;
         }
 
         return parseFloat(this.style.width) || 0;
@@ -227,27 +210,93 @@ test('only the pills that fit are visible', async () => {
   const items = [
     {
       title: 'In stock',
-
       id: 'filter1',
     },
     {
       title: 'Filter 2',
-
-      id: 'filter1',
+      id: 'filter2',
     },
     {
       title: 'Filter 3',
-
-      id: 'filter1',
+      id: 'filter3',
     },
   ];
 
   render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
 
-  const inStock = await screen.findByTestId('pilltabs-pill-0');
-  const filter2 = await screen.findByTestId('pilltabs-pill-1');
-  const filter3 = await screen.findByTestId('pilltabs-pill-2');
-  const dropdownToggle = screen.queryByTestId('pilltabs-dropdown-toggle');
+  const inStock = await screen.findByText('In stock');
+  const filter2 = await screen.findByText('Filter 2');
+  const filter3 = await screen.findByText('Filter 3');
+  const list = screen.getByRole('list');
+
+  expect(list).toMatchSnapshot();
+  expect(inStock).not.toHaveStyle(HIDDEN_STYLES);
+  expect(filter2).not.toHaveStyle(HIDDEN_STYLES);
+  expect(filter3).not.toHaveStyle(HIDDEN_STYLES);
+
+  // Dropdown toggle is hidden since all pills fit - use hidden: true to query it
+  const listItems = screen.getAllByRole('listitem', { hidden: true });
+
+  expect(listItems.at(-1)).toHaveStyle(HIDDEN_STYLES);
+});
+
+test('only the pills that fit are visible', async () => {
+  const pillWidths: Record<string, number> = {
+    'In stock': 300,
+    'Filter 2': 300,
+    'Filter 3': 300,
+  };
+  const dropdownWidth = 50;
+  const containerWidth = 400;
+
+  Object.defineProperties(window.HTMLElement.prototype, {
+    offsetWidth: {
+      get(this: HTMLElement) {
+        if (this.getAttribute('role') === 'list') {
+          return containerWidth;
+        }
+
+        if (this.getAttribute('role') === 'listitem') {
+          const text = (this.textContent || '').trim();
+
+          for (const [pillText, width] of Object.entries(pillWidths)) {
+            if (text.includes(pillText)) {
+              return width;
+            }
+          }
+
+          return dropdownWidth;
+        }
+
+        return parseFloat(this.style.width) || 0;
+      },
+    },
+  });
+
+  const onClick = jest.fn();
+  const items = [
+    {
+      title: 'In stock',
+      id: 'filter1',
+    },
+    {
+      title: 'Filter 2',
+      id: 'filter2',
+    },
+    {
+      title: 'Filter 3',
+      id: 'filter3',
+    },
+  ];
+
+  render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
+
+  await screen.findByText('In stock');
+  const listItems = screen.getAllByRole('listitem', { hidden: true });
+  const inStock = listItems[0];
+  const filter2 = listItems[1];
+  const filter3 = listItems[2];
+  const dropdownToggle = listItems.at(-1);
   const list = screen.getByRole('list');
 
   expect(list).toMatchSnapshot();
@@ -258,23 +307,31 @@ test('only the pills that fit are visible', async () => {
 });
 
 test('only the pills that fit are visible 2', async () => {
+  const pillWidths: Record<string, number> = {
+    'In stock': 100,
+    'Filter 2': 100,
+    'Filter 3': 300,
+  };
+  const dropdownWidth = 50;
+  const containerWidth = 400;
+
   Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: {
       get(this: HTMLElement) {
-        if (this.dataset.testid === 'pilltabs-wrapper') {
-          return 400;
+        if (this.getAttribute('role') === 'list') {
+          return containerWidth;
         }
 
-        if (this.dataset.testid === 'pilltabs-pill-0') {
-          return 100;
-        }
+        if (this.getAttribute('role') === 'listitem') {
+          const text = (this.textContent || '').trim();
 
-        if (this.dataset.testid === 'pilltabs-pill-1') {
-          return 100;
-        }
+          for (const [pillText, width] of Object.entries(pillWidths)) {
+            if (text.includes(pillText)) {
+              return width;
+            }
+          }
 
-        if (this.dataset.testid === 'pilltabs-pill-2') {
-          return 300;
+          return dropdownWidth;
         }
 
         return parseFloat(this.style.width) || 50;
@@ -286,27 +343,26 @@ test('only the pills that fit are visible 2', async () => {
   const items = [
     {
       title: 'In stock',
-
       id: 'filter1',
     },
     {
       title: 'Filter 2',
-
-      id: 'filter1',
+      id: 'filter2',
     },
     {
       title: 'Filter 3',
-
-      id: 'filter1',
+      id: 'filter3',
     },
   ];
 
   render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
 
-  const inStock = await screen.findByTestId('pilltabs-pill-0');
-  const filter2 = await screen.findByTestId('pilltabs-pill-1');
-  const filter3 = await screen.findByTestId('pilltabs-pill-2');
-  const dropdownToggle = screen.queryByTestId('pilltabs-dropdown-toggle');
+  await screen.findByText('In stock');
+  const listItems = screen.getAllByRole('listitem', { hidden: true });
+  const inStock = listItems[0];
+  const filter2 = listItems[1];
+  const filter3 = listItems[2];
+  const dropdownToggle = listItems.at(-1);
   const list = screen.getByRole('list');
 
   expect(list).toMatchSnapshot();
@@ -338,23 +394,30 @@ test('it executes the given callback on click', async () => {
 });
 
 test('cannot click on a hidden item', async () => {
+  const pillWidths: Record<string, number> = {
+    'In stock': 340,
+    'Not in stock': 200,
+  };
+  const dropdownWidth = 50;
+  const containerWidth = 400;
+
   Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: {
       get(this: HTMLElement) {
-        if (this.dataset.testid === 'pilltabs-wrapper') {
-          return 400;
+        if (this.getAttribute('role') === 'list') {
+          return containerWidth;
         }
 
-        if (this.dataset.testid === 'pilltabs-dropdown-toggle') {
-          return 50;
-        }
+        if (this.getAttribute('role') === 'listitem') {
+          const text = (this.textContent || '').trim();
 
-        if (this.dataset.testid === 'pilltabs-pill-0') {
-          return 340;
-        }
+          for (const [pillText, width] of Object.entries(pillWidths)) {
+            if (text.includes(pillText)) {
+              return width;
+            }
+          }
 
-        if (this.dataset.testid === 'pilltabs-pill-1') {
-          return 200;
+          return dropdownWidth;
         }
 
         return parseFloat(this.style.width) || 50;
@@ -376,7 +439,8 @@ test('cannot click on a hidden item', async () => {
   render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
 
   const notInStock = await screen.findByText('Not in stock');
-  const filter1 = screen.getByTestId('pilltabs-pill-1');
+  const listItems = screen.getAllByRole('listitem', { hidden: true });
+  const filter1 = listItems[1];
 
   expect(notInStock).toHaveStyle({ pointerEvents: '' });
   expect(filter1).toHaveStyle(HIDDEN_STYLES);
@@ -582,26 +646,22 @@ describe('when using dropdown items', () => {
       Object.defineProperties(window.HTMLElement.prototype, {
         offsetWidth: {
           get(this: HTMLElement) {
-            switch (this.dataset.testid) {
-              case 'pilltabs-wrapper':
-                return 270;
-
-              // only enough space for 2 pills (including margins)
-              case 'pilltabs-dropdown-toggle':
-                return 50;
-
-              case 'pilltabs-pill-0':
-                return 100;
-
-              case 'pilltabs-pill-1':
-                return 100;
-
-              case 'pilltabs-pill-2':
-                return 100;
-
-              default:
-                return parseFloat(this.style.width) || 0;
+            if (this.getAttribute('role') === 'list') {
+              return 270;
             }
+
+            if (this.getAttribute('role') === 'listitem') {
+              // Dropdown toggle contains a button with aria-haspopup
+              // only enough space for 2 pills (including margins)
+              if (this.querySelector('[aria-haspopup]')) {
+                return 50;
+              }
+
+              // All pills are 100px wide
+              return 100;
+            }
+
+            return parseFloat(this.style.width) || 0;
           },
         },
       });
@@ -672,7 +732,7 @@ describe('when using item groups', () => {
     Object.defineProperties(window.HTMLElement.prototype, {
       offsetWidth: {
         get(this: HTMLElement) {
-          if (this.dataset.testid === 'pilltabs-wrapper') {
+          if (this.getAttribute('role') === 'list') {
             return 600;
           }
 
@@ -698,8 +758,8 @@ describe('when using item groups', () => {
 
     render(<TestComponent activePills={[]} items={groups} onPillClick={jest.fn()} />);
 
-    // Separator should appear between groups (after pill index 1, before pill index 2)
-    const separator = await screen.findByTestId('pilltabs-separator-2');
+    // Separator should appear between groups
+    const separator = await screen.findByRole('separator');
 
     expect(separator).toBeInTheDocument();
     expect(separator).not.toHaveStyle(HIDDEN_STYLES);
@@ -720,7 +780,7 @@ describe('when using item groups', () => {
     // Wait for component to settle
     await screen.findByText('All');
 
-    const separator = screen.queryByTestId(/pilltabs-separator/);
+    const separator = screen.queryByRole('separator');
 
     expect(separator).not.toBeInTheDocument();
   });
@@ -736,7 +796,7 @@ describe('when using item groups', () => {
     // Wait for component to settle
     await screen.findByText('All');
 
-    const separator = screen.queryByTestId(/pilltabs-separator/);
+    const separator = screen.queryByRole('separator');
 
     expect(separator).not.toBeInTheDocument();
   });
@@ -745,29 +805,21 @@ describe('when using item groups', () => {
     Object.defineProperties(window.HTMLElement.prototype, {
       offsetWidth: {
         get(this: HTMLElement) {
-          switch (this.dataset.testid) {
-            case 'pilltabs-wrapper':
-              return 200;
-
-            case 'pilltabs-dropdown-toggle':
-              return 50;
-
-            case 'pilltabs-pill-0':
-              return 80;
-
-            case 'pilltabs-pill-1':
-              return 80;
-
-            // Group 2 pills don't fit
-            case 'pilltabs-pill-2':
-              return 80;
-
-            case 'pilltabs-pill-3':
-              return 80;
-
-            default:
-              return parseFloat(this.style.width) || 0;
+          if (this.getAttribute('role') === 'list') {
+            return 200;
           }
+
+          if (this.getAttribute('role') === 'listitem') {
+            // Dropdown toggle contains a button with aria-haspopup
+            if (this.querySelector('[aria-haspopup]')) {
+              return 50;
+            }
+
+            // All pills are 80px wide, Group 2 pills don't fit
+            return 80;
+          }
+
+          return parseFloat(this.style.width) || 0;
         },
       },
     });
@@ -789,8 +841,11 @@ describe('when using item groups', () => {
 
     render(<TestComponent activePills={[]} items={groups} onPillClick={jest.fn()} />);
 
+    // Wait for component to settle
+    await screen.findByText('All');
+
     // The separator exists but should be hidden since group 2 pills are hidden
-    const separator = await screen.findByTestId('pilltabs-separator-2');
+    const separator = screen.getByRole('separator', { hidden: true });
 
     expect(separator).toHaveStyle(HIDDEN_STYLES);
   });
@@ -799,7 +854,7 @@ describe('when using item groups', () => {
     Object.defineProperties(window.HTMLElement.prototype, {
       offsetWidth: {
         get(this: HTMLElement) {
-          if (this.dataset.testid === 'pilltabs-wrapper') {
+          if (this.getAttribute('role') === 'list') {
             return 600;
           }
 
@@ -830,28 +885,21 @@ describe('when using item groups', () => {
       Object.defineProperties(window.HTMLElement.prototype, {
         offsetWidth: {
           get(this: HTMLElement) {
-            switch (this.dataset.testid) {
-              case 'pilltabs-wrapper':
-                return 200;
-
-              case 'pilltabs-dropdown-toggle':
-                return 50;
-
-              case 'pilltabs-pill-0':
-                return 80;
-
-              case 'pilltabs-pill-1':
-                return 80;
-
-              case 'pilltabs-pill-2':
-                return 80;
-
-              case 'pilltabs-pill-3':
-                return 80;
-
-              default:
-                return parseFloat(this.style.width) || 0;
+            if (this.getAttribute('role') === 'list') {
+              return 200;
             }
+
+            if (this.getAttribute('role') === 'listitem') {
+              // Dropdown toggle contains a button with aria-haspopup
+              if (this.querySelector('[aria-haspopup]')) {
+                return 50;
+              }
+
+              // All pills are 80px wide
+              return 80;
+            }
+
+            return parseFloat(this.style.width) || 0;
           },
         },
       });
