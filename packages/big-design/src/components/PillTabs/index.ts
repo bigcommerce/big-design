@@ -1,1 +1,7 @@
-export { PillTabs, type PillTabItem, type PillTabsProps } from './PillTabs';
+export {
+  isPillTabItemGroupArray,
+  PillTabs,
+  type PillTabItem,
+  type PillTabItemGroup,
+  type PillTabsProps,
+} from './PillTabs';
