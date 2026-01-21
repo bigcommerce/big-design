@@ -197,7 +197,11 @@ export const PillTabs: React.FC<PillTabsProps> = ({
         return (
           <Fragment key={id}>
             {showSeparator && (
-              <StyledGroupSeparator isVisible={separatorVisible} role="separator" />
+              <StyledGroupSeparator
+                aria-orientation="vertical"
+                isVisible={separatorVisible}
+                role="separator"
+              />
             )}
             <StyledFlexItem isVisible={isVisible} ref={setPillRef(index)} role="listitem">
               <StyledPillTab
