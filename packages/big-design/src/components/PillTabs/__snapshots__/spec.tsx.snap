@@ -296,12 +296,10 @@ exports[`dropdown is not visible if items fit 1`] = `
 
 <div
   class="c0 c1"
-  data-testid="pilltabs-wrapper"
   role="list"
 >
   <div
     class="c0 c2 "
-    data-testid="pilltabs-pill-0"
     role="listitem"
   >
     <button
@@ -317,7 +315,6 @@ exports[`dropdown is not visible if items fit 1`] = `
   </div>
   <div
     class="c0 c2 c5"
-    data-testid="pilltabs-dropdown-toggle"
     role="listitem"
   >
     <div
@@ -364,8 +361,11 @@ exports[`dropdown is not visible if items fit 1`] = `
       </button>
       <div
         class="c9"
+        data-popper-escaped="true"
+        data-popper-placement="bottom-start"
+        data-popper-reference-hidden="true"
         display="none"
-        style="position: absolute; left: 0px; top: 0px;"
+        style="position: absolute; left: 0px; top: 0px; right: auto; bottom: auto; transform: translate(0px, 4px);"
       >
         <div
           class="c10"
@@ -679,12 +679,10 @@ exports[`it renders the given tabs 1`] = `
 
 <div
   class="c0 c1"
-  data-testid="pilltabs-wrapper"
   role="list"
 >
   <div
     class="c0 c2 "
-    data-testid="pilltabs-pill-0"
     role="listitem"
   >
     <button
@@ -700,7 +698,6 @@ exports[`it renders the given tabs 1`] = `
   </div>
   <div
     class="c0 c2 c5"
-    data-testid="pilltabs-dropdown-toggle"
     role="listitem"
   >
     <div
@@ -747,8 +744,11 @@ exports[`it renders the given tabs 1`] = `
       </button>
       <div
         class="c9"
+        data-popper-escaped="true"
+        data-popper-placement="bottom-start"
+        data-popper-reference-hidden="true"
         display="none"
-        style="position: absolute; left: 0px; top: 0px;"
+        style="position: absolute; left: 0px; top: 0px; right: auto; bottom: auto; transform: translate(0px, 4px);"
       >
         <div
           class="c10"
@@ -1062,12 +1062,10 @@ exports[`only the pills that fit are visible 1`] = `
 
 <div
   class="c0 c1"
-  data-testid="pilltabs-wrapper"
   role="list"
 >
   <div
     class="c0 c2 "
-    data-testid="pilltabs-pill-0"
     role="listitem"
   >
     <button
@@ -1083,7 +1081,6 @@ exports[`only the pills that fit are visible 1`] = `
   </div>
   <div
     class="c0 c2 c5"
-    data-testid="pilltabs-pill-1"
     role="listitem"
   >
     <button
@@ -1100,7 +1097,6 @@ exports[`only the pills that fit are visible 1`] = `
   </div>
   <div
     class="c0 c2 c5"
-    data-testid="pilltabs-pill-2"
     role="listitem"
   >
     <button
@@ -1117,7 +1113,6 @@ exports[`only the pills that fit are visible 1`] = `
   </div>
   <div
     class="c0 c2 "
-    data-testid="pilltabs-dropdown-toggle"
     role="listitem"
   >
     <div
@@ -1482,12 +1477,10 @@ exports[`only the pills that fit are visible 2 1`] = `
 
 <div
   class="c0 c1"
-  data-testid="pilltabs-wrapper"
   role="list"
 >
   <div
     class="c0 c2 "
-    data-testid="pilltabs-pill-0"
     role="listitem"
   >
     <button
@@ -1503,7 +1496,6 @@ exports[`only the pills that fit are visible 2 1`] = `
   </div>
   <div
     class="c0 c2 "
-    data-testid="pilltabs-pill-1"
     role="listitem"
   >
     <button
@@ -1519,7 +1511,6 @@ exports[`only the pills that fit are visible 2 1`] = `
   </div>
   <div
     class="c0 c2 c5"
-    data-testid="pilltabs-pill-2"
     role="listitem"
   >
     <button
@@ -1536,7 +1527,6 @@ exports[`only the pills that fit are visible 2 1`] = `
   </div>
   <div
     class="c0 c2 "
-    data-testid="pilltabs-dropdown-toggle"
     role="listitem"
   >
     <div
@@ -1901,12 +1891,10 @@ exports[`renders all the filters if they fit 1`] = `
 
 <div
   class="c0 c1"
-  data-testid="pilltabs-wrapper"
   role="list"
 >
   <div
     class="c0 c2 "
-    data-testid="pilltabs-pill-0"
     role="listitem"
   >
     <button
@@ -1922,7 +1910,6 @@ exports[`renders all the filters if they fit 1`] = `
   </div>
   <div
     class="c0 c2 "
-    data-testid="pilltabs-pill-1"
     role="listitem"
   >
     <button
@@ -1938,7 +1925,6 @@ exports[`renders all the filters if they fit 1`] = `
   </div>
   <div
     class="c0 c2 "
-    data-testid="pilltabs-pill-2"
     role="listitem"
   >
     <button
@@ -1954,7 +1940,6 @@ exports[`renders all the filters if they fit 1`] = `
   </div>
   <div
     class="c0 c2 c5"
-    data-testid="pilltabs-dropdown-toggle"
     role="listitem"
   >
     <div
@@ -2083,7 +2068,7 @@ exports[`renders dropdown if items do not fit 1`] = `
   flex-shrink: 1;
 }
 
-.c4 {
+.c3 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -2132,36 +2117,36 @@ exports[`renders dropdown if items do not fit 1`] = `
   color: #3C64F4;
 }
 
-.c4.c4 {
+.c3.c3 {
   margin-right: 0.5rem;
 }
 
-.c4:focus {
+.c3:focus {
   outline: none;
 }
 
-.c4[disabled] {
+.c3[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c4 + .bd-button {
+.c3 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c4:active {
+.c3:active {
   background-color: #DBE3FE;
 }
 
-.c4:focus {
+.c3:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c4:hover:not(:active) {
+.c3:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c4[disabled] {
+.c3[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
@@ -2245,7 +2230,7 @@ exports[`renders dropdown if items do not fit 1`] = `
   color: #D9DCE9;
 }
 
-.c5 {
+.c4 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -2283,21 +2268,21 @@ exports[`renders dropdown if items do not fit 1`] = `
   position: relative;
 }
 
-.c3 {
+.c5 {
   position: absolute;
   visibility: hidden;
   z-index: -1070;
 }
 
 @media (min-width:720px) {
-  .c4 + .bd-button {
+  .c3 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c4 {
+  .c3 {
     width: auto;
   }
 }
@@ -2319,38 +2304,34 @@ exports[`renders dropdown if items do not fit 1`] = `
 
 <div
   class="c0 c1"
-  data-testid="pilltabs-wrapper"
   role="list"
 >
   <div
-    class="c0 c2 c3"
-    data-testid="pilltabs-pill-0"
+    class="c0 c2 "
     role="listitem"
   >
     <button
-      class="c4 "
-      disabled=""
+      class="c3 "
       type="button"
     >
       <span
-        class="c5"
+        class="c4"
       >
         In stock
       </span>
     </button>
   </div>
   <div
-    class="c0 c2 c3"
-    data-testid="pilltabs-pill-1"
+    class="c0 c2 c5"
     role="listitem"
   >
     <button
-      class="c4 "
+      class="c3 "
       disabled=""
       type="button"
     >
       <span
-        class="c5"
+        class="c4"
       >
         Long filter name
       </span>
@@ -2358,7 +2339,6 @@ exports[`renders dropdown if items do not fit 1`] = `
   </div>
   <div
     class="c0 c2 "
-    data-testid="pilltabs-dropdown-toggle"
     role="listitem"
   >
     <div
@@ -2376,7 +2356,7 @@ exports[`renders dropdown if items do not fit 1`] = `
         type="button"
       >
         <span
-          class="c5"
+          class="c4"
         >
           <svg
             aria-labelledby=":r8:"
