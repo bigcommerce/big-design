@@ -186,7 +186,13 @@ export const PillTabs: React.FC<PillTabsProps> = ({
   }
 
   return (
-    <Flex flexDirection="row" flexWrap="nowrap" ref={refs.parent} role="list">
+    <Flex
+      data-testid="pilltabs-wrapper"
+      flexDirection="row"
+      flexWrap="nowrap"
+      ref={refs.parent}
+      role="list"
+    >
       {pills.map(({ id, isVisible, title, isActive, onClick, groupIndex }, index) => {
         const previousPill = pills[index - 1];
         const isFirstInGroup = previousPill && previousPill.groupIndex !== groupIndex;
@@ -203,7 +209,12 @@ export const PillTabs: React.FC<PillTabsProps> = ({
                 role="separator"
               />
             )}
-            <StyledFlexItem isVisible={isVisible} ref={setPillRef(index)} role="listitem">
+            <StyledFlexItem
+              data-testid={`pilltabs-pill-${index}`}
+              isVisible={isVisible}
+              ref={setPillRef(index)}
+              role="listitem"
+            >
               <StyledPillTab
                 disabled={!isVisible}
                 isActive={isActive}
@@ -218,7 +229,12 @@ export const PillTabs: React.FC<PillTabsProps> = ({
           </Fragment>
         );
       })}
-      <StyledFlexItem isVisible={dropdownItemGroups.length > 0} ref={refs.dropdown} role="listitem">
+      <StyledFlexItem
+        data-testid="pilltabs-dropdown-toggle"
+        isVisible={dropdownItemGroups.length > 0}
+        ref={refs.dropdown}
+        role="listitem"
+      >
         <Dropdown
           items={dropdownItemGroups}
           toggle={
