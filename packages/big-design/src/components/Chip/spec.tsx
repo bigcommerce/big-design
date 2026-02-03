@@ -52,3 +52,23 @@ test('renders with icon when icon prop is provided', () => {
   expect(screen.getByText('With icon')).toBeInTheDocument();
   expect(container.querySelector('svg')).toBeInTheDocument();
 });
+
+test('icon is always constrained to 16px (1rem) regardless of icon size prop', () => {
+  const { container } = render(<Chip icon={<AddIcon size="xLarge" />} label="Large icon" />);
+
+  const chip = container.firstChild;
+  const iconWrapper = chip?.firstChild;
+
+  expect(iconWrapper).toHaveStyleRule('height', '1rem', { modifier: 'svg' });
+  expect(iconWrapper).toHaveStyleRule('width', '1rem', { modifier: 'svg' });
+});
+
+test('icon is always constrained to 16px even if size is set to 40px', () => {
+  const { container } = render(<Chip icon={<AddIcon size="40px" />} label="Large icon" />);
+
+  const chip = container.firstChild;
+  const iconWrapper = chip?.firstChild;
+
+  expect(iconWrapper).toHaveStyleRule('height', '1rem', { modifier: 'svg' });
+  expect(iconWrapper).toHaveStyleRule('width', '1rem', { modifier: 'svg' });
+});
