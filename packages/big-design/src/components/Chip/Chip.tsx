@@ -4,15 +4,16 @@ import React, { memo } from 'react';
 import { MarginProps } from '../../helpers';
 import { Text } from '../Typography';
 
-import { StyledChip, StyledCloseButton } from './styled';
+import { StyledChip, StyledChipIcon, StyledCloseButton } from './styled';
 
 export interface ChipProps extends MarginProps {
   children?: React.ReactNode;
+  icon?: React.ReactNode;
   label: string;
   onDelete?(): void;
 }
 
-export const Chip: React.FC<ChipProps> = memo(({ children, label, onDelete, ...rest }) => {
+export const Chip: React.FC<ChipProps> = memo(({ children, icon, label, onDelete, ...rest }) => {
   const ariaLabel = label ? { 'aria-label': `Remove ${label}` } : {};
 
   const renderDeleteButton = () =>
@@ -35,6 +36,7 @@ export const Chip: React.FC<ChipProps> = memo(({ children, label, onDelete, ...r
       paddingLeft="xSmall"
       paddingRight="xxSmall"
     >
+      {icon ? <StyledChipIcon>{icon}</StyledChipIcon> : null}
       <Text margin="none" marginRight="xxSmall">
         {label}
       </Text>

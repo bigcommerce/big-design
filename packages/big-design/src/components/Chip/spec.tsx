@@ -1,3 +1,4 @@
+import { AddIcon } from '@bigcommerce/big-design-icons';
 import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import React from 'react';
@@ -43,4 +44,31 @@ test('accepts custom margin props', () => {
   const chipParent = screen.getByText(/test/i).parentElement;
 
   expect(chipParent).toHaveStyle('margin: 1.25rem');
+});
+
+test('renders with icon when icon prop is provided', () => {
+  const { container } = render(<Chip icon={<AddIcon size="medium" />} label="With icon" />);
+
+  expect(screen.getByText('With icon')).toBeInTheDocument();
+  expect(container.querySelector('svg')).toBeInTheDocument();
+});
+
+test('icon is always constrained to 16px (1rem) regardless of icon size prop', () => {
+  const { container } = render(<Chip icon={<AddIcon size="xLarge" />} label="Large icon" />);
+
+  const chip = container.firstChild;
+  const iconWrapper = chip?.firstChild;
+
+  expect(iconWrapper).toHaveStyleRule('height', '1rem', { modifier: 'svg' });
+  expect(iconWrapper).toHaveStyleRule('width', '1rem', { modifier: 'svg' });
+});
+
+test('icon is always constrained to 16px even if size is set to 40px', () => {
+  const { container } = render(<Chip icon={<AddIcon size="40px" />} label="Large icon" />);
+
+  const chip = container.firstChild;
+  const iconWrapper = chip?.firstChild;
+
+  expect(iconWrapper).toHaveStyleRule('height', '1rem', { modifier: 'svg' });
+  expect(iconWrapper).toHaveStyleRule('width', '1rem', { modifier: 'svg' });
 });

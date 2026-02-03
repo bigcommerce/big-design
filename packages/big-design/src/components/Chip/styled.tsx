@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { theme as defaultTheme, remCalc } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { Box } from '../Box';
@@ -10,6 +10,17 @@ export const StyledChip = styled(Box)`
   user-select: none;
 `;
 
+export const StyledChipIcon = styled(Box)`
+  margin-right: ${({ theme }) => theme.spacing.xxSmall};
+  display: inline-flex;
+  align-items: center;
+
+  svg {
+    height: ${remCalc(16)};
+    width: ${remCalc(16)};
+  }
+`;
+
 export const StyledCloseButton = styled(StyleableButton)`
   color: ${({ theme }) => theme.colors.secondary60};
   height: auto;
@@ -19,6 +30,10 @@ export const StyledCloseButton = styled(StyleableButton)`
 `;
 
 StyledChip.defaultProps = {
+  theme: defaultTheme,
+};
+
+StyledChipIcon.defaultProps = {
   theme: defaultTheme,
 };
 
