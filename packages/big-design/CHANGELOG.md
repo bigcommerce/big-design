@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.4.0
+
+### Minor Changes
+
+- 8f81be8: Add optional icon prop to Chip and fix icon size to 16px
+
 ## 2.3.3
 
 ### Patch Changes
