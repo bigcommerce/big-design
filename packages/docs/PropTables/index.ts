@@ -4,6 +4,7 @@ export * from './BoxPropTable';
 export * from './ButtonPropTable';
 export * from './ButtonGroupPropTable';
 export * from './CheckboxPropTable';
+export * from './ChipPropTable';
 export * from './CollapsePropTable';
 export * from './CounterPropTable';
 export * from './DatepickerPropsTable';

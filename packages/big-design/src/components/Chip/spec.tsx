@@ -1,3 +1,4 @@
+import { AddIcon } from '@bigcommerce/big-design-icons';
 import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import React from 'react';
@@ -43,4 +44,11 @@ test('accepts custom margin props', () => {
   const chipParent = screen.getByText(/test/i).parentElement;
 
   expect(chipParent).toHaveStyle('margin: 1.25rem');
+});
+
+test('renders with icon when icon prop is provided', () => {
+  const { container } = render(<Chip icon={<AddIcon size="medium" />} label="With icon" />);
+
+  expect(screen.getByText('With icon')).toBeInTheDocument();
+  expect(container.querySelector('svg')).toBeInTheDocument();
 });
