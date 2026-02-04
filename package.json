@@ -13,6 +13,7 @@
     "typecheck": "turbo typecheck"
   },
   "devDependencies": {
+    "@bigcommerce/eslint-config": "^2.12.0",
     "@changesets/assemble-release-plan": "^6.0.9",
     "@changesets/changelog-git": "^0.2.1",
     "@changesets/cli": "^2.29.7",
