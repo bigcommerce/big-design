@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.4.1
+
+### Patch Changes
+
+- 8bd43d9: Chip: use xxSmall left padding when icon is present
+
 ## 2.4.0
 
 ### Minor Changes
