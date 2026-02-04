@@ -72,3 +72,19 @@ test('icon is always constrained to 16px even if size is set to 40px', () => {
   expect(iconWrapper).toHaveStyleRule('height', '1rem', { modifier: 'svg' });
   expect(iconWrapper).toHaveStyleRule('width', '1rem', { modifier: 'svg' });
 });
+
+test('uses xSmall left padding when there is no icon', () => {
+  render(<Chip label="No icon" />);
+
+  const chip = screen.getByText('No icon').parentElement;
+
+  expect(chip).toHaveStyle({ paddingLeft: '0.5rem' }); // xSmall
+});
+
+test('uses xxSmall left padding when icon is present', () => {
+  render(<Chip icon={<AddIcon size="medium" />} label="With icon" />);
+
+  const chip = screen.getByText('With icon').parentElement;
+
+  expect(chip).toHaveStyle({ paddingLeft: '0.25rem' }); // xxSmall
+});
