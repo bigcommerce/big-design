@@ -33,7 +33,7 @@ export const Chip: React.FC<ChipProps> = memo(({ children, icon, label, onDelete
       {...rest}
       backgroundColor="secondary30"
       borderRadius="normal"
-      paddingLeft="xSmall"
+      paddingLeft={icon ? 'xxSmall' : 'xSmall'}
       paddingRight="xxSmall"
     >
       {icon ? <StyledChipIcon>{icon}</StyledChipIcon> : null}
