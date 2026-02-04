@@ -77,14 +77,14 @@ test('uses xSmall left padding when there is no icon', () => {
   render(<Chip label="No icon" />);
 
   const chip = screen.getByText('No icon').parentElement;
+
   expect(chip).toHaveStyle({ paddingLeft: '0.5rem' }); // xSmall
 });
 
 test('uses xxSmall left padding when icon is present', () => {
-  const { container } = render(
-    <Chip icon={<AddIcon size="medium" />} label="With icon" />,
-  );
+  render(<Chip icon={<AddIcon size="medium" />} label="With icon" />);
 
-  const chip = container.firstChild as HTMLElement;
+  const chip = screen.getByText('With icon').parentElement;
+
   expect(chip).toHaveStyle({ paddingLeft: '0.25rem' }); // xxSmall
 });
