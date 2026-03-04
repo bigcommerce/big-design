@@ -138,10 +138,12 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
       >
         {!checked && isIndeterminate ? <RemoveIcon /> : <CheckIcon />}
       </StyledCheckbox>
-      <CheckboxLabelContainer>
-        {renderedLabel}
-        {renderedDescription}
-      </CheckboxLabelContainer>
+      {(Boolean(label) || Boolean(description)) && (
+        <CheckboxLabelContainer>
+          {renderedLabel}
+          {renderedDescription}
+        </CheckboxLabelContainer>
+      )}
     </CheckboxContainer>
   );
 };
