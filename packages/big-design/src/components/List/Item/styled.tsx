@@ -41,10 +41,10 @@ export const StyledListItem = styled.li<
       ? actionType === 'normal'
         ? css`
             background-color: ${theme.colors.primary10};
-            color: ${theme.colors.primary};
+            color: ${theme.colors.primary50};
 
             a {
-              color: ${theme.colors.primary};
+              color: ${theme.colors.primary50};
             }
           `
         : css`
