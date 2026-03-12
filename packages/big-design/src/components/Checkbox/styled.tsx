@@ -15,8 +15,8 @@ export interface StyledLabelProps {
   disabled?: boolean;
 }
 
-export const CheckboxLabelContainer = styled.div`
-  margin-left: ${({ theme }) => theme.spacing.xSmall};
+export const CheckboxLabelContainer = styled.div<{ hasContent?: boolean }>`
+  margin-left: ${({ hasContent, theme }) => (hasContent ? theme.spacing.xSmall : 0)};
 `;
 
 export const CheckboxContainer = styled.div`
