@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.4.2
+
+### Patch Changes
+
+- 3ed245a: Fix alignment issue in Checkbox component when no label is provided.
+
 ## 2.4.1
 
 ### Patch Changes
