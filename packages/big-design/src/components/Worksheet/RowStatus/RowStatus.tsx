@@ -14,14 +14,12 @@ export const RowStatus: React.FC<RowStatusProps> = memo(({ rowIndex }) => {
 
   const isSelected: boolean = useStore(
     store,
-    useShallow((state) => state.selectedRows.includes(rowIndex)),
+    useShallow((state) => !!state.selectedRowsMap[rowIndex]),
   );
 
   const isInvalid = useStore(
     store,
-    useShallow((state) =>
-      state.invalidCells.some((invalidCell) => invalidCell.rowIndex === rowIndex),
-    ),
+    useShallow((state) => !!state.invalidRowsMap[rowIndex]),
   );
 
   return <Status isInvalid={isInvalid} isSelected={isSelected} />;

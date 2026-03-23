@@ -90,3 +90,10 @@ export const getCellsMap = <T extends WorksheetItem>(cells: Array<Cell<T>>) =>
     }),
     {},
   );
+
+export const getRowsMap = <T extends WorksheetItem>(cells: Array<Cell<T>>): Record<number, boolean> =>
+  cells.reduce<Record<number, boolean>>((acc, cell) => {
+    acc[cell.rowIndex] = true;
+
+    return acc;
+  }, {});

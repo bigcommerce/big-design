@@ -107,6 +107,12 @@ export const useNavigation = <T extends WorksheetItem>(selectedCell: Cell<T>) =>
 
         setSelectedCells([cell]);
         setSelectedRows([newPosition.rowIndex]);
+
+        const { scrollToRow } = store.getState();
+
+        if (scrollToRow) {
+          scrollToRow(newPosition.rowIndex);
+        }
       }
     },
     [
@@ -118,6 +124,7 @@ export const useNavigation = <T extends WorksheetItem>(selectedCell: Cell<T>) =>
       selectedCell,
       setSelectedCells,
       setSelectedRows,
+      store,
     ],
   );
 

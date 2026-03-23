@@ -1,23 +1,23 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`renders worksheet 1`] = `
-.c8 {
+.c7 {
   vertical-align: middle;
   height: 1rem;
   width: 1rem;
 }
 
-.c19 {
+.c17 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
-.c20 {
+.c18 {
   margin-left: 0.5rem;
 }
 
-.c14 {
+.c12 {
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
@@ -28,7 +28,7 @@ exports[`renders worksheet 1`] = `
   display: flex;
 }
 
-.c16 {
+.c14 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -41,7 +41,7 @@ exports[`renders worksheet 1`] = `
   width: 1px;
 }
 
-.c18 {
+.c16 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: border-color,background,box-shadow,color,opacity;
@@ -75,19 +75,19 @@ exports[`renders worksheet 1`] = `
   width: 1.25rem;
 }
 
-.c18:hover {
+.c16:hover {
   border-color: #3C64F4;
 }
 
-.c15:focus + .c17 {
+.c13:focus + .c15 {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c18 svg {
+.c16 svg {
   opacity: 1;
 }
 
-.c31 {
+.c30 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: border-color,background,box-shadow,color,opacity;
@@ -121,33 +121,33 @@ exports[`renders worksheet 1`] = `
   width: 1.25rem;
 }
 
-.c31:hover {
+.c30:hover {
   border-color: #B4BAD1;
 }
 
-.c15:focus + .c17 {
+.c13:focus + .c15 {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c31 svg {
+.c30 svg {
   opacity: 0;
 }
 
-.c0 {
-  box-sizing: border-box;
-}
-
-.c7 {
+.c6 {
   margin-left: 0.25rem;
   box-sizing: border-box;
 }
 
-.c24 {
-  padding-right: 0.75rem;
+.c21 {
   box-sizing: border-box;
 }
 
 .c23 {
+  padding-right: 0.75rem;
+  box-sizing: border-box;
+}
+
+.c22 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
   align-content: stretch;
@@ -168,7 +168,7 @@ exports[`renders worksheet 1`] = `
   display: flex;
 }
 
-.c25 {
+.c24 {
   -webkit-align-self: auto;
   -ms-flex-item-align: auto;
   align-self: auto;
@@ -187,7 +187,7 @@ exports[`renders worksheet 1`] = `
   flex-shrink: 1;
 }
 
-.c21 {
+.c19 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -195,11 +195,11 @@ exports[`renders worksheet 1`] = `
   line-height: 1.5rem;
 }
 
-.c21:last-child {
+.c19:last-child {
   margin-bottom: 0;
 }
 
-.c10 {
+.c9 {
   color: #313440;
   margin: 0 0 1rem;
   display: inline-block;
@@ -215,11 +215,11 @@ exports[`renders worksheet 1`] = `
   margin: 0 0 0.75rem;
 }
 
-.c10:last-child {
+.c9:last-child {
   margin-bottom: 0;
 }
 
-.c27 {
+.c26 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -268,37 +268,37 @@ exports[`renders worksheet 1`] = `
   color: #3C64F4;
 }
 
-.c27:focus {
+.c26:focus {
   outline: none;
 }
 
-.c27[disabled] {
+.c26[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c27 + .bd-button {
+.c26 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c27:active {
+.c26:active {
   background-color: #DBE3FE;
 }
 
-.c27:focus {
+.c26:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c27:hover:not(:active) {
+.c26:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c27[disabled] {
+.c26[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c29 {
+.c28 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -311,7 +311,7 @@ exports[`renders worksheet 1`] = `
   grid-gap: 0.5rem;
 }
 
-.c22 {
+.c20 {
   cursor: pointer;
   border: 0;
   -webkit-clip: rect(0 0 0 0);
@@ -325,34 +325,34 @@ exports[`renders worksheet 1`] = `
   width: 1px;
 }
 
-.c13 > div {
+.c11 > div {
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
 }
 
-.c28 {
+.c27 {
   font-size: 0.875rem;
   height: auto;
   line-height: 1.25rem;
   padding: 0;
 }
 
-.c28:hover:not(:active) {
+.c27:hover:not(:active) {
   background-color: inherit;
   color: #0024A6;
 }
 
-.c28:active {
+.c27:active {
   background-color: inherit;
 }
 
-.c26 {
+.c25 {
   overflow: hidden;
 }
 
-.c9 {
+.c8 {
   position: relative;
   background-color: inherit;
   border: 0.03125rem solid #D9DCE9;
@@ -365,14 +365,14 @@ exports[`renders worksheet 1`] = `
   user-select: none;
 }
 
-.c9 p {
+.c8 p {
   display: block;
   white-space: inherit;
   word-break: break-word;
   margin: 0;
 }
 
-.c12 {
+.c10 {
   position: relative;
   background-color: inherit;
   border: 0.03125rem solid #D9DCE9;
@@ -385,14 +385,14 @@ exports[`renders worksheet 1`] = `
   user-select: none;
 }
 
-.c12 p {
+.c10 p {
   display: block;
   white-space: inherit;
   word-break: break-word;
   margin: 0;
 }
 
-.c30 {
+.c29 {
   position: relative;
   background-color: inherit;
   border: 0.03125rem solid #D9DCE9;
@@ -405,7 +405,28 @@ exports[`renders worksheet 1`] = `
   user-select: none;
 }
 
-.c30 p {
+.c29 p {
+  display: block;
+  white-space: inherit;
+  word-break: break-word;
+  margin: 0;
+}
+
+.c32 {
+  position: relative;
+  background-color: inherit;
+  border: 0.03125rem solid #D9DCE9;
+  box-sizing: border-box;
+  padding: 0.375rem 1.0625rem;
+  text-align: left;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 0.03125rem double #DB3643;
+}
+
+.c32 p {
   display: block;
   white-space: inherit;
   word-break: break-word;
@@ -418,7 +439,7 @@ exports[`renders worksheet 1`] = `
   border: 0.03125rem solid #D9DCE9;
   box-sizing: border-box;
   padding: 0.375rem 1.0625rem;
-  text-align: left;
+  text-align: right;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -433,41 +454,7 @@ exports[`renders worksheet 1`] = `
   margin: 0;
 }
 
-.c34 {
-  position: relative;
-  background-color: inherit;
-  border: 0.03125rem solid #D9DCE9;
-  box-sizing: border-box;
-  padding: 0.375rem 1.0625rem;
-  text-align: right;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  border: 0.03125rem double #DB3643;
-}
-
-.c34 p {
-  display: block;
-  white-space: inherit;
-  word-break: break-word;
-  margin: 0;
-}
-
-.c11 {
-  position: absolute;
-  border: 0.0625rem solid #FFFFFF;
-  height: 0.375rem;
-  width: 0.375rem;
-  background-color: #3C64F4;
-  right: -0.25rem;
-  bottom: -0.25rem;
-  z-index: 100;
-  cursor: crosshair;
-  display: none;
-}
-
-.c3 {
+.c2 {
   background-color: #D9DCE9;
   border-top: 0.03125rem solid #D9DCE9;
   box-sizing: border-box;
@@ -476,7 +463,7 @@ exports[`renders worksheet 1`] = `
   width: 0.25rem;
 }
 
-.c32 {
+.c31 {
   background-color: #D9DCE9;
   border-top: 0.03125rem solid #D9DCE9;
   box-sizing: border-box;
@@ -487,7 +474,7 @@ exports[`renders worksheet 1`] = `
   border: 0.03125rem solid #DB3643;
 }
 
-.c2 {
+.c1 {
   border-collapse: collapse;
   border-spacing: 0;
   min-width: auto;
@@ -495,11 +482,11 @@ exports[`renders worksheet 1`] = `
   width: 100%;
 }
 
-.c2:focus {
+.c1:focus {
   outline: none;
 }
 
-.c4 {
+.c3 {
   border: 0.03125rem solid #D9DCE9;
   border-right-color: #D9DCE9;
   box-sizing: border-box;
@@ -512,7 +499,7 @@ exports[`renders worksheet 1`] = `
   width: auto;
 }
 
-.c5 {
+.c4 {
   border: 0.03125rem solid #D9DCE9;
   border-right-color: #D9DCE9;
   box-sizing: border-box;
@@ -525,7 +512,7 @@ exports[`renders worksheet 1`] = `
   width: 80px;
 }
 
-.c6 {
+.c5 {
   border: 0.03125rem solid #D9DCE9;
   border-right-color: #D9DCE9;
   box-sizing: border-box;
@@ -538,12 +525,24 @@ exports[`renders worksheet 1`] = `
   width: 90px;
 }
 
-.c1 {
-  overflow-x: scroll;
+.c0 {
+  overflow-x: auto;
+  overflow-y: visible;
+  height: auto;
+}
+
+.c0 thead {
+  position: static;
+  top: 0;
+  z-index: 1;
+}
+
+.c0 thead th {
+  background-color: #FFFFFF;
 }
 
 @media (min-width:0px) {
-  .c23 {
+  .c22 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -551,7 +550,7 @@ exports[`renders worksheet 1`] = `
 }
 
 @media (min-width:720px) {
-  .c23 {
+  .c22 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -559,66 +558,66 @@ exports[`renders worksheet 1`] = `
 }
 
 @media (min-width:720px) {
-  .c27 + .bd-button {
+  .c26 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c27 {
+  .c26 {
     width: auto;
   }
 }
 
 <div
-  class="c0 c1"
+  class="c0"
 >
   <table
-    class="c2"
+    class="c1"
     tabindex="0"
   >
     <thead>
       <tr>
         <td
-          class="c3"
+          class="c2"
         />
         <th
-          class="c4"
+          class="c3"
         >
           Product name
            
         </th>
         <th
-          class="c5"
+          class="c4"
         >
           Visible on storefront
            
         </th>
         <th
-          class="c4"
+          class="c3"
         >
           Other field
            
         </th>
         <th
-          class="c4"
+          class="c3"
         >
           Other field
            
         </th>
         <th
-          class="c6"
+          class="c5"
         >
           Number field
            
           <span
-            class="c7"
+            class="c6"
           >
             <svg
               aria-describedby=":r0:"
               aria-labelledby=":r1:"
-              class="c8"
+              class="c7"
               fill="currentColor"
               height="24"
               stroke="currentColor"
@@ -646,50 +645,46 @@ exports[`renders worksheet 1`] = `
     <tbody>
       <tr>
         <td
-          class="c3"
+          class="c2"
         />
         <td
-          class="c9"
+          class="c8"
           type="text"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title="Shoes Name Three"
           >
             Shoes Name Three
           </p>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c12"
+          class="c10"
           type="checkbox"
         >
           <div
-            class="c13"
+            class="c11"
           >
             <div
-              class="c14"
+              class="c12"
             >
               <input
                 aria-checked="true"
                 aria-labelledby=":r5:"
                 checked=""
-                class="c15 c16"
+                class="c13 c14"
                 id=":r4:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="c17 c18"
+                class="c15 c16"
                 for=":r4:"
               >
                 <svg
                   aria-hidden="true"
-                  class="c19"
+                  class="c17"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -707,11 +702,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="c20"
+                class="c18"
               >
                 <label
                   aria-hidden="false"
-                  class="c21 c22"
+                  class="c19 c20"
                   for=":r4:"
                   hidden=""
                   id=":r5:"
@@ -721,39 +716,31 @@ exports[`renders worksheet 1`] = `
               </div>
             </div>
           </div>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c9"
+          class="c8"
           type="text"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title="Text"
           >
             Text
           </p>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c9"
+          class="c8"
           type="modal"
         >
           <div
-            class="c0 c23"
+            class="c21 c22"
           >
             <div
-              class="c24 c25 c26"
+              class="c23 c24 c25"
             >
               <p
-                class="c10"
+                class="c9"
                 color="secondary70"
                 title="1"
               >
@@ -761,83 +748,71 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c27 c28"
+              class="c26 c27"
             >
               <span
-                class="c29"
+                class="c28"
               >
                 Edit
               </span>
             </button>
           </div>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c30"
+          class="c29"
           type="number"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title="$50.00"
           >
             $50.00
           </p>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
       </tr>
       <tr>
         <td
-          class="c3"
+          class="c2"
         />
         <td
-          class="c9"
+          class="c8"
           type="text"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title="Shoes Name Two"
           >
             Shoes Name Two
           </p>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c12"
+          class="c10"
           type="checkbox"
         >
           <div
-            class="c13"
+            class="c11"
           >
             <div
-              class="c14"
+              class="c12"
             >
               <input
                 aria-checked="true"
                 aria-labelledby=":rd:"
                 checked=""
-                class="c15 c16"
+                class="c13 c14"
                 id=":rc:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="c17 c18"
+                class="c15 c16"
                 for=":rc:"
               >
                 <svg
                   aria-hidden="true"
-                  class="c19"
+                  class="c17"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -855,11 +830,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="c20"
+                class="c18"
               >
                 <label
                   aria-hidden="false"
-                  class="c21 c22"
+                  class="c19 c20"
                   for=":rc:"
                   hidden=""
                   id=":rd:"
@@ -869,39 +844,31 @@ exports[`renders worksheet 1`] = `
               </div>
             </div>
           </div>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c9"
+          class="c8"
           type="text"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title="Text"
           >
             Text
           </p>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c9"
+          class="c8"
           type="modal"
         >
           <div
-            class="c0 c23"
+            class="c21 c22"
           >
             <div
-              class="c24 c25 c26"
+              class="c23 c24 c25"
             >
               <p
-                class="c10"
+                class="c9"
                 color="secondary70"
                 title="2"
               >
@@ -909,82 +876,70 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c27 c28"
+              class="c26 c27"
             >
               <span
-                class="c29"
+                class="c28"
               >
                 Edit
               </span>
             </button>
           </div>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c30"
+          class="c29"
           type="number"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title="$50.00"
           >
             $50.00
           </p>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
       </tr>
       <tr>
         <td
-          class="c3"
+          class="c2"
         />
         <td
-          class="c9"
+          class="c8"
           type="text"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title="Shoes Name One"
           >
             Shoes Name One
           </p>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c12"
+          class="c10"
           type="checkbox"
         >
           <div
-            class="c13"
+            class="c11"
           >
             <div
-              class="c14"
+              class="c12"
             >
               <input
                 aria-checked="false"
                 aria-labelledby=":rl:"
-                class="c15 c16"
+                class="c13 c14"
                 id=":rk:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="c17 c31"
+                class="c15 c30"
                 for=":rk:"
               >
                 <svg
                   aria-hidden="true"
-                  class="c19"
+                  class="c17"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -1002,11 +957,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="c20"
+                class="c18"
               >
                 <label
                   aria-hidden="false"
-                  class="c21 c22"
+                  class="c19 c20"
                   for=":rk:"
                   hidden=""
                   id=":rl:"
@@ -1016,37 +971,29 @@ exports[`renders worksheet 1`] = `
               </div>
             </div>
           </div>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c9"
+          class="c8"
           type="text"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title=""
           />
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c9"
+          class="c8"
           type="modal"
         >
           <div
-            class="c0 c23"
+            class="c21 c22"
           >
             <div
-              class="c24 c25 c26"
+              class="c23 c24 c25"
             >
               <p
-                class="c10"
+                class="c9"
                 color="secondary70"
                 title="3"
               >
@@ -1054,83 +1001,71 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c27 c28"
+              class="c26 c27"
             >
               <span
-                class="c29"
+                class="c28"
               >
                 Edit
               </span>
             </button>
           </div>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c30"
+          class="c29"
           type="number"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title="$50.00"
           >
             $50.00
           </p>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
       </tr>
       <tr>
         <td
-          class="c3"
+          class="c2"
         />
         <td
-          class="c9"
+          class="c8"
           type="text"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title="Variant 1"
           >
             Variant 1
           </p>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c12"
+          class="c10"
           type="checkbox"
         >
           <div
-            class="c13"
+            class="c11"
           >
             <div
-              class="c14"
+              class="c12"
             >
               <input
                 aria-checked="true"
                 aria-labelledby=":rt:"
                 checked=""
-                class="c15 c16"
+                class="c13 c14"
                 id=":rs:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="c17 c18"
+                class="c15 c16"
                 for=":rs:"
               >
                 <svg
                   aria-hidden="true"
-                  class="c19"
+                  class="c17"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -1148,11 +1083,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="c20"
+                class="c18"
               >
                 <label
                   aria-hidden="false"
-                  class="c21 c22"
+                  class="c19 c20"
                   for=":rs:"
                   hidden=""
                   id=":rt:"
@@ -1162,39 +1097,31 @@ exports[`renders worksheet 1`] = `
               </div>
             </div>
           </div>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c9"
+          class="c8"
           type="text"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title="Text"
           >
             Text
           </p>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c9"
+          class="c8"
           type="modal"
         >
           <div
-            class="c0 c23"
+            class="c21 c22"
           >
             <div
-              class="c24 c25 c26"
+              class="c23 c24 c25"
             >
               <p
-                class="c10"
+                class="c9"
                 color="secondary70"
                 title="4"
               >
@@ -1202,79 +1129,67 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c27 c28"
+              class="c26 c27"
             >
               <span
-                class="c29"
+                class="c28"
               >
                 Edit
               </span>
             </button>
           </div>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c30"
+          class="c29"
           type="number"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title="$50.00"
           >
             $50.00
           </p>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
       </tr>
       <tr>
         <td
-          class="c32"
+          class="c31"
         />
         <td
-          class="c33"
+          class="c32"
           type="text"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title=""
           />
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c12"
+          class="c10"
           type="checkbox"
         >
           <div
-            class="c13"
+            class="c11"
           >
             <div
-              class="c14"
+              class="c12"
             >
               <input
                 aria-labelledby=":r15:"
-                class="c15 c16"
+                class="c13 c14"
                 id=":r14:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="c17 c31"
+                class="c15 c30"
                 for=":r14:"
               >
                 <svg
                   aria-hidden="true"
-                  class="c19"
+                  class="c17"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -1292,11 +1207,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="c20"
+                class="c18"
               >
                 <label
                   aria-hidden="false"
-                  class="c21 c22"
+                  class="c19 c20"
                   for=":r14:"
                   hidden=""
                   id=":r15:"
@@ -1306,117 +1221,97 @@ exports[`renders worksheet 1`] = `
               </div>
             </div>
           </div>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c9"
+          class="c8"
           type="text"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title=""
           />
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c9"
+          class="c8"
           type="modal"
         >
           <div
-            class="c0 c23"
+            class="c21 c22"
           >
             <div
-              class="c24 c25 c26"
+              class="c23 c24 c25"
             >
               <p
-                class="c10"
+                class="c9"
                 color="secondary70"
                 title=""
               />
             </div>
             <button
-              class="c27 c28"
+              class="c26 c27"
             >
               <span
-                class="c29"
+                class="c28"
               >
                 Edit
               </span>
             </button>
           </div>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c34"
+          class="c33"
           type="number"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title=""
-          />
-          <div
-            aria-label="Autofill handler"
-            class="c11"
           />
         </td>
       </tr>
       <tr>
         <td
-          class="c3"
+          class="c2"
         />
         <td
-          class="c9"
+          class="c8"
           type="text"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title="Variant 2"
           >
             Variant 2
           </p>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c12"
+          class="c10"
           type="checkbox"
         >
           <div
-            class="c13"
+            class="c11"
           >
             <div
-              class="c14"
+              class="c12"
             >
               <input
                 aria-checked="true"
                 aria-labelledby=":r1d:"
                 checked=""
-                class="c15 c16"
+                class="c13 c14"
                 id=":r1c:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="c17 c18"
+                class="c15 c16"
                 for=":r1c:"
               >
                 <svg
                   aria-hidden="true"
-                  class="c19"
+                  class="c17"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -1434,11 +1329,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="c20"
+                class="c18"
               >
                 <label
                   aria-hidden="false"
-                  class="c21 c22"
+                  class="c19 c20"
                   for=":r1c:"
                   hidden=""
                   id=":r1d:"
@@ -1448,39 +1343,31 @@ exports[`renders worksheet 1`] = `
               </div>
             </div>
           </div>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c9"
+          class="c8"
           type="text"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title="Text"
           >
             Text
           </p>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c9"
+          class="c8"
           type="modal"
         >
           <div
-            class="c0 c23"
+            class="c21 c22"
           >
             <div
-              class="c24 c25 c26"
+              class="c23 c24 c25"
             >
               <p
-                class="c10"
+                class="c9"
                 color="secondary70"
                 title="6"
               >
@@ -1488,82 +1375,70 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c27 c28"
+              class="c26 c27"
             >
               <span
-                class="c29"
+                class="c28"
               >
                 Edit
               </span>
             </button>
           </div>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c30"
+          class="c29"
           type="number"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title="$50.00"
           >
             $50.00
           </p>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
       </tr>
       <tr>
         <td
-          class="c32"
+          class="c31"
         />
         <td
-          class="c9"
+          class="c8"
           type="text"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title="Variant 3"
           >
             Variant 3
           </p>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c12"
+          class="c10"
           type="checkbox"
         >
           <div
-            class="c13"
+            class="c11"
           >
             <div
-              class="c14"
+              class="c12"
             >
               <input
                 aria-checked="false"
                 aria-labelledby=":r1l:"
-                class="c15 c16"
+                class="c13 c14"
                 id=":r1k:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="c17 c31"
+                class="c15 c30"
                 for=":r1k:"
               >
                 <svg
                   aria-hidden="true"
-                  class="c19"
+                  class="c17"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -1581,11 +1456,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="c20"
+                class="c18"
               >
                 <label
                   aria-hidden="false"
-                  class="c21 c22"
+                  class="c19 c20"
                   for=":r1k:"
                   hidden=""
                   id=":r1l:"
@@ -1595,39 +1470,31 @@ exports[`renders worksheet 1`] = `
               </div>
             </div>
           </div>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c9"
+          class="c8"
           type="text"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title="Text"
           >
             Text
           </p>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c9"
+          class="c8"
           type="modal"
         >
           <div
-            class="c0 c23"
+            class="c21 c22"
           >
             <div
-              class="c24 c25 c26"
+              class="c23 c24 c25"
             >
               <p
-                class="c10"
+                class="c9"
                 color="secondary70"
                 title="7"
               >
@@ -1635,83 +1502,71 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c27 c28"
+              class="c26 c27"
             >
               <span
-                class="c29"
+                class="c28"
               >
                 Edit
               </span>
             </button>
           </div>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c34"
+          class="c33"
           type="number"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title="$49.00"
           >
             $49.00
           </p>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
       </tr>
       <tr>
         <td
-          class="c3"
+          class="c2"
         />
         <td
-          class="c9"
+          class="c8"
           type="text"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title="Dress Name One"
           >
             Dress Name One
           </p>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c12"
+          class="c10"
           type="checkbox"
         >
           <div
-            class="c13"
+            class="c11"
           >
             <div
-              class="c14"
+              class="c12"
             >
               <input
                 aria-checked="true"
                 aria-labelledby=":r1t:"
                 checked=""
-                class="c15 c16"
+                class="c13 c14"
                 id=":r1s:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="c17 c18"
+                class="c15 c16"
                 for=":r1s:"
               >
                 <svg
                   aria-hidden="true"
-                  class="c19"
+                  class="c17"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -1729,11 +1584,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="c20"
+                class="c18"
               >
                 <label
                   aria-hidden="false"
-                  class="c21 c22"
+                  class="c19 c20"
                   for=":r1s:"
                   hidden=""
                   id=":r1t:"
@@ -1743,39 +1598,31 @@ exports[`renders worksheet 1`] = `
               </div>
             </div>
           </div>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c9"
+          class="c8"
           type="text"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title="Text"
           >
             Text
           </p>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c9"
+          class="c8"
           type="modal"
         >
           <div
-            class="c0 c23"
+            class="c21 c22"
           >
             <div
-              class="c24 c25 c26"
+              class="c23 c24 c25"
             >
               <p
-                class="c10"
+                class="c9"
                 color="secondary70"
                 title="8"
               >
@@ -1783,83 +1630,71 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c27 c28"
+              class="c26 c27"
             >
               <span
-                class="c29"
+                class="c28"
               >
                 Edit
               </span>
             </button>
           </div>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c30"
+          class="c29"
           type="number"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title="$50.00"
           >
             $50.00
           </p>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
       </tr>
       <tr>
         <td
-          class="c3"
+          class="c2"
         />
         <td
-          class="c9"
+          class="c8"
           type="text"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title="Fans Name One"
           >
             Fans Name One
           </p>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c12"
+          class="c10"
           type="checkbox"
         >
           <div
-            class="c13"
+            class="c11"
           >
             <div
-              class="c14"
+              class="c12"
             >
               <input
                 aria-checked="true"
                 aria-labelledby=":r25:"
                 checked=""
-                class="c15 c16"
+                class="c13 c14"
                 id=":r24:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="c17 c18"
+                class="c15 c16"
                 for=":r24:"
               >
                 <svg
                   aria-hidden="true"
-                  class="c19"
+                  class="c17"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -1877,11 +1712,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="c20"
+                class="c18"
               >
                 <label
                   aria-hidden="false"
-                  class="c21 c22"
+                  class="c19 c20"
                   for=":r24:"
                   hidden=""
                   id=":r25:"
@@ -1891,39 +1726,31 @@ exports[`renders worksheet 1`] = `
               </div>
             </div>
           </div>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c9"
+          class="c8"
           type="text"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title="Text"
           >
             Text
           </p>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c9"
+          class="c8"
           type="modal"
         >
           <div
-            class="c0 c23"
+            class="c21 c22"
           >
             <div
-              class="c24 c25 c26"
+              class="c23 c24 c25"
             >
               <p
-                class="c10"
+                class="c9"
                 color="secondary70"
                 title="9"
               >
@@ -1931,35 +1758,27 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c27 c28"
+              class="c26 c27"
             >
               <span
-                class="c29"
+                class="c28"
               >
                 Edit
               </span>
             </button>
           </div>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
         <td
-          class="c30"
+          class="c29"
           type="number"
         >
           <p
-            class="c10"
+            class="c9"
             color="secondary70"
             title="$50.00"
           >
             $50.00
           </p>
-          <div
-            aria-label="Autofill handler"
-            class="c11"
-          />
         </td>
       </tr>
     </tbody>

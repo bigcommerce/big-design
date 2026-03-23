@@ -68,9 +68,26 @@ export const Header = styled.th<{
     typeof columnWidth === 'string' ? columnWidth : `${columnWidth}px`};
 `;
 
+export const VirtualContainer = styled.div<{ height?: number }>`
+  overflow-x: auto;
+  overflow-y: ${({ height }) => (height ? 'auto' : 'visible')};
+  height: ${({ height }) => (height ? `${height}px` : 'auto')};
+
+  & thead {
+    position: ${({ height }) => (height ? 'sticky' : 'static')};
+    top: 0;
+    z-index: 1;
+  }
+
+  & thead th {
+    background-color: ${({ theme }) => theme.colors.white};
+  }
+`;
+
 export const StyledBox = styled(Box)`
   overflow-x: scroll;
 `;
 
 Header.defaultProps = { theme: defaultTheme };
 StyledBox.defaultProps = { theme: defaultTheme };
+VirtualContainer.defaultProps = { theme: defaultTheme };

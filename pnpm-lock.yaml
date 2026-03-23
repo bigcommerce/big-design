@@ -6,7 +6,7 @@ settings:
 
 patchedDependencies:
   '@changesets/assemble-release-plan@6.0.9':
-    hash: e7d33fb22d985ad82567035a33aa7efd18243f05e9d67fc84900cc8c48609553
+    hash: nupakrv7g6a3umbjsd542h3ave
     path: patches/@changesets__assemble-release-plan@6.0.9.patch
 
 importers:
@@ -18,7 +18,7 @@ importers:
         version: 2.12.0(@testing-library/dom@10.4.1)(@types/eslint@8.56.10)(eslint@8.57.0)(jest@30.2.0(@types/node@25.0.3))(typescript@5.9.3)
       '@changesets/assemble-release-plan':
         specifier: ^6.0.9
-        version: 6.0.9(patch_hash=e7d33fb22d985ad82567035a33aa7efd18243f05e9d67fc84900cc8c48609553)
+        version: 6.0.9(patch_hash=nupakrv7g6a3umbjsd542h3ave)
       '@changesets/changelog-git':
         specifier: ^0.2.1
         version: 0.2.1
@@ -58,6 +58,9 @@ importers:
       '@popperjs/core':
         specifier: ^2.11.6
         version: 2.11.8
+      '@tanstack/react-virtual':
+        specifier: ^3.13.23
+        version: 3.13.23(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@types/react-datepicker':
         specifier: ^7.0.0
         version: 7.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -2739,6 +2742,15 @@ packages:
 
   '@swc/types@0.1.25':
     resolution: {integrity: sha512-iAoY/qRhNH8a/hBvm3zKj9qQ4oc2+3w1unPJa2XvTK3XjeLXtzcCingVPw/9e5mn1+0yPqxcBGp9Jf0pkfMb1g==}
+
+  '@tanstack/react-virtual@3.13.23':
+    resolution: {integrity: sha512-XnMRnHQ23piOVj2bzJqHrRrLg4r+F86fuBcwteKfbIjJrtGxb4z7tIvPVAe4B+4UVwo9G4Giuz5fmapcrnZ0OQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
+  '@tanstack/virtual-core@3.13.23':
+    resolution: {integrity: sha512-zSz2Z2HNyLjCplANTDyl3BcdQJc2k1+yyFoKhNRmCr7V7dY8o8q5m8uFTI1/Pg1kL+Hgrz6u3Xo6eFUB7l66cg==}
 
   '@testing-library/dom@10.4.1':
     resolution: {integrity: sha512-o4PXJQidqJl82ckFaXUeoAW+XysPLauYI43Abki5hABd853iMhitooc6znOnczgbTYmEP6U6/y1ZyKAIsvMKGg==}
@@ -7977,7 +7989,7 @@ snapshots:
       eslint-config-prettier: 9.1.0(eslint@8.57.0)
       eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0)(eslint@8.57.0)
       eslint-plugin-gettext: 1.2.0
-      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.46.2(eslint@8.57.0)(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1)(eslint@8.57.0)
+      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.46.2(eslint@8.57.0)(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0)(eslint@8.57.0))(eslint@8.57.0)
       eslint-plugin-jest: 28.14.0(@typescript-eslint/eslint-plugin@8.46.2(@typescript-eslint/parser@8.46.2(eslint@8.57.0)(typescript@5.9.3))(eslint@8.57.0)(typescript@5.9.3))(eslint@8.57.0)(jest@30.2.0(@types/node@24.10.4))(typescript@5.9.3)
       eslint-plugin-jest-dom: 5.5.0(@testing-library/dom@10.4.1)(eslint@8.57.0)
       eslint-plugin-jest-formatting: 3.1.0(eslint@8.57.0)
@@ -8055,7 +8067,7 @@ snapshots:
       resolve-from: 5.0.0
       semver: 7.7.3
 
-  '@changesets/assemble-release-plan@6.0.9(patch_hash=e7d33fb22d985ad82567035a33aa7efd18243f05e9d67fc84900cc8c48609553)':
+  '@changesets/assemble-release-plan@6.0.9(patch_hash=nupakrv7g6a3umbjsd542h3ave)':
     dependencies:
       '@changesets/errors': 0.2.0
       '@changesets/get-dependents-graph': 2.1.3
@@ -8071,7 +8083,7 @@ snapshots:
   '@changesets/cli@2.29.7(@types/node@25.0.3)':
     dependencies:
       '@changesets/apply-release-plan': 7.0.13
-      '@changesets/assemble-release-plan': 6.0.9(patch_hash=e7d33fb22d985ad82567035a33aa7efd18243f05e9d67fc84900cc8c48609553)
+      '@changesets/assemble-release-plan': 6.0.9(patch_hash=nupakrv7g6a3umbjsd542h3ave)
       '@changesets/changelog-git': 0.2.1
       '@changesets/config': 3.1.1
       '@changesets/errors': 0.2.0
@@ -8124,7 +8136,7 @@ snapshots:
 
   '@changesets/get-release-plan@4.0.13':
     dependencies:
-      '@changesets/assemble-release-plan': 6.0.9(patch_hash=e7d33fb22d985ad82567035a33aa7efd18243f05e9d67fc84900cc8c48609553)
+      '@changesets/assemble-release-plan': 6.0.9(patch_hash=nupakrv7g6a3umbjsd542h3ave)
       '@changesets/config': 3.1.1
       '@changesets/pre': 2.0.2
       '@changesets/read': 0.6.5
@@ -9352,6 +9364,14 @@ snapshots:
   '@swc/types@0.1.25':
     dependencies:
       '@swc/counter': 0.1.3
+
+  '@tanstack/react-virtual@3.13.23(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      '@tanstack/virtual-core': 3.13.23
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+
+  '@tanstack/virtual-core@3.13.23': {}
 
   '@testing-library/dom@10.4.1':
     dependencies:
@@ -10893,7 +10913,7 @@ snapshots:
       - bluebird
       - supports-color
 
-  eslint-module-utils@2.12.1(@typescript-eslint/parser@8.46.2(eslint@8.57.0)(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.46.2(eslint@8.57.0)(typescript@5.9.3))(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0):
+  eslint-module-utils@2.12.1(@typescript-eslint/parser@8.46.2(eslint@8.57.0)(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0)(eslint@8.57.0))(eslint@8.57.0):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
@@ -10908,6 +10928,35 @@ snapshots:
     dependencies:
       gettext-parser: 4.2.0
 
+  eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.46.2(eslint@8.57.0)(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0)(eslint@8.57.0))(eslint@8.57.0):
+    dependencies:
+      '@rtsao/scc': 1.1.0
+      array-includes: 3.1.9
+      array.prototype.findlastindex: 1.2.6
+      array.prototype.flat: 1.3.3
+      array.prototype.flatmap: 1.3.3
+      debug: 3.2.7
+      doctrine: 2.1.0
+      eslint: 8.57.0
+      eslint-import-resolver-node: 0.3.9
+      eslint-module-utils: 2.12.1(@typescript-eslint/parser@8.46.2(eslint@8.57.0)(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0)(eslint@8.57.0))(eslint@8.57.0)
+      hasown: 2.0.2
+      is-core-module: 2.16.1
+      is-glob: 4.0.3
+      minimatch: 3.1.2
+      object.fromentries: 2.0.8
+      object.groupby: 1.0.3
+      object.values: 1.2.1
+      semver: 6.3.1
+      string.prototype.trimend: 1.0.9
+      tsconfig-paths: 3.15.0
+    optionalDependencies:
+      '@typescript-eslint/parser': 8.46.2(eslint@8.57.0)(typescript@5.9.3)
+    transitivePeerDependencies:
+      - eslint-import-resolver-typescript
+      - eslint-import-resolver-webpack
+      - supports-color
+
   eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.46.2(eslint@8.57.0)(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1)(eslint@8.57.0):
     dependencies:
       '@rtsao/scc': 1.1.0
@@ -10919,7 +10968,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.12.1(@typescript-eslint/parser@8.46.2(eslint@8.57.0)(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.46.2(eslint@8.57.0)(typescript@5.9.3))(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
+      eslint-module-utils: 2.12.1(@typescript-eslint/parser@8.46.2(eslint@8.57.0)(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0)(eslint@8.57.0))(eslint@8.57.0)
       hasown: 2.0.2
       is-core-module: 2.16.1
       is-glob: 4.0.3

@@ -1,4 +1,5 @@
 import { BaselineHelpIcon } from '@bigcommerce/big-design-icons';
+import { useVirtualizer } from '@tanstack/react-virtual';
 import React, {
   createContext,
   createRef,
@@ -22,7 +23,7 @@ import { useCopyPasteHandler } from './hooks/useCopyPaste';
 import { WorksheetModal } from './Modal';
 import { Row } from './Row';
 import { Status } from './RowStatus/styled';
-import { Header, StyledBox, Table } from './styled';
+import { Header, Table, VirtualContainer } from './styled';
 import {
   InternalTableInterface,
   InternalWorksheetColumn,
@@ -65,12 +66,14 @@ const InternalWorksheet = typedMemo(
     expandableRows,
     defaultExpandedRows,
     disabledRows,
+    height,
     items,
     minWidth,
     onChange,
     onErrors,
   }: WorksheetProps<T>): React.ReactElement<WorksheetProps<T>> => {
     const tableRef = createRef<HTMLTableElement>();
+    const containerRef = useRef<HTMLDivElement>(null);
     const shouldBeTriggeredOnChange = useRef(false);
     const { store, useStore } = useWorksheetStore();
     const tooltipId = useId();
@@ -113,6 +116,11 @@ const InternalWorksheet = typedMemo(
       useShallow((state) => state.invalidCells),
     );
 
+    const setScrollToRow = useStore(
+      store,
+      useShallow((state) => state.setScrollToRow),
+    );
+
     const { handleKeyDown, handleKeyUp } = useKeyEvents();
 
     // Add a column for the toggle components
@@ -140,6 +148,23 @@ const InternalWorksheet = typedMemo(
     );
     useEffect(() => setDisabledRows(disabledRows || []), [disabledRows, setDisabledRows]);
     useEffect(() => setTableRef(tableRef.current), [setTableRef, tableRef]);
+
+    const virtualizer = useVirtualizer({
+      count: height ? rows.length : 0,
+      getScrollElement: () => containerRef.current,
+      estimateSize: () => 52,
+      overscan: 10,
+    });
+
+    useEffect(() => {
+      if (!height) {
+        return;
+      }
+
+      setScrollToRow((index) => virtualizer.scrollToIndex(index, { align: 'auto' }));
+
+      return () => setScrollToRow(null);
+    }, [height, setScrollToRow, virtualizer]);
 
     useEffect(() => {
       if (editedCells.length && shouldBeTriggeredOnChange.current) {
@@ -201,16 +226,47 @@ const InternalWorksheet = typedMemo(
       [expandedColumns],
     );
 
-    const renderedRows = useMemo(
-      () => (
+    const virtualItems = height ? virtualizer.getVirtualItems() : null;
+
+    const renderedRows = useMemo(() => {
+      if (virtualItems) {
+        const paddingTop = virtualItems.length > 0 ? (virtualItems[0].start ?? 0) : 0;
+        const lastItem = virtualItems[virtualItems.length - 1];
+        const paddingBottom = lastItem ? virtualizer.getTotalSize() - lastItem.end : 0;
+
+        return (
+          <tbody>
+            {paddingTop > 0 && (
+              <tr aria-hidden="true">
+                <td
+                  colSpan={expandedColumns.length + 1}
+                  style={{ height: paddingTop, padding: 0, border: 'none' }}
+                />
+              </tr>
+            )}
+            {virtualItems.map((virtualRow) => (
+              <Row columns={expandedColumns} key={virtualRow.key} rowIndex={virtualRow.index} />
+            ))}
+            {paddingBottom > 0 && (
+              <tr aria-hidden="true">
+                <td
+                  colSpan={expandedColumns.length + 1}
+                  style={{ height: paddingBottom, padding: 0, border: 'none' }}
+                />
+              </tr>
+            )}
+          </tbody>
+        );
+      }
+
+      return (
         <tbody>
           {rows.map((_row, rowIndex) => (
             <Row columns={expandedColumns} key={rowIndex} rowIndex={rowIndex} />
           ))}
         </tbody>
-      ),
-      [expandedColumns, rows],
-    );
+      );
+    }, [expandedColumns, rows, virtualItems, virtualizer]);
 
     const renderedModals = useMemo(
       () =>
@@ -222,7 +278,7 @@ const InternalWorksheet = typedMemo(
 
     return (
       <UpdateItemsProvider items={rows}>
-        <StyledBox>
+        <VirtualContainer height={height} ref={containerRef}>
           <InternalTable
             hasExpandableRows={Boolean(expandableRows)}
             hasStaticWidth={tableHasStaticWidth}
@@ -234,7 +290,7 @@ const InternalWorksheet = typedMemo(
             {renderedHeaders}
             {renderedRows}
           </InternalTable>
-        </StyledBox>
+        </VirtualContainer>
         {renderedModals}
       </UpdateItemsProvider>
     );

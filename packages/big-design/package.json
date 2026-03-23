@@ -37,6 +37,7 @@
     "@bigcommerce/big-design-icons": "workspace:^",
     "@bigcommerce/big-design-theme": "workspace:^",
     "@popperjs/core": "^2.11.6",
+    "@tanstack/react-virtual": "^3.13.23",
     "@types/react-datepicker": "^7.0.0",
     "date-fns": "4.1.0",
     "downshift": "9.0.10",

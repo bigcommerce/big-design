@@ -8,7 +8,7 @@ import {
   InternalWorksheetColumn,
   WorksheetItem,
 } from '../../types';
-import { deleteCells, getCellsMap, getHiddenRows, mergeCells } from '../../utils';
+import { deleteCells, getCellIdx, getCellsMap, getHiddenRows, getRowsMap, mergeCells } from '../../utils';
 import { WorksheetContext } from '../../Worksheet';
 import { EditingCellsArgs } from '../useKeyEvents';
 
@@ -33,12 +33,16 @@ export interface BaseState<Item> {
   hiddenRows: Array<string | number>;
   invalidCells: Array<Cell<Item>>;
   invalidCellsMap: Record<string, Cell<Item>>;
+  invalidRowsMap: Record<number, boolean>;
   openedModal: keyof Item | null;
   rows: Item[];
   selectedCells: Array<Cell<Item>>;
   copiedCells: Array<Cell<Item>>;
   selectedCellsMap: Record<string, Cell<Item>>;
+  firstSelectedCellIdx: string | null;
+  lastSelectedCellIdx: string | null;
   selectedRows: number[];
+  selectedRowsMap: Record<number, boolean>;
   tableRef: HTMLTableElement | null;
   addEditedCells: (cells: Array<Cell<Item>>) => void;
   addInvalidCells: (cells: Array<Cell<Item>>) => void;
@@ -67,6 +71,8 @@ export interface BaseState<Item> {
   setAutoFillActive: (isActive: boolean) => void;
   setSelectingActive: (isActive: boolean) => void;
   setBlockFillOut: (isBlocked: boolean) => void;
+  scrollToRow: ((index: number) => void) | null;
+  setScrollToRow: (fn: ((index: number) => void) | null) => void;
 }
 
 export const createWorksheetStore = <Item extends WorksheetItem>() =>
@@ -87,13 +93,18 @@ export const createWorksheetStore = <Item extends WorksheetItem>() =>
     hiddenRows: [],
     invalidCells: [],
     invalidCellsMap: {},
+    invalidRowsMap: {},
     openedModal: null,
     rows: [],
     selectedCells: [],
     copiedCells: [],
     selectedCellsMap: {},
+    firstSelectedCellIdx: null,
+    lastSelectedCellIdx: null,
     selectedRows: [],
+    selectedRowsMap: {},
     tableRef: null,
+    scrollToRow: null,
     addEditedCells: (cells) =>
       set((state) => {
         const editedCells = mergeCells(state.editedCells, cells);
@@ -104,15 +115,26 @@ export const createWorksheetStore = <Item extends WorksheetItem>() =>
       set((state) => {
         const invalidCells = mergeCells(state.invalidCells, cells);
 
-        return { ...state, invalidCells, invalidCellsMap: getCellsMap(invalidCells) };
+        return {
+          ...state,
+          invalidCells,
+          invalidCellsMap: getCellsMap(invalidCells),
+          invalidRowsMap: getRowsMap(invalidCells),
+        };
       }),
     removeInvalidCells: (cells) =>
       set((state) => {
         const invalidCells = deleteCells(state.invalidCells, cells);
 
-        return { ...state, invalidCells, invalidCellsMap: getCellsMap(invalidCells) };
+        return {
+          ...state,
+          invalidCells,
+          invalidCellsMap: getCellsMap(invalidCells),
+          invalidRowsMap: getRowsMap(invalidCells),
+        };
       }),
-    resetInvalidCells: () => set((state) => ({ ...state, invalidCells: [], invalidCellsMap: {} })),
+    resetInvalidCells: () =>
+      set((state) => ({ ...state, invalidCells: [], invalidCellsMap: {}, invalidRowsMap: {} })),
     setColumns: (columns) => set((state) => ({ ...state, columns })),
     setExpandableRows: (expandableRows, defaultExpandedRows) =>
       set((state) => ({
@@ -131,13 +153,29 @@ export const createWorksheetStore = <Item extends WorksheetItem>() =>
     setOpenModal: (value) => set((state) => ({ ...state, openedModal: value })),
     setRows: (rows) => set((state) => ({ ...state, rows })),
     setSelectedCells: (cells) =>
-      set((state) => ({ ...state, selectedCells: cells, selectedCellsMap: getCellsMap(cells) })),
+      set((state) => ({
+        ...state,
+        selectedCells: cells,
+        selectedCellsMap: getCellsMap(cells),
+        firstSelectedCellIdx: cells.length > 0 ? getCellIdx(cells[0]) : null,
+        lastSelectedCellIdx: cells.length > 0 ? getCellIdx(cells[cells.length - 1]) : null,
+      })),
     setCopiedCells: (cells) => set((state) => ({ ...state, copiedCells: cells })),
-    setSelectedRows: (rowIndexes) => set((state) => ({ ...state, selectedRows: rowIndexes })),
+    setSelectedRows: (rowIndexes) =>
+      set((state) => ({
+        ...state,
+        selectedRows: rowIndexes,
+        selectedRowsMap: rowIndexes.reduce<Record<number, boolean>>((acc, idx) => {
+          acc[idx] = true;
+
+          return acc;
+        }, {}),
+      })),
     setTableRef: (ref) => set((state) => ({ ...state, tableRef: ref })),
     setAutoFillActive: (isActive) => set((state) => ({ ...state, isAutoFillActive: isActive })),
     setSelectingActive: (isActive) => set((state) => ({ ...state, isSelectingActive: isActive })),
     setBlockFillOut: (isBlock) => set((state) => ({ ...state, isBlockedFillOut: isBlock })),
+    setScrollToRow: (fn) => set((state) => ({ ...state, scrollToRow: fn })),
   }));
 
 export const useWorksheetStore = () => {

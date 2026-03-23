@@ -108,18 +108,13 @@ const InternalCell = <T extends WorksheetItem>({
     useShallow((state) => state.isControlKey),
   );
 
-  const { selectedCells, isLastSelected, isFirstSelected, isSelected } = useStore(
+  const { isSelected, isFirstSelected, isLastSelected } = useStore(
     store,
-    useShallow((state) => {
-      const idx = Object.keys(state.selectedCellsMap).indexOf(cellIdx);
-
-      return {
-        selectedCells: state.selectedCells,
-        isLastSelected: state.selectedCells.length - 1 === idx,
-        isFirstSelected: idx === 0,
-        isSelected: idx !== -1,
-      };
-    }),
+    useShallow((state) => ({
+      isSelected: !!state.selectedCellsMap[cellIdx],
+      isFirstSelected: state.firstSelectedCellIdx === cellIdx,
+      isLastSelected: state.lastSelectedCellIdx === cellIdx,
+    })),
   );
 
   const isEdited = useStore(
@@ -165,6 +160,7 @@ const InternalCell = <T extends WorksheetItem>({
 
   const handleClick = useCallback(() => {
     if (isShiftPressed) {
+      const selectedCells = store.getState().selectedCells;
       const lastSelected = selectedCells[selectedCells.length - 1];
       const fromIdx = lastSelected.rowIndex;
       const toIdx = cell.rowIndex;
@@ -182,7 +178,7 @@ const InternalCell = <T extends WorksheetItem>({
       setSelectedRows([rowIndex]);
       setSelectedCells([cell]);
     }
-  }, [cell, isShiftPressed, rowIndex, selectedCells, setSelectedCells, setSelectedRows]);
+  }, [cell, isShiftPressed, rowIndex, setSelectedCells, setSelectedRows, store]);
 
   const renderedValue = useMemo(() => {
     if (typeof formatting === 'function' && value !== '' && !Number.isNaN(value)) {

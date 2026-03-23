@@ -17,6 +17,8 @@ export interface WorksheetProps<Item extends WorksheetItem> {
   expandableRows?: ExpandableRows;
   defaultExpandedRows?: Array<string | number>;
   disabledRows?: DisabledRows;
+  /** Fixed height in pixels for the scrollable viewport. When set, only visible rows are rendered (virtualization). Recommended for datasets with 100+ rows. */
+  height?: number;
   localization?: WorksheetLocalization;
   minWidth?: number;
   onChange(items: Item[]): void;
