@@ -39,6 +39,7 @@ export * from './GetAppIcon';
 export * from './HomeIcon';
 export * from './InfoIcon';
 export * from './InsertChartIcon';
+export * from './InsertChartOutlinedIcon';
 export * from './InsertDriveFileIcon';
 export * from './InvertColorsIcon';
 export * from './KeyboardDoubleArrowLeftIcon';
