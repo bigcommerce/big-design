@@ -10,6 +10,7 @@ export type StatusMessageVariantType =
   | '404'
   | 'info'
   | 'error'
+  | 'magic'
   | 'search'
   | 'server-error'
   | 'success'
