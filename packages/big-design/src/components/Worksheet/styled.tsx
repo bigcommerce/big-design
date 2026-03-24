@@ -1,8 +1,6 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
-import { Box } from '../Box';
-
 import { InternalWorksheetColumn } from './types';
 
 export const Table = styled.table<{
@@ -19,6 +17,13 @@ export const Table = styled.table<{
 
   &:focus {
     outline: none;
+  }
+
+  & > thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: ${({ theme }) => theme.colors.white};
   }
 
   ${({ hasExpandableRows }) =>
@@ -68,9 +73,14 @@ export const Header = styled.th<{
     typeof columnWidth === 'string' ? columnWidth : `${columnWidth}px`};
 `;
 
-export const StyledBox = styled(Box)`
-  overflow-x: scroll;
+export const StyledBox = styled.div<{ containerHeight?: number | string }>`
+  overflow-x: auto;
+  overflow-y: auto;
+  ${({ containerHeight }) =>
+    containerHeight &&
+    css`
+      height: ${typeof containerHeight === 'number' ? `${containerHeight}px` : containerHeight};
+    `}
 `;
 
 Header.defaultProps = { theme: defaultTheme };
-StyledBox.defaultProps = { theme: defaultTheme };

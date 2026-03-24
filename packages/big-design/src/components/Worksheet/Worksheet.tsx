@@ -1,4 +1,5 @@
 import { BaselineHelpIcon } from '@bigcommerce/big-design-icons';
+import { useVirtualizer } from '@tanstack/react-virtual';
 import React, {
   createContext,
   createRef,
@@ -65,12 +66,14 @@ const InternalWorksheet = typedMemo(
     expandableRows,
     defaultExpandedRows,
     disabledRows,
+    height = 600,
     items,
     minWidth,
     onChange,
     onErrors,
   }: WorksheetProps<T>): React.ReactElement<WorksheetProps<T>> => {
     const tableRef = createRef<HTMLTableElement>();
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
     const shouldBeTriggeredOnChange = useRef(false);
     const { store, useStore } = useWorksheetStore();
     const tooltipId = useId();
@@ -112,6 +115,14 @@ const InternalWorksheet = typedMemo(
       store,
       useShallow((state) => state.invalidCells),
     );
+    const hiddenRows = useStore(
+      store,
+      useShallow((state) => state.hiddenRows),
+    );
+    const selectedCells = useStore(
+      store,
+      useShallow((state) => state.selectedCells),
+    );
 
     const { handleKeyDown, handleKeyUp } = useKeyEvents();
 
@@ -121,6 +132,71 @@ const InternalWorksheet = typedMemo(
         ? [{ hash: '', header: '', type: 'toggle', width: 32 }, ...columns]
         : columns;
     }, [columns, expandableRows]);
+
+    // Compute which rows are children (for virtualization filtering)
+    const childIds = useMemo(
+      () => new Set(Object.values(expandableRows || {}).flat()),
+      [expandableRows],
+    );
+
+    // Only virtualise rows that are visible (non-hidden child rows are excluded)
+    const visibleRowIndices = useMemo(
+      () =>
+        rows.reduce<number[]>((acc, row, index) => {
+          if (!(childIds.has(row.id) && hiddenRows.includes(row.id))) {
+            acc.push(index);
+          }
+
+          return acc;
+        }, []),
+      [rows, childIds, hiddenRows],
+    );
+
+    const fallbackHeight = typeof height === 'number' ? height : 600;
+
+    const virtualizer = useVirtualizer({
+      count: visibleRowIndices.length,
+      estimateSize: () => 44,
+      getScrollElement: () => scrollContainerRef.current,
+      observeElementRect: (instance, cb) => {
+        const el = instance.scrollElement;
+
+        if (!el) {
+          return;
+        }
+
+        const measure = () => {
+          const rect = el.getBoundingClientRect();
+
+          cb({ height: rect.height || fallbackHeight, width: rect.width });
+        };
+
+        measure();
+
+        if (typeof ResizeObserver !== 'undefined') {
+          const ro = new ResizeObserver(measure);
+
+          ro.observe(el);
+
+          return () => ro.disconnect();
+        }
+      },
+      overscan: 5,
+    });
+
+    const virtualItems = virtualizer.getVirtualItems();
+
+    // Scroll the virtualised list to keep the keyboard-selected row in view
+    useEffect(() => {
+      if (selectedCells.length > 0) {
+        const rowIndex = selectedCells[0].rowIndex;
+        const virtualIndex = visibleRowIndices.indexOf(rowIndex);
+
+        if (virtualIndex !== -1) {
+          virtualizer.scrollToIndex(virtualIndex, { behavior: 'auto' });
+        }
+      }
+    }, [selectedCells, visibleRowIndices, virtualizer]);
 
     useEffect(() => {
       shouldBeTriggeredOnChange.current = editedCells.length > 0;
@@ -201,15 +277,39 @@ const InternalWorksheet = typedMemo(
       [expandedColumns],
     );
 
+    const paddingTop = virtualItems.length > 0 ? virtualItems[0].start : 0;
+    const paddingBottom =
+      virtualItems.length > 0
+        ? virtualizer.getTotalSize() - virtualItems[virtualItems.length - 1].end
+        : 0;
+
     const renderedRows = useMemo(
       () => (
         <tbody>
-          {rows.map((_row, rowIndex) => (
-            <Row columns={expandedColumns} key={rowIndex} rowIndex={rowIndex} />
-          ))}
+          {paddingTop > 0 && (
+            <tr aria-hidden="true">
+              <td
+                colSpan={expandedColumns.length + 1}
+                style={{ border: 'none', height: paddingTop, padding: 0 }}
+              />
+            </tr>
+          )}
+          {virtualItems.map((virtualItem) => {
+            const rowIndex = visibleRowIndices[virtualItem.index];
+
+            return <Row columns={expandedColumns} key={rowIndex} rowIndex={rowIndex} />;
+          })}
+          {paddingBottom > 0 && (
+            <tr aria-hidden="true">
+              <td
+                colSpan={expandedColumns.length + 1}
+                style={{ border: 'none', height: paddingBottom, padding: 0 }}
+              />
+            </tr>
+          )}
         </tbody>
       ),
-      [expandedColumns, rows],
+      [expandedColumns, virtualItems, visibleRowIndices, paddingTop, paddingBottom],
     );
 
     const renderedModals = useMemo(
@@ -222,7 +322,7 @@ const InternalWorksheet = typedMemo(
 
     return (
       <UpdateItemsProvider items={rows}>
-        <StyledBox>
+        <StyledBox containerHeight={height} ref={scrollContainerRef}>
           <InternalTable
             hasExpandableRows={Boolean(expandableRows)}
             hasStaticWidth={tableHasStaticWidth}
