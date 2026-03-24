@@ -1,5 +1,13 @@
 # Change Log
 
+## 2.4.2
+
+### Patch Changes
+
+- 3ed245a: Fix alignment issue in Checkbox component when no label is provided.
+- Updated dependencies [ba53ac2]
+  - @bigcommerce/big-design-icons@1.10.0
+
 ## 2.4.1
 
 ### Patch Changes

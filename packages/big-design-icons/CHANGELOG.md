@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.10.0
+
+### Minor Changes
+
+- ba53ac2: added chart and ai sparkle icons
+
 ## 1.9.0
 
 ### Minor Changes
