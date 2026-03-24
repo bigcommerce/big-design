@@ -1,6 +1,6 @@
 import { H1, Panel, StatefulTree, Text, Worksheet, WorksheetColumn } from '@bigcommerce/big-design';
 import { AllInclusiveIcon } from '@bigcommerce/big-design-icons';
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 
 import {
   Code,
@@ -737,7 +737,7 @@ const WorksheetPage = () => {
                       },
                     ];
 
-                    const { items, expandableRows } = React.useMemo(() => {
+                    const { items, expandableRows } = useMemo(() => {
                       const VARIANT_COUNT = 1000;
                       const builtItems: Array<Partial<Product>> = [];
                       const childIds: number[] = [];
@@ -766,7 +766,7 @@ const WorksheetPage = () => {
                       return { expandableRows: { 1: childIds }, items: builtItems };
                     }, []);
 
-                    const [currentItems, setCurrentItems] = React.useState(items);
+                    const [currentItems, setCurrentItems] = useState(items);
 
                     const handleChange = (changedItems: Array<Partial<Product>>) => {
                       const byId = new Map(changedItems.map((item) => [item.id, item]));
