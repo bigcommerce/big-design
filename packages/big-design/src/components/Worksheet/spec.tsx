@@ -1886,7 +1886,7 @@ describe('virtualization', () => {
   });
 
   test('renders padding rows when items overflow the virtual window', () => {
-    const manyItems = Array.from({ length: 20 }, (_, i) => ({
+    const manyItems: Array<Partial<Product>> = Array.from({ length: 20 }, (_, i) => ({
       id: i + 1,
       productName: `Product ${i + 1}`,
       visibleOnStorefront: true,
