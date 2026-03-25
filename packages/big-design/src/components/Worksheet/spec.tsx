@@ -1867,3 +1867,91 @@ describe('useKeyEvents coverage improvements', () => {
     expect(queryByDisplayValue('Shoes Name Three')).not.toBeInTheDocument();
   });
 });
+
+describe('virtualization', () => {
+  test('renders rows inside a scroll container', () => {
+    const { getByText } = render(
+      <Worksheet columns={columns} height={400} items={items} onChange={handleChange} />,
+    );
+
+    expect(getByText('Shoes Name One')).toBeInTheDocument();
+  });
+
+  test('accepts height as a string', () => {
+    const { getByText } = render(
+      <Worksheet columns={columns} height="300px" items={items} onChange={handleChange} />,
+    );
+
+    expect(getByText('Shoes Name One')).toBeInTheDocument();
+  });
+
+  test('renders padding rows when items overflow the virtual window', () => {
+    const manyItems = Array.from({ length: 20 }, (_, i) => ({
+      id: i + 1,
+      productName: `Product ${i + 1}`,
+      visibleOnStorefront: true,
+      otherField: 'Text',
+      otherField2: i + 1,
+      numberField: 50,
+    }));
+
+    const { container } = render(
+      <Worksheet columns={columns} height={200} items={manyItems} onChange={handleChange} />,
+    );
+
+    // padding <tr> rows have aria-hidden="true"
+    const paddingRows = container.querySelectorAll('tr[aria-hidden="true"]');
+
+    expect(paddingRows.length).toBeGreaterThan(0);
+  });
+
+  test('handles null scroll element gracefully in observeElementRect', () => {
+    const useVirtualizer = require('@tanstack/react-virtual').useVirtualizer;
+
+    jest.spyOn(require('@tanstack/react-virtual'), 'useVirtualizer').mockImplementation((opts) => {
+      if (opts.observeElementRect) {
+        opts.observeElementRect({ scrollElement: null } as any, jest.fn());
+      }
+
+      return useVirtualizer(opts);
+    });
+
+    const { getByText } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
+
+    expect(getByText('Shoes Name One')).toBeInTheDocument();
+
+    jest.restoreAllMocks();
+  });
+
+  test('uses ResizeObserver when available', () => {
+    const observe = jest.fn();
+    const disconnect = jest.fn();
+
+    const MockResizeObserver = jest.fn().mockImplementation((cb) => ({
+      observe: () => {
+        observe();
+        cb([]);
+      },
+      disconnect,
+      unobserve: jest.fn(),
+    }));
+
+    const original = (global as any).ResizeObserver;
+
+    (global as any).ResizeObserver = MockResizeObserver;
+
+    const { unmount } = render(
+      <Worksheet columns={columns} height={400} items={items} onChange={handleChange} />,
+    );
+
+    expect(observe).toHaveBeenCalled();
+
+    unmount();
+
+    expect(disconnect).toHaveBeenCalled();
+
+    (global as any).ResizeObserver = original;
+  });
+});
