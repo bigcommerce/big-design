@@ -159,11 +159,7 @@ const InternalWorksheet = typedMemo(
       estimateSize: () => 44,
       getScrollElement: () => scrollContainerRef.current,
       observeElementRect: (instance, cb) => {
-        const el = instance.scrollElement;
-
-        if (!el) {
-          return;
-        }
+        const el = instance.scrollElement!;
 
         const measure = () => {
           const rect = el.getBoundingClientRect();

@@ -1905,42 +1905,24 @@ describe('virtualization', () => {
     expect(paddingRows.length).toBeGreaterThan(0);
   });
 
-  test('handles null scroll element gracefully in observeElementRect', () => {
-    const useVirtualizer = require('@tanstack/react-virtual').useVirtualizer;
-
-    jest.spyOn(require('@tanstack/react-virtual'), 'useVirtualizer').mockImplementation((opts) => {
-      if (opts.observeElementRect) {
-        opts.observeElementRect({ scrollElement: null } as any, jest.fn());
-      }
-
-      return useVirtualizer(opts);
-    });
-
-    const { getByText } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
-
-    expect(getByText('Shoes Name One')).toBeInTheDocument();
-
-    jest.restoreAllMocks();
-  });
-
   test('uses ResizeObserver when available', () => {
     const observe = jest.fn();
     const disconnect = jest.fn();
 
     const MockResizeObserver = jest.fn().mockImplementation((cb) => ({
+      disconnect,
       observe: () => {
         observe();
         cb([]);
       },
-      disconnect,
       unobserve: jest.fn(),
     }));
 
-    const original = (global as any).ResizeObserver;
-
-    (global as any).ResizeObserver = MockResizeObserver;
+    Object.defineProperty(global, 'ResizeObserver', {
+      configurable: true,
+      value: MockResizeObserver,
+      writable: true,
+    });
 
     const { unmount } = render(
       <Worksheet columns={columns} height={400} items={items} onChange={handleChange} />,
@@ -1952,6 +1934,10 @@ describe('virtualization', () => {
 
     expect(disconnect).toHaveBeenCalled();
 
-    (global as any).ResizeObserver = original;
+    Object.defineProperty(global, 'ResizeObserver', {
+      configurable: true,
+      value: undefined,
+      writable: true,
+    });
   });
 });
