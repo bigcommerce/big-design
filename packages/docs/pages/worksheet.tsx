@@ -716,7 +716,7 @@ const WorksheetPage = () => {
               id: 'virtualization',
               title: 'Virtualization (1k rows)',
               render: () => (
-                <CodePreview key="virtualization">
+                <CodePreview key="virtualization" scope={{ useMemo, useState }}>
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const columns: Array<WorksheetColumn<Partial<Product>>> = [
