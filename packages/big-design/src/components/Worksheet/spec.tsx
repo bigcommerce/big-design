@@ -1944,4 +1944,18 @@ describe('virtualization', () => {
       writable: true,
     });
   });
+
+  test('scrolls the virtual list when a cell is selected', async () => {
+    render(
+      <Worksheet columns={columns} height={400} items={items} onChange={handleChange} />,
+    );
+
+    const cell = await screen.findByText('Shoes Name One');
+
+    if (cell.parentElement) {
+      fireEvent.click(cell.parentElement);
+    }
+
+    expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+  });
 });
