@@ -1878,11 +1878,12 @@ describe('virtualization', () => {
   });
 
   test('accepts height as a string', () => {
-    const { getByText } = render(
+    const { container } = render(
       <Worksheet columns={columns} height="300px" items={items} onChange={handleChange} />,
     );
 
-    expect(getByText('Shoes Name One')).toBeInTheDocument();
+    // The scroll container should have the string height applied as a CSS style.
+    expect(container.firstChild).toHaveStyle({ height: '300px' });
   });
 
   test('renders padding rows when items overflow the virtual window', () => {
@@ -1903,6 +1904,9 @@ describe('virtualization', () => {
     const paddingRows = container.querySelectorAll('tr[aria-hidden="true"]');
 
     expect(paddingRows.length).toBeGreaterThan(0);
+
+    // virtualization keeps only a window of rows in the DOM
+    expect(container.querySelectorAll('tbody tr').length).toBeLessThan(manyItems.length);
   });
 
   test('uses ResizeObserver when available', () => {

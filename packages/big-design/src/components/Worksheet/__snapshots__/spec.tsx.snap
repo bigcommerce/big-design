@@ -549,7 +549,6 @@ exports[`renders worksheet 1`] = `
 .c0 {
   overflow-x: auto;
   overflow-y: auto;
-  height: 600px;
 }
 
 @media (min-width:0px) {
