@@ -185,7 +185,7 @@ const InternalCell = <T extends WorksheetItem>({
   }, [cell, isShiftPressed, rowIndex, selectedCells, setSelectedCells, setSelectedRows]);
 
   const renderedValue = useMemo(() => {
-    if (typeof formatting === 'function' && value !== '' && !Number.isNaN(value)) {
+    if (typeof formatting === 'function' && value !== '' && !Number.isNaN(Number(value))) {
       return formatting(value);
     }
 
