@@ -1946,9 +1946,7 @@ describe('virtualization', () => {
   });
 
   test('scrolls the virtual list when a cell is selected', async () => {
-    render(
-      <Worksheet columns={columns} height={400} items={items} onChange={handleChange} />,
-    );
+    render(<Worksheet columns={columns} height={400} items={items} onChange={handleChange} />);
 
     const cell = await screen.findByText('Shoes Name One');
 
