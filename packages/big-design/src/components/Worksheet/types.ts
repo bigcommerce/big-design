@@ -104,7 +104,7 @@ export interface WorksheetModalColumn<Item> extends WorksheetBaseColumn<Item> {
 export interface WorksheetMultilineTextColumn<Item> extends WorksheetBaseColumn<Item> {
   config?: {
     cancelActionText?: string;
-    header?: string;
+    header?: string | ((row: Partial<Item>) => string);
     label?: string;
     saveActionText?: string;
   };

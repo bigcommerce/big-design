@@ -619,7 +619,7 @@ const WorksheetPage = () => {
                         header: 'Description',
                         type: 'multilineText',
                         config: {
-                          header: 'Edit description',
+                          header: (row) => row.productName ?? 'Edit description',
                           label: 'Long description',
                           saveActionText: 'Apply to draft',
                         },

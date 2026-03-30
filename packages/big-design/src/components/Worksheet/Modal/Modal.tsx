@@ -64,7 +64,21 @@ const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetMo
     handleClose();
   }, [handleClose, newValue, selectedCell, updateItems]);
 
-  const header = column.config?.header;
+  const row = useStore(
+    store,
+    useShallow((state) => (selectedCell ? state.rows[selectedCell.rowIndex] : null)),
+  );
+
+  const header = useMemo(() => {
+    const headerConfig = column.config?.header;
+
+    if (type === 'multilineText' && typeof headerConfig === 'function' && row) {
+      return headerConfig(row);
+    }
+
+    return typeof headerConfig === 'string' ? headerConfig : undefined;
+  }, [column.config?.header, row, type]);
+
   const saveActionText = column.config?.saveActionText ?? 'Save';
   const cancelActionText = column.config?.cancelActionText ?? 'Cancel';
 
