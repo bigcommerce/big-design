@@ -493,7 +493,8 @@ const worksheetMultilineTextColumnProps: Prop[] = [
   },
   {
     name: 'config',
-    types: '{ header?: string; label?: string; saveActionText?: string; cancelActionText?: string; }',
+    types:
+      '{ header?: string; label?: string; saveActionText?: string; cancelActionText?: string; }',
     description:
       'Optional configuration for the multiline text editor modal. header sets the modal title, label sets the editor label, saveActionText and cancelActionText customize the action buttons.',
   },

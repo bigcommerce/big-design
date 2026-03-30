@@ -70,7 +70,7 @@ const TreeComponent = (
   );
 };
 
-const columns: Array<WorksheetColumn<Product>> = [
+const columns: Array<WorksheetColumn<Partial<Product>>> = [
   {
     hash: 'productName',
     header: 'Product name',

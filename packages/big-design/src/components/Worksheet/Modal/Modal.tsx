@@ -6,15 +6,26 @@ import { Modal } from '../../Modal';
 import { useTableFocus, useUpdateItems, useWorksheetStore } from '../hooks';
 import { WorksheetItem, WorksheetModalColumn, WorksheetMultilineTextColumn } from '../types';
 
-const LazyWysiwygEditor = lazy(
-  () =>
-    import('../editors/MultilineTextEditor/WysiwygEditor/WysiwygEditor').then((mod) => ({
-      default: mod.WysiwygEditor,
-    })),
+const LazyWysiwygEditor = lazy(() =>
+  import('../editors/MultilineTextEditor/WysiwygEditor/WysiwygEditor').then((mod) => ({
+    default: mod.WysiwygEditor,
+  })),
 );
 
 interface WorksheetModalProps<Item> {
   column: WorksheetModalColumn<Item> | WorksheetMultilineTextColumn<Item>;
+}
+
+function isMultilineTextColumn<T>(
+  column: WorksheetModalColumn<T> | WorksheetMultilineTextColumn<T>,
+): column is WorksheetMultilineTextColumn<T> {
+  return column.type === 'multilineText';
+}
+
+function isModalColumn<T>(
+  column: WorksheetModalColumn<T> | WorksheetMultilineTextColumn<T>,
+): column is WorksheetModalColumn<T> {
+  return column.type === 'modal';
 }
 
 const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetModalProps<T>) => {
@@ -93,24 +104,24 @@ const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetMo
       return null;
     }
 
-    if (type === 'multilineText') {
-      const label = (column as WorksheetMultilineTextColumn<T>).config?.label;
-
+    if (isMultilineTextColumn(column)) {
       return (
         <Suspense fallback={null}>
           <LazyWysiwygEditor
-            label={label}
-            onChange={onChange as (value: string) => void}
+            label={column.config?.label}
+            onChange={(value: string) => onChange(value)}
             value={String(selectedCell.value ?? '')}
           />
         </Suspense>
       );
     }
 
-    const { render } = (column as WorksheetModalColumn<T>).config;
+    if (isModalColumn(column)) {
+      return column.config.render(selectedCell.value, onChange);
+    }
 
-    return render(selectedCell.value, onChange);
-  }, [column, selectedCell, type]);
+    return null;
+  }, [column, selectedCell]);
 
   return (
     <Modal

@@ -5,7 +5,6 @@ import {
   Grid,
   GridItem,
 } from '@bigcommerce/big-design';
-
 import { createTheme } from '@bigcommerce/big-design-theme';
 import Head from 'next/head';
 import { useRouter } from 'next/router';

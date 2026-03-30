@@ -38,9 +38,7 @@ const InternalMultilineTextEditor = <T extends WorksheetItem>({
     [formatting, value],
   );
 
-  return (
-    <ClampedText dangerouslySetInnerHTML={{ __html: renderedValue }} />
-  );
+  return <ClampedText dangerouslySetInnerHTML={{ __html: renderedValue }} />;
 };
 
 export const MultilineTextEditor = typedMemo(InternalMultilineTextEditor);

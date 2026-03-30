@@ -237,9 +237,7 @@ const InternalCell = <T extends WorksheetItem>({
         return <ModalEditor cell={cell} formatting={formatting} isEditing={isEditing} />;
 
       case 'multilineText':
-        return (
-          <MultilineTextEditor cell={cell} formatting={formatting} isEditing={isEditing} />
-        );
+        return <MultilineTextEditor cell={cell} formatting={formatting} isEditing={isEditing} />;
 
       case 'toggle':
         return <ToggleEditor rowId={rowId} toggle={isEditing} />;
