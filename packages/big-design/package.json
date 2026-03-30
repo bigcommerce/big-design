@@ -46,6 +46,7 @@
     "react-datepicker": "^7.3.0",
     "react-intersection-observer": "^10.0.0",
     "react-popper": "^2.3.0",
+    "@tanstack/react-virtual": "^3.13.0",
     "zustand": "^5.0.11"
   },
   "peerDependencies": {

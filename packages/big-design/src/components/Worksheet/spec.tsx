@@ -1867,3 +1867,93 @@ describe('useKeyEvents coverage improvements', () => {
     expect(queryByDisplayValue('Shoes Name Three')).not.toBeInTheDocument();
   });
 });
+
+describe('virtualization', () => {
+  test('renders rows inside a scroll container', () => {
+    const { getByText } = render(
+      <Worksheet columns={columns} height={400} items={items} onChange={handleChange} />,
+    );
+
+    expect(getByText('Shoes Name One')).toBeInTheDocument();
+  });
+
+  test('accepts height as a string', () => {
+    const { container } = render(
+      <Worksheet columns={columns} height="300px" items={items} onChange={handleChange} />,
+    );
+
+    // The scroll container should have the string height applied as a CSS style.
+    expect(container.firstChild).toHaveStyle({ height: '300px' });
+  });
+
+  test('renders padding rows when items overflow the virtual window', () => {
+    const manyItems: Array<Partial<Product>> = Array.from({ length: 20 }, (_, i) => ({
+      id: i + 1,
+      productName: `Product ${i + 1}`,
+      visibleOnStorefront: true,
+      otherField: 'Text',
+      otherField2: i + 1,
+      numberField: 50,
+    }));
+
+    const { container } = render(
+      <Worksheet columns={columns} height={200} items={manyItems} onChange={handleChange} />,
+    );
+
+    // padding <tr> rows have aria-hidden="true"
+    const paddingRows = container.querySelectorAll('tr[aria-hidden="true"]');
+
+    expect(paddingRows.length).toBeGreaterThan(0);
+
+    // virtualization keeps only a window of rows in the DOM
+    expect(container.querySelectorAll('tbody tr').length).toBeLessThan(manyItems.length);
+  });
+
+  test('uses ResizeObserver when available', () => {
+    const observe = jest.fn();
+    const disconnect = jest.fn();
+
+    const MockResizeObserver = jest.fn().mockImplementation((cb) => ({
+      disconnect,
+      observe: () => {
+        observe();
+        cb([]);
+      },
+      unobserve: jest.fn(),
+    }));
+
+    Object.defineProperty(global, 'ResizeObserver', {
+      configurable: true,
+      value: MockResizeObserver,
+      writable: true,
+    });
+
+    const { unmount } = render(
+      <Worksheet columns={columns} height={400} items={items} onChange={handleChange} />,
+    );
+
+    expect(observe).toHaveBeenCalled();
+
+    unmount();
+
+    expect(disconnect).toHaveBeenCalled();
+
+    Object.defineProperty(global, 'ResizeObserver', {
+      configurable: true,
+      value: undefined,
+      writable: true,
+    });
+  });
+
+  test('scrolls the virtual list when a cell is selected', async () => {
+    render(<Worksheet columns={columns} height={400} items={items} onChange={handleChange} />);
+
+    const cell = await screen.findByText('Shoes Name One');
+
+    if (cell.parentElement) {
+      fireEvent.click(cell.parentElement);
+    }
+
+    expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+  });
+});

@@ -1,6 +1,6 @@
 import { H1, Panel, StatefulTree, Text, Worksheet, WorksheetColumn } from '@bigcommerce/big-design';
 import { AllInclusiveIcon } from '@bigcommerce/big-design-icons';
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 
 import {
   Code,
@@ -705,6 +705,83 @@ const WorksheetPage = () => {
                         items={items}
                         onChange={(items) => items}
                         onErrors={(items) => items}
+                      />
+                    );
+                  }}
+                  {/* jsx-to-string:end */}
+                </CodePreview>
+              ),
+            },
+            {
+              id: 'virtualization',
+              title: 'Virtualization (1k rows)',
+              render: () => (
+                <CodePreview key="virtualization" scope={{ useMemo, useState }}>
+                  {/* jsx-to-string:start */}
+                  {function Example() {
+                    const columns: Array<WorksheetColumn<Partial<Product>>> = [
+                      {
+                        hash: 'productName',
+                        header: 'Product name',
+                        validation: (value) => !!value,
+                        width: 200,
+                      },
+                      { hash: 'isVisible', header: 'Visible', type: 'checkbox', width: 80 },
+                      { hash: 'otherField', header: 'SKU', width: 160 },
+                      {
+                        hash: 'numberField',
+                        header: 'Price',
+                        type: 'number',
+                        formatting: (value: number) => `$${(value ?? 0).toFixed(2)}`,
+                        width: 100,
+                      },
+                    ];
+
+                    const { items, expandableRows } = useMemo(() => {
+                      const VARIANT_COUNT = 1000;
+                      const builtItems: Array<Partial<Product>> = [];
+                      const childIds: number[] = [];
+
+                      builtItems.push({
+                        id: 1,
+                        productName: 'Product 1',
+                        isVisible: true,
+                        otherField: 'SKU-P0001',
+                        numberField: 99.99,
+                      });
+
+                      for (let c = 0; c < VARIANT_COUNT; c++) {
+                        const childId = c + 2;
+
+                        builtItems.push({
+                          id: childId,
+                          productName: `Variant ${c + 1}`,
+                          isVisible: c % 2 === 0,
+                          otherField: `SKU-V${String(childId).padStart(4, '0')}`,
+                          numberField: Math.round((c + 1) * 4.99 * 10) / 10,
+                        });
+                        childIds.push(childId);
+                      }
+
+                      return { expandableRows: { 1: childIds }, items: builtItems };
+                    }, []);
+
+                    const [currentItems, setCurrentItems] = useState(items);
+
+                    const handleChange = (changedItems: Array<Partial<Product>>) => {
+                      const byId = new Map(changedItems.map((item) => [item.id, item]));
+
+                      setCurrentItems((prev) => prev.map((item) => byId.get(item.id) ?? item));
+                    };
+
+                    return (
+                      <Worksheet
+                        columns={columns}
+                        defaultExpandedRows={[1]}
+                        expandableRows={expandableRows}
+                        height={500}
+                        items={currentItems}
+                        onChange={handleChange}
                       />
                     );
                   }}

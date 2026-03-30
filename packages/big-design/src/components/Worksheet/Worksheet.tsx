@@ -1,4 +1,5 @@
 import { BaselineHelpIcon } from '@bigcommerce/big-design-icons';
+import { useVirtualizer } from '@tanstack/react-virtual';
 import React, {
   createContext,
   createRef,
@@ -33,6 +34,35 @@ import {
 } from './types';
 import { editedRows, invalidRows } from './utils';
 
+// Syncs the virtualizer scroll position to the selected cell.
+// Isolated in its own component so selectedCells changes don't re-render InternalWorksheet.
+const VirtualScrollSync = ({
+  scrollToIndex,
+  visibleRowIndices,
+}: {
+  scrollToIndex: (index: number) => void;
+  visibleRowIndices: number[];
+}) => {
+  const { store, useStore } = useWorksheetStore();
+  const selectedCells = useStore(
+    store,
+    useShallow((state) => state.selectedCells),
+  );
+
+  useEffect(() => {
+    if (selectedCells.length > 0) {
+      const rowIndex = selectedCells[0].rowIndex;
+      const virtualIndex = visibleRowIndices.indexOf(rowIndex);
+
+      if (virtualIndex !== -1) {
+        scrollToIndex(virtualIndex);
+      }
+    }
+  }, [scrollToIndex, selectedCells, visibleRowIndices]);
+
+  return null;
+};
+
 const InternalTable = ({
   hasExpandableRows,
   hasStaticWidth,
@@ -65,12 +95,14 @@ const InternalWorksheet = typedMemo(
     expandableRows,
     defaultExpandedRows,
     disabledRows,
+    height,
     items,
     minWidth,
     onChange,
     onErrors,
   }: WorksheetProps<T>): React.ReactElement<WorksheetProps<T>> => {
     const tableRef = createRef<HTMLTableElement>();
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
     const shouldBeTriggeredOnChange = useRef(false);
     const { store, useStore } = useWorksheetStore();
     const tooltipId = useId();
@@ -112,8 +144,15 @@ const InternalWorksheet = typedMemo(
       store,
       useShallow((state) => state.invalidCells),
     );
+    const hiddenRows = useStore(
+      store,
+      useShallow((state) => state.hiddenRows),
+    );
 
     const { handleKeyDown, handleKeyUp } = useKeyEvents();
+
+    // Virtualization is opt-in: only active when `height` is explicitly provided.
+    const isVirtualized = height !== undefined;
 
     // Add a column for the toggle components
     const expandedColumns: Array<InternalWorksheetColumn<T>> = useMemo(() => {
@@ -121,6 +160,66 @@ const InternalWorksheet = typedMemo(
         ? [{ hash: '', header: '', type: 'toggle', width: 32 }, ...columns]
         : columns;
     }, [columns, expandableRows]);
+
+    // Compute which rows are children (for virtualization filtering)
+    const childIds = useMemo(
+      () => new Set(Object.values(expandableRows || {}).flat()),
+      [expandableRows],
+    );
+
+    const hiddenRowsSet = useMemo(() => new Set(hiddenRows), [hiddenRows]);
+
+    // Only virtualise rows that are visible (non-hidden child rows are excluded)
+    const visibleRowIndices = useMemo(
+      () =>
+        rows.reduce<number[]>((acc, row, index) => {
+          if (!(childIds.has(row.id) && hiddenRowsSet.has(row.id))) {
+            acc.push(index);
+          }
+
+          return acc;
+        }, []),
+      [rows, childIds, hiddenRowsSet],
+    );
+
+    // When height is a number use it as a JSDOM fallback (getBoundingClientRect returns 0 in tests).
+    const fallbackHeight = typeof height === 'number' ? height : 0;
+
+    const virtualizer = useVirtualizer({
+      count: isVirtualized ? visibleRowIndices.length : 0,
+      estimateSize: () => 44,
+      getScrollElement: () => scrollContainerRef.current,
+      observeElementRect: (instance, cb) => {
+        const el = instance.scrollElement!;
+
+        const measure = () => {
+          const rect = el.getBoundingClientRect();
+
+          cb({ height: rect.height || fallbackHeight, width: rect.width });
+        };
+
+        measure();
+
+        if (typeof ResizeObserver !== 'undefined') {
+          const ro = new ResizeObserver(measure);
+
+          ro.observe(el);
+
+          return () => ro.disconnect();
+        }
+
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        return () => {};
+      },
+      overscan: 5,
+    });
+
+    const scrollToIndex = useCallback(
+      (index: number) => virtualizer.scrollToIndex(index, { behavior: 'auto' }),
+      [virtualizer],
+    );
+
+    const virtualItems = virtualizer.getVirtualItems();
 
     useEffect(() => {
       shouldBeTriggeredOnChange.current = editedCells.length > 0;
@@ -201,15 +300,44 @@ const InternalWorksheet = typedMemo(
       [expandedColumns],
     );
 
-    const renderedRows = useMemo(
-      () => (
-        <tbody>
-          {rows.map((_row, rowIndex) => (
+    const paddingTop = virtualItems.length > 0 ? virtualItems[0].start : 0;
+    const paddingBottom =
+      virtualItems.length > 0
+        ? virtualizer.getTotalSize() - virtualItems[virtualItems.length - 1].end
+        : 0;
+
+    const renderedRows = (
+      <tbody>
+        {isVirtualized ? (
+          <>
+            {paddingTop > 0 && (
+              <tr aria-hidden="true">
+                <td
+                  colSpan={expandedColumns.length + 1}
+                  style={{ border: 'none', height: paddingTop, padding: 0 }}
+                />
+              </tr>
+            )}
+            {virtualItems.map((virtualItem) => {
+              const rowIndex = visibleRowIndices[virtualItem.index];
+
+              return <Row columns={expandedColumns} key={rowIndex} rowIndex={rowIndex} />;
+            })}
+            {paddingBottom > 0 && (
+              <tr aria-hidden="true">
+                <td
+                  colSpan={expandedColumns.length + 1}
+                  style={{ border: 'none', height: paddingBottom, padding: 0 }}
+                />
+              </tr>
+            )}
+          </>
+        ) : (
+          rows.map((_, rowIndex) => (
             <Row columns={expandedColumns} key={rowIndex} rowIndex={rowIndex} />
-          ))}
-        </tbody>
-      ),
-      [expandedColumns, rows],
+          ))
+        )}
+      </tbody>
     );
 
     const renderedModals = useMemo(
@@ -222,7 +350,7 @@ const InternalWorksheet = typedMemo(
 
     return (
       <UpdateItemsProvider items={rows}>
-        <StyledBox>
+        <StyledBox containerHeight={isVirtualized ? height : undefined} ref={scrollContainerRef}>
           <InternalTable
             hasExpandableRows={Boolean(expandableRows)}
             hasStaticWidth={tableHasStaticWidth}
@@ -235,6 +363,9 @@ const InternalWorksheet = typedMemo(
             {renderedRows}
           </InternalTable>
         </StyledBox>
+        {isVirtualized && (
+          <VirtualScrollSync scrollToIndex={scrollToIndex} visibleRowIndices={visibleRowIndices} />
+        )}
         {renderedModals}
       </UpdateItemsProvider>
     );
