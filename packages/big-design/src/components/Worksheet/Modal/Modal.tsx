@@ -4,10 +4,10 @@ import { useShallow } from 'zustand/shallow';
 import { typedMemo } from '../../../utils';
 import { Modal } from '../../Modal';
 import { useTableFocus, useUpdateItems, useWorksheetStore } from '../hooks';
-import { WorksheetItem, WorksheetModalColumn } from '../types';
+import { WorksheetItem, WorksheetModalColumn, WorksheetMultilineTextColumn } from '../types';
 
 interface WorksheetModalProps<Item> {
-  column: WorksheetModalColumn<Item>;
+  column: WorksheetModalColumn<Item> | WorksheetMultilineTextColumn<Item>;
 }
 
 const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetModalProps<T>) => {

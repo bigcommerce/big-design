@@ -39,6 +39,15 @@ const worksheetProps: Prop[] = [
       >
         ModalColumn
       </NextLink>,
+      <NextLink
+        href={{
+          hash: 'worksheet-multiline-text-column-prop-table',
+          query: { props: 'multiline-text-column' },
+        }}
+        key="multilineText"
+      >
+        MultilineTextColumn
+      </NextLink>,
     ],
     description: (
       <>
@@ -446,6 +455,86 @@ const worksheetModalColumnProps: Prop[] = [
   },
 ];
 
+const worksheetMultilineTextColumnProps: Prop[] = [
+  {
+    name: 'hash',
+    types: 'string',
+    required: true,
+    description:
+      'Unique identifier for the column value of each row. Used internally to identify and manage state values.',
+  },
+  {
+    name: 'header',
+    types: 'string',
+    required: true,
+    description: 'Header for the column.',
+  },
+  {
+    name: 'type',
+    types: 'multilineText',
+    required: true,
+    description: 'Sets the cell type of the column.',
+  },
+  {
+    name: 'formatting',
+    types: '(value: any) => string',
+    description: 'Used to format the value of a cell.',
+  },
+  {
+    name: 'validation',
+    types: '(value: any) => boolean',
+    description: 'Function to test the validity of the cell.',
+  },
+  {
+    name: 'notation',
+    types: '(value: any, row: any; }) => { color: keyof Colors; description: string; } | undefined',
+    description:
+      'Used to provide a way to show additional notes/comments/instructions on a particular cell.',
+  },
+  {
+    name: 'config',
+    types: (
+      <NextLink
+        href={{ hash: 'worksheet-modal-config-prop-table', query: { props: 'modal-config' } }}
+      >
+        ModalConfig
+      </NextLink>
+    ),
+    description: (
+      <>
+        See{' '}
+        <NextLink
+          href={{ hash: 'worksheet-modal-config-prop-table', query: { props: 'modal-config' } }}
+        >
+          ModalConfig
+        </NextLink>{' '}
+        for usage. The <Code>render</Code> function receives the current value and an onChange
+        callback.
+      </>
+    ),
+  },
+  {
+    name: 'disabled',
+    types: 'boolean',
+    description: 'Disables cell manipulation for the entire column.',
+  },
+  {
+    name: 'enabled',
+    types: 'boolean',
+    description: 'Enables cell manipulation for the entire column even when a row is disabled.',
+  },
+  {
+    name: 'width',
+    types: ['string', 'number'],
+    description: 'Sets column width.',
+  },
+  {
+    name: 'tooltip',
+    types: 'string',
+    description: 'Tooltip for the worksheet column header.',
+  },
+];
+
 const worksheetSelectableConfigProps: Prop[] = [
   {
     name: 'options',
@@ -525,6 +614,14 @@ export const WorksheetSelectableColumnPropTable: React.FC<PropTableWrapper> = (p
 
 export const WorksheetModalColumnPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable propList={worksheetModalColumnProps} title="Worksheet[ModalColumn]" {...props} />
+);
+
+export const WorksheetMultilineTextColumnPropTable: React.FC<PropTableWrapper> = (props) => (
+  <PropTable
+    propList={worksheetMultilineTextColumnProps}
+    title="Worksheet[MultilineTextColumn]"
+    {...props}
+  />
 );
 
 export const WorksheetSelectableConfigPropTable: React.FC<PropTableWrapper> = (props) => (

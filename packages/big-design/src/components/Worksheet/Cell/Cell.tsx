@@ -4,7 +4,14 @@ import { useShallow } from 'zustand/shallow';
 import { typedMemo } from '../../../utils';
 import { Tooltip } from '../../Tooltip';
 import { Small } from '../../Typography';
-import { CheckboxEditor, ModalEditor, SelectEditor, TextEditor, ToggleEditor } from '../editors';
+import {
+  CheckboxEditor,
+  ModalEditor,
+  MultilineTextEditor,
+  SelectEditor,
+  TextEditor,
+  ToggleEditor,
+} from '../editors';
 import { MultiSelectEditor } from '../editors/MultiSelectEditor';
 import { useAutoFilling, useEditableCell, useWorksheetStore } from '../hooks';
 import {
@@ -228,6 +235,11 @@ const InternalCell = <T extends WorksheetItem>({
 
       case 'modal':
         return <ModalEditor cell={cell} formatting={formatting} isEditing={isEditing} />;
+
+      case 'multilineText':
+        return (
+          <MultilineTextEditor cell={cell} formatting={formatting} isEditing={isEditing} />
+        );
 
       case 'toggle':
         return <ToggleEditor rowId={rowId} toggle={isEditing} />;

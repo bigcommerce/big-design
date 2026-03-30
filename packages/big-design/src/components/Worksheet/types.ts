@@ -44,7 +44,8 @@ export type WorksheetColumn<Item> =
   | WorksheetNumberColumn<Item>
   | WorksheetCheckboxColumn<Item>
   | WorksheetSelectableColumn<Item>
-  | WorksheetModalColumn<Item>;
+  | WorksheetModalColumn<Item>
+  | WorksheetMultilineTextColumn<Item>;
 
 export type InternalWorksheetColumn<Item> =
   | WorksheetTextColumn<Item>
@@ -52,6 +53,7 @@ export type InternalWorksheetColumn<Item> =
   | WorksheetCheckboxColumn<Item>
   | WorksheetSelectableColumn<Item>
   | WorksheetModalColumn<Item>
+  | WorksheetMultilineTextColumn<Item>
   | WorksheetToggleColumn<Item>;
 
 interface WorksheetBaseColumn<Item> {
@@ -97,6 +99,17 @@ export interface WorksheetModalColumn<Item> extends WorksheetBaseColumn<Item> {
   };
   formatting?(value: Item[keyof Item] | ''): string;
   type: 'modal';
+}
+
+export interface WorksheetMultilineTextColumn<Item> extends WorksheetBaseColumn<Item> {
+  config: {
+    cancelActionText?: string;
+    header?: string;
+    render(value: Item[keyof Item], onChange: (value: Item[keyof Item]) => void): React.ReactNode;
+    saveActionText?: string;
+  };
+  formatting?(value: Item[keyof Item] | ''): string;
+  type: 'multilineText';
 }
 
 export interface WorksheetToggleColumn<Item> extends WorksheetBaseColumn<Item> {

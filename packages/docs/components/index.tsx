@@ -12,3 +12,4 @@ export * from './NextLink';
 export * from './PropTable';
 export * from './SideNav';
 export * from './StoryWrapper';
+export * from './WysiwygEditor';

@@ -9,6 +9,7 @@ import {
   InternalWorksheetColumn,
   WorksheetItem,
   WorksheetModalColumn,
+  WorksheetMultilineTextColumn,
   WorksheetNumberColumn,
   WorksheetSelectableColumn,
   WorksheetTextColumn,
@@ -66,12 +67,17 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
   const hasFormatting = useCallback(
     (
       column: InternalWorksheetColumn<T>,
-    ): column is WorksheetTextColumn<T> | WorksheetNumberColumn<T> | WorksheetModalColumn<T> => {
+    ): column is
+      | WorksheetTextColumn<T>
+      | WorksheetNumberColumn<T>
+      | WorksheetModalColumn<T>
+      | WorksheetMultilineTextColumn<T> => {
       return (
         column.type === undefined ||
         column.type === 'text' ||
         column.type === 'number' ||
-        column.type === 'modal'
+        column.type === 'modal' ||
+        column.type === 'multilineText'
       );
     },
     [],

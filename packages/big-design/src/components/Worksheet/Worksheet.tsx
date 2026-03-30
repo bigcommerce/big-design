@@ -30,6 +30,7 @@ import {
   WorksheetItem,
   WorksheetLocalization,
   WorksheetModalColumn,
+  WorksheetMultilineTextColumn,
   WorksheetProps,
 } from './types';
 import { editedRows, invalidRows } from './utils';
@@ -343,7 +344,10 @@ const InternalWorksheet = typedMemo(
     const renderedModals = useMemo(
       () =>
         expandedColumns
-          .filter((column): column is WorksheetModalColumn<T> => column.type === 'modal')
+          .filter(
+            (column): column is WorksheetModalColumn<T> | WorksheetMultilineTextColumn<T> =>
+              column.type === 'modal' || column.type === 'multilineText',
+          )
           .map((column, index) => <WorksheetModal column={column} key={index} />),
       [expandedColumns],
     );

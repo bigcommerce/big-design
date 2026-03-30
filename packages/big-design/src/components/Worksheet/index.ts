@@ -10,6 +10,7 @@ export type {
   WorksheetItem,
   WorksheetLocalization,
   WorksheetModalColumn,
+  WorksheetMultilineTextColumn,
   WorksheetNumberColumn,
   WorksheetProps,
   WorksheetSelectableColumn,

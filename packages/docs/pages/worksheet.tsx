@@ -1,4 +1,11 @@
-import { H1, Panel, StatefulTree, Text, Worksheet, WorksheetColumn } from '@bigcommerce/big-design';
+import {
+  H1,
+  Panel,
+  StatefulTree,
+  Text,
+  Worksheet,
+  WorksheetColumn,
+} from '@bigcommerce/big-design';
 import { AllInclusiveIcon } from '@bigcommerce/big-design-icons';
 import React, { useMemo, useState } from 'react';
 
@@ -9,12 +16,14 @@ import {
   GuidelinesTable,
   List,
   NextLink,
+  WysiwygEditor,
 } from '../components';
 import {
   WorksheetCheckboxColumnPropTable,
   WorksheetErrorPropTable,
   WorksheetModalColumnPropTable,
   WorksheetModalConfigPropTable,
+  WorksheetMultilineTextColumnPropTable,
   WorksheetNumberColumnPropTable,
   WorksheetPropTable,
   WorksheetSelectableColumnPropTable,
@@ -25,6 +34,7 @@ import {
 interface Product {
   id: number;
   productName: string;
+  description: string;
   isVisible: boolean;
   otherField: string;
   otherField2: string;
@@ -79,6 +89,10 @@ const nodes = [
     children: [{ id: '8', value: 8, label: 'Category 8' }],
   },
 ];
+
+const DescriptionEditor = (value: string, onChange: (value: string) => void) => {
+  return <WysiwygEditor label="Long description" onChange={onChange} value={value} />;
+};
 
 const CategoryTree = (value, onChange) => {
   return (
@@ -592,6 +606,66 @@ const WorksheetPage = () => {
               ),
             },
             {
+              id: 'multiline-text-columns',
+              title: 'Multiline text columns',
+              render: () => (
+                <CodePreview key="multiline-text-columns" scope={{ DescriptionEditor }}>
+                  {/* jsx-to-string:start */}
+                  {function Example() {
+                    const columns: Array<WorksheetColumn<Partial<Product>>> = [
+                      {
+                        hash: 'productName',
+                        header: 'Product name',
+                        validation: (value) => !!value,
+                        width: 200,
+                      },
+                      {
+                        hash: 'description',
+                        header: 'Description',
+                        type: 'multilineText',
+                        config: {
+                          header: 'Edit description',
+                          render: DescriptionEditor,
+                          saveActionText: 'Apply to draft',
+                        },
+                        width: 300,
+                      },
+                    ];
+
+                    const items: Array<Partial<Product>> = [
+                      {
+                        id: 1,
+                        productName: 'Product 1',
+                        description:
+                          'T-Shirt designed for effortless daily wear. Made from 100% breathable cotton, it features a regular fit, reinforced neckline, and is perfect for any casual occasion.',
+                      },
+                      {
+                        id: 2,
+                        productName: 'Product 2',
+                        description:
+                          'Lightweight running shoes with responsive cushioning and breathable mesh upper. Designed for comfort during long-distance runs.',
+                      },
+                      {
+                        id: 3,
+                        productName: 'Product 3',
+                        description: 'Short description.',
+                      },
+                    ];
+
+                    return (
+                      <Worksheet
+                        columns={columns}
+                        items={items}
+                        onChange={(items) => items}
+                        onErrors={(items) => items}
+                      />
+                    );
+                  }}
+                  {/* jsx-to-string:end */}
+                </CodePreview>
+              ),
+            },
+            {
               id: 'disabled-columns',
               title: 'Disabled columns',
               render: () => (
@@ -893,6 +967,13 @@ const WorksheetPage = () => {
               title: 'ModalColumn',
               render: () => (
                 <WorksheetModalColumnPropTable id="worksheet-modal-column-prop-table" />
+              ),
+            },
+            {
+              id: 'multiline-text-column',
+              title: 'MultilineTextColumn',
+              render: () => (
+                <WorksheetMultilineTextColumnPropTable id="worksheet-multiline-text-column-prop-table" />
               ),
             },
             {
