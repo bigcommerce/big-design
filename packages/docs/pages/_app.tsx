@@ -6,8 +6,6 @@ import {
   GridItem,
 } from '@bigcommerce/big-design';
 
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-
 import { createTheme } from '@bigcommerce/big-design-theme';
 import Head from 'next/head';
 import { useRouter } from 'next/router';

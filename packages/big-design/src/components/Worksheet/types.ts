@@ -102,10 +102,10 @@ export interface WorksheetModalColumn<Item> extends WorksheetBaseColumn<Item> {
 }
 
 export interface WorksheetMultilineTextColumn<Item> extends WorksheetBaseColumn<Item> {
-  config: {
+  config?: {
     cancelActionText?: string;
     header?: string;
-    render(value: Item[keyof Item], onChange: (value: Item[keyof Item]) => void): React.ReactNode;
+    label?: string;
     saveActionText?: string;
   };
   formatting?(value: Item[keyof Item] | ''): string;

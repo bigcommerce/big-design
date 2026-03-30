@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { lazy, Suspense, useCallback, useEffect, useMemo, useState } from 'react';
 import { useShallow } from 'zustand/shallow';
 
 import { typedMemo } from '../../../utils';
@@ -6,13 +6,19 @@ import { Modal } from '../../Modal';
 import { useTableFocus, useUpdateItems, useWorksheetStore } from '../hooks';
 import { WorksheetItem, WorksheetModalColumn, WorksheetMultilineTextColumn } from '../types';
 
+const LazyWysiwygEditor = lazy(
+  () =>
+    import('../editors/MultilineTextEditor/WysiwygEditor/WysiwygEditor').then((mod) => ({
+      default: mod.WysiwygEditor,
+    })),
+);
+
 interface WorksheetModalProps<Item> {
   column: WorksheetModalColumn<Item> | WorksheetMultilineTextColumn<Item>;
 }
 
 const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetModalProps<T>) => {
-  const { config, hash } = column;
-  const { header, render, saveActionText = 'Save', cancelActionText = 'Cancel' } = config;
+  const { hash, type } = column;
   const { store, useStore } = useWorksheetStore();
 
   const isModalOpen: boolean = useStore(
@@ -58,6 +64,10 @@ const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetMo
     handleClose();
   }, [handleClose, newValue, selectedCell, updateItems]);
 
+  const header = column.config?.header;
+  const saveActionText = column.config?.saveActionText ?? 'Save';
+  const cancelActionText = column.config?.cancelActionText ?? 'Cancel';
+
   const renderedContent = useMemo(() => {
     const onChange = (newValue: unknown) => {
       if (newValue !== undefined) {
@@ -65,8 +75,28 @@ const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetMo
       }
     };
 
-    return selectedCell ? render(selectedCell.value, onChange) : null;
-  }, [selectedCell, render]);
+    if (!selectedCell) {
+      return null;
+    }
+
+    if (type === 'multilineText') {
+      const label = (column as WorksheetMultilineTextColumn<T>).config?.label;
+
+      return (
+        <Suspense fallback={null}>
+          <LazyWysiwygEditor
+            label={label}
+            onChange={onChange as (value: string) => void}
+            value={String(selectedCell.value ?? '')}
+          />
+        </Suspense>
+      );
+    }
+
+    const { render } = (column as WorksheetModalColumn<T>).config;
+
+    return render(selectedCell.value, onChange);
+  }, [column, selectedCell, type]);
 
   return (
     <Modal

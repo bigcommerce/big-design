@@ -16,7 +16,6 @@ import {
   GuidelinesTable,
   List,
   NextLink,
-  WysiwygEditor,
 } from '../components';
 import {
   WorksheetCheckboxColumnPropTable,
@@ -89,10 +88,6 @@ const nodes = [
     children: [{ id: '8', value: 8, label: 'Category 8' }],
   },
 ];
-
-const DescriptionEditor = (value: string, onChange: (value: string) => void) => {
-  return <WysiwygEditor label="Long description" onChange={onChange} value={value} />;
-};
 
 const CategoryTree = (value, onChange) => {
   return (
@@ -609,7 +604,7 @@ const WorksheetPage = () => {
               id: 'multiline-text-columns',
               title: 'Multiline text columns',
               render: () => (
-                <CodePreview key="multiline-text-columns" scope={{ DescriptionEditor }}>
+                <CodePreview key="multiline-text-columns">
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const columns: Array<WorksheetColumn<Partial<Product>>> = [
@@ -625,7 +620,7 @@ const WorksheetPage = () => {
                         type: 'multilineText',
                         config: {
                           header: 'Edit description',
-                          render: DescriptionEditor,
+                          label: 'Long description',
                           saveActionText: 'Apply to draft',
                         },
                         width: 300,

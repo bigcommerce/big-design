@@ -493,25 +493,9 @@ const worksheetMultilineTextColumnProps: Prop[] = [
   },
   {
     name: 'config',
-    types: (
-      <NextLink
-        href={{ hash: 'worksheet-modal-config-prop-table', query: { props: 'modal-config' } }}
-      >
-        ModalConfig
-      </NextLink>
-    ),
-    description: (
-      <>
-        See{' '}
-        <NextLink
-          href={{ hash: 'worksheet-modal-config-prop-table', query: { props: 'modal-config' } }}
-        >
-          ModalConfig
-        </NextLink>{' '}
-        for usage. The <Code>render</Code> function receives the current value and an onChange
-        callback.
-      </>
-    ),
+    types: '{ header?: string; label?: string; saveActionText?: string; cancelActionText?: string; }',
+    description:
+      'Optional configuration for the multiline text editor modal. header sets the modal title, label sets the editor label, saveActionText and cancelActionText customize the action buttons.',
   },
   {
     name: 'disabled',

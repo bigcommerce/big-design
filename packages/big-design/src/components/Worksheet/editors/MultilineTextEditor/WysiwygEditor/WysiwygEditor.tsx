@@ -4,6 +4,8 @@ import htmlToDraft from 'html-to-draftjs';
 import React, { useCallback, useMemo, useState } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
 
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+
 import {
   StyledWysiwygEditorContainer,
   StyledWysiwygFooter,
@@ -18,11 +20,9 @@ interface WysiwygEditorProps {
 }
 
 const createEditorState = (html: string): EditorState => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const contentBlock = htmlToDraft(html || '');
 
   if (contentBlock) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
     const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
 
     return EditorState.createWithContent(contentState);
