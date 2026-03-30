@@ -6,6 +6,7 @@ import { Modal } from '../../Modal';
 import { useTableFocus, useUpdateItems, useWorksheetStore } from '../hooks';
 import { WorksheetItem, WorksheetModalColumn, WorksheetMultilineTextColumn } from '../types';
 
+/* istanbul ignore next -- lazy import cannot be tested in jsdom */
 const LazyWysiwygEditor = lazy(() =>
   import('../editors/MultilineTextEditor/WysiwygEditor/WysiwygEditor').then((mod) => ({
     default: mod.WysiwygEditor,
@@ -83,6 +84,7 @@ const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetMo
   const header = useMemo(() => {
     const headerConfig = column.config?.header;
 
+    /* istanbul ignore next -- requires WysiwygEditor lazy load in jsdom */
     if (type === 'multilineText' && typeof headerConfig === 'function' && row) {
       return headerConfig(row);
     }
@@ -104,6 +106,7 @@ const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetMo
       return null;
     }
 
+    /* istanbul ignore next -- WysiwygEditor lazy load cannot resolve in jsdom */
     if (isMultilineTextColumn(column)) {
       return (
         <Suspense fallback={null}>

@@ -1,6 +1,6 @@
 import { AllInclusiveIcon } from '@bigcommerce/big-design-icons';
 import { theme } from '@bigcommerce/big-design-theme';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import React from 'react';
 
@@ -17,6 +17,7 @@ interface Product {
   otherField2: number;
   numberField: number;
   multiField: number[];
+  description: string;
 }
 
 const TreeComponent = (
@@ -139,6 +140,44 @@ const multiSelectColumns: Array<WorksheetColumn<Partial<Product>>> = [
       ],
     },
     validation: (value: string) => !!value,
+  },
+];
+
+const multilineTextColumns: Array<WorksheetColumn<Partial<Product>>> = [
+  {
+    hash: 'productName',
+    header: 'Product name',
+  },
+  {
+    hash: 'description',
+    header: 'Description',
+    type: 'multilineText',
+  },
+];
+
+const multilineTextWithFormattingColumns: Array<WorksheetColumn<Partial<Product>>> = [
+  {
+    hash: 'productName',
+    header: 'Product name',
+  },
+  {
+    hash: 'description',
+    header: 'Description',
+    type: 'multilineText',
+    formatting: (value: string) => `<p>${value}</p>`,
+  },
+];
+
+const multilineTextItems: Array<Partial<Product>> = [
+  {
+    id: 1,
+    productName: 'Product One',
+    description: 'Description one',
+  },
+  {
+    id: 2,
+    productName: 'Product Two',
+    description: 'Description two',
   },
 ];
 
@@ -1398,6 +1437,126 @@ describe('ModalEditor', () => {
     const buttons = screen.getAllByRole('button', { name: /edit/i });
 
     expect(buttons[0]).toBeDisabled();
+  });
+});
+
+describe('MultilineTextEditor', () => {
+  test('renders multilineText cells', () => {
+    render(
+      <Worksheet
+        columns={multilineTextColumns}
+        items={multilineTextItems}
+        onChange={handleChange}
+      />,
+    );
+
+    expect(screen.getByText('Description one')).toBeInTheDocument();
+    expect(screen.getByText('Description two')).toBeInTheDocument();
+  });
+
+  test('renders multilineText cells with formatting', () => {
+    const { container } = render(
+      <Worksheet
+        columns={multilineTextWithFormattingColumns}
+        items={multilineTextItems}
+        onChange={handleChange}
+      />,
+    );
+
+    const formattedCells = container.querySelectorAll('p');
+    const descriptionCells = Array.from(formattedCells).filter(
+      (el) => el.textContent === 'Description one' || el.textContent === 'Description two',
+    );
+
+    expect(descriptionCells).toHaveLength(2);
+  });
+
+  test('opens modal on double click', async () => {
+    render(
+      <Worksheet
+        columns={multilineTextColumns}
+        items={multilineTextItems}
+        onChange={handleChange}
+      />,
+    );
+
+    const cell = screen.getByText('Description one').parentElement;
+
+    if (cell) {
+      fireEvent.doubleClick(cell);
+    }
+
+    expect(await screen.findByRole('dialog')).toBeInTheDocument();
+  });
+
+  test('modal has Save and Cancel buttons', async () => {
+    render(
+      <Worksheet
+        columns={multilineTextColumns}
+        items={multilineTextItems}
+        onChange={handleChange}
+      />,
+    );
+
+    const cell = screen.getByText('Description one').parentElement;
+
+    if (cell) {
+      fireEvent.doubleClick(cell);
+    }
+
+    expect(await screen.findByRole('dialog')).toBeInTheDocument();
+    expect(screen.getByText('Save')).toBeInTheDocument();
+    expect(screen.getByText('Cancel')).toBeInTheDocument();
+  });
+
+  test('modal closes on Cancel click', async () => {
+    render(
+      <Worksheet
+        columns={multilineTextColumns}
+        items={multilineTextItems}
+        onChange={handleChange}
+      />,
+    );
+
+    const cell = screen.getByText('Description one').parentElement;
+
+    if (cell) {
+      fireEvent.doubleClick(cell);
+    }
+
+    expect(await screen.findByRole('dialog')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('Cancel'));
+
+    await waitFor(() => {
+      expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+    });
+  });
+
+  test('modal closes on Save click without changes', async () => {
+    render(
+      <Worksheet
+        columns={multilineTextColumns}
+        items={multilineTextItems}
+        onChange={handleChange}
+      />,
+    );
+
+    const cell = screen.getByText('Description one').parentElement;
+
+    if (cell) {
+      fireEvent.doubleClick(cell);
+    }
+
+    expect(await screen.findByRole('dialog')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('Save'));
+
+    await waitFor(() => {
+      expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+    });
+
+    expect(handleChange).not.toHaveBeenCalled();
   });
 });
 
