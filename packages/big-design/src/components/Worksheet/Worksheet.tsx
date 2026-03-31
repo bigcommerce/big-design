@@ -341,16 +341,37 @@ const InternalWorksheet = typedMemo(
       </tbody>
     );
 
-    const renderedModals = useMemo(
-      () =>
-        expandedColumns
-          .filter(
-            (column): column is WorksheetModalColumn<T> | WorksheetMultilineTextColumn<T> =>
-              column.type === 'modal' || column.type === 'multilineText',
-          )
-          .map((column, index) => <WorksheetModal column={column} key={index} />),
-      [expandedColumns],
-    );
+    const renderedModals = useMemo(() => {
+      const modalColumns: Array<WorksheetModalColumn<T> | WorksheetMultilineTextColumn<T>> =
+        expandedColumns.filter(
+          (column): column is WorksheetModalColumn<T> | WorksheetMultilineTextColumn<T> =>
+            column.type === 'modal' || column.type === 'multilineText',
+        );
+
+      // Create synthetic multilineText columns for typeOverride-capable columns
+      const overrideColumns: Array<WorksheetMultilineTextColumn<T>> = expandedColumns
+        .filter(
+          (column) =>
+            column.type !== 'multilineText' &&
+            column.typeOverride !== undefined &&
+            column.typeOverrideConfig?.multilineText !== undefined,
+        )
+        .map((column) => {
+          const { formatting, ...config } = column.typeOverrideConfig!.multilineText!;
+
+          return {
+            hash: column.hash,
+            header: column.header,
+            type: 'multilineText' as const,
+            config,
+            formatting,
+          };
+        });
+
+      return [...modalColumns, ...overrideColumns].map((column, index) => (
+        <WorksheetModal column={column} key={index} />
+      ));
+    }, [expandedColumns]);
 
     return (
       <UpdateItemsProvider items={rows}>

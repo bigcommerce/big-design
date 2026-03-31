@@ -600,7 +600,14 @@ const WorksheetPage = () => {
                 <CodePreview key="multiline-text-columns">
                   {/* jsx-to-string:start */}
                   {function Example() {
-                    const columns: Array<WorksheetColumn<Partial<Product>>> = [
+                    interface Item {
+                      id: number;
+                      productName: string;
+                      description: string;
+                      useRichText: boolean;
+                    }
+
+                    const columns: Array<WorksheetColumn<Item>> = [
                       {
                         hash: 'productName',
                         header: 'Product name',
@@ -610,33 +617,56 @@ const WorksheetPage = () => {
                       {
                         hash: 'description',
                         header: 'Description',
-                        type: 'multilineText',
-                        config: {
-                          header: (row) => row.productName ?? 'Edit description',
-                          label: 'Long description',
-                          saveActionText: 'Apply to draft',
-                        },
+                        type: 'text',
                         width: 300,
+                        typeOverride: (row) => {
+                          if (row.useRichText) {
+                            return 'multilineText';
+                          }
+
+                          return undefined;
+                        },
+                        typeOverrideConfig: {
+                          multilineText: {
+                            header: (row) => `Edit ${row.productName ?? 'description'}`,
+                            label: 'Rich text description',
+                          },
+                        },
+                      },
+                      {
+                        hash: 'useRichText',
+                        header: 'Rich text',
+                        type: 'checkbox',
+                        width: 100,
                       },
                     ];
 
-                    const items: Array<Partial<Product>> = [
+                    const items: Array<Item> = [
                       {
                         id: 1,
                         productName: 'Product 1',
-                        description:
-                          'T-Shirt designed for effortless daily wear. Made from 100% breathable cotton, it features a regular fit, reinforced neckline, and is perfect for any casual occasion.',
+                        description: 'Simple plain text description.',
+                        useRichText: false,
                       },
                       {
                         id: 2,
                         productName: 'Product 2',
                         description:
-                          'Lightweight running shoes with responsive cushioning and breathable mesh upper. Designed for comfort during long-distance runs.',
+                          '<b>Rich</b> text description with <em>formatting</em> support.',
+                        useRichText: true,
                       },
                       {
                         id: 3,
                         productName: 'Product 3',
-                        description: 'Short description.',
+                        description: 'Another plain text description.',
+                        useRichText: false,
+                      },
+                      {
+                        id: 4,
+                        productName: 'Product 4',
+                        description:
+                          '<p>This product has a <strong>detailed</strong> description.</p>',
+                        useRichText: true,
                       },
                     ];
 

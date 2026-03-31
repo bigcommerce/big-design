@@ -56,6 +56,18 @@ export type InternalWorksheetColumn<Item> =
   | WorksheetMultilineTextColumn<Item>
   | WorksheetToggleColumn<Item>;
 
+export interface TypeOverrideConfig<Item> {
+  multilineText?: WorksheetMultilineTextColumnConfig<Item>;
+}
+
+export interface WorksheetMultilineTextColumnConfig<Item> {
+  cancelActionText?: string;
+  header?: string | ((row: Partial<Item>) => string);
+  label?: string;
+  saveActionText?: string;
+  formatting?(value: Item[keyof Item] | ''): string;
+}
+
 interface WorksheetBaseColumn<Item> {
   disabled?: boolean;
   enabled?: boolean;
@@ -63,6 +75,8 @@ interface WorksheetBaseColumn<Item> {
   header: string;
   width?: string | number;
   tooltip?: string;
+  typeOverride?(row: Item): Exclude<WorksheetColumn<Item>['type'], undefined> | undefined;
+  typeOverrideConfig?: TypeOverrideConfig<Item>;
   validation?(value: Item[keyof Item] | ''): boolean;
   notation?(value: Item[keyof Item] | '', row: WorksheetItem): NotationConfig | undefined;
 }
