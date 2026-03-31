@@ -641,7 +641,7 @@ const WorksheetPage = () => {
                       },
                     ];
 
-                    const items: Array<Item> = [
+                    const items: Item[] = [
                       {
                         id: 1,
                         productName: 'Product 1',

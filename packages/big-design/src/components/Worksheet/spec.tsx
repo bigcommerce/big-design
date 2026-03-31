@@ -1560,6 +1560,163 @@ describe('MultilineTextEditor', () => {
   });
 });
 
+describe('typeOverride', () => {
+  interface TypeOverrideItem {
+    id: number;
+    productName: string;
+    description: string;
+    useRichText: boolean;
+  }
+
+  const typeOverrideColumns: Array<WorksheetColumn<TypeOverrideItem>> = [
+    {
+      hash: 'productName',
+      header: 'Product name',
+    },
+    {
+      hash: 'description',
+      header: 'Description',
+      type: 'text',
+      typeOverride: (row) => {
+        if (row.useRichText) {
+          return 'multilineText';
+        }
+
+        return undefined;
+      },
+      typeOverrideConfig: {
+        multilineText: {
+          header: 'Edit description',
+          label: 'Rich text description',
+        },
+      },
+    },
+    {
+      hash: 'useRichText',
+      header: 'Rich text',
+      type: 'checkbox',
+    },
+  ];
+
+  const typeOverrideWithFormattingColumns: Array<WorksheetColumn<TypeOverrideItem>> = [
+    {
+      hash: 'productName',
+      header: 'Product name',
+    },
+    {
+      hash: 'description',
+      header: 'Description',
+      type: 'text',
+      typeOverride: (row) => {
+        if (row.useRichText) {
+          return 'multilineText';
+        }
+
+        return undefined;
+      },
+      typeOverrideConfig: {
+        multilineText: {
+          header: 'Edit description',
+          formatting: (value: string) => `<em>${value}</em>`,
+        },
+      },
+    },
+  ];
+
+  const typeOverrideItems: TypeOverrideItem[] = [
+    {
+      id: 1,
+      productName: 'Product One',
+      description: 'Plain text',
+      useRichText: false,
+    },
+    {
+      id: 2,
+      productName: 'Product Two',
+      description: 'Rich text content',
+      useRichText: true,
+    },
+  ];
+
+  test('renders text cell for rows without override', () => {
+    render(
+      <Worksheet
+        columns={typeOverrideColumns}
+        items={typeOverrideItems}
+        onChange={handleChange}
+      />,
+    );
+
+    expect(screen.getByText('Plain text')).toBeInTheDocument();
+  });
+
+  test('renders multilineText cell for rows with override', () => {
+    render(
+      <Worksheet
+        columns={typeOverrideColumns}
+        items={typeOverrideItems}
+        onChange={handleChange}
+      />,
+    );
+
+    expect(screen.getByText('Rich text content')).toBeInTheDocument();
+  });
+
+  test('opens modal on double click for overridden multilineText row', async () => {
+    render(
+      <Worksheet
+        columns={typeOverrideColumns}
+        items={typeOverrideItems}
+        onChange={handleChange}
+      />,
+    );
+
+    const cell = screen.getByText('Rich text content').parentElement;
+
+    if (cell) {
+      fireEvent.doubleClick(cell);
+    }
+
+    expect(await screen.findByRole('dialog')).toBeInTheDocument();
+  });
+
+  test('does not open modal on double click for non-overridden text row', async () => {
+    render(
+      <Worksheet
+        columns={typeOverrideColumns}
+        items={typeOverrideItems}
+        onChange={handleChange}
+      />,
+    );
+
+    const cell = screen.getByText('Plain text');
+
+    fireEvent.click(cell);
+    fireEvent.doubleClick(cell);
+
+    await waitFor(() => {
+      expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+    });
+  });
+
+  test('applies formatting from typeOverrideConfig', () => {
+    const { container } = render(
+      <Worksheet
+        columns={typeOverrideWithFormattingColumns}
+        items={typeOverrideItems}
+        onChange={handleChange}
+      />,
+    );
+
+    const emElements = container.querySelectorAll('em');
+    const richCell = Array.from(emElements).find(
+      (el) => el.textContent === 'Rich text content',
+    );
+
+    expect(richCell).toBeInTheDocument();
+  });
+});
+
 describe('disable', () => {
   test('navigation works on disabled cells', () => {
     render(<Worksheet columns={disabledColumns} items={items} onChange={handleChange} />);
