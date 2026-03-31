@@ -1640,11 +1640,7 @@ describe('typeOverride', () => {
 
   test('renders text cell for rows without override', () => {
     render(
-      <Worksheet
-        columns={typeOverrideColumns}
-        items={typeOverrideItems}
-        onChange={handleChange}
-      />,
+      <Worksheet columns={typeOverrideColumns} items={typeOverrideItems} onChange={handleChange} />,
     );
 
     expect(screen.getByText('Plain text')).toBeInTheDocument();
@@ -1652,11 +1648,7 @@ describe('typeOverride', () => {
 
   test('renders multilineText cell for rows with override', () => {
     render(
-      <Worksheet
-        columns={typeOverrideColumns}
-        items={typeOverrideItems}
-        onChange={handleChange}
-      />,
+      <Worksheet columns={typeOverrideColumns} items={typeOverrideItems} onChange={handleChange} />,
     );
 
     expect(screen.getByText('Rich text content')).toBeInTheDocument();
@@ -1664,11 +1656,7 @@ describe('typeOverride', () => {
 
   test('opens modal on double click for overridden multilineText row', async () => {
     render(
-      <Worksheet
-        columns={typeOverrideColumns}
-        items={typeOverrideItems}
-        onChange={handleChange}
-      />,
+      <Worksheet columns={typeOverrideColumns} items={typeOverrideItems} onChange={handleChange} />,
     );
 
     const cell = screen.getByText('Rich text content').parentElement;
@@ -1682,11 +1670,7 @@ describe('typeOverride', () => {
 
   test('does not open modal on double click for non-overridden text row', async () => {
     render(
-      <Worksheet
-        columns={typeOverrideColumns}
-        items={typeOverrideItems}
-        onChange={handleChange}
-      />,
+      <Worksheet columns={typeOverrideColumns} items={typeOverrideItems} onChange={handleChange} />,
     );
 
     const cell = screen.getByText('Plain text');
@@ -1709,9 +1693,7 @@ describe('typeOverride', () => {
     );
 
     const emElements = container.querySelectorAll('em');
-    const richCell = Array.from(emElements).find(
-      (el) => el.textContent === 'Rich text content',
-    );
+    const richCell = Array.from(emElements).find((el) => el.textContent === 'Rich text content');
 
     expect(richCell).toBeInTheDocument();
   });
