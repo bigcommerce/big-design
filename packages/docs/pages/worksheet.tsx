@@ -641,38 +641,70 @@ const WorksheetPage = () => {
                       },
                     ];
 
+                    const expandableRows = {
+                      1: [2, 3],
+                      4: [5, 6, 7],
+                    };
+
                     const items: Item[] = [
                       {
                         id: 1,
-                        productName: 'Product 1',
-                        description: 'Simple plain text description.',
+                        productName: 'T-Shirt',
+                        description: 'A comfortable cotton t-shirt.',
                         useRichText: false,
                       },
                       {
                         id: 2,
-                        productName: 'Product 2',
-                        description:
-                          '<b>Rich</b> text description with <em>formatting</em> support.',
-                        useRichText: true,
-                      },
-                      {
-                        id: 3,
-                        productName: 'Product 3',
-                        description: 'Another plain text description.',
+                        productName: 'T-Shirt - Red / S',
+                        description: 'Small red variant.',
                         useRichText: false,
                       },
                       {
-                        id: 4,
-                        productName: 'Product 4',
+                        id: 3,
+                        productName: 'T-Shirt - Blue / M',
                         description:
-                          '<p>This product has a <strong>detailed</strong> description.</p>',
+                          '<b>Medium blue</b> variant with <em>premium</em> stitching.',
                         useRichText: true,
+                      },
+                      {
+                        id: 4,
+                        productName: 'Running Shoes',
+                        description:
+                          '<p>Lightweight shoes with <strong>responsive</strong> cushioning.</p>',
+                        useRichText: true,
+                      },
+                      {
+                        id: 5,
+                        productName: 'Running Shoes - Size 9',
+                        description: 'Standard size 9.',
+                        useRichText: false,
+                      },
+                      {
+                        id: 6,
+                        productName: 'Running Shoes - Size 10',
+                        description:
+                          '<p>Size 10 with <em>extra arch support</em> option.</p>',
+                        useRichText: true,
+                      },
+                      {
+                        id: 7,
+                        productName: 'Running Shoes - Size 11',
+                        description: 'Large size 11.',
+                        useRichText: false,
+                      },
+                      {
+                        id: 8,
+                        productName: 'Backpack',
+                        description: 'Durable everyday backpack.',
+                        useRichText: false,
                       },
                     ];
 
                     return (
                       <Worksheet
                         columns={columns}
+                        defaultExpandedRows={[1, 4]}
+                        expandableRows={expandableRows}
                         items={items}
                         onChange={(items) => items}
                         onErrors={(items) => items}
