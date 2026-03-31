@@ -662,8 +662,7 @@ const WorksheetPage = () => {
                       {
                         id: 3,
                         productName: 'T-Shirt - Blue / M',
-                        description:
-                          '<b>Medium blue</b> variant with <em>premium</em> stitching.',
+                        description: '<b>Medium blue</b> variant with <em>premium</em> stitching.',
                         useRichText: true,
                       },
                       {
@@ -682,8 +681,7 @@ const WorksheetPage = () => {
                       {
                         id: 6,
                         productName: 'Running Shoes - Size 10',
-                        description:
-                          '<p>Size 10 with <em>extra arch support</em> option.</p>',
+                        description: '<p>Size 10 with <em>extra arch support</em> option.</p>',
                         useRichText: true,
                       },
                       {
