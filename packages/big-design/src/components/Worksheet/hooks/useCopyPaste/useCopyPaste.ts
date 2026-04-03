@@ -123,18 +123,20 @@ export const useCopyPasteHandler = () => {
           selectedCells[0] &&
           columns[selectedCells[0].columnIndex] &&
           !disabledRows.includes(rows[selectedCells[0].rowIndex]?.id) &&
-          isPasteAllowed(copiedCells[0], selectedCells[0], columns[selectedCells[0].columnIndex]!)
+          isPasteAllowed(copiedCells[0], selectedCells[0], columns[selectedCells[0].columnIndex])
         ) {
           setSelectedCells([{ ...selectedCells[0], value: copiedCells[0].value }]);
 
           updateItems(
             cellsToUpdate.filter((cell) => !disabledRows.includes(rows[cell.rowIndex]?.id)),
             copiedCells
-              .filter(/* istanbul ignore next -- disabled rows filter */ (_, idx) => {
-                const cell = cellsToUpdate[idx];
+              .filter(
+                /* istanbul ignore next -- disabled rows filter */ (_, idx) => {
+                  const cell = cellsToUpdate[idx];
 
-                return cell ? !disabledRows.includes(rows[cell.rowIndex]?.id) : false;
-              })
+                  return cell ? !disabledRows.includes(rows[cell.rowIndex]?.id) : false;
+                },
+              )
               .map((cell) => cell.value),
           );
         }
