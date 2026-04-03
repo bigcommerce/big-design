@@ -1573,6 +1573,62 @@ describe('disable rows', () => {
 
     expect(screen.getByDisplayValue('test test test')).toBeInTheDocument();
   });
+
+  test('paste does not modify disabled row', async () => {
+    render(
+      <Worksheet columns={columns} disabledRows={[3]} items={items} onChange={handleChange} />,
+    );
+
+    const sourceCell = await screen.findByText('Shoes Name Three');
+
+    if (sourceCell.parentElement) {
+      await userEvent.click(sourceCell.parentElement);
+    }
+
+    await userEvent.keyboard('{Meta>}{c}{/Meta}');
+
+    const targetCell = await screen.findByText('Shoes Name One');
+
+    if (targetCell.parentElement) {
+      await userEvent.click(targetCell.parentElement);
+    }
+
+    await userEvent.keyboard('{Meta>}{v}{/Meta}');
+
+    expect(handleChange).not.toHaveBeenCalled();
+  });
+
+  test('paste works on non-disabled rows when some rows are disabled', async () => {
+    render(
+      <Worksheet columns={columns} disabledRows={[1]} items={items} onChange={handleChange} />,
+    );
+
+    const sourceCell = await screen.findByText('Shoes Name Three');
+
+    if (sourceCell.parentElement) {
+      await userEvent.click(sourceCell.parentElement);
+    }
+
+    await userEvent.keyboard('{Meta>}{c}{/Meta}');
+
+    const targetCell = await screen.findByText('Shoes Name One');
+
+    if (targetCell.parentElement) {
+      await userEvent.click(targetCell.parentElement);
+    }
+
+    await userEvent.keyboard('{Meta>}{v}{/Meta}');
+
+    expect(handleChange).toHaveBeenCalledWith([
+      {
+        id: 3,
+        numberField: 50,
+        otherField2: 3,
+        productName: 'Shoes Name Three',
+        visibleOnStorefront: false,
+      },
+    ]);
+  });
 });
 
 describe('expandable', () => {
