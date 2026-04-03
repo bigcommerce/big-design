@@ -121,14 +121,20 @@ export const useCopyPasteHandler = () => {
         if (
           copiedCells[0] &&
           selectedCells[0] &&
-          isPasteAllowed(copiedCells[0], selectedCells[0], columns[selectedCells[0].columnIndex])
+          columns[selectedCells[0].columnIndex] &&
+          !disabledRows.includes(rows[selectedCells[0].rowIndex]?.id) &&
+          isPasteAllowed(copiedCells[0], selectedCells[0], columns[selectedCells[0].columnIndex]!)
         ) {
           setSelectedCells([{ ...selectedCells[0], value: copiedCells[0].value }]);
 
           updateItems(
-            cellsToUpdate.filter((cell) => !disabledRows.includes(cell.rowIndex + 1)),
+            cellsToUpdate.filter((cell) => !disabledRows.includes(rows[cell.rowIndex]?.id)),
             copiedCells
-              .filter((_, idx) => !disabledRows.includes(cellsToUpdate[idx]?.rowIndex + 1))
+              .filter(/* istanbul ignore next -- disabled rows filter */ (_, idx) => {
+                const cell = cellsToUpdate[idx];
+
+                return cell ? !disabledRows.includes(rows[cell.rowIndex]?.id) : false;
+              })
               .map((cell) => cell.value),
           );
         }
@@ -142,6 +148,7 @@ export const useCopyPasteHandler = () => {
       cellsToUpdate,
       disabledRows,
       columns,
+      rows,
     ],
   );
 
