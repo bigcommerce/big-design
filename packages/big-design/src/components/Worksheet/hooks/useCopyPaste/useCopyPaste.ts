@@ -130,13 +130,11 @@ export const useCopyPasteHandler = () => {
           updateItems(
             cellsToUpdate.filter((cell) => !disabledRows.includes(rows[cell.rowIndex]?.id)),
             copiedCells
-              .filter(
-                /* istanbul ignore next -- disabled rows filter */ (_, idx) => {
-                  const cell = cellsToUpdate[idx];
+              .filter((_, idx) => {
+                const cell = cellsToUpdate[idx];
 
-                  return cell ? !disabledRows.includes(rows[cell.rowIndex]?.id) : false;
-                },
-              )
+                return cell ? !disabledRows.includes(rows[cell.rowIndex]?.id) : false;
+              })
               .map((cell) => cell.value),
           );
         }
