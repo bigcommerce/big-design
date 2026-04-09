@@ -19,6 +19,7 @@ export interface ActionsProps<T> {
   selectedItems: Set<T>;
   stickyHeader?: boolean;
   tableId: string;
+  label: string;
 }
 
 const InternalActions = <T extends TableItem>({
@@ -31,6 +32,7 @@ const InternalActions = <T extends TableItem>({
   selectedItems,
   stickyHeader,
   tableId,
+  label,
   ...props
 }: ActionsProps<T>) => {
   const isSelectable = typeof onSelectionChange === 'function';
@@ -59,7 +61,7 @@ const InternalActions = <T extends TableItem>({
     <StyledFlex
       alignItems="center"
       aria-controls={tableId}
-      aria-label="Table Controls"
+      aria-label={label}
       flexDirection="row"
       justifyContent="stretch"
       ref={forwardedRef}
