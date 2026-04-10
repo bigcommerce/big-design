@@ -1,0 +1,1007 @@
+import { ArrowBackIcon, ArrowForwardIcon, DeleteIcon } from '@bigcommerce/big-design-icons';
+import { remCalc } from '@bigcommerce/big-design-theme';
+import { act, fireEvent, render, screen } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
+import 'jest-styled-components';
+import React, { createRef } from 'react';
+
+import { FormControlLabel, FormGroup } from '../Form';
+
+import { ComboBox } from '.';
+
+const onChange = jest.fn();
+const onActionClick = jest.fn();
+const onOpen = jest.fn();
+const onClose = jest.fn();
+
+const mockOptions = [
+  { value: 'us', content: 'United States' },
+  { value: 'mx', content: 'Mexico' },
+  { value: 'ca', content: 'Canada' },
+  { value: 'en', content: 'England' },
+  { value: 'fr', content: 'France', disabled: true },
+];
+
+const groupMockOptions = [
+  {
+    label: 'Label 1',
+    options: [
+      { value: 'us', content: 'United States' },
+      { value: 'mx', content: 'Mexico' },
+    ],
+  },
+  {
+    label: 'Label 2',
+    options: [
+      { value: 'ca', content: 'Canada' },
+      { value: 'en', content: 'England' },
+      { value: 'fr', content: 'France', disabled: true },
+    ],
+  },
+];
+
+const mockOptionsWithDescription = [
+  { value: 'us', content: 'United States', description: 'US Description' },
+  { value: 'mx', content: 'Mexico', description: 'MX Description' },
+  { value: 'fr', content: 'France', disabled: true, description: 'FR Description' },
+];
+
+const ComboBoxMock = (
+  <ComboBox
+    action={{
+      actionType: 'destructive',
+      content: 'Remove Country',
+      icon: <DeleteIcon />,
+      onActionClick,
+    }}
+    data-testid="select"
+    error="Required"
+    label="Countries"
+    onClose={onClose}
+    onOpen={onOpen}
+    onOptionChange={onChange}
+    options={mockOptions}
+    placeholder="Choose country"
+    required
+    value="mx"
+  />
+);
+
+const GroupedComboBoxMock = (
+  <ComboBox
+    action={{
+      actionType: 'destructive',
+      content: 'Remove Country',
+      icon: <DeleteIcon />,
+      onActionClick,
+    }}
+    data-testid="group-select"
+    error="Required"
+    label="Countries"
+    onOptionChange={onChange}
+    options={groupMockOptions}
+    placeholder="Choose country"
+    required
+    value="mx"
+  />
+);
+
+const ComboBoxWithOptionsDescriptions = (
+  <ComboBox
+    action={{
+      actionType: 'destructive',
+      content: 'Remove Country',
+      description: 'Action Description',
+      icon: <DeleteIcon />,
+      onActionClick,
+    }}
+    data-testid="select"
+    error="Required"
+    label="Countries"
+    onOptionChange={onChange}
+    options={mockOptionsWithDescription}
+    placeholder="Choose country"
+    required
+    value="mx"
+  />
+);
+
+test('renders select combobox', async () => {
+  render(ComboBoxMock);
+
+  const combobox = await screen.findByRole('combobox');
+
+  expect(combobox).toBeInTheDocument();
+});
+
+test('renders select string label', async () => {
+  render(ComboBoxMock);
+
+  const countries = await screen.findByText('Countries');
+
+  expect(countries).toBeInTheDocument();
+});
+
+test('renders FormControlLabel string label', async () => {
+  render(
+    <ComboBox
+      data-testid="select"
+      label={<FormControlLabel>Countries</FormControlLabel>}
+      onOptionChange={onChange}
+      options={mockOptions}
+    />,
+  );
+
+  const countries = await screen.findByText('Countries');
+
+  expect(countries).toBeInTheDocument();
+});
+
+test('select label has id', async () => {
+  render(ComboBoxMock);
+
+  const countries = await screen.findByText('Countries');
+
+  expect(countries.id).toBeDefined();
+});
+
+test('select label accepts custom id', async () => {
+  render(
+    <ComboBox label="Countries" labelId="testId" onOptionChange={onChange} options={mockOptions} />,
+  );
+
+  const countries = await screen.findByText('Countries');
+
+  expect(countries.id).toBe('testId');
+});
+
+test('select label has for attribute', async () => {
+  render(ComboBoxMock);
+
+  const countries = await screen.findByText('Countries');
+
+  expect(countries.hasAttribute('for')).toBe(true);
+});
+
+test('renders select input', async () => {
+  render(ComboBoxMock);
+
+  const select = await screen.findByTestId('select');
+
+  expect(select).toBeInTheDocument();
+});
+
+test('select input has id', async () => {
+  render(ComboBoxMock);
+
+  const select = await screen.findByTestId('select');
+
+  expect(select.id).toBeDefined();
+});
+
+test('select accepts custom id', async () => {
+  render(
+    <ComboBox data-testid="select" id="testId" onOptionChange={onChange} options={mockOptions} />,
+  );
+
+  const select = await screen.findByTestId('select');
+
+  expect(select.id).toBe('testId');
+});
+
+test('select input has placeholder text', async () => {
+  render(ComboBoxMock);
+
+  const placeholder = await screen.findByPlaceholderText('Choose country');
+
+  expect(placeholder).toBeDefined();
+});
+
+test('select input has aria-controls', async () => {
+  render(ComboBoxMock);
+
+  const input = screen.getByTestId('select');
+
+  fireEvent.click(input);
+
+  const listbox = await screen.findByRole('listbox');
+
+  expect(input.getAttribute('aria-controls')).toBe(listbox.id);
+});
+
+test('select input has autocomplete=off', async () => {
+  render(ComboBoxMock);
+
+  const input = await screen.findByTestId('select');
+
+  expect(input.getAttribute('autocomplete')).toBe('off');
+});
+
+test('renders input button', async () => {
+  render(ComboBoxMock);
+
+  const button = await screen.findByLabelText('toggle menu');
+
+  expect(button).toBeDefined();
+});
+
+test('input button has aria-label', async () => {
+  render(ComboBoxMock);
+
+  const button = await screen.findByLabelText('toggle menu');
+
+  expect(button.getAttribute('aria-label')).toBe('toggle menu');
+});
+
+test('select menu opens when clicked on input', async () => {
+  render(ComboBoxMock);
+
+  const input = screen.getByRole('combobox');
+
+  const listbox = await screen.findByRole('listbox');
+
+  expect(listbox).toBeEmptyDOMElement();
+
+  await userEvent.click(input);
+
+  await screen.findByRole('listbox');
+
+  expect(listbox).not.toBeEmptyDOMElement();
+});
+
+test('select menu opens/closes when input button is clicked', async () => {
+  render(ComboBoxMock);
+
+  const button = await screen.findByLabelText('toggle menu');
+
+  fireEvent.click(button);
+
+  const listbox = await screen.findByRole('listbox');
+
+  expect(listbox).not.toBeEmptyDOMElement();
+
+  fireEvent.click(button);
+
+  await screen.findByRole('listbox');
+
+  expect(listbox).toBeEmptyDOMElement();
+});
+
+test('menu should not open on focus', async () => {
+  render(ComboBoxMock);
+
+  await userEvent.tab();
+
+  const listbox = await screen.findByRole('listbox');
+
+  expect(listbox).toBeEmptyDOMElement();
+});
+
+test('esc should close menu', async () => {
+  render(ComboBoxMock);
+
+  const input = screen.getByTestId('select');
+
+  await userEvent.click(input);
+
+  const listbox = await screen.findByRole('listbox');
+
+  expect(listbox).not.toBeEmptyDOMElement();
+
+  await userEvent.keyboard('{Escape}');
+
+  expect(listbox).toBeEmptyDOMElement();
+});
+
+test('select calls onFocus callback', async () => {
+  const onFocus = jest.fn();
+
+  render(<ComboBox onFocus={onFocus} onOptionChange={onChange} options={[]} />);
+
+  const input = screen.getByRole('combobox');
+
+  await userEvent.click(input);
+
+  expect(onFocus).toHaveBeenCalled();
+});
+
+test('select has items', async () => {
+  render(ComboBoxMock);
+
+  const input = screen.getByTestId('select');
+
+  fireEvent.click(input);
+
+  const options = await screen.findAllByRole('option');
+
+  expect(options).toHaveLength(6);
+});
+
+test('select items should be unfiltered when opened', async () => {
+  render(ComboBoxMock);
+
+  const button = await screen.findByLabelText('toggle menu');
+
+  fireEvent.click(button);
+
+  const options = await screen.findAllByRole('option');
+
+  expect(options).toHaveLength(6);
+});
+
+test('selected item should be highlighted when opened', async () => {
+  render(ComboBoxMock);
+
+  const input = screen.getByTestId('select');
+
+  fireEvent.click(input);
+
+  const options = await screen.findAllByRole('option');
+
+  expect(options[1].getAttribute('aria-selected')).toBe('true');
+  expect(input.getAttribute('aria-activedescendant')).toEqual(options[1].id);
+});
+
+test('select input text should match the value selected', async () => {
+  render(ComboBoxMock);
+
+  const input = await screen.findByTestId('select');
+
+  expect(input.getAttribute('value')).toBe('Mexico');
+});
+
+test('select items should be filterable', async () => {
+  render(ComboBoxMock);
+
+  const input = screen.getByTestId('select');
+
+  await userEvent.tripleClick(input);
+
+  await userEvent.keyboard('c');
+
+  const options = await screen.findAllByRole('option');
+
+  expect(options).toHaveLength(2);
+});
+
+test('select should select the filtered item', async () => {
+  render(ComboBoxMock);
+
+  const input = screen.getByTestId('select');
+
+  await userEvent.tripleClick(input);
+  await userEvent.keyboard('c');
+
+  expect(input).toHaveValue('c');
+
+  const options = await screen.findAllByRole('option');
+
+  expect(options).toHaveLength(2);
+
+  await userEvent.keyboard('{Enter}');
+
+  expect(input.getAttribute('value')).toBe('Canada');
+});
+
+test('autoselects first matching option when filtering', async () => {
+  render(ComboBoxMock);
+
+  const input = screen.getByTestId('select');
+
+  fireEvent.change(input, { target: { value: 'm' } });
+
+  const options = await screen.findAllByRole('option');
+
+  expect(options).toHaveLength(2);
+  expect(options[0].getAttribute('aria-selected')).toBe('true');
+  expect(options[1].getAttribute('aria-selected')).toBe('false');
+});
+
+test('does not autoselect first matching option when it is disabled', async () => {
+  render(ComboBoxMock);
+
+  const input = screen.getByTestId('select');
+
+  fireEvent.change(input, { target: { value: 'f' } });
+
+  const options = await screen.findAllByRole('option');
+
+  expect(options).toHaveLength(2);
+  expect(options[0].getAttribute('aria-selected')).toBe('false');
+  expect(options[1].getAttribute('aria-selected')).toBe('true');
+});
+
+test('previous option remains selected after clearing the input value', async () => {
+  render(ComboBoxMock);
+
+  const input = screen.getByTestId('select');
+
+  fireEvent.change(input, { target: { value: 'ca' } });
+
+  const canadaOption = await screen.findByRole('option', { name: 'Canada' });
+
+  expect(canadaOption.getAttribute('aria-selected')).toBe('true');
+
+  fireEvent.change(input, { target: { value: '' } });
+
+  const options = await screen.findAllByRole('option');
+  const mexicoOption = await screen.findByRole('option', { name: 'Mexico' });
+
+  expect(options).toHaveLength(6);
+  expect(mexicoOption.getAttribute('aria-selected')).toBe('true');
+});
+
+test('select options should immediately rerender when prop changes', async () => {
+  const { rerender } = render(<ComboBox onOptionChange={onChange} options={mockOptions} />);
+
+  const button = await screen.findByLabelText('toggle menu');
+
+  fireEvent.click(button);
+
+  let options = await screen.findAllByRole('option');
+
+  expect(options).toHaveLength(5);
+
+  rerender(
+    <ComboBox
+      onOptionChange={onChange}
+      options={[
+        { content: 'foo', value: 'foo' },
+        { content: 'bar', value: 'bar' },
+      ]}
+    />,
+  );
+
+  options = await screen.findAllByRole('option');
+
+  expect(options).toHaveLength(2);
+});
+
+test('up/down arrows should change select item selection', async () => {
+  render(ComboBoxMock);
+
+  const input = screen.getByTestId('select');
+
+  fireEvent.click(input);
+
+  const options = await screen.findAllByRole('option');
+
+  expect(options[1].getAttribute('aria-selected')).toBe('true');
+  expect(input.getAttribute('aria-activedescendant')).toEqual(options[1].id);
+
+  fireEvent.keyDown(input, { key: 'ArrowDown' });
+
+  expect(options[2].getAttribute('aria-selected')).toBe('true');
+  expect(input.getAttribute('aria-activedescendant')).toEqual(options[2].id);
+
+  fireEvent.keyDown(input, { key: 'ArrowUp' });
+  fireEvent.keyDown(input, { key: 'ArrowUp' });
+
+  expect(options[0].getAttribute('aria-selected')).toBe('true');
+  expect(input.getAttribute('aria-activedescendant')).toEqual(options[0].id);
+});
+
+test('home should select first select item', async () => {
+  render(ComboBoxMock);
+
+  const input = screen.getByTestId('select');
+
+  fireEvent.click(input);
+
+  const options = await screen.findAllByRole('option');
+
+  expect(options[1].getAttribute('aria-selected')).toBe('true');
+
+  fireEvent.keyDown(input, { key: 'Home' });
+
+  expect(options[0].getAttribute('aria-selected')).toBe('true');
+  expect(input.getAttribute('aria-activedescendant')).toEqual(options[0].id);
+});
+
+test('end should select last select item', async () => {
+  render(ComboBoxMock);
+
+  const input = screen.getByTestId('select');
+
+  fireEvent.click(input);
+
+  const options = await screen.findAllByRole('option');
+
+  expect(options[1].getAttribute('aria-selected')).toBe('true');
+
+  fireEvent.keyDown(input, { key: 'End' });
+
+  expect(options[5].getAttribute('aria-selected')).toBe('true');
+  expect(input.getAttribute('aria-activedescendant')).toEqual(options[5].id);
+});
+
+test('enter should trigger onOptionChange', async () => {
+  render(ComboBoxMock);
+
+  const input = screen.getByTestId('select');
+
+  fireEvent.click(input);
+
+  await act(async () => {
+    fireEvent.keyDown(input, { key: 'ArrowDown' });
+    fireEvent.keyDown(input, { key: 'Enter' });
+  });
+
+  expect(onChange).toHaveBeenCalledWith(mockOptions[2].value, mockOptions[2]);
+});
+
+test('clicking on select options should trigger onOptionChange', async () => {
+  render(ComboBoxMock);
+
+  const input = screen.getByTestId('select');
+
+  fireEvent.click(input);
+
+  const options = await screen.findAllByRole('option');
+
+  await act(async () => {
+    fireEvent.click(options[3]);
+  });
+
+  expect(onChange).toHaveBeenCalledWith(mockOptions[3].value, mockOptions[3]);
+  expect(onChange).toHaveBeenCalledTimes(1);
+});
+
+test('clicking on disabled select options should not trigger onItemClick', async () => {
+  render(ComboBoxMock);
+
+  const input = screen.getByTestId('select');
+
+  fireEvent.click(input);
+
+  const options = await screen.findAllByRole('option');
+
+  fireEvent.click(options[4]);
+
+  expect(onChange).not.toHaveBeenCalled();
+});
+
+test('opening the ComboBox triggers onOpen', async () => {
+  render(ComboBoxMock);
+
+  const button = await screen.findByLabelText('toggle menu');
+
+  await act(async () => {
+    fireEvent.click(button);
+  });
+
+  expect(onOpen).toHaveBeenCalled();
+});
+
+test('closing the ComboBox triggers onClose', async () => {
+  render(ComboBoxMock);
+
+  const button = await screen.findByLabelText('toggle menu');
+
+  await userEvent.click(button);
+
+  await userEvent.click(button);
+
+  expect(onClose).toHaveBeenCalled();
+});
+
+test('select should render select action', async () => {
+  render(ComboBoxMock);
+
+  const input = screen.getByTestId('select');
+
+  fireEvent.click(input);
+
+  expect(await screen.findByText('Remove Country')).toBeInTheDocument();
+});
+
+test('select action should call onActionClick', async () => {
+  render(ComboBoxMock);
+
+  const input = screen.getByTestId('select');
+
+  fireEvent.click(input);
+
+  const options = await screen.findAllByRole('option');
+
+  await act(async () => {
+    fireEvent.click(options[5]);
+  });
+
+  expect(onActionClick).toHaveBeenCalled();
+});
+
+test('select action supports icons', async () => {
+  render(ComboBoxMock);
+
+  const input = screen.getByTestId('select');
+
+  fireEvent.click(input);
+
+  const action = await screen.findByText('Remove Country');
+
+  expect(action.querySelector('svg')).toBeDefined();
+});
+
+test('select should render an error if one is provided', async () => {
+  render(
+    <FormGroup>
+      <ComboBox
+        error="Required"
+        label="Countries"
+        onOptionChange={onChange}
+        options={[
+          { value: 'us', content: 'United States' },
+          { value: 'mx', content: 'Mexico' },
+          { value: 'ca', content: 'Canada' },
+          { value: 'en', content: 'England' },
+          { value: 'fr', content: 'France', disabled: true },
+        ]}
+        placeholder="Choose country"
+        required
+      />
+    </FormGroup>,
+  );
+
+  expect(await screen.findByText('Required')).toBeInTheDocument();
+});
+
+test('select should have a required attr if set as required', async () => {
+  render(ComboBoxMock);
+
+  const input = await screen.findByTestId('select');
+
+  expect(input.getAttribute('required')).toBe('');
+});
+
+test('select should not have a required attr if not set as required', async () => {
+  render(
+    <ComboBox
+      label="Countries"
+      onOptionChange={onChange}
+      options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'en', content: 'England' },
+        { value: 'fr', content: 'France', disabled: true },
+      ]}
+      placeholder="Choose country"
+    />,
+  );
+
+  const inputs = await screen.findAllByLabelText('Countries');
+
+  expect(inputs[0].getAttribute('required')).toBeNull();
+});
+
+test('select should have a disabled attr if set as disabled', async () => {
+  render(
+    <ComboBox
+      disabled
+      label="Countries"
+      onOptionChange={onChange}
+      options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'en', content: 'England' },
+        { value: 'fr', content: 'France', disabled: true },
+      ]}
+      placeholder="Choose country"
+    />,
+  );
+
+  const inputs = await screen.findAllByLabelText('Countries');
+
+  expect(inputs[0].getAttribute('disabled')).toBe('');
+});
+
+test('select should not have a disabled attr if not set as disabled', async () => {
+  render(ComboBoxMock);
+
+  const inputs = await screen.findAllByLabelText('Countries *');
+
+  expect(inputs[0].getAttribute('disabled')).toBeNull();
+});
+
+test('appends * text to label if select is required', async () => {
+  render(
+    <ComboBox
+      label="Countries"
+      onOptionChange={onChange}
+      options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'en', content: 'England' },
+        { value: 'fr', content: 'France', disabled: true },
+      ]}
+      placeholder="Choose country"
+      required
+    />,
+  );
+
+  const label = await screen.findByText('Countries');
+
+  expect(label?.lastChild).toHaveTextContent('*');
+});
+
+test('does not forward styles', async () => {
+  render(
+    <ComboBox
+      className="test"
+      data-testid="select"
+      label="Countries"
+      onOptionChange={onChange}
+      options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'en', content: 'England' },
+        { value: 'fr', content: 'France', disabled: true },
+      ]}
+      placeholder="Choose country"
+      style={{ background: 'red' }}
+    />,
+  );
+
+  const input = screen.getByTestId('select');
+
+  fireEvent.click(input);
+
+  expect(input.getElementsByClassName('test')).toHaveLength(0);
+  expect(await screen.findByRole('listbox')).not.toHaveStyle('background: red');
+});
+
+test('should render a non filterable select', async () => {
+  render(
+    <ComboBox
+      filterable={false}
+      label="Countries"
+      onOptionChange={onChange}
+      options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'en', content: 'England' },
+        { value: 'fr', content: 'France', disabled: true },
+      ]}
+      placeholder="Choose country"
+    />,
+  );
+
+  const inputs = await screen.findAllByLabelText('Countries');
+
+  expect(inputs[0].getAttribute('readonly')).toBe('');
+});
+
+test('should accept a maxHeight prop', async () => {
+  render(
+    <ComboBox
+      label="Countries"
+      maxHeight={350}
+      onOptionChange={onChange}
+      options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'en', content: 'England' },
+        { value: 'fr', content: 'France', disabled: true },
+      ]}
+      placeholder="Choose country"
+    />,
+  );
+
+  const inputs = screen.getAllByLabelText('Countries');
+
+  fireEvent.click(inputs[0]);
+
+  const list = await screen.findByRole('listbox');
+
+  expect(list).toHaveStyleRule('max-height', remCalc(350));
+});
+
+test('should default max-height to 250', async () => {
+  render(ComboBoxMock);
+
+  const inputs = await screen.findAllByLabelText('Countries *');
+
+  fireEvent.click(inputs[0]);
+
+  const list = await screen.findByRole('listbox');
+
+  expect(list).toHaveStyleRule('max-height', remCalc(250));
+});
+
+test('should use the passed in ref object if provided', async () => {
+  const ref = createRef<HTMLInputElement>();
+
+  render(
+    <ComboBox
+      inputRef={ref}
+      label="Countries"
+      onOptionChange={onChange}
+      options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'en', content: 'England' },
+        { value: 'fr', content: 'France', disabled: true },
+      ]}
+      placeholder="Choose country"
+    />,
+  );
+
+  const inputs = await screen.findAllByLabelText('Countries');
+
+  expect(ref.current).toEqual(inputs[0]);
+});
+
+test('should call the provided refSetter if any', async () => {
+  let inputRef: HTMLInputElement | null = null;
+  const refSetter = (ref: HTMLInputElement) => (inputRef = ref);
+
+  render(
+    <ComboBox
+      inputRef={refSetter}
+      label="Countries"
+      onOptionChange={onChange}
+      options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'en', content: 'England' },
+        { value: 'fr', content: 'France', disabled: true },
+      ]}
+      placeholder="Choose country"
+    />,
+  );
+
+  const inputs = await screen.findAllByLabelText('Countries');
+
+  expect(inputRef).toEqual(inputs[0]);
+});
+
+test('options should allow icons', async () => {
+  const { container } = render(
+    <ComboBox
+      filterable={false}
+      label="Countries"
+      onOptionChange={onChange}
+      options={[
+        { value: 'us', content: 'United States', icon: <ArrowForwardIcon /> },
+        { value: 'mx', content: 'Mexico', icon: <ArrowBackIcon /> },
+      ]}
+      placeholder="Choose country"
+      value="mx"
+    />,
+  );
+
+  const inputs = await screen.findAllByLabelText('Countries');
+
+  await act(async () => {
+    await fireEvent.click(inputs[0]);
+  });
+
+  const svg = container.querySelectorAll('svg');
+
+  expect(svg).toHaveLength(5);
+});
+
+test('grouped select should render group labels, render uppercased', async () => {
+  render(GroupedComboBoxMock);
+
+  const button = await screen.findByLabelText('toggle menu');
+
+  await userEvent.click(button);
+
+  const label1 = screen.getByText('Label 1');
+  const label2 = screen.getByText('Label 2');
+
+  expect(label1).toBeInTheDocument();
+  expect(label1).toHaveStyle('text-transform: uppercase');
+
+  expect(label2).toBeInTheDocument();
+  expect(label2).toHaveStyle('text-transform: uppercase');
+});
+
+test('group labels should be grayed out', async () => {
+  render(GroupedComboBoxMock);
+
+  const input = screen.getByTestId('group-select');
+
+  await act(async () => {
+    fireEvent.click(input);
+  });
+
+  const label1 = screen.getByText('Label 1');
+  const label2 = screen.getByText('Label 2');
+
+  expect(label1).toHaveStyle('color: #8C93AD');
+  expect(label2).toHaveStyle('color: #8C93AD');
+});
+
+test('group labels should be skipped when using keyboard to navigate options', async () => {
+  render(GroupedComboBoxMock);
+
+  const input = screen.getByTestId('group-select');
+
+  fireEvent.click(input);
+
+  const options = await screen.findAllByRole('option');
+
+  expect(options).toHaveLength(6);
+  expect(options[1].getAttribute('aria-selected')).toBe('true');
+  expect(input.getAttribute('aria-activedescendant')).toEqual(options[1].id);
+
+  fireEvent.keyDown(input, { key: 'ArrowDown' });
+
+  expect(options[2].getAttribute('aria-selected')).toBe('true');
+  expect(input.getAttribute('aria-activedescendant')).toEqual(options[2].id);
+});
+
+test('group labels should still render when filtering options', async () => {
+  render(GroupedComboBoxMock);
+
+  const input = screen.getByTestId('group-select');
+  const button = await screen.findByLabelText('toggle menu');
+
+  fireEvent.click(button);
+
+  fireEvent.change(input, { target: { value: 'm' } });
+
+  const label1 = screen.getByText('Label 1');
+  const label2 = screen.getByText('Label 2');
+
+  const options = await screen.findAllByRole('option');
+
+  expect(options).toHaveLength(2);
+  expect(label1).toBeInTheDocument();
+  expect(label2).toBeInTheDocument();
+});
+
+test('select option should supports description', async () => {
+  render(ComboBoxWithOptionsDescriptions);
+
+  const input = screen.getByTestId('select');
+
+  fireEvent.click(input);
+
+  expect(await screen.findByText('US Description')).toBeInTheDocument();
+});
+
+test('select action should supports description', async () => {
+  render(ComboBoxWithOptionsDescriptions);
+
+  const input = screen.getByTestId('select');
+
+  fireEvent.click(input);
+
+  expect(await screen.findByText('Action Description')).toBeInTheDocument();
+});
+
+describe('aria-labelledby', () => {
+  it('should not be set if using aria-label', async () => {
+    render(<ComboBox aria-label="Countries" onOptionChange={onChange} options={mockOptions} />);
+
+    const input = await screen.findByRole('combobox');
+
+    expect(input).not.toHaveAttribute('aria-labelledby');
+  });
+
+  it('should set if using label', async () => {
+    render(
+      <ComboBox
+        label="Countries"
+        labelId="countries"
+        onOptionChange={onChange}
+        options={mockOptions}
+      />,
+    );
+
+    const input = await screen.findByRole('combobox');
+
+    expect(input).toHaveAttribute('aria-labelledby', 'countries');
+  });
+});
