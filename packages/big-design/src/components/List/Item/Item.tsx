@@ -21,6 +21,7 @@ export interface ListItemProps<T> extends ComponentPropsWithoutRef<'li'> {
   isIndeterminate?: boolean;
   isSelected?: boolean;
   item: DropdownItem | DropdownLinkItem | SelectOption<T> | SelectAction;
+  maxWidth?: number;
   getItemProps:
     | UseSelectPropGetters<any>['getItemProps']
     | UseComboboxPropGetters<any>['getItemProps'];
@@ -44,6 +45,7 @@ const StyleableListItem = typedMemo(
     isSelected = false,
     isIndeterminate = false,
     item,
+    maxWidth,
     getItemProps,
     addItem,
     removeItem,
@@ -74,6 +76,7 @@ const StyleableListItem = typedMemo(
         autoWidth={autoWidth}
         isAction={isAction}
         isHighlighted={isHighlighted}
+        maxWidth={maxWidth}
       >
         <Checkbox
           checked={isChecked}
@@ -100,6 +103,7 @@ const StyleableListItem = typedMemo(
         isAction={isAction}
         isHighlighted={isHighlighted}
         isSelected={isSelected}
+        maxWidth={maxWidth}
       >
         <Content isHighlighted={isHighlighted} item={item} />
         {isSelected && <CheckIcon color="primary" size="large" />}

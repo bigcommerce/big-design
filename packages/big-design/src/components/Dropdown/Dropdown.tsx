@@ -28,6 +28,7 @@ export const Dropdown = memo(
     className,
     disabled = false,
     maxHeight,
+    maxWidth,
     id,
     items,
     placement = 'bottom-start' as const,
@@ -171,6 +172,7 @@ export const Dropdown = memo(
                 isOpen={isOpen}
                 items={items}
                 maxHeight={maxHeight}
+                maxWidth={maxWidth}
                 role="menu"
                 update={update}
               />
@@ -196,6 +198,7 @@ export const Dropdown = memo(
               isOpen={isOpen}
               items={items}
               maxHeight={maxHeight}
+              maxWidth={maxWidth}
               role="menu"
               update={update}
             />

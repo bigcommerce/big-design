@@ -61,6 +61,17 @@ const pillTabsPropTable: Prop[] = [
       </>
     ),
   },
+  {
+    name: 'dropdownMaxWidth',
+    types: 'number',
+    description: (
+      <>
+        Forwarded to the overflow <NextLink href="/dropdown">Dropdown</NextLink> as{' '}
+        <code>maxWidth</code>. Caps the overflow menu width (in px) and wraps long pill titles
+        instead of letting them overflow.
+      </>
+    ),
+  },
 ];
 
 export const PillTabsPropTable: React.FC<PropTableWrapper> = (props) => (

@@ -33,7 +33,10 @@ export const StyledFlexItem = styled(FlexItem)<StyledFlexItemProps>`
 export const StyledGroupSeparator = styled.div<StyledFlexItemProps>`
   align-self: stretch;
   border-left: ${({ theme }) => theme.border.box};
-  margin: ${({ theme }) => `${theme.spacing.xxSmall} ${theme.spacing.xSmall}`};
+  // Left margin is 0 because the preceding pill already has marginRight="xSmall",
+  // which keeps the spacing on both sides of the separator symmetric.
+  margin: ${({ theme }) =>
+    `${theme.spacing.xxSmall} ${theme.spacing.xSmall} ${theme.spacing.xxSmall} 0`};
 
   ${(props) =>
     !props.isVisible &&

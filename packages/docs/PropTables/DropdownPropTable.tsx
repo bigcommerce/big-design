@@ -16,6 +16,12 @@ const dropdownProps: Prop[] = [
     description: 'Sets the max-height of the dropdown.',
   },
   {
+    name: 'maxWidth',
+    types: 'number',
+    description:
+      'Sets the max-width (in px) of each dropdown item and enables word wrapping. Useful when item content may be long.',
+  },
+  {
     name: 'placement',
     types: [
       'auto',

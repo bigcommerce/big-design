@@ -16,14 +16,14 @@ import { useAvailableWidth } from './useAvailableWidth';
 // - PILL_MARGIN_RIGHT is intentionally tied to the design-system's xSmall horizontal spacing token.
 //   At the time of writing, theme.spacing.xSmall resolves to 8px, which is what we hard-code here.
 // - SEPARATOR_WIDTH is the total horizontal space taken by the group separator:
-//   1px border + left margin (8px) + right margin (8px) = 17px.
+//   1px border + left margin (0px, pill's marginRight provides the gap) + right margin (8px) = 9px.
 //
 // These values are hard-coded to avoid pulling theme values at module load time and to keep the
 // width calculations referentially transparent. If the theme's xSmall spacing or the separator's
 // border/margin specs change, these constants MUST be updated to match the new design tokens to
 // prevent layout regressions in PillTabs.
 const PILL_MARGIN_RIGHT = 8;
-const SEPARATOR_WIDTH = 17;
+const SEPARATOR_WIDTH = 9;
 
 export interface PillTabItem {
   id: string;
@@ -52,6 +52,7 @@ export interface PillTabsProps {
   activePills: string[];
   onPillClick: (itemId: string) => void;
   dropdownItems?: DropdownProps['items'];
+  dropdownMaxWidth?: DropdownProps['maxWidth'];
 }
 
 // Type guard to determine if the provided items are PillTabItemGroup[]
@@ -65,6 +66,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({
   items,
   onPillClick,
   dropdownItems: customDropdownItems = [],
+  dropdownMaxWidth,
 }) => {
   // Stable refs for parent and dropdown
   const parentRef = useRef<HTMLDivElement>(null);
@@ -221,6 +223,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({
       <StyledFlexItem isVisible={dropdownItemGroups.length > 0} ref={refs.dropdown} role="listitem">
         <Dropdown
           items={dropdownItemGroups}
+          maxWidth={dropdownMaxWidth}
           toggle={
             <Button iconOnly={<MoreHorizIcon title="add" />} type="button" variant="subtle" />
           }
