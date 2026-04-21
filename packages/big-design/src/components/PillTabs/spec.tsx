@@ -803,6 +803,34 @@ describe('when using item groups', () => {
     expect(separator).not.toBeInTheDocument();
   });
 
+  test('separator has symmetric horizontal spacing', async () => {
+    const groups = [
+      {
+        items: [
+          { title: 'All', id: 'all' },
+          { title: 'Out of stock', id: 'out-of-stock' },
+        ],
+      },
+      {
+        items: [
+          { title: 'Millennials', id: 'millennials' },
+          { title: 'Elders', id: 'elders' },
+        ],
+      },
+    ];
+
+    render(<TestComponent activePills={[]} items={groups} onPillClick={jest.fn()} />);
+
+    // Preceding pill provides marginRight="xSmall"; separator must not also add
+    // left margin or the spacing becomes asymmetric.
+    const separator = await screen.findByRole('separator');
+
+    expect(separator).toHaveStyleRule(
+      'margin',
+      `${defaultTheme.spacing.xxSmall} ${defaultTheme.spacing.xSmall} ${defaultTheme.spacing.xxSmall} 0`,
+    );
+  });
+
   test('hides separator when group boundary pills are hidden', async () => {
     Object.defineProperties(window.HTMLElement.prototype, {
       offsetWidth: {

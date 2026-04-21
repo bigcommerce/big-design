@@ -32,6 +32,7 @@ export interface ListProps<T> extends ComponentPropsWithoutRef<'ul'> {
   items: DropdownProps['items'] | SelectProps<T>['options'];
   isDropdown?: boolean;
   maxHeight?: number;
+  maxWidth?: number;
   selectedItem?: SelectOption<T> | null;
   selectedItems?: Array<SelectOption<T>> | null;
   selectAll?: boolean;
@@ -67,6 +68,7 @@ const StyleableList = typedMemo(
     isOpen,
     items,
     maxHeight = 250,
+    maxWidth,
     selectedItem,
     selectedItems,
     selectAll,
@@ -132,6 +134,7 @@ const StyleableList = typedMemo(
               isIndeterminate={isSomeSelected && !isAllSelected}
               item={{ content: localization?.selectAll, value: 'select-all' }}
               key="select-all"
+              maxWidth={maxWidth}
               removeItem={handleUnselectAll}
             />
             <Box borderTop="box" marginHorizontal="medium" marginTop="xSmall" paddingTop="xSmall" />
@@ -142,6 +145,7 @@ const StyleableList = typedMemo(
         getItemProps,
         highlightedIndex,
         autoWidth,
+        maxWidth,
         selectedItems,
         handleSelectAll,
         handleUnselectAll,
@@ -165,11 +169,12 @@ const StyleableList = typedMemo(
               isSelected={false}
               item={action}
               key="action"
+              maxWidth={maxWidth}
             />
           </Box>
         );
       },
-      [getItemProps, autoWidth, highlightedIndex],
+      [getItemProps, autoWidth, highlightedIndex, maxWidth],
     );
 
     const renderItems = useCallback(
@@ -214,6 +219,7 @@ const StyleableList = typedMemo(
                 isSelected={!isDropdown && isOption(item) && selectedItem?.value === item.value}
                 item={item}
                 key={`${key}-${item.content}`}
+                maxWidth={maxWidth}
                 removeItem={removeItem}
               />
             );
@@ -227,6 +233,7 @@ const StyleableList = typedMemo(
         getItemProps,
         highlightedIndex,
         isDropdown,
+        maxWidth,
         removeItem,
         selectedItem,
         selectedItems,

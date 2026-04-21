@@ -190,6 +190,35 @@ test('should accept a maxHeight prop', async () => {
   expect(list).toHaveStyleRule('max-height', remCalc(350));
 });
 
+test('should accept a maxWidth prop and enable word wrapping on items', async () => {
+  render(
+    <Dropdown
+      items={[{ content: 'A very long content that should wrap inside the dropdown', onItemClick }]}
+      maxWidth={280}
+      toggle={<Button>Button</Button>}
+    />,
+  );
+
+  fireEvent.click(screen.getByRole('button'));
+
+  const [item] = await screen.findAllByRole('option');
+
+  expect(item).toHaveStyleRule('max-width', remCalc(280));
+  expect(item).toHaveStyleRule('overflow-wrap', 'break-word');
+  expect(item).toHaveStyleRule('white-space', 'normal');
+  expect(item).toHaveStyleRule('word-break', 'break-word');
+});
+
+test('should not apply max-width when prop is omitted', async () => {
+  render(DropdownMock);
+
+  fireEvent.click(screen.getByRole('button'));
+
+  const [item] = await screen.findAllByRole('option');
+
+  expect(item).not.toHaveStyleRule('max-width');
+});
+
 test('should default max-height to 250', async () => {
   render(DropdownMock);
 

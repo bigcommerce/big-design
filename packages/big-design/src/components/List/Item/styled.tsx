@@ -21,6 +21,14 @@ export const StyledListItem = styled.li<
   min-width: ${({ autoWidth, theme }) => (autoWidth ? 'auto' : theme.helpers.remCalc(256))};
   outline: none;
   padding: ${({ theme }) => `${theme.spacing.xxSmall} ${theme.spacing.medium}`};
+  ${({ maxWidth, theme }) =>
+    maxWidth !== undefined &&
+    css`
+      max-width: ${theme.helpers.remCalc(maxWidth)};
+      overflow-wrap: break-word;
+      white-space: normal;
+      word-break: break-word;
+    `}
 
   a {
     align-items: center;

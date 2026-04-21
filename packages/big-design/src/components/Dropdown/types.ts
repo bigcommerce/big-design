@@ -7,6 +7,7 @@ export interface DropdownProps extends Omit<ComponentPropsWithoutRef<'ul'>, 'chi
   items: Array<DropdownItem | DropdownLinkItem> | DropdownItemGroup[];
   selectedItem?: DropdownItem;
   maxHeight?: number;
+  maxWidth?: number;
   placement?: Placement;
   positionFixed?: boolean;
   toggle: ReactElement<{ id?: string }>;
