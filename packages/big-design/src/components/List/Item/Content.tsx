@@ -12,9 +12,10 @@ import { StyledLink } from './styled';
 interface ContentProps {
   item: DropdownItem | DropdownLinkItem | SelectOption<any> | SelectAction;
   isHighlighted: boolean;
+  wrapText?: boolean;
 }
 
-export const Content = memo(({ item, isHighlighted }: ContentProps) => {
+export const Content = memo(({ item, isHighlighted, wrapText = false }: ContentProps) => {
   const iconColor = useMemo(() => {
     if (item.disabled) {
       return 'secondary40';
@@ -67,13 +68,17 @@ export const Content = memo(({ item, isHighlighted }: ContentProps) => {
   const getContent = useMemo(() => {
     const { content, disabled, description, icon } = item;
 
+    // When text can wrap (maxWidth set) or a description is present, anchor the
+    // icon to the first line instead of vertically centering against all lines.
+    const alignIconToTop = Boolean(description) || wrapText;
+
     const baseContent = (
       <Flex alignItems="center" flexDirection="row">
         {icon && (
           <FlexItem
-            alignSelf={description ? 'flex-start' : undefined}
+            alignSelf={alignIconToTop ? 'flex-start' : undefined}
             paddingRight="xSmall"
-            paddingTop={description ? 'xSmall' : undefined}
+            paddingTop={alignIconToTop ? 'xSmall' : undefined}
           >
             {renderIcon}
           </FlexItem>
@@ -97,7 +102,7 @@ export const Content = memo(({ item, isHighlighted }: ContentProps) => {
     return disabled && 'tooltip' in item && item.tooltip
       ? wrapInTooltip(item.tooltip, finalContent)
       : finalContent;
-  }, [descriptionColor, item, renderIcon, wrapInLink, wrapInTooltip]);
+  }, [descriptionColor, item, renderIcon, wrapInLink, wrapInTooltip, wrapText]);
 
   return getContent;
 });

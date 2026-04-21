@@ -105,7 +105,7 @@ const StyleableListItem = typedMemo(
         isSelected={isSelected}
         maxWidth={maxWidth}
       >
-        <Content isHighlighted={isHighlighted} item={item} />
+        <Content isHighlighted={isHighlighted} item={item} wrapText={maxWidth !== undefined} />
         {isSelected && <CheckIcon color="primary" size="large" />}
       </StyledListItem>
     ),
