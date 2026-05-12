@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.10.1
+
+### Patch Changes
+
+- a0e4791: Upgrade Next.js to 15.5.16+ to patch CVE-2025-55184 / GHSA-rv78-f8rc-xrxh security vulnerability.
+
 ## 1.10.0
 
 ### Minor Changes
