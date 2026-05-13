@@ -1,10 +1,10 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { StyleableButton } from '../../../Button/Button';
 import { FlexItem } from '../../../Flex';
 
-export const StyledButton = styled(StyleableButton)`
+export const StyledButton = styled(StyleableButton).attrs(withDefaultTheme)`
   font-size: ${({ theme }) => theme.typography.fontSize.small};
   height: auto;
   line-height: ${({ theme }) => theme.lineHeight.small};
@@ -20,9 +20,6 @@ export const StyledButton = styled(StyleableButton)`
   }
 `;
 
-export const StyledFlexItem = styled(FlexItem)`
+export const StyledFlexItem = styled(FlexItem).attrs(withDefaultTheme)`
   overflow: hidden;
 `;
-
-StyledButton.defaultProps = { theme: defaultTheme };
-StyledFlexItem.defaultProps = { theme: defaultTheme };

@@ -9,48 +9,47 @@ import { GridItem } from '../Grid';
 
 import { StyledAlert, StyledHeader, StyledLink, StyledMessageItem } from './styled';
 
-export interface AlertProps extends Omit<SharedMessagingProps, 'actions'> {
+export interface AlertProps extends Omit<SharedMessagingProps, 'actions' | 'messages'> {
   key?: string;
+  messages?: SharedMessagingProps['messages'];
 }
 
-export const Alert: React.FC<AlertProps> = memo(({ className, style, header, ...props }) => {
-  const headerId = useId();
-  const filteredProps = excludePaddingProps(props);
-  const icon = useMemo(() => props.type && getMessagingIcon(props.type), [props.type]);
+export const Alert: React.FC<AlertProps> = memo(
+  ({ className, style, header, messages = [], type = 'success', ...props }) => {
+    const headerId = useId();
+    const messagingProps = { ...props, messages, type };
+    const filteredProps = excludePaddingProps(messagingProps);
+    const icon = useMemo(() => type && getMessagingIcon(type), [type]);
 
-  const renderedMessages = useMemo(
-    () =>
-      props.messages.map(({ text, link }, index) => (
-        <Box key={index}>
-          <StyledMessageItem>{text}</StyledMessageItem>{' '}
-          {link && <StyledLink {...link}>{link.text}</StyledLink>}
-        </Box>
-      )),
-    [props.messages],
-  );
+    const renderedMessages = useMemo(
+      () =>
+        messages.map(({ text, link }, index) => (
+          <Box key={index}>
+            <StyledMessageItem>{text}</StyledMessageItem>{' '}
+            {link && <StyledLink {...link}>{link.text}</StyledLink>}
+          </Box>
+        )),
+      [messages],
+    );
 
-  const renderedHeader = useMemo(
-    () => header && <StyledHeader id={headerId}>{header}</StyledHeader>,
-    [header, headerId],
-  );
+    const renderedHeader = useMemo(
+      () => header && <StyledHeader id={headerId}>{header}</StyledHeader>,
+      [header, headerId],
+    );
 
-  return (
-    <StyledAlert {...filteredProps} aria-labelledby={header && headerId} role="alert">
-      <GridItem gridArea="icon">{icon}</GridItem>
-      <GridItem gridArea="messages">
-        {renderedHeader}
-        {renderedMessages}
-      </GridItem>
-      {props.onClose && (
-        <GridItem>
-          <MessagingButton iconOnly={<CloseIcon size="large" />} onClick={props.onClose} />
+    return (
+      <StyledAlert {...filteredProps} aria-labelledby={header && headerId} role="alert">
+        <GridItem gridArea="icon">{icon}</GridItem>
+        <GridItem gridArea="messages">
+          {renderedHeader}
+          {renderedMessages}
         </GridItem>
-      )}
-    </StyledAlert>
-  );
-});
-
-Alert.defaultProps = {
-  messages: [],
-  type: 'success',
-};
+        {props.onClose && (
+          <GridItem>
+            <MessagingButton iconOnly={<CloseIcon size="large" />} onClick={props.onClose} />
+          </GridItem>
+        )}
+      </StyledAlert>
+    );
+  },
+);

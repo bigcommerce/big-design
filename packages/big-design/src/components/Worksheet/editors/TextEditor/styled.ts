@@ -1,9 +1,9 @@
-import { theme as defaultTheme, remCalc } from '@bigcommerce/big-design-theme';
+import { remCalc, withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { StyleableButton } from '../../../Button/Button';
 
-export const StyledInput = styled.input<{ isEdited: boolean }>`
+export const StyledInput = styled.input.attrs(withDefaultTheme)<{ isEdited: boolean }>`
   background-color: ${({ theme }) => theme.colors.inherit};
   border: 0;
   font-size: ${({ theme }) => theme.typography.fontSize.small};
@@ -33,5 +33,3 @@ export const ActionButton = styled(StyleableButton)`
     width: ${remCalc(16)};
   }
 `;
-
-StyledInput.defaultProps = { theme: defaultTheme };

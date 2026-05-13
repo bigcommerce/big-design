@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { Box } from '../Box';
@@ -100,14 +100,14 @@ const variantStyles = {
   },
 };
 
-export const StyledLozenge = styled(Box)<StyledLozengeProps>`
+export const StyledLozenge = styled(Box).attrs(withDefaultTheme)<StyledLozengeProps>`
   ${sharedLozengeStyles}
   padding-inline-end: ${({ theme, hasTooltip }) =>
     hasTooltip ? theme.spacing.xxSmall : theme.spacing.small};
   ${({ variant = 'new' }) => variantStyles[variant].idle};
 `;
 
-export const StyledLozengeButton = styled.button<StyledLozengeProps>`
+export const StyledLozengeButton = styled.button.attrs(withDefaultTheme)<StyledLozengeProps>`
   ${sharedLozengeStyles}
   padding-inline-end: ${({ theme }) => theme.spacing.xxSmall};
   user-select: none;
@@ -134,12 +134,3 @@ export const StyledLozengeButton = styled.button<StyledLozengeProps>`
     ${({ variant = 'new' }) => variantStyles[variant].focus};
   }
 `;
-
-StyledLozenge.defaultProps = {
-  theme: defaultTheme,
-  hasTooltip: false,
-};
-
-StyledLozengeButton.defaultProps = {
-  theme: defaultTheme,
-};

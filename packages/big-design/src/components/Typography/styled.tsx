@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import { ellipsis } from 'polished';
 import styled, { css } from 'styled-components';
 
@@ -57,7 +57,7 @@ const textModifiers = (props: TextProps) => css`
     `}
 `;
 
-export const StyledH0 = styled.h1<HeadingProps>`
+export const StyledH0 = styled.h1.attrs(withDefaultTheme)<HeadingProps>`
   ${(props) => commonTextStyles(props)};
   font-size: ${({ theme }) => theme.typography.fontSize.xxxLarge};
   font-weight: ${({ theme }) => theme.typography.fontWeight.extraLight};
@@ -66,7 +66,7 @@ export const StyledH0 = styled.h1<HeadingProps>`
   ${withMargins()};
 `;
 
-export const StyledH1 = styled.h1<HeadingProps>`
+export const StyledH1 = styled.h1.attrs(withDefaultTheme)<HeadingProps>`
   ${(props) => commonTextStyles(props)};
   font-size: ${({ theme }) => theme.typography.fontSize.xxLarge};
   font-weight: ${({ theme }) => theme.typography.fontWeight.light};
@@ -75,7 +75,7 @@ export const StyledH1 = styled.h1<HeadingProps>`
   ${withMargins()};
 `;
 
-export const StyledH2 = styled.h2<HeadingProps>`
+export const StyledH2 = styled.h2.attrs(withDefaultTheme)<HeadingProps>`
   ${(props) => commonTextStyles(props)};
   font-size: ${({ theme }) => theme.typography.fontSize.xLarge};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
@@ -83,7 +83,7 @@ export const StyledH2 = styled.h2<HeadingProps>`
   ${withMargins()};
 `;
 
-export const StyledH3 = styled.h3<HeadingProps>`
+export const StyledH3 = styled.h3.attrs(withDefaultTheme)<HeadingProps>`
   ${(props) => commonTextStyles(props)};
   font-size: ${({ theme }) => theme.typography.fontSize.large};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
@@ -92,7 +92,7 @@ export const StyledH3 = styled.h3<HeadingProps>`
   ${withMargins()};
 `;
 
-export const StyledH4 = styled.h4<HeadingProps>`
+export const StyledH4 = styled.h4.attrs(withDefaultTheme)<HeadingProps>`
   ${(props) => commonTextStyles(props)};
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
@@ -101,7 +101,7 @@ export const StyledH4 = styled.h4<HeadingProps>`
   ${withMargins()};
 `;
 
-export const StyledText = styled.p<TextProps>`
+export const StyledText = styled.p.attrs(withDefaultTheme)<TextProps>`
   ${(props) => commonTextStyles(props)}
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
@@ -115,7 +115,7 @@ export const StyledText = styled.p<TextProps>`
   ${withMargins()};
 `;
 
-export const StyledSmall = styled.p<TextProps>`
+export const StyledSmall = styled.p.attrs(withDefaultTheme)<TextProps>`
   ${(props) => commonTextStyles(props)};
   color: ${({ color, theme }) => (color ? theme.colors[color] : theme.colors.secondary60)};
   font-size: ${({ theme }) => theme.typography.fontSize.small};
@@ -131,7 +131,7 @@ export const StyledSmall = styled.p<TextProps>`
   ${withMargins()};
 `;
 
-export const StyledHR = styled.hr<HRProps>`
+export const StyledHR = styled.hr.attrs(withDefaultTheme)<HRProps>`
   ${withMargins()};
 
   border: 0;
@@ -139,12 +139,3 @@ export const StyledHR = styled.hr<HRProps>`
     ${({ color, theme }) =>
       color && color in theme.colors ? theme.colors[color] : theme.colors.secondary30};
 `;
-
-StyledH0.defaultProps = { theme: defaultTheme };
-StyledH1.defaultProps = { theme: defaultTheme };
-StyledH2.defaultProps = { theme: defaultTheme };
-StyledH3.defaultProps = { theme: defaultTheme };
-StyledH4.defaultProps = { theme: defaultTheme };
-StyledText.defaultProps = { theme: defaultTheme };
-StyledSmall.defaultProps = { theme: defaultTheme };
-StyledHR.defaultProps = { theme: defaultTheme };

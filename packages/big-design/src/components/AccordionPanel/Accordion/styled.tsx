@@ -1,4 +1,4 @@
-import { theme as defaultTheme, remCalc } from '@bigcommerce/big-design-theme';
+import { remCalc, withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { withTransition } from '../../../helpers/transitions';
@@ -13,7 +13,9 @@ interface StyledAccordionContentProps {
   iconLeft: React.ReactNode;
 }
 
-export const StyledAccordionButton = styled(StyleableButton)<StyledAccordionButtonProps>`
+export const StyledAccordionButton = styled(StyleableButton).attrs(
+  withDefaultTheme,
+)<StyledAccordionButtonProps>`
   border-top: ${({ theme }) => theme.border.box};
   border-radius: 0;
   padding: ${({ theme }) => theme.spacing.xLarge};
@@ -49,10 +51,9 @@ export const StyledAccordionButton = styled(StyleableButton)<StyledAccordionButt
   }
 `;
 
-export const StyledAccordionContent = styled(Box)<StyledAccordionContentProps>`
+export const StyledAccordionContent = styled(Box).attrs(
+  withDefaultTheme,
+)<StyledAccordionContentProps>`
   padding: ${({ theme }) => theme.spacing.xLarge}};
   padding-left: ${({ iconLeft, theme }) => (iconLeft ? remCalc(60) : theme.spacing.xLarge)};
 `;
-
-StyledAccordionButton.defaultProps = { theme: defaultTheme };
-StyledAccordionContent.defaultProps = { theme: defaultTheme };

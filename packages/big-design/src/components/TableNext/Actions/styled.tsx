@@ -1,10 +1,12 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { FlexProps } from '../../Flex';
 import { withFlexedContainer } from '../../Flex/withFlex';
 
-export const StyledFlex = styled.div<FlexProps & { stickyHeader?: boolean }>`
+export const StyledFlex = styled.div.attrs(withDefaultTheme)<
+  FlexProps & { stickyHeader?: boolean }
+>`
   ${withFlexedContainer()}
 
   background-color: ${({ theme }) => theme.colors.white};
@@ -21,5 +23,3 @@ export const StyledFlex = styled.div<FlexProps & { stickyHeader?: boolean }>`
       }
     `}
 `;
-
-StyledFlex.defaultProps = { theme: defaultTheme };

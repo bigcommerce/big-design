@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { withMargins } from '../../helpers';
@@ -8,7 +8,7 @@ import { StyledTextareaWrapper } from '../Textarea/styled';
 
 import { FormProps } from './Form';
 
-export const StyledForm = styled.form<FormProps>`
+export const StyledForm = styled.form.attrs(withDefaultTheme)<FormProps>`
   ${withMargins()}
 
   ${({ theme }) => theme.breakpoints.tablet} {
@@ -19,5 +19,3 @@ export const StyledForm = styled.form<FormProps>`
     }
   }
 `;
-
-StyledForm.defaultProps = { theme: defaultTheme };

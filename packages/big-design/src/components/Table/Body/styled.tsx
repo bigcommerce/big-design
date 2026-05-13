@@ -1,9 +1,9 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { BodyProps } from './Body';
 
-export const StyledTableBody = styled.tbody<BodyProps>`
+export const StyledTableBody = styled.tbody.attrs(withDefaultTheme)<BodyProps>`
   ${({ theme, withFirstRowBorder }) =>
     withFirstRowBorder &&
     css`
@@ -12,5 +12,3 @@ export const StyledTableBody = styled.tbody<BodyProps>`
       }
     `}
 `;
-
-StyledTableBody.defaultProps = { theme: defaultTheme };

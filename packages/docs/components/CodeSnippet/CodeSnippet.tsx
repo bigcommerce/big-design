@@ -40,8 +40,11 @@ function getCode(children: React.ReactNode) {
   return formatCode(children);
 }
 
-export const CodeSnippet: React.FC<EditorProps> = (props) => {
-  const { children, language = 'tsx', showControls = true } = props;
+export const CodeSnippet: React.FC<EditorProps> = ({
+  children,
+  language = 'tsx',
+  showControls = true,
+}) => {
   const { theme: editorTheme } = useContext(CodeEditorContext);
   const code = getCode(children);
 
@@ -73,9 +76,4 @@ export const CodeSnippet: React.FC<EditorProps> = (props) => {
       />
     </Box>
   );
-};
-
-CodeSnippet.defaultProps = {
-  language: 'tsx',
-  showControls: true,
 };

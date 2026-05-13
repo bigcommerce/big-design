@@ -2,6 +2,7 @@ import { theme } from '@bigcommerce/big-design-theme';
 import { render } from '@testing-library/react';
 import React from 'react';
 import 'jest-styled-components';
+import { ThemeProvider } from 'styled-components';
 
 import { Badge } from './index';
 
@@ -20,6 +21,25 @@ test('render default Badge', () => {
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.secondary60}`);
+});
+
+test('uses overrides from a custom theme', () => {
+  const customTheme = {
+    ...theme,
+    colors: {
+      ...theme.colors,
+      secondary60: 'rgb(1, 2, 3)',
+    },
+  };
+
+  const { container } = render(
+    <ThemeProvider theme={customTheme}>
+      <Badge label="Badge" />
+    </ThemeProvider>,
+  );
+
+  expect(container.firstChild).toHaveStyle('background-color: rgb(1, 2, 3)');
+  expect(container.firstChild).toHaveStyle(`border-radius: ${theme.borderRadius.normal}`);
 });
 
 test('render success Badge', () => {

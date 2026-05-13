@@ -1,9 +1,9 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { MarginProps, withMargins } from '../../helpers';
 
-export const StyledTableFigure = styled.figure<MarginProps>`
+export const StyledTableFigure = styled.figure.attrs(withDefaultTheme)<MarginProps>`
   margin: 0;
   max-width: 100%;
   overflow-x: auto;
@@ -16,13 +16,10 @@ export const StyledTableFigure = styled.figure<MarginProps>`
   ${withMargins()};
 `;
 
-export const StyledTable = styled.table`
+export const StyledTable = styled.table.attrs(withDefaultTheme)`
   border-color: transparent;
   border-spacing: 0;
   color: ${({ theme }) => theme.colors.secondary70};
   text-align: left;
   width: 100%;
 `;
-
-StyledTableFigure.defaultProps = { theme: defaultTheme };
-StyledTable.defaultProps = { theme: defaultTheme };

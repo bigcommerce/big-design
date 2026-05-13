@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
 
 import { getBorderStyle } from '../../utils';
@@ -10,7 +10,7 @@ import { TextProps } from '../Typography/types';
 
 import { MessageProps } from './Message';
 
-export const StyledMessage = styled(Grid)<MessageProps>`
+export const StyledMessage = styled(Grid).attrs(withDefaultTheme)<MessageProps>`
   ${({ theme }) => theme.shadow.raised}
 
   grid-gap: ${({ theme }) => theme.spacing.small};
@@ -31,31 +31,27 @@ export const StyledMessage = styled(Grid)<MessageProps>`
   ${({ theme, type }) => type && getBorderStyle(type, theme)};
 `;
 
-export const StyledHeader = styled(StyleableH4)`
+export const StyledHeader = styled(StyleableH4).attrs(withDefaultTheme)`
   line-height: ${({ theme }) => theme.spacing.large};
   margin-bottom: ${({ theme }) => theme.spacing.none};
 `;
 
 export const StyledMessageItem = styled<StyledComponent<'span', DefaultTheme, Partial<TextProps>>>(
   StyleableSmall,
-).attrs({ as: 'span' })`
+)
+  .attrs({ as: 'span' })
+  .attrs(withDefaultTheme)`
   color: ${({ theme }) => theme.colors.secondary70};
   vertical-align: middle;
 `;
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled(Link).attrs(withDefaultTheme)`
   font-size: ${({ theme }) => theme.typography.fontSize.small};
   vertical-align: middle;
 `;
 
-export const StyledActionsWrapper = styled(Flex)`
+export const StyledActionsWrapper = styled(Flex).attrs(withDefaultTheme)`
   margin-bottom: -${({ theme }) => theme.spacing.xSmall};
   margin-left: -${({ theme }) => theme.spacing.xxSmall};
   margin-right: -${({ theme }) => theme.spacing.xxSmall};
 `;
-
-StyledMessage.defaultProps = { theme: defaultTheme };
-StyledHeader.defaultProps = { theme: defaultTheme };
-StyledMessageItem.defaultProps = { theme: defaultTheme };
-StyledLink.defaultProps = { theme: defaultTheme };
-StyledActionsWrapper.defaultProps = { theme: defaultTheme };

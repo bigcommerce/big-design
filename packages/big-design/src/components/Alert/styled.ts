@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
 
 import { getBorderStyle } from '../../utils';
@@ -9,7 +9,7 @@ import { TextProps } from '../Typography/types';
 
 import { AlertProps } from './Alert';
 
-export const StyledAlert = styled(Grid)<AlertProps>`
+export const StyledAlert = styled(Grid).attrs(withDefaultTheme)<AlertProps>`
   ${({ theme }) => theme.shadow.floating}
 
   animation: ${({ theme }) => theme.keyframes.fadeIn} .5s ease-in-out;
@@ -37,24 +37,21 @@ export const StyledAlert = styled(Grid)<AlertProps>`
   ${({ theme, type }) => type && getBorderStyle(type, theme)};
 `;
 
-export const StyledHeader = styled(StyleableH4)`
+export const StyledHeader = styled(StyleableH4).attrs(withDefaultTheme)`
   line-height: ${({ theme }) => theme.spacing.medium};
   margin-bottom: ${({ theme }) => theme.spacing.xxSmall};
 `;
 
 export const StyledMessageItem = styled<StyledComponent<'span', DefaultTheme, Partial<TextProps>>>(
   StyleableSmall,
-).attrs({ as: 'span' })`
+)
+  .attrs({ as: 'span' })
+  .attrs(withDefaultTheme)`
   color: ${({ theme }) => theme.colors.secondary70};
   vertical-align: middle;
 `;
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled(Link).attrs(withDefaultTheme)`
   font-size: ${({ theme }) => theme.typography.fontSize.small};
   vertical-align: middle;
 `;
-
-StyledAlert.defaultProps = { theme: defaultTheme };
-StyledHeader.defaultProps = { theme: defaultTheme };
-StyledMessageItem.defaultProps = { theme: defaultTheme };
-StyledLink.defaultProps = { theme: defaultTheme };

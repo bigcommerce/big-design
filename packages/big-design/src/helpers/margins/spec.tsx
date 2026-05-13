@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import 'jest-styled-components';
 import { render } from '@testing-library/react';
 import React from 'react';
@@ -6,11 +6,9 @@ import styled from 'styled-components';
 
 import { excludeMarginProps, MarginProps, withMargins } from './margins';
 
-const TestComponent = styled.div<MarginProps>`
+const TestComponent = styled.div.attrs(withDefaultTheme)<MarginProps>`
   ${withMargins()};
 `;
-
-TestComponent.defaultProps = { theme: defaultTheme };
 
 test('margin', () => {
   const { container } = render(<TestComponent margin="medium" />);
