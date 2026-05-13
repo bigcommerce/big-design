@@ -1,9 +1,9 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { withMargins } from '../../helpers';
 
-export const StyledUl = styled.ul.attrs({ theme: defaultTheme })`
+export const StyledUl = styled.ul.attrs(withDefaultTheme)`
   ${({ theme }) => theme.helpers.listReset}
 
   ${withMargins()};

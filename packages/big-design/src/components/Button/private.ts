@@ -1,11 +1,11 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { StyleableButton as _StyleableButton, ButtonProps } from './Button';
 
 export const StyleableButton = _StyleableButton;
 
-export const MessagingButton = styled(_StyleableButton)<ButtonProps>`
+export const MessagingButton = styled(_StyleableButton).attrs(withDefaultTheme)<ButtonProps>`
   background-color: transparent;
   border: ${({ theme }) => theme.border.none};
   color: ${({ theme }) => theme.colors.secondary70};
@@ -29,5 +29,3 @@ export const MessagingButton = styled(_StyleableButton)<ButtonProps>`
     color: ${({ theme }) => theme.colors.secondary30};
   }
 `;
-
-MessagingButton.defaultProps = { theme: defaultTheme };

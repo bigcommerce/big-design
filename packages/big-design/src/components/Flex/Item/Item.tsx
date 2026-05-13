@@ -11,8 +11,26 @@ interface PrivateProps {
 
 export type FlexItemProps = BoxProps & FlexedItemProps;
 
-const RawFlexItem: React.FC<FlexItemProps & PrivateProps> = ({ as, forwardedRef, ...props }) => (
-  <StyledFlexItem forwardedAs={as} ref={forwardedRef} {...props} />
+const RawFlexItem: React.FC<FlexItemProps & PrivateProps> = ({
+  alignSelf = 'auto',
+  as,
+  flexBasis = 'auto',
+  flexGrow = 0,
+  flexOrder = 0,
+  flexShrink = 1,
+  forwardedRef,
+  ...props
+}) => (
+  <StyledFlexItem
+    alignSelf={alignSelf}
+    flexBasis={flexBasis}
+    flexGrow={flexGrow}
+    flexOrder={flexOrder}
+    flexShrink={flexShrink}
+    forwardedAs={as}
+    ref={forwardedRef}
+    {...props}
+  />
 );
 
 export const FlexItem = forwardRef<HTMLDivElement, FlexItemProps>((props, ref) => (

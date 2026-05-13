@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { StyleableButton } from '../Button/private';
@@ -12,7 +12,7 @@ interface StyledFlexItemProps {
   isVisible: boolean;
 }
 
-export const StyledPillTab = styled(StyleableButton)<StyledPillTabProps>`
+export const StyledPillTab = styled(StyleableButton).attrs(withDefaultTheme)<StyledPillTabProps>`
   ${(props) =>
     props.isActive &&
     css`
@@ -20,7 +20,7 @@ export const StyledPillTab = styled(StyleableButton)<StyledPillTabProps>`
     `}
 `;
 
-export const StyledFlexItem = styled(FlexItem)<StyledFlexItemProps>`
+export const StyledFlexItem = styled(FlexItem).attrs(withDefaultTheme)<StyledFlexItemProps>`
   ${(props) =>
     !props.isVisible &&
     css`
@@ -30,7 +30,7 @@ export const StyledFlexItem = styled(FlexItem)<StyledFlexItemProps>`
     `}
 `;
 
-export const StyledGroupSeparator = styled.div<StyledFlexItemProps>`
+export const StyledGroupSeparator = styled.div.attrs(withDefaultTheme)<StyledFlexItemProps>`
   align-self: stretch;
   border-left: ${({ theme }) => theme.border.box};
   // Left margin is 0 because the preceding pill already has marginRight="xSmall",
@@ -46,7 +46,3 @@ export const StyledGroupSeparator = styled.div<StyledFlexItemProps>`
       z-index: ${({ theme }) => -theme.zIndex.tooltip};
     `}
 `;
-
-StyledPillTab.defaultProps = { theme: defaultTheme };
-StyledFlexItem.defaultProps = { theme: defaultTheme };
-StyledGroupSeparator.defaultProps = { theme: defaultTheme };

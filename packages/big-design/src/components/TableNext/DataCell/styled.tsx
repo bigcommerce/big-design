@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { withPaddings } from '../../../helpers';
@@ -6,7 +6,7 @@ import { withTableColumnDisplay } from '../helpers';
 
 import { DataCellProps } from './DataCell';
 
-export const StyledTableDataCell = styled.td<DataCellProps>`
+export const StyledTableDataCell = styled.td.attrs(withDefaultTheme)<DataCellProps>`
   ${withTableColumnDisplay()}
   ${withPaddings()}
   
@@ -50,7 +50,7 @@ export const StyledTableDataCell = styled.td<DataCellProps>`
     `};
 `;
 
-export const StyledTableDataCheckbox = styled(StyledTableDataCell)`
+export const StyledTableDataCheckbox = styled(StyledTableDataCell).attrs(withDefaultTheme)`
   ${withTableColumnDisplay()}
 
   background-color: ${({ theme }) => theme.colors.white};
@@ -73,6 +73,3 @@ export const StyledTableDataCheckbox = styled(StyledTableDataCell)`
       white-space: nowrap;
     `};
 `;
-
-StyledTableDataCell.defaultProps = { theme: defaultTheme };
-StyledTableDataCheckbox.defaultProps = { theme: defaultTheme };

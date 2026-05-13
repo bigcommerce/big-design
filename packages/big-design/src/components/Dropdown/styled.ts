@@ -1,10 +1,8 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { Box } from '../Box';
 
-export const StyledBox = styled(Box)`
+export const StyledBox = styled(Box).attrs(withDefaultTheme)`
   position: relative;
 `;
-
-StyledBox.defaultProps = { theme: defaultTheme };

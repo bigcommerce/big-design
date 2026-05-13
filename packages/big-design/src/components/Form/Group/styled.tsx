@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { Flex } from '../../Flex';
@@ -18,15 +18,15 @@ const SharedGroupStyles = css`
   }
 `;
 
-export const StyledError = styled(Flex)`
+export const StyledError = styled(Flex).attrs(withDefaultTheme)`
   flex-direction: row;
 `;
 
-export const StyledGroup = styled.div`
+export const StyledGroup = styled.div.attrs(withDefaultTheme)`
   ${SharedGroupStyles};
 `;
 
-export const StyledInlineGroup = styled.div<StyledProps>`
+export const StyledInlineGroup = styled.div.attrs(withDefaultTheme)<StyledProps>`
   ${SharedGroupStyles};
 
   ${({ theme }) => theme.breakpoints.tablet} {
@@ -51,7 +51,3 @@ export const StyledInlineGroup = styled.div<StyledProps>`
       `}
   }
 `;
-
-StyledError.defaultProps = { theme: defaultTheme };
-StyledGroup.defaultProps = { theme: defaultTheme };
-StyledInlineGroup.defaultProps = { theme: defaultTheme };

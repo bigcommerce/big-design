@@ -27,13 +27,24 @@ const LoadingSpinner = () => (
 );
 
 const RawButton: React.FC<ButtonProps & PrivateProps> = memo(
-  ({ forwardedRef, isLoading, disabled, ...props }) => {
+  ({
+    actionType = 'normal',
+    forwardedRef,
+    isLoading = false,
+    disabled,
+    mobileWidth = '100%',
+    variant = 'primary',
+    ...props
+  }) => {
     return (
       <StyledButton
         className="bd-button"
         {...props}
+        actionType={actionType}
         disabled={isLoading || disabled}
+        mobileWidth={mobileWidth}
         ref={forwardedRef}
+        variant={variant}
       >
         {isLoading ? <LoadingSpinner /> : null}
         <ContentWrapper isLoading={isLoading}>
@@ -55,15 +66,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, style, ...props }, ref) => <RawButton {...props} forwardedRef={ref} />,
 );
 
-const defaultProps = {
-  actionType: 'normal' as const,
-  isLoading: false,
-  mobileWidth: '100%' as const,
-  variant: 'primary' as const,
-};
-
 Button.displayName = 'Button';
-Button.defaultProps = { ...defaultProps };
 
 StyleableButton.displayName = 'StyleableButton';
-StyleableButton.defaultProps = { ...defaultProps };

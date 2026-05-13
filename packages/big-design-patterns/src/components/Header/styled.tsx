@@ -1,8 +1,8 @@
 import { Flex } from '@bigcommerce/big-design';
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
-export const StyledBackLink = styled.a.attrs({ theme: defaultTheme })`
+export const StyledBackLink = styled.a.attrs(withDefaultTheme)`
   color: ${({ theme }) => theme.colors.secondary50};
   display: inline-flex;
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
@@ -22,7 +22,7 @@ export const StyledBackLink = styled.a.attrs({ theme: defaultTheme })`
   }
 `;
 
-export const StyledActionsWrapper = styled(Flex).attrs({ theme: defaultTheme })`
+export const StyledActionsWrapper = styled(Flex).attrs(withDefaultTheme)`
   & > .bd-button + .bd-button {
     margin-block-start ${({ theme }) => theme.spacing.none};
     margin-inline-start: ${({ theme }) => theme.spacing.none};

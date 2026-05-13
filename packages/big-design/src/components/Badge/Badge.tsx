@@ -9,8 +9,13 @@ export interface BadgeProps extends ComponentPropsWithoutRef<'span'>, MarginProp
   variant?: 'danger' | 'secondary' | 'success' | 'warning' | 'primary';
 }
 
-export const Badge: React.FC<BadgeProps> = memo(({ className, style, label, ...props }) =>
-  typeof label === 'string' ? <StyledBadge {...props}>{label}</StyledBadge> : null,
+export const Badge: React.FC<BadgeProps> = memo(
+  ({ className, style, label, variant = 'secondary', ...props }) =>
+    typeof label === 'string' ? (
+      <StyledBadge {...props} variant={variant}>
+        {label}
+      </StyledBadge>
+    ) : null,
 );
 
 Badge.displayName = 'Badge';

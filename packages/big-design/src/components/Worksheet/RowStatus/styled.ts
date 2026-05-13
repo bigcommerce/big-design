@@ -1,7 +1,10 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
-export const Status = styled.td<{ isInvalid?: boolean; isSelected?: boolean }>`
+export const Status = styled.td.attrs(withDefaultTheme)<{
+  isInvalid?: boolean;
+  isSelected?: boolean;
+}>`
   background-color: ${({ theme }) => theme.colors.secondary30};
   border-top: ${({ theme }) => `${theme.helpers.remCalc(0.5)} solid ${theme.colors.secondary30}`};
   box-sizing: border-box;
@@ -22,5 +25,3 @@ export const Status = styled.td<{ isInvalid?: boolean; isSelected?: boolean }>`
       border: ${({ theme }) => `${theme.helpers.remCalc(0.5)} solid ${theme.colors.primary}`};
     `};
 `;
-
-Status.defaultProps = { theme: defaultTheme };

@@ -1,7 +1,7 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
-export const StyledLi = styled.li.attrs({ theme: defaultTheme })`
+export const StyledLi = styled.li.attrs(withDefaultTheme)`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.secondary20};
   border-radius: ${({ theme }) => theme.borderRadius.normal};

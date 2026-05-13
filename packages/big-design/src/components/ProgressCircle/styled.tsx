@@ -1,28 +1,35 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css, keyframes } from 'styled-components';
 
 import { CIRCLE_CIRCUMFERENCES, CIRCLE_DIMENSIONS, CIRCLE_STROKE_WIDTHS } from './constants';
 import { ProgressCircleProps } from './ProgressCircle';
 
-export const StyledProgressCircle = styled.svg<ProgressCircleProps>`
+export const StyledProgressCircle = styled.svg.attrs(withDefaultTheme)<ProgressCircleProps>`
   ${({ size, theme }) => css`
     height: ${theme.helpers.remCalc(getDimensions(size))};
     width: ${theme.helpers.remCalc(getDimensions(size))};
   `}
 `;
 
-export const StyledCircle = styled.circle.attrs<ProgressCircleProps>(({ size, theme }) => ({
-  // rem not usable for circle svg cx, cy, and r values in Safari 14
-  cx: theme.helpers.emCalc(getDimensions(size) / 2),
-  cy: theme.helpers.emCalc(getDimensions(size) / 2),
-  r: theme.helpers.emCalc(getDimensions(size) / 2 - getStrokeWidth(size) / 2),
-}))<ProgressCircleProps>`
+export const StyledCircle = styled.circle
+  .attrs<ProgressCircleProps>((props) => {
+    const { size } = props;
+    const { theme } = withDefaultTheme(props);
+
+    return {
+      // rem not usable for circle svg cx, cy, and r values in Safari 14
+      cx: theme.helpers.emCalc(getDimensions(size) / 2),
+      cy: theme.helpers.emCalc(getDimensions(size) / 2),
+      r: theme.helpers.emCalc(getDimensions(size) / 2 - getStrokeWidth(size) / 2),
+    };
+  })
+  .attrs(withDefaultTheme)<ProgressCircleProps>`
   fill: transparent;
   stroke-width: ${({ size, theme }) => theme.helpers.remCalc(getStrokeWidth(size))};
   stroke: ${({ theme }) => theme.colors.secondary20};
 `;
 
-export const StyledCircleFiller = styled(StyledCircle)<ProgressCircleProps>`
+export const StyledCircleFiller = styled(StyledCircle).attrs(withDefaultTheme)<ProgressCircleProps>`
   stroke-dasharray: ${({ size }) => getStrokeDashArray(size)};
   stroke: ${({ theme }) => theme.colors.primary};
   transform-origin: 50% 50%;
@@ -42,12 +49,14 @@ export const StyledCircleFiller = styled(StyledCircle)<ProgressCircleProps>`
         `};
 `;
 
-export const StyledText = styled.text.attrs(() => ({
-  dominantBaseline: 'central',
-  textAnchor: 'middle',
-  x: '50%',
-  y: '50%',
-}))<ProgressCircleProps>`
+export const StyledText = styled.text
+  .attrs(() => ({
+    dominantBaseline: 'central',
+    textAnchor: 'middle',
+    x: '50%',
+    y: '50%',
+  }))
+  .attrs(withDefaultTheme)<ProgressCircleProps>`
   font-size: ${({ size, theme }) =>
     size === 'large' ? theme.typography.fontSize.large : theme.typography.fontSize.small};
   font-weight: ${({ size, theme }) =>
@@ -83,8 +92,3 @@ function getStrokeWidth(size: ProgressCircleProps['size'] = 'medium') {
 function fillLength(percent: number, size: ProgressCircleProps['size'] = 'medium') {
   return CIRCLE_CIRCUMFERENCES[size] - (percent / 100) * CIRCLE_CIRCUMFERENCES[size];
 }
-
-StyledProgressCircle.defaultProps = { theme: defaultTheme };
-StyledCircle.defaultProps = { theme: defaultTheme };
-StyledCircleFiller.defaultProps = { theme: defaultTheme };
-StyledText.defaultProps = { theme: defaultTheme };

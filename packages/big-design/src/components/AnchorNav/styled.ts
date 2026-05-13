@@ -1,7 +1,7 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
-export const StyledAnchorNavList = styled.nav`
+export const StyledAnchorNavList = styled.nav.attrs(withDefaultTheme)`
   position: sticky;
   inset-block-start: 0;
   width: ${({ theme }) => theme.helpers.remCalc(266)};
@@ -10,7 +10,7 @@ export const StyledAnchorNavList = styled.nav`
 
   @media (min-width: ${({ theme }) => theme.breakpointValues.tablet}) {
     display: block;
-    margin-inline-end: ${defaultTheme.spacing.xLarge};
+    margin-inline-end: ${({ theme }) => theme.spacing.xLarge};
   }
 
   & > ul {
@@ -25,20 +25,20 @@ export const StyledAnchorNavList = styled.nav`
       box-sizing: border-box;
 
       & > a {
-        color: ${defaultTheme.colors.primary};
+        color: ${({ theme }) => theme.colors.primary};
         text-decoration: none;
         display: block;
-        padding: ${defaultTheme.spacing.small} ${defaultTheme.spacing.large};
+        padding: ${({ theme }) => `${theme.spacing.small} ${theme.spacing.large}`};
         border-inline-start: ${({ theme }) => theme.spacing.xxSmall} solid transparent;
 
         &:hover {
-          background-color: ${defaultTheme.colors.primary10};
+          background-color: ${({ theme }) => theme.colors.primary10};
         }
 
         &.active {
-          color: ${defaultTheme.colors.secondary70};
+          color: ${({ theme }) => theme.colors.secondary70};
           border-inline-start: ${({ theme }) => theme.spacing.xxSmall} solid
-            ${defaultTheme.colors.primary};
+            ${({ theme }) => theme.colors.primary};
 
           &:hover {
             background-color: transparent;
@@ -48,5 +48,3 @@ export const StyledAnchorNavList = styled.nav`
     }
   }
 `;
-
-StyledAnchorNavList.defaultProps = { theme: defaultTheme };

@@ -1,17 +1,17 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { withTransition } from '../../helpers/transitions';
 
 import { TextareaProps } from './Textarea';
 
-export const StyledTextareaWrapper = styled.span<TextareaProps>`
+export const StyledTextareaWrapper = styled.span.attrs(withDefaultTheme)<TextareaProps>`
   align-items: center;
   display: flex;
   position: relative;
 `;
 
-export const StyledTextarea = styled.textarea<TextareaProps>`
+export const StyledTextarea = styled.textarea.attrs(withDefaultTheme)<TextareaProps>`
   ${withTransition(['border', 'box-shadow'])}
 
   background-color: ${({ theme }) => theme.colors.white};
@@ -63,6 +63,3 @@ export const StyledTextarea = styled.textarea<TextareaProps>`
     font-size: ${({ theme }) => theme.typography.fontSize.medium};
   }
 `;
-
-StyledTextarea.defaultProps = { theme: defaultTheme };
-StyledTextareaWrapper.defaultProps = { theme: defaultTheme };

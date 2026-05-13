@@ -1,7 +1,7 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
-export const MultiSelectWrapper = styled.div`
+export const MultiSelectWrapper = styled.div.attrs(withDefaultTheme)`
   span {
     background-color: ${({ theme }) => theme.colors.inherit};
     border: none;
@@ -31,5 +31,3 @@ export const MultiSelectWrapper = styled.div`
     font-size: ${({ theme }) => theme.typography.fontSize.small};
   }
 `;
-
-MultiSelectWrapper.defaultProps = { theme: defaultTheme };

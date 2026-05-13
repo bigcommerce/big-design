@@ -6,10 +6,12 @@
   "scripts": {
     "build": "turbo build",
     "build:icons": "turbo build --filter @bigcommerce/big-design-icons",
-    "ci:test": "turbo test -- --maxWorkers=2 --coverage",
-    "lint": "turbo run lint",
+    "ci:test": "pnpm run check:react-19 && turbo test -- --maxWorkers=2 --coverage",
+    "check:react-19": "node scripts/check-react-19-compat.js",
+    "lint": "pnpm run check:react-19 && turbo run lint",
     "start": "turbo start --filter @bigcommerce/docs",
     "test": "turbo test",
+    "test:react-19-smoke": "node scripts/react-19-smoke.js",
     "typecheck": "turbo typecheck"
   },
   "devDependencies": {

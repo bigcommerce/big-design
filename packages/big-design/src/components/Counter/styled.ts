@@ -1,10 +1,10 @@
-import { theme as defaultTheme, remCalc } from '@bigcommerce/big-design-theme';
+import { remCalc, withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { StyleableButton } from '../Button/private';
 import { StyledInput, StyledInputWrapper, StyledInputWrapperProps } from '../Input/private';
 
-export const StyledCounterButton = styled(StyleableButton)`
+export const StyledCounterButton = styled(StyleableButton).attrs(withDefaultTheme)`
   background-color: inherit;
   border: none;
   color: ${({ theme }) => theme.colors.secondary60};
@@ -23,17 +23,15 @@ export const StyledCounterButton = styled(StyleableButton)`
   }
 `;
 
-export const StyledCounterWrapper = styled(StyledInputWrapper)<StyledInputWrapperProps>`
+export const StyledCounterWrapper = styled(StyledInputWrapper).attrs(
+  withDefaultTheme,
+)<StyledInputWrapperProps>`
   padding: 0 ${({ theme }) => theme.spacing.xxSmall};
   width: ${remCalc(125)};
 `;
 
-export const StyledCounterInput = styled(StyledInput)`
+export const StyledCounterInput = styled(StyledInput).attrs(withDefaultTheme)`
   text-align: center;
   padding: 0;
   overflow: hidden;
 `;
-
-StyledCounterButton.defaultProps = { theme: defaultTheme };
-StyledCounterInput.defaultProps = { theme: defaultTheme };
-StyledCounterWrapper.defaultProps = { theme: defaultTheme };

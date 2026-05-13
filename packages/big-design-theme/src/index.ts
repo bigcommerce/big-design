@@ -49,6 +49,60 @@ export const createTheme = (customOptions: Partial<ThemeOptions> = {}): ThemeInt
 
 export const theme: ThemeInterface = createTheme();
 
+type UnknownRecord = Record<string, unknown>;
+
+const mergedThemeCache = new WeakMap<object, ThemeInterface>();
+
+const isPlainObject = (value: unknown): value is UnknownRecord => {
+  if (typeof value !== 'object' || value === null || Array.isArray(value)) {
+    return false;
+  }
+
+  const prototype = Object.getPrototypeOf(value);
+
+  return prototype === Object.prototype || prototype === null;
+};
+
+const mergeThemeValue = (baseValue: unknown, overrideValue: unknown): unknown => {
+  if (!isPlainObject(baseValue) || !isPlainObject(overrideValue)) {
+    return overrideValue === undefined ? baseValue : overrideValue;
+  }
+
+  const result = Object.fromEntries(Object.entries(baseValue));
+
+  Object.keys(overrideValue).forEach((key) => {
+    result[key] = mergeThemeValue(result[key], overrideValue[key]);
+  });
+
+  return result;
+};
+
+export const getDefaultedTheme = (customTheme: unknown): ThemeInterface => {
+  if (!isPlainObject(customTheme) || Object.keys(customTheme).length === 0) {
+    return theme;
+  }
+
+  if (Object.is(customTheme, theme)) {
+    return theme;
+  }
+
+  const cachedTheme = mergedThemeCache.get(customTheme);
+
+  if (cachedTheme) {
+    return cachedTheme;
+  }
+
+  const mergedTheme = Object.assign({}, theme, mergeThemeValue(theme, customTheme));
+
+  mergedThemeCache.set(customTheme, mergedTheme);
+
+  return mergedTheme;
+};
+
+export const withDefaultTheme = (props: { theme?: unknown }): { theme: ThemeInterface } => ({
+  theme: getDefaultedTheme(props.theme),
+});
+
 declare module 'styled-components' {
   export interface DefaultTheme extends ThemeInterface {} // eslint-disable-line
 }

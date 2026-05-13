@@ -1,5 +1,5 @@
 import { Flex, Grid } from '@bigcommerce/big-design';
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css, CSSProperties } from 'styled-components';
 
 export interface Background {
@@ -9,7 +9,7 @@ export interface Background {
   backgroundRepeat?: CSSProperties['backgroundRepeat'];
 }
 
-export const StyledPageBackground = styled(Grid).attrs({ theme: defaultTheme })<{
+export const StyledPageBackground = styled(Grid).attrs(withDefaultTheme)<{
   background?: Background;
 }>`
   position: relative;
@@ -34,7 +34,7 @@ export const StyledPageBackground = styled(Grid).attrs({ theme: defaultTheme })<
   }}
 `;
 
-export const StyledPage = styled(Flex).attrs({ theme: defaultTheme })`
+export const StyledPage = styled(Flex).attrs(withDefaultTheme)`
   margin: 0 auto;
   width: 100%;
 

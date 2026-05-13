@@ -1,7 +1,7 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
-export const StyledUl = styled.ul<{ show?: boolean }>`
+export const StyledUl = styled.ul.attrs(withDefaultTheme)<{ show?: boolean }>`
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -12,5 +12,3 @@ export const StyledUl = styled.ul<{ show?: boolean }>`
       theme.helpers.addValues(theme.spacing.xLarge, theme.spacing.xxSmall)};
   }
 `;
-
-StyledUl.defaultProps = { theme: defaultTheme };

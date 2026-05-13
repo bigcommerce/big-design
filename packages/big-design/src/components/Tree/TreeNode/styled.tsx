@@ -1,14 +1,14 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { Flex, FlexItem } from '../../Flex';
 import { StyleableText } from '../../Typography/private';
 
-export const StyledLi = styled.li`
+export const StyledLi = styled.li.attrs(withDefaultTheme)`
   outline: 0;
 `;
 
-export const StyledArrowWrapper = styled(FlexItem)<{ expanded: boolean }>`
+export const StyledArrowWrapper = styled(FlexItem).attrs(withDefaultTheme)<{ expanded: boolean }>`
   z-index: 1;
 
   ${({ expanded }) =>
@@ -18,7 +18,7 @@ export const StyledArrowWrapper = styled(FlexItem)<{ expanded: boolean }>`
     `};
 `;
 
-export const StyledSelectableWrapper = styled(FlexItem)`
+export const StyledSelectableWrapper = styled(FlexItem).attrs(withDefaultTheme)`
   padding: 1px;
   z-index: 1;
 `;
@@ -34,7 +34,7 @@ const sharedAfterStyles = css`
   z-index: 0;
 `;
 
-export const StyledFlex = styled(Flex)<{ selected?: boolean }>`
+export const StyledFlex = styled(Flex).attrs(withDefaultTheme)<{ selected?: boolean }>`
   cursor: pointer;
   min-height: ${({ theme }) =>
     theme.helpers.addValues(theme.spacing.xxLarge, theme.spacing.xSmall)};
@@ -65,24 +65,16 @@ export const StyledFlex = styled(Flex)<{ selected?: boolean }>`
     `}
 `;
 
-export const StyledFlexItem = styled(FlexItem)`
+export const StyledFlexItem = styled(FlexItem).attrs(withDefaultTheme)`
   z-index: 1;
 `;
 
-export const StyledGap = styled.div`
+export const StyledGap = styled.div.attrs(withDefaultTheme)`
   flex-shrink: 0;
   height: ${({ theme }) => theme.spacing.xLarge};
   width: ${({ theme }) => theme.spacing.xLarge};
 `;
 
-export const StyledText = styled(StyleableText)`
+export const StyledText = styled(StyleableText).attrs(withDefaultTheme)`
   z-index: 1;
 `;
-
-StyledArrowWrapper.defaultProps = { theme: defaultTheme };
-StyledFlex.defaultProps = { theme: defaultTheme };
-StyledGap.defaultProps = { theme: defaultTheme };
-StyledLi.defaultProps = { theme: defaultTheme };
-StyledSelectableWrapper.defaultProps = { theme: defaultTheme };
-StyledFlexItem.defaultProps = { theme: defaultTheme };
-StyledText.defaultProps = { theme: defaultTheme };
