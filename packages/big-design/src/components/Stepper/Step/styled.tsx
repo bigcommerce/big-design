@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import { hideVisually } from 'polished';
 import styled from 'styled-components';
 
@@ -7,7 +7,7 @@ import { Flex } from '../../Flex';
 import { Grid } from '../../Grid';
 import { StyleableText } from '../../Typography/private';
 
-export const StyledStep = styled(Grid)`
+export const StyledStep = styled(Grid).attrs(withDefaultTheme)`
   flex-basis: 100%;
   gap: ${({ theme }) => theme.spacing.xSmall};
   grid-template-areas:
@@ -23,13 +23,13 @@ export const StyledStep = styled(Grid)`
   }
 `;
 
-export const StyledSrOnlyText = styled.span`
+export const StyledSrOnlyText = styled.span.attrs(withDefaultTheme)`
   ${({ theme }) => theme.breakpoints.tablet} {
     ${hideVisually()}
   }
 `;
 
-export const StyledLight = styled(Flex)`
+export const StyledLight = styled(Flex).attrs(withDefaultTheme)`
   border-radius: ${({ theme }) => theme.spacing.medium};
   color: ${({ theme }) => theme.colors.white};
   grid-area: light;
@@ -42,19 +42,13 @@ export const StyledLight = styled(Flex)`
   }
 `;
 
-export const StyledDash = styled(Box)`
+export const StyledDash = styled(Box).attrs(withDefaultTheme)`
   align-self: center;
   height: ${({ theme }) => theme.helpers.remCalc(2)};
   grid-area: dash;
   width: 100%;
 `;
 
-export const StyledText = styled(StyleableText)`
+export const StyledText = styled(StyleableText).attrs(withDefaultTheme)`
   grid-area: text;
 `;
-
-StyledStep.defaultProps = { theme: defaultTheme };
-StyledSrOnlyText.defaultProps = { theme: defaultTheme };
-StyledLight.defaultProps = { theme: defaultTheme };
-StyledDash.defaultProps = { theme: defaultTheme };
-StyledText.defaultProps = { theme: defaultTheme };

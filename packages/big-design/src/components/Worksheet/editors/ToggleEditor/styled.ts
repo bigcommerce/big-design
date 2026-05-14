@@ -1,9 +1,9 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { StyleableButton } from '../../../Button/private';
 
-export const StyledExpandButton = styled(StyleableButton)`
+export const StyledExpandButton = styled(StyleableButton).attrs(withDefaultTheme)`
   position: absolute;
   top: 0;
   height: 100%;
@@ -21,5 +21,3 @@ export const StyledExpandButton = styled(StyleableButton)`
     }
   }
 `;
-
-StyledExpandButton.defaultProps = { theme: defaultTheme };

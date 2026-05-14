@@ -1,7 +1,10 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
-export const StyledButton = styled.button<{ isActive: boolean; isIconType: boolean }>`
+export const StyledButton = styled.button.attrs(withDefaultTheme)<{
+  isActive: boolean;
+  isIconType: boolean;
+}>`
   align-items: center;
   appearance: none;
   background-color: ${({ isActive, theme }) =>
@@ -78,5 +81,3 @@ export const StyledButton = styled.button<{ isActive: boolean; isIconType: boole
     align-items: center;
 `}
 `;
-
-StyledButton.defaultProps = { theme: defaultTheme };

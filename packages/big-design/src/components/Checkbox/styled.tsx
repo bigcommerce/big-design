@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import { hideVisually } from 'polished';
 import styled, { css } from 'styled-components';
 
@@ -15,20 +15,20 @@ export interface StyledLabelProps {
   disabled?: boolean;
 }
 
-export const CheckboxLabelContainer = styled.div<{ hasContent?: boolean }>`
+export const CheckboxLabelContainer = styled.div.attrs(withDefaultTheme)<{ hasContent?: boolean }>`
   margin-left: ${({ hasContent, theme }) => (hasContent ? theme.spacing.xSmall : 0)};
 `;
 
-export const CheckboxContainer = styled.div`
+export const CheckboxContainer = styled.div.attrs(withDefaultTheme)`
   align-items: flex-start;
   display: flex;
 `;
 
-export const HiddenCheckbox = styled.input`
+export const HiddenCheckbox = styled.input.attrs(withDefaultTheme)`
   ${hideVisually()}
 `;
 
-export const StyledCheckbox = styled.label<StyledCheckboxProps>`
+export const StyledCheckbox = styled.label.attrs(withDefaultTheme)<StyledCheckboxProps>`
   ${withTransition(['border-color', 'background', 'box-shadow', 'color', 'opacity'])}
 
   align-items: center;
@@ -73,8 +73,3 @@ export const StyledCheckbox = styled.label<StyledCheckboxProps>`
     opacity: ${({ checked, isIndeterminate }) => (checked || isIndeterminate ? 1 : 0)};
   }
 `;
-
-StyledCheckbox.defaultProps = { theme: defaultTheme };
-CheckboxLabelContainer.defaultProps = { theme: defaultTheme };
-CheckboxContainer.defaultProps = { theme: defaultTheme };
-HiddenCheckbox.defaultProps = { theme: defaultTheme };

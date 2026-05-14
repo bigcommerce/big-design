@@ -42,7 +42,7 @@ const PageActionBar = ({ actionBar }: Required<Pick<PageProps, 'actionBar'>>) =>
 const PageMessage = ({ message }: Required<Pick<PageProps, 'message'>>) => {
   const messageProps = excludeMarginProps(excludePaddingProps(message));
 
-  if ('messages' in messageProps && messageProps.messages.length > 0) {
+  if (messageProps.messages && messageProps.messages.length > 0) {
     return <Message {...messageProps} />;
   }
 

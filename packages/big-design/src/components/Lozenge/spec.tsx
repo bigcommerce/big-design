@@ -120,7 +120,7 @@ test('render Lozenge as button (popover variant)', () => {
 test('StyledLozenge adjusts end padding when hasTooltip is true/false', () => {
   const { rerender, container } = render(<StyledLozenge>Pad</StyledLozenge>);
 
-  // defaultProps has hasTooltip=false
+  // hasTooltip defaults to false
   expect(container.firstChild).toHaveStyleRule('padding-inline-end', theme.spacing.small);
 
   rerender(<StyledLozenge hasTooltip>Pad</StyledLozenge>);

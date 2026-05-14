@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import 'jest-styled-components';
 import { render } from '@testing-library/react';
 import React from 'react';
@@ -7,11 +7,9 @@ import styled from 'styled-components';
 import { withDisplay } from './display';
 import { DisplayProps } from './types';
 
-const TestComponent = styled.div<DisplayProps>`
+const TestComponent = styled.div.attrs(withDefaultTheme)<DisplayProps>`
   ${withDisplay()};
 `;
-
-TestComponent.defaultProps = { theme: defaultTheme };
 
 test('display', () => {
   const { container } = render(<TestComponent display="inline-block" />);

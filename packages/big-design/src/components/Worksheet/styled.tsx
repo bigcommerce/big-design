@@ -1,9 +1,9 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { InternalWorksheetColumn } from './types';
 
-export const Table = styled.table<{
+export const Table = styled.table.attrs(withDefaultTheme)<{
   minWidth?: number;
   hasStaticWidth: boolean;
   hasExpandableRows: boolean;
@@ -43,9 +43,7 @@ export const Table = styled.table<{
     `}
 `;
 
-Table.defaultProps = { theme: defaultTheme };
-
-export const Header = styled.th<{
+export const Header = styled.th.attrs(withDefaultTheme)<{
   columnType: InternalWorksheetColumn<unknown>['type'];
   columnWidth: InternalWorksheetColumn<unknown>['width'];
 }>`
@@ -82,5 +80,3 @@ export const StyledBox = styled.div<{ containerHeight?: number | string }>`
       height: ${typeof containerHeight === 'number' ? `${containerHeight}px` : containerHeight};
     `}
 `;
-
-Header.defaultProps = { theme: defaultTheme };

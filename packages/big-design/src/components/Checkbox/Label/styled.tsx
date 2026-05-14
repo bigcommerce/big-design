@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import { hideVisually } from 'polished';
 import { ComponentPropsWithoutRef } from 'react';
 import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
@@ -13,9 +13,11 @@ export interface StyledLabelProps extends ComponentPropsWithoutRef<'label'> {
 
 export const StyledLabel = styled<
   StyledComponent<'label' | 'p', DefaultTheme, Partial<TextProps>> & StyledLabelProps
->(StyleableText).attrs({
-  as: 'label',
-})<StyledLabelProps>`
+>(StyleableText)
+  .attrs({
+    as: 'label',
+  })
+  .attrs(withDefaultTheme)<StyledLabelProps>`
   cursor: pointer;
 
   ${({ disabled }) =>
@@ -26,5 +28,3 @@ export const StyledLabel = styled<
 
   ${({ hidden }) => hidden && hideVisually()}
 `;
-
-StyledLabel.defaultProps = { theme: defaultTheme };

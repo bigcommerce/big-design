@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { StyleableButton } from '../Button/private';
@@ -10,11 +10,11 @@ interface TabProps extends Omit<TabItem, 'title'> {
   activeTab?: string;
 }
 
-export const StyledTabs = styled(Flex)`
+export const StyledTabs = styled(Flex).attrs(withDefaultTheme)`
   overflow: auto;
 `;
 
-export const StyledTab = styled(StyleableButton)<TabProps>`
+export const StyledTab = styled(StyleableButton).attrs(withDefaultTheme)<TabProps>`
   border: none;
   border-bottom: ${({ theme }) => theme.spacing.xxSmall} solid transparent;
   border-bottom-color: ${(props) =>
@@ -34,10 +34,3 @@ export const StyledTab = styled(StyleableButton)<TabProps>`
       }
     `}
 `;
-
-StyledTab.defaultProps = {
-  theme: defaultTheme,
-  variant: 'subtle',
-};
-
-StyledTabs.defaultProps = { theme: defaultTheme };

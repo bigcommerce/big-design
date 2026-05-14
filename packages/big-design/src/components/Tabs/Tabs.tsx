@@ -54,6 +54,7 @@ export const Tabs: React.FC<TabsProps> = memo(
             onClick={handleOnTabClick}
             role="tab"
             tabIndex={id === activeTab ? -1 : 0}
+            variant="subtle"
           >
             {title}
           </StyledTab>

@@ -1,7 +1,7 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
-export const StyledGroupHeader = styled.li`
+export const StyledGroupHeader = styled.li.attrs(withDefaultTheme)`
   align-items: center;
   box-sizing: border-box;
   color: ${({ theme }) => theme.colors.secondary50};
@@ -20,5 +20,3 @@ export const StyledGroupHeader = styled.li`
     margin-top: ${({ theme }) => theme.spacing.medium};
   }
 `;
-
-StyledGroupHeader.defaultProps = { theme: defaultTheme };

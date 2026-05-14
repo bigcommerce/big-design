@@ -1,9 +1,9 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { ListProps } from './List';
 
-export const StyledListOverflowWrapper = styled.div`
+export const StyledListOverflowWrapper = styled.div.attrs(withDefaultTheme)`
   ${({ theme }) => theme.shadow.raised}
 
   height: 100%;
@@ -11,9 +11,7 @@ export const StyledListOverflowWrapper = styled.div`
   overflow: hidden;
 `;
 
-StyledListOverflowWrapper.defaultProps = { theme: defaultTheme };
-
-export const StyledList = styled.ul<Partial<ListProps<unknown>>>`
+export const StyledList = styled.ul.attrs(withDefaultTheme)<Partial<ListProps<unknown>>>`
   ${({ theme }) => theme.shadow.raised};
 
   background-color: ${({ theme }) => theme.colors.white};
@@ -25,5 +23,3 @@ export const StyledList = styled.ul<Partial<ListProps<unknown>>>`
   padding: ${({ theme }) => theme.spacing.xSmall} 0;
   z-index: ${({ theme }) => theme.zIndex.popover};
 `;
-
-StyledList.defaultProps = { theme: defaultTheme };

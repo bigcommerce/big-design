@@ -1,7 +1,7 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
-export const StyledFieldset = styled.fieldset`
+export const StyledFieldset = styled.fieldset.attrs(withDefaultTheme)`
   border: none;
   margin: 0 0 ${({ theme }) => theme.spacing.xLarge};
   padding: 0;
@@ -10,5 +10,3 @@ export const StyledFieldset = styled.fieldset`
     margin: 0;
   }
 `;
-
-StyledFieldset.defaultProps = { theme: defaultTheme };

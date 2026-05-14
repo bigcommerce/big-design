@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { withTransition } from '../../helpers/transitions';
@@ -9,7 +9,7 @@ interface StyledButtonProps extends ButtonProps {
   isOpen?: boolean;
 }
 
-export const StyledButton = styled(StyleableButton)<StyledButtonProps>`
+export const StyledButton = styled(StyleableButton).attrs(withDefaultTheme)<StyledButtonProps>`
   height: auto;
   line-height: inherit;
   margin-left: -${({ theme }) => theme.spacing.xxSmall};
@@ -37,5 +37,3 @@ export const StyledButton = styled(StyleableButton)<StyledButtonProps>`
       `}
   }
 `;
-
-StyledButton.defaultProps = { theme: defaultTheme };

@@ -159,3 +159,11 @@ test('renders localized labels', async () => {
 
   expect(button).toBeInTheDocument();
 });
+
+test('renders default messages and type when omitted', () => {
+  const { container } = render(<Message />);
+
+  expect(container.firstChild).toHaveStyle(
+    `border-left: ${theme.spacing.xxSmall} solid ${theme.colors.success}`,
+  );
+});

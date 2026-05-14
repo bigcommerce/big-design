@@ -1,9 +1,9 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { Flex } from '../Flex';
 
-export const StyledAccordionPanelWrapper = styled(Flex)`
+export const StyledAccordionPanelWrapper = styled(Flex).attrs(withDefaultTheme)`
   flex-direction: column;
 
   margin-bottom: -${({ theme }) => theme.spacing.medium};
@@ -16,5 +16,3 @@ export const StyledAccordionPanelWrapper = styled(Flex)`
     margin-right: -${({ theme }) => theme.spacing.xLarge};
   }
 `;
-
-StyledAccordionPanelWrapper.defaultProps = { theme: defaultTheme };

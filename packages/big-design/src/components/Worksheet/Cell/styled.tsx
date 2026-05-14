@@ -1,4 +1,4 @@
-import { Colors, theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { Colors, withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { Cell, WorksheetItem } from '../types';
@@ -15,7 +15,7 @@ interface StyledCellProps<Item> {
   type: Cell<Item>['type'];
 }
 
-export const StyledCell = styled.td<StyledCellProps<WorksheetItem>>`
+export const StyledCell = styled.td.attrs(withDefaultTheme)<StyledCellProps<WorksheetItem>>`
   position: relative;
   background-color: ${({ theme }) => theme.colors.inherit};
   border: ${({ theme }) => `${theme.helpers.remCalc(0.5)} solid ${theme.colors.secondary30}`};
@@ -128,7 +128,7 @@ export const StyledCell = styled.td<StyledCellProps<WorksheetItem>>`
     `}
 `;
 
-export const AutoFillHandler = styled.div<{ isVisible: boolean }>`
+export const AutoFillHandler = styled.div.attrs(withDefaultTheme)<{ isVisible: boolean }>`
   position: absolute;
   border: ${({ theme, isVisible }) =>
     `${theme.helpers.remCalc(1)} solid ${
@@ -145,7 +145,7 @@ export const AutoFillHandler = styled.div<{ isVisible: boolean }>`
   display: none;
 `;
 
-export const CellNote = styled.div<{ color: keyof Colors }>`
+export const CellNote = styled.div.attrs(withDefaultTheme)<{ color: keyof Colors }>`
   width: 0;
   height: 0;
   border-left: 8px solid transparent;
@@ -157,7 +157,3 @@ export const CellNote = styled.div<{ color: keyof Colors }>`
   right: -5px;
   transform: rotate(45deg);
 `;
-
-StyledCell.defaultProps = { theme: defaultTheme };
-AutoFillHandler.defaultProps = { theme: defaultTheme };
-CellNote.defaultProps = { theme: defaultTheme };

@@ -123,3 +123,11 @@ test('does not forward styles', () => {
   expect(container.getElementsByClassName('test')).toHaveLength(0);
   expect(alert).not.toHaveStyle('background: red');
 });
+
+test('renders default messages and type when omitted', () => {
+  render(<Alert />);
+
+  expect(screen.getByRole('alert')).toHaveStyle(
+    `border-left: ${theme.spacing.xxSmall} solid ${theme.colors.success}`,
+  );
+});

@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { StatusMessageProps, StatusMessageVariantType } from './StatusMessage';
@@ -174,7 +174,7 @@ const generateIllustration = (variant: StatusMessageVariantType) => {
   return `${iconDataUrl}, ${patternDataUrl}, ${gradient}`;
 };
 
-export const StyledStatusMessage = styled.div`
+export const StyledStatusMessage = styled.div.attrs(withDefaultTheme)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -182,11 +182,9 @@ export const StyledStatusMessage = styled.div`
   text-align: center;
 `;
 
-StyledStatusMessage.defaultProps = {
-  theme: defaultTheme,
-};
-
-export const StyledStatusIllustration = styled.figure<Omit<StatusMessageProps, 'message'>>`
+export const StyledStatusIllustration = styled.figure.attrs(withDefaultTheme)<
+  Omit<StatusMessageProps, 'message'>
+>`
   width: ${({ theme }) => theme.helpers.remCalc(120)};
   height: ${({ theme }) => theme.helpers.remCalc(120)};
   border-radius: 50%;
@@ -204,9 +202,3 @@ export const StyledStatusIllustration = styled.figure<Omit<StatusMessageProps, '
       margin-block-start: ${theme.helpers.remCalc(60)};
     `}
 `;
-
-StyledStatusIllustration.defaultProps = {
-  theme: defaultTheme,
-  variant: 'info',
-  size: 'panel',
-};

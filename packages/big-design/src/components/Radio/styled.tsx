@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import { hideVisually } from 'polished';
 import styled, { css } from 'styled-components';
 
@@ -9,20 +9,20 @@ interface StyledRadioProps {
   disabled?: boolean;
 }
 
-export const StyledRadioLabelContainer = styled.div`
+export const StyledRadioLabelContainer = styled.div.attrs(withDefaultTheme)`
   margin-left: ${({ theme }) => theme.spacing.xSmall};
 `;
 
-export const StyledRadioContainer = styled.div`
+export const StyledRadioContainer = styled.div.attrs(withDefaultTheme)`
   align-items: flex-start;
   display: flex;
 `;
 
-export const StyledHiddenRadio = styled.input`
+export const StyledHiddenRadio = styled.input.attrs(withDefaultTheme)`
   ${hideVisually()}
 `;
 
-export const StyledRadio = styled.label<StyledRadioProps>`
+export const StyledRadio = styled.label.attrs(withDefaultTheme)<StyledRadioProps>`
   ${withTransition(['border-color', 'box-shadow'])}
 
   background-color: ${({ disabled, theme }) =>
@@ -80,8 +80,3 @@ export const StyledRadio = styled.label<StyledRadioProps>`
       }
     `}
 `;
-
-StyledRadio.defaultProps = { theme: defaultTheme };
-StyledRadioLabelContainer.defaultProps = { theme: defaultTheme };
-StyledRadioContainer.defaultProps = { theme: defaultTheme };
-StyledHiddenRadio.defaultProps = { theme: defaultTheme };

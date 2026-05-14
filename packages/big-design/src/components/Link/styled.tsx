@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import { ellipsis } from 'polished';
 import styled, { css } from 'styled-components';
 
@@ -7,7 +7,7 @@ import { withTransition } from '../../helpers/transitions';
 
 import { LinkProps } from './Link';
 
-export const StyledLink = styled.a<LinkProps & { isExternal?: boolean }>`
+export const StyledLink = styled.a.attrs(withDefaultTheme)<LinkProps & { isExternal?: boolean }>`
   ${withMargins()};
   ${withTransition(['color'], '70ms')}
   ${(props) => props.ellipsis && ellipsis()};
@@ -38,5 +38,3 @@ export const StyledLink = styled.a<LinkProps & { isExternal?: boolean }>`
       }
     `}
 `;
-
-StyledLink.defaultProps = { theme: defaultTheme };
