@@ -8,7 +8,7 @@
     "build:icons": "turbo build --filter @bigcommerce/big-design-icons",
     "ci:test": "pnpm run check:react-19 && turbo test -- --maxWorkers=2 --coverage",
     "check:react-19": "node scripts/check-react-19-compat.js",
-    "lint": "pnpm run check:react-19 && turbo run lint",
+    "lint": "turbo run lint",
     "start": "turbo start --filter @bigcommerce/docs",
     "test": "turbo test",
     "test:react-19-smoke": "node scripts/react-19-smoke.js",
