@@ -30,6 +30,7 @@ export interface ActionsProps<T> {
   setSelectedParentRowsCrossPages: Dispatch<SetStateAction<Set<string>>>;
   selectedParentRowsCrossPages: Set<string>;
   isChildrenRowsSelectable?: boolean;
+  label: string;
 }
 
 const InternalActions = <T extends TableItem>({
@@ -47,6 +48,7 @@ const InternalActions = <T extends TableItem>({
   setSelectedParentRowsCrossPages,
   selectedParentRowsCrossPages,
   isChildrenRowsSelectable,
+  label,
   ...props
 }: ActionsProps<T>) => {
   const isSelectable = typeof onSelectionChange === 'function';
@@ -75,7 +77,7 @@ const InternalActions = <T extends TableItem>({
     <StyledFlex
       alignItems="center"
       aria-controls={tableId}
-      aria-label="Table Controls"
+      aria-label={label}
       flexDirection="row"
       justifyContent="stretch"
       ref={forwardedRef}
