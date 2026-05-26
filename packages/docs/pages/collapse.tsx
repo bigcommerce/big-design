@@ -1,8 +1,8 @@
 import { Collapse, H1, Panel, Text } from '@bigcommerce/big-design';
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 
-import { Code, CodePreview, GuidelinesTable, List } from '../components';
-import { CollapsePropTable } from '../PropTables';
+import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
+import { CollapsePanelPropTable, CollapsePropTable } from '../PropTables';
 
 const CollapsePage = () => {
   return (
@@ -32,7 +32,11 @@ const CollapsePage = () => {
             const handleChange = (isOpen: boolean) => setTitle(isOpen ? 'Show less' : 'Show more');
 
             return (
-              <Collapse onCollapseChange={handleChange} title={title}>
+              <Collapse
+                onCollapseChange={handleChange}
+                panelProps={{ backgroundColor: 'secondary30' }}
+                title={title}
+              >
                 <Text>
                   Ea tempor sunt amet labore proident dolor proident commodo in exercitation ea
                   nulla sunt pariatur. Nulla sunt ipsum do eu consectetur exercitation occaecat
@@ -47,7 +51,21 @@ const CollapsePage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <CollapsePropTable />
+        <ContentRoutingTabs
+          id="props"
+          routes={[
+            {
+              id: 'collapse',
+              title: 'Collapse',
+              render: () => <CollapsePropTable />,
+            },
+            {
+              id: 'collapse-panel',
+              title: 'CollapsePanel',
+              render: () => <CollapsePanelPropTable id="collapse-panel-prop-table" />,
+            },
+          ]}
+        />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">

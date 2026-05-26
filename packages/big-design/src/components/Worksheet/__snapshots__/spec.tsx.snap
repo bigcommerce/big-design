@@ -7,17 +7,28 @@ exports[`renders worksheet 1`] = `
   width: 1rem;
 }
 
-.c18 {
+.c19 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
-.c19 {
+.c20 {
   margin-left: 0.5rem;
 }
 
-.c13 {
+.c21 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c14 {
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
@@ -28,7 +39,7 @@ exports[`renders worksheet 1`] = `
   display: flex;
 }
 
-.c15 {
+.c16 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -41,7 +52,7 @@ exports[`renders worksheet 1`] = `
   width: 1px;
 }
 
-.c17 {
+.c18 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: border-color,background,box-shadow,color,opacity;
@@ -75,19 +86,19 @@ exports[`renders worksheet 1`] = `
   width: 1.25rem;
 }
 
-.c17:hover {
+.c18:hover {
   border-color: #3C64F4;
 }
 
-.c14:focus + .c16 {
+.c15:focus + .c17 {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c17 svg {
+.c18 svg {
   opacity: 1;
 }
 
-.c31 {
+.c32 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: border-color,background,box-shadow,color,opacity;
@@ -121,15 +132,15 @@ exports[`renders worksheet 1`] = `
   width: 1.25rem;
 }
 
-.c31:hover {
+.c32:hover {
   border-color: #B4BAD1;
 }
 
-.c14:focus + .c16 {
+.c15:focus + .c17 {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c31 svg {
+.c32 svg {
   opacity: 0;
 }
 
@@ -138,16 +149,16 @@ exports[`renders worksheet 1`] = `
   box-sizing: border-box;
 }
 
-.c22 {
+.c13 {
   box-sizing: border-box;
 }
 
-.c24 {
+.c25 {
   padding-right: 0.75rem;
   box-sizing: border-box;
 }
 
-.c23 {
+.c24 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
   align-content: stretch;
@@ -168,7 +179,7 @@ exports[`renders worksheet 1`] = `
   display: flex;
 }
 
-.c25 {
+.c26 {
   -webkit-align-self: auto;
   -ms-flex-item-align: auto;
   align-self: auto;
@@ -187,7 +198,7 @@ exports[`renders worksheet 1`] = `
   flex-shrink: 1;
 }
 
-.c20 {
+.c22 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -195,7 +206,7 @@ exports[`renders worksheet 1`] = `
   line-height: 1.5rem;
 }
 
-.c20:last-child {
+.c22:last-child {
   margin-bottom: 0;
 }
 
@@ -219,7 +230,7 @@ exports[`renders worksheet 1`] = `
   margin-bottom: 0;
 }
 
-.c27 {
+.c28 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -268,37 +279,37 @@ exports[`renders worksheet 1`] = `
   color: #3C64F4;
 }
 
-.c27:focus {
+.c28:focus {
   outline: none;
 }
 
-.c27[disabled] {
+.c28[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c27 + .bd-button {
+.c28 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c27:active {
+.c28:active {
   background-color: #DBE3FE;
 }
 
-.c27:focus {
+.c28:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c27:hover:not(:active) {
+.c28:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c27[disabled] {
+.c28[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c29 {
+.c30 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -311,7 +322,7 @@ exports[`renders worksheet 1`] = `
   grid-gap: 0.5rem;
 }
 
-.c21 {
+.c23 {
   cursor: pointer;
   border: 0;
   -webkit-clip: rect(0 0 0 0);
@@ -332,23 +343,23 @@ exports[`renders worksheet 1`] = `
   justify-content: center;
 }
 
-.c28 {
+.c29 {
   font-size: 0.875rem;
   height: auto;
   line-height: 1.25rem;
   padding: 0;
 }
 
-.c28:hover:not(:active) {
+.c29:hover:not(:active) {
   background-color: inherit;
   color: #0024A6;
 }
 
-.c28:active {
+.c29:active {
   background-color: inherit;
 }
 
-.c26 {
+.c27 {
   overflow: hidden;
 }
 
@@ -392,7 +403,7 @@ exports[`renders worksheet 1`] = `
   margin: 0;
 }
 
-.c30 {
+.c31 {
   position: relative;
   background-color: inherit;
   border: 0.03125rem solid #D9DCE9;
@@ -405,14 +416,14 @@ exports[`renders worksheet 1`] = `
   user-select: none;
 }
 
-.c30 p {
+.c31 p {
   display: block;
   white-space: inherit;
   word-break: break-word;
   margin: 0;
 }
 
-.c33 {
+.c34 {
   position: relative;
   background-color: inherit;
   border: 0.03125rem solid #D9DCE9;
@@ -426,14 +437,14 @@ exports[`renders worksheet 1`] = `
   border: 0.03125rem double #DB3643;
 }
 
-.c33 p {
+.c34 p {
   display: block;
   white-space: inherit;
   word-break: break-word;
   margin: 0;
 }
 
-.c34 {
+.c35 {
   position: relative;
   background-color: inherit;
   border: 0.03125rem solid #D9DCE9;
@@ -447,7 +458,7 @@ exports[`renders worksheet 1`] = `
   border: 0.03125rem double #DB3643;
 }
 
-.c34 p {
+.c35 p {
   display: block;
   white-space: inherit;
   word-break: break-word;
@@ -476,7 +487,7 @@ exports[`renders worksheet 1`] = `
   width: 0.25rem;
 }
 
-.c32 {
+.c33 {
   background-color: #D9DCE9;
   border-top: 0.03125rem solid #D9DCE9;
   box-sizing: border-box;
@@ -552,7 +563,7 @@ exports[`renders worksheet 1`] = `
 }
 
 @media (min-width:0px) {
-  .c23 {
+  .c24 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -560,7 +571,7 @@ exports[`renders worksheet 1`] = `
 }
 
 @media (min-width:720px) {
-  .c23 {
+  .c24 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -568,14 +579,14 @@ exports[`renders worksheet 1`] = `
 }
 
 @media (min-width:720px) {
-  .c27 + .bd-button {
+  .c28 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c27 {
+  .c28 {
     width: auto;
   }
 }
@@ -683,50 +694,62 @@ exports[`renders worksheet 1`] = `
             <div
               class="c13"
             >
-              <input
-                aria-checked="true"
-                aria-labelledby=":r5:"
-                checked=""
-                class="c14 c15"
-                id=":r4:"
-                type="checkbox"
-              />
-              <label
-                aria-hidden="true"
-                class="c16 c17"
-                for=":r4:"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="c18"
-                  fill="currentColor"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-width="0"
-                  viewBox="0 0 24 24"
-                  width="24"
-                >
-                  <path
-                    d="M0 0h24v24H0z"
-                    fill="none"
-                  />
-                  <path
-                    d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
-                  />
-                </svg>
-              </label>
               <div
-                class="c19"
+                class="c14"
               >
+                <input
+                  aria-checked="true"
+                  aria-labelledby=":r5:"
+                  checked=""
+                  class="c15 c16"
+                  id=":r4:"
+                  type="checkbox"
+                />
                 <label
-                  aria-hidden="false"
-                  class="c20 c21"
+                  aria-hidden="true"
+                  class="c17 c18"
                   for=":r4:"
-                  hidden=""
-                  id=":r5:"
                 >
-                  Checked
+                  <svg
+                    aria-hidden="true"
+                    class="c19"
+                    fill="currentColor"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 24 24"
+                    width="24"
+                  >
+                    <path
+                      d="M0 0h24v24H0z"
+                      fill="none"
+                    />
+                    <path
+                      d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
+                    />
+                  </svg>
                 </label>
+                <div
+                  class="c20"
+                >
+                  <div
+                    class="c21"
+                  >
+                    <div
+                      class="c13"
+                    >
+                      <label
+                        aria-hidden="false"
+                        class="c22 c23"
+                        for=":r4:"
+                        hidden=""
+                        id=":r5:"
+                      >
+                        Checked
+                      </label>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -756,10 +779,10 @@ exports[`renders worksheet 1`] = `
           type="modal"
         >
           <div
-            class="c22 c23"
+            class="c13 c24"
           >
             <div
-              class="c24 c25 c26"
+              class="c25 c26 c27"
             >
               <p
                 class="c9"
@@ -770,10 +793,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c27 c28"
+              class="c28 c29"
             >
               <span
-                class="c29"
+                class="c30"
               >
                 Edit
               </span>
@@ -785,7 +808,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c30"
+          class="c31"
           type="number"
         >
           <p
@@ -831,50 +854,62 @@ exports[`renders worksheet 1`] = `
             <div
               class="c13"
             >
-              <input
-                aria-checked="true"
-                aria-labelledby=":rd:"
-                checked=""
-                class="c14 c15"
-                id=":rc:"
-                type="checkbox"
-              />
-              <label
-                aria-hidden="true"
-                class="c16 c17"
-                for=":rc:"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="c18"
-                  fill="currentColor"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-width="0"
-                  viewBox="0 0 24 24"
-                  width="24"
-                >
-                  <path
-                    d="M0 0h24v24H0z"
-                    fill="none"
-                  />
-                  <path
-                    d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
-                  />
-                </svg>
-              </label>
               <div
-                class="c19"
+                class="c14"
               >
+                <input
+                  aria-checked="true"
+                  aria-labelledby=":rd:"
+                  checked=""
+                  class="c15 c16"
+                  id=":rc:"
+                  type="checkbox"
+                />
                 <label
-                  aria-hidden="false"
-                  class="c20 c21"
+                  aria-hidden="true"
+                  class="c17 c18"
                   for=":rc:"
-                  hidden=""
-                  id=":rd:"
                 >
-                  Checked
+                  <svg
+                    aria-hidden="true"
+                    class="c19"
+                    fill="currentColor"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 24 24"
+                    width="24"
+                  >
+                    <path
+                      d="M0 0h24v24H0z"
+                      fill="none"
+                    />
+                    <path
+                      d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
+                    />
+                  </svg>
                 </label>
+                <div
+                  class="c20"
+                >
+                  <div
+                    class="c21"
+                  >
+                    <div
+                      class="c13"
+                    >
+                      <label
+                        aria-hidden="false"
+                        class="c22 c23"
+                        for=":rc:"
+                        hidden=""
+                        id=":rd:"
+                      >
+                        Checked
+                      </label>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -904,10 +939,10 @@ exports[`renders worksheet 1`] = `
           type="modal"
         >
           <div
-            class="c22 c23"
+            class="c13 c24"
           >
             <div
-              class="c24 c25 c26"
+              class="c25 c26 c27"
             >
               <p
                 class="c9"
@@ -918,10 +953,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c27 c28"
+              class="c28 c29"
             >
               <span
-                class="c29"
+                class="c30"
               >
                 Edit
               </span>
@@ -933,7 +968,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c30"
+          class="c31"
           type="number"
         >
           <p
@@ -979,49 +1014,61 @@ exports[`renders worksheet 1`] = `
             <div
               class="c13"
             >
-              <input
-                aria-checked="false"
-                aria-labelledby=":rl:"
-                class="c14 c15"
-                id=":rk:"
-                type="checkbox"
-              />
-              <label
-                aria-hidden="true"
-                class="c16 c31"
-                for=":rk:"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="c18"
-                  fill="currentColor"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-width="0"
-                  viewBox="0 0 24 24"
-                  width="24"
-                >
-                  <path
-                    d="M0 0h24v24H0z"
-                    fill="none"
-                  />
-                  <path
-                    d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
-                  />
-                </svg>
-              </label>
               <div
-                class="c19"
+                class="c14"
               >
+                <input
+                  aria-checked="false"
+                  aria-labelledby=":rl:"
+                  class="c15 c16"
+                  id=":rk:"
+                  type="checkbox"
+                />
                 <label
-                  aria-hidden="false"
-                  class="c20 c21"
+                  aria-hidden="true"
+                  class="c17 c32"
                   for=":rk:"
-                  hidden=""
-                  id=":rl:"
                 >
-                  Unchecked
+                  <svg
+                    aria-hidden="true"
+                    class="c19"
+                    fill="currentColor"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 24 24"
+                    width="24"
+                  >
+                    <path
+                      d="M0 0h24v24H0z"
+                      fill="none"
+                    />
+                    <path
+                      d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
+                    />
+                  </svg>
                 </label>
+                <div
+                  class="c20"
+                >
+                  <div
+                    class="c21"
+                  >
+                    <div
+                      class="c13"
+                    >
+                      <label
+                        aria-hidden="false"
+                        class="c22 c23"
+                        for=":rk:"
+                        hidden=""
+                        id=":rl:"
+                      >
+                        Unchecked
+                      </label>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1049,10 +1096,10 @@ exports[`renders worksheet 1`] = `
           type="modal"
         >
           <div
-            class="c22 c23"
+            class="c13 c24"
           >
             <div
-              class="c24 c25 c26"
+              class="c25 c26 c27"
             >
               <p
                 class="c9"
@@ -1063,10 +1110,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c27 c28"
+              class="c28 c29"
             >
               <span
-                class="c29"
+                class="c30"
               >
                 Edit
               </span>
@@ -1078,7 +1125,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c30"
+          class="c31"
           type="number"
         >
           <p
@@ -1124,50 +1171,62 @@ exports[`renders worksheet 1`] = `
             <div
               class="c13"
             >
-              <input
-                aria-checked="true"
-                aria-labelledby=":rt:"
-                checked=""
-                class="c14 c15"
-                id=":rs:"
-                type="checkbox"
-              />
-              <label
-                aria-hidden="true"
-                class="c16 c17"
-                for=":rs:"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="c18"
-                  fill="currentColor"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-width="0"
-                  viewBox="0 0 24 24"
-                  width="24"
-                >
-                  <path
-                    d="M0 0h24v24H0z"
-                    fill="none"
-                  />
-                  <path
-                    d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
-                  />
-                </svg>
-              </label>
               <div
-                class="c19"
+                class="c14"
               >
+                <input
+                  aria-checked="true"
+                  aria-labelledby=":rt:"
+                  checked=""
+                  class="c15 c16"
+                  id=":rs:"
+                  type="checkbox"
+                />
                 <label
-                  aria-hidden="false"
-                  class="c20 c21"
+                  aria-hidden="true"
+                  class="c17 c18"
                   for=":rs:"
-                  hidden=""
-                  id=":rt:"
                 >
-                  Checked
+                  <svg
+                    aria-hidden="true"
+                    class="c19"
+                    fill="currentColor"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 24 24"
+                    width="24"
+                  >
+                    <path
+                      d="M0 0h24v24H0z"
+                      fill="none"
+                    />
+                    <path
+                      d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
+                    />
+                  </svg>
                 </label>
+                <div
+                  class="c20"
+                >
+                  <div
+                    class="c21"
+                  >
+                    <div
+                      class="c13"
+                    >
+                      <label
+                        aria-hidden="false"
+                        class="c22 c23"
+                        for=":rs:"
+                        hidden=""
+                        id=":rt:"
+                      >
+                        Checked
+                      </label>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1197,10 +1256,10 @@ exports[`renders worksheet 1`] = `
           type="modal"
         >
           <div
-            class="c22 c23"
+            class="c13 c24"
           >
             <div
-              class="c24 c25 c26"
+              class="c25 c26 c27"
             >
               <p
                 class="c9"
@@ -1211,10 +1270,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c27 c28"
+              class="c28 c29"
             >
               <span
-                class="c29"
+                class="c30"
               >
                 Edit
               </span>
@@ -1226,7 +1285,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c30"
+          class="c31"
           type="number"
         >
           <p
@@ -1244,10 +1303,10 @@ exports[`renders worksheet 1`] = `
       </tr>
       <tr>
         <td
-          class="c32"
+          class="c33"
         />
         <td
-          class="c33"
+          class="c34"
           type="text"
         >
           <p
@@ -1270,48 +1329,60 @@ exports[`renders worksheet 1`] = `
             <div
               class="c13"
             >
-              <input
-                aria-labelledby=":r15:"
-                class="c14 c15"
-                id=":r14:"
-                type="checkbox"
-              />
-              <label
-                aria-hidden="true"
-                class="c16 c31"
-                for=":r14:"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="c18"
-                  fill="currentColor"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-width="0"
-                  viewBox="0 0 24 24"
-                  width="24"
-                >
-                  <path
-                    d="M0 0h24v24H0z"
-                    fill="none"
-                  />
-                  <path
-                    d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
-                  />
-                </svg>
-              </label>
               <div
-                class="c19"
+                class="c14"
               >
+                <input
+                  aria-labelledby=":r15:"
+                  class="c15 c16"
+                  id=":r14:"
+                  type="checkbox"
+                />
                 <label
-                  aria-hidden="false"
-                  class="c20 c21"
+                  aria-hidden="true"
+                  class="c17 c32"
                   for=":r14:"
-                  hidden=""
-                  id=":r15:"
                 >
-                  Unchecked
+                  <svg
+                    aria-hidden="true"
+                    class="c19"
+                    fill="currentColor"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 24 24"
+                    width="24"
+                  >
+                    <path
+                      d="M0 0h24v24H0z"
+                      fill="none"
+                    />
+                    <path
+                      d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
+                    />
+                  </svg>
                 </label>
+                <div
+                  class="c20"
+                >
+                  <div
+                    class="c21"
+                  >
+                    <div
+                      class="c13"
+                    >
+                      <label
+                        aria-hidden="false"
+                        class="c22 c23"
+                        for=":r14:"
+                        hidden=""
+                        id=":r15:"
+                      >
+                        Unchecked
+                      </label>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1339,10 +1410,10 @@ exports[`renders worksheet 1`] = `
           type="modal"
         >
           <div
-            class="c22 c23"
+            class="c13 c24"
           >
             <div
-              class="c24 c25 c26"
+              class="c25 c26 c27"
             >
               <p
                 class="c9"
@@ -1351,10 +1422,10 @@ exports[`renders worksheet 1`] = `
               />
             </div>
             <button
-              class="c27 c28"
+              class="c28 c29"
             >
               <span
-                class="c29"
+                class="c30"
               >
                 Edit
               </span>
@@ -1366,7 +1437,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c34"
+          class="c35"
           type="number"
         >
           <p
@@ -1410,50 +1481,62 @@ exports[`renders worksheet 1`] = `
             <div
               class="c13"
             >
-              <input
-                aria-checked="true"
-                aria-labelledby=":r1d:"
-                checked=""
-                class="c14 c15"
-                id=":r1c:"
-                type="checkbox"
-              />
-              <label
-                aria-hidden="true"
-                class="c16 c17"
-                for=":r1c:"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="c18"
-                  fill="currentColor"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-width="0"
-                  viewBox="0 0 24 24"
-                  width="24"
-                >
-                  <path
-                    d="M0 0h24v24H0z"
-                    fill="none"
-                  />
-                  <path
-                    d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
-                  />
-                </svg>
-              </label>
               <div
-                class="c19"
+                class="c14"
               >
+                <input
+                  aria-checked="true"
+                  aria-labelledby=":r1d:"
+                  checked=""
+                  class="c15 c16"
+                  id=":r1c:"
+                  type="checkbox"
+                />
                 <label
-                  aria-hidden="false"
-                  class="c20 c21"
+                  aria-hidden="true"
+                  class="c17 c18"
                   for=":r1c:"
-                  hidden=""
-                  id=":r1d:"
                 >
-                  Checked
+                  <svg
+                    aria-hidden="true"
+                    class="c19"
+                    fill="currentColor"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 24 24"
+                    width="24"
+                  >
+                    <path
+                      d="M0 0h24v24H0z"
+                      fill="none"
+                    />
+                    <path
+                      d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
+                    />
+                  </svg>
                 </label>
+                <div
+                  class="c20"
+                >
+                  <div
+                    class="c21"
+                  >
+                    <div
+                      class="c13"
+                    >
+                      <label
+                        aria-hidden="false"
+                        class="c22 c23"
+                        for=":r1c:"
+                        hidden=""
+                        id=":r1d:"
+                      >
+                        Checked
+                      </label>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1483,10 +1566,10 @@ exports[`renders worksheet 1`] = `
           type="modal"
         >
           <div
-            class="c22 c23"
+            class="c13 c24"
           >
             <div
-              class="c24 c25 c26"
+              class="c25 c26 c27"
             >
               <p
                 class="c9"
@@ -1497,10 +1580,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c27 c28"
+              class="c28 c29"
             >
               <span
-                class="c29"
+                class="c30"
               >
                 Edit
               </span>
@@ -1512,7 +1595,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c30"
+          class="c31"
           type="number"
         >
           <p
@@ -1530,7 +1613,7 @@ exports[`renders worksheet 1`] = `
       </tr>
       <tr>
         <td
-          class="c32"
+          class="c33"
         />
         <td
           class="c8"
@@ -1558,49 +1641,61 @@ exports[`renders worksheet 1`] = `
             <div
               class="c13"
             >
-              <input
-                aria-checked="false"
-                aria-labelledby=":r1l:"
-                class="c14 c15"
-                id=":r1k:"
-                type="checkbox"
-              />
-              <label
-                aria-hidden="true"
-                class="c16 c31"
-                for=":r1k:"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="c18"
-                  fill="currentColor"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-width="0"
-                  viewBox="0 0 24 24"
-                  width="24"
-                >
-                  <path
-                    d="M0 0h24v24H0z"
-                    fill="none"
-                  />
-                  <path
-                    d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
-                  />
-                </svg>
-              </label>
               <div
-                class="c19"
+                class="c14"
               >
+                <input
+                  aria-checked="false"
+                  aria-labelledby=":r1l:"
+                  class="c15 c16"
+                  id=":r1k:"
+                  type="checkbox"
+                />
                 <label
-                  aria-hidden="false"
-                  class="c20 c21"
+                  aria-hidden="true"
+                  class="c17 c32"
                   for=":r1k:"
-                  hidden=""
-                  id=":r1l:"
                 >
-                  Unchecked
+                  <svg
+                    aria-hidden="true"
+                    class="c19"
+                    fill="currentColor"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 24 24"
+                    width="24"
+                  >
+                    <path
+                      d="M0 0h24v24H0z"
+                      fill="none"
+                    />
+                    <path
+                      d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
+                    />
+                  </svg>
                 </label>
+                <div
+                  class="c20"
+                >
+                  <div
+                    class="c21"
+                  >
+                    <div
+                      class="c13"
+                    >
+                      <label
+                        aria-hidden="false"
+                        class="c22 c23"
+                        for=":r1k:"
+                        hidden=""
+                        id=":r1l:"
+                      >
+                        Unchecked
+                      </label>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1630,10 +1725,10 @@ exports[`renders worksheet 1`] = `
           type="modal"
         >
           <div
-            class="c22 c23"
+            class="c13 c24"
           >
             <div
-              class="c24 c25 c26"
+              class="c25 c26 c27"
             >
               <p
                 class="c9"
@@ -1644,10 +1739,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c27 c28"
+              class="c28 c29"
             >
               <span
-                class="c29"
+                class="c30"
               >
                 Edit
               </span>
@@ -1659,7 +1754,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c34"
+          class="c35"
           type="number"
         >
           <p
@@ -1705,50 +1800,62 @@ exports[`renders worksheet 1`] = `
             <div
               class="c13"
             >
-              <input
-                aria-checked="true"
-                aria-labelledby=":r1t:"
-                checked=""
-                class="c14 c15"
-                id=":r1s:"
-                type="checkbox"
-              />
-              <label
-                aria-hidden="true"
-                class="c16 c17"
-                for=":r1s:"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="c18"
-                  fill="currentColor"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-width="0"
-                  viewBox="0 0 24 24"
-                  width="24"
-                >
-                  <path
-                    d="M0 0h24v24H0z"
-                    fill="none"
-                  />
-                  <path
-                    d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
-                  />
-                </svg>
-              </label>
               <div
-                class="c19"
+                class="c14"
               >
+                <input
+                  aria-checked="true"
+                  aria-labelledby=":r1t:"
+                  checked=""
+                  class="c15 c16"
+                  id=":r1s:"
+                  type="checkbox"
+                />
                 <label
-                  aria-hidden="false"
-                  class="c20 c21"
+                  aria-hidden="true"
+                  class="c17 c18"
                   for=":r1s:"
-                  hidden=""
-                  id=":r1t:"
                 >
-                  Checked
+                  <svg
+                    aria-hidden="true"
+                    class="c19"
+                    fill="currentColor"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 24 24"
+                    width="24"
+                  >
+                    <path
+                      d="M0 0h24v24H0z"
+                      fill="none"
+                    />
+                    <path
+                      d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
+                    />
+                  </svg>
                 </label>
+                <div
+                  class="c20"
+                >
+                  <div
+                    class="c21"
+                  >
+                    <div
+                      class="c13"
+                    >
+                      <label
+                        aria-hidden="false"
+                        class="c22 c23"
+                        for=":r1s:"
+                        hidden=""
+                        id=":r1t:"
+                      >
+                        Checked
+                      </label>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1778,10 +1885,10 @@ exports[`renders worksheet 1`] = `
           type="modal"
         >
           <div
-            class="c22 c23"
+            class="c13 c24"
           >
             <div
-              class="c24 c25 c26"
+              class="c25 c26 c27"
             >
               <p
                 class="c9"
@@ -1792,10 +1899,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c27 c28"
+              class="c28 c29"
             >
               <span
-                class="c29"
+                class="c30"
               >
                 Edit
               </span>
@@ -1807,7 +1914,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c30"
+          class="c31"
           type="number"
         >
           <p
@@ -1853,50 +1960,62 @@ exports[`renders worksheet 1`] = `
             <div
               class="c13"
             >
-              <input
-                aria-checked="true"
-                aria-labelledby=":r25:"
-                checked=""
-                class="c14 c15"
-                id=":r24:"
-                type="checkbox"
-              />
-              <label
-                aria-hidden="true"
-                class="c16 c17"
-                for=":r24:"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="c18"
-                  fill="currentColor"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-width="0"
-                  viewBox="0 0 24 24"
-                  width="24"
-                >
-                  <path
-                    d="M0 0h24v24H0z"
-                    fill="none"
-                  />
-                  <path
-                    d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
-                  />
-                </svg>
-              </label>
               <div
-                class="c19"
+                class="c14"
               >
+                <input
+                  aria-checked="true"
+                  aria-labelledby=":r25:"
+                  checked=""
+                  class="c15 c16"
+                  id=":r24:"
+                  type="checkbox"
+                />
                 <label
-                  aria-hidden="false"
-                  class="c20 c21"
+                  aria-hidden="true"
+                  class="c17 c18"
                   for=":r24:"
-                  hidden=""
-                  id=":r25:"
                 >
-                  Checked
+                  <svg
+                    aria-hidden="true"
+                    class="c19"
+                    fill="currentColor"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 24 24"
+                    width="24"
+                  >
+                    <path
+                      d="M0 0h24v24H0z"
+                      fill="none"
+                    />
+                    <path
+                      d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
+                    />
+                  </svg>
                 </label>
+                <div
+                  class="c20"
+                >
+                  <div
+                    class="c21"
+                  >
+                    <div
+                      class="c13"
+                    >
+                      <label
+                        aria-hidden="false"
+                        class="c22 c23"
+                        for=":r24:"
+                        hidden=""
+                        id=":r25:"
+                      >
+                        Checked
+                      </label>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1926,10 +2045,10 @@ exports[`renders worksheet 1`] = `
           type="modal"
         >
           <div
-            class="c22 c23"
+            class="c13 c24"
           >
             <div
-              class="c24 c25 c26"
+              class="c25 c26 c27"
             >
               <p
                 class="c9"
@@ -1940,10 +2059,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c27 c28"
+              class="c28 c29"
             >
               <span
-                class="c29"
+                class="c30"
               >
                 Edit
               </span>
@@ -1955,7 +2074,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c30"
+          class="c31"
           type="number"
         >
           <p

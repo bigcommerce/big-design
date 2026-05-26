@@ -178,3 +178,92 @@ test('onCollapseChange is called', async () => {
 
   expect(handleChange).toHaveBeenCalled();
 });
+
+test('renders with ReactNode title', () => {
+  render(
+    <Collapse title={<span data-testid="custom-title">Custom Title</span>}>
+      <Text>Content</Text>
+    </Collapse>,
+  );
+
+  expect(screen.getAllByTestId('custom-title').length).toBeGreaterThan(0);
+});
+
+test('title button is disabled when disabled prop is true', () => {
+  render(
+    <Collapse disabled title="title">
+      <Text>Content</Text>
+    </Collapse>,
+  );
+
+  expect(screen.getByRole('button')).toBeDisabled();
+});
+
+test('panel stays hidden when disabled and initiallyOpen', () => {
+  render(
+    <Collapse disabled initiallyOpen title="title">
+      <Text>Content</Text>
+    </Collapse>,
+  );
+
+  expect(screen.getByRole('region', { hidden: true })).not.toBeVisible();
+});
+
+test('open panel closes when disabled becomes true', async () => {
+  const onChange = jest.fn();
+
+  const { rerender } = render(
+    <Collapse initiallyOpen onCollapseChange={onChange} title="title">
+      <Text>Content</Text>
+    </Collapse>,
+  );
+
+  const panel = screen.getByRole('region');
+
+  expect(panel).toBeVisible();
+
+  rerender(
+    <Collapse disabled initiallyOpen onCollapseChange={onChange} title="title">
+      <Text>Content</Text>
+    </Collapse>,
+  );
+
+  expect(screen.getByRole('region', { hidden: true })).not.toBeVisible();
+  expect(onChange).toHaveBeenCalledWith(false);
+});
+
+test('panel renders inside portalTarget when provided', () => {
+  const portalTarget = document.createElement('div');
+
+  portalTarget.setAttribute('data-testid', 'portal-target');
+  document.body.appendChild(portalTarget);
+
+  render(
+    <Collapse initiallyOpen portalTarget={portalTarget} title="title">
+      <Text>Portal Content</Text>
+    </Collapse>,
+  );
+
+  const panel = screen.getByRole('region');
+
+  expect(portalTarget).toContainElement(panel);
+  expect(panel).toHaveTextContent('Portal Content');
+
+  document.body.removeChild(portalTarget);
+});
+
+test('applies panelProps to the panel', () => {
+  render(
+    <Collapse
+      initiallyOpen
+      panelProps={{ backgroundColor: 'secondary20', padding: 'medium' }}
+      title="title"
+    >
+      <Text>Content</Text>
+    </Collapse>,
+  );
+
+  const panel = screen.getByRole('region');
+
+  expect(panel).toHaveStyle('padding: 1rem');
+});

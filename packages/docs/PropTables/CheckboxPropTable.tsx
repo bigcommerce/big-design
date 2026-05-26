@@ -75,6 +75,36 @@ const checkboxProps: Prop[] = [
       </>
     ),
   },
+  {
+    name: 'collapseOptions',
+    types: [
+      <NextLink
+        href={{
+          hash: 'checkbox-collapse-prop-table',
+          query: { props: 'checkbox-collapse' },
+        }}
+        key="checkbox-collapse"
+      >
+        CheckboxCollapse
+      </NextLink>,
+    ],
+    description: <>Adds a collapsible section beneath the checkbox row.</>,
+  },
+  {
+    name: 'img',
+    types: [
+      <NextLink
+        href={{
+          hash: 'checkbox-img-prop-table',
+          query: { props: 'checkbox-img' },
+        }}
+        key="checkbox-img"
+      >
+        CheckboxImg
+      </NextLink>,
+    ],
+    description: <>Renders an image next to the label.</>,
+  },
 ];
 
 const checkboxDescriptionProps: Prop[] = [
@@ -117,6 +147,49 @@ const checkboxDescriptionProps: Prop[] = [
   },
 ];
 
+const checkboxCollapseProps: Prop[] = [
+  {
+    name: 'children',
+    types: ['React.ReactNode'],
+    required: true,
+    description: <>Collapsible content.</>,
+  },
+  {
+    name: 'collapsedTitle',
+    types: ['string'],
+    required: false,
+    defaultValue: 'Show more',
+    description: <>Title for the collapsed content.</>,
+  },
+  {
+    name: 'expandedTitle',
+    types: ['string'],
+    required: false,
+    defaultValue: 'Show less',
+    description: <>Title for the expanded content.</>,
+  },
+  {
+    name: 'disableWhenUnchecked',
+    types: ['boolean'],
+    required: false,
+    description: (
+      <>
+        When true, the collapse trigger is disabled and the panel is forced closed while the
+        checkbox is unchecked.
+      </>
+    ),
+  },
+];
+
+const checkboxImgProps: Prop[] = [
+  {
+    name: 'src',
+    types: ['string'],
+    required: true,
+    description: <>Image URL.</>,
+  },
+];
+
 export const CheckboxPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable
     nativeElement={['input', 'all']}
@@ -141,5 +214,23 @@ export const CheckboxDescriptionLinkPropTable: React.FC<PropTableWrapper> = (pro
     title="Checkbox[CheckboxDescriptionLink]"
     {...props}
     id="checkbox-description-link-prop-table"
+  />
+);
+
+export const CheckboxCollapsePropTable: React.FC<PropTableWrapper> = (props) => (
+  <PropTable
+    propList={checkboxCollapseProps}
+    title="Checkbox[CheckboxCollapse]"
+    {...props}
+    id="checkbox-collapse-prop-table"
+  />
+);
+
+export const CheckboxImgPropTable: React.FC<PropTableWrapper> = (props) => (
+  <PropTable
+    propList={checkboxImgProps}
+    title="Checkbox[CheckboxImg]"
+    {...props}
+    id="checkbox-img-prop-table"
   />
 );

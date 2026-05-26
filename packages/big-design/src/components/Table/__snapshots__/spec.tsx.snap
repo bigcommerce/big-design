@@ -759,7 +759,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   box-sizing: border-box;
 }
 
-.c15 {
+.c16 {
   margin-right: 1rem;
   box-sizing: border-box;
 }
@@ -807,7 +807,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   flex-shrink: 0;
 }
 
-.c12 {
+.c13 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -815,11 +815,11 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   line-height: 1.5rem;
 }
 
-.c12:last-child {
+.c13:last-child {
   margin-bottom: 0;
 }
 
-.c14 {
+.c15 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -828,11 +828,11 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   margin-left: 0.75rem;
 }
 
-.c14:last-child {
+.c15:last-child {
   margin-bottom: 0;
 }
 
-.c16 {
+.c17 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -841,11 +841,11 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   margin: 0;
 }
 
-.c16:last-child {
+.c17:last-child {
   margin-bottom: 0;
 }
 
-.c13 {
+.c14 {
   cursor: pointer;
   border: 0;
   -webkit-clip: rect(0 0 0 0);
@@ -861,6 +861,17 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
 
 .c11 {
   margin-left: 0.5rem;
+}
+
+.c12 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c5 {
@@ -966,64 +977,76 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
       class="c3 c4"
     >
       <div
-        class="c5"
+        class="c3"
       >
-        <input
-          aria-checked="false"
-          aria-labelledby=":r37:"
-          class="c6 c7"
-          id=":r36:"
-          type="checkbox"
-        />
-        <label
-          aria-hidden="true"
-          class="c8 c9"
-          for=":r36:"
-        >
-          <svg
-            aria-hidden="true"
-            class="c10"
-            fill="currentColor"
-            height="24"
-            stroke="currentColor"
-            stroke-width="0"
-            viewBox="0 0 24 24"
-            width="24"
-          >
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-            <path
-              d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
-            />
-          </svg>
-        </label>
         <div
-          class="c11"
+          class="c5"
         >
+          <input
+            aria-checked="false"
+            aria-labelledby=":r37:"
+            class="c6 c7"
+            id=":r36:"
+            type="checkbox"
+          />
           <label
-            class="c12 c13"
+            aria-hidden="true"
+            class="c8 c9"
             for=":r36:"
-            hidden=""
-            id=":r37:"
           >
-            Select All
+            <svg
+              aria-hidden="true"
+              class="c10"
+              fill="currentColor"
+              height="24"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="24"
+            >
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+              <path
+                d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
+              />
+            </svg>
           </label>
+          <div
+            class="c11"
+          >
+            <div
+              class="c12"
+            >
+              <div
+                class="c3"
+              >
+                <label
+                  class="c13 c14"
+                  for=":r36:"
+                  hidden=""
+                  id=":r37:"
+                >
+                  Select All
+                </label>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <p
-        class="c14"
+        class="c15"
       >
         5
       </p>
     </div>
   </div>
   <div
-    class="c15 c2"
+    class="c16 c2"
   >
     <p
-      class="c16"
+      class="c17"
     >
       Product
     </p>

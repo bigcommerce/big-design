@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`render Checkbox checked 1`] = `
-.c5 {
+.c6 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
-.c7 {
+.c9 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -15,19 +15,34 @@ exports[`render Checkbox checked 1`] = `
   line-height: 1.5rem;
 }
 
-.c7:last-child {
+.c9:last-child {
   margin-bottom: 0;
 }
 
-.c8 {
+.c10 {
   cursor: pointer;
 }
 
-.c6 {
+.c0 {
+  box-sizing: border-box;
+}
+
+.c7 {
   margin-left: 0.5rem;
 }
 
-.c0 {
+.c8 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
@@ -38,7 +53,7 @@ exports[`render Checkbox checked 1`] = `
   display: flex;
 }
 
-.c2 {
+.c3 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -51,7 +66,7 @@ exports[`render Checkbox checked 1`] = `
   width: 1px;
 }
 
-.c4 {
+.c5 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: border-color,background,box-shadow,color,opacity;
@@ -85,75 +100,87 @@ exports[`render Checkbox checked 1`] = `
   width: 1.25rem;
 }
 
-.c4:hover {
+.c5:hover {
   border-color: #3C64F4;
 }
 
-.c1:focus + .c3 {
+.c2:focus + .c4 {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c4 svg {
+.c5 svg {
   opacity: 1;
 }
 
 <div
   class="c0"
 >
-  <input
-    aria-checked="true"
-    aria-labelledby=":r1:"
-    checked=""
-    class="c1 c2"
-    id=":r0:"
-    type="checkbox"
-  />
-  <label
-    aria-hidden="true"
-    class="c3 c4"
-    for=":r0:"
-  >
-    <svg
-      aria-hidden="true"
-      class="c5"
-      fill="currentColor"
-      height="24"
-      stroke="currentColor"
-      stroke-width="0"
-      viewBox="0 0 24 24"
-      width="24"
-    >
-      <path
-        d="M0 0h24v24H0z"
-        fill="none"
-      />
-      <path
-        d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
-      />
-    </svg>
-  </label>
   <div
-    class="c6"
+    class="c1"
   >
+    <input
+      aria-checked="true"
+      aria-labelledby=":r1:"
+      checked=""
+      class="c2 c3"
+      id=":r0:"
+      type="checkbox"
+    />
     <label
-      class="c7 c8"
+      aria-hidden="true"
+      class="c4 c5"
       for=":r0:"
-      id=":r1:"
     >
-      Checked
+      <svg
+        aria-hidden="true"
+        class="c6"
+        fill="currentColor"
+        height="24"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="24"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
+        />
+      </svg>
     </label>
+    <div
+      class="c7"
+    >
+      <div
+        class="c8"
+      >
+        <div
+          class="c0"
+        >
+          <label
+            class="c9 c10"
+            for=":r0:"
+            id=":r1:"
+          >
+            Checked
+          </label>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
 
 exports[`render Checkbox disabled checked 1`] = `
-.c5 {
+.c6 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
-.c7 {
+.c9 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -161,20 +188,35 @@ exports[`render Checkbox disabled checked 1`] = `
   line-height: 1.5rem;
 }
 
-.c7:last-child {
+.c9:last-child {
   margin-bottom: 0;
 }
 
-.c8 {
+.c10 {
   cursor: pointer;
   cursor: not-allowed;
 }
 
-.c6 {
+.c0 {
+  box-sizing: border-box;
+}
+
+.c7 {
   margin-left: 0.5rem;
 }
 
-.c0 {
+.c8 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
@@ -185,7 +227,7 @@ exports[`render Checkbox disabled checked 1`] = `
   display: flex;
 }
 
-.c2 {
+.c3 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -198,7 +240,7 @@ exports[`render Checkbox disabled checked 1`] = `
   width: 1px;
 }
 
-.c4 {
+.c5 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: border-color,background,box-shadow,color,opacity;
@@ -235,75 +277,87 @@ exports[`render Checkbox disabled checked 1`] = `
   cursor: not-allowed;
 }
 
-.c1:focus + .c3 {
+.c2:focus + .c4 {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c4 svg {
+.c5 svg {
   opacity: 1;
 }
 
 <div
   class="c0"
 >
-  <input
-    aria-checked="true"
-    aria-labelledby=":rj:"
-    checked=""
-    class="c1 c2"
-    disabled=""
-    id=":ri:"
-    type="checkbox"
-  />
-  <label
-    aria-hidden="true"
-    class="c3 c4"
-    disabled=""
-    for=":ri:"
-  >
-    <svg
-      aria-hidden="true"
-      class="c5"
-      fill="currentColor"
-      height="24"
-      stroke="currentColor"
-      stroke-width="0"
-      viewBox="0 0 24 24"
-      width="24"
-    >
-      <path
-        d="M0 0h24v24H0z"
-        fill="none"
-      />
-      <path
-        d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
-      />
-    </svg>
-  </label>
   <div
-    class="c6"
+    class="c1"
   >
+    <input
+      aria-checked="true"
+      aria-labelledby=":rp:"
+      checked=""
+      class="c2 c3"
+      disabled=""
+      id=":ro:"
+      type="checkbox"
+    />
     <label
       aria-hidden="true"
-      class="c7 c8"
+      class="c4 c5"
       disabled=""
-      for=":ri:"
-      id=":rj:"
+      for=":ro:"
     >
-      Checked
+      <svg
+        aria-hidden="true"
+        class="c6"
+        fill="currentColor"
+        height="24"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="24"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
+        />
+      </svg>
     </label>
+    <div
+      class="c7"
+    >
+      <div
+        class="c8"
+      >
+        <div
+          class="c0"
+        >
+          <label
+            aria-hidden="true"
+            class="c9 c10"
+            disabled=""
+            for=":ro:"
+            id=":rp:"
+          >
+            Checked
+          </label>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
 
 exports[`render Checkbox disabled indeterminate 1`] = `
-.c5 {
+.c6 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
-.c7 {
+.c9 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -311,20 +365,35 @@ exports[`render Checkbox disabled indeterminate 1`] = `
   line-height: 1.5rem;
 }
 
-.c7:last-child {
+.c9:last-child {
   margin-bottom: 0;
 }
 
-.c8 {
+.c10 {
   cursor: pointer;
   cursor: not-allowed;
 }
 
-.c6 {
+.c0 {
+  box-sizing: border-box;
+}
+
+.c7 {
   margin-left: 0.5rem;
 }
 
-.c0 {
+.c8 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
@@ -335,7 +404,7 @@ exports[`render Checkbox disabled indeterminate 1`] = `
   display: flex;
 }
 
-.c2 {
+.c3 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -348,7 +417,7 @@ exports[`render Checkbox disabled indeterminate 1`] = `
   width: 1px;
 }
 
-.c4 {
+.c5 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: border-color,background,box-shadow,color,opacity;
@@ -385,73 +454,85 @@ exports[`render Checkbox disabled indeterminate 1`] = `
   cursor: not-allowed;
 }
 
-.c1:focus + .c3 {
+.c2:focus + .c4 {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c4 svg {
+.c5 svg {
   opacity: 1;
 }
 
 <div
   class="c0"
 >
-  <input
-    aria-labelledby=":rp:"
-    class="c1 c2"
-    disabled=""
-    id=":ro:"
-    type="checkbox"
-  />
-  <label
-    aria-hidden="true"
-    class="c3 c4"
-    disabled=""
-    for=":ro:"
-  >
-    <svg
-      aria-hidden="true"
-      class="c5"
-      fill="currentColor"
-      height="24"
-      stroke="currentColor"
-      stroke-width="0"
-      viewBox="0 0 24 24"
-      width="24"
-    >
-      <path
-        d="M0 0h24v24H0z"
-        fill="none"
-      />
-      <path
-        d="M18 13H6c-.55 0-1-.45-1-1s.45-1 1-1h12c.55 0 1 .45 1 1s-.45 1-1 1"
-      />
-    </svg>
-  </label>
   <div
-    class="c6"
+    class="c1"
   >
+    <input
+      aria-labelledby=":rv:"
+      class="c2 c3"
+      disabled=""
+      id=":ru:"
+      type="checkbox"
+    />
     <label
       aria-hidden="true"
-      class="c7 c8"
+      class="c4 c5"
       disabled=""
-      for=":ro:"
-      id=":rp:"
+      for=":ru:"
     >
-      Unchecked
+      <svg
+        aria-hidden="true"
+        class="c6"
+        fill="currentColor"
+        height="24"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="24"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M18 13H6c-.55 0-1-.45-1-1s.45-1 1-1h12c.55 0 1 .45 1 1s-.45 1-1 1"
+        />
+      </svg>
     </label>
+    <div
+      class="c7"
+    >
+      <div
+        class="c8"
+      >
+        <div
+          class="c0"
+        >
+          <label
+            aria-hidden="true"
+            class="c9 c10"
+            disabled=""
+            for=":ru:"
+            id=":rv:"
+          >
+            Unchecked
+          </label>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
 
 exports[`render Checkbox disabled unchecked 1`] = `
-.c5 {
+.c6 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
-.c7 {
+.c9 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -459,20 +540,35 @@ exports[`render Checkbox disabled unchecked 1`] = `
   line-height: 1.5rem;
 }
 
-.c7:last-child {
+.c9:last-child {
   margin-bottom: 0;
 }
 
-.c8 {
+.c10 {
   cursor: pointer;
   cursor: not-allowed;
 }
 
-.c6 {
+.c0 {
+  box-sizing: border-box;
+}
+
+.c7 {
   margin-left: 0.5rem;
 }
 
-.c0 {
+.c8 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
@@ -483,7 +579,7 @@ exports[`render Checkbox disabled unchecked 1`] = `
   display: flex;
 }
 
-.c2 {
+.c3 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -496,7 +592,7 @@ exports[`render Checkbox disabled unchecked 1`] = `
   width: 1px;
 }
 
-.c4 {
+.c5 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: border-color,background,box-shadow,color,opacity;
@@ -533,74 +629,86 @@ exports[`render Checkbox disabled unchecked 1`] = `
   cursor: not-allowed;
 }
 
-.c1:focus + .c3 {
+.c2:focus + .c4 {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c4 svg {
+.c5 svg {
   opacity: 0;
 }
 
 <div
   class="c0"
 >
-  <input
-    aria-checked="false"
-    aria-labelledby=":rm:"
-    class="c1 c2"
-    disabled=""
-    id=":rl:"
-    type="checkbox"
-  />
-  <label
-    aria-hidden="true"
-    class="c3 c4"
-    disabled=""
-    for=":rl:"
-  >
-    <svg
-      aria-hidden="true"
-      class="c5"
-      fill="currentColor"
-      height="24"
-      stroke="currentColor"
-      stroke-width="0"
-      viewBox="0 0 24 24"
-      width="24"
-    >
-      <path
-        d="M0 0h24v24H0z"
-        fill="none"
-      />
-      <path
-        d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
-      />
-    </svg>
-  </label>
   <div
-    class="c6"
+    class="c1"
   >
+    <input
+      aria-checked="false"
+      aria-labelledby=":rs:"
+      class="c2 c3"
+      disabled=""
+      id=":rr:"
+      type="checkbox"
+    />
     <label
       aria-hidden="true"
-      class="c7 c8"
+      class="c4 c5"
       disabled=""
-      for=":rl:"
-      id=":rm:"
+      for=":rr:"
     >
-      Checked
+      <svg
+        aria-hidden="true"
+        class="c6"
+        fill="currentColor"
+        height="24"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="24"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
+        />
+      </svg>
     </label>
+    <div
+      class="c7"
+    >
+      <div
+        class="c8"
+      >
+        <div
+          class="c0"
+        >
+          <label
+            aria-hidden="true"
+            class="c9 c10"
+            disabled=""
+            for=":rr:"
+            id=":rs:"
+          >
+            Checked
+          </label>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
 
 exports[`render Checkbox indeterminate 1`] = `
-.c5 {
+.c6 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
-.c7 {
+.c9 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -608,19 +716,34 @@ exports[`render Checkbox indeterminate 1`] = `
   line-height: 1.5rem;
 }
 
-.c7:last-child {
+.c9:last-child {
   margin-bottom: 0;
 }
 
-.c8 {
+.c10 {
   cursor: pointer;
 }
 
-.c6 {
+.c0 {
+  box-sizing: border-box;
+}
+
+.c7 {
   margin-left: 0.5rem;
 }
 
-.c0 {
+.c8 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
@@ -631,7 +754,7 @@ exports[`render Checkbox indeterminate 1`] = `
   display: flex;
 }
 
-.c2 {
+.c3 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -644,7 +767,7 @@ exports[`render Checkbox indeterminate 1`] = `
   width: 1px;
 }
 
-.c4 {
+.c5 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: border-color,background,box-shadow,color,opacity;
@@ -678,73 +801,85 @@ exports[`render Checkbox indeterminate 1`] = `
   width: 1.25rem;
 }
 
-.c4:hover {
+.c5:hover {
   border-color: #3C64F4;
 }
 
-.c1:focus + .c3 {
+.c2:focus + .c4 {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c4 svg {
+.c5 svg {
   opacity: 1;
 }
 
 <div
   class="c0"
 >
-  <input
-    aria-labelledby=":rg:"
-    class="c1 c2"
-    id=":rf:"
-    type="checkbox"
-  />
-  <label
-    aria-hidden="true"
-    class="c3 c4"
-    for=":rf:"
-  >
-    <svg
-      aria-hidden="true"
-      class="c5"
-      fill="currentColor"
-      height="24"
-      stroke="currentColor"
-      stroke-width="0"
-      viewBox="0 0 24 24"
-      width="24"
-    >
-      <path
-        d="M0 0h24v24H0z"
-        fill="none"
-      />
-      <path
-        d="M18 13H6c-.55 0-1-.45-1-1s.45-1 1-1h12c.55 0 1 .45 1 1s-.45 1-1 1"
-      />
-    </svg>
-  </label>
   <div
-    class="c6"
+    class="c1"
   >
+    <input
+      aria-labelledby=":rm:"
+      class="c2 c3"
+      id=":rl:"
+      type="checkbox"
+    />
     <label
-      class="c7 c8"
-      for=":rf:"
-      id=":rg:"
+      aria-hidden="true"
+      class="c4 c5"
+      for=":rl:"
     >
-      Unchecked
+      <svg
+        aria-hidden="true"
+        class="c6"
+        fill="currentColor"
+        height="24"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="24"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M18 13H6c-.55 0-1-.45-1-1s.45-1 1-1h12c.55 0 1 .45 1 1s-.45 1-1 1"
+        />
+      </svg>
     </label>
+    <div
+      class="c7"
+    >
+      <div
+        class="c8"
+      >
+        <div
+          class="c0"
+        >
+          <label
+            class="c9 c10"
+            for=":rl:"
+            id=":rm:"
+          >
+            Unchecked
+          </label>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
 
 exports[`render Checkbox unchecked 1`] = `
-.c5 {
+.c6 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
-.c7 {
+.c9 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -752,19 +887,34 @@ exports[`render Checkbox unchecked 1`] = `
   line-height: 1.5rem;
 }
 
-.c7:last-child {
+.c9:last-child {
   margin-bottom: 0;
 }
 
-.c8 {
+.c10 {
   cursor: pointer;
 }
 
-.c6 {
+.c0 {
+  box-sizing: border-box;
+}
+
+.c7 {
   margin-left: 0.5rem;
 }
 
-.c0 {
+.c8 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
@@ -775,7 +925,7 @@ exports[`render Checkbox unchecked 1`] = `
   display: flex;
 }
 
-.c2 {
+.c3 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -788,7 +938,7 @@ exports[`render Checkbox unchecked 1`] = `
   width: 1px;
 }
 
-.c4 {
+.c5 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: border-color,background,box-shadow,color,opacity;
@@ -822,74 +972,86 @@ exports[`render Checkbox unchecked 1`] = `
   width: 1.25rem;
 }
 
-.c4:hover {
+.c5:hover {
   border-color: #B4BAD1;
 }
 
-.c1:focus + .c3 {
+.c2:focus + .c4 {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c4 svg {
+.c5 svg {
   opacity: 0;
 }
 
 <div
   class="c0"
 >
-  <input
-    aria-checked="false"
-    aria-labelledby=":r4:"
-    class="c1 c2"
-    id=":r3:"
-    type="checkbox"
-  />
-  <label
-    aria-hidden="true"
-    class="c3 c4"
-    for=":r3:"
-  >
-    <svg
-      aria-hidden="true"
-      class="c5"
-      fill="currentColor"
-      height="24"
-      stroke="currentColor"
-      stroke-width="0"
-      viewBox="0 0 24 24"
-      width="24"
-    >
-      <path
-        d="M0 0h24v24H0z"
-        fill="none"
-      />
-      <path
-        d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
-      />
-    </svg>
-  </label>
   <div
-    class="c6"
+    class="c1"
   >
+    <input
+      aria-checked="false"
+      aria-labelledby=":r4:"
+      class="c2 c3"
+      id=":r3:"
+      type="checkbox"
+    />
     <label
-      class="c7 c8"
+      aria-hidden="true"
+      class="c4 c5"
       for=":r3:"
-      id=":r4:"
     >
-      Unchecked
+      <svg
+        aria-hidden="true"
+        class="c6"
+        fill="currentColor"
+        height="24"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="24"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
+        />
+      </svg>
     </label>
+    <div
+      class="c7"
+    >
+      <div
+        class="c8"
+      >
+        <div
+          class="c0"
+        >
+          <label
+            class="c9 c10"
+            for=":r3:"
+            id=":r4:"
+          >
+            Unchecked
+          </label>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
 
-exports[`render Checkbox with description object 1`] = `
-.c5 {
+exports[`render Checkbox with collapsible component 1`] = `
+.c6 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
-.c7 {
+.c9 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -897,11 +1059,11 @@ exports[`render Checkbox with description object 1`] = `
   line-height: 1.5rem;
 }
 
-.c7:last-child {
+.c9:last-child {
   margin-bottom: 0;
 }
 
-.c9 {
+.c11 {
   color: #313440;
   margin: 0 0 1rem;
   color: #5E637A;
@@ -911,15 +1073,420 @@ exports[`render Checkbox with description object 1`] = `
   margin: 0 0 0.75rem;
 }
 
+.c11:last-child {
+  margin-bottom: 0;
+}
+
+.c10 {
+  cursor: pointer;
+}
+
+.c0 {
+  box-sizing: border-box;
+}
+
+.c15 {
+  display: none;
+  padding: 1rem;
+  box-sizing: border-box;
+  background-color: #ECEEF5;
+}
+
+.c12 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  font-size: 1rem;
+  font-weight: 400;
+  height: 2.25rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  line-height: 2rem;
+  outline: none;
+  padding: 0 1rem;
+  position: relative;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+  padding-right: 0.5rem;
+  background-color: transparent;
+  border-color: transparent;
+  color: #3C64F4;
+}
+
+.c12.c12 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.c12:focus {
+  outline: none;
+}
+
+.c12[disabled] {
+  border-color: #D9DCE9;
+  pointer-events: none;
+}
+
+.c12 + .bd-button {
+  margin-top: 0.5rem;
+}
+
+.c12:active {
+  background-color: #DBE3FE;
+}
+
+.c12:focus {
+  box-shadow: 0 0 0 0.25rem #DBE3FE;
+}
+
+.c12:hover:not(:active) {
+  background-color: #F0F3FF;
+}
+
+.c12[disabled] {
+  border-color: transparent;
+  color: #D9DCE9;
+}
+
+.c14 {
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-gap: 0.5rem;
+}
+
+.c13 {
+  height: auto;
+  line-height: inherit;
+  margin-left: -0.25rem;
+  padding: 0.25rem;
+  padding-right: 0;
+  width: auto;
+}
+
+.c13:active,
+.c13:hover:not(:active) {
+  background: none;
+  color: #0024A6;
+}
+
+.c13 span {
+  grid-gap: 0;
+}
+
+.c13 svg {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.c7 {
+  margin-left: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.c8 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c3 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.c5 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: border-color,background,box-shadow,color,opacity;
+  transition-property: border-color,background,box-shadow,color,opacity;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: #FFFFFF;
+  box-sizing: border-box;
+  border: 1px solid #D9DCE9;
+  border-color: #D9DCE9;
+  border-radius: 0.25rem;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 1.25rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-bottom: 0.125rem;
+  margin-top: 0.125rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1.25rem;
+}
+
+.c5:hover {
+  border-color: #B4BAD1;
+}
+
+.c2:focus + .c4 {
+  box-shadow: 0 0 0 0.25rem #DBE3FE;
+}
+
+.c5 svg {
+  opacity: 0;
+}
+
+@media (min-width:720px) {
+  .c12 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c12 {
+    width: auto;
+  }
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <input
+      aria-checked="false"
+      aria-labelledby=":rg:"
+      class="c2 c3"
+      id=":rf:"
+      name="test-group"
+      type="checkbox"
+    />
+    <label
+      aria-hidden="true"
+      class="c4 c5"
+      for=":rf:"
+    >
+      <svg
+        aria-hidden="true"
+        class="c6"
+        fill="currentColor"
+        height="24"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="24"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
+        />
+      </svg>
+    </label>
+    <div
+      class="c7"
+    >
+      <div
+        class="c8"
+      >
+        <div
+          class="c0"
+        >
+          <label
+            class="c9 c10"
+            for=":rf:"
+            id=":rg:"
+          >
+            Unchecked
+          </label>
+          <p
+            class="c11"
+          >
+            description text
+          </p>
+        </div>
+      </div>
+      <button
+        aria-controls=":rj:"
+        aria-expanded="false"
+        class="c12 c13"
+        id=":ri:"
+        type="button"
+      >
+        <span
+          class="c14"
+        >
+          Configure
+          <svg
+            aria-labelledby=":rk:"
+            class="c6"
+            fill="currentColor"
+            height="24"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            width="24"
+          >
+            <title
+              id=":rk:"
+            >
+              Configure
+            </title>
+            <path
+              d="M24 24H0V0h24z"
+              fill="none"
+              opacity="0.87"
+            />
+            <path
+              d="M15.88 9.29 12 13.17 8.12 9.29a.996.996 0 1 0-1.41 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59a.996.996 0 0 0 0-1.41c-.39-.38-1.03-.39-1.42 0"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div
+    class="c0"
+  >
+    <div
+      aria-labelledby=":ri:"
+      class="c15"
+      display="none"
+      hidden=""
+      id=":rj:"
+      role="region"
+    >
+      CARD
+    </div>
+  </div>
+</div>
+`;
+
+exports[`render Checkbox with description object 1`] = `
+.c6 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.c9 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
 .c9:last-child {
   margin-bottom: 0;
 }
 
-.c8 {
-  cursor: pointer;
+.c11 {
+  color: #313440;
+  margin: 0 0 1rem;
+  color: #5E637A;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin: 0 0 0.75rem;
+}
+
+.c11:last-child {
+  margin-bottom: 0;
 }
 
 .c10 {
+  cursor: pointer;
+}
+
+.c0 {
+  box-sizing: border-box;
+}
+
+.c12 {
   -webkit-transition: all 70ms ease-out;
   transition: all 70ms ease-out;
   -webkit-transition-property: color;
@@ -932,23 +1499,34 @@ exports[`render Checkbox with description object 1`] = `
   text-decoration: none;
 }
 
-.c10:active {
+.c12:active {
   color: #0024A6;
 }
 
-.c10:hover:not(:active) {
+.c12:hover:not(:active) {
   color: #0024A6;
 }
 
-.c11 {
+.c13 {
   font-size: 0.875rem;
 }
 
-.c6 {
+.c7 {
   margin-left: 0.5rem;
 }
 
-.c0 {
+.c8 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
@@ -959,7 +1537,7 @@ exports[`render Checkbox with description object 1`] = `
   display: flex;
 }
 
-.c2 {
+.c3 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -972,7 +1550,7 @@ exports[`render Checkbox with description object 1`] = `
   width: 1px;
 }
 
-.c4 {
+.c5 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: border-color,background,box-shadow,color,opacity;
@@ -1006,88 +1584,100 @@ exports[`render Checkbox with description object 1`] = `
   width: 1.25rem;
 }
 
-.c4:hover {
+.c5:hover {
   border-color: #B4BAD1;
 }
 
-.c1:focus + .c3 {
+.c2:focus + .c4 {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c4 svg {
+.c5 svg {
   opacity: 0;
 }
 
 <div
   class="c0"
 >
-  <input
-    aria-checked="false"
-    aria-labelledby=":r7:"
-    class="c1 c2"
-    id=":r6:"
-    name="test-group"
-    type="checkbox"
-  />
-  <label
-    aria-hidden="true"
-    class="c3 c4"
-    for=":r6:"
-  >
-    <svg
-      aria-hidden="true"
-      class="c5"
-      fill="currentColor"
-      height="24"
-      stroke="currentColor"
-      stroke-width="0"
-      viewBox="0 0 24 24"
-      width="24"
-    >
-      <path
-        d="M0 0h24v24H0z"
-        fill="none"
-      />
-      <path
-        d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
-      />
-    </svg>
-  </label>
   <div
-    class="c6"
+    class="c1"
   >
+    <input
+      aria-checked="false"
+      aria-labelledby=":r7:"
+      class="c2 c3"
+      id=":r6:"
+      name="test-group"
+      type="checkbox"
+    />
     <label
-      class="c7 c8"
+      aria-hidden="true"
+      class="c4 c5"
       for=":r6:"
-      id=":r7:"
     >
-      Unchecked
-    </label>
-    <p
-      class="c9"
-    >
-      description
-       
-      <a
-        class="c10 c11"
-        href="bar"
-        target="foo"
+      <svg
+        aria-hidden="true"
+        class="c6"
+        fill="currentColor"
+        height="24"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="24"
       >
-        learn more
-      </a>
-    </p>
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
+        />
+      </svg>
+    </label>
+    <div
+      class="c7"
+    >
+      <div
+        class="c8"
+      >
+        <div
+          class="c0"
+        >
+          <label
+            class="c9 c10"
+            for=":r6:"
+            id=":r7:"
+          >
+            Unchecked
+          </label>
+          <p
+            class="c11"
+          >
+            description
+             
+            <a
+              class="c12 c13"
+              href="bar"
+              target="foo"
+            >
+              learn more
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
 
 exports[`render Checkbox with description string 1`] = `
-.c5 {
+.c6 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
-.c7 {
+.c9 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -1095,11 +1685,11 @@ exports[`render Checkbox with description string 1`] = `
   line-height: 1.5rem;
 }
 
-.c7:last-child {
+.c9:last-child {
   margin-bottom: 0;
 }
 
-.c9 {
+.c11 {
   color: #313440;
   margin: 0 0 1rem;
   color: #5E637A;
@@ -1109,19 +1699,34 @@ exports[`render Checkbox with description string 1`] = `
   margin: 0 0 0.75rem;
 }
 
-.c9:last-child {
+.c11:last-child {
   margin-bottom: 0;
 }
 
-.c8 {
+.c10 {
   cursor: pointer;
 }
 
-.c6 {
+.c0 {
+  box-sizing: border-box;
+}
+
+.c7 {
   margin-left: 0.5rem;
 }
 
-.c0 {
+.c8 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
@@ -1132,7 +1737,7 @@ exports[`render Checkbox with description string 1`] = `
   display: flex;
 }
 
-.c2 {
+.c3 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -1145,7 +1750,7 @@ exports[`render Checkbox with description string 1`] = `
   width: 1px;
 }
 
-.c4 {
+.c5 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: border-color,background,box-shadow,color,opacity;
@@ -1179,68 +1784,80 @@ exports[`render Checkbox with description string 1`] = `
   width: 1.25rem;
 }
 
-.c4:hover {
+.c5:hover {
   border-color: #B4BAD1;
 }
 
-.c1:focus + .c3 {
+.c2:focus + .c4 {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c4 svg {
+.c5 svg {
   opacity: 0;
 }
 
 <div
   class="c0"
 >
-  <input
-    aria-checked="false"
-    aria-labelledby=":rd:"
-    class="c1 c2"
-    id=":rc:"
-    name="test-group"
-    type="checkbox"
-  />
-  <label
-    aria-hidden="true"
-    class="c3 c4"
-    for=":rc:"
-  >
-    <svg
-      aria-hidden="true"
-      class="c5"
-      fill="currentColor"
-      height="24"
-      stroke="currentColor"
-      stroke-width="0"
-      viewBox="0 0 24 24"
-      width="24"
-    >
-      <path
-        d="M0 0h24v24H0z"
-        fill="none"
-      />
-      <path
-        d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
-      />
-    </svg>
-  </label>
   <div
-    class="c6"
+    class="c1"
   >
+    <input
+      aria-checked="false"
+      aria-labelledby=":rd:"
+      class="c2 c3"
+      id=":rc:"
+      name="test-group"
+      type="checkbox"
+    />
     <label
-      class="c7 c8"
+      aria-hidden="true"
+      class="c4 c5"
       for=":rc:"
-      id=":rd:"
     >
-      Unchecked
+      <svg
+        aria-hidden="true"
+        class="c6"
+        fill="currentColor"
+        height="24"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="24"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
+        />
+      </svg>
     </label>
-    <p
-      class="c9"
+    <div
+      class="c7"
     >
-      description text
-    </p>
+      <div
+        class="c8"
+      >
+        <div
+          class="c0"
+        >
+          <label
+            class="c9 c10"
+            for=":rc:"
+            id=":rd:"
+          >
+            Unchecked
+          </label>
+          <p
+            class="c11"
+          >
+            description text
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

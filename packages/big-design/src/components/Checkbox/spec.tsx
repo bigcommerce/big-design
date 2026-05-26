@@ -76,6 +76,25 @@ describe('render Checkbox', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  test('with collapsible component', () => {
+    const { container } = render(
+      <Checkbox
+        checked={false}
+        collapseOptions={{
+          collapsedTitle: 'Configure',
+          expandedTitle: 'Close',
+          children: 'CARD',
+        }}
+        description="description text"
+        label="Unchecked"
+        name="test-group"
+        onChange={() => null}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   test('indeterminate', () => {
     const { container } = render(
       <Checkbox isIndeterminate={true} label="Unchecked" onChange={() => null} />,
@@ -202,4 +221,68 @@ test('does not forward styles', () => {
 
   expect(container.getElementsByClassName('test')).toHaveLength(0);
   expect(container.firstChild).not.toHaveStyle('background: red');
+});
+
+test('disabled panel controller when checkbox is unchecked', async () => {
+  render(
+    <Checkbox
+      checked={false}
+      collapseOptions={{
+        collapsedTitle: 'Configure',
+        expandedTitle: 'Close',
+        children: 'CARD',
+        disableWhenUnchecked: true,
+      }}
+      data-testid="checkbox"
+      description="description text"
+      label="Unchecked"
+      name="test-group"
+      onChange={() => null}
+    />,
+  );
+
+  const button = screen.getByRole<HTMLInputElement>('button');
+
+  expect(button).toBeDisabled();
+});
+
+test('panel is expanded by clicking on the controller when checkbox is checked', async () => {
+  render(
+    <Checkbox
+      checked={true}
+      collapseOptions={{
+        collapsedTitle: 'Configure',
+        expandedTitle: 'Close',
+        children: 'CARD',
+      }}
+      data-testid="checkbox"
+      description="description text"
+      label="Unchecked"
+      name="test-group"
+      onChange={() => null}
+    />,
+  );
+
+  const button = screen.getByRole<HTMLInputElement>('button');
+
+  await userEvent.click(button);
+
+  const panel = screen.getByRole<HTMLInputElement>('region');
+
+  expect(panel).toBeInTheDocument();
+});
+
+test('with img', () => {
+  render(
+    <Checkbox
+      checked={false}
+      description="description text"
+      img={{ src: 'img/src' }}
+      label="Unchecked"
+      name="test-group"
+      onChange={() => null}
+    />,
+  );
+
+  expect(screen.getByRole('img')).toBeVisible();
 });

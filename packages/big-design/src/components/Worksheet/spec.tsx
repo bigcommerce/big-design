@@ -1024,7 +1024,7 @@ describe('keyboard navigation', () => {
         numberField: 50,
       },
     ]);
-    expect(cells[1].parentElement?.parentElement?.parentElement).toHaveStyle(
+    expect(cells[1].parentElement?.parentElement?.parentElement?.parentElement).toHaveStyle(
       `border-color: ${theme.colors.primary};`,
     );
 
@@ -1825,7 +1825,7 @@ describe('useKeyEvents coverage improvements', () => {
 
     // Should navigate to previous column (visibleOnStorefront checkbox) after finishing edit
     const checkboxes = getAllByLabelText('Checked');
-    const prevCell = checkboxes[0].parentElement?.parentElement?.parentElement;
+    const prevCell = checkboxes[0].parentElement?.parentElement?.parentElement?.parentElement;
 
     expect(prevCell).toHaveStyle(`border-color: ${theme.colors.primary}`);
   });
