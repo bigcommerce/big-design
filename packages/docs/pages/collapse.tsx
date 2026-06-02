@@ -1,8 +1,14 @@
 import { Collapse, H1, Panel, Text } from '@bigcommerce/big-design';
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 
-import { Code, CodePreview, GuidelinesTable, List } from '../components';
-import { CollapsePropTable } from '../PropTables';
+import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
+import {
+  CollapsePanelPropTable,
+  CollapsePropTable,
+  CollapseTriggerPropTable,
+  MarginPropTable,
+  PaddingPropTable,
+} from '../PropTables';
 
 const CollapsePage = () => {
   return (
@@ -23,31 +29,131 @@ const CollapsePage = () => {
       </Panel>
 
       <Panel header="Implementation" headerId="implementation">
-        <Text>Allows for showing/hiding content.</Text>
+        <ContentRoutingTabs
+          id="implementation"
+          routes={[
+            {
+              id: 'basic',
+              title: 'Basic',
+              render: () => (
+                <Fragment key="basic">
+                  <Text>
+                    <Code primary>Collapse</Code> is a headless compound component. The root
+                    provides state via context; place <Code primary>Collapse.Trigger</Code> and{' '}
+                    <Code primary>Collapse.Panel</Code> anywhere inside. State can be uncontrolled (
+                    <Code primary>initiallyOpen</Code>) — no extra wiring required.
+                  </Text>
 
-        <CodePreview>
-          {/* jsx-to-string:start */}
-          {function Example() {
-            const [title, setTitle] = useState('Show more');
-            const handleChange = (isOpen: boolean) => setTitle(isOpen ? 'Show less' : 'Show more');
+                  <CodePreview>
+                    {/* jsx-to-string:start */}
+                    <Collapse>
+                      <Collapse.Trigger title="Show more" />
+                      <Collapse.Panel backgroundColor="secondary20" padding="medium">
+                        <Text>
+                          Ea tempor sunt amet labore proident dolor proident commodo in exercitation
+                          ea nulla sunt pariatur. Nulla sunt ipsum do eu consectetur exercitation
+                          occaecat labore aliqua.
+                        </Text>
+                      </Collapse.Panel>
+                    </Collapse>
+                    {/* jsx-to-string:end */}
+                  </CodePreview>
+                </Fragment>
+              ),
+            },
+            {
+              id: 'controlled',
+              title: 'Controlled',
+              render: () => (
+                <Fragment key="controlled">
+                  <Text>
+                    Lift state up by passing <Code primary>isOpen</Code> +{' '}
+                    <Code primary>onCollapseChange</Code>. Useful when the open/closed state should
+                    drive other UI — for example, swapping the trigger label.
+                  </Text>
 
-            return (
-              <Collapse onCollapseChange={handleChange} title={title}>
-                <Text>
-                  Ea tempor sunt amet labore proident dolor proident commodo in exercitation ea
-                  nulla sunt pariatur. Nulla sunt ipsum do eu consectetur exercitation occaecat
-                  labore aliqua. Aute elit occaecat esse ea fugiat esse. Reprehenderit sunt ea ea
-                  mollit commodo tempor amet fugiat.
-                </Text>
-              </Collapse>
-            );
-          }}
-          {/* jsx-to-string:end */}
-        </CodePreview>
+                  <CodePreview>
+                    {/* jsx-to-string:start */}
+                    {function Example() {
+                      const [isOpen, setIsOpen] = useState(false);
+
+                      return (
+                        <Collapse isOpen={isOpen} onCollapseChange={setIsOpen}>
+                          <Collapse.Trigger title={isOpen ? 'Show less' : 'Show more'} />
+                          <Collapse.Panel backgroundColor="secondary20" padding="medium">
+                            <Text>
+                              Ea tempor sunt amet labore proident dolor proident commodo in
+                              exercitation ea nulla sunt pariatur.
+                            </Text>
+                          </Collapse.Panel>
+                        </Collapse>
+                      );
+                    }}
+                    {/* jsx-to-string:end */}
+                  </CodePreview>
+                </Fragment>
+              ),
+            },
+            {
+              id: 'disabled',
+              title: 'Disabled',
+              render: () => (
+                <Fragment key="disabled">
+                  <Text>
+                    The <Code primary>disabled</Code> prop disables the trigger. If the panel is
+                    open when <Code primary>disabled</Code> becomes <Code>true</Code>, it
+                    auto-collapses and fires <Code primary>onCollapseChange(false)</Code>.
+                  </Text>
+
+                  <CodePreview>
+                    {/* jsx-to-string:start */}
+                    <Collapse disabled>
+                      <Collapse.Trigger title="Show more" />
+                      <Collapse.Panel backgroundColor="secondary20" padding="medium">
+                        <Text>Hidden content.</Text>
+                      </Collapse.Panel>
+                    </Collapse>
+                    {/* jsx-to-string:end */}
+                  </CodePreview>
+                </Fragment>
+              ),
+            },
+          ]}
+        />
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <CollapsePropTable />
+        <ContentRoutingTabs
+          id="props"
+          routes={[
+            {
+              id: 'collapse',
+              title: 'Collapse',
+              render: () => <CollapsePropTable />,
+            },
+            {
+              id: 'collapse-trigger',
+              title: 'Collapse.Trigger',
+              render: () => (
+                <CollapseTriggerPropTable inheritedProps={<MarginPropTable collapsible />} />
+              ),
+            },
+            {
+              id: 'collapse-panel',
+              title: 'Collapse.Panel',
+              render: () => (
+                <CollapsePanelPropTable
+                  inheritedProps={
+                    <>
+                      <MarginPropTable collapsible />
+                      <PaddingPropTable collapsible />
+                    </>
+                  }
+                />
+              ),
+            },
+          ]}
+        />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
