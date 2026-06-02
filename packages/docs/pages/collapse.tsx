@@ -41,7 +41,7 @@ const CollapsePage = () => {
                     <Code primary>Collapse</Code> is a headless compound component. The root
                     provides state via context; place <Code primary>Collapse.Trigger</Code> and{' '}
                     <Code primary>Collapse.Panel</Code> anywhere inside. State can be uncontrolled (
-                    <Code primary>defaultOpen</Code>) — no extra wiring required.
+                    <Code primary>initiallyOpen</Code>) — no extra wiring required.
                   </Text>
 
                   <CodePreview>
@@ -67,7 +67,7 @@ const CollapsePage = () => {
               render: () => (
                 <Fragment key="controlled">
                   <Text>
-                    Lift state up by passing <Code primary>isCollapseOpen</Code> +{' '}
+                    Lift state up by passing <Code primary>isOpen</Code> +{' '}
                     <Code primary>onCollapseChange</Code>. Useful when the open/closed state should
                     drive other UI — for example, swapping the trigger label.
                   </Text>
@@ -78,7 +78,7 @@ const CollapsePage = () => {
                       const [isOpen, setIsOpen] = useState(false);
 
                       return (
-                        <Collapse isCollapseOpen={isOpen} onCollapseChange={setIsOpen}>
+                        <Collapse isOpen={isOpen} onCollapseChange={setIsOpen}>
                           <Collapse.Trigger title={isOpen ? 'Show less' : 'Show more'} />
                           <Collapse.Panel backgroundColor="secondary20" padding="medium">
                             <Text>

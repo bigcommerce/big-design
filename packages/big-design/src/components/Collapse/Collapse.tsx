@@ -1,17 +1,15 @@
-import React, { useCallback, useEffect, useId, useState } from 'react';
+import React, { useCallback, useEffect, useId, useRef, useState } from 'react';
 
-import { CollapsePanel, CollapsePanelProps } from './CollapsePanel';
-import { CollapseTrigger, CollapseTriggerProps } from './CollapseTrigger';
+import { CollapsePanel } from './CollapsePanel';
+import { CollapseTrigger } from './CollapseTrigger';
 import { CollapseContext } from './useCollapseContext';
 
 export interface CollapseProps {
   children?: React.ReactNode;
-  isCollapseOpen?: boolean;
-  defaultOpen?: boolean;
+  isOpen?: boolean;
+  initiallyOpen?: boolean;
   onCollapseChange?(isOpen: boolean): void;
   disabled?: boolean;
-  triggerProps?: Omit<CollapseTriggerProps, 'title'>;
-  panelProps?: Omit<CollapsePanelProps, 'children'>;
 }
 
 type CollapseComponent = React.FC<CollapseProps> & {
@@ -21,44 +19,53 @@ type CollapseComponent = React.FC<CollapseProps> & {
 
 export const Collapse: CollapseComponent = ({
   children,
-  isCollapseOpen,
-  defaultOpen = false,
+  isOpen,
+  initiallyOpen = false,
   onCollapseChange,
   disabled,
 }) => {
-  const isControlled = isCollapseOpen !== undefined;
-  const [uncontrolledOpen, setUncontrolledOpen] = useState(disabled ? false : defaultOpen);
-  const isOpen = isControlled ? isCollapseOpen : uncontrolledOpen;
+  const wasDisabled = useRef(disabled);
+
+  const isControlled = isOpen !== undefined;
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(initiallyOpen);
+  const isCollapseOpen = isControlled ? isOpen : uncontrolledOpen;
 
   const triggerId = useId();
   const panelId = useId();
 
   useEffect(() => {
-    if (disabled && isOpen) {
-      if (!isControlled) {
-        setUncontrolledOpen(false);
-      }
+    const justDisabled = disabled && !wasDisabled.current;
 
+    wasDisabled.current = disabled;
+
+    if (isControlled) {
+      return;
+    }
+
+    if (justDisabled && uncontrolledOpen) {
+      setUncontrolledOpen(false);
       onCollapseChange?.(false);
     }
-  }, [disabled, isOpen, isControlled, onCollapseChange]);
+  }, [disabled, isControlled, uncontrolledOpen, onCollapseChange]);
 
   const toggle = useCallback(() => {
     if (disabled) {
       return;
     }
 
-    const next = !isOpen;
+    const next = !isCollapseOpen;
 
     if (!isControlled) {
       setUncontrolledOpen(next);
     }
 
     onCollapseChange?.(next);
-  }, [disabled, isControlled, isOpen, onCollapseChange]);
+  }, [disabled, isControlled, isCollapseOpen, onCollapseChange]);
 
   return (
-    <CollapseContext.Provider value={{ isOpen, toggle, disabled, triggerId, panelId }}>
+    <CollapseContext.Provider
+      value={{ isOpen: isCollapseOpen, toggle, disabled, triggerId, panelId }}
+    >
       {children}
     </CollapseContext.Provider>
   );

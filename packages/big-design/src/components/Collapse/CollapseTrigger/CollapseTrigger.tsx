@@ -7,7 +7,7 @@ import { useCollapseContext } from '../useCollapseContext';
 import { StyledButton } from './styled';
 
 export interface CollapseTriggerProps extends MarginProps {
-  title: string | React.ReactNode;
+  title: string;
 }
 
 export const CollapseTrigger: React.FC<CollapseTriggerProps> = ({
@@ -22,7 +22,7 @@ export const CollapseTrigger: React.FC<CollapseTriggerProps> = ({
       aria-controls={panelId}
       aria-expanded={isOpen}
       disabled={disabled}
-      iconRight={<ExpandMoreIcon title={typeof title === 'string' ? title : undefined} />}
+      iconRight={<ExpandMoreIcon title={title} />}
       id={triggerId}
       isOpen={isOpen}
       marginVertical={marginVertical}

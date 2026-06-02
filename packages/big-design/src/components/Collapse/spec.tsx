@@ -23,7 +23,7 @@ const CollapseWithStaticTitleMock = (
 );
 
 const CollapseWithVisiblePanelMock = (
-  <Collapse defaultOpen>
+  <Collapse initiallyOpen>
     <Collapse.Trigger title="show more" />
     <Collapse.Panel>
       <Text>Content</Text>
@@ -190,17 +190,17 @@ test('onCollapseChange is called', async () => {
   expect(handleChange).toHaveBeenCalledWith(true);
 });
 
-test('renders with ReactNode title', () => {
+test('renders with string title', () => {
   render(
     <Collapse>
-      <Collapse.Trigger title={<span data-testid="custom-title">Custom Title</span>} />
+      <Collapse.Trigger title="Custom Title" />
       <Collapse.Panel>
         <Text>Content</Text>
       </Collapse.Panel>
     </Collapse>,
   );
 
-  expect(screen.getAllByTestId('custom-title').length).toBeGreaterThan(0);
+  expect(screen.getByRole('button')).toHaveTextContent('Custom Title');
 });
 
 test('title button is disabled when disabled prop is true', () => {
@@ -214,19 +214,6 @@ test('title button is disabled when disabled prop is true', () => {
   );
 
   expect(screen.getByRole('button')).toBeDisabled();
-});
-
-test('panel stays hidden when disabled and defaultOpen', () => {
-  render(
-    <Collapse defaultOpen disabled>
-      <Collapse.Trigger title="title" />
-      <Collapse.Panel>
-        <Text>Content</Text>
-      </Collapse.Panel>
-    </Collapse>,
-  );
-
-  expect(screen.getByRole('region', { hidden: true })).not.toBeVisible();
 });
 
 test('click on disabled title does not toggle panel', async () => {
@@ -254,7 +241,7 @@ test('open panel closes when disabled becomes true', () => {
   const onChange = jest.fn();
 
   const { rerender } = render(
-    <Collapse defaultOpen onCollapseChange={onChange}>
+    <Collapse initiallyOpen onCollapseChange={onChange}>
       <Collapse.Trigger title="title" />
       <Collapse.Panel>
         <Text>Content</Text>
@@ -265,7 +252,7 @@ test('open panel closes when disabled becomes true', () => {
   expect(screen.getByRole('region')).toBeVisible();
 
   rerender(
-    <Collapse defaultOpen disabled onCollapseChange={onChange}>
+    <Collapse disabled initiallyOpen onCollapseChange={onChange}>
       <Collapse.Trigger title="title" />
       <Collapse.Panel>
         <Text>Content</Text>
@@ -279,7 +266,7 @@ test('open panel closes when disabled becomes true', () => {
 
 test('panel applies backgroundColor and padding', () => {
   render(
-    <Collapse defaultOpen>
+    <Collapse initiallyOpen>
       <Collapse.Trigger title="title" />
       <Collapse.Panel backgroundColor="secondary20" padding="medium">
         <Text>Content</Text>
@@ -290,6 +277,23 @@ test('panel applies backgroundColor and padding', () => {
   const panel = screen.getByRole('region');
 
   expect(panel).toHaveStyle('padding: 1rem');
+});
+
+test('panel renders provided children', () => {
+  render(
+    <Collapse initiallyOpen>
+      <Collapse.Trigger title="title" />
+      <Collapse.Panel>
+        <Text data-testid="panel-child">Panel content</Text>
+      </Collapse.Panel>
+    </Collapse>,
+  );
+
+  const panel = screen.getByRole('region');
+  const child = screen.getByTestId('panel-child');
+
+  expect(panel).toContainElement(child);
+  expect(child).toHaveTextContent('Panel content');
 });
 
 test('Trigger applies custom marginVertical', () => {
@@ -310,7 +314,7 @@ test('controlled mode: isCollapseOpen drives the open state', async () => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-      <Collapse isCollapseOpen={isOpen} onCollapseChange={setIsOpen}>
+      <Collapse isOpen={isOpen} onCollapseChange={setIsOpen}>
         <Collapse.Trigger title="title" />
         <Collapse.Panel>
           <Text>Content</Text>

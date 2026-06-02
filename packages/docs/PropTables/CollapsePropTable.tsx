@@ -15,16 +15,16 @@ const collapseProps: Prop[] = [
     required: true,
   },
   {
-    name: 'defaultOpen',
+    name: 'initiallyOpen',
     types: 'boolean',
     defaultValue: 'false',
     description: 'Initial open state when uncontrolled.',
   },
   {
-    name: 'isCollapseOpen',
+    name: 'isOpen',
     types: 'boolean',
     description:
-      'Controlled open state. When provided, the component is controlled and ignores defaultOpen.',
+      'Controlled open state. When provided, the component is controlled and ignores isOpen.',
   },
   {
     name: 'onCollapseChange',
@@ -43,7 +43,7 @@ const collapseProps: Prop[] = [
 const collapseTriggerProps: Prop[] = [
   {
     name: 'title',
-    types: ['string', 'React.ReactNode'],
+    types: 'string',
     description: 'Trigger label rendered alongside the chevron icon.',
     required: true,
   },
