@@ -264,6 +264,19 @@ test('open panel closes when disabled becomes true', () => {
   expect(onChange).toHaveBeenCalledWith(false);
 });
 
+test('panel stays hidden when disabled and initiallyOpen', () => {
+  render(
+    <Collapse disabled initiallyOpen>
+      <Collapse.Trigger title="title" />
+      <Collapse.Panel>
+        <Text>Content</Text>
+      </Collapse.Panel>
+    </Collapse>,
+  );
+
+  expect(screen.getByRole('region', { hidden: true })).not.toBeVisible();
+});
+
 test('panel applies backgroundColor and padding', () => {
   render(
     <Collapse initiallyOpen>
@@ -277,6 +290,7 @@ test('panel applies backgroundColor and padding', () => {
   const panel = screen.getByRole('region');
 
   expect(panel).toHaveStyle('padding: 1rem');
+  expect(panel).toHaveStyle('background-color: rgb(236, 238, 245)');
 });
 
 test('panel renders provided children', () => {
@@ -309,7 +323,7 @@ test('Trigger applies custom marginVertical', () => {
   expect(screen.getByRole('button')).toHaveStyle('margin-top: 1.25rem');
 });
 
-test('controlled mode: isCollapseOpen drives the open state', async () => {
+test('controlled mode: isOpen drives the open state', async () => {
   const ControlledExample = () => {
     const [isOpen, setIsOpen] = useState(false);
 

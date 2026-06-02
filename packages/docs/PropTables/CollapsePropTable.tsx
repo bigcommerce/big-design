@@ -24,7 +24,7 @@ const collapseProps: Prop[] = [
     name: 'isOpen',
     types: 'boolean',
     description:
-      'Controlled open state. When provided, the component is controlled and ignores isOpen.',
+      'Controlled open state. When provided, the component is controlled and ignores initiallyOpen.',
   },
   {
     name: 'onCollapseChange',

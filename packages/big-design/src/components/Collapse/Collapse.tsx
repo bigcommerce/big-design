@@ -27,7 +27,7 @@ export const Collapse: CollapseComponent = ({
   const wasDisabled = useRef(disabled);
 
   const isControlled = isOpen !== undefined;
-  const [uncontrolledOpen, setUncontrolledOpen] = useState(initiallyOpen);
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(disabled ? false : initiallyOpen);
   const isCollapseOpen = isControlled ? isOpen : uncontrolledOpen;
 
   const triggerId = useId();
@@ -38,15 +38,14 @@ export const Collapse: CollapseComponent = ({
 
     wasDisabled.current = disabled;
 
-    if (isControlled) {
-      return;
-    }
+    if (justDisabled && isCollapseOpen) {
+      if (!isControlled) {
+        setUncontrolledOpen(false);
+      }
 
-    if (justDisabled && uncontrolledOpen) {
-      setUncontrolledOpen(false);
       onCollapseChange?.(false);
     }
-  }, [disabled, isControlled, uncontrolledOpen, onCollapseChange]);
+  }, [disabled, isControlled, isCollapseOpen, onCollapseChange]);
 
   const toggle = useCallback(() => {
     if (disabled) {
