@@ -1,61 +1,74 @@
-import { ExpandMoreIcon } from '@bigcommerce/big-design-icons';
-import React, { useId, useState } from 'react';
+import React, { useCallback, useEffect, useId, useRef, useState } from 'react';
 
-import { Box } from '../Box';
-
-import { StyledButton } from './styled';
+import { CollapsePanel } from './CollapsePanel';
+import { CollapseTrigger } from './CollapseTrigger';
+import { CollapseContext } from './useCollapseContext';
 
 export interface CollapseProps {
   children?: React.ReactNode;
-  title: string;
+  isOpen?: boolean;
   initiallyOpen?: boolean;
   onCollapseChange?(isOpen: boolean): void;
+  disabled?: boolean;
 }
 
-export const Collapse: React.FC<CollapseProps> = ({
+type CollapseComponent = React.FC<CollapseProps> & {
+  Trigger: typeof CollapseTrigger;
+  Panel: typeof CollapsePanel;
+};
+
+export const Collapse: CollapseComponent = ({
   children,
-  title,
-  onCollapseChange,
+  isOpen,
   initiallyOpen = false,
+  onCollapseChange,
+  disabled,
 }) => {
-  const [isOpen, setIsOpen] = useState(initiallyOpen);
+  const wasDisabled = useRef(disabled);
+
+  const isControlled = isOpen !== undefined;
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(disabled ? false : initiallyOpen);
+  const isCollapseOpen = isControlled ? isOpen : uncontrolledOpen;
+
   const triggerId = useId();
   const panelId = useId();
 
-  const handleTitleClick = () => {
-    const nextIsOpen = !isOpen;
+  useEffect(() => {
+    const justDisabled = disabled && !wasDisabled.current;
 
-    setIsOpen(nextIsOpen);
+    wasDisabled.current = disabled;
 
-    if (typeof onCollapseChange === 'function') {
-      onCollapseChange(nextIsOpen);
+    if (justDisabled && isCollapseOpen) {
+      if (!isControlled) {
+        setUncontrolledOpen(false);
+      }
+
+      onCollapseChange?.(false);
     }
-  };
+  }, [disabled, isControlled, isCollapseOpen, onCollapseChange]);
+
+  const toggle = useCallback(() => {
+    if (disabled) {
+      return;
+    }
+
+    const next = !isCollapseOpen;
+
+    if (!isControlled) {
+      setUncontrolledOpen(next);
+    }
+
+    onCollapseChange?.(next);
+  }, [disabled, isControlled, isCollapseOpen, onCollapseChange]);
 
   return (
-    <>
-      <StyledButton
-        aria-controls={panelId}
-        aria-expanded={isOpen}
-        iconRight={<ExpandMoreIcon title={title} />}
-        id={triggerId}
-        isOpen={isOpen}
-        marginVertical="small"
-        onClick={handleTitleClick}
-        type="button"
-        variant="subtle"
-      >
-        {title}
-      </StyledButton>
-      <Box
-        aria-labelledby={triggerId}
-        display={isOpen ? 'block' : 'none'}
-        hidden={!isOpen}
-        id={panelId}
-        role="region"
-      >
-        {children}
-      </Box>
-    </>
+    <CollapseContext.Provider
+      value={{ isOpen: isCollapseOpen, toggle, disabled, triggerId, panelId }}
+    >
+      {children}
+    </CollapseContext.Provider>
   );
 };
+
+Collapse.Trigger = CollapseTrigger;
+Collapse.Panel = CollapsePanel;

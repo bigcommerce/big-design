@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
-import React from 'react';
+import React, { useState } from 'react';
 import 'jest-styled-components';
 
 import { Text } from '../Typography';
@@ -9,14 +9,25 @@ import { Collapse } from './Collapse';
 
 const handleChange = jest.fn();
 
+beforeEach(() => {
+  handleChange.mockClear();
+});
+
 const CollapseWithStaticTitleMock = (
-  <Collapse onCollapseChange={handleChange} title="title">
-    <Text>Content</Text>
+  <Collapse onCollapseChange={handleChange}>
+    <Collapse.Trigger title="title" />
+    <Collapse.Panel>
+      <Text>Content</Text>
+    </Collapse.Panel>
   </Collapse>
 );
+
 const CollapseWithVisiblePanelMock = (
-  <Collapse initiallyOpen title="show more">
-    <Text>Content</Text>
+  <Collapse initiallyOpen>
+    <Collapse.Trigger title="show more" />
+    <Collapse.Panel>
+      <Text>Content</Text>
+    </Collapse.Panel>
   </Collapse>
 );
 
@@ -176,5 +187,211 @@ test('onCollapseChange is called', async () => {
 
   await userEvent.click(trigger);
 
-  expect(handleChange).toHaveBeenCalled();
+  expect(handleChange).toHaveBeenCalledWith(true);
+});
+
+test('renders with string title', () => {
+  render(
+    <Collapse>
+      <Collapse.Trigger title="Custom Title" />
+      <Collapse.Panel>
+        <Text>Content</Text>
+      </Collapse.Panel>
+    </Collapse>,
+  );
+
+  expect(screen.getByRole('button')).toHaveTextContent('Custom Title');
+});
+
+test('title button is disabled when disabled prop is true', () => {
+  render(
+    <Collapse disabled>
+      <Collapse.Trigger title="title" />
+      <Collapse.Panel>
+        <Text>Content</Text>
+      </Collapse.Panel>
+    </Collapse>,
+  );
+
+  expect(screen.getByRole('button')).toBeDisabled();
+});
+
+test('click on disabled title does not toggle panel', async () => {
+  const onChange = jest.fn();
+
+  render(
+    <Collapse disabled onCollapseChange={onChange}>
+      <Collapse.Trigger title="title" />
+      <Collapse.Panel>
+        <Text>Content</Text>
+      </Collapse.Panel>
+    </Collapse>,
+  );
+
+  const trigger = screen.getByRole<HTMLButtonElement>('button');
+  const panel = screen.getByRole('region', { hidden: true });
+
+  await userEvent.click(trigger, { pointerEventsCheck: 0 });
+
+  expect(panel).not.toBeVisible();
+  expect(onChange).not.toHaveBeenCalled();
+});
+
+test('open panel closes when disabled becomes true', () => {
+  const onChange = jest.fn();
+
+  const { rerender } = render(
+    <Collapse initiallyOpen onCollapseChange={onChange}>
+      <Collapse.Trigger title="title" />
+      <Collapse.Panel>
+        <Text>Content</Text>
+      </Collapse.Panel>
+    </Collapse>,
+  );
+
+  expect(screen.getByRole('region')).toBeVisible();
+
+  rerender(
+    <Collapse disabled initiallyOpen onCollapseChange={onChange}>
+      <Collapse.Trigger title="title" />
+      <Collapse.Panel>
+        <Text>Content</Text>
+      </Collapse.Panel>
+    </Collapse>,
+  );
+
+  expect(screen.getByRole('region', { hidden: true })).not.toBeVisible();
+  expect(onChange).toHaveBeenCalledWith(false);
+});
+
+test('panel stays hidden when disabled and initiallyOpen', () => {
+  render(
+    <Collapse disabled initiallyOpen>
+      <Collapse.Trigger title="title" />
+      <Collapse.Panel>
+        <Text>Content</Text>
+      </Collapse.Panel>
+    </Collapse>,
+  );
+
+  expect(screen.getByRole('region', { hidden: true })).not.toBeVisible();
+});
+
+test('panel applies backgroundColor and padding', () => {
+  render(
+    <Collapse initiallyOpen>
+      <Collapse.Trigger title="title" />
+      <Collapse.Panel backgroundColor="secondary20" padding="medium">
+        <Text>Content</Text>
+      </Collapse.Panel>
+    </Collapse>,
+  );
+
+  const panel = screen.getByRole('region');
+
+  expect(panel).toHaveStyle('padding: 1rem');
+  expect(panel).toHaveStyle('background-color: rgb(236, 238, 245)');
+});
+
+test('panel renders provided children', () => {
+  render(
+    <Collapse initiallyOpen>
+      <Collapse.Trigger title="title" />
+      <Collapse.Panel>
+        <Text data-testid="panel-child">Panel content</Text>
+      </Collapse.Panel>
+    </Collapse>,
+  );
+
+  const panel = screen.getByRole('region');
+  const child = screen.getByTestId('panel-child');
+
+  expect(panel).toContainElement(child);
+  expect(child).toHaveTextContent('Panel content');
+});
+
+test('Trigger applies custom marginVertical', () => {
+  render(
+    <Collapse>
+      <Collapse.Trigger marginVertical="large" title="title" />
+      <Collapse.Panel>
+        <Text>Content</Text>
+      </Collapse.Panel>
+    </Collapse>,
+  );
+
+  expect(screen.getByRole('button')).toHaveStyle('margin-top: 1.25rem');
+});
+
+test('controlled mode: isOpen drives the open state', async () => {
+  const ControlledExample = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+      <Collapse isOpen={isOpen} onCollapseChange={setIsOpen}>
+        <Collapse.Trigger title="title" />
+        <Collapse.Panel>
+          <Text>Content</Text>
+        </Collapse.Panel>
+      </Collapse>
+    );
+  };
+
+  render(<ControlledExample />);
+
+  const trigger = screen.getByRole<HTMLButtonElement>('button');
+
+  expect(screen.getByRole('region', { hidden: true })).not.toBeVisible();
+
+  await userEvent.click(trigger);
+
+  expect(screen.getByRole('region')).toBeVisible();
+});
+
+test('Trigger and Panel can be placed in separate parts of the subtree', async () => {
+  render(
+    <Collapse>
+      <header>
+        <Collapse.Trigger title="title" />
+      </header>
+      <section>
+        <Collapse.Panel>
+          <Text>Content</Text>
+        </Collapse.Panel>
+      </section>
+    </Collapse>,
+  );
+
+  const trigger = screen.getByRole<HTMLButtonElement>('button');
+  const panel = screen.getByRole('region', { hidden: true });
+
+  expect(panel).not.toBeVisible();
+
+  await userEvent.click(trigger);
+
+  expect(panel).toBeVisible();
+});
+
+test('Collapse.Trigger throws when used outside Collapse', () => {
+  const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+
+  expect(() => render(<Collapse.Trigger title="title" />)).toThrow(
+    /Collapse\.Trigger must be used inside a <Collapse> component\./,
+  );
+
+  errorSpy.mockRestore();
+});
+
+test('Collapse.Panel throws when used outside Collapse', () => {
+  const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+
+  expect(() =>
+    render(
+      <Collapse.Panel>
+        <Text>Content</Text>
+      </Collapse.Panel>,
+    ),
+  ).toThrow(/Collapse\.Panel must be used inside a <Collapse> component\./);
+
+  errorSpy.mockRestore();
 });

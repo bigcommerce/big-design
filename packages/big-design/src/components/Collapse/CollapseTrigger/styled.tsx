@@ -1,9 +1,9 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
-import { withTransition } from '../../helpers/transitions';
-import { ButtonProps } from '../Button';
-import { StyleableButton } from '../Button/private';
+import { withTransition } from '../../../helpers/transitions';
+import { ButtonProps } from '../../Button';
+import { StyleableButton } from '../../Button/private';
 
 interface StyledButtonProps extends ButtonProps {
   isOpen?: boolean;
