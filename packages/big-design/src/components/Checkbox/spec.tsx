@@ -203,3 +203,69 @@ test('does not forward styles', () => {
   expect(container.getElementsByClassName('test')).toHaveLength(0);
   expect(container.firstChild).not.toHaveStyle('background: red');
 });
+
+describe('img', () => {
+  test('renders an image with the provided alt and src', () => {
+    render(<Checkbox img={{ alt: 'Logo', src: '/logo.svg' }} label="With image" />);
+
+    const image = screen.getByAltText('Logo');
+
+    expect(image).toBeInTheDocument();
+    expect(image).toHaveAttribute('src', '/logo.svg');
+  });
+
+  test('defaults alt to an empty string', () => {
+    const { container } = render(<Checkbox img={{ src: '/logo.svg' }} label="With image" />);
+
+    expect(container.querySelector('img')).toHaveAttribute('alt', '');
+  });
+});
+
+describe('collapseOptions', () => {
+  const renderWithCollapse = (props: Partial<React.ComponentProps<typeof Checkbox>> = {}) =>
+    render(
+      <Checkbox
+        checked={false}
+        collapseOptions={{
+          collapse: {},
+          panel: { children: <span>Panel content</span> },
+          trigger: { title: 'Show details' },
+        }}
+        label="With collapse"
+        onChange={() => null}
+        {...props}
+      />,
+    );
+
+  test('renders the collapse trigger', () => {
+    renderWithCollapse();
+
+    expect(screen.getByRole('button', { name: /Show details/ })).toBeInTheDocument();
+  });
+
+  test('toggles the panel when clicking the trigger', async () => {
+    renderWithCollapse();
+
+    const trigger = screen.getByRole('button', { name: /Show details/ });
+
+    expect(trigger).toHaveAttribute('aria-expanded', 'false');
+    expect(screen.getByText('Panel content')).not.toBeVisible();
+
+    await userEvent.click(trigger);
+
+    expect(trigger).toHaveAttribute('aria-expanded', 'true');
+    expect(screen.getByText('Panel content')).toBeVisible();
+  });
+
+  test('disables the trigger when disableWhenUnchecked is set and the checkbox is unchecked', () => {
+    renderWithCollapse({ checked: false, disableWhenUnchecked: true });
+
+    expect(screen.getByRole('button', { name: /Show details/ })).toBeDisabled();
+  });
+
+  test('enables the trigger when disableWhenUnchecked is set and the checkbox is checked', () => {
+    renderWithCollapse({ checked: true, disableWhenUnchecked: true });
+
+    expect(screen.getByRole('button', { name: /Show details/ })).toBeEnabled();
+  });
+});

@@ -3,8 +3,10 @@ import React, { Fragment, useState } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
 import {
+  CheckboxCollapsePropTable,
   CheckboxDescriptionLinkPropTable,
   CheckboxDescriptionPropTable,
+  CheckboxImgPropTable,
   CheckboxPropTable,
 } from '../PropTables';
 
@@ -179,6 +181,69 @@ const CheckboxPage = () => {
                 </Fragment>
               ),
             },
+            {
+              id: 'collapse',
+              title: 'Collapse',
+              render: () => (
+                <Fragment key="collapse">
+                  <Text>
+                    <Code primary>Checkboxes</Code> support <Code primary>Collapse</Code> that
+                    allows additional information to be displayed below{' '}
+                    <Code primary>Checkboxes</Code>.
+                  </Text>
+
+                  <CodePreview>
+                    {/* jsx-to-string:start */}
+                    {function Example() {
+                      const [checkedA, setChangeA] = useState(false);
+                      const [checkedB, setChangeB] = useState(false);
+
+                      const handleChangeA = () => setChangeA(!checkedA);
+                      const handleChangeB = () => setChangeB(!checkedB);
+
+                      return (
+                        <Form>
+                          <FormGroup>
+                            <Checkbox
+                              badge={{
+                                label: 'warning',
+                                variant: 'warning',
+                              }}
+                              checked={checkedB}
+                              collapseOptions={{
+                                panel: {
+                                  children: <Text>Additional details for this option.</Text>,
+                                },
+                                trigger: { title: 'Show details' },
+                              }}
+                              description={{
+                                text: 'I am a CheckboxDescription.',
+                              }}
+                              disableWhenUnchecked
+                              label="Checkbox with collapseOptions, description and badge"
+                              onChange={handleChangeB}
+                            />
+                            <Checkbox
+                              checked={checkedA}
+                              collapseOptions={{
+                                panel: {
+                                  children: <Text>Additional details for this option.</Text>,
+                                },
+                                trigger: { title: 'Show details' },
+                              }}
+                              img={{ alt: 'Logo', src: '/logo.svg' }}
+                              label="Checkbox with collapseOptions and img"
+                              onChange={handleChangeA}
+                            />
+                          </FormGroup>
+                        </Form>
+                      );
+                    }}
+                    {/* jsx-to-string:end */}
+                  </CodePreview>
+                </Fragment>
+              ),
+            },
           ]}
         />
       </Panel>
@@ -203,6 +268,16 @@ const CheckboxPage = () => {
               render: () => (
                 <CheckboxDescriptionLinkPropTable id="checkbox-description-link-prop-table" />
               ),
+            },
+            {
+              id: 'checkbox-collapse',
+              title: 'CheckboxCollapse',
+              render: () => <CheckboxCollapsePropTable id="checkbox-collapse" />,
+            },
+            {
+              id: 'checkbox-img',
+              title: 'CheckboxImg',
+              render: () => <CheckboxImgPropTable id="checkbox-img" />,
             },
           ]}
         />

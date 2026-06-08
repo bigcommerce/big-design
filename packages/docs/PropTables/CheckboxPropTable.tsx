@@ -115,6 +115,47 @@ const checkboxDescriptionProps: Prop[] = [
       </>
     ),
   },
+  {
+    name: 'collapseOptions',
+    types: [
+      <NextLink
+        href={{
+          hash: 'checkbox-collapse-prop-table',
+          query: { props: 'checkbox-collapse' },
+        }}
+        key="checkbox-collapse"
+      >
+        CheckboxCollapse
+      </NextLink>,
+    ],
+    description: <>Adds a collapsible section beneath the checkbox row.</>,
+  },
+  {
+    name: 'disableWhenUnchecked',
+    types: ['boolean'],
+    required: false,
+    description: (
+      <>
+        When <Code>true</Code>, the collapse trigger is disabled and the panel is forced closed
+        while the checkbox is unchecked. Has no effect without <Code>collapseOptions</Code>.
+      </>
+    ),
+  },
+  {
+    name: 'img',
+    types: [
+      <NextLink
+        href={{
+          hash: 'checkbox-img-prop-table',
+          query: { props: 'checkbox-img' },
+        }}
+        key="checkbox-img"
+      >
+        CheckboxImg
+      </NextLink>,
+    ],
+    description: <>Renders an image next to the label.</>,
+  },
 ];
 
 export const CheckboxPropTable: React.FC<PropTableWrapper> = (props) => (
@@ -141,5 +182,72 @@ export const CheckboxDescriptionLinkPropTable: React.FC<PropTableWrapper> = (pro
     title="Checkbox[CheckboxDescriptionLink]"
     {...props}
     id="checkbox-description-link-prop-table"
+  />
+);
+
+const checkboxCollapseProps: Prop[] = [
+  {
+    name: 'collapse',
+    types: ['CollapseProps'],
+    required: true,
+    description: (
+      <>
+        Props forwarded to the underlying <Code>Collapse</Code>.
+      </>
+    ),
+  },
+  {
+    name: 'trigger',
+    types: ['CollapseTriggerProps'],
+    required: true,
+    description: (
+      <>
+        Props forwarded to the underlying <Code>Collapse.Trigger</Code>.
+      </>
+    ),
+  },
+  {
+    name: 'panel',
+    types: ['CollapsePanelProps'],
+    required: false,
+    description: (
+      <>
+        Props forwarded to the underlying <Code>Collapse.Panel</Code>. Render the collapsible
+        content via its <Code>children</Code>.
+      </>
+    ),
+  },
+];
+
+const checkboxImgProps: Prop[] = [
+  {
+    name: 'src',
+    types: ['string'],
+    required: true,
+    description: <>Image URL.</>,
+  },
+  {
+    name: 'alt',
+    types: ['string'],
+    required: false,
+    description: <>Alternative text for the image.</>,
+  },
+];
+
+export const CheckboxCollapsePropTable: React.FC<PropTableWrapper> = (props) => (
+  <PropTable
+    propList={checkboxCollapseProps}
+    title="Checkbox[CheckboxCollapse]"
+    {...props}
+    id="checkbox-collapse-prop-table"
+  />
+);
+
+export const CheckboxImgPropTable: React.FC<PropTableWrapper> = (props) => (
+  <PropTable
+    propList={checkboxImgProps}
+    title="Checkbox[CheckboxImg]"
+    {...props}
+    id="checkbox-img-prop-table"
   />
 );
