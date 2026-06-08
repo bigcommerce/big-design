@@ -11,11 +11,15 @@ import React, {
 
 import { typedMemo, warning } from '../../utils';
 import { Badge, BadgeProps } from '../Badge';
+import { Box } from '../Box';
+import { Collapse, CollapsePanelProps, CollapseProps, CollapseTriggerProps } from '../Collapse';
 import { FormControlDescription, FormControlDescriptionLinkProps } from '../Form';
 
 import { CheckboxLabel } from './Label';
 import {
   CheckboxContainer,
+  CheckboxContentContainer,
+  CheckboxImgContainer,
   CheckboxLabelContainer,
   HiddenCheckbox,
   StyledCheckbox,
@@ -27,6 +31,9 @@ interface Props {
   label: React.ReactNode;
   description?: CheckboxDescription | string;
   badge?: BadgeProps;
+  collapseOptions?: CheckboxCollapse;
+  disableWhenUnchecked?: boolean;
+  img?: CheckboxImg;
 }
 
 interface CheckboxDescription {
@@ -34,11 +41,22 @@ interface CheckboxDescription {
   link?: FormControlDescriptionLinkProps;
 }
 
+export interface CheckboxImg {
+  src: string;
+  alt?: string;
+}
+
 interface PrivateProps {
   forwardedRef: Ref<HTMLInputElement>;
 }
 
 export type CheckboxProps = Props & ComponentPropsWithoutRef<'input'>;
+
+export interface CheckboxCollapse {
+  collapse?: CollapseProps;
+  trigger: CollapseTriggerProps;
+  panel?: CollapsePanelProps;
+}
 
 const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
   checked,
@@ -50,10 +68,15 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
   label,
   forwardedRef,
   style,
+  collapseOptions,
+  img,
+  disableWhenUnchecked,
   badge,
   onClick,
   ...props
 }) => {
+  const isVerticalCenter = Boolean(collapseOptions || img);
+
   const uniqueCheckboxId = useId();
   const labelId = useId();
   const id = props.id ? props.id : uniqueCheckboxId;
@@ -100,8 +123,13 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
     return <FormControlDescription link={link}>{text}</FormControlDescription>;
   }, [description]);
 
-  return (
-    <CheckboxContainer className={className} onClick={onClick} style={style}>
+  const checkboxRow = (
+    <CheckboxContainer
+      className={className}
+      isVerticalCenter={isVerticalCenter}
+      onClick={onClick}
+      style={style}
+    >
       <HiddenCheckbox
         checked={checked}
         disabled={disabled}
@@ -138,11 +166,36 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
       >
         {!checked && isIndeterminate ? <RemoveIcon /> : <CheckIcon />}
       </StyledCheckbox>
-      <CheckboxLabelContainer hasContent={Boolean(label) || Boolean(description)}>
-        {renderedLabel}
-        {renderedDescription}
-      </CheckboxLabelContainer>
+      <CheckboxContentContainer
+        hasContent={Boolean(label || description || img || collapseOptions)}
+        isVerticalCenter={isVerticalCenter}
+      >
+        <CheckboxLabelContainer>
+          {img && <CheckboxImgContainer alt={img.alt ?? ''} src={img.src} />}
+          <Box>
+            {renderedLabel}
+            {renderedDescription}
+          </Box>
+        </CheckboxLabelContainer>
+        {collapseOptions && <Collapse.Trigger marginVertical="none" {...collapseOptions.trigger} />}
+      </CheckboxContentContainer>
     </CheckboxContainer>
+  );
+
+  if (!collapseOptions) {
+    return checkboxRow;
+  }
+
+  return (
+    <Collapse
+      {...collapseOptions.collapse}
+      disabled={disableWhenUnchecked ? !checked : collapseOptions.collapse?.disabled}
+    >
+      <Box>
+        {checkboxRow}
+        <Collapse.Panel backgroundColor="secondary20" padding="medium" {...collapseOptions.panel} />
+      </Box>
+    </Collapse>
   );
 };
 

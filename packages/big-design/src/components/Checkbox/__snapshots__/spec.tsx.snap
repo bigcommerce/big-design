@@ -7,7 +7,7 @@ exports[`render Checkbox checked 1`] = `
   width: 1.5rem;
 }
 
-.c7 {
+.c9 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -15,16 +15,31 @@ exports[`render Checkbox checked 1`] = `
   line-height: 1.5rem;
 }
 
-.c7:last-child {
+.c9:last-child {
   margin-bottom: 0;
 }
 
-.c8 {
+.c10 {
   cursor: pointer;
+}
+
+.c8 {
+  box-sizing: border-box;
 }
 
 .c6 {
   margin-left: 0.5rem;
+}
+
+.c7 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c0 {
@@ -135,13 +150,21 @@ exports[`render Checkbox checked 1`] = `
   <div
     class="c6"
   >
-    <label
-      class="c7 c8"
-      for=":r0:"
-      id=":r1:"
+    <div
+      class="c7"
     >
-      Checked
-    </label>
+      <div
+        class="c8"
+      >
+        <label
+          class="c9 c10"
+          for=":r0:"
+          id=":r1:"
+        >
+          Checked
+        </label>
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -153,7 +176,7 @@ exports[`render Checkbox disabled checked 1`] = `
   width: 1.5rem;
 }
 
-.c7 {
+.c9 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -161,17 +184,32 @@ exports[`render Checkbox disabled checked 1`] = `
   line-height: 1.5rem;
 }
 
-.c7:last-child {
+.c9:last-child {
   margin-bottom: 0;
 }
 
-.c8 {
+.c10 {
   cursor: pointer;
   cursor: not-allowed;
 }
 
+.c8 {
+  box-sizing: border-box;
+}
+
 .c6 {
   margin-left: 0.5rem;
+}
+
+.c7 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c0 {
@@ -283,15 +321,23 @@ exports[`render Checkbox disabled checked 1`] = `
   <div
     class="c6"
   >
-    <label
-      aria-hidden="true"
-      class="c7 c8"
-      disabled=""
-      for=":ri:"
-      id=":rj:"
+    <div
+      class="c7"
     >
-      Checked
-    </label>
+      <div
+        class="c8"
+      >
+        <label
+          aria-hidden="true"
+          class="c9 c10"
+          disabled=""
+          for=":ri:"
+          id=":rj:"
+        >
+          Checked
+        </label>
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -303,7 +349,7 @@ exports[`render Checkbox disabled indeterminate 1`] = `
   width: 1.5rem;
 }
 
-.c7 {
+.c9 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -311,17 +357,32 @@ exports[`render Checkbox disabled indeterminate 1`] = `
   line-height: 1.5rem;
 }
 
-.c7:last-child {
+.c9:last-child {
   margin-bottom: 0;
 }
 
-.c8 {
+.c10 {
   cursor: pointer;
   cursor: not-allowed;
 }
 
+.c8 {
+  box-sizing: border-box;
+}
+
 .c6 {
   margin-left: 0.5rem;
+}
+
+.c7 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c0 {
@@ -431,15 +492,23 @@ exports[`render Checkbox disabled indeterminate 1`] = `
   <div
     class="c6"
   >
-    <label
-      aria-hidden="true"
-      class="c7 c8"
-      disabled=""
-      for=":ro:"
-      id=":rp:"
+    <div
+      class="c7"
     >
-      Unchecked
-    </label>
+      <div
+        class="c8"
+      >
+        <label
+          aria-hidden="true"
+          class="c9 c10"
+          disabled=""
+          for=":ro:"
+          id=":rp:"
+        >
+          Unchecked
+        </label>
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -451,7 +520,7 @@ exports[`render Checkbox disabled unchecked 1`] = `
   width: 1.5rem;
 }
 
-.c7 {
+.c9 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -459,17 +528,32 @@ exports[`render Checkbox disabled unchecked 1`] = `
   line-height: 1.5rem;
 }
 
-.c7:last-child {
+.c9:last-child {
   margin-bottom: 0;
 }
 
-.c8 {
+.c10 {
   cursor: pointer;
   cursor: not-allowed;
 }
 
+.c8 {
+  box-sizing: border-box;
+}
+
 .c6 {
   margin-left: 0.5rem;
+}
+
+.c7 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c0 {
@@ -580,15 +664,23 @@ exports[`render Checkbox disabled unchecked 1`] = `
   <div
     class="c6"
   >
-    <label
-      aria-hidden="true"
-      class="c7 c8"
-      disabled=""
-      for=":rl:"
-      id=":rm:"
+    <div
+      class="c7"
     >
-      Checked
-    </label>
+      <div
+        class="c8"
+      >
+        <label
+          aria-hidden="true"
+          class="c9 c10"
+          disabled=""
+          for=":rl:"
+          id=":rm:"
+        >
+          Checked
+        </label>
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -600,7 +692,7 @@ exports[`render Checkbox indeterminate 1`] = `
   width: 1.5rem;
 }
 
-.c7 {
+.c9 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -608,16 +700,31 @@ exports[`render Checkbox indeterminate 1`] = `
   line-height: 1.5rem;
 }
 
-.c7:last-child {
+.c9:last-child {
   margin-bottom: 0;
 }
 
-.c8 {
+.c10 {
   cursor: pointer;
+}
+
+.c8 {
+  box-sizing: border-box;
 }
 
 .c6 {
   margin-left: 0.5rem;
+}
+
+.c7 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c0 {
@@ -726,13 +833,21 @@ exports[`render Checkbox indeterminate 1`] = `
   <div
     class="c6"
   >
-    <label
-      class="c7 c8"
-      for=":rf:"
-      id=":rg:"
+    <div
+      class="c7"
     >
-      Unchecked
-    </label>
+      <div
+        class="c8"
+      >
+        <label
+          class="c9 c10"
+          for=":rf:"
+          id=":rg:"
+        >
+          Unchecked
+        </label>
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -744,7 +859,7 @@ exports[`render Checkbox unchecked 1`] = `
   width: 1.5rem;
 }
 
-.c7 {
+.c9 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -752,16 +867,31 @@ exports[`render Checkbox unchecked 1`] = `
   line-height: 1.5rem;
 }
 
-.c7:last-child {
+.c9:last-child {
   margin-bottom: 0;
 }
 
-.c8 {
+.c10 {
   cursor: pointer;
+}
+
+.c8 {
+  box-sizing: border-box;
 }
 
 .c6 {
   margin-left: 0.5rem;
+}
+
+.c7 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c0 {
@@ -871,13 +1001,21 @@ exports[`render Checkbox unchecked 1`] = `
   <div
     class="c6"
   >
-    <label
-      class="c7 c8"
-      for=":r3:"
-      id=":r4:"
+    <div
+      class="c7"
     >
-      Unchecked
-    </label>
+      <div
+        class="c8"
+      >
+        <label
+          class="c9 c10"
+          for=":r3:"
+          id=":r4:"
+        >
+          Unchecked
+        </label>
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -889,7 +1027,7 @@ exports[`render Checkbox with description object 1`] = `
   width: 1.5rem;
 }
 
-.c7 {
+.c9 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -897,11 +1035,11 @@ exports[`render Checkbox with description object 1`] = `
   line-height: 1.5rem;
 }
 
-.c7:last-child {
+.c9:last-child {
   margin-bottom: 0;
 }
 
-.c9 {
+.c11 {
   color: #313440;
   margin: 0 0 1rem;
   color: #5E637A;
@@ -911,15 +1049,19 @@ exports[`render Checkbox with description object 1`] = `
   margin: 0 0 0.75rem;
 }
 
-.c9:last-child {
+.c11:last-child {
   margin-bottom: 0;
 }
 
-.c8 {
+.c10 {
   cursor: pointer;
 }
 
-.c10 {
+.c8 {
+  box-sizing: border-box;
+}
+
+.c12 {
   -webkit-transition: all 70ms ease-out;
   transition: all 70ms ease-out;
   -webkit-transition-property: color;
@@ -932,20 +1074,31 @@ exports[`render Checkbox with description object 1`] = `
   text-decoration: none;
 }
 
-.c10:active {
+.c12:active {
   color: #0024A6;
 }
 
-.c10:hover:not(:active) {
+.c12:hover:not(:active) {
   color: #0024A6;
 }
 
-.c11 {
+.c13 {
   font-size: 0.875rem;
 }
 
 .c6 {
   margin-left: 0.5rem;
+}
+
+.c7 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c0 {
@@ -1056,26 +1209,34 @@ exports[`render Checkbox with description object 1`] = `
   <div
     class="c6"
   >
-    <label
-      class="c7 c8"
-      for=":r6:"
-      id=":r7:"
+    <div
+      class="c7"
     >
-      Unchecked
-    </label>
-    <p
-      class="c9"
-    >
-      description
-       
-      <a
-        class="c10 c11"
-        href="bar"
-        target="foo"
+      <div
+        class="c8"
       >
-        learn more
-      </a>
-    </p>
+        <label
+          class="c9 c10"
+          for=":r6:"
+          id=":r7:"
+        >
+          Unchecked
+        </label>
+        <p
+          class="c11"
+        >
+          description
+           
+          <a
+            class="c12 c13"
+            href="bar"
+            target="foo"
+          >
+            learn more
+          </a>
+        </p>
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -1087,7 +1248,7 @@ exports[`render Checkbox with description string 1`] = `
   width: 1.5rem;
 }
 
-.c7 {
+.c9 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -1095,11 +1256,11 @@ exports[`render Checkbox with description string 1`] = `
   line-height: 1.5rem;
 }
 
-.c7:last-child {
+.c9:last-child {
   margin-bottom: 0;
 }
 
-.c9 {
+.c11 {
   color: #313440;
   margin: 0 0 1rem;
   color: #5E637A;
@@ -1109,16 +1270,31 @@ exports[`render Checkbox with description string 1`] = `
   margin: 0 0 0.75rem;
 }
 
-.c9:last-child {
+.c11:last-child {
   margin-bottom: 0;
 }
 
-.c8 {
+.c10 {
   cursor: pointer;
+}
+
+.c8 {
+  box-sizing: border-box;
 }
 
 .c6 {
   margin-left: 0.5rem;
+}
+
+.c7 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c0 {
@@ -1229,18 +1405,26 @@ exports[`render Checkbox with description string 1`] = `
   <div
     class="c6"
   >
-    <label
-      class="c7 c8"
-      for=":rc:"
-      id=":rd:"
+    <div
+      class="c7"
     >
-      Unchecked
-    </label>
-    <p
-      class="c9"
-    >
-      description text
-    </p>
+      <div
+        class="c8"
+      >
+        <label
+          class="c9 c10"
+          for=":rc:"
+          id=":rd:"
+        >
+          Unchecked
+        </label>
+        <p
+          class="c11"
+        >
+          description text
+        </p>
+      </div>
+    </div>
   </div>
 </div>
 `;
