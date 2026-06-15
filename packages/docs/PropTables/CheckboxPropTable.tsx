@@ -75,6 +75,26 @@ const checkboxProps: Prop[] = [
       </>
     ),
   },
+  {
+    name: 'img',
+    types: '{ src: string; alt?: string }',
+    description: (
+      <>
+        Renders a thumbnail between the <Code primary>Checkbox</Code> and its label. When provided,
+        the row is vertically centered.
+      </>
+    ),
+  },
+  {
+    name: 'isVerticalCenter',
+    types: 'boolean',
+    description: (
+      <>
+        Vertically centers the <Code primary>Checkbox</Code> with its label and description. Enabled
+        automatically when <Code primary>img</Code> is set.
+      </>
+    ),
+  },
 ];
 
 const checkboxDescriptionProps: Prop[] = [

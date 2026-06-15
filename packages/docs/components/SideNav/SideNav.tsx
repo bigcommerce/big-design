@@ -109,6 +109,7 @@ export const SideNav: React.FC = () => {
 
               <SideNavGroup title="Patterns">
                 <SideNavLink href="/action-bar">Action Bar</SideNavLink>
+                <SideNavLink href="/collapsible-checkbox">Collapsible Checkbox</SideNavLink>
                 <SideNavLink href="/header">Header</SideNavLink>
                 <SideNavLink href="/page">Page</SideNavLink>
               </SideNavGroup>

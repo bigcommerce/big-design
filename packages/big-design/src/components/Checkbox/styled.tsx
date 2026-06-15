@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { theme as defaultTheme, remCalc } from '@bigcommerce/big-design-theme';
 import { hideVisually } from 'polished';
 import styled, { css } from 'styled-components';
 
@@ -19,8 +19,16 @@ export const CheckboxLabelContainer = styled.div<{ hasContent?: boolean }>`
   margin-left: ${({ hasContent, theme }) => (hasContent ? theme.spacing.xSmall : 0)};
 `;
 
-export const CheckboxContainer = styled.div`
-  align-items: flex-start;
+export const CheckboxImgContainer = styled.img`
+  flex-shrink: 0;
+  height: ${remCalc(40)};
+  object-fit: cover;
+  width: ${remCalc(40)};
+  margin: 0 ${({ theme }) => theme.spacing.xxSmall};
+`;
+
+export const CheckboxContainer = styled.div<{ isVerticalCenter?: boolean }>`
+  align-items: ${({ isVerticalCenter }) => (isVerticalCenter ? 'center' : 'flex-start')};
   display: flex;
 `;
 
@@ -78,3 +86,4 @@ StyledCheckbox.defaultProps = { theme: defaultTheme };
 CheckboxLabelContainer.defaultProps = { theme: defaultTheme };
 CheckboxContainer.defaultProps = { theme: defaultTheme };
 HiddenCheckbox.defaultProps = { theme: defaultTheme };
+CheckboxImgContainer.defaultProps = { theme: defaultTheme };

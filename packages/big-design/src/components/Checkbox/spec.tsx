@@ -107,6 +107,44 @@ describe('render Checkbox', () => {
 
     expect(container.firstChild).toMatchSnapshot();
   });
+
+  test('with img props', () => {
+    render(
+      <Checkbox
+        checked={false}
+        img={{ src: 'https://example.com/logo.png', alt: 'Logo' }}
+        label="Unchecked"
+        onChange={() => null}
+      />,
+    );
+
+    const image = screen.getByRole('img', { name: 'Logo' });
+
+    expect(image).toBeInTheDocument();
+    expect(image).toHaveAttribute('src', 'https://example.com/logo.png');
+  });
+
+  test('defaults img alt to an empty string when omitted', () => {
+    const { container } = render(
+      <Checkbox
+        checked={false}
+        img={{ src: 'https://example.com/logo.png' }}
+        label="Unchecked"
+        onChange={() => null}
+      />,
+    );
+
+    const image = container.querySelector('img');
+
+    expect(image).toBeInTheDocument();
+    expect(image).toHaveAttribute('alt', '');
+  });
+
+  test('does not render an img when img is not provided', () => {
+    render(<Checkbox checked={false} label="Unchecked" onChange={() => null} />);
+
+    expect(screen.queryByRole('img')).not.toBeInTheDocument();
+  });
 });
 
 test('has correct value for checked', async () => {

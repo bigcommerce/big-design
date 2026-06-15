@@ -5,6 +5,7 @@ export * from './ButtonPropTable';
 export * from './ButtonGroupPropTable';
 export * from './CheckboxPropTable';
 export * from './CollapsePropTable';
+export * from './CollapsibleCheckboxPropTable';
 export * from './CounterPropTable';
 export * from './DatepickerPropsTable';
 export * from './DisplayPropTable';
