@@ -113,12 +113,7 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
   }, [description]);
 
   return (
-    <CheckboxContainer
-      className={className}
-      isVerticalCenter={Boolean(img)}
-      onClick={onClick}
-      style={style}
-    >
+    <CheckboxContainer className={className} hasImg={Boolean(img)} onClick={onClick} style={style}>
       <HiddenCheckbox
         checked={checked}
         disabled={disabled}

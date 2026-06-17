@@ -35,11 +35,13 @@ test('disables the trigger by default while unchecked', () => {
   expect(screen.getByRole('button')).toBeDisabled();
 });
 
-test('collapseProps.disabled overrides the default gating', () => {
+test('collapseProps.disabled can re-enable the panel while unchecked', () => {
+  // The spread order `<Collapse disabled={!checked} {...collapseProps}>` must let a caller
+  // re-enable the panel while unchecked — the direction the default gating would otherwise block.
   render(
     <CollapsibleCheckbox
-      checked={true}
-      collapseProps={{ disabled: true }}
+      checked={false}
+      collapseProps={{ disabled: false }}
       label="Enable feature"
       onChange={jest.fn()}
       triggerTitle="Configure"
@@ -48,7 +50,7 @@ test('collapseProps.disabled overrides the default gating', () => {
     </CollapsibleCheckbox>,
   );
 
-  expect(screen.getByRole('button')).toBeDisabled();
+  expect(screen.getByRole('button')).toBeEnabled();
 });
 
 test('trigger is enabled and the panel can open while checked', () => {

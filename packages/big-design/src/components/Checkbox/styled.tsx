@@ -27,8 +27,8 @@ export const CheckboxImgContainer = styled.img`
   margin: 0 ${({ theme }) => theme.spacing.xxSmall};
 `;
 
-export const CheckboxContainer = styled.div<{ isVerticalCenter?: boolean }>`
-  align-items: ${({ isVerticalCenter }) => (isVerticalCenter ? 'center' : 'flex-start')};
+export const CheckboxContainer = styled.div<{ hasImg?: boolean }>`
+  align-items: ${({ hasImg }) => (hasImg ? 'center' : 'flex-start')};
   display: flex;
 `;
 
