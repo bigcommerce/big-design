@@ -6,13 +6,15 @@ import {
   CollapseProps,
   CollapseTriggerProps,
 } from '@bigcommerce/big-design';
-import React, { ReactNode } from 'react';
+import React, { ChangeEventHandler, ReactNode } from 'react';
 
 import { StyledCheckboxRow } from './styled';
 
 export interface CollapsibleCheckboxProps extends CheckboxProps {
   /** Controls the checked state. The component is controlled — pair it with `onChange`. */
   checked: boolean;
+  /** Change handler for the checkbox. Required because the component is controlled. */
+  onChange: ChangeEventHandler<HTMLInputElement>;
   /** Title shown on the collapse trigger button. */
   triggerTitle: string;
   /** Content revealed inside the collapse panel. */

@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { CollapsibleCheckbox } from './CollapsibleCheckbox';
 
@@ -93,4 +93,33 @@ test('forwards checked and onChange to the underlying checkbox', () => {
   fireEvent.click(checkbox);
 
   expect(onChange).toHaveBeenCalledTimes(1);
+});
+
+test('collapses an open panel when the checkbox is unchecked', () => {
+  const Wrapper = () => {
+    const [checked, setChecked] = useState(true);
+
+    return (
+      <CollapsibleCheckbox
+        checked={checked}
+        label="Enable feature"
+        onChange={(event) => setChecked(event.target.checked)}
+        triggerTitle="Configure"
+      >
+        Panel content
+      </CollapsibleCheckbox>
+    );
+  };
+
+  render(<Wrapper />);
+
+  // Open the panel while checked.
+  fireEvent.click(screen.getByRole('button'));
+
+  expect(screen.getByText('Panel content')).toBeVisible();
+
+  // Unchecking disables the Collapse, which auto-collapses the open panel.
+  fireEvent.click(screen.getByRole('checkbox'));
+
+  expect(screen.getByText('Panel content')).not.toBeVisible();
 });

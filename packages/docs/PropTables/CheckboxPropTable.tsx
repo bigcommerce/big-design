@@ -80,18 +80,9 @@ const checkboxProps: Prop[] = [
     types: '{ src: string; alt?: string }',
     description: (
       <>
-        Renders a thumbnail between the <Code primary>Checkbox</Code> and its label. When provided,
-        the row is vertically centered.
-      </>
-    ),
-  },
-  {
-    name: 'isVerticalCenter',
-    types: 'boolean',
-    description: (
-      <>
-        Vertically centers the <Code primary>Checkbox</Code> with its label and description. Enabled
-        automatically when <Code primary>img</Code> is set.
+        Renders a thumbnail between the <Code primary>Checkbox</Code> and its label, and vertically
+        centers the row. Set <Code>alt</Code> when the image conveys meaning the label doesn&apos;t;
+        when omitted it defaults to an empty string (decorative) per WCAG 1.1.1.
       </>
     ),
   },

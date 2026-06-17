@@ -38,6 +38,10 @@ interface CheckboxDescription {
 
 export interface CheckboxImg {
   src: string;
+  /**
+   * Accessible name for the thumbnail. Defaults to an empty string (decorative) when omitted —
+   * set it whenever the image carries meaning the label doesn't already convey.
+   */
   alt?: string;
 }
 

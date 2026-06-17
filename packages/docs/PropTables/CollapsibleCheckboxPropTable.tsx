@@ -18,6 +18,12 @@ const collapsibleCheckboxProps: Prop[] = [
     required: true,
   },
   {
+    name: 'onChange',
+    types: 'ChangeEventHandler<HTMLInputElement>',
+    description: 'Change handler for the checkbox. Required because the component is controlled.',
+    required: true,
+  },
+  {
     name: 'triggerTitle',
     types: 'string',
     description: 'Title shown on the collapse trigger button.',
@@ -72,8 +78,7 @@ export const CollapsibleCheckboxPropsTable: React.FC<PropTableWrapper> = (props)
         <Text>
           Extends <NextLink href="/checkbox">Checkbox</NextLink>, so it accepts every{' '}
           <Code>Checkbox</Code> prop (<Code>label</Code>, <Code>description</Code>, <Code>img</Code>
-          , <Code>badge</Code>, <Code>onChange</Code>, …) as well as the native <Code>input</Code>{' '}
-          attributes.
+          , <Code>badge</Code>, …) as well as the native <Code>input</Code> attributes.
         </Text>
         <CheckboxPropTable collapsible />
       </>
