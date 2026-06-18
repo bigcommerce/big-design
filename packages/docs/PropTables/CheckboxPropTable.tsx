@@ -75,6 +75,17 @@ const checkboxProps: Prop[] = [
       </>
     ),
   },
+  {
+    name: 'img',
+    types: '{ src: string; alt?: string }',
+    description: (
+      <>
+        Renders a thumbnail between the <Code primary>Checkbox</Code> and its label, and vertically
+        centers the row. Set <Code>alt</Code> when the image conveys meaning the label doesn&apos;t;
+        when omitted it defaults to an empty string (decorative) per WCAG 1.1.1.
+      </>
+    ),
+  },
 ];
 
 const checkboxDescriptionProps: Prop[] = [

@@ -248,18 +248,18 @@ exports[`render Checkbox disabled checked 1`] = `
 >
   <input
     aria-checked="true"
-    aria-labelledby=":rj:"
+    aria-labelledby=":rm:"
     checked=""
     class="c1 c2"
     disabled=""
-    id=":ri:"
+    id=":rl:"
     type="checkbox"
   />
   <label
     aria-hidden="true"
     class="c3 c4"
     disabled=""
-    for=":ri:"
+    for=":rl:"
   >
     <svg
       aria-hidden="true"
@@ -287,8 +287,8 @@ exports[`render Checkbox disabled checked 1`] = `
       aria-hidden="true"
       class="c7 c8"
       disabled=""
-      for=":ri:"
-      id=":rj:"
+      for=":rl:"
+      id=":rm:"
     >
       Checked
     </label>
@@ -397,17 +397,17 @@ exports[`render Checkbox disabled indeterminate 1`] = `
   class="c0"
 >
   <input
-    aria-labelledby=":rp:"
+    aria-labelledby=":rs:"
     class="c1 c2"
     disabled=""
-    id=":ro:"
+    id=":rr:"
     type="checkbox"
   />
   <label
     aria-hidden="true"
     class="c3 c4"
     disabled=""
-    for=":ro:"
+    for=":rr:"
   >
     <svg
       aria-hidden="true"
@@ -435,8 +435,8 @@ exports[`render Checkbox disabled indeterminate 1`] = `
       aria-hidden="true"
       class="c7 c8"
       disabled=""
-      for=":ro:"
-      id=":rp:"
+      for=":rr:"
+      id=":rs:"
     >
       Unchecked
     </label>
@@ -546,17 +546,17 @@ exports[`render Checkbox disabled unchecked 1`] = `
 >
   <input
     aria-checked="false"
-    aria-labelledby=":rm:"
+    aria-labelledby=":rp:"
     class="c1 c2"
     disabled=""
-    id=":rl:"
+    id=":ro:"
     type="checkbox"
   />
   <label
     aria-hidden="true"
     class="c3 c4"
     disabled=""
-    for=":rl:"
+    for=":ro:"
   >
     <svg
       aria-hidden="true"
@@ -584,8 +584,8 @@ exports[`render Checkbox disabled unchecked 1`] = `
       aria-hidden="true"
       class="c7 c8"
       disabled=""
-      for=":rl:"
-      id=":rm:"
+      for=":ro:"
+      id=":rp:"
     >
       Checked
     </label>
@@ -694,15 +694,15 @@ exports[`render Checkbox indeterminate 1`] = `
   class="c0"
 >
   <input
-    aria-labelledby=":rg:"
+    aria-labelledby=":rj:"
     class="c1 c2"
-    id=":rf:"
+    id=":ri:"
     type="checkbox"
   />
   <label
     aria-hidden="true"
     class="c3 c4"
-    for=":rf:"
+    for=":ri:"
   >
     <svg
       aria-hidden="true"
@@ -728,8 +728,8 @@ exports[`render Checkbox indeterminate 1`] = `
   >
     <label
       class="c7 c8"
-      for=":rf:"
-      id=":rg:"
+      for=":ri:"
+      id=":rj:"
     >
       Unchecked
     </label>
@@ -1196,6 +1196,167 @@ exports[`render Checkbox with description string 1`] = `
 >
   <input
     aria-checked="false"
+    aria-labelledby=":rg:"
+    class="c1 c2"
+    id=":rf:"
+    name="test-group"
+    type="checkbox"
+  />
+  <label
+    aria-hidden="true"
+    class="c3 c4"
+    for=":rf:"
+  >
+    <svg
+      aria-hidden="true"
+      class="c5"
+      fill="currentColor"
+      height="24"
+      stroke="currentColor"
+      stroke-width="0"
+      viewBox="0 0 24 24"
+      width="24"
+    >
+      <path
+        d="M0 0h24v24H0z"
+        fill="none"
+      />
+      <path
+        d="M9 16.17 5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"
+      />
+    </svg>
+  </label>
+  <div
+    class="c6"
+  >
+    <label
+      class="c7 c8"
+      for=":rf:"
+      id=":rg:"
+    >
+      Unchecked
+    </label>
+    <p
+      class="c9"
+    >
+      description text
+    </p>
+  </div>
+</div>
+`;
+
+exports[`render Checkbox with img props 1`] = `
+.c5 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.c8 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+.c8:last-child {
+  margin-bottom: 0;
+}
+
+.c9 {
+  cursor: pointer;
+}
+
+.c7 {
+  margin-left: 0.5rem;
+}
+
+.c6 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  height: 2.5rem;
+  object-fit: cover;
+  width: 2.5rem;
+  margin: 0 0.25rem;
+}
+
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.c4 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: border-color,background,box-shadow,color,opacity;
+  transition-property: border-color,background,box-shadow,color,opacity;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: #FFFFFF;
+  box-sizing: border-box;
+  border: 1px solid #D9DCE9;
+  border-color: #D9DCE9;
+  border-radius: 0.25rem;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 1.25rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-bottom: 0.125rem;
+  margin-top: 0.125rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1.25rem;
+}
+
+.c4:hover {
+  border-color: #B4BAD1;
+}
+
+.c1:focus + .c3 {
+  box-shadow: 0 0 0 0.25rem #DBE3FE;
+}
+
+.c4 svg {
+  opacity: 0;
+}
+
+<div
+  class="c0"
+>
+  <input
+    aria-checked="false"
     aria-labelledby=":rd:"
     class="c1 c2"
     id=":rc:"
@@ -1226,21 +1387,21 @@ exports[`render Checkbox with description string 1`] = `
       />
     </svg>
   </label>
-  <div
+  <img
+    alt="Thumbnail"
     class="c6"
+    src="https://example.com/thumbnail.png"
+  />
+  <div
+    class="c7"
   >
     <label
-      class="c7 c8"
+      class="c8 c9"
       for=":rc:"
       id=":rd:"
     >
       Unchecked
     </label>
-    <p
-      class="c9"
-    >
-      description text
-    </p>
   </div>
 </div>
 `;

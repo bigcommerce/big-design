@@ -62,6 +62,20 @@ describe('render Checkbox', () => {
     expect(container.firstChild).toBeInTheDocument();
   });
 
+  test('with img props', () => {
+    const { container } = render(
+      <Checkbox
+        checked={false}
+        img={{ src: 'https://example.com/thumbnail.png', alt: 'Thumbnail' }}
+        label="Unchecked"
+        name="test-group"
+        onChange={() => null}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   test('with description string', () => {
     const { container } = render(
       <Checkbox
@@ -184,6 +198,42 @@ test('does not accept invalid label component', () => {
 
   expect(warning).toHaveBeenCalledTimes(1);
   expect(screen.queryByTestId(testId)).not.toBeInTheDocument();
+});
+
+test('renders img with provided alt text', () => {
+  render(
+    <Checkbox
+      img={{ src: 'https://example.com/thumbnail.png', alt: 'Thumbnail' }}
+      label="Checked"
+      onChange={() => null}
+    />,
+  );
+
+  const img = screen.getByAltText<HTMLImageElement>('Thumbnail');
+
+  expect(img).toBeInTheDocument();
+  expect(img).toHaveAttribute('src', 'https://example.com/thumbnail.png');
+});
+
+test('renders img with empty alt text when alt is omitted', () => {
+  const { container } = render(
+    <Checkbox
+      img={{ src: 'https://example.com/thumbnail.png' }}
+      label="Checked"
+      onChange={() => null}
+    />,
+  );
+
+  const img = container.querySelector('img');
+
+  expect(img).toBeInTheDocument();
+  expect(img).toHaveAttribute('alt', '');
+});
+
+test('does not render img when img prop is omitted', () => {
+  const { container } = render(<Checkbox label="Checked" onChange={() => null} />);
+
+  expect(container.querySelector('img')).not.toBeInTheDocument();
 });
 
 test('forwards ref', () => {
