@@ -1,5 +1,19 @@
 # Change Log
 
+## 1.11.0
+
+### Minor Changes
+
+- de269fd: feat(component): add optional `img` prop to Checkbox for rendering a thumbnail alongside the label.
+- 54b9cec: BREAKING: rewrite Collapse to a headless compound component (Collapse.Trigger + Collapse.Panel).
+
+### Patch Changes
+
+- Updated dependencies [de269fd]
+- Updated dependencies [54b9cec]
+  - @bigcommerce/big-design@3.0.0
+  - @bigcommerce/big-design-patterns@5.0.0
+
 ## 1.10.1
 
 ### Patch Changes

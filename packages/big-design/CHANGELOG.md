@@ -1,5 +1,15 @@
 # Change Log
 
+## 3.0.0
+
+### Major Changes
+
+- 54b9cec: BREAKING: rewrite Collapse to a headless compound component (Collapse.Trigger + Collapse.Panel).
+
+### Minor Changes
+
+- de269fd: feat(component): add optional `img` prop to Checkbox for rendering a thumbnail alongside the label.
+
 ## 2.5.0
 
 ### Minor Changes
