@@ -179,6 +179,43 @@ const CheckboxPage = () => {
                 </Fragment>
               ),
             },
+            {
+              id: 'image',
+              title: 'Image',
+              render: () => (
+                <Fragment key="image">
+                  <Text>
+                    <Code primary>Checkboxes</Code> support an <Code primary>img</Code> thumbnail
+                    shown between the checkbox and its label. Set <Code primary>alt</Code> when the
+                    image conveys meaning the label doesn&apos;t; when omitted it is treated as
+                    decorative.
+                  </Text>
+
+                  <CodePreview>
+                    {/* jsx-to-string:start */}
+                    {function Example() {
+                      const [checked, setChecked] = useState(false);
+                      const handleChange = () => setChecked(!checked);
+
+                      return (
+                        <Form>
+                          <FormGroup>
+                            <Checkbox
+                              checked={checked}
+                              description="Accept credit cards and digital wallets."
+                              img={{ src: '/logo.svg', alt: 'Payment provider' }}
+                              label="Enable payment provider"
+                              onChange={handleChange}
+                            />
+                          </FormGroup>
+                        </Form>
+                      );
+                    }}
+                    {/* jsx-to-string:end */}
+                  </CodePreview>
+                </Fragment>
+              ),
+            },
           ]}
         />
       </Panel>

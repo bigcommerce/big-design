@@ -16,6 +16,7 @@ import { FormControlDescription, FormControlDescriptionLinkProps } from '../Form
 import { CheckboxLabel } from './Label';
 import {
   CheckboxContainer,
+  CheckboxImgContainer,
   CheckboxLabelContainer,
   HiddenCheckbox,
   StyledCheckbox,
@@ -27,11 +28,21 @@ interface Props {
   label: React.ReactNode;
   description?: CheckboxDescription | string;
   badge?: BadgeProps;
+  img?: CheckboxImg;
 }
 
 interface CheckboxDescription {
   text: string;
   link?: FormControlDescriptionLinkProps;
+}
+
+export interface CheckboxImg {
+  src: string;
+  /**
+   * Accessible name for the thumbnail. Defaults to an empty string (decorative) when omitted —
+   * set it whenever the image carries meaning the label doesn't already convey.
+   */
+  alt?: string;
 }
 
 interface PrivateProps {
@@ -51,6 +62,7 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
   forwardedRef,
   style,
   badge,
+  img,
   onClick,
   ...props
 }) => {
@@ -101,7 +113,7 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
   }, [description]);
 
   return (
-    <CheckboxContainer className={className} onClick={onClick} style={style}>
+    <CheckboxContainer className={className} hasImg={Boolean(img)} onClick={onClick} style={style}>
       <HiddenCheckbox
         checked={checked}
         disabled={disabled}
@@ -138,6 +150,7 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
       >
         {!checked && isIndeterminate ? <RemoveIcon /> : <CheckIcon />}
       </StyledCheckbox>
+      {img ? <CheckboxImgContainer alt={img.alt ?? ''} src={img.src} /> : null}
       <CheckboxLabelContainer hasContent={Boolean(label) || Boolean(description)}>
         {renderedLabel}
         {renderedDescription}
