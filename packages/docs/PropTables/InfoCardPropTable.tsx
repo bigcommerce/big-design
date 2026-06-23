@@ -53,48 +53,6 @@ export const InfoCardPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable propList={infoCardProps} title="InfoCard" {...props} />
 );
 
-const imgProps: Prop[] = [
-  {
-    name: 'src',
-    types: 'string',
-    required: true,
-    description: <>Source of the thumbnail image.</>,
-  },
-  {
-    name: 'alt',
-    types: 'string',
-    defaultValue: "''",
-    description: (
-      <>
-        Set <Code>alt</Code> when the image conveys meaning the <Code primary>title</Code>{' '}
-        doesn&apos;t; when omitted it defaults to an empty string (decorative) per WCAG 1.1.1.
-      </>
-    ),
-  },
-  {
-    name: 'width',
-    types: ['number', 'string'],
-    defaultValue: '40',
-    description: (
-      <>
-        Rendered width of the thumbnail. Override to size the image differently from the 40px
-        default.
-      </>
-    ),
-  },
-  {
-    name: 'height',
-    types: ['number', 'string'],
-    defaultValue: '40',
-    description: (
-      <>
-        Rendered height of the thumbnail. Override to size the image differently from the 40px
-        default.
-      </>
-    ),
-  },
-];
-
 export const ImgPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable nativeElement={['img', 'all']} propList={imgProps} title="Img" {...props} />
+  <PropTable nativeElement={['img', 'all']} propList={[]} title="Img" {...props} />
 );
