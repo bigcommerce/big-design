@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, List } from '../components';
 import { GuidelinesTable } from '../components/GuidelinesTable';
-import { InfoCardPropTable } from '../PropTables';
+import { ImgPropTable, InfoCardPropTable } from '../PropTables';
 
 const InfoCardPage = () => {
   return (
@@ -115,7 +115,21 @@ const InfoCardPage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <InfoCardPropTable />
+        <ContentRoutingTabs
+          id="props"
+          routes={[
+            {
+              id: 'info-card',
+              title: 'InfoCard',
+              render: () => <InfoCardPropTable />,
+            },
+            {
+              id: 'img',
+              title: 'ImgProps',
+              render: () => <ImgPropTable id="img-prop-table" />,
+            },
+          ]}
+        />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">

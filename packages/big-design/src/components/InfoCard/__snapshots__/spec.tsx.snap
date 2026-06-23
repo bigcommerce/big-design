@@ -16,8 +16,29 @@ exports[`matches snapshot 1`] = `
   background-color: #5E637A;
 }
 
-.c2 {
+.c0 {
   box-sizing: border-box;
+}
+
+.c1 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c3 {
@@ -47,29 +68,38 @@ exports[`matches snapshot 1`] = `
   margin-bottom: 0;
 }
 
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+.c2 {
+  margin-inline-end: 0.5rem;
 }
 
-.c1 {
-  height: 2.5rem;
-  width: 2.5rem;
-  margin-right: 0.5rem;
+@media (min-width:0px) {
+  .c1 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (min-width:720px) {
+  .c1 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
 }
 
 <div
-  class="c0"
+  class="c0 c1"
 >
   <img
     alt="Logo"
-    class="c1"
+    class="c2"
+    height="40"
     src="logo.png"
+    width="40"
   />
   <div
-    class="c2"
+    class="c0"
   >
     <p
       class="c3"
