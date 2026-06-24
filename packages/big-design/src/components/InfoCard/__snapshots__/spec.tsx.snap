@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`matches snapshot 1`] = `
+.c4 {
+  margin-left: 0.5rem;
+  color: #FFFFFF;
+  border-radius: 0.25rem;
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  padding: 0 0.5rem;
+  background-color: #5E637A;
+}
+
+.c0 {
+  box-sizing: border-box;
+}
+
+.c1 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c3 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin: 0;
+}
+
+.c3:last-child {
+  margin-bottom: 0;
+}
+
+.c5 {
+  color: #313440;
+  margin: 0 0 1rem;
+  color: #5E637A;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin: 0 0 0.75rem;
+}
+
+.c5:last-child {
+  margin-bottom: 0;
+}
+
+.c2 {
+  margin-inline-end: 0.5rem;
+}
+
+@media (min-width:0px) {
+  .c1 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (min-width:720px) {
+  .c1 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+<div
+  class="c0 c1"
+>
+  <img
+    alt="Logo"
+    class="c2"
+    height="40"
+    src="logo.png"
+    width="40"
+  />
+  <div
+    class="c0"
+  >
+    <p
+      class="c3"
+    >
+      Card title
+      <span
+        class="c4"
+      >
+        New
+      </span>
+    </p>
+    <p
+      class="c5"
+    >
+      Card description
+    </p>
+  </div>
+</div>
+`;

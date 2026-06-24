@@ -18,6 +18,7 @@ export * from './FileUploader';
 export * from './Form';
 export * from './GlobalStyles';
 export * from './Grid';
+export * from './InfoCard';
 export * from './InlineMessage';
 export * from './Input';
 export * from './Link';
