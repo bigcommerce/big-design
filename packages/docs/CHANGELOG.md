@@ -1,5 +1,18 @@
 # Change Log
 
+## 1.12.0
+
+### Minor Changes
+
+- c0163a0: feat(component): add the new `InfoCard` component for displaying a title with an optional thumbnail, description, and status badge.
+
+  The `img` prop accepts all native `<img />` element attributes (`ComponentPropsWithoutRef<'img'>`). The thumbnail renders at 40&times;40 by default, and the size can be overridden via the native `width`/`height` attributes. `alt` defaults to an empty string (decorative) per WCAG 1.1.1.
+
+### Patch Changes
+
+- Updated dependencies [c0163a0]
+  - @bigcommerce/big-design@3.1.0
+
 ## 1.11.0
 
 ### Minor Changes
