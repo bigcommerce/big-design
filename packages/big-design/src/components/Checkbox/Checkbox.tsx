@@ -28,21 +28,12 @@ interface Props {
   label: React.ReactNode;
   description?: CheckboxDescription | string;
   badge?: BadgeProps;
-  img?: CheckboxImg;
+  img?: ComponentPropsWithoutRef<'img'>;
 }
 
 interface CheckboxDescription {
   text: string;
   link?: FormControlDescriptionLinkProps;
-}
-
-export interface CheckboxImg {
-  src: string;
-  /**
-   * Accessible name for the thumbnail. Defaults to an empty string (decorative) when omitted —
-   * set it whenever the image carries meaning the label doesn't already convey.
-   */
-  alt?: string;
 }
 
 interface PrivateProps {
@@ -150,7 +141,7 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
       >
         {!checked && isIndeterminate ? <RemoveIcon /> : <CheckIcon />}
       </StyledCheckbox>
-      {img ? <CheckboxImgContainer alt={img.alt ?? ''} src={img.src} /> : null}
+      {img ? <CheckboxImgContainer height={40} width={40} {...img} alt={img.alt ?? ''} /> : null}
       <CheckboxLabelContainer hasContent={Boolean(label) || Boolean(description)}>
         {renderedLabel}
         {renderedDescription}

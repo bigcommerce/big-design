@@ -66,7 +66,12 @@ describe('render Checkbox', () => {
     const { container } = render(
       <Checkbox
         checked={false}
-        img={{ src: 'https://example.com/thumbnail.png', alt: 'Thumbnail' }}
+        img={{
+          src: 'https://example.com/thumbnail.png',
+          alt: 'Thumbnail',
+          width: 100,
+          height: 100,
+        }}
         label="Unchecked"
         name="test-group"
         onChange={() => null}

@@ -77,12 +77,14 @@ const checkboxProps: Prop[] = [
   },
   {
     name: 'img',
-    types: '{ src: string; alt?: string }',
+    types: "ComponentPropsWithoutRef<'img'>",
     description: (
       <>
         Renders a thumbnail between the <Code primary>Checkbox</Code> and its label, and vertically
-        centers the row. Set <Code>alt</Code> when the image conveys meaning the label doesn&apos;t;
-        when omitted it defaults to an empty string (decorative) per WCAG 1.1.1.
+        centers the row. Accepts any native <Code>img</Code> attributes and defaults{' '}
+        <Code>width</Code> and <Code>height</Code> to <Code>40</Code>. Set <Code>alt</Code> when the
+        image conveys meaning the label doesn&apos;t; when omitted it defaults to an empty string
+        (decorative) per WCAG 1.1.1.
       </>
     ),
   },
