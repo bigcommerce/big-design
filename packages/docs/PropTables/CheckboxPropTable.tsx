@@ -77,14 +77,13 @@ const checkboxProps: Prop[] = [
   },
   {
     name: 'img',
-    types: "ComponentPropsWithoutRef<'img'>",
+    types: <NextLink href={{ hash: 'img-prop-table', query: { props: 'img' } }}>ImgProps</NextLink>,
     description: (
       <>
-        Renders a thumbnail between the <Code primary>Checkbox</Code> and its label, and vertically
-        centers the row. Accepts any native <Code>img</Code> attributes and defaults{' '}
-        <Code>width</Code> and <Code>height</Code> to <Code>40</Code>. Set <Code>alt</Code> when the
-        image conveys meaning the label doesn&apos;t; when omitted it defaults to an empty string
-        (decorative) per WCAG 1.1.1.
+        Renders a thumbnail between the <Code primary>Checkbox</Code> and its label, sized
+        40&times;40 by default, and vertically centers the row. See{' '}
+        <NextLink href={{ hash: 'img-prop-table', query: { props: 'img' } }}>ImgProps</NextLink> for
+        usage.
       </>
     ),
   },
@@ -155,4 +154,8 @@ export const CheckboxDescriptionLinkPropTable: React.FC<PropTableWrapper> = (pro
     {...props}
     id="checkbox-description-link-prop-table"
   />
+);
+
+export const CheckboxImgPropTable: React.FC<PropTableWrapper> = (props) => (
+  <PropTable nativeElement={['img', 'all']} propList={[]} title="Img" {...props} />
 );
