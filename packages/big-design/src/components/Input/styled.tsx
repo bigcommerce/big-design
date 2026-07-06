@@ -1,4 +1,4 @@
-import { addValues, theme as defaultTheme, remCalc } from '@bigcommerce/big-design-theme';
+import { addValues, remCalc, withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { PaddingProps, withPaddings } from '../../helpers';
@@ -10,7 +10,7 @@ export interface StyledInputWrapperProps extends InputProps {
   focus: boolean;
 }
 
-export const StyledInputWrapper = styled.span<StyledInputWrapperProps>`
+export const StyledInputWrapper = styled.span.attrs(withDefaultTheme)<StyledInputWrapperProps>`
   ${withTransition(['border', 'box-shadow'])}
 
   align-items: center;
@@ -50,7 +50,7 @@ export const StyledInputWrapper = styled.span<StyledInputWrapperProps>`
   }
 `;
 
-export const StyledInput = styled.input<InputProps>`
+export const StyledInput = styled.input.attrs(withDefaultTheme)<InputProps>`
   background-color: inherit;
   border: 0;
   box-sizing: border-box;
@@ -115,7 +115,7 @@ export const StyledInput = styled.input<InputProps>`
   }
 `;
 
-export const StyledIconWrapper = styled.div<PaddingProps>`
+export const StyledIconWrapper = styled.div.attrs(withDefaultTheme)<PaddingProps>`
   align-items: center;
   color: ${({ theme }) => theme.colors.secondary60};
   display: flex;
@@ -138,7 +138,7 @@ export const StyledIconWrapper = styled.div<PaddingProps>`
     `}
 `;
 
-export const StyledInputContent = styled.div<InputProps>`
+export const StyledInputContent = styled.div.attrs(withDefaultTheme)<InputProps>`
   align-items: center;
   box-sizing: border-box;
   display: flex;
@@ -159,8 +159,3 @@ export const StyledInputContent = styled.div<InputProps>`
       margin-bottom: ${theme.spacing.xxSmall};
     `};
 `;
-
-StyledInput.defaultProps = { theme: defaultTheme };
-StyledInputWrapper.defaultProps = { theme: defaultTheme };
-StyledIconWrapper.defaultProps = { theme: defaultTheme };
-StyledInputContent.defaultProps = { theme: defaultTheme };

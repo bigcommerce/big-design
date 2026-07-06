@@ -1,18 +1,18 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { withTransition } from '../../helpers/transitions';
 
 import { ProgressBarProps } from './ProgressBar';
 
-export const StyledProgressBar = styled.div`
+export const StyledProgressBar = styled.div.attrs(withDefaultTheme)`
   background-color: ${({ theme }) => theme.colors.secondary20};
   height: ${({ theme }) => theme.spacing.xxSmall};
   overflow: hidden;
   width: 100%;
 `;
 
-export const StyledProgressBarFiller = styled.div<ProgressBarProps>`
+export const StyledProgressBarFiller = styled.div.attrs(withDefaultTheme)<ProgressBarProps>`
   background-color: ${({ theme }) => theme.colors.primary};
   height: 100%;
   overflow: hidden;
@@ -29,6 +29,3 @@ export const StyledProgressBarFiller = styled.div<ProgressBarProps>`
           width: 6.25%;
         `};
 `;
-
-StyledProgressBar.defaultProps = { theme: defaultTheme };
-StyledProgressBarFiller.defaultProps = { theme: defaultTheme };

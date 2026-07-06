@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import { rgba } from 'polished';
 import styled, { css } from 'styled-components';
 
@@ -6,11 +6,13 @@ import { Flex } from '../Flex';
 
 import { ModalProps } from './Modal';
 
-export const StyledModal = styled.div.attrs({
-  'aria-modal': true,
-  role: 'dialog',
-  tabIndex: -1,
-})<Partial<ModalProps>>`
+export const StyledModal = styled.div
+  .attrs({
+    'aria-modal': true,
+    role: 'dialog',
+    tabIndex: -1,
+  })
+  .attrs(withDefaultTheme)<Partial<ModalProps>>`
   align-items: center;
   display: flex;
   height: 100%;
@@ -29,7 +31,9 @@ export const StyledModal = styled.div.attrs({
     `}
 `;
 
-export const StyledModalContent = styled(Flex)<{ variant: ModalProps['variant'] }>`
+export const StyledModalContent = styled(Flex).attrs(withDefaultTheme)<{
+  variant: ModalProps['variant'];
+}>`
   background: ${({ theme }) => theme.colors.white};
   box-sizing: border-box;
   position: fixed;
@@ -64,7 +68,7 @@ export const StyledModalContent = styled(Flex)<{ variant: ModalProps['variant'] 
     `}
 `;
 
-export const StyledModalActions = styled(Flex)`
+export const StyledModalActions = styled(Flex).attrs(withDefaultTheme)`
   padding: ${({ theme }) => theme.spacing.medium};
 
   ${({ theme }) => theme.breakpoints.tablet} {
@@ -72,7 +76,7 @@ export const StyledModalActions = styled(Flex)`
   }
 `;
 
-export const StyledModalHeader = styled.div`
+export const StyledModalHeader = styled.div.attrs(withDefaultTheme)`
   padding: ${({ theme }) => theme.spacing.medium};
 
   ${({ theme }) => theme.breakpoints.tablet} {
@@ -80,7 +84,7 @@ export const StyledModalHeader = styled.div`
   }
 `;
 
-export const StyledModalClose = styled.div`
+export const StyledModalClose = styled.div.attrs(withDefaultTheme)`
   position: absolute;
   top: ${({ theme }) => theme.spacing.xxSmall};
   right: ${({ theme }) => theme.spacing.xxSmall};
@@ -90,7 +94,7 @@ export const StyledModalClose = styled.div`
   }
 `;
 
-export const StyledModalBody = styled.div`
+export const StyledModalBody = styled.div.attrs(withDefaultTheme)`
   flex-grow: 1;
   padding: 0 ${({ theme }) => theme.spacing.medium};
   overflow-y: auto;
@@ -99,10 +103,3 @@ export const StyledModalBody = styled.div`
     padding: 0 ${({ theme }) => theme.spacing.xLarge};
   }
 `;
-
-StyledModal.defaultProps = { theme: defaultTheme };
-StyledModalActions.defaultProps = { theme: defaultTheme };
-StyledModalBody.defaultProps = { theme: defaultTheme };
-StyledModalClose.defaultProps = { theme: defaultTheme };
-StyledModalContent.defaultProps = { theme: defaultTheme };
-StyledModalHeader.defaultProps = { theme: defaultTheme };

@@ -1,7 +1,7 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
-export const StyledDatepicker = styled.div`
+export const StyledDatepicker = styled.div.attrs(withDefaultTheme)`
   & .react-datepicker-wrapper {
     display: inline-block;
     width: 100%;
@@ -133,5 +133,3 @@ export const StyledDatepicker = styled.div`
     z-index: ${({ theme }) => theme.zIndex.popover};
   }
 `;
-
-StyledDatepicker.defaultProps = { theme: defaultTheme };

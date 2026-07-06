@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import 'jest-styled-components';
 import { render } from '@testing-library/react';
 import React from 'react';
@@ -6,11 +6,9 @@ import styled from 'styled-components';
 
 import { excludePaddingProps, PaddingProps, withPaddings } from './paddings';
 
-const TestComponent = styled.div<PaddingProps>`
+const TestComponent = styled.div.attrs(withDefaultTheme)<PaddingProps>`
   ${withPaddings()};
 `;
-
-TestComponent.defaultProps = { theme: defaultTheme };
 
 test('padding', () => {
   const { container } = render(<TestComponent padding="medium" />);

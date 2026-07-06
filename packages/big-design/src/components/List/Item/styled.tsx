@@ -1,11 +1,11 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { withTransition } from '../../../helpers/transitions';
 
 import { ListItemProps } from '.';
 
-export const StyledListItem = styled.li<
+export const StyledListItem = styled.li.attrs(withDefaultTheme)<
   Omit<ListItemProps<unknown>, 'getItemProps' | 'item' | 'index'>
 >`
   ${withTransition(['background-color', 'color'])}
@@ -79,7 +79,7 @@ export const StyledListItem = styled.li<
   }
 `;
 
-export const StyledLink = styled.a`
+export const StyledLink = styled.a.attrs(withDefaultTheme)`
   ${withTransition(['background-color', 'color'])}
 
   align-items: center;
@@ -93,6 +93,3 @@ export const StyledLink = styled.a`
     outline: none;
   }
 `;
-
-StyledListItem.defaultProps = { theme: defaultTheme };
-StyledLink.defaultProps = { theme: defaultTheme };

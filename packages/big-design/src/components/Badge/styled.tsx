@@ -1,11 +1,11 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { withMargins } from '../../helpers';
 
 import { BadgeProps } from './Badge';
 
-export const StyledBadge = styled.span<Omit<BadgeProps, 'label'>>`
+export const StyledBadge = styled.span.attrs(withDefaultTheme)<Omit<BadgeProps, 'label'>>`
   ${withMargins()};
 
   color: ${({ theme }) => theme.colors.white};
@@ -50,8 +50,3 @@ export const StyledBadge = styled.span<Omit<BadgeProps, 'label'>>`
       background-color: ${theme.colors.primary40};
     `}
 `;
-
-StyledBadge.defaultProps = {
-  theme: defaultTheme,
-  variant: 'secondary',
-};

@@ -1,4 +1,4 @@
-import { theme as defaultTheme, remCalc } from '@bigcommerce/big-design-theme';
+import { remCalc, withDefaultTheme } from '@bigcommerce/big-design-theme';
 import { hideVisually } from 'polished';
 import styled, { css } from 'styled-components';
 
@@ -15,11 +15,11 @@ export interface StyledLabelProps {
   disabled?: boolean;
 }
 
-export const CheckboxLabelContainer = styled.div<{ hasContent?: boolean }>`
+export const CheckboxLabelContainer = styled.div.attrs(withDefaultTheme)<{ hasContent?: boolean }>`
   margin-left: ${({ hasContent, theme }) => (hasContent ? theme.spacing.xSmall : 0)};
 `;
 
-export const CheckboxImgContainer = styled.img`
+export const CheckboxImgContainer = styled.img.attrs(withDefaultTheme)`
   flex-shrink: 0;
   height: ${remCalc(40)};
   object-fit: cover;
@@ -27,16 +27,16 @@ export const CheckboxImgContainer = styled.img`
   margin: 0 ${({ theme }) => theme.spacing.xxSmall};
 `;
 
-export const CheckboxContainer = styled.div<{ hasImg?: boolean }>`
+export const CheckboxContainer = styled.div.attrs(withDefaultTheme)<{ hasImg?: boolean }>`
   align-items: ${({ hasImg }) => (hasImg ? 'center' : 'flex-start')};
   display: flex;
 `;
 
-export const HiddenCheckbox = styled.input`
+export const HiddenCheckbox = styled.input.attrs(withDefaultTheme)`
   ${hideVisually()}
 `;
 
-export const StyledCheckbox = styled.label<StyledCheckboxProps>`
+export const StyledCheckbox = styled.label.attrs(withDefaultTheme)<StyledCheckboxProps>`
   ${withTransition(['border-color', 'background', 'box-shadow', 'color', 'opacity'])}
 
   align-items: center;
@@ -81,9 +81,3 @@ export const StyledCheckbox = styled.label<StyledCheckboxProps>`
     opacity: ${({ checked, isIndeterminate }) => (checked || isIndeterminate ? 1 : 0)};
   }
 `;
-
-StyledCheckbox.defaultProps = { theme: defaultTheme };
-CheckboxLabelContainer.defaultProps = { theme: defaultTheme };
-CheckboxContainer.defaultProps = { theme: defaultTheme };
-HiddenCheckbox.defaultProps = { theme: defaultTheme };
-CheckboxImgContainer.defaultProps = { theme: defaultTheme };

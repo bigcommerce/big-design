@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { StyleableButton } from '../Button/private';
@@ -12,7 +12,7 @@ interface StyledFlexItemProps {
   isVisible: boolean;
 }
 
-export const StyledButton = styled(StyleableButton)<StyledButtonProps>`
+export const StyledButton = styled(StyleableButton).attrs(withDefaultTheme)<StyledButtonProps>`
   ${({ borderRadius, theme }) =>
     borderRadius
       ? css`
@@ -27,7 +27,7 @@ export const StyledButton = styled(StyleableButton)<StyledButtonProps>`
   }
 `;
 
-export const StyledFlexItem = styled(FlexItem)<StyledFlexItemProps>`
+export const StyledFlexItem = styled(FlexItem).attrs(withDefaultTheme)<StyledFlexItemProps>`
   margin-right: -1px;
 
   &:last-of-type {
@@ -52,6 +52,3 @@ export const StyledFlexItem = styled(FlexItem)<StyledFlexItemProps>`
       z-index: ${({ theme }) => -theme.zIndex.tooltip};
     `}
 `;
-
-StyledButton.defaultProps = { theme: defaultTheme };
-StyledFlexItem.defaultProps = { theme: defaultTheme };

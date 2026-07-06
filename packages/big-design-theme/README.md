@@ -33,15 +33,15 @@ pnpm add @bigcommerce/big-design-theme styled-components@5
 // index.tsx
 
 import { theme } from '@bigcommerce/big-design-theme';
+import { createRoot } from 'react-dom/client';
 import { ThemeProvider } from 'styled-components';
 
 // ...
 
-ReactDOM.render(
+createRoot(document.getElementById('root')).render(
   <ThemeProvider theme={theme}>
       <App />
   </ThemeProvider>,
-  document.getElementById('root'),
 );
 ```
 

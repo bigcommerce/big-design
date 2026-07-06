@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { withTransition } from '../../../helpers/transitions';
@@ -8,7 +8,7 @@ interface StyledTableRowProps {
   isSelected: boolean;
 }
 
-export const StyledTableRow = styled.tr<StyledTableRowProps>`
+export const StyledTableRow = styled.tr.attrs(withDefaultTheme)<StyledTableRowProps>`
   ${withTransition(['background-color'])}
   display: ${({ isDragging }) => (isDragging ? 'table' : 'table-row')};
 
@@ -19,5 +19,3 @@ export const StyledTableRow = styled.tr<StyledTableRowProps>`
     background-color: ${({ theme }) => theme.colors.secondary10};
   }
 `;
-
-StyledTableRow.defaultProps = { theme: defaultTheme };

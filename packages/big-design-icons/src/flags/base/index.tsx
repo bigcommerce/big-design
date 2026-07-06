@@ -1,6 +1,7 @@
-import { theme as defaultTheme, Spacing, ThemeInterface } from '@bigcommerce/big-design-theme';
-import {
+import { Spacing, ThemeInterface, withDefaultTheme } from '@bigcommerce/big-design-theme';
+import React, {
   ComponentPropsWithoutRef,
+  forwardRef,
   ForwardRefExoticComponent,
   PropsWithoutRef,
   RefAttributes,
@@ -9,8 +10,10 @@ import styled from 'styled-components';
 
 export { type PrivateIconProps } from '../../base';
 
+type IconSize = keyof Spacing | number | (string & {});
+
 export interface FlagIconProps extends ComponentPropsWithoutRef<'svg'> {
-  size?: keyof Spacing | number;
+  size?: IconSize;
   theme?: ThemeInterface;
   title?: string;
 }
@@ -20,17 +23,26 @@ export function createStyledFlagIcon(
     PropsWithoutRef<FlagIconProps> & RefAttributes<SVGSVGElement>
   >,
 ) {
-  const StyledFlagIcon = styled(FlagIcon)`
+  const StyledFlagIcon = styled(FlagIcon).attrs(withDefaultTheme)`
     ${({ size, theme }) =>
       size && {
-        width: typeof size === 'number' ? theme.helpers.remCalc(size) : theme.spacing[size],
+        width: getIconSize(size, theme),
       }}
   `;
 
-  StyledFlagIcon.defaultProps = {
-    size: 'xLarge',
-    theme: defaultTheme,
-  };
+  return forwardRef<SVGSVGElement, FlagIconProps>(({ size = 'xLarge', ...props }, ref) => (
+    <StyledFlagIcon {...props} ref={ref} size={size} />
+  ));
+}
 
-  return StyledFlagIcon;
+function getIconSize(size: IconSize, theme: ThemeInterface) {
+  if (typeof size === 'number') {
+    return theme.helpers.remCalc(size);
+  }
+
+  return isSpacingKey(size, theme.spacing) ? theme.spacing[size] : size;
+}
+
+function isSpacingKey(size: string, spacing: Spacing): size is keyof Spacing {
+  return Object.prototype.hasOwnProperty.call(spacing, size);
 }

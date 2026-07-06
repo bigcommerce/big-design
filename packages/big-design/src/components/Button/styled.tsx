@@ -1,4 +1,4 @@
-import { addValues, theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { addValues, withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { MarginProps, withMargins } from '../../helpers';
@@ -7,7 +7,7 @@ import { Flex } from '../Flex';
 
 import { ButtonProps } from './index';
 
-export const StyledButton = styled.button<ButtonProps & MarginProps>`
+export const StyledButton = styled.button.attrs(withDefaultTheme)<ButtonProps & MarginProps>`
   ${withTransition(['background-color', 'border-color', 'box-shadow', 'color'])}
 
   && {
@@ -82,9 +82,9 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
   ${(props) => getButtonStyles(props)}
 `;
 
-export const ContentWrapper = styled.span.attrs<Record<string, unknown>, { isLoading?: boolean }>(
-  {},
-)`
+export const ContentWrapper = styled.span
+  .attrs<Record<string, unknown>, { isLoading?: boolean }>({})
+  .attrs(withDefaultTheme)`
   align-content: center;
   align-items: center;
   display: inline-grid;
@@ -98,7 +98,7 @@ export const ContentWrapper = styled.span.attrs<Record<string, unknown>, { isLoa
     `};
 `;
 
-export const LoadingSpinnerWrapper = styled(Flex)`
+export const LoadingSpinnerWrapper = styled(Flex).attrs(withDefaultTheme)`
   position: absolute;
 `;
 
@@ -309,7 +309,3 @@ function getButtonStyles(props: ButtonProps) {
       return actionType === 'destructive' ? ButtonUtilityDestructive : ButtonUtility;
   }
 }
-
-StyledButton.defaultProps = { theme: defaultTheme };
-ContentWrapper.defaultProps = { theme: defaultTheme };
-LoadingSpinnerWrapper.defaultProps = { theme: defaultTheme };

@@ -1,10 +1,10 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import { hideVisually } from 'polished';
 import styled, { css } from 'styled-components';
 
 import { withTransition } from '../../helpers/transitions';
 
-export const HiddenCheckbox = styled.input`
+export const HiddenCheckbox = styled.input.attrs(withDefaultTheme)`
   ${hideVisually()}
 
   ${({ theme }) =>
@@ -19,7 +19,7 @@ interface SwitchLabelProps {
   disabled?: boolean;
 }
 
-export const StyledSwitchLabel = styled.label<SwitchLabelProps>`
+export const StyledSwitchLabel = styled.label.attrs(withDefaultTheme)<SwitchLabelProps>`
   ${withTransition(['background, border-color'])}
 
   background: ${({ checked, theme }) =>
@@ -94,11 +94,3 @@ export const StyledSwitchLabel = styled.label<SwitchLabelProps>`
       `}
   }
 `;
-
-StyledSwitchLabel.defaultProps = {
-  theme: defaultTheme,
-};
-
-HiddenCheckbox.defaultProps = {
-  theme: defaultTheme,
-};

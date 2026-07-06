@@ -1,10 +1,10 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { Box } from '../Box';
 import { StyleableH2 } from '../Typography/private';
 
-export const StyledPanel = styled(Box)`
+export const StyledPanel = styled(Box).attrs(withDefaultTheme)`
   border-radius: ${({ theme }) => theme.borderRadius.none};
 
   ${({ theme }) => theme.breakpoints.tablet} {
@@ -12,7 +12,7 @@ export const StyledPanel = styled(Box)`
   }
 `;
 
-export const StyledH2 = styled(StyleableH2)`
+export const StyledH2 = styled(StyleableH2).attrs(withDefaultTheme)`
   flex-grow: 1;
 
   & ~ .bd-button {
@@ -20,6 +20,3 @@ export const StyledH2 = styled(StyleableH2)`
     margin-top: 0;
   }
 `;
-
-StyledPanel.defaultProps = { theme: defaultTheme };
-StyledH2.defaultProps = { theme: defaultTheme };

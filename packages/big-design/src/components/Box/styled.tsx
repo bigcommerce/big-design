@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import { clearFix } from 'polished';
 import styled, { css } from 'styled-components';
 
@@ -6,7 +6,7 @@ import { withDisplay, withMargins, withPaddings } from '../../helpers';
 
 import { BoxProps } from './Box';
 
-export const StyledBox = styled.div<BoxProps>`
+export const StyledBox = styled.div.attrs(withDefaultTheme)<BoxProps>`
   ${withDisplay()}
   ${withMargins()}
   ${withPaddings()}
@@ -64,5 +64,3 @@ export const StyledBox = styled.div<BoxProps>`
       z-index: ${theme.zIndex[zIndex]};
     `};
 `;
-
-StyledBox.defaultProps = { theme: defaultTheme };

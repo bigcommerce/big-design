@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { withDefaultTheme } from '@bigcommerce/big-design-theme';
 import { hideVisually } from 'polished';
 import styled, { css } from 'styled-components';
 
@@ -17,7 +17,7 @@ interface StyledFlexProps {
   hide: boolean;
 }
 
-export const StyledTableHeaderCell = styled.th<StyledTableHeaderCellProps>`
+export const StyledTableHeaderCell = styled.th.attrs(withDefaultTheme)<StyledTableHeaderCellProps>`
   ${withTableColumnDisplay()}
   background-color: ${({ theme }) => theme.colors.white};
   border-bottom: ${({ theme }) => theme.border.box};
@@ -60,12 +60,12 @@ export const StyledTableHeaderCell = styled.th<StyledTableHeaderCellProps>`
     `}
 `;
 
-export const StyledTableHeaderIcon = styled(StyledTableHeaderCell)`
+export const StyledTableHeaderIcon = styled(StyledTableHeaderCell).attrs(withDefaultTheme)`
   width: ${({ theme }) => theme.helpers.addValues(theme.spacing.xLarge, theme.spacing.small)};
   white-space: nowrap;
 `;
 
-export const StyledFlex = styled(Flex)<StyledFlexProps>`
+export const StyledFlex = styled(Flex).attrs(withDefaultTheme)<StyledFlexProps>`
   ${({ align }) => {
     switch (align) {
       case 'center':
@@ -86,7 +86,3 @@ export const StyledFlex = styled(Flex)<StyledFlexProps>`
   }};
   ${({ hide }) => hide && hideVisually()};
 `;
-
-StyledFlex.defaultProps = { theme: defaultTheme };
-StyledTableHeaderCell.defaultProps = { theme: defaultTheme };
-StyledTableHeaderIcon.defaultProps = { theme: defaultTheme };

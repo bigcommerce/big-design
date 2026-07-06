@@ -10,7 +10,8 @@ import { createAlertsManager } from './manager';
 
 let alertsManager: ReturnType<typeof createAlertsManager>;
 
-type KeyedAlertProps = AlertProps & { key: string };
+type ManagedAlertProps = AlertProps & { messages: NonNullable<AlertProps['messages']> };
+type KeyedAlertProps = ManagedAlertProps & { key: string };
 
 beforeEach(() => {
   alertsManager = createAlertsManager();
@@ -18,7 +19,7 @@ beforeEach(() => {
 
 describe('alertsManager functionality', () => {
   const testKey = 'test';
-  const alert: AlertProps = {
+  const alert: ManagedAlertProps = {
     messages: [{ text: 'Text' }],
   };
 
