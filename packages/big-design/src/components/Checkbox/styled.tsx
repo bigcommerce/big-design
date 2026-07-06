@@ -21,6 +21,8 @@ export const CheckboxLabelContainer = styled.div<{ hasContent?: boolean }>`
 
 export const CheckboxImgContainer = styled.img`
   margin-inline-start: ${({ theme }) => theme.spacing.xSmall};
+  object-fit: contain;
+  flex-shrink: 0;
 `;
 
 export const CheckboxContainer = styled.div<{ hasImg?: boolean }>`

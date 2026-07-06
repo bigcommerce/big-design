@@ -1274,6 +1274,10 @@ exports[`render Checkbox with img props 1`] = `
 
 .c6 {
   margin-inline-start: 0.5rem;
+  object-fit: contain;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .c0 {

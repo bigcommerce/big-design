@@ -11,7 +11,7 @@ export interface InfoCardProps {
   title: string;
   description?: string;
   badge?: BadgeProps;
-  img?: ComponentPropsWithoutRef<'img'>;
+  img?: Omit<ComponentPropsWithoutRef<'img'>, 'style' | 'className'>;
 }
 
 export const InfoCard: React.FC<InfoCardProps> = ({ img, title, badge, description }) => (

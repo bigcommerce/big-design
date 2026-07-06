@@ -28,7 +28,7 @@ interface Props {
   label: React.ReactNode;
   description?: CheckboxDescription | string;
   badge?: BadgeProps;
-  img?: ComponentPropsWithoutRef<'img'>;
+  img?: Omit<ComponentPropsWithoutRef<'img'>, 'style' | 'className'>;
 }
 
 interface CheckboxDescription {
