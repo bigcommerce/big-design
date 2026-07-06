@@ -11,18 +11,22 @@ export interface InfoCardProps {
   title: string;
   description?: string;
   badge?: BadgeProps;
-  img?: Omit<ComponentPropsWithoutRef<'img'>, 'style' | 'className'>;
+  img?: ComponentPropsWithoutRef<'img'>;
 }
 
-export const InfoCard: React.FC<InfoCardProps> = ({ img, title, badge, description }) => (
-  <Flex alignItems="center">
-    {img && <InfoCardImgContainer height={40} width={40} {...img} alt={img.alt ?? ''} />}
-    <Box>
-      <StyleableText margin="none">
-        {title}
-        {badge ? <Badge marginLeft="xSmall" {...badge} /> : null}
-      </StyleableText>
-      {description ? <Small>{description}</Small> : null}
-    </Box>
-  </Flex>
-);
+export const InfoCard: React.FC<InfoCardProps> = ({ img, title, badge, description }) => {
+  const { className: imgClassName, style: imgStyle, ...imgProps } = img ?? {};
+
+  return (
+    <Flex alignItems="center">
+      {img && <InfoCardImgContainer height={40} width={40} {...imgProps} alt={img.alt ?? ''} />}
+      <Box>
+        <StyleableText margin="none">
+          {title}
+          {badge ? <Badge marginLeft="xSmall" {...badge} /> : null}
+        </StyleableText>
+        {description ? <Small>{description}</Small> : null}
+      </Box>
+    </Flex>
+  );
+};

@@ -28,7 +28,7 @@ interface Props {
   label: React.ReactNode;
   description?: CheckboxDescription | string;
   badge?: BadgeProps;
-  img?: Omit<ComponentPropsWithoutRef<'img'>, 'style' | 'className'>;
+  img?: ComponentPropsWithoutRef<'img'>;
 }
 
 interface CheckboxDescription {
@@ -60,6 +60,7 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
   const uniqueCheckboxId = useId();
   const labelId = useId();
   const id = props.id ? props.id : uniqueCheckboxId;
+  const { className: imgClassName, style: imgStyle, ...imgProps } = img ?? {};
 
   const renderedLabel = useMemo(() => {
     if (!label) {
@@ -141,7 +142,9 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
       >
         {!checked && isIndeterminate ? <RemoveIcon /> : <CheckIcon />}
       </StyledCheckbox>
-      {img ? <CheckboxImgContainer height={40} width={40} {...img} alt={img.alt ?? ''} /> : null}
+      {img ? (
+        <CheckboxImgContainer height={40} width={40} {...imgProps} alt={img.alt ?? ''} />
+      ) : null}
       <CheckboxLabelContainer hasContent={Boolean(label) || Boolean(description)}>
         {renderedLabel}
         {renderedDescription}
