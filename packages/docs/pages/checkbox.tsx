@@ -5,6 +5,7 @@ import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '..
 import {
   CheckboxDescriptionLinkPropTable,
   CheckboxDescriptionPropTable,
+  CheckboxImgPropTable,
   CheckboxPropTable,
 } from '../PropTables';
 
@@ -240,6 +241,11 @@ const CheckboxPage = () => {
               render: () => (
                 <CheckboxDescriptionLinkPropTable id="checkbox-description-link-prop-table" />
               ),
+            },
+            {
+              id: 'img',
+              title: 'ImgProps',
+              render: () => <CheckboxImgPropTable id="img-prop-table" />,
             },
           ]}
         />

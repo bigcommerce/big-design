@@ -1273,13 +1273,11 @@ exports[`render Checkbox with img props 1`] = `
 }
 
 .c6 {
+  margin-inline-start: 0.5rem;
+  object-fit: contain;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  height: 2.5rem;
-  object-fit: cover;
-  width: 2.5rem;
-  margin: 0 0.25rem;
 }
 
 .c0 {
@@ -1390,7 +1388,9 @@ exports[`render Checkbox with img props 1`] = `
   <img
     alt="Thumbnail"
     class="c6"
+    height="100"
     src="https://example.com/thumbnail.png"
+    width="100"
   />
   <div
     class="c7"
