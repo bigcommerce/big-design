@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.2.0
+
+### Minor Changes
+
+- 88f22b0: feat(component): expand the Checkbox `img` prop to accept native `img` attributes (width/height default to 40)
+
 ## 3.1.0
 
 ### Minor Changes
