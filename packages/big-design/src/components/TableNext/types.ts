@@ -67,9 +67,10 @@ export type TablePaginationProps =
   | WithoutMarginProps<OffsetPaginationProps>
   | WithoutMarginProps<StatelessPaginationPropsWithItemTotal>;
 
-interface Localization {
-  ascendingOrder: string;
-  descendingOrder: string;
+export interface Localization {
+  ascendingOrder?: string;
+  descendingOrder?: string;
+  controlsLabel?: string;
 }
 
 export interface TableProps<T> extends ComponentPropsWithoutRef<'table'> {
