@@ -4,7 +4,14 @@ import { userEvent } from '@testing-library/user-event';
 import React from 'react';
 
 import { Tree } from './Tree';
-import { TreeExpandable, TreeFocusable, TreeNodeProps, TreeOnKeyDown, TreeProps } from './types';
+import {
+  TreeBaseProps,
+  TreeExpandable,
+  TreeFocusable,
+  TreeNodeProps,
+  TreeOnKeyDown,
+  TreeVirtualizationProps,
+} from './types';
 
 const nodes: Array<TreeNodeProps<number>> = [
   {
@@ -45,6 +52,8 @@ let expandable: TreeExpandable;
 let focusable: TreeFocusable;
 let onKeyDown: TreeOnKeyDown<unknown>;
 
+type AdditionalTreeProps = Partial<TreeBaseProps<unknown>> & TreeVirtualizationProps;
+
 beforeEach(() => {
   expandable = { expandedNodes: [], onToggle: jest.fn() };
   focusable = { focusedNode: '', onFocus: jest.fn() };
@@ -52,7 +61,7 @@ beforeEach(() => {
 });
 
 const renderDefaultTree = (
-  additionalProps?: Partial<TreeProps<unknown>>,
+  additionalProps?: AdditionalTreeProps,
 ): RenderResult & {
   expandable: TreeExpandable;
   focusable: TreeFocusable;

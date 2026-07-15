@@ -158,6 +158,46 @@ const StatefulTreePage = () => {
                 </Fragment>
               ),
             },
+            {
+              id: 'virtualized',
+              title: 'Virtualized',
+              render: () => (
+                <Fragment key="virtualized">
+                  <Text>
+                    For large trees (thousands of nodes), enable <Code primary>virtualized</Code>{' '}
+                    with a <Code primary>maxHeight</Code> to render only the nodes within the
+                    viewport.
+                  </Text>
+                  <CodePreview>
+                    {/* jsx-to-string:start */}
+                    {function Example() {
+                      // 500 categories × 10 subcategories = 5,500 nodes.
+                      const nodes = Array.from({ length: 500 }, (_, index) => ({
+                        id: `${index}`,
+                        value: index,
+                        label: `Category ${index}`,
+                        children: Array.from({ length: 10 }, (_, childIndex) => ({
+                          id: `${index}-${childIndex}`,
+                          value: index * 10 + childIndex,
+                          label: `Subcategory ${index}.${childIndex}`,
+                        })),
+                      }));
+
+                      return (
+                        <StatefulTree
+                          defaultExpanded={['0', '1']}
+                          maxHeight={400}
+                          nodes={nodes}
+                          selectable="multi"
+                          virtualized
+                        />
+                      );
+                    }}
+                    {/* jsx-to-string:end */}
+                  </CodePreview>
+                </Fragment>
+              ),
+            },
           ]}
         />
       </Panel>

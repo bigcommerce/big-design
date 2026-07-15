@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
 import { renderHook } from '@testing-library/react';
 
+import { getSelectedChildrenCounts } from '../../../utils';
 import {
   NodeMap,
   TreeExpandable,
@@ -11,7 +12,6 @@ import {
 } from '../types';
 
 import { useNodeMap } from './useNodeMap';
-import { useSelectedChildrenCount } from './useSelectedChildrenCount';
 import { useTreeKeyEvents } from './useTreeKeyEvents';
 
 describe('useNodeMap', () => {
@@ -53,24 +53,40 @@ describe('useNodeMap', () => {
   });
 });
 
-describe('useSelectedChildrenCount', () => {
-  test('should return 0 count if no children', () => {
-    const { result } = renderHook(() =>
-      useSelectedChildrenCount({ selectedNodes: [], children: [] }),
+describe('getSelectedChildrenCounts', () => {
+  test('returns 0 for every node when nothing is selected', () => {
+    const counts = getSelectedChildrenCounts(
+      [{ id: '1', label: 'Test Node 1', children: [{ id: '2', label: 'Test Node 2' }] }],
+      new Set<TreeNodeId>(),
     );
 
-    expect(result.current).toBe(0);
+    expect(counts.get('1')).toBe(0);
+    expect(counts.get('2')).toBe(0);
   });
 
-  test('should return 1 count', () => {
-    const { result } = renderHook(() =>
-      useSelectedChildrenCount({
-        selectedNodes: ['1'],
-        children: [{ id: '1', label: 'Test Node 1' }],
-      }),
-    );
+  test('counts selected descendants excluding the node itself', () => {
+    const nodes: Array<TreeNodeProps<unknown>> = [
+      {
+        id: '1',
+        label: 'Test Node 1',
+        children: [
+          { id: '2', label: 'Test Node 2' },
+          {
+            id: '3',
+            label: 'Test Node 3',
+            children: [{ id: '4', label: 'Test Node 4' }],
+          },
+        ],
+      },
+    ];
 
-    expect(result.current).toBe(1);
+    const counts = getSelectedChildrenCounts(nodes, new Set<TreeNodeId>(['1', '2', '4']));
+
+    // '1' is selected but is not counted within its own count.
+    expect(counts.get('1')).toBe(2);
+    expect(counts.get('3')).toBe(1);
+    expect(counts.get('2')).toBe(0);
+    expect(counts.get('4')).toBe(0);
   });
 });
 

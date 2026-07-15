@@ -30,6 +30,16 @@ const statefulTreeProps: Prop[] = [
     description: 'Defines a HTML id attribute to the parent wrapper.',
   },
   {
+    name: 'maxHeight',
+    types: 'number',
+    description: (
+      <>
+        Height (in px) of the scrollable area. Required when <Code primary>virtualized</Code> is
+        enabled.
+      </>
+    ),
+  },
+  {
     name: 'nodes',
     types: (
       <NextLink href={{ hash: 'tree-node-prop-table', query: { props: 'treenode' } }}>
@@ -68,6 +78,16 @@ const statefulTreeProps: Prop[] = [
     name: 'selectable',
     types: ['multi', 'radio'],
     description: 'Determines the type of selectable tree to render.',
+  },
+  {
+    name: 'virtualized',
+    types: 'boolean',
+    description: (
+      <>
+        Renders only the nodes within the viewport. Recommended for large trees (thousands of
+        nodes). Requires <Code primary>maxHeight</Code>.
+      </>
+    ),
   },
 ];
 

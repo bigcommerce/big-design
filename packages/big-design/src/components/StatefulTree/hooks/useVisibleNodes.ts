@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
 
 import { NodeMap, TreeNodeId } from '../../Tree';
 
@@ -7,53 +7,42 @@ interface UseVisibleNodesProps {
   nodeMap: NodeMap;
 }
 
-interface RecursiveSearchProps {
-  nodes: TreeNodeId[];
-  expandedNodes: TreeNodeId[];
-  nodeMap: NodeMap;
-}
+const buildVisibleNodes = ({ expandedNodes, nodeMap }: UseVisibleNodesProps): TreeNodeId[] => {
+  const expanded = new Set(expandedNodes);
+  const visible: TreeNodeId[] = [];
 
-const recursiveSearch = ({ nodes, expandedNodes, nodeMap }: RecursiveSearchProps): TreeNodeId[] => {
-  return nodes.reduce<TreeNodeId[]>((acc, id) => {
-    if (expandedNodes.includes(id)) {
-      const children = nodeMap.get(id)?.children;
+  const walk = (ids: TreeNodeId[]) => {
+    for (const id of ids) {
+      visible.push(id);
 
-      if (children) {
-        const visibleChildren = recursiveSearch({
-          nodes: children,
-          expandedNodes,
-          nodeMap,
-        });
+      if (expanded.has(id)) {
+        const children = nodeMap.get(id)?.children;
 
-        return acc.includes(id) ? [...acc, ...visibleChildren] : [...acc, id, ...visibleChildren];
+        if (children?.length) {
+          walk(children);
+        }
       }
     }
+  };
 
-    return [...acc, id];
-  }, []);
-};
+  const rootNodes: TreeNodeId[] = [];
 
-const buildVisibleNodes = ({ expandedNodes, nodeMap }: UseVisibleNodesProps) => {
-  const entries = Array.from(nodeMap.entries());
-  const parentNodes: TreeNodeId[] = entries
-    .filter(([, value]) => value.parent === undefined, [])
-    .map(([id]) => id);
+  for (const [id, value] of nodeMap) {
+    if (value.parent === undefined) {
+      rootNodes.push(id);
+    }
+  }
 
-  return recursiveSearch({
-    nodes: parentNodes,
-    expandedNodes,
-    nodeMap,
-  });
+  walk(rootNodes);
+
+  return visible;
 };
 
 export const useVisibleNodes = ({ expandedNodes, nodeMap }: UseVisibleNodesProps) => {
-  const [visibleNodes, setVisibleNodes] = useState(() =>
-    buildVisibleNodes({ expandedNodes, nodeMap }),
+  const visibleNodes = useMemo(
+    () => buildVisibleNodes({ expandedNodes, nodeMap }),
+    [expandedNodes, nodeMap],
   );
-
-  useEffect(() => {
-    setVisibleNodes(buildVisibleNodes({ expandedNodes, nodeMap }));
-  }, [expandedNodes, nodeMap]);
 
   return { visibleNodes };
 };
