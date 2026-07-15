@@ -5,7 +5,6 @@ import { typedMemo } from '../../../utils';
 import { StyledCheckbox } from '../../Checkbox/private';
 import { FlexItemProps } from '../../Flex';
 import { StyledRadio } from '../../Radio/styled';
-import { useSelectedChildrenCount } from '../hooks/useSelectedChildrenCount';
 import { StyledUl } from '../styled';
 import { TreeContext } from '../Tree';
 import { TreeNodeProps } from '../types';
@@ -22,33 +21,70 @@ import {
 
 const flexItemProps: FlexItemProps = { flexShrink: 0, marginLeft: 'xxSmall' };
 
+interface InternalTreeNodeProps<T> extends TreeNodeProps<T> {
+  depth?: number;
+  posinset?: number;
+  setsize?: number;
+  virtualized?: boolean;
+  virtualIndex?: number;
+  measureElement?: (node: Element | null) => void;
+}
+
 const InternalTreeNode = <T,>({
   children,
   icon,
   label,
   value,
   id,
-}: TreeNodeProps<T>): React.ReactElement<TreeNodeProps<T>> => {
+  depth,
+  posinset,
+  setsize,
+  virtualized,
+  virtualIndex,
+  measureElement,
+}: InternalTreeNodeProps<T>): React.ReactElement<InternalTreeNodeProps<T>> => {
   const {
-    disabledNodes,
+    disabledNodesSet,
     expandable,
+    expandedNodesSet,
     focusable,
     iconless,
     onKeyDown,
+    onNodeRefChange,
     onNodeClick,
     selectable,
+    selectedChildrenCounts,
+    selectedNodesSet,
     treeRef,
   } = useContext(TreeContext);
   const nodeRef = useRef<HTMLLIElement | null>(null);
   const selectableRef = useRef<HTMLLabelElement | null>(null);
-  const isExpanded = expandable.expandedNodes.includes(id);
-  const isSelected = selectable?.selectedNodes?.includes(id);
-  const isDisabled = disabledNodes?.includes(id);
+  const isExpanded = expandedNodesSet.has(id);
+  const isSelected = selectedNodesSet.has(id);
+  const isDisabled = disabledNodesSet.has(id);
   const isSelectable = value !== undefined && selectable?.type !== undefined && !isDisabled;
-  const selectedChildrenCount = useSelectedChildrenCount({
-    selectedNodes: selectable?.selectedNodes,
-    children,
-  });
+  const selectedChildrenCount = selectedChildrenCounts.get(id) ?? 0;
+
+  const setNodeRef = useCallback(
+    (element: HTMLLIElement | null) => {
+      const wasFocused = nodeRef.current === document.activeElement;
+
+      if (!element && virtualized) {
+        onNodeRefChange(id, null, wasFocused);
+      }
+
+      nodeRef.current = element;
+
+      if (virtualized && typeof measureElement === 'function') {
+        measureElement(element);
+      }
+
+      if (element && virtualized) {
+        onNodeRefChange(id, element);
+      }
+    },
+    [id, measureElement, onNodeRefChange, virtualized],
+  );
 
   useEffect(() => {
     if (
@@ -145,6 +181,7 @@ const InternalTreeNode = <T,>({
 
   const renderedChildren = useMemo(
     () =>
+      !virtualized &&
       children &&
       isExpanded && (
         <StyledUl role="group">
@@ -153,7 +190,20 @@ const InternalTreeNode = <T,>({
           ))}
         </StyledUl>
       ),
-    [children, isExpanded],
+    [children, isExpanded, virtualized],
+  );
+
+  const virtualizationProps = useMemo(
+    () =>
+      virtualized
+        ? {
+            'aria-level': (depth ?? 0) + 1,
+            'aria-posinset': posinset,
+            'aria-setsize': setsize,
+            'data-index': virtualIndex,
+          }
+        : {},
+    [depth, posinset, setsize, virtualIndex, virtualized],
   );
 
   const renderedIcon = useMemo(() => {
@@ -210,11 +260,13 @@ const InternalTreeNode = <T,>({
     () => (
       <StyledLi
         aria-expanded={isExpanded}
+        level={virtualized ? depth : undefined}
         onClick={handleNodeClick}
         onKeyDown={handleKeyEvent}
-        ref={nodeRef}
+        ref={setNodeRef}
         role="treeitem"
         tabIndex={focusable.focusedNode === id ? 0 : -1}
+        {...virtualizationProps}
         {...additionalProps}
       >
         <StyledFlex
@@ -246,6 +298,7 @@ const InternalTreeNode = <T,>({
     ),
     [
       additionalProps,
+      depth,
       handleKeyEvent,
       handleNodeClick,
       handleNodeToggle,
@@ -260,6 +313,9 @@ const InternalTreeNode = <T,>({
       renderedSelectable,
       renderedIcon,
       selectedChildrenCount,
+      setNodeRef,
+      virtualizationProps,
+      virtualized,
     ],
   );
 };

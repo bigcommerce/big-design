@@ -1,12 +1,13 @@
 import React from 'react';
 
 import { typedMemo } from '../../utils';
-import { Tree, TreeNodeId, TreeProps, TreeSelectable, useNodeMap, useTreeKeyEvents } from '../Tree';
+import { Tree, TreeNodeId, TreeSelectable, useNodeMap, useTreeKeyEvents } from '../Tree';
+import { TreeBaseProps, TreeVirtualizationProps } from '../Tree/types';
 
 import { useExpandable, useFocusable, useSelectable, useVisibleNodes } from './hooks';
 
-export interface StatefulTreeProps<T>
-  extends Omit<TreeProps<T>, 'expandable' | 'focusable' | 'selectable' | 'onKeyDown'> {
+export interface StatefulTreeBaseProps<T>
+  extends Omit<TreeBaseProps<T>, 'expandable' | 'focusable' | 'selectable' | 'onKeyDown'> {
   defaultExpanded?: TreeNodeId[];
   defaultSelected?: TreeNodeId[];
   iconless?: boolean;
@@ -15,17 +16,22 @@ export interface StatefulTreeProps<T>
   onSelectionChange?: (selectedValues: T[]) => void;
 }
 
-const InternalStatefulTree = <T,>({
-  nodes = [],
-  defaultExpanded,
-  defaultSelected,
-  disabledNodes = [],
-  iconless,
-  onNodeClick,
-  onExpandedChange,
-  onSelectionChange,
-  selectable: type,
-}: StatefulTreeProps<T>): React.ReactElement<StatefulTreeProps<T>> => {
+export type StatefulTreeProps<T> = StatefulTreeBaseProps<T> & TreeVirtualizationProps;
+
+const InternalStatefulTree = <T,>(
+  props: StatefulTreeProps<T>,
+): React.ReactElement<StatefulTreeProps<T>> => {
+  const {
+    nodes = [],
+    defaultExpanded,
+    defaultSelected,
+    disabledNodes = [],
+    iconless,
+    onNodeClick,
+    onExpandedChange,
+    onSelectionChange,
+    selectable: type,
+  } = props;
   const { focusedNode, onFocus } = useFocusable({ nodes, type, defaultSelected });
   const { expandedNodes, onToggle } = useExpandable({ defaultExpanded, onExpandedChange });
   const { selectedNodes, onSelect } = useSelectable({
@@ -38,18 +44,21 @@ const InternalStatefulTree = <T,>({
   const nodeMap = useNodeMap({ nodes });
   const { visibleNodes } = useVisibleNodes({ expandedNodes, nodeMap });
   const onKeyDown = useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes });
+  const treeProps: TreeBaseProps<T> = {
+    disabledNodes,
+    expandable: { expandedNodes, onToggle },
+    focusable: { focusedNode, onFocus },
+    iconless,
+    nodes,
+    onKeyDown,
+    onNodeClick,
+    selectable: { selectedNodes, onSelect, type },
+  };
 
-  return (
-    <Tree
-      disabledNodes={disabledNodes}
-      expandable={{ expandedNodes, onToggle }}
-      focusable={{ focusedNode, onFocus }}
-      iconless={iconless}
-      nodes={nodes}
-      onKeyDown={onKeyDown}
-      onNodeClick={onNodeClick}
-      selectable={{ selectedNodes, onSelect, type }}
-    />
+  return props.virtualized ? (
+    <Tree {...treeProps} maxHeight={props.maxHeight} virtualized />
+  ) : (
+    <Tree {...treeProps} />
   );
 };
 

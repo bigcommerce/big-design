@@ -4,8 +4,17 @@ import styled, { css } from 'styled-components';
 import { Flex, FlexItem } from '../../Flex';
 import { StyleableText } from '../../Typography/private';
 
-export const StyledLi = styled.li`
+export const StyledLi = styled.li<{ level?: number }>`
   outline: 0;
+
+  ${({ level, theme }) =>
+    level
+      ? css`
+          padding-left: calc(
+            ${theme.helpers.addValues(theme.spacing.xLarge, theme.spacing.xxSmall)} * ${level}
+          );
+        `
+      : ''}
 `;
 
 export const StyledArrowWrapper = styled(FlexItem)<{ expanded: boolean }>`

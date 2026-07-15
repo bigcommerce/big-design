@@ -43,7 +43,7 @@ export interface TreeFocusable {
   onFocus(nodeId: TreeNodeId): void;
 }
 
-export interface TreeProps<T> {
+export interface TreeBaseProps<T> {
   nodes: Array<TreeNodeProps<T>>;
   iconless?: boolean;
   id?: string;
@@ -55,6 +55,23 @@ export interface TreeProps<T> {
   onNodeClick?: TreeOnNodeClick;
 }
 
+export type TreeVirtualizationProps =
+  | {
+      /**
+       * Renders only the visible nodes within the viewport. Recommended for large
+       * trees (thousands of nodes).
+       */
+      virtualized: true;
+      /** Height (in px) of the scrollable area. */
+      maxHeight: number;
+    }
+  | {
+      virtualized?: false;
+      maxHeight?: never;
+    };
+
+export type TreeProps<T> = TreeBaseProps<T> & TreeVirtualizationProps;
+
 export interface TreeContextState<T> {
   disabledNodes?: TreeNodeId[];
   expandable: TreeExpandable;
@@ -63,7 +80,12 @@ export interface TreeContextState<T> {
   selectable?: TreeSelectable<T>;
   onKeyDown: TreeOnKeyDown<T>;
   onNodeClick?: TreeOnNodeClick;
+  onNodeRefChange(nodeId: TreeNodeId, node: HTMLLIElement | null, wasFocused?: boolean): void;
   treeRef: RefObject<HTMLUListElement>;
+  disabledNodesSet: Set<TreeNodeId>;
+  expandedNodesSet: Set<TreeNodeId>;
+  selectedNodesSet: Set<TreeNodeId>;
+  selectedChildrenCounts: Map<TreeNodeId, number>;
 }
 
 export interface MapValues {

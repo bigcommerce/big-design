@@ -8,26 +8,15 @@ interface UseNodeMapProps<T> {
 
 interface BuildNodeMapProps<T> extends UseNodeMapProps<T> {
   nodeMap: NodeMap;
+  parent?: TreeNodeId;
 }
 
-const getParentId = (nodeMap: NodeMap, id: TreeNodeId) => {
-  const iterator = nodeMap.entries();
-
-  for (const [, value] of iterator) {
-    if (value.children?.includes(id)) {
-      return value.id;
-    }
-  }
-};
-
-const buildNodeMap = <T>({ nodes, nodeMap }: BuildNodeMapProps<T>): NodeMap => {
+const buildNodeMap = <T>({ nodes, nodeMap, parent }: BuildNodeMapProps<T>): NodeMap => {
   if (!nodes || nodes.length < 1) {
     return nodeMap;
   }
 
   return nodes.reduce<NodeMap>((acc, node) => {
-    const parent = getParentId(acc, node.id);
-
     acc.set(node.id, {
       children: node.children?.map((child) => child.id) ?? [],
       id: node.id,
@@ -38,6 +27,7 @@ const buildNodeMap = <T>({ nodes, nodeMap }: BuildNodeMapProps<T>): NodeMap => {
       return buildNodeMap({
         nodes: node.children,
         nodeMap: acc,
+        parent: node.id,
       });
     }
 
