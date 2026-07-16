@@ -1,0 +1,15 @@
+/*
+ * BigDesign Tailwind entry. Preflight omitted — GlobalStyles already applies
+ * polished normalize(). Theme tokens come from big-design-theme.
+ *
+ * source(none): do not scan the whole package for class-like strings in TSX
+ * (false positives like "flex" / "hidden"). Add @source paths as components
+ * are ported (Badge in PR0b).
+ */
+
+@layer theme, base, components, utilities;
+
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities) source(none);
+
+@import '../../big-design-theme/src/theme.css';

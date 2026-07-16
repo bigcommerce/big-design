@@ -1,7 +1,9 @@
 {
   "name": "@bigcommerce/big-design-theme",
   "version": "1.3.0",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "main": "src/index.ts",
   "license": "(MIT AND CC-BY-3.0)",
   "author": "BigCommerce Inc",
@@ -11,10 +13,11 @@
     "directory": "packages/big-design-theme"
   },
   "scripts": {
-    "build": "pnpm run build:cjs && pnpm run build:es && pnpm run build:dt",
+    "build": "pnpm run build:cjs && pnpm run build:es && pnpm run build:dt && pnpm run build:css",
     "build:cjs": "NODE_ENV=production BABEL_ENV=cjs babel --extensions \".ts,.tsx\" ./src --out-dir ./dist/cjs",
     "build:es": "NODE_ENV=production BABEL_ENV=es babel --extensions \".ts,.tsx\" ./src --out-dir ./dist/es",
     "build:dt": "tsc -p tsconfig.declarations.json --emitDeclarationOnly",
+    "build:css": "mkdir -p dist && cp src/theme.css dist/theme.css",
     "lint": "eslint . --max-warnings 0",
     "prepack": "big-design-prepack",
     "postpack": "big-design-postpack",
@@ -25,11 +28,23 @@
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": "./src/index.ts",
+    "./theme.css": "./src/theme.css"
+  },
   "publishConfig": {
     "access": "public",
     "main": "dist/cjs/index.js",
     "module": "dist/es/index.js",
-    "typings": "dist/index.d.ts"
+    "typings": "dist/index.d.ts",
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "import": "./dist/es/index.js",
+        "require": "./dist/cjs/index.js"
+      },
+      "./theme.css": "./dist/theme.css"
+    }
   },
   "prettier": "@bigcommerce/eslint-config/prettier",
   "dependencies": {
