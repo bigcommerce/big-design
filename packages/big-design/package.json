@@ -1,7 +1,12 @@
 {
   "name": "@bigcommerce/big-design",
   "version": "3.2.0",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css",
+    "./src/components/GlobalStyles/GlobalStyles.tsx",
+    "./dist/cjs/components/GlobalStyles/GlobalStyles.js",
+    "./dist/es/components/GlobalStyles/GlobalStyles.js"
+  ],
   "main": "src/index.ts",
   "author": "BigCommerce Inc",
   "repository": {
@@ -14,10 +19,11 @@
     "dist"
   ],
   "scripts": {
-    "build": "pnpm run build:cjs && pnpm run build:es && pnpm run build:dt",
+    "build": "pnpm run build:cjs && pnpm run build:es && pnpm run build:dt && pnpm run build:css",
     "build:cjs": "NODE_ENV=production BABEL_ENV=cjs babel --extensions \".ts,.tsx\" ./src --out-dir ./dist/cjs",
     "build:es": "NODE_ENV=production BABEL_ENV=es babel --extensions \".ts,.tsx\" ./src --out-dir ./dist/es",
     "build:dt": "tsc -p tsconfig.declarations.json --emitDeclarationOnly",
+    "build:css": "postcss src/styles.css -o dist/styles.css && cp dist/styles.css dist/cjs/styles.css && cp dist/styles.css dist/es/styles.css",
     "lint": "eslint . --max-warnings 0",
     "test": "jest",
     "test:watch": "pnpm run test --watch",
@@ -25,11 +31,23 @@
     "postpack": "big-design-postpack",
     "typecheck": "tsc --noEmit"
   },
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles.css": "./src/styles.css"
+  },
   "publishConfig": {
     "access": "public",
     "main": "dist/cjs/index.js",
     "module": "dist/es/index.js",
-    "typings": "dist/index.d.ts"
+    "typings": "dist/index.d.ts",
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "import": "./dist/es/index.js",
+        "require": "./dist/cjs/index.js"
+      },
+      "./styles.css": "./dist/styles.css"
+    }
   },
   "prettier": "@bigcommerce/eslint-config/prettier",
   "dependencies": {
@@ -38,6 +56,7 @@
     "@bigcommerce/big-design-theme": "workspace:^",
     "@popperjs/core": "^2.11.6",
     "@types/react-datepicker": "^7.0.0",
+    "clsx": "^2.1.1",
     "date-fns": "4.1.0",
     "downshift": "9.0.10",
     "focus-trap": "^7.6.4",
@@ -67,6 +86,7 @@
     "@swc/core": "^1.15.3",
     "@swc/jest": "^0.2.39",
     "@swc/plugin-styled-components": "^12.0.1",
+    "@tailwindcss/postcss": "^4.1.11",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
@@ -84,9 +104,12 @@
     "jest-environment-jsdom": "^30.2.0",
     "jest-fail-on-console": "^3.3.1",
     "jest-styled-components": "^7.1.1",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^5.3.11",
+    "tailwindcss": "^4.1.11",
     "typescript": "^5.9.3"
   }
 }

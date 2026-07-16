@@ -1,0 +1,120 @@
+/*
+ * BigDesign theme tokens as Tailwind v4 @theme defaults.
+ * Values assume htmlFontSize: 16 (createTheme default).
+ * Runtime overrides from createTheme({ htmlFontSize }) are injected by
+ * <GlobalStyles /> so rem-scaled tokens stay in sync.
+ *
+ * border.box / boxError and shadow.* styled-components fragments are not
+ * represented here; ports compose equivalent utilities instead.
+ */
+
+@theme static {
+  --font-sans: "Source Sans 3", "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+
+  --breakpoint-mobile: 0px;
+  --breakpoint-tablet: 720px;
+  --breakpoint-desktop: 1025px;
+  --breakpoint-wide: 1500px;
+
+  --color-currentColor: currentColor;
+  --color-inherit: inherit;
+  --color-transparent: transparent;
+  --color-white: #ffffff;
+  --color-brand: #273a8a;
+
+  --color-secondary: #b4bad1;
+  --color-secondary10: #f6f7fc;
+  --color-secondary20: #eceef5;
+  --color-secondary30: #d9dce9;
+  --color-secondary40: #b4bad1;
+  --color-secondary50: #8c93ad;
+  --color-secondary60: #5e637a;
+  --color-secondary70: #313440;
+
+  --color-primary: #3c64f4;
+  --color-primary10: #f0f3ff;
+  --color-primary20: #dbe3fe;
+  --color-primary30: #9eb3fc;
+  --color-primary40: #3c64f4;
+  --color-primary50: #2852eb;
+  --color-primary60: #0b38d9;
+  --color-primary70: #0024a6;
+
+  --color-danger: #db3643;
+  --color-danger10: #fff0f1;
+  --color-danger20: #fedbde;
+  --color-danger30: #fc9ea6;
+  --color-danger40: #db3643;
+  --color-danger50: #cc1f1f;
+  --color-danger60: #ad0000;
+  --color-danger70: #80000b;
+
+  --color-warning: #ffbf00;
+  --color-warning10: #fff9e6;
+  --color-warning20: #fff0bf;
+  --color-warning30: #ffe180;
+  --color-warning40: #ffbf00;
+  --color-warning50: #ffae00;
+  --color-warning60: #e58f17;
+  --color-warning70: #cc720a;
+
+  --color-success: #2aab3f;
+  --color-success10: #eefcf0;
+  --color-success20: #d3f5d9;
+  --color-success30: #88d895;
+  --color-success40: #2aab3f;
+  --color-success50: #208831;
+  --color-success60: #146622;
+  --color-success70: #004d0d;
+
+  --spacing-none: 0;
+  --spacing-xxSmall: 0.25rem;
+  --spacing-xSmall: 0.5rem;
+  --spacing-small: 0.75rem;
+  --spacing-medium: 1rem;
+  --spacing-large: 1.25rem;
+  --spacing-xLarge: 1.5rem;
+  --spacing-xxLarge: 2rem;
+  --spacing-xxxLarge: 3rem;
+  --spacing-xxSmallN: -0.25rem;
+  --spacing-xSmallN: -0.5rem;
+  --spacing-smallN: -0.75rem;
+  --spacing-mediumN: -1rem;
+  --spacing-largeN: -1.25rem;
+  --spacing-xLargeN: -1.5rem;
+  --spacing-xxLargeN: -2rem;
+  --spacing-xxxLargeN: -3rem;
+
+  --text-small: 0.875rem;
+  --text-medium: 1rem;
+  --text-large: 1.25rem;
+  --text-xLarge: 1.5rem;
+  --text-xxLarge: 2rem;
+  --text-xxxLarge: 3rem;
+
+  --font-weight-extraLight: 200;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-semiBold: 600;
+
+  --leading-small: 1.25rem;
+  --leading-medium: 1.5rem;
+  --leading-large: 1.75rem;
+  --leading-xLarge: 2rem;
+  --leading-xxLarge: 2.5rem;
+  --leading-xxxLarge: 3rem;
+
+  --radius-none: 0;
+  --radius-normal: 0.25rem;
+  --radius-circle: 50%;
+
+  --shadow-floating: 0px 2px 12px rgb(49 52 64 / 0.2);
+  --shadow-raised: 0px 1px 6px rgb(49 52 64 / 0.2);
+
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-modalBackdrop: 1040;
+  --z-index-modal: 1050;
+  --z-index-popover: 1060;
+  --z-index-tooltip: 1070;
+}

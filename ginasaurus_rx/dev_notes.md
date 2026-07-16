@@ -1,18 +1,25 @@
 # Dev Notes
 
-Branch: ginasaurus-rx-tailwind
+## Tailwind Migration
+
+| | |
+|--|--|
+| PR | https://github.com/bigcommerce/big-design/pull/1865 |
+| Branch | ginasaurus-rx-tailwind |pnpm run start
+
 
 Approach: **Plan 1-lite.** Internal refactor in 2.x, one component per PR, ship via Changesets, never cut v3 (defer indefinitely). See `tailwind-migration-comparison.md` for why.
 
 ## Phase 0 (do once, before any component ports)
 
-- [ ] Install Tailwind v4 + PostCSS in the monorepo build. Verify `pnpm build` works end-to-end with Tailwind processing CSS.
-- [ ] Add the Tailwind `@theme` CSS block to `big-design-theme`. Translate current `theme.colors`, `theme.spacing`, `theme.typography`, `theme.border`, `theme.breakpoints` into CSS custom properties.
-- [ ] Keep the JS object exports in `big-design-theme` working unchanged. Consumers still depend on them and the migration is internal.
-- [ ] Pick a variant lib. Lean `clsx` + handwritten variant maps. Add `cva` only if a real component proves the handwritten approach insufficient.
-- [ ] Decide on visual regression. Skip automated VR for now (overrides D5 in `tailwind-migration-notes.md`). Reassess after 5 components.
-- [ ] Decide how published `big-design` emits Tailwind CSS (PostCSS pipeline, CSS entry consumers must import, or both). Prove `pnpm build` produces a consumable CSS artifact before porting Badge. This is the real Phase 0 hard problem; the Badge port only validates it.
-- [ ] Port one reference component (recommend Badge: small, has variants, no behavior). Ship it. This validates the toolchain works in production before any further investment.
+- [x] Install Tailwind v4 + PostCSS in the monorepo build. Verify `pnpm build` works end-to-end with Tailwind processing CSS. *(PR0a)*
+- [x] Add the Tailwind `@theme static` CSS block to `big-design-theme` (`src/theme.css` → `dist/theme.css`). Translate colors, spacing, typography, radius, breakpoints, shadows, z-index, line-height. *(PR0a)*
+- [x] Keep the JS object exports in `big-design-theme` working unchanged. Consumers still depend on them and the migration is internal. *(PR0a)*
+- [x] Pick a variant lib. Lean `clsx` + handwritten variant maps. Add `cva` only if a real component proves the handwritten approach insufficient. *(clsx added in PR0a)*
+- [x] Decide on visual regression. Skip automated VR for now (overrides D5 in `tailwind-migration-notes.md`). Reassess after 5 components.
+- [x] Decide how published `big-design` emits Tailwind CSS: PostCSS → `dist/styles.css`, loaded via `<GlobalStyles />` side-effect import + runtime CSS var injection from live theme (`htmlFontSize` preserved). *(PR0a)*
+- [ ] Port one reference component (recommend Badge: small, has variants, no behavior). Ship it. This validates the toolchain works in production before any further investment. *(PR0b)*
+- [ ] Manual verification + start `ginasaurus_rx/phase-0-verification.md` after Badge ships.
 
 Exit Phase 0 when Badge ships in a 2.x minor on npm, rendering identically to its prior version.
 
