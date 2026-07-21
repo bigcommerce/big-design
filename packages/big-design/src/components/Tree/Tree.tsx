@@ -32,12 +32,11 @@ export const Tree = <T,>({
   focusable,
   iconless,
   id,
-  maxHeight,
   nodes,
   onKeyDown,
   onNodeClick,
   selectable,
-  virtualized: virtualizedProp,
+  virtualization,
 }: TreeProps<T>): React.ReactElement<TreeProps<T>> => {
   const treeRef = useRef<HTMLUListElement>(null);
   const pendingFocusNodeRef = useRef<TreeNodeId>();
@@ -45,9 +44,11 @@ export const Tree = <T,>({
 
   focusedNodeRef.current = focusable.focusedNode;
 
+  const maxHeight = virtualization?.maxHeight;
   const hasValidMaxHeight =
     typeof maxHeight === 'number' && Number.isFinite(maxHeight) && maxHeight > 0;
-  const virtualized = virtualizedProp === true && hasValidMaxHeight;
+  const virtualized = Boolean(virtualization) && hasValidMaxHeight;
+
   const onNodeRefChange = useCallback(
     (nodeId: TreeNodeId, node: HTMLLIElement | null, wasFocused = false) => {
       if (!node) {
@@ -63,7 +64,17 @@ export const Tree = <T,>({
       }
 
       pendingFocusNodeRef.current = undefined;
-      node.focus();
+
+      // Only reclaim focus if it's still logically owned by the tree (nothing else
+      // has been focused since, in or outside the tree) and this node is still the
+      // one the tree considers focused.
+      const activeElement = document.activeElement;
+      const focusStillOwnedByTree =
+        activeElement === document.body || Boolean(treeRef.current?.contains(activeElement));
+
+      if (nodeId === focusedNodeRef.current && focusStillOwnedByTree) {
+        node.focus();
+      }
     },
     [],
   );
@@ -83,33 +94,52 @@ export const Tree = <T,>({
     [nodes, selectable?.type, selectedNodesSet],
   );
 
-  const initialTreeContext: TreeContextState<T> = {
-    disabledNodes,
-    expandable,
-    focusable,
-    iconless,
-    onKeyDown,
-    onNodeRefChange,
-    onNodeClick,
-    selectable,
-    treeRef,
-    disabledNodesSet,
-    expandedNodesSet,
-    selectedNodesSet,
-    selectedChildrenCounts,
-  };
+  const initialTreeContext: TreeContextState<T> = useMemo(
+    () => ({
+      expandable,
+      focusable,
+      iconless,
+      onKeyDown,
+      onNodeRefChange,
+      onNodeClick,
+      selectable,
+      treeRef,
+      disabledNodesSet,
+      expandedNodesSet,
+      selectedNodesSet,
+      selectedChildrenCounts,
+    }),
+    [
+      expandable,
+      focusable,
+      iconless,
+      onKeyDown,
+      onNodeRefChange,
+      onNodeClick,
+      selectable,
+      treeRef,
+      disabledNodesSet,
+      expandedNodesSet,
+      selectedNodesSet,
+      selectedChildrenCounts,
+    ],
+  );
+
+  // Depending on booleans (rather than the `virtualization` object itself) keeps this from
+  // re-warning on every render for consumers who pass `virtualization` as an inline literal.
+  const hasVirtualization = Boolean(virtualization);
 
   useEffect(() => {
-    if (virtualizedProp && !hasValidMaxHeight) {
+    if (hasVirtualization && !hasValidMaxHeight) {
       warning(
-        'Tree: `virtualized` requires a positive, finite `maxHeight` to bound the scroll area.',
+        'Tree: `virtualization.maxHeight` must be a positive, finite number to bound the scroll area.',
       );
     }
-  }, [hasValidMaxHeight, virtualizedProp]);
+  }, [hasVirtualization, hasValidMaxHeight]);
 
   const flatNodes = useFlatVisibleNodes({
     nodes: virtualized ? nodes : [],
-    expandedNodes: expandable.expandedNodes,
+    expandedNodes: expandedNodesSet,
   });
 
   const virtualizer = useTreeVirtualizer({
@@ -117,12 +147,19 @@ export const Tree = <T,>({
     flatNodes,
     focusedNode: focusable.focusedNode,
     maxHeight: virtualized ? maxHeight : undefined,
+    nodes,
+    onFocus: focusable.onFocus,
     scrollRef: treeRef,
   });
 
   const renderedItems = useMemo(
-    () => nodes.map((node, index) => <TreeNode {...node} key={index} />),
-    [nodes],
+    () =>
+      virtualized
+        ? null
+        : nodes.map((node, index) => (
+            <TreeNode {...node} depth={0} key={index} posinset={index + 1} setsize={nodes.length} />
+          )),
+    [nodes, virtualized],
   );
 
   const renderVirtualItems = () => {

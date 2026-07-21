@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
 import { renderHook } from '@testing-library/react';
+import { RefObject } from 'react';
 
 import { getSelectedChildrenCounts } from '../../../utils';
 import {
@@ -11,8 +12,10 @@ import {
   TreeSelectable,
 } from '../types';
 
+import { FlatTreeNode } from './useFlatVisibleNodes';
 import { useNodeMap } from './useNodeMap';
 import { useTreeKeyEvents } from './useTreeKeyEvents';
+import { useTreeVirtualizer } from './useTreeVirtualizer';
 
 describe('useNodeMap', () => {
   test('should return nodeMap - empty nodes', () => {
@@ -409,5 +412,139 @@ describe('useTreeKeyEvents', () => {
     expect(preventDefault).toHaveBeenCalledTimes(1);
     expect(stopPropagation).not.toHaveBeenCalled();
     expect(onFocus).toHaveBeenCalledWith('1');
+  });
+});
+
+describe('useTreeVirtualizer', () => {
+  const toFlatNodes = (nodes: Array<TreeNodeProps<number>>): Array<FlatTreeNode<number>> =>
+    nodes.map((node, index) => ({ node, depth: 0, posinset: index + 1, setsize: nodes.length }));
+
+  const nullScrollRef = { current: null } as RefObject<HTMLUListElement>;
+
+  test('does not scroll or reassign focus while disabled', () => {
+    const onFocus = jest.fn();
+    const nodes: Array<TreeNodeProps<number>> = [
+      { id: '0', label: '0', value: 0 },
+      { id: '1', label: '1', value: 1 },
+    ];
+    const flatNodes = toFlatNodes(nodes);
+
+    const { result } = renderHook(() =>
+      useTreeVirtualizer({
+        enabled: false,
+        flatNodes,
+        focusedNode: 'missing',
+        nodes,
+        onFocus,
+        scrollRef: nullScrollRef,
+      }),
+    );
+
+    expect(result.current.getVirtualItems()).toHaveLength(0);
+    expect(onFocus).not.toHaveBeenCalled();
+  });
+
+  test('reassigns focus to the first node when the focused node no longer exists anywhere in the tree', () => {
+    const onFocus = jest.fn();
+    const nodes: Array<TreeNodeProps<number>> = [
+      { id: '0', label: '0', value: 0 },
+      { id: '1', label: '1', value: 1 },
+    ];
+    const flatNodes = toFlatNodes(nodes);
+
+    renderHook(() =>
+      useTreeVirtualizer({
+        enabled: true,
+        flatNodes,
+        focusedNode: 'pruned',
+        nodes,
+        onFocus,
+        scrollRef: nullScrollRef,
+      }),
+    );
+
+    expect(onFocus).toHaveBeenCalledWith('0');
+  });
+
+  test('does not reassign focus when the focused node exists but is hidden behind a collapsed ancestor', () => {
+    const onFocus = jest.fn();
+    const nodes: Array<TreeNodeProps<number>> = [
+      { id: '0', label: '0', value: 0, children: [{ id: '0-a', label: 'a', value: 2 }] },
+      { id: '1', label: '1', value: 1 },
+    ];
+    // '0-a' is omitted here, mirroring how the flattener excludes it while its parent is collapsed.
+    const flatNodes = toFlatNodes([nodes[0], nodes[1]]);
+
+    renderHook(() =>
+      useTreeVirtualizer({
+        enabled: true,
+        flatNodes,
+        focusedNode: '0-a',
+        nodes,
+        onFocus,
+        scrollRef: nullScrollRef,
+      }),
+    );
+
+    expect(onFocus).not.toHaveBeenCalled();
+  });
+
+  test('does not throw when the scroll element is unavailable', () => {
+    const nodes: Array<TreeNodeProps<number>> = [{ id: '0', label: '0', value: 0 }];
+    const flatNodes = toFlatNodes(nodes);
+
+    const { unmount } = renderHook(() =>
+      useTreeVirtualizer({
+        enabled: true,
+        flatNodes,
+        focusedNode: '0',
+        nodes,
+        scrollRef: nullScrollRef,
+      }),
+    );
+
+    expect(() => unmount()).not.toThrow();
+  });
+
+  test('reassigning focus without an onFocus callback does not throw', () => {
+    const nodes: Array<TreeNodeProps<number>> = [
+      { id: '0', label: '0', value: 0 },
+      { id: '1', label: '1', value: 1 },
+    ];
+    const flatNodes = toFlatNodes(nodes);
+
+    expect(() =>
+      renderHook(() =>
+        useTreeVirtualizer({
+          enabled: true,
+          flatNodes,
+          focusedNode: 'pruned',
+          nodes,
+          scrollRef: nullScrollRef,
+        }),
+      ),
+    ).not.toThrow();
+  });
+
+  test('falls back to measuring without a ResizeObserver', () => {
+    const nodes: Array<TreeNodeProps<number>> = [{ id: '0', label: '0', value: 0 }];
+    const flatNodes = toFlatNodes(nodes);
+    const scrollElement = document.createElement('ul');
+    const scrollRef = { current: scrollElement } as RefObject<HTMLUListElement>;
+
+    expect(typeof ResizeObserver).toBe('undefined');
+
+    const { unmount } = renderHook(() =>
+      useTreeVirtualizer({
+        enabled: true,
+        flatNodes,
+        focusedNode: '0',
+        maxHeight: 200,
+        nodes,
+        scrollRef,
+      }),
+    );
+
+    expect(() => unmount()).not.toThrow();
   });
 });

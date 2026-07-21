@@ -11,7 +11,7 @@ export interface FlatTreeNode<T> {
 
 interface UseFlatVisibleNodesProps<T> {
   nodes: Array<TreeNodeProps<T>>;
-  expandedNodes: TreeNodeId[];
+  expandedNodes: Set<TreeNodeId>;
 }
 
 const flatten = <T>(
@@ -34,4 +34,4 @@ const flatten = <T>(
 };
 
 export const useFlatVisibleNodes = <T>({ nodes, expandedNodes }: UseFlatVisibleNodesProps<T>) =>
-  useMemo(() => flatten(nodes, new Set(expandedNodes), 0, []), [nodes, expandedNodes]);
+  useMemo(() => flatten(nodes, expandedNodes, 0, []), [nodes, expandedNodes]);

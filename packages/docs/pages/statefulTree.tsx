@@ -164,7 +164,7 @@ const StatefulTreePage = () => {
               render: () => (
                 <Fragment key="virtualized">
                   <Text>
-                    For large trees (thousands of nodes), enable <Code primary>virtualized</Code>{' '}
+                    For large trees (thousands of nodes), pass <Code primary>virtualization</Code>{' '}
                     with a <Code primary>maxHeight</Code> to render only the nodes within the
                     viewport.
                   </Text>
@@ -186,10 +186,9 @@ const StatefulTreePage = () => {
                       return (
                         <StatefulTree
                           defaultExpanded={['0', '1']}
-                          maxHeight={400}
                           nodes={nodes}
                           selectable="multi"
-                          virtualized
+                          virtualization={{ maxHeight: 400 }}
                         />
                       );
                     }}

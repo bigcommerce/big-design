@@ -186,23 +186,29 @@ const InternalTreeNode = <T,>({
       isExpanded && (
         <StyledUl role="group">
           {children.map((child, index) => (
-            <TreeNode {...child} key={index} />
+            <TreeNode
+              {...child}
+              depth={(depth ?? 0) + 1}
+              key={index}
+              posinset={index + 1}
+              setsize={children.length}
+            />
           ))}
         </StyledUl>
       ),
-    [children, isExpanded, virtualized],
+    [children, depth, isExpanded, virtualized],
   );
 
-  const virtualizationProps = useMemo(
-    () =>
-      virtualized
-        ? {
-            'aria-level': (depth ?? 0) + 1,
-            'aria-posinset': posinset,
-            'aria-setsize': setsize,
-            'data-index': virtualIndex,
-          }
-        : {},
+  // Computed for both rendering modes so assistive tech gets consistent tree
+  // semantics regardless of whether virtualization is enabled; `data-index` is
+  // virtualized-only since it's only meaningful to the virtualizer's measurement.
+  const ariaTreeItemProps = useMemo(
+    () => ({
+      'aria-level': (depth ?? 0) + 1,
+      'aria-posinset': posinset,
+      'aria-setsize': setsize,
+      ...(virtualized ? { 'data-index': virtualIndex } : {}),
+    }),
     [depth, posinset, setsize, virtualIndex, virtualized],
   );
 
@@ -259,14 +265,14 @@ const InternalTreeNode = <T,>({
   return useMemo(
     () => (
       <StyledLi
+        $level={virtualized ? depth : undefined}
         aria-expanded={isExpanded}
-        level={virtualized ? depth : undefined}
         onClick={handleNodeClick}
         onKeyDown={handleKeyEvent}
         ref={setNodeRef}
         role="treeitem"
         tabIndex={focusable.focusedNode === id ? 0 : -1}
-        {...virtualizationProps}
+        {...ariaTreeItemProps}
         {...additionalProps}
       >
         <StyledFlex
@@ -314,7 +320,7 @@ const InternalTreeNode = <T,>({
       renderedIcon,
       selectedChildrenCount,
       setNodeRef,
-      virtualizationProps,
+      ariaTreeItemProps,
       virtualized,
     ],
   );

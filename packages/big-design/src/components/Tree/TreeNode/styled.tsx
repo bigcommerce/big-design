@@ -3,16 +3,15 @@ import styled, { css } from 'styled-components';
 
 import { Flex, FlexItem } from '../../Flex';
 import { StyleableText } from '../../Typography/private';
+import { getTreeIndentUnit } from '../styled';
 
-export const StyledLi = styled.li<{ level?: number }>`
+export const StyledLi = styled.li<{ $level?: number }>`
   outline: 0;
 
-  ${({ level, theme }) =>
-    level
+  ${({ $level, theme }) =>
+    $level
       ? css`
-          padding-left: calc(
-            ${theme.helpers.addValues(theme.spacing.xLarge, theme.spacing.xxSmall)} * ${level}
-          );
+          padding-left: calc(${getTreeIndentUnit(theme)} * ${$level});
         `
       : ''}
 `;

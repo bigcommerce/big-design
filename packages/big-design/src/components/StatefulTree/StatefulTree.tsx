@@ -16,7 +16,11 @@ export interface StatefulTreeBaseProps<T>
   onSelectionChange?: (selectedValues: T[]) => void;
 }
 
-export type StatefulTreeProps<T> = StatefulTreeBaseProps<T> & TreeVirtualizationProps;
+export interface StatefulTreeProps<T> extends StatefulTreeBaseProps<T> {
+  virtualization?: TreeVirtualizationProps;
+}
+
+const EMPTY_DISABLED_NODES: TreeNodeId[] = [];
 
 const InternalStatefulTree = <T,>(
   props: StatefulTreeProps<T>,
@@ -25,12 +29,13 @@ const InternalStatefulTree = <T,>(
     nodes = [],
     defaultExpanded,
     defaultSelected,
-    disabledNodes = [],
+    disabledNodes = EMPTY_DISABLED_NODES,
     iconless,
     onNodeClick,
     onExpandedChange,
     onSelectionChange,
     selectable: type,
+    virtualization,
   } = props;
   const { focusedNode, onFocus } = useFocusable({ nodes, type, defaultSelected });
   const { expandedNodes, onToggle } = useExpandable({ defaultExpanded, onExpandedChange });
@@ -42,7 +47,7 @@ const InternalStatefulTree = <T,>(
     type,
   });
   const nodeMap = useNodeMap({ nodes });
-  const { visibleNodes } = useVisibleNodes({ expandedNodes, nodeMap });
+  const { visibleNodes } = useVisibleNodes({ expandedNodes, nodes });
   const onKeyDown = useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes });
   const treeProps: TreeBaseProps<T> = {
     disabledNodes,
@@ -55,11 +60,7 @@ const InternalStatefulTree = <T,>(
     selectable: { selectedNodes, onSelect, type },
   };
 
-  return props.virtualized ? (
-    <Tree {...treeProps} maxHeight={props.maxHeight} virtualized />
-  ) : (
-    <Tree {...treeProps} />
-  );
+  return <Tree {...treeProps} virtualization={virtualization} />;
 };
 
 export const StatefulTree = typedMemo(InternalStatefulTree);
