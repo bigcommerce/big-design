@@ -5,9 +5,7 @@ import React from 'react';
 
 import { warning } from '../../utils';
 
-import { StatefulTreeBaseProps } from './StatefulTree';
-
-import { StatefulTree, TreeNodeProps } from '.';
+import { StatefulTree, StatefulTreeProps, TreeNodeProps } from '.';
 
 const nodes: Array<TreeNodeProps<number>> = [
   {
@@ -46,7 +44,7 @@ const nodes: Array<TreeNodeProps<number>> = [
 
 const parentNodes = ['0', '1', '3', '4', '5'];
 
-const getSimpleTree = (props: Partial<StatefulTreeBaseProps<number>> = {}) => (
+const getSimpleTree = (props: Partial<StatefulTreeProps<number>> = {}) => (
   <StatefulTree nodes={nodes} {...props} />
 );
 
