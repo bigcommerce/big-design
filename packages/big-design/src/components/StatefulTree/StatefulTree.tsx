@@ -13,7 +13,7 @@ import { typedMemo } from '../../utils';
 
 import { useExpandable, useFocusable, useSelectable } from './hooks';
 
-export interface StatefulTreeBaseProps<T>
+export interface StatefulTreeProps<T>
   extends Omit<TreeBaseProps<T>, 'expandable' | 'focusable' | 'selectable' | 'onKeyDown'> {
   defaultExpanded?: TreeNodeId[];
   defaultSelected?: TreeNodeId[];
@@ -21,9 +21,6 @@ export interface StatefulTreeBaseProps<T>
   selectable?: TreeSelectable<T>['type'];
   onExpandedChange?: (expandedNodes: TreeNodeId[]) => void;
   onSelectionChange?: (selectedValues: T[]) => void;
-}
-
-export interface StatefulTreeProps<T> extends StatefulTreeBaseProps<T> {
   virtualization?: TreeVirtualizationProps;
 }
 
