@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 
+import { typedMemo } from '../../utils';
 import {
   Tree,
   TreeNodeId,
@@ -9,7 +10,6 @@ import {
   useTreeKeyEvents,
 } from '../Tree';
 import { TreeBaseProps, TreeVirtualizationProps } from '../Tree/types';
-import { typedMemo } from '../../utils';
 
 import { useExpandable, useFocusable, useSelectable } from './hooks';
 
