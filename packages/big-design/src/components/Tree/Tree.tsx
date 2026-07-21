@@ -162,8 +162,36 @@ export const Tree = <T,>({
     [nodes, virtualized],
   );
 
+  const virtualItems = virtualized ? virtualizer.getVirtualItems() : [];
+
+  // Roving tabindex only ever lands on the focused node's own `<li>`. If that node
+  // is scrolled out of the virtualized window it isn't mounted, so nothing in the
+  // tree has tabIndex 0 and Tab from outside skips the tree entirely. Make the list
+  // itself a fallback tab stop in that case, and redirect focus to the real target
+  // as soon as scrolling it into view mounts it.
+  const focusedNodeMounted =
+    !virtualized ||
+    virtualItems.some((item) => flatNodes[item.index]?.node.id === focusable.focusedNode);
+
+  const handleContainerFocus = useCallback(
+    (e: React.FocusEvent<HTMLUListElement>) => {
+      if (e.target !== e.currentTarget) {
+        return;
+      }
+
+      const index = flatNodes.findIndex((flatNode) => flatNode.node.id === focusedNodeRef.current);
+
+      if (index === -1) {
+        return;
+      }
+
+      pendingFocusNodeRef.current = focusedNodeRef.current;
+      virtualizer.scrollToIndex(index, { behavior: 'auto' });
+    },
+    [flatNodes, virtualizer],
+  );
+
   const renderVirtualItems = () => {
-    const virtualItems = virtualizer.getVirtualItems();
     const paddingTop = virtualItems.length > 0 ? virtualItems[0].start : 0;
     const paddingBottom =
       virtualItems.length > 0
@@ -201,8 +229,10 @@ export const Tree = <T,>({
         $virtualized={virtualized}
         aria-multiselectable={selectable?.type === 'multi'}
         id={id}
+        onFocus={virtualized ? handleContainerFocus : undefined}
         ref={treeRef}
         role="tree"
+        tabIndex={virtualized && !focusedNodeMounted ? 0 : undefined}
       >
         {virtualized ? renderVirtualItems() : renderedItems}
       </StyledUl>
