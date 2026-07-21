@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
-import { typedMemo } from '../../utils';
-import { Tree, TreeNodeId, TreeSelectable, useNodeMap, useTreeKeyEvents } from '../Tree';
+import {
+  Tree,
+  TreeNodeId,
+  TreeSelectable,
+  useFlatVisibleNodes,
+  useNodeMap,
+  useTreeKeyEvents,
+} from '../Tree';
 import { TreeBaseProps, TreeVirtualizationProps } from '../Tree/types';
+import { typedMemo } from '../../utils';
 
-import { useExpandable, useFocusable, useSelectable, useVisibleNodes } from './hooks';
+import { useExpandable, useFocusable, useSelectable } from './hooks';
 
 export interface StatefulTreeBaseProps<T>
   extends Omit<TreeBaseProps<T>, 'expandable' | 'focusable' | 'selectable' | 'onKeyDown'> {
@@ -47,7 +54,9 @@ const InternalStatefulTree = <T,>(
     type,
   });
   const nodeMap = useNodeMap({ nodes });
-  const { visibleNodes } = useVisibleNodes({ expandedNodes, nodes });
+  const expandedNodesSet = useMemo(() => new Set(expandedNodes), [expandedNodes]);
+  const flatNodes = useFlatVisibleNodes({ nodes, expandedNodes: expandedNodesSet });
+  const visibleNodes = useMemo(() => flatNodes.map(({ node }) => node.id), [flatNodes]);
   const onKeyDown = useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes });
   const treeProps: TreeBaseProps<T> = {
     disabledNodes,
