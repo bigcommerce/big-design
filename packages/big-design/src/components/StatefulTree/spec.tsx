@@ -1,5 +1,5 @@
 import { theme } from '@bigcommerce/big-design-theme';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import React from 'react';
 
@@ -298,7 +298,7 @@ describe('virtualized', () => {
 
   test('renders only a window of nodes for a large tree', () => {
     const { container, getAllByRole } = render(
-      <StatefulTree maxHeight={200} nodes={largeNodes} virtualized />,
+      <StatefulTree nodes={largeNodes} virtualization={{ maxHeight: 200 }} />,
     );
 
     const renderedItems = getAllByRole('treeitem');
@@ -313,7 +313,7 @@ describe('virtualized', () => {
 
   test('emits explicit ARIA tree attributes on rows', () => {
     const { getAllByRole } = render(
-      <StatefulTree maxHeight={200} nodes={largeNodes} virtualized />,
+      <StatefulTree nodes={largeNodes} virtualization={{ maxHeight: 200 }} />,
     );
 
     const [firstItem] = getAllByRole('treeitem');
@@ -334,7 +334,11 @@ describe('virtualized', () => {
     ];
 
     const { getByRole } = render(
-      <StatefulTree defaultExpanded={['root']} maxHeight={200} nodes={nestedNodes} virtualized />,
+      <StatefulTree
+        defaultExpanded={['root']}
+        nodes={nestedNodes}
+        virtualization={{ maxHeight: 200 }}
+      />,
     );
 
     const child = getByRole('treeitem', { name: 'Child' });
@@ -348,11 +352,10 @@ describe('virtualized', () => {
     const { container } = render(
       <StatefulTree
         defaultExpanded={['0']}
-        maxHeight={200}
         nodes={[
           { id: '0', value: 0, label: 'Parent', children: [{ id: '1', value: 1, label: 'Child' }] },
         ]}
-        virtualized
+        virtualization={{ maxHeight: 200 }}
       />,
     );
 
@@ -364,11 +367,10 @@ describe('virtualized', () => {
 
     const { container } = render(
       <StatefulTree
-        maxHeight={200}
         nodes={largeNodes}
         onSelectionChange={onSelectionChange}
         selectable="multi"
-        virtualized
+        virtualization={{ maxHeight: 200 }}
       />,
     );
 
@@ -386,7 +388,7 @@ describe('virtualized', () => {
       label: `Node ${i}`,
     }));
 
-    render(<StatefulTree maxHeight={1000} nodes={smallNodes} virtualized />);
+    render(<StatefulTree nodes={smallNodes} virtualization={{ maxHeight: 1000 }} />);
 
     await userEvent.tab();
 
@@ -410,7 +412,9 @@ describe('virtualized', () => {
   });
 
   test('keyboard navigation retargets focus to an off-window node', async () => {
-    const { container } = render(<StatefulTree maxHeight={200} nodes={largeNodes} virtualized />);
+    const { container } = render(
+      <StatefulTree nodes={largeNodes} virtualization={{ maxHeight: 200 }} />,
+    );
     const tree = screen.getByRole('tree');
 
     Object.defineProperties(tree, {
@@ -432,13 +436,204 @@ describe('virtualized', () => {
     expect(container.querySelector('[role="treeitem"][tabindex="0"]')).toBe(lastNode);
   });
 
+  test('scrolling a focused row out of view with the mouse does not steal focus back later', async () => {
+    render(<StatefulTree nodes={largeNodes} virtualization={{ maxHeight: 200 }} />);
+
+    const tree = screen.getByRole('tree');
+
+    Object.defineProperties(tree, {
+      clientHeight: { configurable: true, value: 200 },
+      scrollHeight: { configurable: true, value: largeNodes.length * 40 },
+    });
+
+    await userEvent.tab();
+
+    expect(screen.getByRole('treeitem', { name: 'Node 0' })).toHaveFocus();
+
+    // Scroll far down via the mouse (not arrow keys), unmounting the focused row.
+    tree.scrollTo(0, 4000);
+
+    await waitFor(() =>
+      expect(screen.queryByRole('treeitem', { name: 'Node 0' })).not.toBeInTheDocument(),
+    );
+
+    // Scroll to a spot that still excludes Node 0 but keeps Node 10 mounted through
+    // the next scroll, so clicking it doesn't itself trigger an unmount/remount cycle.
+    tree.scrollTo(0, 850);
+
+    await screen.findByRole('treeitem', { name: 'Node 10' });
+
+    const anotherNode = screen.getByRole('treeitem', { name: 'Node 10' });
+
+    await userEvent.click(anotherNode);
+
+    expect(anotherNode).toHaveFocus();
+
+    // Scroll back up so the originally-focused row remounts while Node 10 stays mounted.
+    tree.scrollTo(0, 0);
+
+    await screen.findByRole('treeitem', { name: 'Node 0' });
+
+    expect(screen.getByRole('treeitem', { name: 'Node 0' })).not.toHaveFocus();
+    expect(anotherNode).toHaveFocus();
+  });
+
   test('falls back to non-virtualized rendering without a valid maxHeight', () => {
-    // @ts-expect-error maxHeight is required when virtualization is enabled.
-    render(<StatefulTree nodes={largeNodes} virtualized />);
+    // @ts-expect-error maxHeight is required on virtualization.
+    render(<StatefulTree nodes={largeNodes} virtualization={{}} />);
 
     expect(warning).toHaveBeenCalledWith(
-      expect.stringContaining('`virtualized` requires a positive, finite `maxHeight`'),
+      expect.stringContaining('`virtualization.maxHeight` must be a positive, finite number'),
     );
     expect(screen.getAllByRole('treeitem')).toHaveLength(largeNodes.length);
+  });
+
+  test('reassigns the roving tabindex to the first row when the focused node is pruned from nodes entirely', async () => {
+    const smallNodes: Array<TreeNodeProps<number>> = Array.from({ length: 5 }, (_, i) => ({
+      id: `${i}`,
+      value: i,
+      label: `Node ${i}`,
+    }));
+
+    const { rerender } = render(
+      <StatefulTree nodes={smallNodes} virtualization={{ maxHeight: 1000 }} />,
+    );
+
+    await userEvent.tab();
+
+    expect(screen.getByRole('treeitem', { name: 'Node 0' })).toHaveAttribute('tabindex', '0');
+
+    // Prune the focused node ('0') from `nodes` entirely, rather than merely collapsing
+    // an ancestor, so the previously-focused id is genuinely gone from the tree.
+    rerender(<StatefulTree nodes={smallNodes.slice(1)} virtualization={{ maxHeight: 1000 }} />);
+
+    const newFirst = await screen.findByRole('treeitem', { name: 'Node 1' });
+
+    expect(newFirst).toHaveAttribute('tabindex', '0');
+    expect(screen.queryByRole('treeitem', { name: 'Node 0' })).not.toBeInTheDocument();
+  });
+
+  test('an unrelated state change does not snap a manually-scrolled position back to the focused row', async () => {
+    render(
+      <StatefulTree nodes={largeNodes} selectable="multi" virtualization={{ maxHeight: 200 }} />,
+    );
+
+    const tree = screen.getByRole('tree');
+
+    Object.defineProperties(tree, {
+      clientHeight: { configurable: true, value: 200 },
+      scrollHeight: { configurable: true, value: largeNodes.length * 40 },
+    });
+
+    await userEvent.tab();
+
+    const node0 = screen.getByRole('treeitem', { name: 'Node 0' });
+
+    expect(node0).toHaveFocus();
+
+    // Scroll via mouse wheel (not keyboard) — this does not blur real focus, and
+    // Node 0 stays mounted since it's within the overscan window.
+    tree.scrollTo(0, 400);
+
+    await waitFor(() => expect(tree.scrollTop).toBe(400));
+
+    expect(node0).toHaveFocus();
+
+    // Select the still-focused Node 0 via keyboard (Space) — a state change
+    // unrelated to focus/scroll position.
+    await userEvent.keyboard(' ');
+
+    // Give effects (including any scrollToIndex re-fire) a chance to run.
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    expect(tree.scrollTop).toBe(400);
+  });
+
+  test('expanding an unrelated node does not snap scroll back to the focused row', async () => {
+    const expandableNodes: Array<TreeNodeProps<number>> = Array.from({ length: 50 }, (_, i) => ({
+      id: `${i}`,
+      value: i,
+      label: `Node ${i}`,
+      children: [{ id: `${i}-child`, value: i + 1000, label: `Node ${i} Child` }],
+    }));
+
+    const { rerender } = render(
+      <StatefulTree nodes={expandableNodes} virtualization={{ maxHeight: 200 }} />,
+    );
+
+    const tree = screen.getByRole('tree');
+
+    Object.defineProperties(tree, {
+      clientHeight: { configurable: true, value: 200 },
+      scrollHeight: { configurable: true, value: expandableNodes.length * 40 },
+    });
+
+    await userEvent.tab();
+
+    expect(screen.getByRole('treeitem', { name: 'Node 0' })).toHaveFocus();
+
+    tree.scrollTo(0, 400);
+
+    await waitFor(() => expect(tree.scrollTop).toBe(400));
+
+    // Expand an unrelated, distant node via a prop resync (not a click, which
+    // would itself move focus) — simulating an external/programmatic expand.
+    rerender(
+      <StatefulTree
+        defaultExpanded={['25']}
+        nodes={expandableNodes}
+        virtualization={{ maxHeight: 200 }}
+      />,
+    );
+
+    await screen.findByRole('treeitem', { name: 'Node 25 Child' });
+
+    expect(tree.scrollTop).toBe(400);
+  });
+
+  test('a defaultSelected node inside a collapsed subtree keeps focus once revealed, instead of being reassigned to the first row', async () => {
+    const nestedNodes: Array<TreeNodeProps<number>> = [
+      {
+        id: 'root',
+        value: 0,
+        label: 'Root',
+        children: [{ id: 'child', value: 1, label: 'Child' }],
+      },
+    ];
+
+    const { rerender } = render(
+      <StatefulTree
+        defaultSelected={['child']}
+        nodes={nestedNodes}
+        selectable="radio"
+        virtualization={{ maxHeight: 200 }}
+      />,
+    );
+
+    // "child" isn't in defaultExpanded, so on mount it's outside the virtualized
+    // window — give the post-mount effect a chance to (incorrectly) reassign
+    // focus to the first row before we reveal it.
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    // Reveal "child" without clicking anything (a click would itself move focus,
+    // masking the bug) by resyncing expandedNodes through defaultExpanded.
+    rerender(
+      <StatefulTree
+        defaultExpanded={['root']}
+        defaultSelected={['child']}
+        nodes={nestedNodes}
+        selectable="radio"
+        virtualization={{ maxHeight: 200 }}
+      />,
+    );
+
+    const child = await screen.findByRole('treeitem', { name: 'Child' });
+    const root = screen.getByRole('treeitem', { name: /^Root/ });
+
+    // Real DOM focus only moves on an actual interaction (e.g. Tab); the roving
+    // tabindex is the correct signal for which row is *logically* focused, and
+    // it must still be "child", not reassigned to "root".
+    expect(child).toHaveAttribute('tabindex', '0');
+    expect(root).toHaveAttribute('tabindex', '-1');
   });
 });

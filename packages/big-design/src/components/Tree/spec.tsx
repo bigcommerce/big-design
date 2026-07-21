@@ -1,17 +1,10 @@
 import { theme } from '@bigcommerce/big-design-theme';
-import { fireEvent, render, RenderResult, screen } from '@testing-library/react';
+import { fireEvent, render, renderHook, RenderResult, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
-import React from 'react';
+import React, { useContext } from 'react';
 
-import { Tree } from './Tree';
-import {
-  TreeBaseProps,
-  TreeExpandable,
-  TreeFocusable,
-  TreeNodeProps,
-  TreeOnKeyDown,
-  TreeVirtualizationProps,
-} from './types';
+import { Tree, TreeContext } from './Tree';
+import { TreeExpandable, TreeFocusable, TreeNodeProps, TreeOnKeyDown, TreeProps } from './types';
 
 const nodes: Array<TreeNodeProps<number>> = [
   {
@@ -52,7 +45,7 @@ let expandable: TreeExpandable;
 let focusable: TreeFocusable;
 let onKeyDown: TreeOnKeyDown<unknown>;
 
-type AdditionalTreeProps = Partial<TreeBaseProps<unknown>> & TreeVirtualizationProps;
+type AdditionalTreeProps = Partial<TreeProps<unknown>>;
 
 beforeEach(() => {
   expandable = { expandedNodes: [], onToggle: jest.fn() };
@@ -308,4 +301,18 @@ test('should focus when tabbed on', async () => {
   await userEvent.tab();
 
   expect(node).toHaveFocus();
+});
+
+test('TreeContext exposes safe no-op defaults when consumed without a Provider', () => {
+  const { result } = renderHook(() => useContext(TreeContext));
+
+  expect(() => result.current.focusable.onFocus('0')).not.toThrow();
+  expect(() =>
+    result.current.onKeyDown(
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- minimal fake event for a no-op default
+      {} as React.KeyboardEvent<HTMLLIElement>,
+      { id: '0', isExpanded: false, isSelectable: false, hasChildren: false, value: undefined },
+    ),
+  ).not.toThrow();
+  expect(() => result.current.onNodeRefChange('0', null)).not.toThrow();
 });

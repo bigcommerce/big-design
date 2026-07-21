@@ -55,25 +55,20 @@ export interface TreeBaseProps<T> {
   onNodeClick?: TreeOnNodeClick;
 }
 
-export type TreeVirtualizationProps =
-  | {
-      /**
-       * Renders only the visible nodes within the viewport. Recommended for large
-       * trees (thousands of nodes).
-       */
-      virtualized: true;
-      /** Height (in px) of the scrollable area. */
-      maxHeight: number;
-    }
-  | {
-      virtualized?: false;
-      maxHeight?: never;
-    };
+export interface TreeVirtualizationProps {
+  /** Height (in px) of the scrollable area. */
+  maxHeight: number;
+}
 
-export type TreeProps<T> = TreeBaseProps<T> & TreeVirtualizationProps;
+export interface TreeProps<T> extends TreeBaseProps<T> {
+  /**
+   * Renders only the visible nodes within the viewport. Recommended for large
+   * trees (thousands of nodes).
+   */
+  virtualization?: TreeVirtualizationProps;
+}
 
 export interface TreeContextState<T> {
-  disabledNodes?: TreeNodeId[];
   expandable: TreeExpandable;
   focusable: TreeFocusable;
   iconless?: boolean;

@@ -1,5 +1,10 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { theme as defaultTheme, ThemeInterface } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
+
+// Per tree-depth indent, shared with TreeNode's virtualized row padding so both
+// rendering modes indent nested nodes identically.
+export const getTreeIndentUnit = (theme: ThemeInterface) =>
+  theme.helpers.addValues(theme.spacing.xLarge, theme.spacing.xxSmall);
 
 export const StyledUl = styled.ul<{
   $maxHeight?: number;
@@ -12,19 +17,23 @@ export const StyledUl = styled.ul<{
   user-select: none;
 
   > li > ul {
-    padding-left: ${({ theme }) =>
-      theme.helpers.addValues(theme.spacing.xLarge, theme.spacing.xxSmall)};
+    padding-left: ${({ theme }) => getTreeIndentUnit(theme)};
   }
 
-  &[role='tree'] {
-    overflow: hidden;
+  /* Doubled selector (&&) plus !important match the override-resistance the
+     previous inline overflow:hidden style had (only another !important rule can
+     beat an inline style) — a plain class rule's specificity can be beaten by a
+     host-page ID selector, which would silently defeat the scroll clipping that
+     virtualization's windowing depends on. */
+  &&[role='tree'] {
+    overflow: hidden !important;
 
     ${({ $maxHeight, $virtualized }) =>
       $virtualized &&
       css`
-        max-height: ${$maxHeight}px;
-        overflow-x: hidden;
-        overflow-y: auto;
+        max-height: ${$maxHeight}px !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
         position: relative;
       `}
   }
