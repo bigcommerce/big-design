@@ -1,6 +1,20 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`renders simple tree 1`] = `
+.c8 {
+  vertical-align: middle;
+  color: #5E637A;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.c11 {
+  vertical-align: middle;
+  color: #9EB3FC;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
 .c0 {
   list-style-type: none;
   margin: 0;
@@ -15,18 +29,8 @@ exports[`renders simple tree 1`] = `
   padding-left: 1.75rem;
 }
 
-.c8 {
-  vertical-align: middle;
-  color: #5E637A;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
-.c11 {
-  vertical-align: middle;
-  color: #9EB3FC;
-  height: 1.5rem;
-  width: 1.5rem;
+.c0.c0[role='tree'] {
+  overflow: hidden !important;
 }
 
 .c2 {
@@ -151,10 +155,12 @@ li:focus > .c4::after,
   aria-multiselectable="false"
   class="c0"
   role="tree"
-  style="overflow: hidden;"
 >
   <li
     aria-expanded="false"
+    aria-level="1"
+    aria-posinset="1"
+    aria-setsize="5"
     class="c1"
     role="treeitem"
     tabindex="-1"
@@ -219,6 +225,9 @@ li:focus > .c4::after,
   </li>
   <li
     aria-expanded="false"
+    aria-level="1"
+    aria-posinset="2"
+    aria-setsize="5"
     class="c1"
     role="treeitem"
     tabindex="-1"
@@ -283,6 +292,9 @@ li:focus > .c4::after,
   </li>
   <li
     aria-expanded="false"
+    aria-level="1"
+    aria-posinset="3"
+    aria-setsize="5"
     class="c1"
     role="treeitem"
     tabindex="-1"
@@ -326,6 +338,9 @@ li:focus > .c4::after,
   </li>
   <li
     aria-expanded="false"
+    aria-level="1"
+    aria-posinset="4"
+    aria-setsize="5"
     class="c1"
     role="treeitem"
     tabindex="-1"
@@ -390,6 +405,9 @@ li:focus > .c4::after,
   </li>
   <li
     aria-expanded="false"
+    aria-level="1"
+    aria-posinset="5"
+    aria-setsize="5"
     class="c1"
     role="treeitem"
     tabindex="-1"
