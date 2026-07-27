@@ -1,5 +1,10 @@
-import { Breakpoints, breakpointsOrder, ThemeInterface } from '@bigcommerce/big-design-theme';
-import { css, FlattenSimpleInterpolation } from 'styled-components';
+import {
+  Breakpoints,
+  breakpointsOrder,
+  CSSRules,
+  ThemeInterface,
+} from '@bigcommerce/big-design-theme';
+import { css } from 'styled-components';
 
 import { GridedItemProps, GridedOverload, GridedProps } from './types';
 
@@ -40,7 +45,7 @@ const getGridedStyles: GridedOverload = (
   gridedProp: any,
   theme: ThemeInterface,
   cssKey: any,
-): FlattenSimpleInterpolation => {
+): CSSRules => {
   if (typeof gridedProp === 'object') {
     return getResponsiveGrid(gridedProp, theme, cssKey);
   }
@@ -52,18 +57,11 @@ const getGridedStyles: GridedOverload = (
   return [];
 };
 
-const getSimpleGrid = (
-  gridedProp: string | number,
-  cssKey: string,
-): FlattenSimpleInterpolation => css`
+const getSimpleGrid = (gridedProp: string | number, cssKey: string): CSSRules => css`
   ${cssKey}: ${gridedProp}
 `;
 
-const getResponsiveGrid = (
-  gridedProp: any,
-  theme: ThemeInterface,
-  cssKey: string,
-): FlattenSimpleInterpolation[] => {
+const getResponsiveGrid = (gridedProp: any, theme: ThemeInterface, cssKey: string): CSSRules[] => {
   const breakpointKeys = Object.keys(gridedProp).sort(
     (firstBreakpoint, secondBreakpoint) =>
       // eslint-disable-next-line @typescript-eslint/consistent-type-assertions

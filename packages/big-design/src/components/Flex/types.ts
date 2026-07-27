@@ -1,5 +1,4 @@
-import { ThemeInterface } from '@bigcommerce/big-design-theme';
-import { FlattenSimpleInterpolation } from 'styled-components';
+import { CSSRules, ThemeInterface } from '@bigcommerce/big-design-theme';
 
 import { ResponsiveProp } from '../../types';
 
@@ -99,41 +98,17 @@ export type FlexedItemProps = Partial<{
 }>;
 
 export interface FlexedOverload {
-  (
-    flexedProp: AlignContent,
-    theme: ThemeInterface,
-    cssKey: 'align-content',
-  ): FlattenSimpleInterpolation;
-  (
-    flexedProp: AlignItems,
-    theme: ThemeInterface,
-    cssKey: 'align-items',
-  ): FlattenSimpleInterpolation;
-  (
-    flexedProp: FlexColumnGap,
-    theme: ThemeInterface,
-    cssKey: 'column-gap',
-  ): FlattenSimpleInterpolation;
-  (
-    flexedProp: FlexDirection,
-    theme: ThemeInterface,
-    cssKey: 'flex-direction',
-  ): FlattenSimpleInterpolation;
-  (flexedProp: FlexGap, theme: ThemeInterface, cssKey: 'gap'): FlattenSimpleInterpolation;
-  (flexedProp: FlexRowGap, theme: ThemeInterface, cssKey: 'row-gap'): FlattenSimpleInterpolation;
-  (flexedProp: FlexWrap, theme: ThemeInterface, cssKey: 'flex-wrap'): FlattenSimpleInterpolation;
-  (
-    flexedProp: JustifyContent,
-    theme: ThemeInterface,
-    cssKey: 'justify-content',
-  ): FlattenSimpleInterpolation;
-  (flexedProp: AlignSelf, theme: ThemeInterface, cssKey: 'align-self'): FlattenSimpleInterpolation;
-  (flexedProp: FlexBasis, theme: ThemeInterface, cssKey: 'flex-basis'): FlattenSimpleInterpolation;
-  (flexedProp: FlexGrow, theme: ThemeInterface, cssKey: 'flex-grow'): FlattenSimpleInterpolation;
-  (flexedProp: FlexOrder, theme: ThemeInterface, cssKey: 'order'): FlattenSimpleInterpolation;
-  (
-    flexedProp: FlexShrink,
-    theme: ThemeInterface,
-    cssKey: 'flex-shrink',
-  ): FlattenSimpleInterpolation;
+  (flexedProp: AlignContent, theme: ThemeInterface, cssKey: 'align-content'): CSSRules;
+  (flexedProp: AlignItems, theme: ThemeInterface, cssKey: 'align-items'): CSSRules;
+  (flexedProp: FlexColumnGap, theme: ThemeInterface, cssKey: 'column-gap'): CSSRules;
+  (flexedProp: FlexDirection, theme: ThemeInterface, cssKey: 'flex-direction'): CSSRules;
+  (flexedProp: FlexGap, theme: ThemeInterface, cssKey: 'gap'): CSSRules;
+  (flexedProp: FlexRowGap, theme: ThemeInterface, cssKey: 'row-gap'): CSSRules;
+  (flexedProp: FlexWrap, theme: ThemeInterface, cssKey: 'flex-wrap'): CSSRules;
+  (flexedProp: JustifyContent, theme: ThemeInterface, cssKey: 'justify-content'): CSSRules;
+  (flexedProp: AlignSelf, theme: ThemeInterface, cssKey: 'align-self'): CSSRules;
+  (flexedProp: FlexBasis, theme: ThemeInterface, cssKey: 'flex-basis'): CSSRules;
+  (flexedProp: FlexGrow, theme: ThemeInterface, cssKey: 'flex-grow'): CSSRules;
+  (flexedProp: FlexOrder, theme: ThemeInterface, cssKey: 'order'): CSSRules;
+  (flexedProp: FlexShrink, theme: ThemeInterface, cssKey: 'flex-shrink'): CSSRules;
 }
