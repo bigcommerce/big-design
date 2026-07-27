@@ -1,14 +1,19 @@
 import { em, hideVisually, math, rem, transparentize } from 'polished';
-import { css, FlattenSimpleInterpolation } from 'styled-components';
+import { css } from 'styled-components';
 
 import { themeOptions } from '../options';
+
+// Derived from `css` rather than referencing styled-components' own type name directly, so
+// it resolves against either v5 or v6 types and doesn't leak a version-specific name into
+// our published `.d.ts` files.
+export type CSSRules = ReturnType<typeof css>;
 
 export interface Helpers {
   addValues(first: string, second: string): string;
   createRGBA(color: string, alpha: number): string;
   remCalc(value: string | number): string;
   emCalc(value: string | number): string;
-  listReset: FlattenSimpleInterpolation;
+  listReset: CSSRules;
   hideVisually: typeof hideVisually;
 }
 
