@@ -1,9 +1,11 @@
 import { theme } from '@bigcommerce/big-design-theme';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, renderHook, screen, waitFor } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import React from 'react';
 
 import { warning } from '../../utils';
+
+import { useExpandable, useFocusable, useSelectable } from './hooks';
 
 import { StatefulTree, StatefulTreeProps, TreeNodeProps } from '.';
 
@@ -224,6 +226,68 @@ test('should focus on TreeItem on arrow down', async () => {
 
   expect(node0).not.toHaveFocus();
   expect(node1).toHaveFocus();
+});
+
+describe('stable state callbacks', () => {
+  test('useExpandable keeps onToggle stable and reads the latest expanded state', () => {
+    const { result, rerender } = renderHook(() =>
+      useExpandable<number>({ defaultExpanded: undefined, onExpandedChange: undefined }),
+    );
+    const initialOnToggle = result.current.onToggle;
+
+    rerender();
+
+    expect(result.current.onToggle).toBe(initialOnToggle);
+
+    act(() => initialOnToggle('0', false));
+    act(() => initialOnToggle('1', false));
+
+    expect(result.current.expandedNodes).toEqual(['0', '1']);
+    expect(result.current.onToggle).toBe(initialOnToggle);
+
+    act(() => initialOnToggle('0', true));
+
+    expect(result.current.expandedNodes).toEqual(['1']);
+  });
+
+  test('useFocusable keeps onFocus stable when focus changes', () => {
+    const { result, rerender } = renderHook(() =>
+      useFocusable({ defaultSelected: undefined, nodes, type: undefined }),
+    );
+    const initialOnFocus = result.current.onFocus;
+
+    rerender();
+
+    expect(result.current.onFocus).toBe(initialOnFocus);
+
+    act(() => initialOnFocus('1'));
+
+    expect(result.current.focusedNode).toBe('1');
+    expect(result.current.onFocus).toBe(initialOnFocus);
+  });
+
+  test('useSelectable keeps onSelect stable across unrelated renders and uses current state', () => {
+    const disabledNodes: string[] = [];
+    const { result, rerender } = renderHook(() =>
+      useSelectable({
+        defaultSelected: undefined,
+        disabledNodes,
+        nodes,
+        onSelectionChange: undefined,
+        type: 'multi',
+      }),
+    );
+    const initialOnSelect = result.current.onSelect;
+
+    rerender();
+
+    expect(result.current.onSelect).toBe(initialOnSelect);
+
+    act(() => result.current.onSelect('0', 0));
+    act(() => result.current.onSelect('1', 1));
+
+    expect(result.current.selectedNodes).toEqual(['0', '1']);
+  });
 });
 
 describe('virtualized', () => {

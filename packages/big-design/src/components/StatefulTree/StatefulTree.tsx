@@ -49,15 +49,21 @@ const InternalStatefulTree = <T,>(
   const flatNodes = useFlatVisibleNodes({ nodes, expandedNodes: expandedNodesSet });
   const visibleNodes = useMemo(() => flatNodes.map(({ node }) => node.id), [flatNodes]);
   const onKeyDown = useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes });
+  const expandable = useMemo(() => ({ expandedNodes, onToggle }), [expandedNodes, onToggle]);
+  const focusable = useMemo(() => ({ focusedNode, onFocus }), [focusedNode, onFocus]);
+  const selectable = useMemo(
+    () => ({ selectedNodes, onSelect, type }),
+    [onSelect, selectedNodes, type],
+  );
   const treeProps: TreeBaseProps<T> = {
     disabledNodes,
-    expandable: { expandedNodes, onToggle },
-    focusable: { focusedNode, onFocus },
+    expandable,
+    focusable,
     iconless,
     nodes,
     onKeyDown,
     onNodeClick,
-    selectable: { selectedNodes, onSelect, type },
+    selectable,
   };
 
   return <Tree {...treeProps} virtualization={virtualization} />;

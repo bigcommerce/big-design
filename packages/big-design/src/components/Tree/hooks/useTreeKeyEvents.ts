@@ -1,3 +1,5 @@
+import { useCallback } from 'react';
+
 import {
   NodeMap,
   TreeExpandable,
@@ -44,102 +46,100 @@ export const useTreeKeyEvents = <T>({
 }: UseTreeKeyEventsProps<T>) => {
   // Needs to handle the following keyboard events:
   // https://www.w3.org/TR/wai-aria-practices/#keyboard-interaction-22
-  const onKeyDown: TreeOnKeyDown<T> = (
-    e: React.KeyboardEvent<HTMLLIElement>,
-    { id, isExpanded, isSelectable, hasChildren, value },
-  ) => {
-    const key = e.key;
+  return useCallback<TreeOnKeyDown<T>>(
+    (e, { id, isExpanded, isSelectable, hasChildren, value }) => {
+      const key = e.key;
 
-    if (e.altKey || e.currentTarget !== e.target) {
-      return;
-    }
+      if (e.altKey || e.currentTarget !== e.target) {
+        return;
+      }
 
-    switch (key) {
-      // Stopping propagation if inside a form
-      case ' ':
-        e.preventDefault();
-        e.stopPropagation();
+      switch (key) {
+        // Stopping propagation if inside a form
+        case ' ':
+          e.preventDefault();
+          e.stopPropagation();
 
-        if (isSelectable && onSelect) {
-          onSelect(id, value);
-        }
-
-        break;
-
-      case 'Enter':
-        e.preventDefault();
-        e.stopPropagation();
-
-        if (hasChildren) {
-          if (onToggle) {
-            onToggle(id, isExpanded);
+          if (isSelectable && onSelect) {
+            onSelect(id, value);
           }
-        } else if (isSelectable && onSelect) {
-          onSelect(id, value);
-        }
 
-        break;
+          break;
 
-      case 'ArrowDown':
-        e.preventDefault();
+        case 'Enter':
+          e.preventDefault();
+          e.stopPropagation();
 
-        onFocus(getNextVisibleNode(visibleNodes, id));
-        break;
-
-      case 'ArrowUp':
-        e.preventDefault();
-
-        onFocus(getPreviousVisibleNode(visibleNodes, id));
-        break;
-
-      case 'ArrowRight':
-        e.preventDefault();
-
-        if (hasChildren) {
-          if (isExpanded) {
-            onFocus(getNextVisibleNode(visibleNodes, id));
-          } else if (onToggle) {
-            onToggle(id, isExpanded);
-          }
-        }
-
-        break;
-
-      case 'ArrowLeft':
-        e.preventDefault();
-
-        if (hasChildren) {
-          if (isExpanded) {
+          if (hasChildren) {
             if (onToggle) {
               onToggle(id, isExpanded);
             }
-
-            break;
+          } else if (isSelectable && onSelect) {
+            onSelect(id, value);
           }
-        }
 
-        if (nodeMap.get(id)?.parent !== undefined) {
+          break;
+
+        case 'ArrowDown':
+          e.preventDefault();
+
+          onFocus(getNextVisibleNode(visibleNodes, id));
+          break;
+
+        case 'ArrowUp':
+          e.preventDefault();
+
           onFocus(getPreviousVisibleNode(visibleNodes, id));
-        }
+          break;
 
-        break;
+        case 'ArrowRight':
+          e.preventDefault();
 
-      case 'Home':
-        e.preventDefault();
+          if (hasChildren) {
+            if (isExpanded) {
+              onFocus(getNextVisibleNode(visibleNodes, id));
+            } else if (onToggle) {
+              onToggle(id, isExpanded);
+            }
+          }
 
-        onFocus(visibleNodes[0]);
-        break;
+          break;
 
-      case 'End':
-        e.preventDefault();
+        case 'ArrowLeft':
+          e.preventDefault();
 
-        onFocus(visibleNodes[visibleNodes.length - 1]);
-        break;
+          if (hasChildren) {
+            if (isExpanded) {
+              if (onToggle) {
+                onToggle(id, isExpanded);
+              }
 
-      default:
-        break;
-    }
-  };
+              break;
+            }
+          }
 
-  return onKeyDown;
+          if (nodeMap.get(id)?.parent !== undefined) {
+            onFocus(getPreviousVisibleNode(visibleNodes, id));
+          }
+
+          break;
+
+        case 'Home':
+          e.preventDefault();
+
+          onFocus(visibleNodes[0]);
+          break;
+
+        case 'End':
+          e.preventDefault();
+
+          onFocus(visibleNodes[visibleNodes.length - 1]);
+          break;
+
+        default:
+          break;
+      }
+    },
+    [nodeMap, onFocus, onSelect, onToggle, visibleNodes],
+  );
 };

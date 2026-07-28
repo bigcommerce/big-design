@@ -168,7 +168,7 @@ const StatefulTreePage = () => {
                     with a <Code primary>maxHeight</Code> to render only the nodes within the
                     viewport.
                   </Text>
-                  <CodePreview>
+                  <CodePreview scope={{ useMemo }}>
                     {/* jsx-to-string:start */}
                     {function Example() {
                       // 500 categories × 10 subcategories = 5,500 nodes.

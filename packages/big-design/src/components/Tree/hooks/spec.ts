@@ -112,6 +112,17 @@ describe('useTreeKeyEvents', () => {
     visibleNodes = [];
   });
 
+  test('returns the same handler when its dependencies are unchanged', () => {
+    const { result, rerender } = renderHook(() =>
+      useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }),
+    );
+    const initialHandler = result.current;
+
+    rerender();
+
+    expect(result.current).toBe(initialHandler);
+  });
+
   test('space key', () => {
     const { result } = renderHook(() =>
       useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }),
