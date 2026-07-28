@@ -1,21 +1,28 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { hideVisually } from 'polished';
 import { ComponentPropsWithoutRef } from 'react';
-import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import { StyleableText } from '../../Typography/private';
-import { TextProps } from '../../Typography/types';
+import { withMargins } from '../../../helpers';
 
 export interface StyledLabelProps extends ComponentPropsWithoutRef<'label'> {
   hidden?: boolean;
   disabled?: boolean;
 }
 
-export const StyledLabel = styled<
-  StyledComponent<'label' | 'p', DefaultTheme, Partial<TextProps>> & StyledLabelProps
->(StyleableText).attrs({
-  as: 'label',
-})<StyledLabelProps>`
+export const StyledLabel = styled.label<StyledLabelProps>`
+  color: ${({ theme }) => theme.colors.secondary70};
+  font-size: ${({ theme }) => theme.typography.fontSize.medium};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
+  line-height: ${({ theme }) => theme.lineHeight.medium};
+  margin: 0 0 ${({ theme }) => theme.spacing.medium};
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  ${withMargins()};
+
   cursor: pointer;
 
   ${({ disabled }) =>

@@ -819,7 +819,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   box-sizing: border-box;
 }
 
-.c15 {
+.c14 {
   margin-right: 1rem;
   box-sizing: border-box;
 }
@@ -867,19 +867,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   flex-shrink: 0;
 }
 
-.c12 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-}
-
-.c12:last-child {
-  margin-bottom: 0;
-}
-
-.c14 {
+.c13 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -888,11 +876,11 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   margin-left: 0.75rem;
 }
 
-.c14:last-child {
+.c13:last-child {
   margin-bottom: 0;
 }
 
-.c16 {
+.c15 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -901,11 +889,16 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   margin: 0;
 }
 
-.c16:last-child {
+.c15:last-child {
   margin-bottom: 0;
 }
 
-.c13 {
+.c12 {
+  color: #313440;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin: 0 0 1rem;
   cursor: pointer;
   border: 0;
   -webkit-clip: rect(0 0 0 0);
@@ -917,6 +910,10 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+.c12:last-child {
+  margin-bottom: 0;
 }
 
 .c11 {
@@ -1063,7 +1060,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
           class="c11"
         >
           <label
-            class="c12 c13"
+            class="c12"
             for=":r8k:"
             hidden=""
             id=":r8l:"
@@ -1073,17 +1070,17 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
         </div>
       </div>
       <p
-        class="c14"
+        class="c13"
       >
         5
       </p>
     </div>
   </div>
   <div
-    class="c15 c2"
+    class="c14 c2"
   >
     <p
-      class="c16"
+      class="c15"
     >
       Product
     </p>
@@ -1107,7 +1104,7 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
   box-sizing: border-box;
 }
 
-.c15 {
+.c14 {
   margin-right: 1rem;
   box-sizing: border-box;
 }
@@ -1155,19 +1152,7 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
   flex-shrink: 0;
 }
 
-.c12 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-}
-
-.c12:last-child {
-  margin-bottom: 0;
-}
-
-.c14 {
+.c13 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -1176,11 +1161,11 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
   margin-left: 0.75rem;
 }
 
-.c14:last-child {
+.c13:last-child {
   margin-bottom: 0;
 }
 
-.c16 {
+.c15 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -1189,11 +1174,16 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
   margin: 0;
 }
 
-.c16:last-child {
+.c15:last-child {
   margin-bottom: 0;
 }
 
-.c13 {
+.c12 {
+  color: #313440;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin: 0 0 1rem;
   cursor: pointer;
   border: 0;
   -webkit-clip: rect(0 0 0 0);
@@ -1205,6 +1195,10 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+.c12:last-child {
+  margin-bottom: 0;
 }
 
 .c11 {
@@ -1359,7 +1353,7 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
           class="c11"
         >
           <label
-            class="c12 c13"
+            class="c12"
             for=":r9a:"
             hidden=""
             id=":r9b:"
@@ -1369,17 +1363,17 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
         </div>
       </div>
       <p
-        class="c14"
+        class="c13"
       >
         5
       </p>
     </div>
   </div>
   <div
-    class="c15 c2"
+    class="c14 c2"
   >
     <p
-      class="c16"
+      class="c15"
     >
       Product
     </p>
@@ -1403,7 +1397,7 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
   box-sizing: border-box;
 }
 
-.c15 {
+.c14 {
   margin-right: 1rem;
   box-sizing: border-box;
 }
@@ -1451,19 +1445,7 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
   flex-shrink: 0;
 }
 
-.c12 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-}
-
-.c12:last-child {
-  margin-bottom: 0;
-}
-
-.c14 {
+.c13 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -1472,11 +1454,11 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
   margin-left: 0.75rem;
 }
 
-.c14:last-child {
+.c13:last-child {
   margin-bottom: 0;
 }
 
-.c16 {
+.c15 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -1485,11 +1467,16 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
   margin: 0;
 }
 
-.c16:last-child {
+.c15:last-child {
   margin-bottom: 0;
 }
 
-.c13 {
+.c12 {
+  color: #313440;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin: 0 0 1rem;
   cursor: pointer;
   border: 0;
   -webkit-clip: rect(0 0 0 0);
@@ -1501,6 +1488,10 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+.c12:last-child {
+  margin-bottom: 0;
 }
 
 .c11 {
@@ -1655,7 +1646,7 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
           class="c11"
         >
           <label
-            class="c12 c13"
+            class="c12"
             for=":rd1:"
             hidden=""
             id=":rd2:"
@@ -1665,17 +1656,17 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
         </div>
       </div>
       <p
-        class="c14"
+        class="c13"
       >
         5
       </p>
     </div>
   </div>
   <div
-    class="c15 c2"
+    class="c14 c2"
   >
     <p
-      class="c16"
+      class="c15"
     >
       Product
     </p>

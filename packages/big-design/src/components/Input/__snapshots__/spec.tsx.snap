@@ -1,22 +1,13 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`renders all together 1`] = `
-.c5 {
+.c4 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
-.c0 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.5rem;
-  margin: 0 0 0.5rem;
-}
-
-.c2 {
+.c1 {
   color: #313440;
   margin: 0 0 1rem;
   color: #5E637A;
@@ -26,11 +17,11 @@ exports[`renders all together 1`] = `
   margin: 0 0 0.75rem;
 }
 
-.c2:last-child {
+.c1:last-child {
   margin-bottom: 0;
 }
 
-.c3 {
+.c2 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: border,box-shadow;
@@ -53,15 +44,15 @@ exports[`renders all together 1`] = `
   border: 1px solid #D9DCE9;
 }
 
-.c3:hover:not([disabled]) {
+.c2:hover:not([disabled]) {
   border: 1px solid #B4BAD1;
 }
 
-.c3[disabled] {
+.c2[disabled] {
   background-color: #ECEEF5;
 }
 
-.c7 {
+.c6 {
   background-color: inherit;
   border: 0;
   box-sizing: border-box;
@@ -78,41 +69,41 @@ exports[`renders all together 1`] = `
   min-height: 2.125rem;
 }
 
-.c7:focus {
+.c6:focus {
   outline: none;
 }
 
-.c7::-webkit-input-placeholder {
+.c6::-webkit-input-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c7::-moz-placeholder {
+.c6::-moz-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c7:-ms-input-placeholder {
+.c6:-ms-input-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c7::placeholder {
+.c6::placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c7:-webkit-autofill {
+.c6:-webkit-autofill {
   background-color: #F0F3FF !important;
   -webkit-box-shadow: 0 0 0px 1000px #F0F3FF inset;
 }
 
-.c7[disabled] {
+.c6[disabled] {
   background-color: #ECEEF5;
   color: #5E637A;
 }
 
-.c4 {
+.c3 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -130,7 +121,7 @@ exports[`renders all together 1`] = `
   left: 0;
 }
 
-.c8 {
+.c7 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -148,7 +139,7 @@ exports[`renders all together 1`] = `
   right: 0;
 }
 
-.c6 {
+.c5 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -167,7 +158,12 @@ exports[`renders all together 1`] = `
   height: 100%;
 }
 
-.c1 {
+.c0 {
+  color: #313440;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  margin: 0 0 0.5rem;
   cursor: pointer;
   display: inline-block;
   margin-bottom: 0.25rem;
@@ -175,25 +171,25 @@ exports[`renders all together 1`] = `
 
 <div>
   <label
-    class="c0 c1"
+    class="c0"
     for=":rp:"
   >
     This is a label
   </label>
   <p
-    class="c2"
+    class="c1"
   >
     This is a description
   </p>
   <span
-    class="c3"
+    class="c2"
   >
     <div
-      class="c4"
+      class="c3"
     >
       <svg
         aria-hidden="true"
-        class="c5"
+        class="c4"
         data-testid="icon-left"
         fill="currentColor"
         height="24"
@@ -212,19 +208,19 @@ exports[`renders all together 1`] = `
       </svg>
     </div>
     <div
-      class="c6"
+      class="c5"
     >
       <input
-        class="c7"
+        class="c6"
         id=":rp:"
       />
     </div>
     <div
-      class="c8"
+      class="c7"
     >
       <svg
         aria-hidden="true"
-        class="c5"
+        class="c4"
         data-testid="icon-right"
         fill="currentColor"
         height="24"
