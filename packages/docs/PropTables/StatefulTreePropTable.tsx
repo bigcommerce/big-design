@@ -69,6 +69,16 @@ const statefulTreeProps: Prop[] = [
     types: ['multi', 'radio'],
     description: 'Determines the type of selectable tree to render.',
   },
+  {
+    name: 'virtualization',
+    types: '{ maxHeight: number }',
+    description: (
+      <>
+        Renders only the nodes within the viewport. Recommended for large trees (thousands of
+        nodes). <Code primary>maxHeight</Code> (in px) bounds the scrollable area.
+      </>
+    ),
+  },
 ];
 
 export const StatefulTreePropTable: React.FC<PropTableWrapper> = (props) => (

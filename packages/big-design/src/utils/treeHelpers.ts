@@ -1,4 +1,4 @@
-import { TreeNodeProps, TreeProps } from '../components/Tree';
+import { TreeNodeId, TreeNodeProps, TreeProps } from '../components/Tree';
 
 export function depthFirstSearch<T>(
   nodes: TreeProps<T>['nodes'],
@@ -47,3 +47,28 @@ export function depthFirstSearch<T>(
 
   return greedy ? null : list;
 }
+
+export const getSelectedChildrenCounts = <T>(
+  nodes: TreeProps<T>['nodes'],
+  selectedNodes: Set<TreeNodeId>,
+): Map<TreeNodeId, number> => {
+  const counts = new Map<TreeNodeId, number>();
+
+  const visit = (node: TreeNodeProps<T>): number => {
+    let selectedDescendants = 0;
+
+    if (node.children) {
+      for (const child of node.children) {
+        selectedDescendants += visit(child);
+      }
+    }
+
+    counts.set(node.id, selectedDescendants);
+
+    return selectedDescendants + (selectedNodes.has(node.id) ? 1 : 0);
+  };
+
+  nodes.forEach(visit);
+
+  return counts;
+};
