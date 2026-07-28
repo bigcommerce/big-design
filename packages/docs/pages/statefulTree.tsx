@@ -1,6 +1,6 @@
 import { H1, Message, Panel, StatefulTree, Text } from '@bigcommerce/big-design';
 import { AssignmentIcon, LanguageIcon, StoreIcon } from '@bigcommerce/big-design-icons';
-import React, { Fragment } from 'react';
+import React, { Fragment, useMemo } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
 import { StatefulTreePropTable, TreeNodePropTable } from '../PropTables';
@@ -172,16 +172,20 @@ const StatefulTreePage = () => {
                     {/* jsx-to-string:start */}
                     {function Example() {
                       // 500 categories × 10 subcategories = 5,500 nodes.
-                      const nodes = Array.from({ length: 500 }, (_, index) => ({
-                        id: `${index}`,
-                        value: index,
-                        label: `Category ${index}`,
-                        children: Array.from({ length: 10 }, (_, childIndex) => ({
-                          id: `${index}-${childIndex}`,
-                          value: index * 10 + childIndex,
-                          label: `Subcategory ${index}.${childIndex}`,
-                        })),
-                      }));
+                      const nodes = useMemo(
+                        () =>
+                          Array.from({ length: 500 }, (_, index) => ({
+                            id: `${index}`,
+                            value: index,
+                            label: `Category ${index}`,
+                            children: Array.from({ length: 10 }, (_, childIndex) => ({
+                              id: `${index}-${childIndex}`,
+                              value: index * 10 + childIndex,
+                              label: `Subcategory ${index}.${childIndex}`,
+                            })),
+                          })),
+                        [],
+                      );
 
                       return (
                         <StatefulTree

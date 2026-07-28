@@ -2,12 +2,14 @@ import React, { createContext, useCallback, useEffect, useMemo, useRef } from 'r
 
 import { getSelectedChildrenCounts, warning } from '../../utils';
 
-import { useFlatVisibleNodes, useTreeVirtualizer } from './hooks';
+import { useFlatVisibleNodes } from './hooks/useFlatVisibleNodes';
+import { useTreeVirtualizer } from './hooks/useTreeVirtualizer';
 import { StyledUl, StyledVirtualSpacer } from './styled';
 import { TreeNode } from './TreeNode';
 import { TreeContextState, TreeNodeId, TreeProps } from './types';
 
 const EMPTY_COUNTS: Map<TreeNodeId, number> = new Map();
+const EMPTY_NODES: never[] = [];
 
 export const TreeContext = createContext<TreeContextState<any>>({
   expandable: {
@@ -138,7 +140,7 @@ export const Tree = <T,>({
   }, [hasVirtualization, hasValidMaxHeight]);
 
   const flatNodes = useFlatVisibleNodes({
-    nodes: virtualized ? nodes : [],
+    nodes: virtualized ? nodes : EMPTY_NODES,
     expandedNodes: expandedNodesSet,
   });
 
