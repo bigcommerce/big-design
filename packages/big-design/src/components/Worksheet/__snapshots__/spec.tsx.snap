@@ -87,7 +87,7 @@ exports[`renders worksheet 1`] = `
   opacity: 1;
 }
 
-.c31 {
+.c30 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: border-color,background,box-shadow,color,opacity;
@@ -121,7 +121,7 @@ exports[`renders worksheet 1`] = `
   width: 1.25rem;
 }
 
-.c31:hover {
+.c30:hover {
   border-color: #B4BAD1;
 }
 
@@ -129,7 +129,7 @@ exports[`renders worksheet 1`] = `
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c31 svg {
+.c30 svg {
   opacity: 0;
 }
 
@@ -138,16 +138,16 @@ exports[`renders worksheet 1`] = `
   box-sizing: border-box;
 }
 
-.c22 {
-  box-sizing: border-box;
-}
-
-.c24 {
-  padding-right: 0.75rem;
+.c21 {
   box-sizing: border-box;
 }
 
 .c23 {
+  padding-right: 0.75rem;
+  box-sizing: border-box;
+}
+
+.c22 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
   align-content: stretch;
@@ -168,7 +168,7 @@ exports[`renders worksheet 1`] = `
   display: flex;
 }
 
-.c25 {
+.c24 {
   -webkit-align-self: auto;
   -ms-flex-item-align: auto;
   align-self: auto;
@@ -185,18 +185,6 @@ exports[`renders worksheet 1`] = `
   -webkit-flex-shrink: 1;
   -ms-flex-negative: 1;
   flex-shrink: 1;
-}
-
-.c20 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-}
-
-.c20:last-child {
-  margin-bottom: 0;
 }
 
 .c9 {
@@ -219,7 +207,7 @@ exports[`renders worksheet 1`] = `
   margin-bottom: 0;
 }
 
-.c27 {
+.c26 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -268,37 +256,37 @@ exports[`renders worksheet 1`] = `
   color: #3C64F4;
 }
 
-.c27:focus {
+.c26:focus {
   outline: none;
 }
 
-.c27[disabled] {
+.c26[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c27 + .bd-button {
+.c26 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c27:active {
+.c26:active {
   background-color: #DBE3FE;
 }
 
-.c27:focus {
+.c26:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c27:hover:not(:active) {
+.c26:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c27[disabled] {
+.c26[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c29 {
+.c28 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -311,7 +299,12 @@ exports[`renders worksheet 1`] = `
   grid-gap: 0.5rem;
 }
 
-.c21 {
+.c20 {
+  color: #313440;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin: 0 0 1rem;
   cursor: pointer;
   border: 0;
   -webkit-clip: rect(0 0 0 0);
@@ -325,6 +318,10 @@ exports[`renders worksheet 1`] = `
   width: 1px;
 }
 
+.c20:last-child {
+  margin-bottom: 0;
+}
+
 .c12 > div {
   -webkit-box-pack: center;
   -webkit-justify-content: center;
@@ -332,23 +329,23 @@ exports[`renders worksheet 1`] = `
   justify-content: center;
 }
 
-.c28 {
+.c27 {
   font-size: 0.875rem;
   height: auto;
   line-height: 1.25rem;
   padding: 0;
 }
 
-.c28:hover:not(:active) {
+.c27:hover:not(:active) {
   background-color: inherit;
   color: #0024A6;
 }
 
-.c28:active {
+.c27:active {
   background-color: inherit;
 }
 
-.c26 {
+.c25 {
   overflow: hidden;
 }
 
@@ -392,7 +389,7 @@ exports[`renders worksheet 1`] = `
   margin: 0;
 }
 
-.c30 {
+.c29 {
   position: relative;
   background-color: inherit;
   border: 0.03125rem solid #D9DCE9;
@@ -405,14 +402,14 @@ exports[`renders worksheet 1`] = `
   user-select: none;
 }
 
-.c30 p {
+.c29 p {
   display: block;
   white-space: inherit;
   word-break: break-word;
   margin: 0;
 }
 
-.c33 {
+.c32 {
   position: relative;
   background-color: inherit;
   border: 0.03125rem solid #D9DCE9;
@@ -426,14 +423,14 @@ exports[`renders worksheet 1`] = `
   border: 0.03125rem double #DB3643;
 }
 
-.c33 p {
+.c32 p {
   display: block;
   white-space: inherit;
   word-break: break-word;
   margin: 0;
 }
 
-.c34 {
+.c33 {
   position: relative;
   background-color: inherit;
   border: 0.03125rem solid #D9DCE9;
@@ -447,7 +444,7 @@ exports[`renders worksheet 1`] = `
   border: 0.03125rem double #DB3643;
 }
 
-.c34 p {
+.c33 p {
   display: block;
   white-space: inherit;
   word-break: break-word;
@@ -476,7 +473,7 @@ exports[`renders worksheet 1`] = `
   width: 0.25rem;
 }
 
-.c32 {
+.c31 {
   background-color: #D9DCE9;
   border-top: 0.03125rem solid #D9DCE9;
   box-sizing: border-box;
@@ -552,7 +549,7 @@ exports[`renders worksheet 1`] = `
 }
 
 @media (min-width:0px) {
-  .c23 {
+  .c22 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -560,7 +557,7 @@ exports[`renders worksheet 1`] = `
 }
 
 @media (min-width:720px) {
-  .c23 {
+  .c22 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -568,14 +565,14 @@ exports[`renders worksheet 1`] = `
 }
 
 @media (min-width:720px) {
-  .c27 + .bd-button {
+  .c26 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c27 {
+  .c26 {
     width: auto;
   }
 }
@@ -720,7 +717,7 @@ exports[`renders worksheet 1`] = `
               >
                 <label
                   aria-hidden="false"
-                  class="c20 c21"
+                  class="c20"
                   for=":r4:"
                   hidden=""
                   id=":r5:"
@@ -756,10 +753,10 @@ exports[`renders worksheet 1`] = `
           type="modal"
         >
           <div
-            class="c22 c23"
+            class="c21 c22"
           >
             <div
-              class="c24 c25 c26"
+              class="c23 c24 c25"
             >
               <p
                 class="c9"
@@ -770,10 +767,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c27 c28"
+              class="c26 c27"
             >
               <span
-                class="c29"
+                class="c28"
               >
                 Edit
               </span>
@@ -785,7 +782,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c30"
+          class="c29"
           type="number"
         >
           <p
@@ -868,7 +865,7 @@ exports[`renders worksheet 1`] = `
               >
                 <label
                   aria-hidden="false"
-                  class="c20 c21"
+                  class="c20"
                   for=":rc:"
                   hidden=""
                   id=":rd:"
@@ -904,10 +901,10 @@ exports[`renders worksheet 1`] = `
           type="modal"
         >
           <div
-            class="c22 c23"
+            class="c21 c22"
           >
             <div
-              class="c24 c25 c26"
+              class="c23 c24 c25"
             >
               <p
                 class="c9"
@@ -918,10 +915,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c27 c28"
+              class="c26 c27"
             >
               <span
-                class="c29"
+                class="c28"
               >
                 Edit
               </span>
@@ -933,7 +930,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c30"
+          class="c29"
           type="number"
         >
           <p
@@ -988,7 +985,7 @@ exports[`renders worksheet 1`] = `
               />
               <label
                 aria-hidden="true"
-                class="c16 c31"
+                class="c16 c30"
                 for=":rk:"
               >
                 <svg
@@ -1015,7 +1012,7 @@ exports[`renders worksheet 1`] = `
               >
                 <label
                   aria-hidden="false"
-                  class="c20 c21"
+                  class="c20"
                   for=":rk:"
                   hidden=""
                   id=":rl:"
@@ -1049,10 +1046,10 @@ exports[`renders worksheet 1`] = `
           type="modal"
         >
           <div
-            class="c22 c23"
+            class="c21 c22"
           >
             <div
-              class="c24 c25 c26"
+              class="c23 c24 c25"
             >
               <p
                 class="c9"
@@ -1063,10 +1060,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c27 c28"
+              class="c26 c27"
             >
               <span
-                class="c29"
+                class="c28"
               >
                 Edit
               </span>
@@ -1078,7 +1075,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c30"
+          class="c29"
           type="number"
         >
           <p
@@ -1161,7 +1158,7 @@ exports[`renders worksheet 1`] = `
               >
                 <label
                   aria-hidden="false"
-                  class="c20 c21"
+                  class="c20"
                   for=":rs:"
                   hidden=""
                   id=":rt:"
@@ -1197,10 +1194,10 @@ exports[`renders worksheet 1`] = `
           type="modal"
         >
           <div
-            class="c22 c23"
+            class="c21 c22"
           >
             <div
-              class="c24 c25 c26"
+              class="c23 c24 c25"
             >
               <p
                 class="c9"
@@ -1211,10 +1208,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c27 c28"
+              class="c26 c27"
             >
               <span
-                class="c29"
+                class="c28"
               >
                 Edit
               </span>
@@ -1226,7 +1223,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c30"
+          class="c29"
           type="number"
         >
           <p
@@ -1244,10 +1241,10 @@ exports[`renders worksheet 1`] = `
       </tr>
       <tr>
         <td
-          class="c32"
+          class="c31"
         />
         <td
-          class="c33"
+          class="c32"
           type="text"
         >
           <p
@@ -1278,7 +1275,7 @@ exports[`renders worksheet 1`] = `
               />
               <label
                 aria-hidden="true"
-                class="c16 c31"
+                class="c16 c30"
                 for=":r14:"
               >
                 <svg
@@ -1305,7 +1302,7 @@ exports[`renders worksheet 1`] = `
               >
                 <label
                   aria-hidden="false"
-                  class="c20 c21"
+                  class="c20"
                   for=":r14:"
                   hidden=""
                   id=":r15:"
@@ -1339,10 +1336,10 @@ exports[`renders worksheet 1`] = `
           type="modal"
         >
           <div
-            class="c22 c23"
+            class="c21 c22"
           >
             <div
-              class="c24 c25 c26"
+              class="c23 c24 c25"
             >
               <p
                 class="c9"
@@ -1351,10 +1348,10 @@ exports[`renders worksheet 1`] = `
               />
             </div>
             <button
-              class="c27 c28"
+              class="c26 c27"
             >
               <span
-                class="c29"
+                class="c28"
               >
                 Edit
               </span>
@@ -1366,7 +1363,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c34"
+          class="c33"
           type="number"
         >
           <p
@@ -1447,7 +1444,7 @@ exports[`renders worksheet 1`] = `
               >
                 <label
                   aria-hidden="false"
-                  class="c20 c21"
+                  class="c20"
                   for=":r1c:"
                   hidden=""
                   id=":r1d:"
@@ -1483,10 +1480,10 @@ exports[`renders worksheet 1`] = `
           type="modal"
         >
           <div
-            class="c22 c23"
+            class="c21 c22"
           >
             <div
-              class="c24 c25 c26"
+              class="c23 c24 c25"
             >
               <p
                 class="c9"
@@ -1497,10 +1494,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c27 c28"
+              class="c26 c27"
             >
               <span
-                class="c29"
+                class="c28"
               >
                 Edit
               </span>
@@ -1512,7 +1509,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c30"
+          class="c29"
           type="number"
         >
           <p
@@ -1530,7 +1527,7 @@ exports[`renders worksheet 1`] = `
       </tr>
       <tr>
         <td
-          class="c32"
+          class="c31"
         />
         <td
           class="c8"
@@ -1567,7 +1564,7 @@ exports[`renders worksheet 1`] = `
               />
               <label
                 aria-hidden="true"
-                class="c16 c31"
+                class="c16 c30"
                 for=":r1k:"
               >
                 <svg
@@ -1594,7 +1591,7 @@ exports[`renders worksheet 1`] = `
               >
                 <label
                   aria-hidden="false"
-                  class="c20 c21"
+                  class="c20"
                   for=":r1k:"
                   hidden=""
                   id=":r1l:"
@@ -1630,10 +1627,10 @@ exports[`renders worksheet 1`] = `
           type="modal"
         >
           <div
-            class="c22 c23"
+            class="c21 c22"
           >
             <div
-              class="c24 c25 c26"
+              class="c23 c24 c25"
             >
               <p
                 class="c9"
@@ -1644,10 +1641,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c27 c28"
+              class="c26 c27"
             >
               <span
-                class="c29"
+                class="c28"
               >
                 Edit
               </span>
@@ -1659,7 +1656,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c34"
+          class="c33"
           type="number"
         >
           <p
@@ -1742,7 +1739,7 @@ exports[`renders worksheet 1`] = `
               >
                 <label
                   aria-hidden="false"
-                  class="c20 c21"
+                  class="c20"
                   for=":r1s:"
                   hidden=""
                   id=":r1t:"
@@ -1778,10 +1775,10 @@ exports[`renders worksheet 1`] = `
           type="modal"
         >
           <div
-            class="c22 c23"
+            class="c21 c22"
           >
             <div
-              class="c24 c25 c26"
+              class="c23 c24 c25"
             >
               <p
                 class="c9"
@@ -1792,10 +1789,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c27 c28"
+              class="c26 c27"
             >
               <span
-                class="c29"
+                class="c28"
               >
                 Edit
               </span>
@@ -1807,7 +1804,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c30"
+          class="c29"
           type="number"
         >
           <p
@@ -1890,7 +1887,7 @@ exports[`renders worksheet 1`] = `
               >
                 <label
                   aria-hidden="false"
-                  class="c20 c21"
+                  class="c20"
                   for=":r24:"
                   hidden=""
                   id=":r25:"
@@ -1926,10 +1923,10 @@ exports[`renders worksheet 1`] = `
           type="modal"
         >
           <div
-            class="c22 c23"
+            class="c21 c22"
           >
             <div
-              class="c24 c25 c26"
+              class="c23 c24 c25"
             >
               <p
                 class="c9"
@@ -1940,10 +1937,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c27 c28"
+              class="c26 c27"
             >
               <span
-                class="c29"
+                class="c28"
               >
                 Edit
               </span>
@@ -1955,7 +1952,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c30"
+          class="c29"
           type="number"
         >
           <p

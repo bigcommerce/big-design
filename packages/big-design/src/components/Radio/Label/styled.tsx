@@ -1,18 +1,26 @@
+import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { ComponentPropsWithoutRef } from 'react';
-import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import { TextProps } from '../../Typography';
-import { StyleableText } from '../../Typography/private';
+import { withMargins } from '../../../helpers';
 
 export interface StyledLabelProps extends ComponentPropsWithoutRef<'label'> {
   disabled?: boolean;
 }
 
-export const StyledLabel = styled<
-  StyledComponent<'label' | 'p', DefaultTheme, Partial<TextProps>> & StyledLabelProps
->(StyleableText).attrs({
-  as: 'label',
-})<StyledLabelProps>`
+export const StyledLabel = styled.label<StyledLabelProps>`
+  color: ${({ theme }) => theme.colors.secondary70};
+  font-size: ${({ theme }) => theme.typography.fontSize.medium};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
+  line-height: ${({ theme }) => theme.lineHeight.medium};
+  margin: 0 0 ${({ theme }) => theme.spacing.medium};
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  ${withMargins()};
+
   cursor: pointer;
 
   ${({ disabled }) =>
@@ -21,3 +29,5 @@ export const StyledLabel = styled<
       cursor: not-allowed;
     `}
 `;
+
+StyledLabel.defaultProps = { theme: defaultTheme };
