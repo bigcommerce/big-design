@@ -1,23 +1,22 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
-import styled, { DefaultTheme, StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 
-import { StyleableH4 } from '../../Typography/private';
-import { HeadingProps } from '../../Typography/types';
+import { withMargins } from '../../../helpers';
 
 import { type FormControlLabelProps } from './Label';
 
-interface StyledLabelArgument extends Omit<FormControlLabelProps, 'localization'> {
-  theme: DefaultTheme;
-}
+export const StyledLabel = styled.label<FormControlLabelProps>`
+  color: ${({ theme }) => theme.colors.secondary70};
+  font-size: ${({ theme }) => theme.typography.fontSize.medium};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
+  line-height: ${({ theme }) => theme.lineHeight.medium};
+  margin: 0 0 ${({ theme }) => theme.spacing.xSmall};
 
-export const StyledLabel = styled<
-  StyledComponent<'label' | 'h4', DefaultTheme, Partial<HeadingProps>> & FormControlLabelProps
->(StyleableH4).attrs({
-  as: 'label',
-})<FormControlLabelProps>`
+  ${withMargins()};
+
   cursor: pointer;
   display: inline-block;
-  margin-bottom: ${({ theme }: StyledLabelArgument) => theme.spacing.xxSmall};
+  margin-bottom: ${({ theme }) => theme.spacing.xxSmall};
 `;
 
 StyledLabel.defaultProps = { theme: defaultTheme };
