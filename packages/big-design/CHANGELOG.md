@@ -1,5 +1,19 @@
 # Change Log
 
+## 3.3.0
+
+### Minor Changes
+
+- 7b41ea7: feat(component): add optional virtualization to the `Tree`/`StatefulTree` component via the new `virtualization` prop (`{ maxHeight }`), so large trees (thousands of nodes) render only the rows within the viewport.
+
+### Patch Changes
+
+- b65cf6d: Rebuild `RadioLabel`, `CheckboxLabel`, and `FormControlLabel`'s underlying styled component on a native `styled.label` base instead of wrapping the `Text`/`H4` typography primitives with an `as: 'label'` override. This removes the last `styled<StyledComponent<...>>(...)` generic from the public `.d.ts` output (a v5-only styled-components type name) without narrowing the public prop types, which still extend the full native `label` element attributes. No visible rendering change; only the internal generated class names shift.
+- 9fc1f98: Replace `FlattenSimpleInterpolation` with a version-agnostic `CSSRules` alias (`ReturnType<typeof css>`) and drop the explicit `styled<StyledComponent<...>>(...)` generics in favor of inferred typing, so published `.d.ts` files no longer reference type names that only exist in styled-components v5's types. No runtime change; public prop shapes are unchanged for v5 consumers.
+- 07f0358: Move `defaultProps` on `Button`, `Alert`, `Message`, and `InlineMessage` into destructuring defaults ahead of the React 19 upgrade, which silently ignores `defaultProps` on function components. Swap `act` imports in `AlertsManager` and `AnchorNav` specs from the removed `react-dom/test-utils` to `@testing-library/react`. No behavior change on React 18.
+- Updated dependencies [9fc1f98]
+  - @bigcommerce/big-design-theme@1.3.1
+
 ## 3.2.0
 
 ### Minor Changes
