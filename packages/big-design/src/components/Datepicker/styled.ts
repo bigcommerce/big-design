@@ -1,7 +1,11 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 
-export const StyledDatepicker = styled.div`
+export const StyledDatepicker = styled.div.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})`
   & .react-datepicker-wrapper {
     display: inline-block;
     width: 100%;

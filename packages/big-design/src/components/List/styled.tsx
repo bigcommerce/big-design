@@ -1,9 +1,13 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 
 import { ListProps } from './List';
 
-export const StyledListOverflowWrapper = styled.div`
+export const StyledListOverflowWrapper = styled.div.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})`
   ${({ theme }) => theme.shadow.raised}
 
   height: 100%;
@@ -13,7 +17,10 @@ export const StyledListOverflowWrapper = styled.div`
 
 StyledListOverflowWrapper.defaultProps = { theme: defaultTheme };
 
-export const StyledList = styled.ul<Partial<ListProps<unknown>>>`
+export const StyledList = styled.ul.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})<Partial<ListProps<unknown>>>`
   ${({ theme }) => theme.shadow.raised};
 
   background-color: ${({ theme }) => theme.colors.white};

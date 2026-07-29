@@ -1,4 +1,5 @@
 import { theme as defaultTheme, remCalc } from '@bigcommerce/big-design-theme';
+import isPropValid from '@emotion/is-prop-valid';
 import { ellipsis } from 'polished';
 import styled, { css } from 'styled-components';
 
@@ -73,12 +74,18 @@ export const StyledFile = styled(Flex)<{ isValid: boolean }>`
   background-color: ${({ theme }) => theme.colors.white};
 `;
 
-export const StyledImage = styled.img`
+export const StyledImage = styled.img.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})`
   height: ${remCalc(40)};
   width: ${remCalc(40)};
 `;
 
-export const StyledFileUploaderWrapper = styled.div`
+export const StyledFileUploaderWrapper = styled.div.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})`
   display: flex;
   flex-direction: column;
 `;
@@ -92,7 +99,10 @@ export const StyledButton = styled(StyleableButton)`
     disabled ? theme.colors.secondary60 : theme.colors.primary} !important;
 `;
 
-export const StyledList = styled.ul`
+export const StyledList = styled.ul.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})`
   list-style: none;
   padding: 0;
   margin: 0;

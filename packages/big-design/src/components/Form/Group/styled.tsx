@@ -1,4 +1,5 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import isPropValid from '@emotion/is-prop-valid';
 import styled, { css } from 'styled-components';
 
 import { Flex } from '../../Flex';
@@ -22,11 +23,17 @@ export const StyledError = styled(Flex)`
   flex-direction: row;
 `;
 
-export const StyledGroup = styled.div`
+export const StyledGroup = styled.div.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})`
   ${SharedGroupStyles};
 `;
 
-export const StyledInlineGroup = styled.div<StyledProps>`
+export const StyledInlineGroup = styled.div.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})<StyledProps>`
   ${SharedGroupStyles};
 
   ${({ theme }) => theme.breakpoints.tablet} {

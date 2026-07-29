@@ -1,4 +1,5 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import isPropValid from '@emotion/is-prop-valid';
 import styled, { css } from 'styled-components';
 
 import { Box } from '../Box';
@@ -107,7 +108,10 @@ export const StyledLozenge = styled(Box)<StyledLozengeProps>`
   ${({ variant = 'new' }) => variantStyles[variant].idle};
 `;
 
-export const StyledLozengeButton = styled.button<StyledLozengeProps>`
+export const StyledLozengeButton = styled.button.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})<StyledLozengeProps>`
   ${sharedLozengeStyles}
   padding-inline-end: ${({ theme }) => theme.spacing.xxSmall};
   user-select: none;

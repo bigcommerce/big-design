@@ -1,4 +1,5 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import isPropValid from '@emotion/is-prop-valid';
 import { rgba } from 'polished';
 import styled, { css } from 'styled-components';
 
@@ -6,11 +7,16 @@ import { Flex } from '../Flex';
 
 import { ModalProps } from './Modal';
 
-export const StyledModal = styled.div.attrs({
-  'aria-modal': true,
-  role: 'dialog',
-  tabIndex: -1,
-})<Partial<ModalProps>>`
+export const StyledModal = styled.div
+  .withConfig({
+    shouldForwardProp: (prop, defaultValidatorFn) =>
+      typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+  })
+  .attrs({
+    'aria-modal': true,
+    role: 'dialog',
+    tabIndex: -1,
+  })<Partial<ModalProps>>`
   align-items: center;
   display: flex;
   height: 100%;
@@ -72,7 +78,10 @@ export const StyledModalActions = styled(Flex)`
   }
 `;
 
-export const StyledModalHeader = styled.div`
+export const StyledModalHeader = styled.div.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})`
   padding: ${({ theme }) => theme.spacing.medium};
 
   ${({ theme }) => theme.breakpoints.tablet} {
@@ -80,7 +89,10 @@ export const StyledModalHeader = styled.div`
   }
 `;
 
-export const StyledModalClose = styled.div`
+export const StyledModalClose = styled.div.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})`
   position: absolute;
   top: ${({ theme }) => theme.spacing.xxSmall};
   right: ${({ theme }) => theme.spacing.xxSmall};
@@ -90,7 +102,10 @@ export const StyledModalClose = styled.div`
   }
 `;
 
-export const StyledModalBody = styled.div`
+export const StyledModalBody = styled.div.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})`
   flex-grow: 1;
   padding: 0 ${({ theme }) => theme.spacing.medium};
   overflow-y: auto;

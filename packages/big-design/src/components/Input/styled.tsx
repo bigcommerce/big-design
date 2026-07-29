@@ -1,4 +1,5 @@
 import { addValues, theme as defaultTheme, remCalc } from '@bigcommerce/big-design-theme';
+import isPropValid from '@emotion/is-prop-valid';
 import styled, { css } from 'styled-components';
 
 import { PaddingProps, withPaddings } from '../../helpers';
@@ -10,7 +11,10 @@ export interface StyledInputWrapperProps extends InputProps {
   focus: boolean;
 }
 
-export const StyledInputWrapper = styled.span<StyledInputWrapperProps>`
+export const StyledInputWrapper = styled.span.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})<StyledInputWrapperProps>`
   ${withTransition(['border', 'box-shadow'])}
 
   align-items: center;
@@ -50,7 +54,10 @@ export const StyledInputWrapper = styled.span<StyledInputWrapperProps>`
   }
 `;
 
-export const StyledInput = styled.input<InputProps>`
+export const StyledInput = styled.input.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})<InputProps>`
   background-color: inherit;
   border: 0;
   box-sizing: border-box;
@@ -115,7 +122,10 @@ export const StyledInput = styled.input<InputProps>`
   }
 `;
 
-export const StyledIconWrapper = styled.div<PaddingProps>`
+export const StyledIconWrapper = styled.div.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})<PaddingProps>`
   align-items: center;
   color: ${({ theme }) => theme.colors.secondary60};
   display: flex;
@@ -138,7 +148,10 @@ export const StyledIconWrapper = styled.div<PaddingProps>`
     `}
 `;
 
-export const StyledInputContent = styled.div<InputProps>`
+export const StyledInputContent = styled.div.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})<InputProps>`
   align-items: center;
   box-sizing: border-box;
   display: flex;

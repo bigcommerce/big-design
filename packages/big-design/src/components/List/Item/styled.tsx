@@ -1,13 +1,15 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import isPropValid from '@emotion/is-prop-valid';
 import styled, { css } from 'styled-components';
 
 import { withTransition } from '../../../helpers/transitions';
 
 import { ListItemProps } from '.';
 
-export const StyledListItem = styled.li<
-  Omit<ListItemProps<unknown>, 'getItemProps' | 'item' | 'index'>
->`
+export const StyledListItem = styled.li.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})<Omit<ListItemProps<unknown>, 'getItemProps' | 'item' | 'index'>>`
   ${withTransition(['background-color', 'color'])}
 
   align-items: center;
@@ -79,7 +81,10 @@ export const StyledListItem = styled.li<
   }
 `;
 
-export const StyledLink = styled.a`
+export const StyledLink = styled.a.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})`
   ${withTransition(['background-color', 'color'])}
 
   align-items: center;

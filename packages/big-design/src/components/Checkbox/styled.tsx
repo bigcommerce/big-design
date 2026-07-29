@@ -1,4 +1,5 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import isPropValid from '@emotion/is-prop-valid';
 import { hideVisually } from 'polished';
 import styled, { css } from 'styled-components';
 
@@ -15,26 +16,45 @@ export interface StyledLabelProps {
   disabled?: boolean;
 }
 
-export const CheckboxLabelContainer = styled.div<{ hasContent?: boolean }>`
+export const CheckboxLabelContainer = styled.div.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})<{
+  hasContent?: boolean;
+}>`
   margin-left: ${({ hasContent, theme }) => (hasContent ? theme.spacing.xSmall : 0)};
 `;
 
-export const CheckboxImgContainer = styled.img`
+export const CheckboxImgContainer = styled.img.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})`
   margin-inline-start: ${({ theme }) => theme.spacing.xSmall};
   object-fit: contain;
   flex-shrink: 0;
 `;
 
-export const CheckboxContainer = styled.div<{ hasImg?: boolean }>`
+export const CheckboxContainer = styled.div.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})<{
+  hasImg?: boolean;
+}>`
   align-items: ${({ hasImg }) => (hasImg ? 'center' : 'flex-start')};
   display: flex;
 `;
 
-export const HiddenCheckbox = styled.input`
+export const HiddenCheckbox = styled.input.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})`
   ${hideVisually()}
 `;
 
-export const StyledCheckbox = styled.label<StyledCheckboxProps>`
+export const StyledCheckbox = styled.label.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})<StyledCheckboxProps>`
   ${withTransition(['border-color', 'background', 'box-shadow', 'color', 'opacity'])}
 
   align-items: center;

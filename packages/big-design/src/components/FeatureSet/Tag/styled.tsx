@@ -1,7 +1,13 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 
-export const StyledLi = styled.li.attrs({ theme: defaultTheme })`
+export const StyledLi = styled.li
+  .withConfig({
+    shouldForwardProp: (prop, defaultValidatorFn) =>
+      typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+  })
+  .attrs({ theme: defaultTheme })`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.secondary20};
   border-radius: ${({ theme }) => theme.borderRadius.normal};

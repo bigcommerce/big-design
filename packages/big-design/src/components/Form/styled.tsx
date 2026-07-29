@@ -1,4 +1,5 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 
 import { withMargins } from '../../helpers';
@@ -8,7 +9,10 @@ import { StyledTextareaWrapper } from '../Textarea/styled';
 
 import { FormProps } from './Form';
 
-export const StyledForm = styled.form<FormProps>`
+export const StyledForm = styled.form.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})<FormProps>`
   ${withMargins()}
 
   ${({ theme }) => theme.breakpoints.tablet} {

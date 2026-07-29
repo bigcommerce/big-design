@@ -1,7 +1,11 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 
-export const StyledAnchorNavList = styled.nav`
+export const StyledAnchorNavList = styled.nav.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})`
   position: sticky;
   inset-block-start: 0;
   width: ${({ theme }) => theme.helpers.remCalc(266)};

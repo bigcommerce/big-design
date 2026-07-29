@@ -1,4 +1,5 @@
 import { addValues, theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import isPropValid from '@emotion/is-prop-valid';
 import styled, { css } from 'styled-components';
 
 import { MarginProps, withMargins } from '../../helpers';
@@ -7,7 +8,10 @@ import { Flex } from '../Flex';
 
 import { ButtonProps } from './index';
 
-export const StyledButton = styled.button<ButtonProps & MarginProps>`
+export const StyledButton = styled.button.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})<ButtonProps & MarginProps>`
   ${withTransition(['background-color', 'border-color', 'box-shadow', 'color'])}
 
   && {
@@ -82,9 +86,12 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
   ${(props) => getButtonStyles(props)}
 `;
 
-export const ContentWrapper = styled.span.attrs<Record<string, unknown>, { isLoading?: boolean }>(
-  {},
-)`
+export const ContentWrapper = styled.span
+  .withConfig({
+    shouldForwardProp: (prop, defaultValidatorFn) =>
+      typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+  })
+  .attrs<Record<string, unknown>, { isLoading?: boolean }>({})`
   align-content: center;
   align-items: center;
   display: inline-grid;

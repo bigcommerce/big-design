@@ -1,7 +1,11 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import isPropValid from '@emotion/is-prop-valid';
 import styled from 'styled-components';
 
-export const StyledGroupHeader = styled.li`
+export const StyledGroupHeader = styled.li.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})`
   align-items: center;
   box-sizing: border-box;
   color: ${({ theme }) => theme.colors.secondary50};

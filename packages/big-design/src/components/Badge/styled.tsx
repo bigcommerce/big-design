@@ -1,11 +1,15 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import isPropValid from '@emotion/is-prop-valid';
 import styled, { css } from 'styled-components';
 
 import { withMargins } from '../../helpers';
 
 import { BadgeProps } from './Badge';
 
-export const StyledBadge = styled.span<Omit<BadgeProps, 'label'>>`
+export const StyledBadge = styled.span.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})<Omit<BadgeProps, 'label'>>`
   ${withMargins()};
 
   color: ${({ theme }) => theme.colors.white};

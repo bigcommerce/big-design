@@ -1,4 +1,5 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import isPropValid from '@emotion/is-prop-valid';
 import { clearFix } from 'polished';
 import styled, { css } from 'styled-components';
 
@@ -6,7 +7,10 @@ import { withDisplay, withMargins, withPaddings } from '../../helpers';
 
 import { BoxProps } from './Box';
 
-export const StyledBox = styled.div<BoxProps>`
+export const StyledBox = styled.div.withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? isPropValid(prop) : defaultValidatorFn(prop),
+})<BoxProps>`
   ${withDisplay()}
   ${withMargins()}
   ${withPaddings()}
