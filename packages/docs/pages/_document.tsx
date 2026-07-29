@@ -1,6 +1,5 @@
 import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document';
 import React from 'react';
-import { resetServerContext } from 'react-beautiful-dnd';
 import { ServerStyleSheet } from 'styled-components';
 
 export default class AppDocument extends Document {
@@ -27,7 +26,6 @@ export default class AppDocument extends Document {
       };
     } finally {
       sheet.seal();
-      resetServerContext();
     }
   }
 

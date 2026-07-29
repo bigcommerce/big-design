@@ -567,6 +567,10 @@ exports[`renders a simple table 1`] = `
   transition-property: background-color;
   display: table-row;
   background-color: transparent;
+  opacity: 1;
+  outline: none;
+  outline-offset: -2px;
+  pointer-events: auto;
 }
 
 .c5:hover {

@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 
 import { typedMemo } from '../../../utils';
 import { StyleableButton } from '../../Button/Button';
@@ -18,9 +18,12 @@ interface InternalRowContainerProps<T>
     | 'item'
     | 'isSelectable'
     | 'isExpandable'
-    | 'headerCellWidths'
     | 'columns'
-    | 'isDragging'
+    | 'index'
+    | 'itemCount'
+    | 'tableId'
+    | 'isHidden'
+    | 'onRowDrop'
   > {
   expandedRows: TableExpandable<T>['expandedRows'];
   getChildren?: TableExpandable<T>['getChildren'];
@@ -33,19 +36,15 @@ interface InternalRowContainerProps<T>
   onExpandedRow?(parentRowId?: string): void;
 }
 
-interface PrivateProps {
-  forwardedRef?: React.Ref<HTMLTableRowElement>;
-}
-
 const InternalRowContainer = <T extends TableItem>({
-  isDragging,
   columns,
   expandedRows,
-  forwardedRef,
-  headerCellWidths,
+  index,
   isExpandable = false,
+  isHidden,
   isSelectable = false,
   item,
+  itemCount,
   getLoadMoreAction,
   parentRowIndex,
   showDragIcon,
@@ -53,11 +52,12 @@ const InternalRowContainer = <T extends TableItem>({
   getItemKey,
   onItemSelect,
   onExpandedRow,
+  onRowDrop,
   isChildrenRowsSelectable = false,
   selectedItems,
+  tableId,
   getRowId = () => '',
-  ...rest
-}: InternalRowContainerProps<T> & PrivateProps) => {
+}: InternalRowContainerProps<T>) => {
   const parentRowId = getRowId(item, parentRowIndex);
   const isParentRowSelected = selectedItems[parentRowId] !== undefined;
   const isExpanded = expandedRows[parentRowId] !== undefined;
@@ -92,23 +92,24 @@ const InternalRowContainer = <T extends TableItem>({
       <Row
         childrenRowsIds={childrenRowsIds}
         columns={columns}
-        headerCellWidths={headerCellWidths}
+        index={index}
         isChildrenRowsSelectable={isChildrenRowsSelectable}
         isDraggable={isDraggable}
-        isDragging={isDragging}
         isExpandable={isExpandable}
         isExpanded={isExpanded}
+        isHidden={isHidden}
         isParentRow={true}
         isSelectable={isSelectable}
         isSelected={isParentRowSelected}
         item={item}
+        itemCount={itemCount}
         onExpandedRow={onExpandedRowChange}
         onItemSelect={onParentRowSelect}
+        onRowDrop={onRowDrop}
         parentRowId={parentRowId}
-        ref={forwardedRef}
         selectedItems={selectedItems}
         showDragIcon={showDragIcon}
-        {...rest}
+        tableId={tableId}
       />
       {childrenRows &&
         isExpanded &&
@@ -132,20 +133,21 @@ const InternalRowContainer = <T extends TableItem>({
               childRowId={childRowId}
               childrenRowsIds={childrenRowsIds}
               columns={columns}
-              headerCellWidths={headerCellWidths}
+              index={index}
               isChildrenRowsSelectable={isChildrenRowsSelectable}
               isDraggable={isDraggable}
-              isDragging={false}
               isExpandable={isExpandable}
               isParentRow={false}
               isSelectable={isSelectable} // for rendering extra cells
               isSelected={isChildRowSelected}
               item={childRow}
+              itemCount={itemCount}
               key={key}
               onItemSelect={onChilRowSelect}
               parentRowId={parentRowId}
               selectedItems={selectedItems}
               showDragIcon={showDragIcon}
+              tableId={tableId}
             />
           );
         })}
@@ -169,8 +171,4 @@ const InternalRowContainer = <T extends TableItem>({
   );
 };
 
-export const RowContainer = typedMemo(
-  forwardRef<HTMLTableRowElement, InternalRowContainerProps<any>>((props, ref) => (
-    <InternalRowContainer {...props} forwardedRef={ref} />
-  )),
-);
+export const RowContainer = typedMemo(InternalRowContainer);

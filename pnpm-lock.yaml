@@ -82,9 +82,6 @@ importers:
       polished:
         specifier: ^4.3.1
         version: 4.3.1
-      react-beautiful-dnd:
-        specifier: ^13.1.1
-        version: 13.1.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react-datepicker:
         specifier: ^7.6.0
         version: 7.6.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -155,9 +152,6 @@ importers:
       '@types/react':
         specifier: ^18.2.73
         version: 18.2.73
-      '@types/react-beautiful-dnd':
-        specifier: ^13.1.8
-        version: 13.1.8
       '@types/react-dom':
         specifier: ^18.2.23
         version: 18.2.23
@@ -554,9 +548,6 @@ importers:
       react:
         specifier: ^18.2.0
         version: 18.2.0
-      react-beautiful-dnd:
-        specifier: ^13.1.1
-        version: 13.1.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
@@ -585,9 +576,6 @@ importers:
       '@types/react':
         specifier: ^18.2.73
         version: 18.2.73
-      '@types/react-beautiful-dnd':
-        specifier: ^13.1.8
-        version: 13.1.8
       '@types/react-dom':
         specifier: ^18.2.23
         version: 18.2.23
@@ -2853,9 +2841,6 @@ packages:
 
   '@types/prop-types@15.7.4':
     resolution: {integrity: sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==}
-
-  '@types/react-beautiful-dnd@13.1.8':
-    resolution: {integrity: sha512-E3TyFsro9pQuK4r8S/OL6G99eq7p8v29sX0PM7oT8Z+PJfZvSQTx4zTQbUJ+QZXioAF0e7TGBEcA1XhYhCweyQ==}
 
   '@types/react-datepicker@7.0.0':
     resolution: {integrity: sha512-4tWwOUq589tozyQPBVEqGNng5DaZkomx5IVNuur868yYdgjH6RaL373/HKiVt1IDoNNXYiTGspm1F7kjrarM8Q==}
@@ -9031,10 +9016,6 @@ snapshots:
   '@types/prismjs@1.26.5': {}
 
   '@types/prop-types@15.7.4': {}
-
-  '@types/react-beautiful-dnd@13.1.8':
-    dependencies:
-      '@types/react': 18.2.73
 
   '@types/react-datepicker@7.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
