@@ -47,11 +47,12 @@ const sort = (items: Item[], columnHash: string, direction: string) => {
 };
 
 const dragEnd = (items: Item[], from: number, to: number) => {
-  const item = items.splice(from, 1);
+  const nextItems = [...items];
+  const [movedItem] = nextItems.splice(from, 1);
 
-  items.splice(to, 0, ...item);
+  nextItems.splice(to, 0, movedItem);
 
-  return items;
+  return nextItems;
 };
 
 const TablePage = () => {
@@ -398,6 +399,7 @@ const TablePage = () => {
                           { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
                         ]}
                         items={items}
+                        keyField="sku"
                         onRowDrop={onDragEnd}
                       />
                     );
