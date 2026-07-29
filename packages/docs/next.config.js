@@ -22,6 +22,7 @@ module.exports = {
   ],
   images: {
     unoptimized: true,
+    qualities: [100],
   },
   compiler: {
     styledComponents: true,
