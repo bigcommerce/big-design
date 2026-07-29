@@ -65,34 +65,31 @@ test('pagination can be enabled', async () => {
 });
 
 test('dragAndDrop can be enabled', async () => {
-  const spaceKey = { keyCode: 32 };
-  const downKey = { keyCode: 40 };
   const name = 'Product A - 1';
   const onRowDrop = jest.fn();
-  const { container, getAllByTestId } = render(getSimpleTable({ onRowDrop }));
+  const { getAllByTestId } = render(getSimpleTable({ onRowDrop }));
 
-  let dragEls = container.querySelectorAll<HTMLButtonElement>('[data-rbd-draggable-id]');
+  const dragHandles = screen.getAllByRole<HTMLButtonElement>('button', { name: /reorder row/i });
 
   let names = getAllByTestId('name');
 
   // Item at index 0 has product name Product A - 1
   expect(names[0]).toHaveTextContent(name);
 
-  dragEls[0].focus();
+  dragHandles[0].focus();
 
-  expect(dragEls[0]).toHaveFocus();
+  expect(dragHandles[0]).toHaveFocus();
 
-  fireEvent.keyDown(dragEls[0], spaceKey);
-  fireEvent.keyDown(dragEls[0], downKey);
-  fireEvent.keyDown(dragEls[0], spaceKey);
-
-  dragEls = container.querySelectorAll('[data-rbd-draggable-id]');
+  fireEvent.keyDown(dragHandles[0], { key: ' ' }); // grab
+  fireEvent.keyDown(dragHandles[0], { key: 'ArrowDown' }); // move down
+  fireEvent.keyDown(dragHandles[0], { key: ' ' }); // drop
 
   names = getAllByTestId('name');
 
-  // After drag and drop item at index 1 has product name Product A - 1
+  // After keyboard reorder the item is at index 1
   expect(names[1]).toHaveTextContent(name);
-  expect(onRowDrop).toHaveBeenCalled();
+  expect(onRowDrop).toHaveBeenCalledTimes(1);
+  expect(onRowDrop.mock.calls[0][0][1]).toEqual(expect.objectContaining({ name }));
 });
 
 test('changing pagination page changes the displayed items', async () => {

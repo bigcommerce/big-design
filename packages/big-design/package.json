@@ -33,6 +33,9 @@
   },
   "prettier": "@bigcommerce/eslint-config/prettier",
   "dependencies": {
+    "@atlaskit/pragmatic-drag-and-drop": "^2.0.1",
+    "@atlaskit/pragmatic-drag-and-drop-hitbox": "^2.0.0",
+    "@atlaskit/pragmatic-drag-and-drop-live-region": "^2.0.0",
     "@babel/runtime": "^7.26.10",
     "@bigcommerce/big-design-icons": "workspace:^",
     "@bigcommerce/big-design-theme": "workspace:^",

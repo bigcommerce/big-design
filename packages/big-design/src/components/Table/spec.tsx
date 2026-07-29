@@ -718,30 +718,111 @@ describe('draggable', () => {
     ];
   });
 
-  test('renders drag and drop icon', () => {
-    const { container } = render(<Table columns={columns} items={items} onRowDrop={onRowDrop} />);
-    const dragIcons = container.querySelectorAll('svg');
-
-    expect(dragIcons).toHaveLength(items.length);
-  });
-
-  test('onRowDrop called with expected args when a row is dropped', async () => {
-    const spaceKey = { keyCode: 32 };
-    const downKey = { keyCode: 40 };
-
+  test('renders a drag handle for every row', () => {
     render(<Table columns={columns} items={items} onRowDrop={onRowDrop} />);
 
-    const dragEls = await screen.findAllByRole<HTMLButtonElement>('button');
-    const dragEl = dragEls[0];
+    const dragHandles = screen.getAllByRole('button', { name: /reorder row/i });
 
-    dragEl.focus();
+    expect(dragHandles).toHaveLength(items.length);
+  });
 
-    expect(dragEl).toHaveFocus();
+  test('onRowDrop called with expected args when a grabbed row is moved down', async () => {
+    render(<Table columns={columns} items={items} onRowDrop={onRowDrop} />);
 
-    fireEvent.keyDown(dragEl, spaceKey);
-    fireEvent.keyDown(dragEl, downKey);
-    fireEvent.keyDown(dragEl, spaceKey);
+    const dragHandle = screen.getAllByRole<HTMLButtonElement>('button', {
+      name: /reorder row/i,
+    })[0];
 
+    dragHandle.focus();
+
+    expect(dragHandle).toHaveFocus();
+
+    fireEvent.keyDown(dragHandle, { key: ' ' }); // grab
+    fireEvent.keyDown(dragHandle, { key: 'ArrowDown' }); // move down
+    fireEvent.keyDown(dragHandle, { key: ' ' }); // drop
+
+    expect(onRowDrop).toHaveBeenCalledTimes(1);
+    expect(onRowDrop).toHaveBeenCalledWith(0, 1);
+  });
+
+  test('onRowDrop called with expected args when a grabbed row is moved up', () => {
+    render(<Table columns={columns} items={items} onRowDrop={onRowDrop} />);
+
+    const dragHandle = screen.getAllByRole<HTMLButtonElement>('button', {
+      name: /reorder row/i,
+    })[2];
+
+    fireEvent.keyDown(dragHandle, { key: ' ' }); // grab
+    fireEvent.keyDown(dragHandle, { key: 'ArrowUp' }); // move up
+
+    expect(onRowDrop).toHaveBeenCalledWith(2, 1);
+  });
+
+  test('does not reorder when arrow keys are pressed before grabbing', () => {
+    render(<Table columns={columns} items={items} onRowDrop={onRowDrop} />);
+
+    const dragHandle = screen.getAllByRole<HTMLButtonElement>('button', {
+      name: /reorder row/i,
+    })[0];
+
+    fireEvent.keyDown(dragHandle, { key: 'ArrowDown' });
+
+    expect(onRowDrop).not.toHaveBeenCalled();
+  });
+
+  test('does not move a grabbed row past the list boundary', () => {
+    render(<Table columns={columns} items={items} onRowDrop={onRowDrop} />);
+
+    const dragHandle = screen.getAllByRole<HTMLButtonElement>('button', {
+      name: /reorder row/i,
+    })[0];
+
+    fireEvent.keyDown(dragHandle, { key: ' ' }); // grab first row
+    fireEvent.keyDown(dragHandle, { key: 'ArrowUp' }); // already at the top
+
+    expect(onRowDrop).not.toHaveBeenCalled();
+  });
+
+  test('pressing Escape cancels a grab so later arrow keys do not reorder', () => {
+    render(<Table columns={columns} items={items} onRowDrop={onRowDrop} />);
+
+    const dragHandle = screen.getAllByRole<HTMLButtonElement>('button', {
+      name: /reorder row/i,
+    })[0];
+
+    fireEvent.keyDown(dragHandle, { key: ' ' }); // grab
+    fireEvent.keyDown(dragHandle, { key: 'Escape' }); // cancel
+    fireEvent.keyDown(dragHandle, { key: 'ArrowDown' }); // ignored, no longer grabbed
+
+    expect(onRowDrop).not.toHaveBeenCalled();
+  });
+
+  test('blurring the drag handle cancels a grab', () => {
+    render(<Table columns={columns} items={items} onRowDrop={onRowDrop} />);
+
+    const dragHandle = screen.getAllByRole<HTMLButtonElement>('button', {
+      name: /reorder row/i,
+    })[0];
+
+    fireEvent.keyDown(dragHandle, { key: ' ' }); // grab
+    fireEvent.blur(dragHandle); // focus leaves the handle
+    fireEvent.keyDown(dragHandle, { key: 'ArrowDown' }); // ignored, no longer grabbed
+
+    expect(onRowDrop).not.toHaveBeenCalled();
+  });
+
+  test('supports Enter to grab and drop a row', () => {
+    render(<Table columns={columns} items={items} onRowDrop={onRowDrop} />);
+
+    const dragHandle = screen.getAllByRole<HTMLButtonElement>('button', {
+      name: /reorder row/i,
+    })[0];
+
+    fireEvent.keyDown(dragHandle, { key: 'Enter' }); // grab
+    fireEvent.keyDown(dragHandle, { key: 'ArrowDown' }); // move down
+    fireEvent.keyDown(dragHandle, { key: 'Enter' }); // drop
+
+    expect(onRowDrop).toHaveBeenCalledTimes(1);
     expect(onRowDrop).toHaveBeenCalledWith(0, 1);
   });
 });
