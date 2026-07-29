@@ -1,5 +1,11 @@
-import React, { memo, useCallback, useId, useMemo, useRef, useState } from 'react';
-import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
+import { monitorForElements } from '@atlaskit/pragmatic-drag-and-drop/element/adapter';
+import { extractClosestEdge } from '@atlaskit/pragmatic-drag-and-drop-hitbox/closest-edge';
+import { getReorderDestinationIndex } from '@atlaskit/pragmatic-drag-and-drop-hitbox/util/get-reorder-destination-index';
+import {
+  announce,
+  cleanup as cleanupLiveRegion,
+} from '@atlaskit/pragmatic-drag-and-drop-live-region';
+import React, { memo, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 
 import { MarginProps } from '../../helpers';
 import { typedMemo } from '../../utils';
@@ -16,6 +22,7 @@ import {
 } from './HeaderCell/HeaderCell';
 import { getPagedIndex } from './helpers';
 import { useExpandable, useSelectable } from './hooks';
+import { Row } from './Row';
 import { RowContainer } from './RowContainer';
 import { StyledTable, StyledTableFigure } from './styled';
 import { TableColumn, TableItem, TableProps } from './types';
@@ -68,8 +75,9 @@ const InternalTableNext = <T extends TableItem>(
   const actionsRef = useRef<HTMLDivElement>(null);
   const uniqueTableId = useId();
   const tableIdRef = useRef(id || uniqueTableId);
-  const [headerCellWidths, setHeaderCellWidths] = useState<Array<number | string>>([]);
-  const headerCellIconRef = useRef<HTMLTableCellElement>(null);
+  const tableId = tableIdRef.current;
+  const isDraggable = typeof onRowDrop === 'function';
+  const [phantom, setPhantom] = useState<{ insertIndex: number; sourceIndex: number } | null>(null);
   const {
     isSelectable,
     onItemSelect,
@@ -97,46 +105,90 @@ const InternalTableNext = <T extends TableItem>(
     [sortable],
   );
 
-  const onDragEnd = useCallback(
-    (result: DropResult) => {
-      const { destination, source } = result;
-
-      if (!destination) {
-        return;
-      }
-
-      if (destination.droppableId === source.droppableId && destination.index === source.index) {
-        return;
-      }
-
-      if (typeof onRowDrop === 'function') {
-        onRowDrop(source.index, destination.index);
-      }
-
-      setHeaderCellWidths([]);
-    },
-    [onRowDrop],
-  );
-
-  const onBeforeCapture = () => {
-    if (isExpandable) {
-      setExpandedRows({});
+  // Pointer-based reordering: a single monitor per table resolves the source and
+  // closest-edge drop target into a `from`/`to` pair. While dragging, it also tracks
+  // where a phantom placeholder row should render (`onDrag`), and collapses any expanded
+  // rows so only draggable parent rows are on screen. Keyboard reordering is handled
+  // directly on each row's drag handle (see Row). Both paths announce via the live region.
+  useEffect(() => {
+    if (!isDraggable) {
+      return;
     }
-  };
 
-  const onBeforeDragStart = () => {
-    const headerCellIconWidth = headerCellIconRef.current?.offsetWidth ?? 'auto';
+    /* istanbul ignore next -- monitor callbacks only run during a real browser drag */
+    const stopMonitoring = monitorForElements({
+      canMonitor: ({ source }) => source.data.tableId === tableId,
+      onDragStart: () => {
+        if (isExpandable) {
+          setExpandedRows({});
+        }
+      },
+      onDrag: ({ location, source }) => {
+        const target = location.current.dropTargets[0];
 
-    const headerCellsWidths = columns.map((_column, index) => {
-      const headerCellElement = window.document.getElementById(`header-cell-${index}`);
+        if (!target) {
+          setPhantom(null);
 
-      return headerCellElement?.getBoundingClientRect().width ?? 'auto';
+          return;
+        }
+
+        const sourceIndex = Number(source.data.index);
+        const indexOfTarget = Number(target.data.index);
+        const closestEdgeOfTarget = extractClosestEdge(target.data);
+        const finishIndex = getReorderDestinationIndex({
+          axis: 'vertical',
+          closestEdgeOfTarget,
+          indexOfTarget,
+          startIndex: sourceIndex,
+        });
+
+        // No visible move: don't render a phantom that sits next to the source row.
+        if (finishIndex === sourceIndex) {
+          setPhantom(null);
+
+          return;
+        }
+
+        const insertIndex = closestEdgeOfTarget === 'bottom' ? indexOfTarget + 1 : indexOfTarget;
+
+        setPhantom((current) =>
+          current?.insertIndex === insertIndex && current.sourceIndex === sourceIndex
+            ? current
+            : { insertIndex, sourceIndex },
+        );
+      },
+      onDrop: ({ location, source }) => {
+        setPhantom(null);
+
+        const target = location.current.dropTargets[0];
+
+        if (!target) {
+          return;
+        }
+
+        const startIndex = Number(source.data.index);
+        const indexOfTarget = Number(target.data.index);
+        const finishIndex = getReorderDestinationIndex({
+          axis: 'vertical',
+          closestEdgeOfTarget: extractClosestEdge(target.data),
+          indexOfTarget,
+          startIndex,
+        });
+
+        if (finishIndex === startIndex) {
+          return;
+        }
+
+        onRowDrop?.(startIndex, finishIndex);
+        announce(`Moved row from position ${startIndex + 1} to ${finishIndex + 1}.`);
+      },
     });
 
-    const allHeaderWidths = [headerCellIconWidth, ...headerCellsWidths];
-
-    setHeaderCellWidths(allHeaderWidths);
-  };
+    return () => {
+      stopMonitoring();
+      cleanupLiveRegion();
+    };
+  }, [isDraggable, isExpandable, onRowDrop, setExpandedRows, tableId]);
 
   const shouldRenderActions = () => {
     return Boolean(actions) || Boolean(pagination) || Boolean(selectable) || Boolean(itemName);
@@ -153,26 +205,20 @@ const InternalTableNext = <T extends TableItem>(
   const renderHeaders = () => (
     <Head hidden={headerless}>
       <tr>
-        {typeof onRowDrop === 'function' && (
-          <DragIconHeaderCell actionsRef={actionsRef} headerCellIconRef={headerCellIconRef} />
-        )}
+        {isDraggable && <DragIconHeaderCell actionsRef={actionsRef} />}
         {isSelectable && <HeaderCheckboxCell actionsRef={actionsRef} stickyHeader={stickyHeader} />}
 
-        {getChildren !== undefined && (
-          <ExpandableHeaderCell actionsRef={actionsRef} headerCellIconRef={headerCellIconRef} />
-        )}
+        {getChildren !== undefined && <ExpandableHeaderCell actionsRef={actionsRef} />}
 
         {columns.map((column, index) => {
           const { display, hash, header, isSortable, hideHeader, width } = column;
           const isSorted = isSortable && hash === sortable?.columnHash;
           const sortDirection = sortable?.direction;
-          const headerCellWidth = headerCellWidths[index + 1];
-          const widthColumn = headerCellWidth ?? width;
 
           return (
             <HeaderCell
               actionsRef={actionsRef}
-              column={{ ...column, width: widthColumn }}
+              column={{ ...column, width }}
               display={display}
               hide={hideHeader}
               id={`header-cell-${index}`}
@@ -191,83 +237,65 @@ const InternalTableNext = <T extends TableItem>(
     </Head>
   );
 
-  const renderDroppableItems = () => (
-    <Droppable droppableId={`${uniqueTableId}-bd-droppable`}>
-      {(provided) => (
-        <Body ref={provided.innerRef} withFirstRowBorder={headerless} {...provided.droppableProps}>
-          {items.map((item: T, index) => {
-            const key = getItemKey(item, index);
-            const pagedIndex = getPagedIndex(index, pagination);
+  const renderItems = () => {
+    const rows = items.map((item: T, index) => {
+      const key = getItemKey(item, index);
+      const pagedIndex = getPagedIndex(index, pagination);
 
-            return (
-              <Draggable draggableId={String(key)} index={index} key={key}>
-                {(provided, snapshot) => (
-                  <RowContainer
-                    isDragging={snapshot.isDragging}
-                    {...provided.dragHandleProps}
-                    {...provided.draggableProps}
-                    columns={columns}
-                    expandedRows={expandedRows}
-                    getChildren={getChildren}
-                    getItemKey={getItemKey}
-                    getLoadMoreAction={expandable?.getLoadMoreAction}
-                    getRowId={getRowId}
-                    headerCellWidths={headerCellWidths}
-                    isChildrenRowsSelectable={isChildrenRowsSelectable}
-                    isExpandable={isExpandable}
-                    isSelectable={isSelectable}
-                    item={item}
-                    key={key}
-                    onExpandedRow={onExpandedRow}
-                    onItemSelect={onItemSelect}
-                    parentRowIndex={pagedIndex}
-                    ref={provided.innerRef}
-                    selectedItems={selectedItems}
-                    showDragIcon={true}
-                  />
-                )}
-              </Draggable>
-            );
-          })}
-          {provided.placeholder}
-        </Body>
-      )}
-    </Droppable>
-  );
+      return (
+        <RowContainer
+          columns={columns}
+          expandedRows={expandedRows}
+          getChildren={getChildren}
+          getItemKey={getItemKey}
+          getLoadMoreAction={expandable?.getLoadMoreAction}
+          getRowId={getRowId}
+          index={index}
+          isChildrenRowsSelectable={isChildrenRowsSelectable}
+          isExpandable={isExpandable}
+          isHidden={phantom?.sourceIndex === index}
+          isSelectable={isSelectable}
+          item={item}
+          itemCount={items.length}
+          key={key}
+          onExpandedRow={onExpandedRow}
+          onItemSelect={onItemSelect}
+          onRowDrop={onRowDrop}
+          parentRowIndex={pagedIndex}
+          selectedItems={selectedItems}
+          showDragIcon={isDraggable}
+          tableId={tableId}
+        />
+      );
+    });
 
-  const renderItems = () =>
-    onRowDrop ? (
-      renderDroppableItems()
-    ) : (
-      <Body withFirstRowBorder={headerless}>
-        {items.map((item: T, index) => {
-          const key = getItemKey(item, index);
-          const pagedIndex = getPagedIndex(index, pagination);
+    /* istanbul ignore next -- the phantom row only renders during a real browser drag */
+    if (phantom && phantom.sourceIndex < items.length) {
+      rows.splice(
+        phantom.insertIndex,
+        0,
+        <Row
+          childrenRowsIds={[]}
+          columns={columns}
+          index={phantom.sourceIndex}
+          isDraggable={isDraggable}
+          isParentRow
+          isPhantom
+          isSelectable={isSelectable}
+          item={items[phantom.sourceIndex]}
+          itemCount={items.length}
+          key="bd-drag-phantom"
+          onItemSelect={() => undefined}
+          parentRowId="bd-drag-phantom"
+          selectedItems={selectedItems}
+          showDragIcon={isDraggable}
+          tableId={tableId}
+        />,
+      );
+    }
 
-          return (
-            <RowContainer
-              columns={columns}
-              expandedRows={expandedRows}
-              getChildren={getChildren}
-              getItemKey={getItemKey}
-              getLoadMoreAction={expandable?.getLoadMoreAction}
-              getRowId={getRowId}
-              headerCellWidths={headerCellWidths}
-              headerless={headerless}
-              isChildrenRowsSelectable={isChildrenRowsSelectable}
-              isExpandable={isExpandable}
-              isSelectable={isSelectable}
-              item={item}
-              key={key}
-              onExpandedRow={onExpandedRow}
-              onItemSelect={onItemSelect}
-              parentRowIndex={pagedIndex}
-              selectedItems={selectedItems}
-            />
-          );
-        })}
-      </Body>
-    );
+    return <Body withFirstRowBorder={headerless}>{rows}</Body>;
+  };
 
   const renderEmptyState = () => {
     if (items.length === 0 && emptyComponent) {
@@ -294,25 +322,12 @@ const InternalTableNext = <T extends TableItem>(
           selectedParentRowsCrossPages={selectedParentRowsCrossPages}
           setSelectedParentRowsCrossPages={setSelectedParentRowsCrossPages}
           stickyHeader={stickyHeader}
-          tableId={tableIdRef.current}
+          tableId={tableId}
         />
       )}
-      <StyledTable {...rest} id={tableIdRef.current}>
-        {onRowDrop ? (
-          <DragDropContext
-            onBeforeCapture={onBeforeCapture}
-            onBeforeDragStart={onBeforeDragStart}
-            onDragEnd={onDragEnd}
-          >
-            {renderHeaders()}
-            {renderItems()}
-          </DragDropContext>
-        ) : (
-          <>
-            {renderHeaders()}
-            {renderItems()}
-          </>
-        )}
+      <StyledTable {...rest} id={tableId}>
+        {renderHeaders()}
+        {renderItems()}
       </StyledTable>
 
       {renderEmptyState()}
