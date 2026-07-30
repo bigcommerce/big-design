@@ -8,6 +8,12 @@ export interface TableColumnDisplayProps {
   display?: TableColumnDisplayProp;
 }
 
+// Internal-only transient shape for the styled boundary (LTRAC-1396); TableColumnDisplayProps
+// (public) is unchanged.
+export interface TransientTableColumnDisplayProps {
+  $display?: TableColumnDisplayProp;
+}
+
 export type TableColumnDisplayOverload = (
   displayProp: TableColumnDisplayProp,
   theme: ThemeInterface,
