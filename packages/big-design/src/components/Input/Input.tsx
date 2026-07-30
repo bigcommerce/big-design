@@ -32,23 +32,27 @@ interface PrivateProps {
 
 export type InputProps = Props & ComponentPropsWithoutRef<'input'>;
 
-const StyleableInput: React.FC<InputProps & PrivateProps> = ({
-  chips,
-  description,
-  disabled,
-  error,
-  forwardedRef,
-  label,
-  labelId,
-  ...props
-}) => {
+const StyleableInput: React.FC<InputProps & PrivateProps> = (props) => {
+  const {
+    chips,
+    description,
+    disabled,
+    error,
+    forwardedRef,
+    iconLeft,
+    iconRight,
+    label,
+    labelId,
+    ...domProps
+  } = props;
+
   const [focus, setFocus] = useState(false);
   const uniqueInputId = useId();
-  const id = props.id ? props.id : uniqueInputId;
+  const id = domProps.id ? domProps.id : uniqueInputId;
   const { errors } = useInputErrors(id, error);
 
   const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
-    const { onFocus } = props;
+    const { onFocus } = domProps;
 
     setFocus(true);
 
@@ -58,7 +62,7 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
   };
 
   const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-    const { onBlur } = props;
+    const { onBlur } = domProps;
 
     setFocus(false);
 
@@ -74,7 +78,7 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
 
     if (typeof label === 'string') {
       return (
-        <FormControlLabel htmlFor={id} id={labelId} required={props.required}>
+        <FormControlLabel htmlFor={id} id={labelId} required={domProps.required}>
           {label}
         </FormControlLabel>
       );
@@ -91,7 +95,7 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
     }
 
     warning('label must be either a string or a FormControlLabel component.');
-  }, [id, label, labelId, props.required]);
+  }, [id, label, labelId, domProps.required]);
 
   const renderedDescription = useMemo(() => {
     if (!description) {
@@ -110,28 +114,28 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
   }, [description]);
 
   const renderedIconLeft = useMemo(() => {
-    if (!props.iconLeft) {
+    if (!iconLeft) {
       return null;
     }
 
     return (
-      <StyledIconWrapper paddingLeft="xSmall" paddingRight="xxSmall">
-        {props.iconLeft}
+      <StyledIconWrapper $paddingLeft="xSmall" $paddingRight="xxSmall">
+        {iconLeft}
       </StyledIconWrapper>
     );
-  }, [props.iconLeft]);
+  }, [iconLeft]);
 
   const renderedIconRight = useMemo(() => {
-    if (!props.iconRight) {
+    if (!iconRight) {
       return null;
     }
 
     return (
-      <StyledIconWrapper paddingLeft="xxSmall" paddingRight="xSmall">
-        {props.iconRight}
+      <StyledIconWrapper $paddingLeft="xxSmall" $paddingRight="xSmall">
+        {iconRight}
       </StyledIconWrapper>
     );
-  }, [props.iconRight]);
+  }, [iconRight]);
 
   const renderedChips = useMemo(() => {
     if (!chips) {
@@ -147,15 +151,16 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
     <div>
       {renderedLabel}
       {renderedDescription}
-      <StyledInputWrapper disabled={disabled} error={errors} focus={focus}>
+      <StyledInputWrapper $error={errors} $focus={focus} disabled={disabled}>
         {renderedIconLeft}
-        <StyledInputContent chips={chips}>
+        <StyledInputContent $chips={chips}>
           {renderedChips}
           <StyledInput
-            {...props}
-            chips={chips}
+            {...domProps}
+            $chips={chips}
+            $iconLeft={iconLeft}
+            $iconRight={iconRight}
             disabled={disabled}
-            error={errors}
             id={id}
             onBlur={handleBlur}
             onFocus={handleFocus}
