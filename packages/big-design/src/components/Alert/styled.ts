@@ -9,7 +9,12 @@ import { TextProps } from '../Typography/types';
 
 import { AlertProps } from './Alert';
 
-export const StyledAlert = styled(Grid)<AlertProps>`
+interface StyledAlertProps {
+  type?: AlertProps['type'];
+  $onClose?: AlertProps['onClose'];
+}
+
+export const StyledAlert = styled(Grid)<StyledAlertProps>`
   ${({ theme }) => theme.shadow.floating}
 
   animation: ${({ theme }) => theme.keyframes.fadeIn} .5s ease-in-out;
@@ -22,8 +27,8 @@ export const StyledAlert = styled(Grid)<AlertProps>`
   top: ${({ theme }) => theme.spacing.medium};
   z-index: ${({ theme }) => theme.zIndex.fixed};
 
-  ${({ onClose }) =>
-    onClose
+  ${({ $onClose }) =>
+    $onClose
       ? css`
           grid-template-areas: 'icon messages close';
           grid-template-columns: ${({ theme }) =>
