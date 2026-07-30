@@ -364,7 +364,6 @@ exports[`dropdown is not visible if items fit 1`] = `
         data-popper-escaped="true"
         data-popper-placement="bottom-start"
         data-popper-reference-hidden="true"
-        display="none"
         style="position: absolute; left: 0px; top: 0px; right: auto; bottom: auto; transform: translate(0px, 4px);"
       >
         <div
@@ -747,7 +746,6 @@ exports[`it renders the given tabs 1`] = `
         data-popper-escaped="true"
         data-popper-placement="bottom-start"
         data-popper-reference-hidden="true"
-        display="none"
         style="position: absolute; left: 0px; top: 0px; right: auto; bottom: auto; transform: translate(0px, 4px);"
       >
         <div
@@ -1162,7 +1160,6 @@ exports[`only the pills that fit are visible 1`] = `
         data-popper-escaped="true"
         data-popper-placement="bottom-start"
         data-popper-reference-hidden="true"
-        display="none"
         style="position: absolute; left: 0px; top: 0px; right: auto; bottom: auto; transform: translate(0px, 4px);"
       >
         <div
@@ -1576,7 +1573,6 @@ exports[`only the pills that fit are visible 2 1`] = `
         data-popper-escaped="true"
         data-popper-placement="bottom-start"
         data-popper-reference-hidden="true"
-        display="none"
         style="position: absolute; left: 0px; top: 0px; right: auto; bottom: auto; transform: translate(0px, 4px);"
       >
         <div
@@ -1989,7 +1985,6 @@ exports[`renders all the filters if they fit 1`] = `
         data-popper-escaped="true"
         data-popper-placement="bottom-start"
         data-popper-reference-hidden="true"
-        display="none"
         style="position: absolute; left: 0px; top: 0px; right: auto; bottom: auto; transform: translate(0px, 4px);"
       >
         <div
@@ -2388,7 +2383,6 @@ exports[`renders dropdown if items do not fit 1`] = `
         data-popper-escaped="true"
         data-popper-placement="bottom-start"
         data-popper-reference-hidden="true"
-        display="none"
         style="position: absolute; left: 0px; top: 0px; right: auto; bottom: auto; transform: translate(0px, 4px);"
       >
         <div
