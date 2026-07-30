@@ -1,13 +1,23 @@
 import { addValues, theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
-import { MarginProps, withMargins } from '../../helpers';
+import { withMargins } from '../../helpers';
+import { TransientMarginProps } from '../../helpers/margins/margins';
 import { withTransition } from '../../helpers/transitions';
 import { Flex } from '../Flex';
 
 import { ButtonProps } from './index';
 
-export const StyledButton = styled.button<ButtonProps & MarginProps>`
+export interface StyledButtonProps extends TransientMarginProps {
+  $actionType?: ButtonProps['actionType'];
+  $iconLeft?: ButtonProps['iconLeft'];
+  $iconOnly?: ButtonProps['iconOnly'];
+  $iconRight?: ButtonProps['iconRight'];
+  $mobileWidth?: ButtonProps['mobileWidth'];
+  $variant?: ButtonProps['variant'];
+}
+
+export const StyledButton = styled.button<StyledButtonProps>`
   ${withTransition(['background-color', 'border-color', 'box-shadow', 'color'])}
 
   && {
@@ -35,7 +45,7 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  width: ${({ mobileWidth }) => (mobileWidth === 'auto' ? 'auto' : '100%')};
+  width: ${({ $mobileWidth }) => ($mobileWidth === 'auto' ? 'auto' : '100%')};
 
   &:focus {
     outline: none;
@@ -47,8 +57,8 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
   }
 
   & + .bd-button {
-    margin-top: ${({ mobileWidth, theme }) => mobileWidth === '100%' && theme.spacing.xSmall};
-    margin-left: ${({ mobileWidth, theme }) => mobileWidth === 'auto' && theme.spacing.xSmall};
+    margin-top: ${({ $mobileWidth, theme }) => $mobileWidth === '100%' && theme.spacing.xSmall};
+    margin-left: ${({ $mobileWidth, theme }) => $mobileWidth === 'auto' && theme.spacing.xSmall};
 
     ${({ theme }) => theme.breakpoints.tablet} {
       margin-top: ${({ theme }) => theme.spacing.none};
@@ -59,22 +69,22 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
   ${({ theme }) => theme.breakpoints.tablet} {
     width: auto;
 
-    ${({ iconOnly: icon, theme }) =>
-      icon &&
+    ${({ $iconOnly, theme }) =>
+      $iconOnly &&
       css`
         padding: 0;
         min-width: ${addValues(theme.spacing.xxLarge, theme.spacing.xxSmall)};
       `};
   }
 
-  ${({ iconLeft, theme }) =>
-    iconLeft &&
+  ${({ $iconLeft, theme }) =>
+    $iconLeft &&
     css`
       padding-left: ${theme.spacing.xSmall};
     `};
 
-  ${({ iconRight, theme }) =>
-    iconRight &&
+  ${({ $iconRight, theme }) =>
+    $iconRight &&
     css`
       padding-right: ${theme.spacing.xSmall};
     `};
@@ -82,7 +92,7 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
   ${(props) => getButtonStyles(props)}
 `;
 
-export const ContentWrapper = styled.span.attrs<Record<string, unknown>, { isLoading?: boolean }>(
+export const ContentWrapper = styled.span.attrs<Record<string, unknown>, { $isLoading?: boolean }>(
   {},
 )`
   align-content: center;
@@ -91,8 +101,8 @@ export const ContentWrapper = styled.span.attrs<Record<string, unknown>, { isLoa
   grid-auto-flow: column;
   grid-gap: ${({ theme }) => theme.spacing.xSmall};
 
-  ${({ isLoading }) =>
-    isLoading &&
+  ${({ $isLoading }) =>
+    $isLoading &&
     css`
       visibility: hidden;
     `};
@@ -292,21 +302,21 @@ const ButtonUtilityDestructive = css<ButtonProps>`
   }
 `;
 
-function getButtonStyles(props: ButtonProps) {
-  const { actionType, variant } = props;
+function getButtonStyles(props: StyledButtonProps) {
+  const { $actionType, $variant } = props;
 
-  switch (variant) {
+  switch ($variant) {
     case 'primary':
-      return actionType === 'destructive' ? ButtonPrimaryDestructive : ButtonPrimary;
+      return $actionType === 'destructive' ? ButtonPrimaryDestructive : ButtonPrimary;
 
     case 'secondary':
-      return actionType === 'destructive' ? ButtonSecondaryDestructive : ButtonSecondary;
+      return $actionType === 'destructive' ? ButtonSecondaryDestructive : ButtonSecondary;
 
     case 'subtle':
-      return actionType === 'destructive' ? ButtonSubtleDestructive : ButtonSubtle;
+      return $actionType === 'destructive' ? ButtonSubtleDestructive : ButtonSubtle;
 
     case 'utility':
-      return actionType === 'destructive' ? ButtonUtilityDestructive : ButtonUtility;
+      return $actionType === 'destructive' ? ButtonUtilityDestructive : ButtonUtility;
   }
 }
 
