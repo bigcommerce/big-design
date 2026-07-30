@@ -45,7 +45,7 @@ export const Tabs: React.FC<TabsProps> = memo(
       <StyledTabs {...props} flexDirection="row" role="tablist">
         {items.map(({ ariaControls, id, title, disabled }) => (
           <StyledTab
-            activeTab={activeTab}
+            $activeTab={activeTab}
             aria-controls={ariaControls || `${id}-content`}
             aria-selected={id === activeTab ? 'true' : 'false'}
             disabled={disabled}
