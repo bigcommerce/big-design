@@ -96,3 +96,30 @@ test('box forwards ref', () => {
 
   expect(screen.getByText('test')).toBe(ref.current);
 });
+
+test('does not leak system props onto the DOM node', () => {
+  render(
+    <Box
+      backgroundColor="white"
+      border="box"
+      borderRadius="circle"
+      display="flex"
+      margin="medium"
+      padding="medium"
+      zIndex="sticky"
+    >
+      test
+    </Box>,
+  );
+
+  const element = screen.getByText('test');
+
+  // DOM lowercases custom attribute names, so assert against the lowercased forms.
+  expect(element).not.toHaveAttribute('backgroundcolor');
+  expect(element).not.toHaveAttribute('border');
+  expect(element).not.toHaveAttribute('borderradius');
+  expect(element).not.toHaveAttribute('display');
+  expect(element).not.toHaveAttribute('margin');
+  expect(element).not.toHaveAttribute('padding');
+  expect(element).not.toHaveAttribute('zindex');
+});

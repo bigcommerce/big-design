@@ -347,7 +347,6 @@ exports[`render offset pagination component 1`] = `
         data-popper-escaped="true"
         data-popper-placement="bottom-start"
         data-popper-reference-hidden="true"
-        display="none"
         style="position: fixed; left: 0px; top: 0px; right: auto; bottom: auto; transform: translate(0px, 4px);"
       >
         <div
@@ -782,7 +781,6 @@ exports[`render offset pagination component with invalid page info 1`] = `
         data-popper-escaped="true"
         data-popper-placement="bottom-start"
         data-popper-reference-hidden="true"
-        display="none"
         style="position: fixed; left: 0px; top: 0px; right: auto; bottom: auto; transform: translate(0px, 4px);"
       >
         <div
@@ -1217,7 +1215,6 @@ exports[`render offset pagination component with invalid range info 1`] = `
         data-popper-escaped="true"
         data-popper-placement="bottom-start"
         data-popper-reference-hidden="true"
-        display="none"
         style="position: fixed; left: 0px; top: 0px; right: auto; bottom: auto; transform: translate(0px, 4px);"
       >
         <div
@@ -1653,7 +1650,6 @@ exports[`render offset pagination component with no items 1`] = `
         data-popper-escaped="true"
         data-popper-placement="bottom-start"
         data-popper-reference-hidden="true"
-        display="none"
         style="position: fixed; left: 0px; top: 0px; right: auto; bottom: auto; transform: translate(0px, 4px);"
       >
         <div

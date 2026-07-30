@@ -356,7 +356,6 @@ exports[`renders Stepper 1`] = `
 >
   <div
     class="c2 c3 c4"
-    display="[object Object]"
   >
     <div
       class="c5 c6 c7"
@@ -383,7 +382,6 @@ exports[`renders Stepper 1`] = `
     </div>
     <div
       class="c9 c10"
-      display="[object Object]"
     />
     <p
       class="c11 c12"
@@ -394,7 +392,6 @@ exports[`renders Stepper 1`] = `
   </div>
   <div
     class="c13 c14 c4"
-    display="[object Object]"
   >
     <div
       class="c5 c6 c7"
@@ -416,7 +413,6 @@ exports[`renders Stepper 1`] = `
     </div>
     <div
       class="c16 c10"
-      display="[object Object]"
     />
     <p
       class="c11 c12"
@@ -427,7 +423,6 @@ exports[`renders Stepper 1`] = `
   </div>
   <div
     class="c2 c3 c4"
-    display="[object Object]"
   >
     <div
       class="c17 c6 c7"
@@ -449,7 +444,6 @@ exports[`renders Stepper 1`] = `
     </div>
     <div
       class="c18 c10"
-      display="[object Object]"
     />
     <p
       class="c19 c12"

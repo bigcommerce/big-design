@@ -344,7 +344,6 @@ exports[`render Stateless pagination component 1`] = `
       </button>
       <div
         class="c8"
-        display="none"
         style="position: fixed; left: 0px; top: 0px;"
       >
         <div
