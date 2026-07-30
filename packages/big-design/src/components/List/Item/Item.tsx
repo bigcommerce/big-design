@@ -72,11 +72,11 @@ const StyleableListItem = typedMemo(
           },
           ref: forwardedRef,
         })}
-        actionType={actionType}
-        autoWidth={autoWidth}
-        isAction={isAction}
-        isHighlighted={isHighlighted}
-        maxWidth={maxWidth}
+        $actionType={actionType}
+        $autoWidth={autoWidth}
+        $isAction={isAction}
+        $isHighlighted={isHighlighted}
+        $maxWidth={maxWidth}
       >
         <Checkbox
           checked={isChecked}
@@ -97,13 +97,13 @@ const StyleableListItem = typedMemo(
           item,
           ref: forwardedRef,
         })}
-        actionType={actionType}
-        autoWidth={autoWidth}
+        $actionType={actionType}
+        $autoWidth={autoWidth}
+        $isAction={isAction}
+        $isHighlighted={isHighlighted}
+        $isSelected={isSelected}
+        $maxWidth={maxWidth}
         disabled={item.disabled}
-        isAction={isAction}
-        isHighlighted={isHighlighted}
-        isSelected={isSelected}
-        maxWidth={maxWidth}
       >
         <Content isHighlighted={isHighlighted} item={item} wrapText={maxWidth !== undefined} />
         {isSelected && <CheckIcon color="primary" size="large" />}

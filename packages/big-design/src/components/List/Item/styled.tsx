@@ -5,26 +5,34 @@ import { withTransition } from '../../../helpers/transitions';
 
 import { ListItemProps } from '.';
 
-export const StyledListItem = styled.li<
-  Omit<ListItemProps<unknown>, 'getItemProps' | 'item' | 'index'>
->`
+interface StyledListItemProps {
+  disabled?: boolean;
+  $actionType?: ListItemProps<unknown>['actionType'];
+  $autoWidth?: ListItemProps<unknown>['autoWidth'];
+  $isAction?: ListItemProps<unknown>['isAction'];
+  $isHighlighted?: ListItemProps<unknown>['isHighlighted'];
+  $isSelected?: ListItemProps<unknown>['isSelected'];
+  $maxWidth?: ListItemProps<unknown>['maxWidth'];
+}
+
+export const StyledListItem = styled.li<StyledListItemProps>`
   ${withTransition(['background-color', 'color'])}
 
   align-items: center;
   box-sizing: border-box;
   cursor: pointer;
   display: flex;
-  font-weight: ${({ theme, isSelected }) =>
-    isSelected ? theme.typography.fontWeight.semiBold : theme.typography.fontWeight.regular};
+  font-weight: ${({ theme, $isSelected }) =>
+    $isSelected ? theme.typography.fontWeight.semiBold : theme.typography.fontWeight.regular};
   justify-content: space-between;
   min-height: ${({ theme }) => theme.helpers.remCalc(36)};
-  min-width: ${({ autoWidth, theme }) => (autoWidth ? 'auto' : theme.helpers.remCalc(256))};
+  min-width: ${({ $autoWidth, theme }) => ($autoWidth ? 'auto' : theme.helpers.remCalc(256))};
   outline: none;
   padding: ${({ theme }) => `${theme.spacing.xxSmall} ${theme.spacing.medium}`};
-  ${({ maxWidth, theme }) =>
-    maxWidth !== undefined &&
+  ${({ $maxWidth, theme }) =>
+    $maxWidth !== undefined &&
     css`
-      max-width: ${theme.helpers.remCalc(maxWidth)};
+      max-width: ${theme.helpers.remCalc($maxWidth)};
       overflow-wrap: break-word;
       white-space: normal;
       word-break: break-word;
@@ -43,10 +51,10 @@ export const StyledListItem = styled.li<
     }
   }
 
-  ${({ actionType, isAction, isHighlighted, theme }) =>
-    isHighlighted &&
-    (isAction
-      ? actionType === 'normal'
+  ${({ $actionType, $isAction, $isHighlighted, theme }) =>
+    $isHighlighted &&
+    ($isAction
+      ? $actionType === 'normal'
         ? css`
             background-color: ${theme.colors.primary10};
             color: ${theme.colors.primary};

@@ -4,8 +4,8 @@ import styled, { css } from 'styled-components';
 import { Flex } from '../../Flex';
 
 interface StyledProps {
-  childrenCount?: number;
-  fullWidth?: boolean;
+  $childrenCount?: number;
+  $fullWidth?: boolean;
 }
 
 const SharedGroupStyles = css`
@@ -30,20 +30,20 @@ export const StyledInlineGroup = styled.div<StyledProps>`
   ${SharedGroupStyles};
 
   ${({ theme }) => theme.breakpoints.tablet} {
-    ${({ childrenCount, fullWidth, theme }) =>
-      childrenCount === 2 &&
+    ${({ $childrenCount, $fullWidth, theme }) =>
+      $childrenCount === 2 &&
       css`
-        grid-template-columns: repeat(2, ${fullWidth ? '1fr' : theme.helpers.remCalc(200)});
+        grid-template-columns: repeat(2, ${$fullWidth ? '1fr' : theme.helpers.remCalc(200)});
 
         ${StyledError} {
           grid-column: 1 / 3;
         }
       `}
 
-    ${({ childrenCount, fullWidth, theme }) =>
-      childrenCount === 3 &&
+    ${({ $childrenCount, $fullWidth, theme }) =>
+      $childrenCount === 3 &&
       css`
-        grid-template-columns: repeat(3, ${fullWidth ? '1fr' : theme.helpers.remCalc(128)});
+        grid-template-columns: repeat(3, ${$fullWidth ? '1fr' : theme.helpers.remCalc(128)});
 
         ${StyledError} {
           grid-column: 1 / 4;

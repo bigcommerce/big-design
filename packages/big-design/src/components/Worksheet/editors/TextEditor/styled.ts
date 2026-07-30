@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 import { StyleableButton } from '../../../Button/Button';
 
-export const StyledInput = styled.input<{ isEdited: boolean }>`
+export const StyledInput = styled.input<{ $isEdited: boolean }>`
   background-color: ${({ theme }) => theme.colors.inherit};
   border: 0;
   font-size: ${({ theme }) => theme.typography.fontSize.small};
@@ -17,8 +17,8 @@ export const StyledInput = styled.input<{ isEdited: boolean }>`
     outline: none;
   }
 
-  ${({ isEdited }) =>
-    isEdited &&
+  ${({ $isEdited }) =>
+    $isEdited &&
     css`
       background-color: ${({ theme }) => theme.colors.warning10};
     `}
