@@ -10,14 +10,19 @@ import { TextProps } from '../Typography/types';
 
 import { MessageProps } from './Message';
 
-export const StyledMessage = styled(Grid)<MessageProps>`
+interface StyledMessageProps {
+  type?: MessageProps['type'];
+  $onClose?: MessageProps['onClose'];
+}
+
+export const StyledMessage = styled(Grid)<StyledMessageProps>`
   ${({ theme }) => theme.shadow.raised}
 
   grid-gap: ${({ theme }) => theme.spacing.small};
   padding: ${({ theme }) => theme.spacing.small};
 
-  ${({ onClose }) =>
-    onClose
+  ${({ $onClose }) =>
+    $onClose
       ? css`
           grid-template-areas: 'icon messages close';
           grid-template-columns: ${({ theme }) =>

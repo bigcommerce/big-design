@@ -34,6 +34,7 @@ export const InlineMessage: React.FC<InlineMessageProps> = memo(
     header,
     localization = defaultLocalization,
     messages = [],
+    onClose,
     type = 'success',
     ...props
   }) => {
@@ -77,8 +78,8 @@ export const InlineMessage: React.FC<InlineMessageProps> = memo(
     return (
       <StyledInlineMessage
         {...filteredProps}
+        $onClose={onClose}
         backgroundColor="white"
-        messages={messages}
         role="alert"
         type={type}
       >
@@ -88,11 +89,11 @@ export const InlineMessage: React.FC<InlineMessageProps> = memo(
           {renderedMessages}
           {renderedActions}
         </GridItem>
-        {props.onClose && (
+        {onClose && (
           <GridItem>
             <MessagingButton
               iconOnly={<CloseIcon size="medium" title={localization.close} />}
-              onClick={props.onClose}
+              onClick={onClose}
             />
           </GridItem>
         )}

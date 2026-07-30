@@ -14,7 +14,7 @@ export interface AlertProps extends Omit<SharedMessagingProps, 'actions'> {
 }
 
 export const Alert: React.FC<AlertProps> = memo(
-  ({ className, style, header, messages = [], type = 'success', ...props }) => {
+  ({ className, style, header, messages = [], onClose, type = 'success', ...props }) => {
     const headerId = useId();
     const filteredProps = excludePaddingProps(props);
     const icon = useMemo(() => type && getMessagingIcon(type), [type]);
@@ -38,8 +38,8 @@ export const Alert: React.FC<AlertProps> = memo(
     return (
       <StyledAlert
         {...filteredProps}
+        $onClose={onClose}
         aria-labelledby={header && headerId}
-        messages={messages}
         role="alert"
         type={type}
       >
@@ -48,9 +48,9 @@ export const Alert: React.FC<AlertProps> = memo(
           {renderedHeader}
           {renderedMessages}
         </GridItem>
-        {props.onClose && (
+        {onClose && (
           <GridItem>
-            <MessagingButton iconOnly={<CloseIcon size="large" />} onClick={props.onClose} />
+            <MessagingButton iconOnly={<CloseIcon size="large" />} onClick={onClose} />
           </GridItem>
         )}
       </StyledAlert>

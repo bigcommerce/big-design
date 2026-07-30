@@ -10,15 +10,20 @@ import { TextProps } from '../Typography/types';
 
 import { InlineMessageProps } from './InlineMessage';
 
-export const StyledInlineMessage = styled(Grid)<InlineMessageProps>`
+interface StyledInlineMessageProps {
+  type?: InlineMessageProps['type'];
+  $onClose?: InlineMessageProps['onClose'];
+}
+
+export const StyledInlineMessage = styled(Grid)<StyledInlineMessageProps>`
   border: ${({ theme }) => theme.border.box};
   border-radius: ${({ theme }) => theme.borderRadius.normal};
   grid-gap: ${({ theme }) => theme.spacing.xSmall};
   grid-template-columns: ${({ theme }) => `${theme.spacing.large} 1fr ${theme.spacing.large}`};
   padding: ${({ theme }) => theme.spacing.xSmall};
 
-  ${({ onClose }) =>
-    onClose
+  ${({ $onClose }) =>
+    $onClose
       ? css`
           grid-template-areas: 'icon messages close';
           grid-template-columns: ${({ theme }) =>
