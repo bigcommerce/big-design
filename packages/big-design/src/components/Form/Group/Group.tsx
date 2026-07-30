@@ -61,7 +61,7 @@ export const FormGroup: React.FC<FormGroupProps> = (props) => {
   return (
     <FormGroupContext.Provider value={contextValue}>
       {inline ? (
-        <StyledInlineGroup childrenCount={childrenCount} fullWidth={fullWidth}>
+        <StyledInlineGroup $childrenCount={childrenCount} $fullWidth={fullWidth}>
           {children}
           {renderErrors()}
         </StyledInlineGroup>

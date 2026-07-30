@@ -304,7 +304,7 @@ const StyleableList = typedMemo(
             },
             ref: forwardedRef,
           })}
-          maxHeight={maxHeight}
+          $maxHeight={maxHeight}
         >
           {isOpen && renderChildren}
         </StyledList>

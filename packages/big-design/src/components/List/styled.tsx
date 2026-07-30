@@ -13,13 +13,17 @@ export const StyledListOverflowWrapper = styled.div`
 
 StyledListOverflowWrapper.defaultProps = { theme: defaultTheme };
 
-export const StyledList = styled.ul<Partial<ListProps<unknown>>>`
+interface StyledListProps {
+  $maxHeight?: ListProps<unknown>['maxHeight'];
+}
+
+export const StyledList = styled.ul<StyledListProps>`
   ${({ theme }) => theme.shadow.raised};
 
   background-color: ${({ theme }) => theme.colors.white};
   color: ${({ theme }) => theme.colors.secondary70};
   margin: 0;
-  max-height: ${({ theme, maxHeight }) => (maxHeight ? theme.helpers.remCalc(maxHeight) : '')};
+  max-height: ${({ theme, $maxHeight }) => ($maxHeight ? theme.helpers.remCalc($maxHeight) : '')};
   outline: none;
   overflow-y: auto;
   padding: ${({ theme }) => theme.spacing.xSmall} 0;

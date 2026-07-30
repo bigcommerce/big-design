@@ -168,12 +168,12 @@ const InternalModal: React.FC<ModalProps> = ({
 
   return (
     <StyledModal
-      backdrop={backdrop}
+      $backdrop={backdrop}
+      $variant={variant}
       onClick={onClickAway}
       onKeyDown={onKeyDown}
       ref={setModalRef}
       tabIndex={-1}
-      variant={variant}
     >
       <StyledModalContent aria-labelledby={headerUniqueId} flexDirection="column" variant={variant}>
         {renderedClose}
