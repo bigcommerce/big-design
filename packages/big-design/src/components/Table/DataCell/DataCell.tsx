@@ -27,21 +27,21 @@ export const DataCell: React.FC<DataCellProps> = memo(
   }: DataCellProps) => {
     return isCheckbox ? (
       <StyledTableDataCheckbox
-        align={align}
-        display={display}
-        width={width}
-        withBorder={withBorder}
+        $align={align}
+        $display={display}
+        $width={width}
+        $withBorder={withBorder}
       >
         {children}
       </StyledTableDataCheckbox>
     ) : (
       <StyledTableDataCell
-        align={align}
-        display={display}
-        verticalAlign={verticalAlign}
-        width={width}
-        withBorder={withBorder}
-        withPadding={withPadding}
+        $align={align}
+        $display={display}
+        $verticalAlign={verticalAlign}
+        $width={width}
+        $withBorder={withBorder}
+        $withPadding={withPadding}
       >
         {children}
       </StyledTableDataCell>

@@ -110,15 +110,15 @@ const InternalHeaderCell = <T extends TableItem>({
 
   return (
     <StyledTableHeaderCell
-      display={display}
+      $display={display}
+      $isSortable={isSortable}
+      $stickyHeader={stickyHeader}
+      $stickyHeight={actionsSize.height}
+      $width={width}
       id={id}
-      isSortable={isSortable}
       onClick={handleClick}
-      stickyHeader={stickyHeader}
-      stickyHeight={actionsSize.height}
-      width={width}
     >
-      <StyledFlex align={align} alignItems="center" flexDirection="row" hide={hide}>
+      <StyledFlex $align={align} $hide={hide} alignItems="center" flexDirection="row">
         {children}
         {!hide && renderSortIcon()}
         {renderTooltip()}
@@ -132,14 +132,16 @@ export const HeaderCheckboxCell: React.FC<HeaderCheckboxCellProps> = memo(
   ({ stickyHeader, actionsRef }) => {
     const actionsSize = useComponentSize(actionsRef);
 
-    return <StyledTableHeaderIcon stickyHeader={stickyHeader} stickyHeight={actionsSize.height} />;
+    return (
+      <StyledTableHeaderIcon $stickyHeader={stickyHeader} $stickyHeight={actionsSize.height} />
+    );
   },
 );
 
 export const DragIconHeaderCell: React.FC<DragIconCellProps> = memo(({ actionsRef }) => {
   const actionsSize = useComponentSize(actionsRef);
 
-  return <StyledTableHeaderIcon stickyHeight={actionsSize.height} />;
+  return <StyledTableHeaderIcon $stickyHeight={actionsSize.height} />;
 });
 
 export const HeaderCell = typedMemo(InternalHeaderCell);

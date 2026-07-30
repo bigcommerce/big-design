@@ -3,18 +3,19 @@ import { hideVisually } from 'polished';
 import styled, { css } from 'styled-components';
 
 import { Flex } from '../../Flex';
-import { TableColumnDisplayProps, withTableColumnDisplay } from '../helpers';
+import { withTableColumnDisplay } from '../helpers';
+import { TransientTableColumnDisplayProps } from '../helpers/display/types';
 
-interface StyledTableHeaderCellProps extends TableColumnDisplayProps {
-  isSortable?: boolean;
-  width?: number | string;
-  stickyHeader?: boolean;
-  stickyHeight: number;
+interface StyledTableHeaderCellProps extends TransientTableColumnDisplayProps {
+  $isSortable?: boolean;
+  $width?: number | string;
+  $stickyHeader?: boolean;
+  $stickyHeight: number;
 }
 
 interface StyledFlexProps {
-  align?: 'left' | 'center' | 'right';
-  hide: boolean;
+  $align?: 'left' | 'center' | 'right';
+  $hide: boolean;
 }
 
 export const StyledTableHeaderCell = styled.th<StyledTableHeaderCellProps>`
@@ -36,25 +37,25 @@ export const StyledTableHeaderCell = styled.th<StyledTableHeaderCellProps>`
     padding-right: ${({ theme }) => theme.spacing.xLarge};
   }
 
-  ${({ isSortable }) =>
-    isSortable &&
+  ${({ $isSortable }) =>
+    $isSortable &&
     css`
       cursor: pointer;
     `};
 
-  ${({ width }) =>
-    width !== undefined &&
+  ${({ $width }) =>
+    $width !== undefined &&
     css`
-      width: ${typeof width === 'string' ? width : `${width}px`};
+      width: ${typeof $width === 'string' ? $width : `${$width}px`};
     `};
 
-  ${({ theme, stickyHeader, stickyHeight }) =>
-    stickyHeader &&
-    stickyHeight >= 0 &&
+  ${({ theme, $stickyHeader, $stickyHeight }) =>
+    $stickyHeader &&
+    $stickyHeight >= 0 &&
     css`
       ${theme.breakpoints.tablet} {
         position: sticky;
-        top: ${theme.helpers.remCalc(stickyHeight)};
+        top: ${theme.helpers.remCalc($stickyHeight)};
         z-index: ${theme.zIndex.sticky};
       }
     `}
@@ -66,8 +67,8 @@ export const StyledTableHeaderIcon = styled(StyledTableHeaderCell)`
 `;
 
 export const StyledFlex = styled(Flex)<StyledFlexProps>`
-  ${({ align }) => {
-    switch (align) {
+  ${({ $align }) => {
+    switch ($align) {
       case 'center':
         return css`
           justify-content: center;
@@ -84,7 +85,7 @@ export const StyledFlex = styled(Flex)<StyledFlexProps>`
         `;
     }
   }};
-  ${({ hide }) => hide && hideVisually()};
+  ${({ $hide }) => $hide && hideVisually()};
 `;
 
 StyledFlex.defaultProps = { theme: defaultTheme };

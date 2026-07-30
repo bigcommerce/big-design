@@ -190,11 +190,11 @@ const InternalRow = <T extends TableItem>({
   return (
     <>
       <StyledTableRow
-        isDragging={isDragging}
-        isGrabbed={isGrabbed}
-        isHidden={isHidden}
-        isPhantom={isPhantom}
-        isSelected={isSelected}
+        $isDragging={isDragging}
+        $isGrabbed={isGrabbed}
+        $isHidden={isHidden}
+        $isPhantom={isPhantom}
+        $isSelected={isSelected}
         ref={rowRef}
         {...rest}
       >
