@@ -1,6 +1,7 @@
 import React, { ComponentPropsWithoutRef, memo } from 'react';
 
 import { PaddingProps } from '../../../helpers';
+import { toTransientPaddingProps } from '../../../helpers/paddings/paddings';
 import { TableColumnDisplayProps } from '../helpers';
 
 import { StyledTableDataCell, StyledTableDataCheckbox } from './styled';
@@ -35,25 +36,23 @@ export const DataCell: React.FC<DataCellProps> = memo(
   }: DataCellProps) => {
     return isCheckbox ? (
       <StyledTableDataCheckbox
-        align={align}
-        display={display}
-        isExpandable={isExpandable}
-        width={width}
-        withBorder={withBorder}
+        $align={align}
+        $display={display}
+        $isExpandable={isExpandable}
+        $width={width}
+        $withBorder={withBorder}
       >
         {children}
       </StyledTableDataCheckbox>
     ) : (
       <StyledTableDataCell
-        align={align}
+        $align={align}
+        $display={display}
+        $verticalAlign={verticalAlign}
+        $width={width}
+        $withBorder={withBorder}
         colSpan={colSpan}
-        display={display}
-        padding={padding}
-        paddingHorizontal={paddingHorizontal}
-        paddingVertical={paddingVertical}
-        verticalAlign={verticalAlign}
-        width={width}
-        withBorder={withBorder}
+        {...toTransientPaddingProps({ padding, paddingHorizontal, paddingVertical })}
       >
         {children}
       </StyledTableDataCell>

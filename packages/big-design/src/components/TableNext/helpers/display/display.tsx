@@ -6,10 +6,10 @@ import {
 } from '@bigcommerce/big-design-theme';
 import { css } from 'styled-components';
 
-import { TableColumnDisplayOverload, TableColumnDisplayProps } from './types';
+import { TableColumnDisplayOverload, TransientTableColumnDisplayProps } from './types';
 
-export const withTableColumnDisplay = () => css<TableColumnDisplayProps>`
-  ${({ display, theme }) => display && getDisplayStyles(display, theme, 'display')};
+export const withTableColumnDisplay = () => css<TransientTableColumnDisplayProps>`
+  ${({ $display, theme }) => $display && getDisplayStyles($display, theme, 'display')};
 `;
 
 const getDisplayStyles: TableColumnDisplayOverload = (
