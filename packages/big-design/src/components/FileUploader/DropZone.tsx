@@ -184,12 +184,12 @@ export const DropZone = ({
   return (
     <StyledDropzone
       {...props}
+      $isDragOver={isDragOver}
+      $isValid={isFilesValid}
       alignItems="center"
       aria-label="dropzone"
       disabled={disabled}
       flexDirection={isRowView ? 'row' : 'column'}
-      isDragOver={isDragOver}
-      isValid={isFilesValid}
       justifyContent={isRowView ? 'space-between' : 'center'}
       onClick={handleUploadClick}
       onDragEnter={handleDragEnter}
