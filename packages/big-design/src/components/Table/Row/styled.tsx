@@ -4,43 +4,43 @@ import styled from 'styled-components';
 import { withTransition } from '../../../helpers/transitions';
 
 interface StyledTableRowProps {
-  isDragging: boolean;
-  isGrabbed: boolean;
-  isHidden: boolean;
-  isPhantom: boolean;
-  isSelected: boolean;
+  $isDragging: boolean;
+  $isGrabbed: boolean;
+  $isHidden: boolean;
+  $isPhantom: boolean;
+  $isSelected: boolean;
 }
 
 export const StyledTableRow = styled.tr<StyledTableRowProps>`
   ${withTransition(['background-color'])}
 
-  display: ${({ isHidden }) => (isHidden ? 'none' : 'table-row')};
-  background-color: ${({ isPhantom, isSelected, theme }) =>
-    isPhantom || isSelected ? theme.colors.primary10 : 'transparent'};
-  opacity: ${({ isDragging, isPhantom }) => {
-    if (isDragging) {
+  display: ${({ $isHidden }) => ($isHidden ? 'none' : 'table-row')};
+  background-color: ${({ $isPhantom, $isSelected, theme }) =>
+    $isPhantom || $isSelected ? theme.colors.primary10 : 'transparent'};
+  opacity: ${({ $isDragging, $isPhantom }) => {
+    if ($isDragging) {
       return 0.4;
     }
 
-    if (isPhantom) {
+    if ($isPhantom) {
       return 0.6;
     }
 
     return 1;
   }};
-  outline: ${({ isGrabbed, isPhantom, theme }) => {
-    if (isPhantom) {
+  outline: ${({ $isGrabbed, $isPhantom, theme }) => {
+    if ($isPhantom) {
       return `2px dashed ${theme.colors.primary}`;
     }
 
-    if (isGrabbed) {
+    if ($isGrabbed) {
       return `2px solid ${theme.colors.primary}`;
     }
 
     return 'none';
   }};
   outline-offset: -2px;
-  pointer-events: ${({ isPhantom }) => (isPhantom ? 'none' : 'auto')};
+  pointer-events: ${({ $isPhantom }) => ($isPhantom ? 'none' : 'auto')};
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.secondary10};
