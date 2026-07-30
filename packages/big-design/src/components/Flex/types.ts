@@ -97,6 +97,17 @@ export type FlexedItemProps = Partial<{
   flexShrink: FlexShrink;
 }>;
 
+// Internal, transient (`$`-prefixed) counterpart of `FlexedItemProps`. styled-components
+// never forwards `$`-prefixed props to the DOM, so tag-target styled components read
+// these instead of the public names to avoid leaking them onto real DOM nodes.
+export type TransientFlexedItemProps = Partial<{
+  $alignSelf: AlignSelf;
+  $flexBasis: FlexBasis;
+  $flexGrow: FlexGrow;
+  $flexOrder: FlexOrder;
+  $flexShrink: FlexShrink;
+}>;
+
 export interface FlexedOverload {
   (flexedProp: AlignContent, theme: ThemeInterface, cssKey: 'align-content'): CSSRules;
   (flexedProp: AlignItems, theme: ThemeInterface, cssKey: 'align-items'): CSSRules;

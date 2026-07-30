@@ -200,7 +200,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
       <div>
         {renderedLabel}
         {renderedDescription}
-        <StyledCounterWrapper disabled={disabled} error={errors} focus={focus}>
+        <StyledCounterWrapper $error={errors} $focus={focus} disabled={disabled}>
           <StyledCounterButton
             disabled={disabled || value <= Number(min)}
             iconOnly={<RemoveCircleOutlineIcon title={localization.decreaseCount} />}
@@ -210,7 +210,6 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
           <StyledCounterInput
             {...props}
             disabled={disabled}
-            error={errors}
             id={id}
             onBlur={handleBlur}
             onChange={handleChange}

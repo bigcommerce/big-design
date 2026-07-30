@@ -2,20 +2,25 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { Box } from '../../Box';
+import { TransientFlexedItemProps } from '../types';
 import { withFlexedItems } from '../withFlex';
 
 import { FlexItemProps } from './Item';
 
+interface StyledFlexItemProps extends TransientFlexedItemProps {
+  forwardedAs?: FlexItemProps['as'];
+}
+
 // TODO: Remove the `forwardedAs` manual prop definition when @types get updated
-export const StyledFlexItem = styled(Box)<FlexItemProps & { forwardedAs?: FlexItemProps['as'] }>`
+export const StyledFlexItem = styled(Box)<StyledFlexItemProps>`
   ${withFlexedItems()}
 `;
 
 StyledFlexItem.defaultProps = {
-  alignSelf: 'auto',
-  flexBasis: 'auto',
-  flexGrow: 0,
-  flexOrder: 0,
-  flexShrink: 1,
+  $alignSelf: 'auto',
+  $flexBasis: 'auto',
+  $flexGrow: 0,
+  $flexOrder: 0,
+  $flexShrink: 1,
   theme: defaultTheme,
 };

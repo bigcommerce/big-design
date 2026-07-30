@@ -6,7 +6,7 @@ import {
 } from '@bigcommerce/big-design-theme';
 import { css } from 'styled-components';
 
-import { FlexedItemProps, FlexedOverload, FlexedProps } from './types';
+import { FlexedItemProps, FlexedOverload, FlexedProps, TransientFlexedItemProps } from './types';
 
 export const withFlexedContainer = () => css<FlexedProps>`
   ${({ alignContent, theme }) =>
@@ -23,16 +23,32 @@ export const withFlexedContainer = () => css<FlexedProps>`
     justifyContent && getFlexedStyles(justifyContent, theme, 'justify-content')};
 `;
 
-export const withFlexedItems = () => css<FlexedItemProps>`
-  ${({ alignSelf, theme }) => alignSelf && getFlexedStyles(alignSelf, theme, 'align-self')};
-  ${({ flexBasis, theme }) => flexBasis && getFlexedStyles(flexBasis, theme, 'flex-basis')};
-  ${({ flexGrow, theme }) =>
-    typeof flexGrow !== 'undefined' && getFlexedStyles(flexGrow, theme, 'flex-grow')};
-  ${({ flexOrder, theme }) =>
-    typeof flexOrder !== 'undefined' && getFlexedStyles(flexOrder, theme, 'order')};
-  ${({ flexShrink, theme }) =>
-    typeof flexShrink !== 'undefined' && getFlexedStyles(flexShrink, theme, 'flex-shrink')};
+export const withFlexedItems = () => css<TransientFlexedItemProps>`
+  ${({ $alignSelf, theme }) => $alignSelf && getFlexedStyles($alignSelf, theme, 'align-self')};
+  ${({ $flexBasis, theme }) => $flexBasis && getFlexedStyles($flexBasis, theme, 'flex-basis')};
+  ${({ $flexGrow, theme }) =>
+    typeof $flexGrow !== 'undefined' && getFlexedStyles($flexGrow, theme, 'flex-grow')};
+  ${({ $flexOrder, theme }) =>
+    typeof $flexOrder !== 'undefined' && getFlexedStyles($flexOrder, theme, 'order')};
+  ${({ $flexShrink, theme }) =>
+    typeof $flexShrink !== 'undefined' && getFlexedStyles($flexShrink, theme, 'flex-shrink')};
 `;
+
+// Rename-and-keep helper: maps FlexedItemProps' public fields to their transient
+// ($-prefixed) names for hand-off to a tag-target styled component. withFlexedItems()
+// has a single consumer (Flex/Item/styled.tsx), so unlike the shared margin/padding/
+// display helpers, no dual-read shim is needed here.
+export function toTransientFlexedItemProps(props: FlexedItemProps): TransientFlexedItemProps {
+  const { alignSelf, flexBasis, flexGrow, flexOrder, flexShrink } = props;
+
+  return {
+    $alignSelf: alignSelf,
+    $flexBasis: flexBasis,
+    $flexGrow: flexGrow,
+    $flexOrder: flexOrder,
+    $flexShrink: flexShrink,
+  };
+}
 
 const getFlexedStyles: FlexedOverload = (
   flexedProp: any,
