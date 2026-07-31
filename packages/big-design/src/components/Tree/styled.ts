@@ -9,7 +9,6 @@ export const getTreeIndentUnit = (theme: ThemeInterface) =>
 export const StyledUl = styled.ul<{
   $maxHeight?: number;
   $virtualized?: boolean;
-  show?: boolean;
 }>`
   list-style-type: none;
   margin: 0;
