@@ -4,39 +4,44 @@ import styled, { css, keyframes } from 'styled-components';
 import { CIRCLE_CIRCUMFERENCES, CIRCLE_DIMENSIONS, CIRCLE_STROKE_WIDTHS } from './constants';
 import { ProgressCircleProps } from './ProgressCircle';
 
-export const StyledProgressCircle = styled.svg<ProgressCircleProps>`
-  ${({ size, theme }) => css`
-    height: ${theme.helpers.remCalc(getDimensions(size))};
-    width: ${theme.helpers.remCalc(getDimensions(size))};
+interface StyledProgressCircleProps {
+  $percent?: ProgressCircleProps['percent'];
+  $size?: ProgressCircleProps['size'];
+}
+
+export const StyledProgressCircle = styled.svg<StyledProgressCircleProps>`
+  ${({ $size, theme }) => css`
+    height: ${theme.helpers.remCalc(getDimensions($size))};
+    width: ${theme.helpers.remCalc(getDimensions($size))};
   `}
 `;
 
-export const StyledCircle = styled.circle.attrs<ProgressCircleProps>(({ size, theme }) => ({
+export const StyledCircle = styled.circle.attrs<StyledProgressCircleProps>(({ $size, theme }) => ({
   // rem not usable for circle svg cx, cy, and r values in Safari 14
-  cx: theme.helpers.emCalc(getDimensions(size) / 2),
-  cy: theme.helpers.emCalc(getDimensions(size) / 2),
-  r: theme.helpers.emCalc(getDimensions(size) / 2 - getStrokeWidth(size) / 2),
-}))<ProgressCircleProps>`
+  cx: theme.helpers.emCalc(getDimensions($size) / 2),
+  cy: theme.helpers.emCalc(getDimensions($size) / 2),
+  r: theme.helpers.emCalc(getDimensions($size) / 2 - getStrokeWidth($size) / 2),
+}))<StyledProgressCircleProps>`
   fill: transparent;
-  stroke-width: ${({ size, theme }) => theme.helpers.remCalc(getStrokeWidth(size))};
+  stroke-width: ${({ $size, theme }) => theme.helpers.remCalc(getStrokeWidth($size))};
   stroke: ${({ theme }) => theme.colors.secondary20};
 `;
 
-export const StyledCircleFiller = styled(StyledCircle)<ProgressCircleProps>`
-  stroke-dasharray: ${({ size }) => getStrokeDashArray(size)};
+export const StyledCircleFiller = styled(StyledCircle)<StyledProgressCircleProps>`
+  stroke-dasharray: ${({ $size }) => getStrokeDashArray($size)};
   stroke: ${({ theme }) => theme.colors.primary};
   transform-origin: 50% 50%;
 
-  ${({ percent, size }) =>
-    typeof percent === 'number'
+  ${({ $percent, $size }) =>
+    typeof $percent === 'number'
       ? css`
-          stroke-dashoffset: ${typeof percent === 'number' ? `${fillLength(percent, size)}` : 0};
+          stroke-dashoffset: ${typeof $percent === 'number' ? `${fillLength($percent, $size)}` : 0};
           transform: rotate(-90deg);
           transition: stroke-dashoffset 0.35s;
         `
       : css`
-          animation: ${spin(size)} 1s ease-out infinite;
-          stroke-dashoffset: ${fillLength(0, size)};
+          animation: ${spin($size)} 1s ease-out infinite;
+          stroke-dashoffset: ${fillLength(0, $size)};
           transform: rotate(-90deg);
           transition: stroke-dashoffset 0.35s;
         `};
@@ -47,11 +52,11 @@ export const StyledText = styled.text.attrs(() => ({
   textAnchor: 'middle',
   x: '50%',
   y: '50%',
-}))<ProgressCircleProps>`
-  font-size: ${({ size, theme }) =>
-    size === 'large' ? theme.typography.fontSize.large : theme.typography.fontSize.small};
-  font-weight: ${({ size, theme }) =>
-    size === 'large' ? theme.typography.fontWeight.semiBold : theme.typography.fontWeight.regular};
+}))<StyledProgressCircleProps>`
+  font-size: ${({ $size, theme }) =>
+    $size === 'large' ? theme.typography.fontSize.large : theme.typography.fontSize.small};
+  font-weight: ${({ $size, theme }) =>
+    $size === 'large' ? theme.typography.fontWeight.semiBold : theme.typography.fontWeight.regular};
 `;
 
 const spin = (size: ProgressCircleProps['size']) => keyframes`
