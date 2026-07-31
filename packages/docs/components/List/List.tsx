@@ -18,12 +18,13 @@ export const List = ({
   columnGap = 'normal',
   as = 'ul',
   children,
+  reset,
   ...props
 }: ListProps): ReactElement<ListProps> => {
   const ElementType = as === 'ol' ? StyledOrderedList : StyledUnorderedList;
 
   return (
-    <ElementType columnCount={columnCount} columnGap={columnGap} {...props}>
+    <ElementType $columnCount={columnCount} $columnGap={columnGap} $reset={reset} {...props}>
       {children}
     </ElementType>
   );

@@ -7,6 +7,29 @@ export interface MethodBadgeProps extends ComponentPropsWithoutRef<'div'>, Margi
   label: string;
 }
 
-export const MethodBadge: React.FC<MethodBadgeProps> = ({ className, style, label, ...props }) => (
-  <StyledMethodBadge {...props}>{label}</StyledMethodBadge>
+export const MethodBadge: React.FC<MethodBadgeProps> = ({
+  className,
+  style,
+  label,
+  margin,
+  marginTop,
+  marginRight,
+  marginBottom,
+  marginLeft,
+  marginVertical,
+  marginHorizontal,
+  ...props
+}) => (
+  <StyledMethodBadge
+    {...props}
+    $margin={margin}
+    $marginBottom={marginBottom}
+    $marginHorizontal={marginHorizontal}
+    $marginLeft={marginLeft}
+    $marginRight={marginRight}
+    $marginTop={marginTop}
+    $marginVertical={marginVertical}
+  >
+    {label}
+  </StyledMethodBadge>
 );
