@@ -46,9 +46,9 @@ export const ProgressCircle: React.FC<ProgressCircleProps> = typedMemo(
     const renderedCircle = useMemo(() => {
       if (typeof percent !== 'number') {
         return (
-          <StyledProgressCircle role="progressbar" size={size}>
-            <StyledCircle size={size} />
-            <StyledCircleFiller size={size} />
+          <StyledProgressCircle $size={size} role="progressbar">
+            <StyledCircle $size={size} />
+            <StyledCircleFiller $size={size} />
           </StyledProgressCircle>
         );
       }
@@ -59,16 +59,16 @@ export const ProgressCircle: React.FC<ProgressCircleProps> = typedMemo(
 
       return (
         <StyledProgressCircle
+          $size={size}
           aria-valuemax={100}
           aria-valuemin={0}
           aria-valuenow={percent}
           role="progressbar"
-          size={size}
         >
-          <StyledCircle size={size} />
-          <StyledCircleFiller percent={percent} size={size} />
+          <StyledCircle $size={size} />
+          <StyledCircleFiller $percent={percent} $size={size} />
           {(size === 'large' || size === 'medium') && (
-            <StyledText size={size}>{percent ? Math.floor(percent) : 0}%</StyledText>
+            <StyledText $size={size}>{percent ? Math.floor(percent) : 0}%</StyledText>
           )}
         </StyledProgressCircle>
       );
