@@ -170,7 +170,7 @@ const InternalTreeNode = <T,>({
   const renderedArrow = useMemo(
     () =>
       children ? (
-        <StyledArrowWrapper expanded={isExpanded} flexShrink={0}>
+        <StyledArrowWrapper $expanded={isExpanded} flexShrink={0}>
           <ChevronRightIcon color="secondary60" focusable={false} size="xLarge" />
         </StyledArrowWrapper>
       ) : (
@@ -276,10 +276,10 @@ const InternalTreeNode = <T,>({
         {...additionalProps}
       >
         <StyledFlex
+          $selected={isSelected}
           alignItems="center"
           flexDirection="row"
           onClick={handleNodeToggle}
-          selected={isSelected}
         >
           {renderedArrow}
           {renderedSelectable}
