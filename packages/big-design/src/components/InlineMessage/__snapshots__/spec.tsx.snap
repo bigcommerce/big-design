@@ -71,7 +71,6 @@ exports[`render default (success) InlineMessage 1`] = `
     <svg
       aria-hidden="true"
       class="c5"
-      color="success"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -176,7 +175,6 @@ exports[`render error InlineMessage 1`] = `
     <svg
       aria-hidden="true"
       class="c5"
-      color="danger"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -277,7 +275,6 @@ exports[`render info InlineMessage 1`] = `
     <svg
       aria-hidden="true"
       class="c5"
-      color="primary60"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -382,7 +379,6 @@ exports[`render warning InlineMessage 1`] = `
     <svg
       aria-hidden="true"
       class="c5"
-      color="warning50"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -628,7 +624,6 @@ exports[`renders actions 1`] = `
     <svg
       aria-hidden="true"
       class="c5"
-      color="success"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -892,7 +887,6 @@ exports[`renders close button 1`] = `
     <svg
       aria-hidden="true"
       class="c5"
-      color="success"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -1047,7 +1041,6 @@ exports[`renders header 1`] = `
     <svg
       aria-hidden="true"
       class="c5"
-      color="success"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -1204,7 +1197,6 @@ exports[`renders with external link 1`] = `
     <svg
       aria-hidden="true"
       class="c5"
-      color="success"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -1362,7 +1354,6 @@ exports[`renders with link 1`] = `
     <svg
       aria-hidden="true"
       class="c5"
-      color="success"
       fill="currentColor"
       height="24"
       stroke="currentColor"
