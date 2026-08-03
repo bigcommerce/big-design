@@ -8,17 +8,8 @@ import { css } from 'styled-components';
 
 import { DisplayOverload, DisplayProps, TransientDisplayProps } from './types';
 
-// MIGRATION SHIM (LTRAC-1396): reads both the public (`display`) and transient
-// (`$display`) prop names so components can be migrated to transient props one PR at
-// a time while unconverted consumers keep rendering identically. Once every consumer
-// passes `$display`, drop the `?? display` fallback (and `DisplayProps` from the
-// generic) to leave a pure transient read.
-export const withDisplay = () => css<DisplayProps & TransientDisplayProps>`
-  ${({ display, $display, theme }) => {
-    const value = $display ?? display;
-
-    return value && getDisplayStyles(value, theme, 'display');
-  }};
+export const withDisplay = () => css<TransientDisplayProps>`
+  ${({ $display, theme }) => $display && getDisplayStyles($display, theme, 'display')};
 `;
 
 // Rename-and-keep helper: maps the public `display` prop to its transient (`$`-prefixed)

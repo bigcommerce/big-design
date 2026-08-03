@@ -4,22 +4,22 @@ import { render } from '@testing-library/react';
 import React from 'react';
 import styled from 'styled-components';
 
-import { excludeMarginProps, MarginProps, withMargins } from './margins';
+import { excludeMarginProps, MarginProps, TransientMarginProps, withMargins } from './margins';
 
-const TestComponent = styled.div<MarginProps>`
+const TestComponent = styled.div<TransientMarginProps>`
   ${withMargins()};
 `;
 
 TestComponent.defaultProps = { theme: defaultTheme };
 
 test('margin', () => {
-  const { container } = render(<TestComponent margin="medium" />);
+  const { container } = render(<TestComponent $margin="medium" />);
 
   expect(container.firstChild).toHaveStyle('margin: 1rem');
 });
 
 test('marginTop', () => {
-  const { container } = render(<TestComponent marginTop="medium" />);
+  const { container } = render(<TestComponent $marginTop="medium" />);
 
   expect(container.firstChild).toHaveStyle('margin-top: 1rem');
 
@@ -30,7 +30,7 @@ test('marginTop', () => {
 });
 
 test('marginRight', () => {
-  const { container } = render(<TestComponent marginRight="medium" />);
+  const { container } = render(<TestComponent $marginRight="medium" />);
 
   expect(container.firstChild).toHaveStyle('margin-right: 1rem');
 
@@ -41,7 +41,7 @@ test('marginRight', () => {
 });
 
 test('marginBottom', () => {
-  const { container } = render(<TestComponent marginBottom="medium" />);
+  const { container } = render(<TestComponent $marginBottom="medium" />);
 
   expect(container.firstChild).toHaveStyle('margin-bottom: 1rem');
 
@@ -52,7 +52,7 @@ test('marginBottom', () => {
 });
 
 test('marginLeft', () => {
-  const { container } = render(<TestComponent marginLeft="medium" />);
+  const { container } = render(<TestComponent $marginLeft="medium" />);
 
   expect(container.firstChild).toHaveStyle('margin-left: 1rem');
 
@@ -63,7 +63,7 @@ test('marginLeft', () => {
 });
 
 test('marginVertical', () => {
-  const { container } = render(<TestComponent marginVertical="medium" />);
+  const { container } = render(<TestComponent $marginVertical="medium" />);
 
   expect(container.firstChild).toHaveStyle('margin-top: 1rem');
   expect(container.firstChild).toHaveStyle('margin-bottom: 1rem');
@@ -74,7 +74,7 @@ test('marginVertical', () => {
 });
 
 test('marginHorizontal', () => {
-  const { container } = render(<TestComponent marginHorizontal="medium" />);
+  const { container } = render(<TestComponent $marginHorizontal="medium" />);
 
   expect(container.firstChild).toHaveStyle('margin-left: 1rem');
   expect(container.firstChild).toHaveStyle('margin-right: 1rem');
@@ -86,7 +86,7 @@ test('marginHorizontal', () => {
 
 test('simple margins combination', () => {
   const { container } = render(
-    <TestComponent marginBottom="none" marginRight="small" marginTop="medium" />,
+    <TestComponent $marginBottom="none" $marginRight="small" $marginTop="medium" />,
   );
 
   expect(container.firstChild).toHaveStyle('margin-top: 1rem');
@@ -96,7 +96,7 @@ test('simple margins combination', () => {
 
 test('responsive margin', () => {
   const { container } = render(
-    <TestComponent margin={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
+    <TestComponent $margin={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
@@ -104,7 +104,7 @@ test('responsive margin', () => {
 
 test('responsive marginTop', () => {
   const { container } = render(
-    <TestComponent marginTop={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
+    <TestComponent $marginTop={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
@@ -112,7 +112,7 @@ test('responsive marginTop', () => {
 
 test('responsive marginRight', () => {
   const { container } = render(
-    <TestComponent marginRight={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
+    <TestComponent $marginRight={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
@@ -120,7 +120,7 @@ test('responsive marginRight', () => {
 
 test('responsive marginBottom', () => {
   const { container } = render(
-    <TestComponent marginBottom={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
+    <TestComponent $marginBottom={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
@@ -128,7 +128,7 @@ test('responsive marginBottom', () => {
 
 test('responsive marginLeft', () => {
   const { container } = render(
-    <TestComponent marginLeft={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
+    <TestComponent $marginLeft={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
@@ -136,7 +136,7 @@ test('responsive marginLeft', () => {
 
 test('responsive marginVertical', () => {
   const { container } = render(
-    <TestComponent marginVertical={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
+    <TestComponent $marginVertical={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
@@ -144,7 +144,7 @@ test('responsive marginVertical', () => {
 
 test('responsive marginHorizontal', () => {
   const { container } = render(
-    <TestComponent marginHorizontal={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
+    <TestComponent $marginHorizontal={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
@@ -153,9 +153,9 @@ test('responsive marginHorizontal', () => {
 test('responsive and non responsive combination', () => {
   const { container } = render(
     <TestComponent
-      marginBottom="medium"
-      marginLeft={{ mobile: 'none', tablet: 'small', desktop: 'medium' }}
-      marginTop="none"
+      $marginBottom="medium"
+      $marginLeft={{ mobile: 'none', tablet: 'small', desktop: 'medium' }}
+      $marginTop="none"
     />,
   );
 
@@ -178,7 +178,7 @@ test('excludeMarginProps removes all margin props from an object', () => {
 });
 
 test('non-spacing value auto', () => {
-  const { container } = render(<TestComponent margin="auto" />);
+  const { container } = render(<TestComponent $margin="auto" />);
 
   expect(container.firstChild).toHaveStyle('margin: auto');
 });

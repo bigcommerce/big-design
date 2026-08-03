@@ -2,13 +2,16 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { withDisplay } from '../../helpers';
+import { TransientDisplayProps } from '../../helpers/display/types';
 import { Box } from '../Box';
 
 import { FlexProps } from './Flex';
 import { withFlexedContainer } from './withFlex';
 
 // TODO: Remove the `forwardedAs` manual prop definition when @types get updated
-export const StyledFlex = styled(Box)<FlexProps & { forwardedAs?: FlexProps['as'] }>`
+export const StyledFlex = styled(Box)<
+  FlexProps & TransientDisplayProps & { forwardedAs?: FlexProps['as'] }
+>`
   ${withFlexedContainer()}
 
   display: flex;

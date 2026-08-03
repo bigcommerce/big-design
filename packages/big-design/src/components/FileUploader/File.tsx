@@ -64,7 +64,7 @@ export const File = ({ actions, name, idx, isValid, previewSrc, onRemove, ...pro
       paddingHorizontal="small"
     >
       {renderedFilePreview}
-      <StyledText marginBottom="none" marginLeft="xSmall" marginRight="auto">
+      <StyledText $marginBottom="none" $marginLeft="xSmall" $marginRight="auto">
         {name}
       </StyledText>
       {renderedActions}

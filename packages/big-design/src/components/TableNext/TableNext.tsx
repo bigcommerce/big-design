@@ -8,6 +8,7 @@ import {
 import React, { memo, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 
 import { MarginProps } from '../../helpers';
+import { toTransientMarginProps } from '../../helpers/margins/margins';
 import { typedMemo } from '../../utils';
 
 import { Actions } from './Actions';
@@ -337,5 +338,7 @@ const InternalTableNext = <T extends TableItem>(
 
 export const TableNext = typedMemo(InternalTableNext);
 export const TableFigureNext: React.FC<{ children?: React.ReactNode } & MarginProps> = memo(
-  (props) => <StyledTableFigure {...props} />,
+  ({ children, ...props }) => (
+    <StyledTableFigure {...toTransientMarginProps(props)}>{children}</StyledTableFigure>
+  ),
 );
