@@ -26,16 +26,12 @@ import { useExpandable, useSelectable } from './hooks';
 import { Row } from './Row';
 import { RowContainer } from './RowContainer';
 import { StyledTable, StyledTableFigure } from './styled';
-import { TableColumn, TableItem, TableProps } from './types';
+import { Localization, TableColumn, TableItem, TableProps } from './types';
 
-interface Localization {
-  ascendingOrder: string;
-  descendingOrder: string;
-}
-
-const defaultLocalization: Localization = {
+const defaultLocalization: Required<Localization> = {
   ascendingOrder: 'Ascending order',
   descendingOrder: 'Descending order',
+  controlsLabel: 'Table Controls',
 };
 
 const InternalTableNext = <T extends TableItem>(
@@ -52,7 +48,7 @@ const InternalTableNext = <T extends TableItem>(
     itemName,
     items,
     keyField = 'id',
-    localization = defaultLocalization,
+    localization: customLocalization,
     pagination: undiscriminatedPagination,
     selectable,
     sortable,
@@ -68,7 +64,10 @@ const InternalTableNext = <T extends TableItem>(
     },
     ...rest
   } = props;
-
+  const localization = useMemo(
+    () => ({ ...defaultLocalization, ...customLocalization }),
+    [customLocalization],
+  );
   const pagination = useMemo(
     () => undiscriminatedPagination && discriminatePagination(undiscriminatedPagination),
     [undiscriminatedPagination],
@@ -317,6 +316,7 @@ const InternalTableNext = <T extends TableItem>(
           isChildrenRowsSelectable={isChildrenRowsSelectable}
           itemName={itemName}
           items={items}
+          label={localization.controlsLabel}
           onSelectionChange={selectable?.onSelectionChange}
           pagination={pagination}
           selectedItems={selectedItems}

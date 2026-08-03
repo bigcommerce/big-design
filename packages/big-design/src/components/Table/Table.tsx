@@ -20,16 +20,12 @@ import { HeaderCell } from './HeaderCell';
 import { DragIconHeaderCell, HeaderCheckboxCell } from './HeaderCell/HeaderCell';
 import { Row } from './Row';
 import { StyledTable, StyledTableFigure } from './styled';
-import { TableColumn, TableItem, TableProps } from './types';
+import { Localization, TableColumn, TableItem, TableProps } from './types';
 
-interface Localization {
-  ascendingOrder: string;
-  descendingOrder: string;
-}
-
-const defaultLocalization: Localization = {
+const defaultLocalization: Required<Localization> = {
   ascendingOrder: 'Ascending order',
   descendingOrder: 'Descending order',
+  controlsLabel: 'Table Controls',
 };
 
 const InternalTable = <T extends TableItem>(
@@ -45,7 +41,7 @@ const InternalTable = <T extends TableItem>(
     itemName,
     items,
     keyField = 'id',
-    localization = defaultLocalization,
+    localization: customLocalization,
     onRowDrop,
     pagination: undiscriminatedPagination,
     selectable,
@@ -54,7 +50,10 @@ const InternalTable = <T extends TableItem>(
     style,
     ...rest
   } = props;
-
+  const localization = useMemo(
+    () => ({ ...defaultLocalization, ...customLocalization }),
+    [customLocalization],
+  );
   const pagination = useMemo(
     () => undiscriminatedPagination && discriminatePagination(undiscriminatedPagination),
     [undiscriminatedPagination],
@@ -293,6 +292,7 @@ const InternalTable = <T extends TableItem>(
           forwardedRef={actionsRef}
           itemName={itemName}
           items={items}
+          label={localization.controlsLabel}
           onSelectionChange={selectable?.onSelectionChange}
           pagination={pagination}
           selectedItems={selectedItems}
