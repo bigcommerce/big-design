@@ -174,7 +174,6 @@ li:focus > .c4::after,
         <svg
           aria-hidden="true"
           class="c8"
-          color="secondary60"
           fill="currentColor"
           focusable="false"
           height="24"
@@ -198,7 +197,6 @@ li:focus > .c4::after,
         <svg
           aria-hidden="true"
           class="c11"
-          color="primary30"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -241,7 +239,6 @@ li:focus > .c4::after,
         <svg
           aria-hidden="true"
           class="c8"
-          color="secondary60"
           fill="currentColor"
           focusable="false"
           height="24"
@@ -265,7 +262,6 @@ li:focus > .c4::after,
         <svg
           aria-hidden="true"
           class="c11"
-          color="primary30"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -311,7 +307,6 @@ li:focus > .c4::after,
         <svg
           aria-hidden="true"
           class="c11"
-          color="primary30"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -354,7 +349,6 @@ li:focus > .c4::after,
         <svg
           aria-hidden="true"
           class="c8"
-          color="secondary60"
           fill="currentColor"
           focusable="false"
           height="24"
@@ -378,7 +372,6 @@ li:focus > .c4::after,
         <svg
           aria-hidden="true"
           class="c11"
-          color="primary30"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -421,7 +414,6 @@ li:focus > .c4::after,
         <svg
           aria-hidden="true"
           class="c8"
-          color="secondary60"
           fill="currentColor"
           focusable="false"
           height="24"
@@ -445,7 +437,6 @@ li:focus > .c4::after,
         <svg
           aria-hidden="true"
           class="c11"
-          color="primary30"
           fill="currentColor"
           height="24"
           stroke="currentColor"
