@@ -84,6 +84,22 @@ test('renders with default background styles', () => {
     `);
 });
 
+test('does not leak background prop onto the DOM', () => {
+  const backgroundProps = {
+    src: 'test-image.jpg',
+  };
+
+  const { container } = render(<Page background={backgroundProps}>Page content</Page>);
+  // eslint-disable-next-line testing-library/no-node-access
+  const firstChild = container.firstElementChild;
+
+  if (!firstChild) {
+    throw new Error();
+  }
+
+  expect(firstChild).not.toHaveAttribute('background');
+});
+
 test('renders without background by default', () => {
   render(<Page>Page content</Page>);
 
