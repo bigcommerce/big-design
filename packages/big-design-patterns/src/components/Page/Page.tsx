@@ -52,7 +52,7 @@ const PageMessage = ({ message }: Required<Pick<PageProps, 'message'>>) => {
 export const Page = ({ actionBar, background, children, header, message }: PageProps) => {
   return (
     <StyledPageBackground
-      background={background}
+      $background={background}
       backgroundColor="secondary10"
       gridGap="0"
       gridTemplate="1fr auto / auto"

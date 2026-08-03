@@ -10,19 +10,19 @@ export interface Background {
 }
 
 export const StyledPageBackground = styled(Grid).attrs({ theme: defaultTheme })<{
-  background?: Background;
+  $background?: Background;
 }>`
   position: relative;
   min-height: 100dvh;
 
-  ${({ background }) => {
-    if (background) {
+  ${({ $background }) => {
+    if ($background) {
       const {
         src,
         backgroundPosition = 'top right',
         backgroundSize = 'contain',
         backgroundRepeat = 'no-repeat',
-      } = background;
+      } = $background;
 
       return css`
         background-image: url(${src});
