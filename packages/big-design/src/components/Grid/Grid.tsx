@@ -11,8 +11,12 @@ interface PrivateProps {
   forwardedRef: React.Ref<HTMLDivElement>;
 }
 
-const RawGrid: React.FC<GridProps & PrivateProps> = ({ as, forwardedRef, ...rest }) => (
-  <StyledGrid forwardedAs={as} ref={forwardedRef} {...rest} />
+// `display` is passed twice deliberately: StyledGrid composes over Box (a component, not
+// a tag), so `display` also needs to reach Box's own internal $-prefixed handling
+// untouched (its public contract), while `$display` feeds StyledGrid's own separate
+// withDisplay() call on its outer layer.
+const RawGrid: React.FC<GridProps & PrivateProps> = ({ as, display, forwardedRef, ...rest }) => (
+  <StyledGrid $display={display} display={display} forwardedAs={as} ref={forwardedRef} {...rest} />
 );
 
 export const Grid = forwardRef<HTMLDivElement, GridProps>((props, ref) => (

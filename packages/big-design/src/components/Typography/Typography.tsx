@@ -1,5 +1,7 @@
 import React, { memo } from 'react';
 
+import { toTransientMarginProps } from '../../helpers/margins/margins';
+
 import {
   StyledH0,
   StyledH1,
@@ -25,36 +27,156 @@ export const StyleableH4 = StyledH4;
 export const StyleableHR = StyledHR;
 
 // Public
-export const Text: React.FC<TextProps> = memo(({ className, style, ...props }) => (
-  <StyleableText {...props} />
-));
-export const Small: React.FC<TextProps> = memo(({ className, style, ...props }) => (
-  <StyleableSmall {...props} />
-));
+export const Text: React.FC<TextProps> = memo((props) => {
+  const {
+    className,
+    style,
+    margin,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft,
+    marginVertical,
+    marginHorizontal,
+    ...domProps
+  } = props;
 
-export const HR: React.FC<HRProps> = memo(({ className, style, ...props }) => (
-  <StyleableHR {...props} />
-));
+  return <StyleableText {...domProps} {...toTransientMarginProps(props)} />;
+});
 
-export const H0: React.FC<HeadingProps> = memo(({ className, style, as, ...props }) => (
-  <StyleableH0 as={getHeadingTag('h1', as)} {...props} />
-));
+export const Small: React.FC<TextProps> = memo((props) => {
+  const {
+    className,
+    style,
+    margin,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft,
+    marginVertical,
+    marginHorizontal,
+    ...domProps
+  } = props;
 
-export const H1: React.FC<HeadingProps> = memo(({ className, style, as, ...props }) => (
-  <StyleableH1 as={getHeadingTag('h1', as)} {...props} />
-));
+  return <StyleableSmall {...domProps} {...toTransientMarginProps(props)} />;
+});
 
-export const H2: React.FC<HeadingProps> = memo(({ className, style, as, ...props }) => (
-  <StyleableH2 as={getHeadingTag('h2', as)} {...props} />
-));
+export const HR: React.FC<HRProps> = memo((props) => {
+  const {
+    className,
+    style,
+    margin,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft,
+    marginVertical,
+    marginHorizontal,
+    ...domProps
+  } = props;
 
-export const H3: React.FC<HeadingProps> = memo(({ className, style, as, ...props }) => (
-  <StyleableH3 as={getHeadingTag('h3', as)} {...props} />
-));
+  return <StyleableHR {...domProps} {...toTransientMarginProps(props)} />;
+});
 
-export const H4: React.FC<HeadingProps> = memo(({ className, style, as, ...props }) => (
-  <StyleableH4 as={getHeadingTag('h4', as)} {...props} />
-));
+export const H0: React.FC<HeadingProps> = memo((props) => {
+  const {
+    className,
+    style,
+    as,
+    margin,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft,
+    marginVertical,
+    marginHorizontal,
+    ...domProps
+  } = props;
+
+  return (
+    <StyleableH0 as={getHeadingTag('h1', as)} {...domProps} {...toTransientMarginProps(props)} />
+  );
+});
+
+export const H1: React.FC<HeadingProps> = memo((props) => {
+  const {
+    className,
+    style,
+    as,
+    margin,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft,
+    marginVertical,
+    marginHorizontal,
+    ...domProps
+  } = props;
+
+  return (
+    <StyleableH1 as={getHeadingTag('h1', as)} {...domProps} {...toTransientMarginProps(props)} />
+  );
+});
+
+export const H2: React.FC<HeadingProps> = memo((props) => {
+  const {
+    className,
+    style,
+    as,
+    margin,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft,
+    marginVertical,
+    marginHorizontal,
+    ...domProps
+  } = props;
+
+  return (
+    <StyleableH2 as={getHeadingTag('h2', as)} {...domProps} {...toTransientMarginProps(props)} />
+  );
+});
+
+export const H3: React.FC<HeadingProps> = memo((props) => {
+  const {
+    className,
+    style,
+    as,
+    margin,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft,
+    marginVertical,
+    marginHorizontal,
+    ...domProps
+  } = props;
+
+  return (
+    <StyleableH3 as={getHeadingTag('h3', as)} {...domProps} {...toTransientMarginProps(props)} />
+  );
+});
+
+export const H4: React.FC<HeadingProps> = memo((props) => {
+  const {
+    className,
+    style,
+    as,
+    margin,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft,
+    marginVertical,
+    marginHorizontal,
+    ...domProps
+  } = props;
+
+  return (
+    <StyleableH4 as={getHeadingTag('h4', as)} {...domProps} {...toTransientMarginProps(props)} />
+  );
+});
 
 const getHeadingTag = (defaultTag: HeadingTag, tag?: HeadingTag): HeadingTag => {
   return tag && validHeadingTags.has(tag) ? tag : defaultTag;

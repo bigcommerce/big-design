@@ -4,22 +4,22 @@ import { render } from '@testing-library/react';
 import React from 'react';
 import styled from 'styled-components';
 
-import { excludePaddingProps, PaddingProps, withPaddings } from './paddings';
+import { excludePaddingProps, PaddingProps, TransientPaddingProps, withPaddings } from './paddings';
 
-const TestComponent = styled.div<PaddingProps>`
+const TestComponent = styled.div<TransientPaddingProps>`
   ${withPaddings()};
 `;
 
 TestComponent.defaultProps = { theme: defaultTheme };
 
 test('padding', () => {
-  const { container } = render(<TestComponent padding="medium" />);
+  const { container } = render(<TestComponent $padding="medium" />);
 
   expect(container.firstChild).toHaveStyle('padding: 1rem');
 });
 
 test('paddingTop', () => {
-  const { container } = render(<TestComponent paddingTop="medium" />);
+  const { container } = render(<TestComponent $paddingTop="medium" />);
 
   expect(container.firstChild).toHaveStyle('padding-top: 1rem');
 
@@ -30,7 +30,7 @@ test('paddingTop', () => {
 });
 
 test('paddingRight', () => {
-  const { container } = render(<TestComponent paddingRight="medium" />);
+  const { container } = render(<TestComponent $paddingRight="medium" />);
 
   expect(container.firstChild).toHaveStyle('padding-right: 1rem');
 
@@ -41,7 +41,7 @@ test('paddingRight', () => {
 });
 
 test('paddingBottom', () => {
-  const { container } = render(<TestComponent paddingBottom="medium" />);
+  const { container } = render(<TestComponent $paddingBottom="medium" />);
 
   expect(container.firstChild).toHaveStyle('padding-bottom: 1rem');
 
@@ -52,7 +52,7 @@ test('paddingBottom', () => {
 });
 
 test('paddingLeft', () => {
-  const { container } = render(<TestComponent paddingLeft="medium" />);
+  const { container } = render(<TestComponent $paddingLeft="medium" />);
 
   expect(container.firstChild).toHaveStyle('padding-left: 1rem');
 
@@ -63,7 +63,7 @@ test('paddingLeft', () => {
 });
 
 test('paddingVertical', () => {
-  const { container } = render(<TestComponent paddingVertical="medium" />);
+  const { container } = render(<TestComponent $paddingVertical="medium" />);
 
   expect(container.firstChild).toHaveStyle('padding-top: 1rem');
   expect(container.firstChild).toHaveStyle('padding-bottom: 1rem');
@@ -74,7 +74,7 @@ test('paddingVertical', () => {
 });
 
 test('paddingHorizontal', () => {
-  const { container } = render(<TestComponent paddingHorizontal="medium" />);
+  const { container } = render(<TestComponent $paddingHorizontal="medium" />);
 
   expect(container.firstChild).toHaveStyle('padding-left: 1rem');
   expect(container.firstChild).toHaveStyle('padding-right: 1rem');
@@ -86,7 +86,7 @@ test('paddingHorizontal', () => {
 
 test('simple paddings combination', () => {
   const { container } = render(
-    <TestComponent paddingBottom="none" paddingRight="small" paddingTop="medium" />,
+    <TestComponent $paddingBottom="none" $paddingRight="small" $paddingTop="medium" />,
   );
 
   expect(container.firstChild).toHaveStyle('padding-top: 1rem');
@@ -96,7 +96,7 @@ test('simple paddings combination', () => {
 
 test('responsive padding', () => {
   const { container } = render(
-    <TestComponent padding={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
+    <TestComponent $padding={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
@@ -104,7 +104,7 @@ test('responsive padding', () => {
 
 test('responsive paddingTop', () => {
   const { container } = render(
-    <TestComponent paddingTop={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
+    <TestComponent $paddingTop={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
@@ -112,7 +112,7 @@ test('responsive paddingTop', () => {
 
 test('responsive paddingRight', () => {
   const { container } = render(
-    <TestComponent paddingRight={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
+    <TestComponent $paddingRight={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
@@ -120,7 +120,7 @@ test('responsive paddingRight', () => {
 
 test('responsive paddingBottom', () => {
   const { container } = render(
-    <TestComponent paddingBottom={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
+    <TestComponent $paddingBottom={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
@@ -128,7 +128,7 @@ test('responsive paddingBottom', () => {
 
 test('responsive paddingLeft', () => {
   const { container } = render(
-    <TestComponent paddingLeft={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
+    <TestComponent $paddingLeft={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
@@ -136,7 +136,7 @@ test('responsive paddingLeft', () => {
 
 test('responsive paddingVertical', () => {
   const { container } = render(
-    <TestComponent paddingVertical={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
+    <TestComponent $paddingVertical={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
@@ -144,7 +144,7 @@ test('responsive paddingVertical', () => {
 
 test('responsive paddingHorizontal', () => {
   const { container } = render(
-    <TestComponent paddingHorizontal={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
+    <TestComponent $paddingHorizontal={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
@@ -153,9 +153,9 @@ test('responsive paddingHorizontal', () => {
 test('responsive and non responsive combination', () => {
   const { container } = render(
     <TestComponent
-      paddingBottom="medium"
-      paddingLeft={{ mobile: 'none', tablet: 'small', desktop: 'medium' }}
-      paddingTop="none"
+      $paddingBottom="medium"
+      $paddingLeft={{ mobile: 'none', tablet: 'small', desktop: 'medium' }}
+      $paddingTop="none"
     />,
   );
 
