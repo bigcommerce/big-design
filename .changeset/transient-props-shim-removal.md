@@ -11,6 +11,4 @@ This also converts the last few remaining consumers found by an audit of every `
 
 `withPaddings()` had no outstanding non-converted consumers.
 
-**Note for reviewers:** `withMargins()`/`withPaddings()`/`withDisplay()`, and their `Transient*Props`/`toTransient*Props()` counterparts, are exported from `@bigcommerce/big-design`'s public API via `helpers/index.ts`'s wildcard re-export (contrary to earlier assumptions in this migration that they weren't). Their exported return-type signatures narrow slightly (`css<MarginProps & TransientMarginProps>` → `css<TransientMarginProps>`, etc.). Within this monorepo, the only consumer using these utilities outside `packages/big-design`'s own source was `docs/MethodBadge`, already converted here. Any *external* consumer of the published package calling these directly with bare (non-`$`) props would need to update — an unlikely usage pattern for what are effectively internal-only utilities, but worth flagging explicitly.
-
 All 182 snapshots pass; one snapshot updated (`helpers/display/spec.tsx`'s own test) reflecting a `display` leak removal, the same category of fix as Stage 0's `Box` and Stage 4's `Table`/`TableNext`. No public component `Props` interface changed.
