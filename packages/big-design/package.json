@@ -39,6 +39,7 @@
     "@babel/runtime": "^7.26.10",
     "@bigcommerce/big-design-icons": "workspace:^",
     "@bigcommerce/big-design-theme": "workspace:^",
+    "@floating-ui/react": "^0.27.20",
     "@popperjs/core": "^2.11.6",
     "date-fns": "4.1.0",
     "downshift": "9.0.10",

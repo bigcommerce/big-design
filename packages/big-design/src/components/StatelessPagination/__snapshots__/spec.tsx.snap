@@ -344,7 +344,7 @@ exports[`render Stateless pagination component 1`] = `
       </button>
       <div
         class="c8"
-        style="position: fixed; left: 0px; top: 0px;"
+        style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <div
           class="c9"
@@ -370,7 +370,7 @@ exports[`render Stateless pagination component 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":r3:"
+          aria-labelledby=":r4:"
           class="c12"
           fill="currentColor"
           height="24"
@@ -380,7 +380,7 @@ exports[`render Stateless pagination component 1`] = `
           width="24"
         >
           <title
-            id=":r3:"
+            id=":r4:"
           >
             Previous page
           </title>
@@ -402,7 +402,7 @@ exports[`render Stateless pagination component 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":r4:"
+          aria-labelledby=":r5:"
           class="c12"
           fill="currentColor"
           height="24"
@@ -412,7 +412,7 @@ exports[`render Stateless pagination component 1`] = `
           width="24"
         >
           <title
-            id=":r4:"
+            id=":r5:"
           >
             Next page
           </title>

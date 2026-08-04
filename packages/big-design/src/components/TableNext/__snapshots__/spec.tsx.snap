@@ -396,10 +396,7 @@ exports[`offset pagination renders a pagination component 1`] = `
           </button>
           <div
             class="c11"
-            data-popper-escaped="true"
-            data-popper-placement="bottom-start"
-            data-popper-reference-hidden="true"
-            style="position: fixed; left: 0px; top: 0px; right: auto; bottom: auto; transform: translate(0px, 4px);"
+            style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
           >
             <div
               class="c12"
@@ -426,7 +423,7 @@ exports[`offset pagination renders a pagination component 1`] = `
             class="c9"
           >
             <svg
-              aria-labelledby=":r16:"
+              aria-labelledby=":r17:"
               class="c15"
               fill="currentColor"
               height="24"
@@ -436,7 +433,7 @@ exports[`offset pagination renders a pagination component 1`] = `
               width="24"
             >
               <title
-                id=":r16:"
+                id=":r17:"
               >
                 Previous page
               </title>
@@ -458,7 +455,7 @@ exports[`offset pagination renders a pagination component 1`] = `
             class="c9"
           >
             <svg
-              aria-labelledby=":r17:"
+              aria-labelledby=":r18:"
               class="c15"
               fill="currentColor"
               height="24"
@@ -468,7 +465,7 @@ exports[`offset pagination renders a pagination component 1`] = `
               width="24"
             >
               <title
-                id=":r17:"
+                id=":r18:"
               >
                 Next page
               </title>
@@ -1014,7 +1011,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
 }
 
 <div
-  aria-controls=":r8j:"
+  aria-controls=":r8v:"
   aria-label="Table Controls"
   class="c0"
   role="toolbar"
@@ -1030,15 +1027,15 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
       >
         <input
           aria-checked="false"
-          aria-labelledby=":r8l:"
+          aria-labelledby=":r91:"
           class="c6 c7"
-          id=":r8k:"
+          id=":r90:"
           type="checkbox"
         />
         <label
           aria-hidden="true"
           class="c8 c9"
-          for=":r8k:"
+          for=":r90:"
         >
           <svg
             aria-hidden="true"
@@ -1064,9 +1061,9 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
         >
           <label
             class="c12"
-            for=":r8k:"
+            for=":r90:"
             hidden=""
-            id=":r8l:"
+            id=":r91:"
           >
             Select All
           </label>
@@ -1307,7 +1304,7 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
 }
 
 <div
-  aria-controls=":r99:"
+  aria-controls=":r9l:"
   aria-label="Table Controls"
   class="c0"
   role="toolbar"
@@ -1323,15 +1320,15 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
       >
         <input
           aria-checked="false"
-          aria-labelledby=":r9b:"
+          aria-labelledby=":r9n:"
           class="c6 c7"
-          id=":r9a:"
+          id=":r9m:"
           type="checkbox"
         />
         <label
           aria-hidden="true"
           class="c8 c9"
-          for=":r9a:"
+          for=":r9m:"
         >
           <svg
             aria-hidden="true"
@@ -1357,9 +1354,9 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
         >
           <label
             class="c12"
-            for=":r9a:"
+            for=":r9m:"
             hidden=""
-            id=":r9b:"
+            id=":r9n:"
           >
             Select All
           </label>
@@ -1600,7 +1597,7 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
 }
 
 <div
-  aria-controls=":rd0:"
+  aria-controls=":rdc:"
   aria-label="Table Controls"
   class="c0"
   role="toolbar"
@@ -1616,15 +1613,15 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
       >
         <input
           aria-checked="false"
-          aria-labelledby=":rd2:"
+          aria-labelledby=":rde:"
           class="c6 c7"
-          id=":rd1:"
+          id=":rdd:"
           type="checkbox"
         />
         <label
           aria-hidden="true"
           class="c8 c9"
-          for=":rd1:"
+          for=":rdd:"
         >
           <svg
             aria-hidden="true"
@@ -1650,9 +1647,9 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
         >
           <label
             class="c12"
-            for=":rd1:"
+            for=":rdd:"
             hidden=""
-            id=":rd2:"
+            id=":rde:"
           >
             Select All
           </label>

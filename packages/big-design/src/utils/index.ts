@@ -1,4 +1,5 @@
 export * from './env';
+export * from './floatingPlacement';
 export * from './localizationProvider';
 export * from './messagingHelpers';
 export * from './treeHelpers';
