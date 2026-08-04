@@ -1,16 +1,17 @@
+import { autoUpdate, offset, shift, useFloating } from '@floating-ui/react';
 import { useSelect, UseSelectProps, UseSelectState } from 'downshift';
 import React, {
   cloneElement,
   isValidElement,
   memo,
   useCallback,
+  useEffect,
   useId,
   useMemo,
-  useRef,
 } from 'react';
 import { createPortal } from 'react-dom';
-import { usePopper } from 'react-popper';
 
+import { getFloatingPlacement } from '../../utils';
 import { Box } from '../Box';
 import { List } from '../List';
 
@@ -116,32 +117,21 @@ export const Dropdown = memo(
         toggleButtonId: toggle.props.id,
       });
 
-    const referenceElement = useRef<HTMLElement | null>(null);
-    const popperElement = useRef<HTMLDivElement | null>(null);
+    const { middleware: placementMiddleware, placement: floatingPlacement } =
+      getFloatingPlacement(placement);
 
-    const { attributes, styles, update } = usePopper(
-      referenceElement.current,
-      popperElement.current,
-      {
-        modifiers: [
-          {
-            name: 'eventListeners',
-            options: {
-              scroll: isOpen,
-              resize: isOpen,
-            },
-          },
-          {
-            name: 'offset',
-            options: {
-              offset: [0, 4],
-            },
-          },
-        ],
-        placement,
-        strategy: positionFixed ? 'fixed' : 'absolute',
-      },
-    );
+    const { floatingStyles, refs, update } = useFloating({
+      middleware: [offset(4), placementMiddleware, shift()],
+      placement: floatingPlacement,
+      strategy: positionFixed ? 'fixed' : 'absolute',
+    });
+
+    // Only track scroll/resize while open, matching popper's previous eventListeners config
+    useEffect(() => {
+      if (isOpen && refs.reference.current && refs.floating.current) {
+        return autoUpdate(refs.reference.current, refs.floating.current, update);
+      }
+    }, [isOpen, refs.reference, refs.floating, update]);
 
     const clonedToggle =
       isValidElement(toggle) &&
@@ -151,7 +141,7 @@ export const Dropdown = memo(
           // Downshift sets this to a label id that doesn't exist
           'aria-labelledby': undefined,
           disabled,
-          ref: referenceElement,
+          ref: refs.setReference,
           role: 'button',
         }),
       });
@@ -161,7 +151,7 @@ export const Dropdown = memo(
         {clonedToggle}
         {isOpen ? (
           createPortal(
-            <Box ref={popperElement} style={styles.popper} {...attributes.popper} zIndex="popover">
+            <Box ref={refs.setFloating} style={floatingStyles} zIndex="popover">
               <List
                 {...props}
                 autoWidth={autoWidth}
@@ -180,14 +170,8 @@ export const Dropdown = memo(
             document.body,
           )
         ) : (
-          // We need to render the menu hidden to ensure it has a reference for popper
-          <Box
-            ref={popperElement}
-            style={styles.popper}
-            {...attributes.popper}
-            display="none"
-            zIndex="popover"
-          >
+          // We need to render the menu hidden to ensure it has a reference for positioning
+          <Box display="none" ref={refs.setFloating} style={floatingStyles} zIndex="popover">
             <List
               {...props}
               autoWidth={autoWidth}

@@ -1,3 +1,4 @@
+import { autoUpdate, offset, shift, useFloating } from '@floating-ui/react';
 import {
   useCombobox,
   UseComboboxState,
@@ -14,12 +15,10 @@ import React, {
   useEffect,
   useId,
   useMemo,
-  useRef,
   useState,
 } from 'react';
-import { usePopper } from 'react-popper';
 
-import { typedMemo, warning } from '../../utils';
+import { getFloatingPlacement, typedMemo, warning } from '../../utils';
 import { Box } from '../Box';
 import { FormControlLabel } from '../Form';
 import { Input } from '../Input';
@@ -300,29 +299,21 @@ export const MultiSelect = typedMemo(
       stateReducer: handleStateReducer,
     });
 
-    // Popper
-    const referenceRef = useRef(null);
-    const popperRef = useRef(null);
+    const { middleware: placementMiddleware, placement: floatingPlacement } =
+      getFloatingPlacement(placement);
 
-    const { styles, attributes, update } = usePopper(referenceRef.current, popperRef.current, {
-      modifiers: [
-        {
-          name: 'eventListeners',
-          options: {
-            scroll: isOpen,
-            resize: isOpen,
-          },
-        },
-        {
-          name: 'offset',
-          options: {
-            offset: [0, 4],
-          },
-        },
-      ],
+    const { floatingStyles, refs, update } = useFloating({
+      middleware: [offset(4), placementMiddleware, shift()],
+      placement: floatingPlacement,
       strategy: positionFixed ? 'fixed' : 'absolute',
-      placement,
     });
+
+    // Only track scroll/resize while open, matching popper's previous eventListeners config
+    useEffect(() => {
+      if (isOpen && refs.reference.current && refs.floating.current) {
+        return autoUpdate(refs.reference.current, refs.floating.current, update);
+      }
+    }, [isOpen, refs.reference, refs.floating, update]);
 
     // Reset the value when Multiselect is closed
     useEffect(() => {
@@ -390,7 +381,7 @@ export const MultiSelect = typedMemo(
 
     const renderInput = useMemo(() => {
       return (
-        <StyledInputContainer ref={referenceRef}>
+        <StyledInputContainer ref={refs.setReference}>
           <Input
             {...getInputProps({
               ...props,
@@ -461,6 +452,7 @@ export const MultiSelect = typedMemo(
       openMenu,
       placeholder,
       props,
+      refs.setReference,
       removeItem,
       renderToggle,
       required,
@@ -477,7 +469,7 @@ export const MultiSelect = typedMemo(
       <div>
         {renderLabel}
         {renderInput}
-        <Box ref={popperRef} style={styles.popper} {...attributes.poppper} zIndex="popover">
+        <Box ref={refs.setFloating} style={floatingStyles} zIndex="popover">
           <List
             {...ariaLabelledBy}
             action={action}

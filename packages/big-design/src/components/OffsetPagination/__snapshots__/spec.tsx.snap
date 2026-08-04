@@ -344,10 +344,7 @@ exports[`render offset pagination component 1`] = `
       </button>
       <div
         class="c8"
-        data-popper-escaped="true"
-        data-popper-placement="bottom-start"
-        data-popper-reference-hidden="true"
-        style="position: fixed; left: 0px; top: 0px; right: auto; bottom: auto; transform: translate(0px, 4px);"
+        style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <div
           class="c9"
@@ -374,7 +371,7 @@ exports[`render offset pagination component 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":r3:"
+          aria-labelledby=":r4:"
           class="c12"
           fill="currentColor"
           height="24"
@@ -384,7 +381,7 @@ exports[`render offset pagination component 1`] = `
           width="24"
         >
           <title
-            id=":r3:"
+            id=":r4:"
           >
             Previous page
           </title>
@@ -406,7 +403,7 @@ exports[`render offset pagination component 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":r4:"
+          aria-labelledby=":r5:"
           class="c12"
           fill="currentColor"
           height="24"
@@ -416,7 +413,7 @@ exports[`render offset pagination component 1`] = `
           width="24"
         >
           <title
-            id=":r4:"
+            id=":r5:"
           >
             Next page
           </title>
@@ -743,11 +740,11 @@ exports[`render offset pagination component with invalid page info 1`] = `
     >
       <button
         aria-activedescendant=""
-        aria-controls=":r5:-menu"
+        aria-controls=":r6:-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c4 c5"
-        id=":r5:-toggle-button"
+        id=":r6:-toggle-button"
         role="button"
         tabindex="0"
         type="button"
@@ -778,18 +775,15 @@ exports[`render offset pagination component with invalid page info 1`] = `
       </button>
       <div
         class="c8"
-        data-popper-escaped="true"
-        data-popper-placement="bottom-start"
-        data-popper-reference-hidden="true"
-        style="position: fixed; left: 0px; top: 0px; right: auto; bottom: auto; transform: translate(0px, 4px);"
+        style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <div
           class="c9"
         >
           <ul
-            aria-labelledby=":r5:-label"
+            aria-labelledby=":r6:-label"
             class="c10"
-            id=":r5:-menu"
+            id=":r6:-menu"
             role="menu"
           />
         </div>
@@ -808,7 +802,7 @@ exports[`render offset pagination component with invalid page info 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":r8:"
+          aria-labelledby=":ra:"
           class="c12"
           fill="currentColor"
           height="24"
@@ -818,7 +812,7 @@ exports[`render offset pagination component with invalid page info 1`] = `
           width="24"
         >
           <title
-            id=":r8:"
+            id=":ra:"
           >
             Previous page
           </title>
@@ -840,7 +834,7 @@ exports[`render offset pagination component with invalid page info 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":r9:"
+          aria-labelledby=":rb:"
           class="c12"
           fill="currentColor"
           height="24"
@@ -850,7 +844,7 @@ exports[`render offset pagination component with invalid page info 1`] = `
           width="24"
         >
           <title
-            id=":r9:"
+            id=":rb:"
           >
             Next page
           </title>
@@ -1177,11 +1171,11 @@ exports[`render offset pagination component with invalid range info 1`] = `
     >
       <button
         aria-activedescendant=""
-        aria-controls=":ra:-menu"
+        aria-controls=":rc:-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c4 c5"
-        id=":ra:-toggle-button"
+        id=":rc:-toggle-button"
         role="button"
         tabindex="0"
         type="button"
@@ -1212,18 +1206,15 @@ exports[`render offset pagination component with invalid range info 1`] = `
       </button>
       <div
         class="c8"
-        data-popper-escaped="true"
-        data-popper-placement="bottom-start"
-        data-popper-reference-hidden="true"
-        style="position: fixed; left: 0px; top: 0px; right: auto; bottom: auto; transform: translate(0px, 4px);"
+        style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <div
           class="c9"
         >
           <ul
-            aria-labelledby=":ra:-label"
+            aria-labelledby=":rc:-label"
             class="c10"
-            id=":ra:-menu"
+            id=":rc:-menu"
             role="menu"
           />
         </div>
@@ -1242,7 +1233,7 @@ exports[`render offset pagination component with invalid range info 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":rd:"
+          aria-labelledby=":rg:"
           class="c12"
           fill="currentColor"
           height="24"
@@ -1252,7 +1243,7 @@ exports[`render offset pagination component with invalid range info 1`] = `
           width="24"
         >
           <title
-            id=":rd:"
+            id=":rg:"
           >
             Previous page
           </title>
@@ -1275,7 +1266,7 @@ exports[`render offset pagination component with invalid range info 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":re:"
+          aria-labelledby=":rh:"
           class="c12"
           fill="currentColor"
           height="24"
@@ -1285,7 +1276,7 @@ exports[`render offset pagination component with invalid range info 1`] = `
           width="24"
         >
           <title
-            id=":re:"
+            id=":rh:"
           >
             Next page
           </title>
@@ -1612,11 +1603,11 @@ exports[`render offset pagination component with no items 1`] = `
     >
       <button
         aria-activedescendant=""
-        aria-controls=":rf:-menu"
+        aria-controls=":ri:-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c4 c5"
-        id=":rf:-toggle-button"
+        id=":ri:-toggle-button"
         role="button"
         tabindex="0"
         type="button"
@@ -1647,18 +1638,15 @@ exports[`render offset pagination component with no items 1`] = `
       </button>
       <div
         class="c8"
-        data-popper-escaped="true"
-        data-popper-placement="bottom-start"
-        data-popper-reference-hidden="true"
-        style="position: fixed; left: 0px; top: 0px; right: auto; bottom: auto; transform: translate(0px, 4px);"
+        style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <div
           class="c9"
         >
           <ul
-            aria-labelledby=":rf:-label"
+            aria-labelledby=":ri:-label"
             class="c10"
-            id=":rf:-menu"
+            id=":ri:-menu"
             role="menu"
           />
         </div>
@@ -1677,7 +1665,7 @@ exports[`render offset pagination component with no items 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":ri:"
+          aria-labelledby=":rm:"
           class="c12"
           fill="currentColor"
           height="24"
@@ -1687,7 +1675,7 @@ exports[`render offset pagination component with no items 1`] = `
           width="24"
         >
           <title
-            id=":ri:"
+            id=":rm:"
           >
             Previous page
           </title>
@@ -1710,7 +1698,7 @@ exports[`render offset pagination component with no items 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":rj:"
+          aria-labelledby=":rn:"
           class="c12"
           fill="currentColor"
           height="24"
@@ -1720,7 +1708,7 @@ exports[`render offset pagination component with no items 1`] = `
           width="24"
         >
           <title
-            id=":rj:"
+            id=":rn:"
           >
             Next page
           </title>

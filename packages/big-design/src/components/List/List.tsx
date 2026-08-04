@@ -1,4 +1,3 @@
-import { State } from '@popperjs/core';
 import { UseComboboxPropGetters, UseSelectPropGetters } from 'downshift';
 import React, {
   ComponentPropsWithoutRef,
@@ -44,7 +43,7 @@ export interface ListProps<T> extends ComponentPropsWithoutRef<'ul'> {
   getMenuProps:
     | UseSelectPropGetters<any>['getMenuProps']
     | UseComboboxPropGetters<any>['getMenuProps'];
-  update: (() => Promise<Partial<State>>) | null;
+  update: (() => void) | null;
   localization?: { selectAll: MultiSelectLocalization['selectAll'] };
   removeItem?(item: SelectOption<T>): void;
 }
@@ -80,16 +79,12 @@ const StyleableList = typedMemo(
     const itemKey = useRef(0);
     const { height, width } = useWindowSize();
 
-    // Recalculate Popper for correct positioning
+    // Recalculate the floating position of the menu
     useIsomorphicLayoutEffect(() => {
-      async function scheduleUpdate() {
-        // Only update when menu is open
-        if (update && isOpen) {
-          await update();
-        }
+      // Only update when menu is open
+      if (update && isOpen) {
+        update();
       }
-
-      scheduleUpdate();
     }, [isOpen, height, width, selectedItems?.length]);
 
     const handleSelectAll = useCallback(

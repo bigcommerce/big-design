@@ -1,3 +1,4 @@
+import { autoUpdate, offset, shift, useFloating } from '@floating-ui/react';
 import { useCombobox, UseComboboxState, UseComboboxStateChangeOptions } from 'downshift';
 import React, {
   cloneElement,
@@ -9,12 +10,10 @@ import React, {
   useEffect,
   useId,
   useMemo,
-  useRef,
   useState,
 } from 'react';
-import { usePopper } from 'react-popper';
 
-import { typedMemo, warning } from '../../utils';
+import { getFloatingPlacement, typedMemo, warning } from '../../utils';
 import { Box } from '../Box';
 import { FormControlLabel } from '../Form';
 import { Input } from '../Input';
@@ -226,29 +225,21 @@ export const Select = typedMemo(
       stateReducer: handleStateReducer,
     });
 
-    // Popper
-    const referenceRef = useRef(null);
-    const popperRef = useRef(null);
+    const { middleware: placementMiddleware, placement: floatingPlacement } =
+      getFloatingPlacement(placement);
 
-    const { styles, attributes, update } = usePopper(referenceRef.current, popperRef.current, {
-      modifiers: [
-        {
-          name: 'eventListeners',
-          options: {
-            scroll: isOpen,
-            resize: isOpen,
-          },
-        },
-        {
-          name: 'offset',
-          options: {
-            offset: [0, 4],
-          },
-        },
-      ],
+    const { floatingStyles, refs, update } = useFloating({
+      middleware: [offset(4), placementMiddleware, shift()],
+      placement: floatingPlacement,
       strategy: positionFixed ? 'fixed' : 'absolute',
-      placement,
     });
+
+    // Only track scroll/resize while open, matching popper's previous eventListeners config
+    useEffect(() => {
+      if (isOpen && refs.reference.current && refs.floating.current) {
+        return autoUpdate(refs.reference.current, refs.floating.current, update);
+      }
+    }, [isOpen, refs.reference, refs.floating, update]);
 
     const setCallbackRef = useCallback(
       (ref: HTMLInputElement) => {
@@ -309,7 +300,7 @@ export const Select = typedMemo(
 
     const renderInput = useMemo(() => {
       return (
-        <StyledInputContainer ref={referenceRef}>
+        <StyledInputContainer ref={refs.setReference}>
           <Input
             {...getInputProps({
               ...props,
@@ -378,13 +369,14 @@ export const Select = typedMemo(
       openMenu,
       onOptionChange,
       closeMenu,
+      refs.setReference,
     ]);
 
     return (
       <div>
         {renderLabel}
         {renderInput}
-        <Box ref={popperRef} style={styles.popper} {...attributes.poppper} zIndex="popover">
+        <Box ref={refs.setFloating} style={floatingStyles} zIndex="popover">
           <List
             {...ariaLabelledBy}
             action={action}
