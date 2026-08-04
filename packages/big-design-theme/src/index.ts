@@ -38,7 +38,9 @@ export const createTheme = (customOptions: Partial<ThemeOptions> = {}): ThemeInt
     breakpoints,
     colors,
     helpers: createHelpers(),
-    keyframes,
+    // Spread into a plain object: styled-components 6 deep-merges themes when folding
+    // defaultProps (mixinDeep), which throws on a getter-only module namespace object.
+    keyframes: { ...keyframes },
     lineHeight: createLineHeight(),
     shadow,
     spacing: createSpacing(),

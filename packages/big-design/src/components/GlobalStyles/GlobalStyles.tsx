@@ -10,4 +10,6 @@ export const GlobalStyles = createGlobalStyle`
   }
 `;
 
-GlobalStyles.defaultProps = { theme: defaultTheme };
+// styled-components 6 types createGlobalStyle's return without `defaultProps`, but the
+// runtime still reads it as the theme fallback (determineTheme), so assign it untyped.
+Object.assign(GlobalStyles, { defaultProps: { theme: defaultTheme } });

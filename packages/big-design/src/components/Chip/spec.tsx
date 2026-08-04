@@ -64,7 +64,7 @@ test('icon is always constrained to 16px (1rem) regardless of icon size prop', (
 });
 
 test('icon is always constrained to 16px even if size is set to 40px', () => {
-  const { container } = render(<Chip icon={<AddIcon size="40px" />} label="Large icon" />);
+  const { container } = render(<Chip icon={<AddIcon size={40} />} label="Large icon" />);
 
   const chip = container.firstChild;
   const iconWrapper = chip?.firstChild;

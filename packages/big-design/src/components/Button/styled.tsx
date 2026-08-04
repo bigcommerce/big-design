@@ -92,9 +92,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
   ${(props) => getButtonStyles(props)}
 `;
 
-export const ContentWrapper = styled.span.attrs<Record<string, unknown>, { $isLoading?: boolean }>(
-  {},
-)`
+export const ContentWrapper = styled.span<{ $isLoading?: boolean }>`
   align-content: center;
   align-items: center;
   display: inline-grid;
@@ -116,7 +114,7 @@ export const LoadingSpinnerWrapper = styled(Flex)`
  * These can be generated dynamically but I'm leaning towards being extra
  * explicit and being able to handle corner cases and changes from design easily
  */
-const ButtonPrimary = css<ButtonProps>`
+const ButtonPrimary = css`
   background-color: ${({ theme }) => theme.colors.primary};
   border-color: ${({ theme }) => theme.colors.primary};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
@@ -138,7 +136,7 @@ const ButtonPrimary = css<ButtonProps>`
   }
 `;
 
-const ButtonPrimaryDestructive = css<ButtonProps>`
+const ButtonPrimaryDestructive = css`
   background-color: ${({ theme }) => theme.colors.danger};
   border-color: ${({ theme }) => theme.colors.danger};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
@@ -160,7 +158,7 @@ const ButtonPrimaryDestructive = css<ButtonProps>`
   }
 `;
 
-const ButtonSecondary = css<ButtonProps>`
+const ButtonSecondary = css`
   background-color: transparent;
   border-color: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.primary};
@@ -182,7 +180,7 @@ const ButtonSecondary = css<ButtonProps>`
   }
 `;
 
-const ButtonSecondaryDestructive = css<ButtonProps>`
+const ButtonSecondaryDestructive = css`
   background-color: transparent;
   border-color: ${({ theme }) => theme.colors.danger};
   color: ${({ theme }) => theme.colors.danger};
@@ -204,7 +202,7 @@ const ButtonSecondaryDestructive = css<ButtonProps>`
   }
 `;
 
-const ButtonSubtle = css<ButtonProps>`
+const ButtonSubtle = css`
   background-color: transparent;
   border-color: transparent;
   color: ${({ theme }) => theme.colors.primary};
@@ -227,7 +225,7 @@ const ButtonSubtle = css<ButtonProps>`
   }
 `;
 
-const ButtonSubtleDestructive = css<ButtonProps>`
+const ButtonSubtleDestructive = css`
   background-color: transparent;
   border-color: transparent;
   color: ${({ theme }) => theme.colors.danger};
@@ -250,7 +248,7 @@ const ButtonSubtleDestructive = css<ButtonProps>`
   }
 `;
 
-const ButtonUtility = css<ButtonProps>`
+const ButtonUtility = css`
   background-color: transparent;
   border-color: transparent;
   color: ${({ theme }) => theme.colors.secondary60};
@@ -276,7 +274,7 @@ const ButtonUtility = css<ButtonProps>`
   }
 `;
 
-const ButtonUtilityDestructive = css<ButtonProps>`
+const ButtonUtilityDestructive = css`
   background-color: transparent;
   border-color: transparent;
   color: ${({ theme }) => theme.colors.secondary60};
