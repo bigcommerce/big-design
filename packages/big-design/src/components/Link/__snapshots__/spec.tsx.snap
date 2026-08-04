@@ -2,15 +2,12 @@
 
 exports[`render link 1`] = `
 .c0 {
-  -webkit-transition: all 70ms ease-out;
   transition: all 70ms ease-out;
-  -webkit-transition-property: color;
   transition-property: color;
   color: #3C64F4;
   cursor: pointer;
   font-size: 1rem;
   font-weight: 400;
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -38,23 +35,14 @@ exports[`renders with external icon 1`] = `
 }
 
 .c0 {
-  -webkit-transition: all 70ms ease-out;
   transition: all 70ms ease-out;
-  -webkit-transition-property: color;
   transition-property: color;
   color: #3C64F4;
   cursor: pointer;
   font-size: 1rem;
   font-weight: 400;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -67,8 +55,6 @@ exports[`renders with external icon 1`] = `
 }
 
 .c0 svg {
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
   flex-shrink: 0;
   margin-left: 0.25rem;
 }

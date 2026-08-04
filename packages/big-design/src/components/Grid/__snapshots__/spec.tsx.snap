@@ -23,7 +23,7 @@ exports[`render Grid 1`] = `
 
 .c1 {
   gap: 1rem;
-  grid-template: "head head" 80px "nav  main" 1fr "nav  foot" 10% / 120px 1fr;
+  grid-template: "head head" 80px "nav  main" 1fr "nav  foot" 10%/120px 1fr;
   display: grid;
 }
 

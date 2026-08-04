@@ -24,107 +24,51 @@ exports[`offset pagination renders a pagination component 1`] = `
 }
 
 .c4 {
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
   align-content: stretch;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
   align-items: stretch;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
   justify-content: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c2 {
-  -webkit-align-self: auto;
-  -ms-flex-item-align: auto;
   align-self: auto;
-  -webkit-flex-basis: auto;
-  -ms-flex-preferred-size: auto;
   flex-basis: auto;
-  -webkit-box-flex: 0;
-  -webkit-flex-grow: 0;
-  -ms-flex-positive: 0;
   flex-grow: 0;
-  -webkit-order: 0;
-  -ms-flex-order: 0;
   order: 0;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
 .c5 {
-  -webkit-align-self: auto;
-  -ms-flex-item-align: auto;
   align-self: auto;
-  -webkit-flex-basis: auto;
-  -ms-flex-preferred-size: auto;
   flex-basis: auto;
-  -webkit-box-flex: 0;
-  -webkit-flex-grow: 0;
-  -ms-flex-positive: 0;
   flex-grow: 0;
-  -webkit-order: 0;
-  -ms-flex-order: 0;
   order: 0;
-  -webkit-flex-shrink: 1;
-  -ms-flex-negative: 1;
   flex-shrink: 1;
 }
 
 .c7 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -144,7 +88,7 @@ exports[`offset pagination renders a pagination component 1`] = `
   pointer-events: none;
 }
 
-.c7 + .bd-button {
+.c7+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -166,45 +110,26 @@ exports[`offset pagination renders a pagination component 1`] = `
 }
 
 .c14 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -223,7 +148,7 @@ exports[`offset pagination renders a pagination component 1`] = `
   pointer-events: none;
 }
 
-.c14 + .bd-button {
+.c14+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -245,12 +170,7 @@ exports[`offset pagination renders a pagination component 1`] = `
 }
 
 .c9 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -292,46 +212,35 @@ exports[`offset pagination renders a pagination component 1`] = `
 }
 
 .c0 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-pack: stretch;
-  -webkit-justify-content: stretch;
-  -ms-flex-pack: stretch;
   justify-content: stretch;
   background-color: #FFFFFF;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   padding: 0.75rem 1.5rem;
 }
 
-@media (min-width:720px) {
-  .c7 + .bd-button {
+@media (min-width: 720px) {
+  .c7+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c7 {
     width: auto;
   }
 }
 
-@media (min-width:720px) {
-  .c14 + .bd-button {
+@media (min-width: 720px) {
+  .c14+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c14 {
     width: auto;
     padding: 0;
@@ -491,26 +400,11 @@ exports[`renders a simple table 1`] = `
 }
 
 .c3 {
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
   align-content: stretch;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
   justify-content: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -534,9 +428,6 @@ exports[`renders a simple table 1`] = `
 }
 
 .c4 {
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
   justify-content: flex-start;
 }
 
@@ -558,9 +449,7 @@ exports[`renders a simple table 1`] = `
 }
 
 .c5 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color;
   transition-property: background-color;
   display: table-row;
   background-color: transparent;
@@ -732,7 +621,7 @@ exports[`renders a table figure 1`] = `
   white-space: nowrap;
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c0 {
     white-space: normal;
   }
@@ -744,7 +633,7 @@ exports[`renders a table figure 1`] = `
 `;
 
 exports[`selectable renders selectable actions and checkboxes 1`] = `
-.c10 {
+.c9 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
@@ -759,55 +648,29 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   box-sizing: border-box;
 }
 
-.c14 {
+.c13 {
   margin-right: 1rem;
   box-sizing: border-box;
 }
 
 .c4 {
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
   align-content: stretch;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
   align-items: stretch;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
   justify-content: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c2 {
-  -webkit-align-self: auto;
-  -ms-flex-item-align: auto;
   align-self: auto;
-  -webkit-flex-basis: auto;
-  -ms-flex-preferred-size: auto;
   flex-basis: auto;
-  -webkit-box-flex: 0;
-  -webkit-flex-grow: 0;
-  -ms-flex-positive: 0;
   flex-grow: 0;
-  -webkit-order: 0;
-  -ms-flex-order: 0;
   order: 0;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-.c13 {
+.c12 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -816,11 +679,11 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   margin-left: 0.75rem;
 }
 
-.c13:last-child {
+.c12:last-child {
   margin-bottom: 0;
 }
 
-.c15 {
+.c14 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -829,11 +692,11 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   margin: 0;
 }
 
-.c15:last-child {
+.c14:last-child {
   margin-bottom: 0;
 }
 
-.c12 {
+.c11 {
   color: #313440;
   font-size: 1rem;
   font-weight: 400;
@@ -841,7 +704,6 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   margin: 0 0 1rem;
   cursor: pointer;
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
   height: 1px;
   margin: -1px;
@@ -852,28 +714,21 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   width: 1px;
 }
 
-.c12:last-child {
+.c11:last-child {
   margin-bottom: 0;
 }
 
-.c11 {
+.c10 {
   margin-left: 0.5rem;
 }
 
 .c5 {
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
   align-items: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c7 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
   height: 1px;
   margin: -1px;
@@ -884,14 +739,9 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   width: 1px;
 }
 
-.c9 {
-  -webkit-transition: all 150ms ease-out;
+.c8 {
   transition: all 150ms ease-out;
-  -webkit-transition-property: border-color,background,box-shadow,color,opacity;
   transition-property: border-color,background,box-shadow,color,opacity;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   background: #FFFFFF;
   box-sizing: border-box;
@@ -900,52 +750,32 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   height: 1.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   margin-bottom: 0.125rem;
   margin-top: 0.125rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   width: 1.25rem;
 }
 
-.c9:hover {
+.c8:hover {
   border-color: #B4BAD1;
 }
 
-.c6:focus + .c8 {
+.c6:focus+.c8 {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c9 svg {
+.c8 svg {
   opacity: 0;
 }
 
 .c0 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-pack: stretch;
-  -webkit-justify-content: stretch;
-  -ms-flex-pack: stretch;
   justify-content: stretch;
   background-color: #FFFFFF;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   padding: 0.75rem 1.5rem;
 }
@@ -974,12 +804,12 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
         />
         <label
           aria-hidden="true"
-          class="c8 c9"
+          class="c8"
           for=":r3d:"
         >
           <svg
             aria-hidden="true"
-            class="c10"
+            class="c9"
             fill="currentColor"
             height="24"
             stroke="currentColor"
@@ -997,10 +827,10 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
           </svg>
         </label>
         <div
-          class="c11"
+          class="c10"
         >
           <label
-            class="c12"
+            class="c11"
             for=":r3d:"
             hidden=""
             id=":r3e:"
@@ -1010,17 +840,17 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
         </div>
       </div>
       <p
-        class="c13"
+        class="c12"
       >
         5
       </p>
     </div>
   </div>
   <div
-    class="c14 c2"
+    class="c13 c2"
   >
     <p
-      class="c15"
+      class="c14"
     >
       Product
     </p>

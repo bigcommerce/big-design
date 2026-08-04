@@ -5,12 +5,7 @@ exports[`render feature set 1`] = `
   list-style-type: none;
   margin: 0;
   padding: 0;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   gap: 0.75rem;
 }
@@ -37,33 +32,20 @@ exports[`render feature set 1`] = `
 }
 
 .c1 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   background-color: #ECEEF5;
   border-radius: 0.25rem;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   color: #5E637A;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
   gap: 0.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   padding-block: 0.125rem;
   padding-inline: 0.5rem;
 }
 
-.c1 > svg {
+.c1>svg {
   height: 1rem;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
   flex-shrink: 0;
   width: 1rem;
 }
