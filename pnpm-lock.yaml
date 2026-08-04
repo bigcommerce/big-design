@@ -91,9 +91,6 @@ importers:
       react-intersection-observer:
         specifier: ^10.0.0
         version: 10.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      react-popper:
-        specifier: ^2.3.0
-        version: 2.3.0(@popperjs/core@2.11.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       zustand:
         specifier: ^5.0.11
         version: 5.0.11(@types/react@18.2.73)(react@18.2.0)(use-sync-external-store@1.4.0(react@18.2.0))

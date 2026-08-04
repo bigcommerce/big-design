@@ -340,7 +340,7 @@ exports[`offset pagination renders a pagination component 1`] = `
 }
 
 <div
-  aria-controls=":r12:"
+  aria-controls=":r14:"
   aria-label="Table Controls"
   class="c0"
   role="toolbar"
@@ -361,11 +361,11 @@ exports[`offset pagination renders a pagination component 1`] = `
         >
           <button
             aria-activedescendant=""
-            aria-controls=":r13:-menu"
+            aria-controls=":r15:-menu"
             aria-expanded="false"
             aria-haspopup="menu"
             class="c7 c8"
-            id=":r13:-toggle-button"
+            id=":r15:-toggle-button"
             role="button"
             tabindex="0"
             type="button"
@@ -402,9 +402,9 @@ exports[`offset pagination renders a pagination component 1`] = `
               class="c12"
             >
               <ul
-                aria-labelledby=":r13:-label"
+                aria-labelledby=":r15:-label"
                 class="c13"
-                id=":r13:-menu"
+                id=":r15:-menu"
                 role="menu"
               />
             </div>
@@ -423,7 +423,7 @@ exports[`offset pagination renders a pagination component 1`] = `
             class="c9"
           >
             <svg
-              aria-labelledby=":r17:"
+              aria-labelledby=":r19:"
               class="c15"
               fill="currentColor"
               height="24"
@@ -433,7 +433,7 @@ exports[`offset pagination renders a pagination component 1`] = `
               width="24"
             >
               <title
-                id=":r17:"
+                id=":r19:"
               >
                 Previous page
               </title>
@@ -455,7 +455,7 @@ exports[`offset pagination renders a pagination component 1`] = `
             class="c9"
           >
             <svg
-              aria-labelledby=":r18:"
+              aria-labelledby=":r1a:"
               class="c15"
               fill="currentColor"
               height="24"
@@ -465,7 +465,7 @@ exports[`offset pagination renders a pagination component 1`] = `
               width="24"
             >
               <title
-                id=":r18:"
+                id=":r1a:"
               >
                 Next page
               </title>
@@ -1011,7 +1011,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
 }
 
 <div
-  aria-controls=":r8v:"
+  aria-controls=":r91:"
   aria-label="Table Controls"
   class="c0"
   role="toolbar"
@@ -1027,15 +1027,15 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
       >
         <input
           aria-checked="false"
-          aria-labelledby=":r91:"
+          aria-labelledby=":r93:"
           class="c6 c7"
-          id=":r90:"
+          id=":r92:"
           type="checkbox"
         />
         <label
           aria-hidden="true"
           class="c8 c9"
-          for=":r90:"
+          for=":r92:"
         >
           <svg
             aria-hidden="true"
@@ -1061,9 +1061,9 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
         >
           <label
             class="c12"
-            for=":r90:"
+            for=":r92:"
             hidden=""
-            id=":r91:"
+            id=":r93:"
           >
             Select All
           </label>
@@ -1304,7 +1304,7 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
 }
 
 <div
-  aria-controls=":r9l:"
+  aria-controls=":r9n:"
   aria-label="Table Controls"
   class="c0"
   role="toolbar"
@@ -1320,15 +1320,15 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
       >
         <input
           aria-checked="false"
-          aria-labelledby=":r9n:"
+          aria-labelledby=":r9p:"
           class="c6 c7"
-          id=":r9m:"
+          id=":r9o:"
           type="checkbox"
         />
         <label
           aria-hidden="true"
           class="c8 c9"
-          for=":r9m:"
+          for=":r9o:"
         >
           <svg
             aria-hidden="true"
@@ -1354,9 +1354,9 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
         >
           <label
             class="c12"
-            for=":r9m:"
+            for=":r9o:"
             hidden=""
-            id=":r9n:"
+            id=":r9p:"
           >
             Select All
           </label>
@@ -1597,7 +1597,7 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
 }
 
 <div
-  aria-controls=":rdc:"
+  aria-controls=":rde:"
   aria-label="Table Controls"
   class="c0"
   role="toolbar"
@@ -1613,15 +1613,15 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
       >
         <input
           aria-checked="false"
-          aria-labelledby=":rde:"
+          aria-labelledby=":rdg:"
           class="c6 c7"
-          id=":rdd:"
+          id=":rdf:"
           type="checkbox"
         />
         <label
           aria-hidden="true"
           class="c8 c9"
-          for=":rdd:"
+          for=":rdf:"
         >
           <svg
             aria-hidden="true"
@@ -1647,9 +1647,9 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
         >
           <label
             class="c12"
-            for=":rdd:"
+            for=":rdf:"
             hidden=""
-            id=":rde:"
+            id=":rdg:"
           >
             Select All
           </label>
