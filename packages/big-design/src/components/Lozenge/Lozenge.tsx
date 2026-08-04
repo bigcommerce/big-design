@@ -99,7 +99,7 @@ export const Lozenge = forwardRef<HTMLDivElement | HTMLButtonElement, LozengePro
         <Tooltip
           placement="auto"
           trigger={
-            <StyledLozenge hasTooltip ref={(node) => setForwardedRef(ref, node)} variant={variant}>
+            <StyledLozenge $hasTooltip ref={(node) => setForwardedRef(ref, node)} variant={variant}>
               <VariantIcon aria-hidden="true" size="large" />
               {label}
               <InfoIcon aria-hidden="true" size="large" />

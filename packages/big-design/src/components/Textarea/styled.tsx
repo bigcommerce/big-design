@@ -1,17 +1,21 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import React from 'react';
 import styled, { css } from 'styled-components';
 
 import { withTransition } from '../../helpers/transitions';
 
-import { TextareaProps } from './Textarea';
+interface StyledTextareaProps {
+  $resize?: boolean;
+  error?: React.ReactNode | React.ReactNode[];
+}
 
-export const StyledTextareaWrapper = styled.span<TextareaProps>`
+export const StyledTextareaWrapper = styled.span`
   align-items: center;
   display: flex;
   position: relative;
 `;
 
-export const StyledTextarea = styled.textarea<TextareaProps>`
+export const StyledTextarea = styled.textarea<StyledTextareaProps>`
   ${withTransition(['border', 'box-shadow'])}
 
   background-color: ${({ theme }) => theme.colors.white};
@@ -23,8 +27,8 @@ export const StyledTextarea = styled.textarea<TextareaProps>`
   padding: ${({ theme }) => `${theme.spacing.xxSmall} ${theme.spacing.small}`};
   width: 100%;
 
-  ${({ resize }) =>
-    resize
+  ${({ $resize }) =>
+    $resize
       ? css`
           resize: vertical;
         `

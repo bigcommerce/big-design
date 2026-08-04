@@ -89,6 +89,17 @@ export type FlexedProps = Partial<{
   justifyContent: JustifyContent;
 }>;
 
+export type TransientFlexedProps = Partial<{
+  $alignContent: AlignContent;
+  $alignItems: AlignItems;
+  $flexColumnGap: FlexColumnGap;
+  $flexDirection: FlexDirection;
+  $flexGap: FlexGap;
+  $flexRowGap: FlexRowGap;
+  $flexWrap: FlexWrap;
+  $justifyContent: JustifyContent;
+}>;
+
 export type FlexedItemProps = Partial<{
   alignSelf: AlignSelf;
   flexBasis: FlexBasis;

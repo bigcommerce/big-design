@@ -6,11 +6,12 @@ import { Box } from '../../Box';
 import { StyleableButton } from '../../Button/private';
 
 interface StyledAccordionButtonProps {
-  isExpanded: boolean;
+  $isExpanded: boolean;
+  $iconLeft?: React.ReactNode;
 }
 
 interface StyledAccordionContentProps {
-  iconLeft: React.ReactNode;
+  $iconLeft?: React.ReactNode;
 }
 
 export const StyledAccordionButton = styled(StyleableButton)<StyledAccordionButtonProps>`
@@ -22,14 +23,14 @@ export const StyledAccordionButton = styled(StyleableButton)<StyledAccordionButt
   span {
     width: 100%;
     color: ${({ theme }) => theme.colors.secondary70};
-    grid-template-columns: ${({ iconLeft, theme }) =>
-      iconLeft
+    grid-template-columns: ${({ $iconLeft, theme }) =>
+      $iconLeft
         ? `${theme.spacing.xLarge} 1fr ${theme.spacing.medium}`
         : `1fr ${theme.spacing.medium}`};
   }
 
-  ${({ isExpanded }) =>
-    isExpanded &&
+  ${({ $isExpanded }) =>
+    $isExpanded &&
     css`
       border-bottom: ${({ theme }) => theme.border.box};
     `}
@@ -41,8 +42,8 @@ export const StyledAccordionButton = styled(StyleableButton)<StyledAccordionButt
   .collapse-icon {
     ${withTransition(['transform'])}
 
-    ${({ isExpanded }) =>
-      isExpanded &&
+    ${({ $isExpanded }) =>
+      $isExpanded &&
       css`
         transform: rotate(-180deg);
       `}
@@ -51,7 +52,7 @@ export const StyledAccordionButton = styled(StyleableButton)<StyledAccordionButt
 
 export const StyledAccordionContent = styled(Box)<StyledAccordionContentProps>`
   padding: ${({ theme }) => theme.spacing.xLarge}};
-  padding-left: ${({ iconLeft, theme }) => (iconLeft ? remCalc(60) : theme.spacing.xLarge)};
+  padding-left: ${({ $iconLeft, theme }) => ($iconLeft ? remCalc(60) : theme.spacing.xLarge)};
 `;
 
 StyledAccordionButton.defaultProps = { theme: defaultTheme };

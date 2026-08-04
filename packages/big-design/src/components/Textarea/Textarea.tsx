@@ -94,10 +94,10 @@ const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
       <StyledTextareaWrapper>
         <StyledTextarea
           {...props}
+          $resize={resize}
           error={errors}
           id={id}
           ref={forwardedRef}
-          resize={resize}
           rows={numOfRows}
         />
       </StyledTextareaWrapper>
