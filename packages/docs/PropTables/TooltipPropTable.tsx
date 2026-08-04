@@ -11,7 +11,6 @@ const tooltipProps: Prop[] = [
   },
   {
     name: 'placement',
-    defaultValue: 'top',
     types: [
       'auto',
       'auto-end',
@@ -29,7 +28,15 @@ const tooltipProps: Prop[] = [
       'top-end',
       'top-start',
     ],
-    description: 'Sets the position of the Tooltip.',
+    defaultValue: 'auto',
+    description:
+      'Sets the preferred position of the Tooltip. Explicit placements flip to the opposite side when there is not enough space. Auto placements pick whichever side has the most available space.',
+  },
+  {
+    name: 'middleware',
+    types: 'Middleware[]',
+    description:
+      'Floating UI middleware to customize positioning. Replaces the default middleware stack (offset(4), flip/autoPlacement, shift). Import middleware from @floating-ui/react.',
   },
 ];
 
