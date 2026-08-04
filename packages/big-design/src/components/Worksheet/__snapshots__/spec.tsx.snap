@@ -656,7 +656,6 @@ exports[`renders worksheet 1`] = `
         />
         <td
           class="c8"
-          type="text"
         >
           <p
             class="c9"
@@ -672,7 +671,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c11"
-          type="checkbox"
         >
           <div
             class="c12"
@@ -734,7 +732,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c8"
-          type="text"
         >
           <p
             class="c9"
@@ -750,7 +747,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c8"
-          type="modal"
         >
           <div
             class="c21 c22"
@@ -783,7 +779,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c29"
-          type="number"
         >
           <p
             class="c9"
@@ -804,7 +799,6 @@ exports[`renders worksheet 1`] = `
         />
         <td
           class="c8"
-          type="text"
         >
           <p
             class="c9"
@@ -820,7 +814,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c11"
-          type="checkbox"
         >
           <div
             class="c12"
@@ -882,7 +875,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c8"
-          type="text"
         >
           <p
             class="c9"
@@ -898,7 +890,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c8"
-          type="modal"
         >
           <div
             class="c21 c22"
@@ -931,7 +922,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c29"
-          type="number"
         >
           <p
             class="c9"
@@ -952,7 +942,6 @@ exports[`renders worksheet 1`] = `
         />
         <td
           class="c8"
-          type="text"
         >
           <p
             class="c9"
@@ -968,7 +957,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c11"
-          type="checkbox"
         >
           <div
             class="c12"
@@ -1029,7 +1017,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c8"
-          type="text"
         >
           <p
             class="c9"
@@ -1043,7 +1030,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c8"
-          type="modal"
         >
           <div
             class="c21 c22"
@@ -1076,7 +1062,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c29"
-          type="number"
         >
           <p
             class="c9"
@@ -1097,7 +1082,6 @@ exports[`renders worksheet 1`] = `
         />
         <td
           class="c8"
-          type="text"
         >
           <p
             class="c9"
@@ -1113,7 +1097,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c11"
-          type="checkbox"
         >
           <div
             class="c12"
@@ -1175,7 +1158,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c8"
-          type="text"
         >
           <p
             class="c9"
@@ -1191,7 +1173,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c8"
-          type="modal"
         >
           <div
             class="c21 c22"
@@ -1224,7 +1205,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c29"
-          type="number"
         >
           <p
             class="c9"
@@ -1245,7 +1225,6 @@ exports[`renders worksheet 1`] = `
         />
         <td
           class="c32"
-          type="text"
         >
           <p
             class="c9"
@@ -1259,7 +1238,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c11"
-          type="checkbox"
         >
           <div
             class="c12"
@@ -1319,7 +1297,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c8"
-          type="text"
         >
           <p
             class="c9"
@@ -1333,7 +1310,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c8"
-          type="modal"
         >
           <div
             class="c21 c22"
@@ -1364,7 +1340,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c33"
-          type="number"
         >
           <p
             class="c9"
@@ -1383,7 +1358,6 @@ exports[`renders worksheet 1`] = `
         />
         <td
           class="c8"
-          type="text"
         >
           <p
             class="c9"
@@ -1399,7 +1373,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c11"
-          type="checkbox"
         >
           <div
             class="c12"
@@ -1461,7 +1434,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c8"
-          type="text"
         >
           <p
             class="c9"
@@ -1477,7 +1449,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c8"
-          type="modal"
         >
           <div
             class="c21 c22"
@@ -1510,7 +1481,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c29"
-          type="number"
         >
           <p
             class="c9"
@@ -1531,7 +1501,6 @@ exports[`renders worksheet 1`] = `
         />
         <td
           class="c8"
-          type="text"
         >
           <p
             class="c9"
@@ -1547,7 +1516,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c11"
-          type="checkbox"
         >
           <div
             class="c12"
@@ -1608,7 +1576,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c8"
-          type="text"
         >
           <p
             class="c9"
@@ -1624,7 +1591,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c8"
-          type="modal"
         >
           <div
             class="c21 c22"
@@ -1657,7 +1623,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c33"
-          type="number"
         >
           <p
             class="c9"
@@ -1678,7 +1643,6 @@ exports[`renders worksheet 1`] = `
         />
         <td
           class="c8"
-          type="text"
         >
           <p
             class="c9"
@@ -1694,7 +1658,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c11"
-          type="checkbox"
         >
           <div
             class="c12"
@@ -1756,7 +1719,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c8"
-          type="text"
         >
           <p
             class="c9"
@@ -1772,7 +1734,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c8"
-          type="modal"
         >
           <div
             class="c21 c22"
@@ -1805,7 +1766,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c29"
-          type="number"
         >
           <p
             class="c9"
@@ -1826,7 +1786,6 @@ exports[`renders worksheet 1`] = `
         />
         <td
           class="c8"
-          type="text"
         >
           <p
             class="c9"
@@ -1842,7 +1801,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c11"
-          type="checkbox"
         >
           <div
             class="c12"
@@ -1904,7 +1862,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c8"
-          type="text"
         >
           <p
             class="c9"
@@ -1920,7 +1877,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c8"
-          type="modal"
         >
           <div
             class="c21 c22"
@@ -1953,7 +1909,6 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="c29"
-          type="number"
         >
           <p
             class="c9"

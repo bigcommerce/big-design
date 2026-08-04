@@ -6,7 +6,7 @@ import { ButtonProps } from '../../Button';
 import { StyleableButton } from '../../Button/private';
 
 interface StyledButtonProps extends ButtonProps {
-  isOpen?: boolean;
+  $isOpen?: boolean;
 }
 
 export const StyledButton = styled(StyleableButton)<StyledButtonProps>`
@@ -30,8 +30,8 @@ export const StyledButton = styled(StyleableButton)<StyledButtonProps>`
   svg {
     ${withTransition(['transform'])}
 
-    ${({ isOpen }) =>
-      isOpen &&
+    ${({ $isOpen }) =>
+      $isOpen &&
       css`
         transform: rotate(-180deg);
       `}

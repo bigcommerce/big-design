@@ -104,8 +104,8 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(
     const renderedDropdown = useMemo(
       () => (
         <StyledFlexItem
+          $isVisible={isMenuVisible}
           data-testid="buttongroup-dropdown"
-          isVisible={isMenuVisible}
           ref={dropdownRef}
           role="listitem"
         >
@@ -127,7 +127,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(
             placement="bottom-end"
             toggle={
               <StyledButton
-                borderRadius={actionsState.every(({ isVisible }) => !isVisible)}
+                $borderRadius={actionsState.every(({ isVisible }) => !isVisible)}
                 iconOnly={<MoreHorizIcon title={localization.more} />}
                 type="button"
                 variant="secondary"
@@ -149,8 +149,8 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(
 
             return (
               <StyledFlexItem
+                $isVisible={isVisible}
                 data-testid="buttongroup-item"
-                isVisible={isVisible}
                 key={key}
                 ref={ref}
                 role="listitem"

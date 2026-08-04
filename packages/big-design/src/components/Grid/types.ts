@@ -51,6 +51,19 @@ export type GridedProps = Partial<{
   gridTemplate: GridTemplate;
 }>;
 
+export type TransientGridedProps = Partial<{
+  $gridAreas: GridAreas;
+  $gridAutoColumns: GridAutoColumns;
+  $gridAutoFlow: GridAutoFlow;
+  $gridAutoRows: GridAutoRows;
+  $gridColumns: GridColumns;
+  $gridColumnGap: GridColumnGap;
+  $gridGap: GridGap;
+  $gridRows: GridRows;
+  $gridRowGap: GridRowGap;
+  $gridTemplate: GridTemplate;
+}>;
+
 export type GridedItemProps = Partial<{
   gridArea: GridArea;
   gridColumn: GridColumn;
@@ -59,6 +72,16 @@ export type GridedItemProps = Partial<{
   gridRow: GridRow;
   gridRowEnd: GridRowEnd;
   gridRowStart: GridRowStart;
+}>;
+
+export type TransientGridedItemProps = Partial<{
+  $gridArea: GridArea;
+  $gridColumn: GridColumn;
+  $gridColumnEnd: GridColumnEnd;
+  $gridColumnStart: GridColumnStart;
+  $gridRow: GridRow;
+  $gridRowEnd: GridRowEnd;
+  $gridRowStart: GridRowStart;
 }>;
 
 export interface GridedOverload {

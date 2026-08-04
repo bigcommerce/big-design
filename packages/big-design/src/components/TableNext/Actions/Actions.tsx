@@ -73,14 +73,14 @@ const InternalActions = <T extends TableItem>({
 
   return (
     <StyledFlex
-      alignItems="center"
+      $alignItems="center"
+      $flexDirection="row"
+      $justifyContent="stretch"
+      $stickyHeader={stickyHeader}
       aria-controls={tableId}
       aria-label="Table Controls"
-      flexDirection="row"
-      justifyContent="stretch"
       ref={forwardedRef}
       role="toolbar"
-      stickyHeader={stickyHeader}
       {...props}
     >
       {isSelectable && (

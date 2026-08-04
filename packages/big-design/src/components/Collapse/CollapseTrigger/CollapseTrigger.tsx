@@ -19,12 +19,12 @@ export const CollapseTrigger: React.FC<CollapseTriggerProps> = ({
 
   return (
     <StyledButton
+      $isOpen={isOpen}
       aria-controls={panelId}
       aria-expanded={isOpen}
       disabled={disabled}
       iconRight={<ExpandMoreIcon title={title} />}
       id={triggerId}
-      isOpen={isOpen}
       marginVertical={marginVertical}
       onClick={toggle}
       type="button"

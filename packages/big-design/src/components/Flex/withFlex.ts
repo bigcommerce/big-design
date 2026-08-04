@@ -6,21 +6,27 @@ import {
 } from '@bigcommerce/big-design-theme';
 import { css } from 'styled-components';
 
-import { FlexedItemProps, FlexedOverload, FlexedProps, TransientFlexedItemProps } from './types';
+import {
+  FlexedItemProps,
+  FlexedOverload,
+  FlexedProps,
+  TransientFlexedItemProps,
+  TransientFlexedProps,
+} from './types';
 
-export const withFlexedContainer = () => css<FlexedProps>`
-  ${({ alignContent, theme }) =>
-    alignContent && getFlexedStyles(alignContent, theme, 'align-content')};
-  ${({ alignItems, theme }) => alignItems && getFlexedStyles(alignItems, theme, 'align-items')};
-  ${({ flexDirection, theme }) =>
-    flexDirection && getFlexedStyles(flexDirection, theme, 'flex-direction')};
-  ${({ flexGap, theme }) => flexGap && getFlexedStyles(flexGap, theme, 'gap')};
-  ${({ flexColumnGap, theme }) =>
-    flexColumnGap && getFlexedStyles(flexColumnGap, theme, 'column-gap')};
-  ${({ flexRowGap, theme }) => flexRowGap && getFlexedStyles(flexRowGap, theme, 'row-gap')};
-  ${({ flexWrap, theme }) => flexWrap && getFlexedStyles(flexWrap, theme, 'flex-wrap')};
-  ${({ justifyContent, theme }) =>
-    justifyContent && getFlexedStyles(justifyContent, theme, 'justify-content')};
+export const withFlexedContainer = () => css<TransientFlexedProps>`
+  ${({ $alignContent, theme }) =>
+    $alignContent && getFlexedStyles($alignContent, theme, 'align-content')};
+  ${({ $alignItems, theme }) => $alignItems && getFlexedStyles($alignItems, theme, 'align-items')};
+  ${({ $flexDirection, theme }) =>
+    $flexDirection && getFlexedStyles($flexDirection, theme, 'flex-direction')};
+  ${({ $flexGap, theme }) => $flexGap && getFlexedStyles($flexGap, theme, 'gap')};
+  ${({ $flexColumnGap, theme }) =>
+    $flexColumnGap && getFlexedStyles($flexColumnGap, theme, 'column-gap')};
+  ${({ $flexRowGap, theme }) => $flexRowGap && getFlexedStyles($flexRowGap, theme, 'row-gap')};
+  ${({ $flexWrap, theme }) => $flexWrap && getFlexedStyles($flexWrap, theme, 'flex-wrap')};
+  ${({ $justifyContent, theme }) =>
+    $justifyContent && getFlexedStyles($justifyContent, theme, 'justify-content')};
 `;
 
 export const withFlexedItems = () => css<TransientFlexedItemProps>`
@@ -33,6 +39,30 @@ export const withFlexedItems = () => css<TransientFlexedItemProps>`
   ${({ $flexShrink, theme }) =>
     typeof $flexShrink !== 'undefined' && getFlexedStyles($flexShrink, theme, 'flex-shrink')};
 `;
+
+export function toTransientFlexedContainerProps(props: FlexedProps): TransientFlexedProps {
+  const {
+    alignContent,
+    alignItems,
+    flexColumnGap,
+    flexDirection,
+    flexGap,
+    flexRowGap,
+    flexWrap,
+    justifyContent,
+  } = props;
+
+  return {
+    $alignContent: alignContent,
+    $alignItems: alignItems,
+    $flexColumnGap: flexColumnGap,
+    $flexDirection: flexDirection,
+    $flexGap: flexGap,
+    $flexRowGap: flexRowGap,
+    $flexWrap: flexWrap,
+    $justifyContent: justifyContent,
+  };
+}
 
 // Rename-and-keep helper: maps FlexedItemProps' public fields to their transient
 // ($-prefixed) names for hand-off to a tag-target styled component. withFlexedItems()

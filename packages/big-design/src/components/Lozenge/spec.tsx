@@ -123,7 +123,7 @@ test('StyledLozenge adjusts end padding when hasTooltip is true/false', () => {
   // defaultProps has hasTooltip=false
   expect(container.firstChild).toHaveStyleRule('padding-inline-end', theme.spacing.small);
 
-  rerender(<StyledLozenge hasTooltip>Pad</StyledLozenge>);
+  rerender(<StyledLozenge $hasTooltip>Pad</StyledLozenge>);
 
   expect(container.firstChild).toHaveStyleRule('padding-inline-end', theme.spacing.xxSmall);
 });

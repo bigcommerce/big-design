@@ -5,58 +5,70 @@ import styled, { css } from 'styled-components';
 import { MarginProps, withMargins } from '../../helpers';
 import { TransientMarginProps } from '../../helpers/margins/margins';
 
-import { HeadingProps, HRProps, TextProps, TypographyProps } from './types';
+import {
+  HeadingProps,
+  HRProps,
+  TextProps,
+  TransientTextModifiers,
+  TransientTypographyProps,
+  TypographyProps,
+} from './types';
 
-type StyledHeadingProps = Omit<HeadingProps, keyof MarginProps> & TransientMarginProps;
-type StyledTextProps = Omit<TextProps, keyof MarginProps> & TransientMarginProps;
+type StyledHeadingProps = Omit<HeadingProps, keyof MarginProps> &
+  TransientMarginProps &
+  TransientTypographyProps;
+type StyledTextProps = Omit<TextProps, keyof MarginProps> &
+  TransientMarginProps &
+  TransientTypographyProps &
+  TransientTextModifiers;
 type StyledHRProps = Omit<HRProps, keyof MarginProps> & TransientMarginProps;
 
-const commonTextStyles = (props: TypographyProps) => css`
+const commonTextStyles = (props: TypographyProps & TransientTypographyProps) => css`
   color: ${({ theme }) => (props.color ? theme.colors[props.color] : theme.colors.secondary70)};
   margin: 0 0 ${({ theme }) => theme.spacing.medium};
 
-  ${props.ellipsis && ellipsis()};
+  ${props.$ellipsis && ellipsis()};
 `;
 
-const textModifiers = (props: TextProps) => css`
+const textModifiers = (props: TextProps & TransientTextModifiers) => css`
   ${({ theme }) =>
-    props.bold &&
+    props.$bold &&
     css`
       font-weight: ${theme.typography.fontWeight.semiBold};
     `}
 
   ${() =>
-    props.italic &&
+    props.$italic &&
     css`
       font-style: italic;
     `}
 
   ${() =>
-    props.underline &&
+    props.$underline &&
     css`
       text-decoration: underline;
     `}
 
   ${() =>
-    props.strikethrough &&
+    props.$strikethrough &&
     css`
       text-decoration: line-through;
     `}
 
   ${() =>
-    props.capitalize &&
+    props.$capitalize &&
     css`
       text-transform: capitalize;
     `}
 
   ${() =>
-    props.lowercase &&
+    props.$lowercase &&
     css`
       text-transform: lowercase;
     `}
 
   ${() =>
-    props.uppercase &&
+    props.$uppercase &&
     css`
       text-transform: uppercase;
     `}

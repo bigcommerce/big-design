@@ -1,18 +1,22 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
-import { FlexProps } from '../../Flex';
+import { TransientFlexedProps } from '../../Flex/types';
 import { withFlexedContainer } from '../../Flex/withFlex';
 
-export const StyledFlex = styled.div<FlexProps & { stickyHeader?: boolean }>`
+interface StyledFlexProps extends TransientFlexedProps {
+  $stickyHeader?: boolean;
+}
+
+export const StyledFlex = styled.div<StyledFlexProps>`
   ${withFlexedContainer()}
 
   background-color: ${({ theme }) => theme.colors.white};
   display: flex;
   padding: ${({ theme }) => `${theme.spacing.small} ${theme.spacing.xLarge}`};
 
-  ${({ theme, stickyHeader }) =>
-    stickyHeader &&
+  ${({ theme, $stickyHeader }) =>
+    $stickyHeader &&
     css`
       ${theme.breakpoints.tablet} {
         position: sticky;

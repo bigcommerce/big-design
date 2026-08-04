@@ -12,7 +12,27 @@ import {
   StyledSmall,
   StyledText,
 } from './styled';
-import { HeadingProps, HeadingTag, HRProps, TextProps } from './types';
+import {
+  HeadingProps,
+  HeadingTag,
+  HRProps,
+  TextModifiers,
+  TextProps,
+  TypographyProps,
+} from './types';
+
+function toTransientTextProps(props: TypographyProps & TextModifiers) {
+  return {
+    $ellipsis: props.ellipsis,
+    $bold: props.bold,
+    $capitalize: props.capitalize,
+    $italic: props.italic,
+    $lowercase: props.lowercase,
+    $strikethrough: props.strikethrough,
+    $underline: props.underline,
+    $uppercase: props.uppercase,
+  };
+}
 
 const validHeadingTags = new Set<HeadingTag>(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']);
 
@@ -38,10 +58,24 @@ export const Text: React.FC<TextProps> = memo((props) => {
     marginLeft,
     marginVertical,
     marginHorizontal,
+    ellipsis,
+    bold,
+    capitalize,
+    italic,
+    lowercase,
+    strikethrough,
+    underline,
+    uppercase,
     ...domProps
   } = props;
 
-  return <StyleableText {...domProps} {...toTransientMarginProps(props)} />;
+  return (
+    <StyleableText
+      {...domProps}
+      {...toTransientMarginProps(props)}
+      {...toTransientTextProps(props)}
+    />
+  );
 });
 
 export const Small: React.FC<TextProps> = memo((props) => {
@@ -55,10 +89,24 @@ export const Small: React.FC<TextProps> = memo((props) => {
     marginLeft,
     marginVertical,
     marginHorizontal,
+    ellipsis,
+    bold,
+    capitalize,
+    italic,
+    lowercase,
+    strikethrough,
+    underline,
+    uppercase,
     ...domProps
   } = props;
 
-  return <StyleableSmall {...domProps} {...toTransientMarginProps(props)} />;
+  return (
+    <StyleableSmall
+      {...domProps}
+      {...toTransientMarginProps(props)}
+      {...toTransientTextProps(props)}
+    />
+  );
 });
 
 export const HR: React.FC<HRProps> = memo((props) => {
@@ -90,11 +138,17 @@ export const H0: React.FC<HeadingProps> = memo((props) => {
     marginLeft,
     marginVertical,
     marginHorizontal,
+    ellipsis,
     ...domProps
   } = props;
 
   return (
-    <StyleableH0 as={getHeadingTag('h1', as)} {...domProps} {...toTransientMarginProps(props)} />
+    <StyleableH0
+      as={getHeadingTag('h1', as)}
+      {...domProps}
+      {...toTransientMarginProps(props)}
+      {...toTransientTextProps(props)}
+    />
   );
 });
 
@@ -110,11 +164,17 @@ export const H1: React.FC<HeadingProps> = memo((props) => {
     marginLeft,
     marginVertical,
     marginHorizontal,
+    ellipsis,
     ...domProps
   } = props;
 
   return (
-    <StyleableH1 as={getHeadingTag('h1', as)} {...domProps} {...toTransientMarginProps(props)} />
+    <StyleableH1
+      as={getHeadingTag('h1', as)}
+      {...domProps}
+      {...toTransientMarginProps(props)}
+      {...toTransientTextProps(props)}
+    />
   );
 });
 
@@ -130,11 +190,17 @@ export const H2: React.FC<HeadingProps> = memo((props) => {
     marginLeft,
     marginVertical,
     marginHorizontal,
+    ellipsis,
     ...domProps
   } = props;
 
   return (
-    <StyleableH2 as={getHeadingTag('h2', as)} {...domProps} {...toTransientMarginProps(props)} />
+    <StyleableH2
+      as={getHeadingTag('h2', as)}
+      {...domProps}
+      {...toTransientMarginProps(props)}
+      {...toTransientTextProps(props)}
+    />
   );
 });
 
@@ -150,11 +216,17 @@ export const H3: React.FC<HeadingProps> = memo((props) => {
     marginLeft,
     marginVertical,
     marginHorizontal,
+    ellipsis,
     ...domProps
   } = props;
 
   return (
-    <StyleableH3 as={getHeadingTag('h3', as)} {...domProps} {...toTransientMarginProps(props)} />
+    <StyleableH3
+      as={getHeadingTag('h3', as)}
+      {...domProps}
+      {...toTransientMarginProps(props)}
+      {...toTransientTextProps(props)}
+    />
   );
 });
 
@@ -170,11 +242,17 @@ export const H4: React.FC<HeadingProps> = memo((props) => {
     marginLeft,
     marginVertical,
     marginHorizontal,
+    ellipsis,
     ...domProps
   } = props;
 
   return (
-    <StyleableH4 as={getHeadingTag('h4', as)} {...domProps} {...toTransientMarginProps(props)} />
+    <StyleableH4
+      as={getHeadingTag('h4', as)}
+      {...domProps}
+      {...toTransientMarginProps(props)}
+      {...toTransientTextProps(props)}
+    />
   );
 });
 

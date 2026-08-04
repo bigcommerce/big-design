@@ -20,12 +20,13 @@ export const Accordion: React.FC<AccordionProps> = memo(
     return (
       <>
         <StyledAccordionButton
+          $iconLeft={iconLeft}
+          $isExpanded={isExpanded}
           aria-controls={accordionItemId}
           aria-expanded={isExpanded}
           iconLeft={iconLeft}
           iconRight={<ExpandMoreIcon className="collapse-icon" color="secondary70" />}
           id={accordionId}
-          isExpanded={isExpanded}
           onClick={onClick}
           type="button"
           variant="subtle"
@@ -33,10 +34,10 @@ export const Accordion: React.FC<AccordionProps> = memo(
           {header}
         </StyledAccordionButton>
         <StyledAccordionContent
+          $iconLeft={iconLeft}
           aria-labelledby={accordionId}
           display={isExpanded ? 'block' : 'none'}
           hidden={!isExpanded}
-          iconLeft={iconLeft}
           id={accordionItemId}
           role="region"
         >

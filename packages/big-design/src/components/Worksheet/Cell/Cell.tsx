@@ -294,8 +294,8 @@ const InternalCell = <T extends WorksheetItem>({
   const renderedAutoFillHandler = useMemo(() => {
     return isLastSelected ? (
       <AutoFillHandler
+        $isVisible={!isAutoFillActive}
         aria-label="Autofill handler"
-        isVisible={!isAutoFillActive}
         onDoubleClick={handleAutoFilldblClick}
         onMouseDown={(event) => {
           event.stopPropagation();
@@ -317,14 +317,15 @@ const InternalCell = <T extends WorksheetItem>({
 
   return (
     <StyledCell
-      isChild={isChild}
-      isEdited={isEdited}
-      isFirstSelected={isFirstSelected}
-      isLastChild={isLastChild}
-      isLastSelected={isLastSelected}
-      isNextCellValid={isNextCellValid}
-      isSelected={isSelected}
-      isValid={isValid}
+      $isChild={isChild}
+      $isEdited={isEdited}
+      $isFirstSelected={isFirstSelected}
+      $isLastChild={isLastChild}
+      $isLastSelected={isLastSelected}
+      $isNextCellValid={isNextCellValid}
+      $isSelected={isSelected}
+      $isValid={isValid}
+      $type={type}
       onClick={handleClick}
       onDoubleClick={handleDoubleClick}
       onMouseDown={() => {
@@ -337,7 +338,6 @@ const InternalCell = <T extends WorksheetItem>({
         setIsMouseDown(false);
         setSelectingActive(false);
       }}
-      type={type}
     >
       {renderedCell}
       {renderedAutoFillHandler}

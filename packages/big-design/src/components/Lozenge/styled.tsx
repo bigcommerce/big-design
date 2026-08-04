@@ -6,7 +6,7 @@ import { Box } from '../Box';
 import { LozengeProps } from './Lozenge';
 
 interface StyledLozengeProps extends Omit<LozengeProps, 'label' | 'tooltipContent'> {
-  hasTooltip?: boolean;
+  $hasTooltip?: boolean;
 }
 
 const sharedLozengeStyles = css`
@@ -102,8 +102,8 @@ const variantStyles = {
 
 export const StyledLozenge = styled(Box)<StyledLozengeProps>`
   ${sharedLozengeStyles}
-  padding-inline-end: ${({ theme, hasTooltip }) =>
-    hasTooltip ? theme.spacing.xxSmall : theme.spacing.small};
+  padding-inline-end: ${({ theme, $hasTooltip }) =>
+    $hasTooltip ? theme.spacing.xxSmall : theme.spacing.small};
   ${({ variant = 'new' }) => variantStyles[variant].idle};
 `;
 
@@ -137,7 +137,7 @@ export const StyledLozengeButton = styled.button<StyledLozengeProps>`
 
 StyledLozenge.defaultProps = {
   theme: defaultTheme,
-  hasTooltip: false,
+  $hasTooltip: false,
 };
 
 StyledLozengeButton.defaultProps = {
