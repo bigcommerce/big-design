@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { withMargins } from '../../helpers';
 import { TransientMarginProps } from '../../helpers/margins/margins';
 
-export const StyledUl = styled.ul.attrs({ theme: defaultTheme })<TransientMarginProps>`
+export const StyledUl = styled.ul<TransientMarginProps>`
   ${({ theme }) => theme.helpers.listReset}
 
   ${withMargins()};
@@ -13,3 +13,5 @@ export const StyledUl = styled.ul.attrs({ theme: defaultTheme })<TransientMargin
   flex-wrap: wrap;
   gap: ${({ theme }) => theme.spacing.small};
 `;
+
+StyledUl.defaultProps = { theme: defaultTheme };

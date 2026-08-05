@@ -34,14 +34,14 @@ export const StyledModal = styled.div.attrs({
     `}
 `;
 
-export const StyledModalContent = styled(Flex)<{ variant: ModalProps['variant'] }>`
+export const StyledModalContent = styled(Flex)<{ $variant: ModalProps['variant'] }>`
   background: ${({ theme }) => theme.colors.white};
   box-sizing: border-box;
   position: fixed;
   z-index: ${({ theme }) => theme.zIndex.modal};
 
-  ${({ theme, variant }) =>
-    variant === 'dialog' &&
+  ${({ theme, $variant }) =>
+    $variant === 'dialog' &&
     css`
       ${theme.shadow.floating};
 
@@ -49,8 +49,8 @@ export const StyledModalContent = styled(Flex)<{ variant: ModalProps['variant'] 
       width: 90%;
     `}
 
-  ${({ theme, variant }) =>
-    variant === 'modal' &&
+  ${({ theme, $variant }) =>
+    $variant === 'modal' &&
     css`
       height: 100%;
       width: 100%;

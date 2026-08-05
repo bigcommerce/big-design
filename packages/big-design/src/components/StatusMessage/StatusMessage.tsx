@@ -45,7 +45,7 @@ export const StatusMessage: React.FC<StatusMessageProps> = ({
       justifyContent="center"
       paddingVertical={paddingVertical}
     >
-      <StyledStatusIllustration aria-hidden="true" size={size} variant={variant} />
+      <StyledStatusIllustration $size={size} $variant={variant} aria-hidden="true" />
       <StyledStatusMessage>
         {hasHeading && (
           <Header margin="none" marginBottom="small">

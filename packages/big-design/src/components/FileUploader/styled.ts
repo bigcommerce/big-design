@@ -66,9 +66,9 @@ export const StyledDropzone = styled(Flex)<{
   }
 `;
 
-export const StyledFile = styled(Flex)<{ isValid: boolean }>`
+export const StyledFile = styled(Flex)<{ $isValid: boolean }>`
   height: ${remCalc(68)};
-  border: ${({ theme, isValid }) => (isValid ? theme.border.box : theme.border.boxError)};
+  border: ${({ theme, $isValid }) => ($isValid ? theme.border.box : theme.border.boxError)};
   border-radius: ${({ theme }) => theme.borderRadius.normal};
   background-color: ${({ theme }) => theme.colors.white};
 `;

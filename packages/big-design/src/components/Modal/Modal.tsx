@@ -175,7 +175,11 @@ const InternalModal: React.FC<ModalProps> = ({
       ref={setModalRef}
       tabIndex={-1}
     >
-      <StyledModalContent aria-labelledby={headerUniqueId} flexDirection="column" variant={variant}>
+      <StyledModalContent
+        $variant={variant}
+        aria-labelledby={headerUniqueId}
+        flexDirection="column"
+      >
         {renderedClose}
         {renderedHeader}
         <StyledModalBody>{children}</StyledModalBody>

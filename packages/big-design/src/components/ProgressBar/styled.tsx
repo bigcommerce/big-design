@@ -12,16 +12,16 @@ export const StyledProgressBar = styled.div`
   width: 100%;
 `;
 
-export const StyledProgressBarFiller = styled.div<ProgressBarProps>`
+export const StyledProgressBarFiller = styled.div<{ $percent?: ProgressBarProps['percent'] }>`
   background-color: ${({ theme }) => theme.colors.primary};
   height: 100%;
   overflow: hidden;
 
-  ${({ percent, theme }) =>
-    typeof percent === 'number'
+  ${({ $percent, theme }) =>
+    typeof $percent === 'number'
       ? css`
           ${withTransition(['width', 'background-color', 'height'])}
-          width: ${percent}%;
+          width: ${$percent}%;
         `
       : css`
           animation: ${theme.keyframes.loading} 2s ease-in-out infinite;

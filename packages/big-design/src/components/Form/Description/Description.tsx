@@ -29,7 +29,9 @@ export const FormControlDescription: React.FC<TextProps & FormControlDescription
       link && (
         <>
           {' '}
-          <StyledLink {...link}>{link.text}</StyledLink>
+          <StyledLink external={link.external} href={link.href} target={link.target}>
+            {link.text}
+          </StyledLink>
         </>
       )
     );

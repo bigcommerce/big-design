@@ -22,14 +22,14 @@ test('render default Lozenge', () => {
 });
 
 test('StyledLozenge renders with correct styles', () => {
-  const { container } = render(<StyledLozenge variant="alpha">Alpha</StyledLozenge>);
+  const { container } = render(<StyledLozenge $variant="alpha">Alpha</StyledLozenge>);
 
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.warning20}`);
   expect(container.firstChild).toHaveStyle(`color: ${theme.colors.secondary70}`);
 });
 
 test('StyledLozengeButton renders with correct styles', () => {
-  const { container } = render(<StyledLozengeButton variant="beta">Beta</StyledLozengeButton>);
+  const { container } = render(<StyledLozengeButton $variant="beta">Beta</StyledLozengeButton>);
 
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.primary20}`);
   expect(container.firstChild).toHaveStyle(`color: ${theme.colors.primary50}`);
@@ -140,7 +140,7 @@ const variantHoverFocusCases: Array<{ variant: any; hover: string; focus: string
 test.each(variantHoverFocusCases)(
   'StyledLozengeButton hover/focus styles for %s',
   ({ variant, hover, focus }) => {
-    const { container } = render(<StyledLozengeButton variant={variant}>X</StyledLozengeButton>);
+    const { container } = render(<StyledLozengeButton $variant={variant}>X</StyledLozengeButton>);
 
     // Hover outline per variant
     expect(container.firstChild).toHaveStyleRule('outline', `1px solid ${hover}`, {
@@ -204,7 +204,7 @@ const idleMatrix: Array<{ variant: any; bg: string; color: string }> = [
 ];
 
 test.each(idleMatrix)('StyledLozenge idle style for %s', ({ variant, bg, color }) => {
-  const { container } = render(<StyledLozenge variant={variant}>Idle</StyledLozenge>);
+  const { container } = render(<StyledLozenge $variant={variant}>Idle</StyledLozenge>);
 
   expect(container.firstChild).toHaveStyleRule('background-color', bg);
   expect(container.firstChild).toHaveStyleRule('color', color);

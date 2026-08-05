@@ -20,6 +20,7 @@ interface PrivateProps {
 const StyleableLink: React.FC<LinkProps & PrivateProps> = memo((props) => {
   const {
     ellipsis,
+    forwardedRef,
     isExternal,
     margin,
     marginTop,
@@ -37,6 +38,7 @@ const StyleableLink: React.FC<LinkProps & PrivateProps> = memo((props) => {
       {...toTransientMarginProps(props)}
       $ellipsis={ellipsis}
       $isExternal={isExternal}
+      ref={forwardedRef}
     />
   );
 });

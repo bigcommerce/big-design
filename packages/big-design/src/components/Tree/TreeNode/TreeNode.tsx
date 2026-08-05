@@ -285,10 +285,10 @@ const InternalTreeNode = <T,>({
           {renderedSelectable}
           {renderedIcon}
           <StyledText
+            $ellipsis
             $marginLeft="xxSmall"
             as="span"
             color={isDisabled ? 'secondary50' : 'secondary70'}
-            ellipsis
           >
             {label}
             {selectedChildrenCount ? (

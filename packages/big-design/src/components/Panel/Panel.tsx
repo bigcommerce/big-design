@@ -31,6 +31,7 @@ export interface PanelProps extends ComponentPropsWithoutRef<'div'>, MarginProps
 export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRef, ...props }) => {
   const filteredProps = excludePaddingProps(props);
   const { action, children, description, header, headerId, badge, ...rest } = filteredProps;
+  const { text: actionText, ...actionProps } = action ?? {};
 
   const renderHeader = () => {
     if (!header && !action) {
@@ -49,7 +50,7 @@ export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRe
             {badge && <Badge marginLeft="xSmall" {...badge} />}
           </StyledH2>
         )}
-        {action && <Button {...action}>{action.text}</Button>}
+        {action && <Button {...actionProps}>{actionText}</Button>}
       </Flex>
     );
   };

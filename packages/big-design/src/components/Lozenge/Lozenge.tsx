@@ -80,12 +80,12 @@ export const Lozenge = forwardRef<HTMLDivElement | HTMLButtonElement, LozengePro
     if (isPopoverProps(props)) {
       return (
         <StyledLozengeButton
+          $variant={variant}
           aria-expanded={props.isOpen}
           aria-haspopup={true}
           onClick={props.onClick}
           ref={(node) => setForwardedRef(ref, node)}
           type="button"
-          variant={variant}
         >
           <VariantIcon aria-hidden="true" size="large" />
           {label}
@@ -99,7 +99,11 @@ export const Lozenge = forwardRef<HTMLDivElement | HTMLButtonElement, LozengePro
         <Tooltip
           placement="auto"
           trigger={
-            <StyledLozenge $hasTooltip ref={(node) => setForwardedRef(ref, node)} variant={variant}>
+            <StyledLozenge
+              $hasTooltip
+              $variant={variant}
+              ref={(node) => setForwardedRef(ref, node)}
+            >
               <VariantIcon aria-hidden="true" size="large" />
               {label}
               <InfoIcon aria-hidden="true" size="large" />
@@ -112,7 +116,7 @@ export const Lozenge = forwardRef<HTMLDivElement | HTMLButtonElement, LozengePro
     }
 
     return (
-      <StyledLozenge ref={(node) => setForwardedRef(ref, node)} variant={variant}>
+      <StyledLozenge $variant={variant} ref={(node) => setForwardedRef(ref, node)}>
         <VariantIcon aria-hidden="true" size="large" />
         {label}
       </StyledLozenge>
