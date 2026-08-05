@@ -1,5 +1,0 @@
----
-"@bigcommerce/big-design": patch
----
-
-Continue migrating tag-target styled components to transient (`$`-prefixed) props ahead of styled-components 6 (LTRAC-1396, Stages 1-2). Rename the internal-only custom props read by `Checkbox`, `Toggle`, `Modal`, `List`, `List/Item`, `Form/Group`, and the Worksheet `TextEditor` to `$`-prefixed names at both the styled definition and the JSX call site (e.g. `$isActive`, `$hasImg`, `$isIndeterminate`, `$backdrop`, `$variant`, `$maxHeight`). Public prop interfaces (`ModalProps`, `ListProps`, `ListItemProps`, `CheckboxProps`, etc.) and CSS output are unchanged. This is a true no-op under styled-components 5 (these custom props were already filtered from the DOM, so all 182 snapshots are unchanged); the `$` prefix guarantees they stay off the DOM under v6's default forwarding. The remaining tag-target components audited in Stage 1 (`Tooltip`, `Select`, `Stepper/Step`, `Table`/`TableNext` roots, `Radio`, `Switch`, `Fieldset`, and the `Checkbox`/`Radio` labels) read only DOM-valid props and need no change.
