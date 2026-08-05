@@ -1,5 +1,5 @@
 import { FlexItem } from '@bigcommerce/big-design';
-import styled from 'styled-components';
+import styled, { FlattenSimpleInterpolation } from 'styled-components';
 
 export const StyledMenu = styled(FlexItem)`
   ${({ theme }) => theme.breakpoints.tablet} {
@@ -12,12 +12,20 @@ interface Navigation {
 }
 
 export const StyledNavigation = styled(FlexItem)<Navigation>`
-  ${({ theme }) => theme.shadow.floating};
+  ${({ theme }) =>
+    // Temporary until docs flips to styled-components 6: the theme dist now types
+    // CSSRules as v6's RuleSet, which v5's css typings can't accept.
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    theme.shadow.floating as unknown as FlattenSimpleInterpolation};
 
   background-color: ${({ theme }) => theme.colors.white};
-  border-bottom: ${({ theme }) => theme.border.box};
+  border-bottom: ${({ theme }) =>
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    theme.border.box as unknown as FlattenSimpleInterpolation};
   border-radius: 0;
-  border-top: ${({ theme }) => theme.border.box};
+  border-top: ${({ theme }) =>
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    theme.border.box as unknown as FlattenSimpleInterpolation};
   display: ${({ isExpanded }) => (isExpanded ? 'block' : 'none')};
   height: 16rem;
   left: 0;

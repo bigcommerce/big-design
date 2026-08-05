@@ -40,6 +40,9 @@ module.exports = {
     '@typescript-eslint/prefer-nullish-coalescing': 'off',
     'func-names': 'off',
     'import/no-dynamic-require': 'off',
+    // styled-components 6 also exports `styled` by name, so the conventional
+    // `import styled from 'styled-components'` now trips this rule repo-wide.
+    'import/no-named-as-default': 'off',
     'import/no-named-default': 'off',
     'import/no-extraneous-dependencies': 'off',
     'import/dynamic-import-chunkname': 'off',

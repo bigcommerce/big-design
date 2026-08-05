@@ -49,14 +49,9 @@ exports[`render determinant progress circle 1`] = `
 .c2 {
   stroke-dasharray: 138.23007675795088 138.23007675795088;
   stroke: #3C64F4;
-  -webkit-transform-origin: 50% 50%;
-  -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
   stroke-dashoffset: 69.11503837897544;
-  -webkit-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
-  -webkit-transition: stroke-dashoffset 0.35s;
   transition: stroke-dashoffset 0.35s;
 }
 
@@ -145,17 +140,27 @@ exports[`render indeterminant progress bar 1`] = `
 .c2 {
   stroke-dasharray: 138.23007675795088 138.23007675795088;
   stroke: #3C64F4;
-  -webkit-transform-origin: 50% 50%;
-  -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: dfVSSu 1s ease-out infinite;
-  animation: dfVSSu 1s ease-out infinite;
+  animation: k0 1s ease-out infinite;
   stroke-dashoffset: 138.23007675795088;
-  -webkit-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
-  -webkit-transition: stroke-dashoffset 0.35s;
   transition: stroke-dashoffset 0.35s;
+}
+
+@keyframes k0 {
+  0% {
+    stroke-dashoffset: -138.23007675795088;
+    transform: rotate(-90deg);
+  }
+
+  50% {
+    stroke-dashoffset: -86.3937979737193;
+  }
+
+  100% {
+    stroke-dashoffset: -138.23007675795088;
+    transform: rotate(270deg);
+  }
 }
 
 <div>
@@ -194,17 +199,27 @@ exports[`render large progress circle 1`] = `
 .c2 {
   stroke-dasharray: 226.1946710584651 226.1946710584651;
   stroke: #3C64F4;
-  -webkit-transform-origin: 50% 50%;
-  -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: krEchf 1s ease-out infinite;
-  animation: krEchf 1s ease-out infinite;
+  animation: k0 1s ease-out infinite;
   stroke-dashoffset: 226.1946710584651;
-  -webkit-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
-  -webkit-transition: stroke-dashoffset 0.35s;
   transition: stroke-dashoffset 0.35s;
+}
+
+@keyframes k0 {
+  0% {
+    stroke-dashoffset: -226.1946710584651;
+    transform: rotate(-90deg);
+  }
+
+  50% {
+    stroke-dashoffset: -141.3716694115407;
+  }
+
+  100% {
+    stroke-dashoffset: -226.1946710584651;
+    transform: rotate(270deg);
+  }
 }
 
 <div>
@@ -243,17 +258,27 @@ exports[`render medium progress circle 1`] = `
 .c2 {
   stroke-dasharray: 138.23007675795088 138.23007675795088;
   stroke: #3C64F4;
-  -webkit-transform-origin: 50% 50%;
-  -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: dfVSSu 1s ease-out infinite;
-  animation: dfVSSu 1s ease-out infinite;
+  animation: k0 1s ease-out infinite;
   stroke-dashoffset: 138.23007675795088;
-  -webkit-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
-  -webkit-transition: stroke-dashoffset 0.35s;
   transition: stroke-dashoffset 0.35s;
+}
+
+@keyframes k0 {
+  0% {
+    stroke-dashoffset: -138.23007675795088;
+    transform: rotate(-90deg);
+  }
+
+  50% {
+    stroke-dashoffset: -86.3937979737193;
+  }
+
+  100% {
+    stroke-dashoffset: -138.23007675795088;
+    transform: rotate(270deg);
+  }
 }
 
 <div>
@@ -292,17 +317,27 @@ exports[`render small progress circle 1`] = `
 .c2 {
   stroke-dasharray: 87.96459430051421 87.96459430051421;
   stroke: #3C64F4;
-  -webkit-transform-origin: 50% 50%;
-  -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: kpuuIv 1s ease-out infinite;
-  animation: kpuuIv 1s ease-out infinite;
+  animation: k0 1s ease-out infinite;
   stroke-dashoffset: 87.96459430051421;
-  -webkit-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
-  -webkit-transition: stroke-dashoffset 0.35s;
   transition: stroke-dashoffset 0.35s;
+}
+
+@keyframes k0 {
+  0% {
+    stroke-dashoffset: -87.96459430051421;
+    transform: rotate(-90deg);
+  }
+
+  50% {
+    stroke-dashoffset: -54.97787143782138;
+  }
+
+  100% {
+    stroke-dashoffset: -87.96459430051421;
+    transform: rotate(270deg);
+  }
 }
 
 <div>
@@ -341,17 +376,27 @@ exports[`render xSmall progress circle 1`] = `
 .c2 {
   stroke-dasharray: 65.97344572538566 65.97344572538566;
   stroke: #3C64F4;
-  -webkit-transform-origin: 50% 50%;
-  -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: hiqbsE 1s ease-out infinite;
-  animation: hiqbsE 1s ease-out infinite;
+  animation: k0 1s ease-out infinite;
   stroke-dashoffset: 65.97344572538566;
-  -webkit-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
-  -webkit-transition: stroke-dashoffset 0.35s;
   transition: stroke-dashoffset 0.35s;
+}
+
+@keyframes k0 {
+  0% {
+    stroke-dashoffset: -65.97344572538566;
+    transform: rotate(-90deg);
+  }
+
+  50% {
+    stroke-dashoffset: -41.23340357836604;
+  }
+
+  100% {
+    stroke-dashoffset: -65.97344572538566;
+    transform: rotate(270deg);
+  }
 }
 
 <div>
@@ -390,17 +435,27 @@ exports[`render xSmall progress circle 2`] = `
 .c2 {
   stroke-dasharray: 43.982297150257104 43.982297150257104;
   stroke: #3C64F4;
-  -webkit-transform-origin: 50% 50%;
-  -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: fxwtRW 1s ease-out infinite;
-  animation: fxwtRW 1s ease-out infinite;
+  animation: k0 1s ease-out infinite;
   stroke-dashoffset: 43.982297150257104;
-  -webkit-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
-  -webkit-transition: stroke-dashoffset 0.35s;
   transition: stroke-dashoffset 0.35s;
+}
+
+@keyframes k0 {
+  0% {
+    stroke-dashoffset: -43.982297150257104;
+    transform: rotate(-90deg);
+  }
+
+  50% {
+    stroke-dashoffset: -27.48893571891069;
+  }
+
+  100% {
+    stroke-dashoffset: -43.982297150257104;
+    transform: rotate(270deg);
+  }
 }
 
 <div>

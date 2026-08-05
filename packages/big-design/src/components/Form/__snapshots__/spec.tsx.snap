@@ -39,20 +39,12 @@ exports[`simple form render 1`] = `
 }
 
 .c6 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: border,box-shadow;
   transition-property: border,box-shadow;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   background-color: #FFFFFF;
   border-radius: 0.25rem;
   box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   min-height: 2.25rem;
   overflow: hidden;
@@ -74,8 +66,6 @@ exports[`simple form render 1`] = `
   border: 0;
   box-sizing: border-box;
   color: #313440;
-  -webkit-flex: 1 1 40%;
-  -ms-flex: 1 1 40%;
   flex: 1 1 40%;
   height: 100%;
   padding: 0;
@@ -88,28 +78,13 @@ exports[`simple form render 1`] = `
   outline: none;
 }
 
-.c8::-webkit-input-placeholder {
-  color: #B4BAD1;
-  font-size: 1rem;
-}
-
-.c8::-moz-placeholder {
-  color: #B4BAD1;
-  font-size: 1rem;
-}
-
-.c8:-ms-input-placeholder {
-  color: #B4BAD1;
-  font-size: 1rem;
-}
-
 .c8::placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
 .c8:-webkit-autofill {
-  background-color: #F0F3FF !important;
+  background-color: #F0F3FF!important;
   -webkit-box-shadow: 0 0 0px 1000px #F0F3FF inset;
 }
 
@@ -119,20 +94,10 @@ exports[`simple form render 1`] = `
 }
 
 .c7 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  -webkit-flex: 1;
-  -ms-flex: 1;
   flex: 1;
   height: 100%;
 }
@@ -156,14 +121,6 @@ exports[`simple form render 1`] = `
   cursor: pointer;
   display: inline-block;
   margin-bottom: 0.25rem;
-}
-
-@media (min-width:720px) {
-
-}
-
-@media (min-width:720px) {
-
 }
 
 <form

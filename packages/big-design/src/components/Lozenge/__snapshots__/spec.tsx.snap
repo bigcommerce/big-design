@@ -3,9 +3,6 @@
 exports[`Lozenge (button) applies expanded styles when isOpen is true 1`] = `
 .c0 {
   border-radius: 1rem;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   font-size: 0.875rem;
   gap: 0.25rem;
@@ -16,9 +13,6 @@ exports[`Lozenge (button) applies expanded styles when isOpen is true 1`] = `
   padding-inline-start: 0.5rem;
   white-space: nowrap;
   padding-inline-end: 0.25rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   cursor: pointer;
   border: none;
@@ -27,17 +21,11 @@ exports[`Lozenge (button) applies expanded styles when isOpen is true 1`] = `
 }
 
 .c0 svg:last-child {
-  -webkit-transition: -webkit-transform 0.3s ease;
-  -webkit-transition: transform 0.3s ease;
   transition: transform 0.3s ease;
 }
 
 .c0[aria-expanded='true'] svg:last-child {
-  -webkit-transform: rotate(-180deg);
-  -ms-transform: rotate(-180deg);
   transform: rotate(-180deg);
-  -webkit-transition: -webkit-transform 0.3s ease;
-  -webkit-transition: transform 0.3s ease;
   transition: transform 0.3s ease;
 }
 
@@ -110,9 +98,6 @@ exports[`Lozenge (button) applies expanded styles when isOpen is true 1`] = `
 exports[`render Lozenge as button (popover variant) 1`] = `
 .c0 {
   border-radius: 1rem;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   font-size: 0.875rem;
   gap: 0.25rem;
@@ -123,9 +108,6 @@ exports[`render Lozenge as button (popover variant) 1`] = `
   padding-inline-start: 0.5rem;
   white-space: nowrap;
   padding-inline-end: 0.25rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   cursor: pointer;
   border: none;
@@ -134,17 +116,11 @@ exports[`render Lozenge as button (popover variant) 1`] = `
 }
 
 .c0 svg:last-child {
-  -webkit-transition: -webkit-transform 0.3s ease;
-  -webkit-transition: transform 0.3s ease;
   transition: transform 0.3s ease;
 }
 
 .c0[aria-expanded='true'] svg:last-child {
-  -webkit-transform: rotate(-180deg);
-  -ms-transform: rotate(-180deg);
   transform: rotate(-180deg);
-  -webkit-transition: -webkit-transform 0.3s ease;
-  -webkit-transition: transform 0.3s ease;
   transition: transform 0.3s ease;
 }
 
@@ -221,9 +197,6 @@ exports[`render alpha Lozenge 1`] = `
 
 .c1 {
   border-radius: 1rem;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   font-size: 0.875rem;
   gap: 0.25rem;
@@ -280,9 +253,6 @@ exports[`render beta Lozenge 1`] = `
 
 .c1 {
   border-radius: 1rem;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   font-size: 0.875rem;
   gap: 0.25rem;
@@ -335,9 +305,6 @@ exports[`render default Lozenge 1`] = `
 
 .c1 {
   border-radius: 1rem;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   font-size: 0.875rem;
   gap: 0.25rem;
@@ -396,9 +363,6 @@ exports[`render deprecated Lozenge 1`] = `
 
 .c1 {
   border-radius: 1rem;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   font-size: 0.875rem;
   gap: 0.25rem;
@@ -451,9 +415,6 @@ exports[`render legacy Lozenge 1`] = `
 
 .c1 {
   border-radius: 1rem;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   font-size: 0.875rem;
   gap: 0.25rem;
@@ -506,9 +467,6 @@ exports[`render new Lozenge 1`] = `
 
 .c1 {
   border-radius: 1rem;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   font-size: 0.875rem;
   gap: 0.25rem;

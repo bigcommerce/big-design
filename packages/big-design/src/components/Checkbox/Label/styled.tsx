@@ -4,13 +4,14 @@ import { ComponentPropsWithoutRef } from 'react';
 import styled, { css } from 'styled-components';
 
 import { withMargins } from '../../../helpers';
+import { TransientMarginProps } from '../../../helpers/margins/margins';
 
 export interface StyledLabelProps extends ComponentPropsWithoutRef<'label'> {
   hidden?: boolean;
   disabled?: boolean;
 }
 
-export const StyledLabel = styled.label<StyledLabelProps>`
+export const StyledLabel = styled.label<StyledLabelProps & TransientMarginProps>`
   color: ${({ theme }) => theme.colors.secondary70};
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};

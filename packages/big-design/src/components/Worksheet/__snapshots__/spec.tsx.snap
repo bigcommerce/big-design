@@ -7,30 +7,23 @@ exports[`renders worksheet 1`] = `
   width: 1rem;
 }
 
-.c18 {
+.c17 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
-.c19 {
+.c18 {
   margin-left: 0.5rem;
 }
 
 .c13 {
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
   align-items: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c15 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
   height: 1px;
   margin: -1px;
@@ -41,14 +34,9 @@ exports[`renders worksheet 1`] = `
   width: 1px;
 }
 
-.c17 {
-  -webkit-transition: all 150ms ease-out;
+.c16 {
   transition: all 150ms ease-out;
-  -webkit-transition-property: border-color,background,box-shadow,color,opacity;
   transition-property: border-color,background,box-shadow,color,opacity;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   background: #3C64F4;
   box-sizing: border-box;
@@ -57,44 +45,30 @@ exports[`renders worksheet 1`] = `
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   height: 1.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   margin-bottom: 0.125rem;
   margin-top: 0.125rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   width: 1.25rem;
 }
 
-.c17:hover {
+.c16:hover {
   border-color: #3C64F4;
 }
 
-.c14:focus + .c16 {
+.c14:focus+.c16 {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c17 svg {
+.c16 svg {
   opacity: 1;
 }
 
-.c30 {
-  -webkit-transition: all 150ms ease-out;
+.c29 {
   transition: all 150ms ease-out;
-  -webkit-transition-property: border-color,background,box-shadow,color,opacity;
   transition-property: border-color,background,box-shadow,color,opacity;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   background: #FFFFFF;
   box-sizing: border-box;
@@ -103,33 +77,24 @@ exports[`renders worksheet 1`] = `
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   height: 1.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   margin-bottom: 0.125rem;
   margin-top: 0.125rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   width: 1.25rem;
 }
 
-.c30:hover {
+.c29:hover {
   border-color: #B4BAD1;
 }
 
-.c14:focus + .c16 {
+.c14:focus+.c29 {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c30 svg {
+.c29 svg {
   opacity: 0;
 }
 
@@ -138,52 +103,28 @@ exports[`renders worksheet 1`] = `
   box-sizing: border-box;
 }
 
-.c21 {
-  box-sizing: border-box;
-}
-
-.c23 {
-  padding-right: 0.75rem;
+.c20 {
   box-sizing: border-box;
 }
 
 .c22 {
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
+  padding-right: 0.75rem;
+  box-sizing: border-box;
+}
+
+.c21 {
   align-content: stretch;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
   justify-content: space-between;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
-.c24 {
-  -webkit-align-self: auto;
-  -ms-flex-item-align: auto;
+.c23 {
   align-self: auto;
-  -webkit-flex-basis: auto;
-  -ms-flex-preferred-size: auto;
   flex-basis: auto;
-  -webkit-box-flex: 0;
-  -webkit-flex-grow: 0;
-  -ms-flex-positive: 0;
   flex-grow: 0;
-  -webkit-order: 0;
-  -ms-flex-order: 0;
   order: 0;
-  -webkit-flex-shrink: 1;
-  -ms-flex-negative: 1;
   flex-shrink: 1;
 }
 
@@ -207,46 +148,27 @@ exports[`renders worksheet 1`] = `
   margin-bottom: 0;
 }
 
-.c26 {
-  -webkit-transition: all 150ms ease-out;
+.c25 {
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -256,50 +178,45 @@ exports[`renders worksheet 1`] = `
   color: #3C64F4;
 }
 
-.c26:focus {
+.c25:focus {
   outline: none;
 }
 
-.c26[disabled] {
+.c25[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c26 + .bd-button {
+.c25+.bd-button {
   margin-top: 0.5rem;
 }
 
-.c26:active {
+.c25:active {
   background-color: #DBE3FE;
 }
 
-.c26:focus {
+.c25:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c26:hover:not(:active) {
+.c25:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c26[disabled] {
+.c25[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c28 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
+.c27 {
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
 }
 
-.c20 {
+.c19 {
   color: #313440;
   font-size: 1rem;
   font-weight: 400;
@@ -307,7 +224,6 @@ exports[`renders worksheet 1`] = `
   margin: 0 0 1rem;
   cursor: pointer;
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
   height: 1px;
   margin: -1px;
@@ -318,34 +234,31 @@ exports[`renders worksheet 1`] = `
   width: 1px;
 }
 
-.c20:last-child {
+.c19:last-child {
   margin-bottom: 0;
 }
 
-.c12 > div {
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
+.c12>div {
   justify-content: center;
 }
 
-.c27 {
+.c26 {
   font-size: 0.875rem;
   height: auto;
   line-height: 1.25rem;
   padding: 0;
 }
 
-.c27:hover:not(:active) {
+.c26:hover:not(:active) {
   background-color: inherit;
   color: #0024A6;
 }
 
-.c27:active {
+.c26:active {
   background-color: inherit;
 }
 
-.c25 {
+.c24 {
   overflow: hidden;
 }
 
@@ -356,9 +269,6 @@ exports[`renders worksheet 1`] = `
   box-sizing: border-box;
   padding: 0.375rem 1.0625rem;
   text-align: left;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
@@ -376,9 +286,6 @@ exports[`renders worksheet 1`] = `
   box-sizing: border-box;
   padding: 0.375rem 1.0625rem;
   text-align: center;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
@@ -389,20 +296,35 @@ exports[`renders worksheet 1`] = `
   margin: 0;
 }
 
-.c29 {
+.c28 {
   position: relative;
   background-color: inherit;
   border: 0.03125rem solid #D9DCE9;
   box-sizing: border-box;
   padding: 0.375rem 1.0625rem;
   text-align: right;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
-.c29 p {
+.c28 p {
+  display: block;
+  white-space: inherit;
+  word-break: break-word;
+  margin: 0;
+}
+
+.c31 {
+  position: relative;
+  background-color: inherit;
+  border: 0.03125rem solid #D9DCE9;
+  box-sizing: border-box;
+  padding: 0.375rem 1.0625rem;
+  text-align: left;
+  user-select: none;
+  border: 0.03125rem double #DB3643;
+}
+
+.c31 p {
   display: block;
   white-space: inherit;
   word-break: break-word;
@@ -415,36 +337,12 @@ exports[`renders worksheet 1`] = `
   border: 0.03125rem solid #D9DCE9;
   box-sizing: border-box;
   padding: 0.375rem 1.0625rem;
-  text-align: left;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+  text-align: right;
   user-select: none;
   border: 0.03125rem double #DB3643;
 }
 
 .c32 p {
-  display: block;
-  white-space: inherit;
-  word-break: break-word;
-  margin: 0;
-}
-
-.c33 {
-  position: relative;
-  background-color: inherit;
-  border: 0.03125rem solid #D9DCE9;
-  box-sizing: border-box;
-  padding: 0.375rem 1.0625rem;
-  text-align: right;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  border: 0.03125rem double #DB3643;
-}
-
-.c33 p {
   display: block;
   white-space: inherit;
   word-break: break-word;
@@ -473,7 +371,7 @@ exports[`renders worksheet 1`] = `
   width: 0.25rem;
 }
 
-.c31 {
+.c30 {
   background-color: #D9DCE9;
   border-top: 0.03125rem solid #D9DCE9;
   box-sizing: border-box;
@@ -496,8 +394,7 @@ exports[`renders worksheet 1`] = `
   outline: none;
 }
 
-.c1 > thead {
-  position: -webkit-sticky;
+.c1>thead {
   position: sticky;
   top: 0;
   z-index: 1;
@@ -548,31 +445,27 @@ exports[`renders worksheet 1`] = `
   overflow-y: auto;
 }
 
-@media (min-width:0px) {
-  .c22 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
+@media (min-width: 0px) {
+  .c21 {
     flex-direction: column;
   }
 }
 
-@media (min-width:720px) {
-  .c22 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
+@media (min-width: 720px) {
+  .c21 {
     flex-direction: row;
   }
 }
 
-@media (min-width:720px) {
-  .c26 + .bd-button {
+@media (min-width: 720px) {
+  .c25+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
-  .c26 {
+@media (min-width: 720px) {
+  .c25 {
     width: auto;
   }
 }
@@ -688,12 +581,12 @@ exports[`renders worksheet 1`] = `
               />
               <label
                 aria-hidden="true"
-                class="c16 c17"
+                class="c16"
                 for=":r5:"
               >
                 <svg
                   aria-hidden="true"
-                  class="c18"
+                  class="c17"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -711,11 +604,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="c19"
+                class="c18"
               >
                 <label
                   aria-hidden="false"
-                  class="c20"
+                  class="c19"
                   for=":r5:"
                   hidden=""
                   id=":r6:"
@@ -749,10 +642,10 @@ exports[`renders worksheet 1`] = `
           class="c8"
         >
           <div
-            class="c21 c22"
+            class="c20 c21"
           >
             <div
-              class="c23 c24 c25"
+              class="c22 c23 c24"
             >
               <p
                 class="c9"
@@ -763,10 +656,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c26 c27"
+              class="c25 c26"
             >
               <span
-                class="c28"
+                class="c27"
               >
                 Edit
               </span>
@@ -778,7 +671,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c29"
+          class="c28"
         >
           <p
             class="c9"
@@ -831,12 +724,12 @@ exports[`renders worksheet 1`] = `
               />
               <label
                 aria-hidden="true"
-                class="c16 c17"
+                class="c16"
                 for=":rd:"
               >
                 <svg
                   aria-hidden="true"
-                  class="c18"
+                  class="c17"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -854,11 +747,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="c19"
+                class="c18"
               >
                 <label
                   aria-hidden="false"
-                  class="c20"
+                  class="c19"
                   for=":rd:"
                   hidden=""
                   id=":re:"
@@ -892,10 +785,10 @@ exports[`renders worksheet 1`] = `
           class="c8"
         >
           <div
-            class="c21 c22"
+            class="c20 c21"
           >
             <div
-              class="c23 c24 c25"
+              class="c22 c23 c24"
             >
               <p
                 class="c9"
@@ -906,10 +799,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c26 c27"
+              class="c25 c26"
             >
               <span
-                class="c28"
+                class="c27"
               >
                 Edit
               </span>
@@ -921,7 +814,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c29"
+          class="c28"
         >
           <p
             class="c9"
@@ -973,12 +866,12 @@ exports[`renders worksheet 1`] = `
               />
               <label
                 aria-hidden="true"
-                class="c16 c30"
+                class="c29"
                 for=":rl:"
               >
                 <svg
                   aria-hidden="true"
-                  class="c18"
+                  class="c17"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -996,11 +889,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="c19"
+                class="c18"
               >
                 <label
                   aria-hidden="false"
-                  class="c20"
+                  class="c19"
                   for=":rl:"
                   hidden=""
                   id=":rm:"
@@ -1032,10 +925,10 @@ exports[`renders worksheet 1`] = `
           class="c8"
         >
           <div
-            class="c21 c22"
+            class="c20 c21"
           >
             <div
-              class="c23 c24 c25"
+              class="c22 c23 c24"
             >
               <p
                 class="c9"
@@ -1046,10 +939,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c26 c27"
+              class="c25 c26"
             >
               <span
-                class="c28"
+                class="c27"
               >
                 Edit
               </span>
@@ -1061,7 +954,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c29"
+          class="c28"
         >
           <p
             class="c9"
@@ -1114,12 +1007,12 @@ exports[`renders worksheet 1`] = `
               />
               <label
                 aria-hidden="true"
-                class="c16 c17"
+                class="c16"
                 for=":rt:"
               >
                 <svg
                   aria-hidden="true"
-                  class="c18"
+                  class="c17"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -1137,11 +1030,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="c19"
+                class="c18"
               >
                 <label
                   aria-hidden="false"
-                  class="c20"
+                  class="c19"
                   for=":rt:"
                   hidden=""
                   id=":ru:"
@@ -1175,10 +1068,10 @@ exports[`renders worksheet 1`] = `
           class="c8"
         >
           <div
-            class="c21 c22"
+            class="c20 c21"
           >
             <div
-              class="c23 c24 c25"
+              class="c22 c23 c24"
             >
               <p
                 class="c9"
@@ -1189,10 +1082,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c26 c27"
+              class="c25 c26"
             >
               <span
-                class="c28"
+                class="c27"
               >
                 Edit
               </span>
@@ -1204,7 +1097,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c29"
+          class="c28"
         >
           <p
             class="c9"
@@ -1221,10 +1114,10 @@ exports[`renders worksheet 1`] = `
       </tr>
       <tr>
         <td
-          class="c31"
+          class="c30"
         />
         <td
-          class="c32"
+          class="c31"
         >
           <p
             class="c9"
@@ -1253,12 +1146,12 @@ exports[`renders worksheet 1`] = `
               />
               <label
                 aria-hidden="true"
-                class="c16 c30"
+                class="c29"
                 for=":r15:"
               >
                 <svg
                   aria-hidden="true"
-                  class="c18"
+                  class="c17"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -1276,11 +1169,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="c19"
+                class="c18"
               >
                 <label
                   aria-hidden="false"
-                  class="c20"
+                  class="c19"
                   for=":r15:"
                   hidden=""
                   id=":r16:"
@@ -1312,10 +1205,10 @@ exports[`renders worksheet 1`] = `
           class="c8"
         >
           <div
-            class="c21 c22"
+            class="c20 c21"
           >
             <div
-              class="c23 c24 c25"
+              class="c22 c23 c24"
             >
               <p
                 class="c9"
@@ -1324,10 +1217,10 @@ exports[`renders worksheet 1`] = `
               />
             </div>
             <button
-              class="c26 c27"
+              class="c25 c26"
             >
               <span
-                class="c28"
+                class="c27"
               >
                 Edit
               </span>
@@ -1339,7 +1232,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c33"
+          class="c32"
         >
           <p
             class="c9"
@@ -1390,12 +1283,12 @@ exports[`renders worksheet 1`] = `
               />
               <label
                 aria-hidden="true"
-                class="c16 c17"
+                class="c16"
                 for=":r1d:"
               >
                 <svg
                   aria-hidden="true"
-                  class="c18"
+                  class="c17"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -1413,11 +1306,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="c19"
+                class="c18"
               >
                 <label
                   aria-hidden="false"
-                  class="c20"
+                  class="c19"
                   for=":r1d:"
                   hidden=""
                   id=":r1e:"
@@ -1451,10 +1344,10 @@ exports[`renders worksheet 1`] = `
           class="c8"
         >
           <div
-            class="c21 c22"
+            class="c20 c21"
           >
             <div
-              class="c23 c24 c25"
+              class="c22 c23 c24"
             >
               <p
                 class="c9"
@@ -1465,10 +1358,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c26 c27"
+              class="c25 c26"
             >
               <span
-                class="c28"
+                class="c27"
               >
                 Edit
               </span>
@@ -1480,7 +1373,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c29"
+          class="c28"
         >
           <p
             class="c9"
@@ -1497,7 +1390,7 @@ exports[`renders worksheet 1`] = `
       </tr>
       <tr>
         <td
-          class="c31"
+          class="c30"
         />
         <td
           class="c8"
@@ -1532,12 +1425,12 @@ exports[`renders worksheet 1`] = `
               />
               <label
                 aria-hidden="true"
-                class="c16 c30"
+                class="c29"
                 for=":r1l:"
               >
                 <svg
                   aria-hidden="true"
-                  class="c18"
+                  class="c17"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -1555,11 +1448,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="c19"
+                class="c18"
               >
                 <label
                   aria-hidden="false"
-                  class="c20"
+                  class="c19"
                   for=":r1l:"
                   hidden=""
                   id=":r1m:"
@@ -1593,10 +1486,10 @@ exports[`renders worksheet 1`] = `
           class="c8"
         >
           <div
-            class="c21 c22"
+            class="c20 c21"
           >
             <div
-              class="c23 c24 c25"
+              class="c22 c23 c24"
             >
               <p
                 class="c9"
@@ -1607,10 +1500,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c26 c27"
+              class="c25 c26"
             >
               <span
-                class="c28"
+                class="c27"
               >
                 Edit
               </span>
@@ -1622,7 +1515,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c33"
+          class="c32"
         >
           <p
             class="c9"
@@ -1675,12 +1568,12 @@ exports[`renders worksheet 1`] = `
               />
               <label
                 aria-hidden="true"
-                class="c16 c17"
+                class="c16"
                 for=":r1t:"
               >
                 <svg
                   aria-hidden="true"
-                  class="c18"
+                  class="c17"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -1698,11 +1591,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="c19"
+                class="c18"
               >
                 <label
                   aria-hidden="false"
-                  class="c20"
+                  class="c19"
                   for=":r1t:"
                   hidden=""
                   id=":r1u:"
@@ -1736,10 +1629,10 @@ exports[`renders worksheet 1`] = `
           class="c8"
         >
           <div
-            class="c21 c22"
+            class="c20 c21"
           >
             <div
-              class="c23 c24 c25"
+              class="c22 c23 c24"
             >
               <p
                 class="c9"
@@ -1750,10 +1643,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c26 c27"
+              class="c25 c26"
             >
               <span
-                class="c28"
+                class="c27"
               >
                 Edit
               </span>
@@ -1765,7 +1658,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c29"
+          class="c28"
         >
           <p
             class="c9"
@@ -1818,12 +1711,12 @@ exports[`renders worksheet 1`] = `
               />
               <label
                 aria-hidden="true"
-                class="c16 c17"
+                class="c16"
                 for=":r25:"
               >
                 <svg
                   aria-hidden="true"
-                  class="c18"
+                  class="c17"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -1841,11 +1734,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="c19"
+                class="c18"
               >
                 <label
                   aria-hidden="false"
-                  class="c20"
+                  class="c19"
                   for=":r25:"
                   hidden=""
                   id=":r26:"
@@ -1879,10 +1772,10 @@ exports[`renders worksheet 1`] = `
           class="c8"
         >
           <div
-            class="c21 c22"
+            class="c20 c21"
           >
             <div
-              class="c23 c24 c25"
+              class="c22 c23 c24"
             >
               <p
                 class="c9"
@@ -1893,10 +1786,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="c26 c27"
+              class="c25 c26"
             >
               <span
-                class="c28"
+                class="c27"
               >
                 Edit
               </span>
@@ -1908,7 +1801,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
         <td
-          class="c29"
+          class="c28"
         >
           <p
             class="c9"
