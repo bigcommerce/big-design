@@ -9,7 +9,7 @@ export interface Background {
   backgroundRepeat?: CSSProperties['backgroundRepeat'];
 }
 
-export const StyledPageBackground = styled(Grid).attrs({ theme: defaultTheme })<{
+export const StyledPageBackground = styled(Grid)<{
   $background?: Background;
 }>`
   position: relative;
@@ -34,7 +34,7 @@ export const StyledPageBackground = styled(Grid).attrs({ theme: defaultTheme })<
   }}
 `;
 
-export const StyledPage = styled(Flex).attrs({ theme: defaultTheme })`
+export const StyledPage = styled(Flex)`
   margin: 0 auto;
   width: 100%;
 
@@ -46,3 +46,6 @@ export const StyledPage = styled(Flex).attrs({ theme: defaultTheme })`
     max-width: ${({ theme }) => theme.helpers.remCalc(1400)};
   }
 `;
+
+StyledPageBackground.defaultProps = { theme: defaultTheme };
+StyledPage.defaultProps = { theme: defaultTheme };

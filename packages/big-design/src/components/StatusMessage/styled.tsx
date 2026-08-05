@@ -186,18 +186,21 @@ StyledStatusMessage.defaultProps = {
   theme: defaultTheme,
 };
 
-export const StyledStatusIllustration = styled.figure<Omit<StatusMessageProps, 'message'>>`
+export const StyledStatusIllustration = styled.figure<{
+  $size?: StatusMessageProps['size'];
+  $variant?: StatusMessageVariantType;
+}>`
   width: ${({ theme }) => theme.helpers.remCalc(120)};
   height: ${({ theme }) => theme.helpers.remCalc(120)};
   border-radius: 50%;
   position: relative;
   overflow: hidden;
   margin: 0;
-  background-image: ${({ variant = 'info' }) => generateIllustration(variant)};
+  background-image: ${({ $variant = 'info' }) => generateIllustration($variant)};
   content: '';
 
-  ${({ theme, size }) =>
-    size === 'page' &&
+  ${({ theme, $size }) =>
+    $size === 'page' &&
     css`
       transform: scale(1.5);
       transform-origin: bottom;
@@ -207,6 +210,4 @@ export const StyledStatusIllustration = styled.figure<Omit<StatusMessageProps, '
 
 StyledStatusIllustration.defaultProps = {
   theme: defaultTheme,
-  variant: 'info',
-  size: 'panel',
 };

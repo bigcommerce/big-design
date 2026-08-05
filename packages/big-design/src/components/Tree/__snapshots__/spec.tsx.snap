@@ -88,6 +88,12 @@ exports[`renders simple tree 1`] = `
 .c12 {
   color: #313440;
   margin: 0 0 1rem;
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5rem;

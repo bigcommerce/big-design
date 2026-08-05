@@ -24,7 +24,11 @@ export const Alert: React.FC<AlertProps> = memo(
         messages.map(({ text, link }, index) => (
           <Box key={index}>
             <StyledMessageItem>{text}</StyledMessageItem>{' '}
-            {link && <StyledLink {...link}>{link.text}</StyledLink>}
+            {link && (
+              <StyledLink external={link.external} href={link.href} target={link.target}>
+                {link.text}
+              </StyledLink>
+            )}
           </Box>
         )),
       [messages],

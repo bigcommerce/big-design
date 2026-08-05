@@ -14,7 +14,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({ percent }) => {
       aria-valuenow={percent}
       role="progressbar"
     >
-      <StyledProgressBarFiller percent={percent} />
+      <StyledProgressBarFiller $percent={percent} />
     </StyledProgressBar>
   ) : (
     <StyledProgressBar role="progressbar">

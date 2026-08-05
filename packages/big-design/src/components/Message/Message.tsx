@@ -29,6 +29,7 @@ export type MessageProps = SharedMessagingProps &
 
 export const Message: React.FC<MessageProps> = memo(
   ({
+    actions,
     className,
     localization = defaultLocalization,
     style,
@@ -46,7 +47,11 @@ export const Message: React.FC<MessageProps> = memo(
         messages.map(({ text, link }, index) => (
           <Box key={index}>
             <StyledMessageItem>{text}</StyledMessageItem>{' '}
-            {link && <StyledLink {...link}>{link.text}</StyledLink>}
+            {link && (
+              <StyledLink external={link.external} href={link.href} target={link.target}>
+                {link.text}
+              </StyledLink>
+            )}
           </Box>
         )),
       [messages],
@@ -56,9 +61,9 @@ export const Message: React.FC<MessageProps> = memo(
 
     const renderedActions = useMemo(
       () =>
-        props.actions && (
+        actions && (
           <StyledActionsWrapper flexDirection="row" flexWrap="wrap" marginTop="xSmall">
-            {props.actions.map(({ text, variant = 'secondary', ...actionProps }, index) => (
+            {actions.map(({ text, variant = 'secondary', ...actionProps }, index) => (
               <Button
                 {...excludeMarginProps(actionProps)}
                 key={index}
@@ -72,7 +77,7 @@ export const Message: React.FC<MessageProps> = memo(
             ))}
           </StyledActionsWrapper>
         ),
-      [props.actions],
+      [actions],
     );
 
     return (

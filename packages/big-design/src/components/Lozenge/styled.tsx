@@ -5,8 +5,9 @@ import { Box } from '../Box';
 
 import { LozengeProps } from './Lozenge';
 
-interface StyledLozengeProps extends Omit<LozengeProps, 'label' | 'tooltipContent'> {
+interface StyledLozengeProps {
   $hasTooltip?: boolean;
+  $variant?: LozengeProps['variant'];
 }
 
 const sharedLozengeStyles = css`
@@ -104,7 +105,7 @@ export const StyledLozenge = styled(Box)<StyledLozengeProps>`
   ${sharedLozengeStyles}
   padding-inline-end: ${({ theme, $hasTooltip }) =>
     $hasTooltip ? theme.spacing.xxSmall : theme.spacing.small};
-  ${({ variant = 'new' }) => variantStyles[variant].idle};
+  ${({ $variant = 'new' }) => variantStyles[$variant].idle};
 `;
 
 export const StyledLozengeButton = styled.button<StyledLozengeProps>`
@@ -114,7 +115,7 @@ export const StyledLozengeButton = styled.button<StyledLozengeProps>`
   cursor: pointer;
   border: none;
 
-  ${({ variant = 'new' }) => variantStyles[variant].idle};
+  ${({ $variant = 'new' }) => variantStyles[$variant].idle};
 
   svg:last-child {
     transition: transform 0.3s ease;
@@ -128,10 +129,10 @@ export const StyledLozengeButton = styled.button<StyledLozengeProps>`
   }
 
   &:hover {
-    ${({ variant = 'new' }) => variantStyles[variant].hover};
+    ${({ $variant = 'new' }) => variantStyles[$variant].hover};
   }
   &:focus {
-    ${({ variant = 'new' }) => variantStyles[variant].focus};
+    ${({ $variant = 'new' }) => variantStyles[$variant].focus};
   }
 `;
 

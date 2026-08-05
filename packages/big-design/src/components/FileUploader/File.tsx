@@ -58,8 +58,8 @@ export const File = ({ actions, name, idx, isValid, previewSrc, onRemove, ...pro
   return (
     <StyledFile
       {...props}
+      $isValid={isValid}
       alignItems="center"
-      isValid={isValid}
       justifyContent="space-between"
       paddingHorizontal="small"
     >
