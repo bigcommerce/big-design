@@ -6,7 +6,7 @@ import { withTransition } from '../../helpers/transitions';
 
 interface StyledCheckboxProps {
   checked?: boolean;
-  isIndeterminate?: boolean;
+  $isIndeterminate?: boolean;
   disabled?: boolean;
 }
 
@@ -15,8 +15,8 @@ export interface StyledLabelProps {
   disabled?: boolean;
 }
 
-export const CheckboxLabelContainer = styled.div<{ hasContent?: boolean }>`
-  margin-left: ${({ hasContent, theme }) => (hasContent ? theme.spacing.xSmall : 0)};
+export const CheckboxLabelContainer = styled.div<{ $hasContent?: boolean }>`
+  margin-left: ${({ $hasContent, theme }) => ($hasContent ? theme.spacing.xSmall : 0)};
 `;
 
 export const CheckboxImgContainer = styled.img`
@@ -25,8 +25,8 @@ export const CheckboxImgContainer = styled.img`
   flex-shrink: 0;
 `;
 
-export const CheckboxContainer = styled.div<{ hasImg?: boolean }>`
-  align-items: ${({ hasImg }) => (hasImg ? 'center' : 'flex-start')};
+export const CheckboxContainer = styled.div<{ $hasImg?: boolean }>`
+  align-items: ${({ $hasImg }) => ($hasImg ? 'center' : 'flex-start')};
   display: flex;
 `;
 
@@ -38,12 +38,12 @@ export const StyledCheckbox = styled.label<StyledCheckboxProps>`
   ${withTransition(['border-color', 'background', 'box-shadow', 'color', 'opacity'])}
 
   align-items: center;
-  background: ${({ checked, isIndeterminate, theme }) =>
-    checked || isIndeterminate ? theme.colors.primary : theme.colors.white};
+  background: ${({ checked, $isIndeterminate, theme }) =>
+    checked || $isIndeterminate ? theme.colors.primary : theme.colors.white};
   box-sizing: border-box;
   border: ${({ theme }) => theme.border.box};
-  border-color: ${({ checked, isIndeterminate, theme }) =>
-    checked || isIndeterminate ? theme.colors.primary : theme.colors.secondary30};
+  border-color: ${({ checked, $isIndeterminate, theme }) =>
+    checked || $isIndeterminate ? theme.colors.primary : theme.colors.secondary30};
   border-radius: ${({ theme }) => theme.borderRadius.normal};
   color: ${({ theme }) => theme.colors.white};
   cursor: pointer;
@@ -55,20 +55,20 @@ export const StyledCheckbox = styled.label<StyledCheckboxProps>`
   user-select: none;
   width: ${({ theme }) => theme.spacing.large};
 
-  ${({ checked, disabled, isIndeterminate, theme }) =>
+  ${({ checked, disabled, $isIndeterminate, theme }) =>
     disabled &&
     css`
-      background: ${checked || isIndeterminate
+      background: ${checked || $isIndeterminate
         ? theme.colors.secondary30
         : theme.colors.secondary10};
       border-color: ${theme.colors.secondary30};
       cursor: not-allowed;
     `};
 
-  ${({ checked, isIndeterminate, disabled, theme }) =>
+  ${({ checked, $isIndeterminate, disabled, theme }) =>
     !disabled &&
     `&:hover {
-      border-color: ${checked || isIndeterminate ? theme.colors.primary : theme.colors.secondary40};
+      border-color: ${checked || $isIndeterminate ? theme.colors.primary : theme.colors.secondary40};
     }`}
 
   ${HiddenCheckbox}:focus + & {
@@ -76,7 +76,7 @@ export const StyledCheckbox = styled.label<StyledCheckboxProps>`
   }
 
   svg {
-    opacity: ${({ checked, isIndeterminate }) => (checked || isIndeterminate ? 1 : 0)};
+    opacity: ${({ checked, $isIndeterminate }) => (checked || $isIndeterminate ? 1 : 0)};
   }
 `;
 

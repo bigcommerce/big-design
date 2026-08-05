@@ -1,6 +1,6 @@
 import { H1, Message, Panel, StatefulTree, Text } from '@bigcommerce/big-design';
 import { AssignmentIcon, LanguageIcon, StoreIcon } from '@bigcommerce/big-design-icons';
-import React, { Fragment } from 'react';
+import React, { Fragment, useMemo } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
 import { StatefulTreePropTable, TreeNodePropTable } from '../PropTables';
@@ -152,6 +152,49 @@ const StatefulTreePage = () => {
                       ];
 
                       return <StatefulTree defaultExpanded={['0']} nodes={nodes} />;
+                    }}
+                    {/* jsx-to-string:end */}
+                  </CodePreview>
+                </Fragment>
+              ),
+            },
+            {
+              id: 'virtualized',
+              title: 'Virtualized',
+              render: () => (
+                <Fragment key="virtualized">
+                  <Text>
+                    For large trees (thousands of nodes), pass <Code primary>virtualization</Code>{' '}
+                    with a <Code primary>maxHeight</Code> to render only the nodes within the
+                    viewport.
+                  </Text>
+                  <CodePreview scope={{ useMemo }}>
+                    {/* jsx-to-string:start */}
+                    {function Example() {
+                      // 500 categories × 10 subcategories = 5,500 nodes.
+                      const nodes = useMemo(
+                        () =>
+                          Array.from({ length: 500 }, (_, index) => ({
+                            id: `${index}`,
+                            value: index,
+                            label: `Category ${index}`,
+                            children: Array.from({ length: 10 }, (_, childIndex) => ({
+                              id: `${index}-${childIndex}`,
+                              value: index * 10 + childIndex,
+                              label: `Subcategory ${index}.${childIndex}`,
+                            })),
+                          })),
+                        [],
+                      );
+
+                      return (
+                        <StatefulTree
+                          defaultExpanded={['0', '1']}
+                          nodes={nodes}
+                          selectable="multi"
+                          virtualization={{ maxHeight: 400 }}
+                        />
+                      );
                     }}
                     {/* jsx-to-string:end */}
                   </CodePreview>

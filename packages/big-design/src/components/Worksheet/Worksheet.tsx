@@ -76,9 +76,9 @@ const InternalTable = ({
 
   return (
     <Table
-      hasExpandableRows={hasExpandableRows}
-      hasStaticWidth={hasStaticWidth}
-      minWidth={minWidth}
+      $hasExpandableRows={hasExpandableRows}
+      $hasStaticWidth={hasStaticWidth}
+      $minWidth={minWidth}
       onKeyDown={onKeyDown}
       onKeyUp={onKeyUp}
       ref={tableRef}
@@ -285,7 +285,7 @@ const InternalWorksheet = typedMemo(
           <tr>
             <Status />
             {expandedColumns.map((column, index) => (
-              <Header columnType={column.type} columnWidth={column.width || 'auto'} key={index}>
+              <Header $columnType={column.type} $columnWidth={column.width || 'auto'} key={index}>
                 {column.header} {getRenderedTooltip(column.tooltip)}
               </Header>
             ))}
@@ -350,7 +350,7 @@ const InternalWorksheet = typedMemo(
 
     return (
       <UpdateItemsProvider items={rows}>
-        <StyledBox containerHeight={isVirtualized ? height : undefined} ref={scrollContainerRef}>
+        <StyledBox $containerHeight={isVirtualized ? height : undefined} ref={scrollContainerRef}>
           <InternalTable
             hasExpandableRows={Boolean(expandableRows)}
             hasStaticWidth={tableHasStaticWidth}

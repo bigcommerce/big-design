@@ -99,8 +99,8 @@ const InternalTextEditor = <T extends WorksheetItem>({
   return (
     <Flex alignItems="center" justifyContent="space-between">
       <StyledInput
+        $isEdited={isEdited}
         autoFocus
-        isEdited={isEdited}
         onBlur={(event?: React.FocusEvent<HTMLInputElement>) => {
           const isActionButtonFocused = event?.relatedTarget?.id === actionButtonId;
 

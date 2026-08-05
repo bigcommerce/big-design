@@ -21,7 +21,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({ img, title, badge, descripti
     <Flex alignItems="center">
       {img && <InfoCardImgContainer height={40} width={40} {...imgProps} alt={img.alt ?? ''} />}
       <Box>
-        <StyleableText margin="none">
+        <StyleableText $margin="none">
           {title}
           {badge ? <Badge marginLeft="xSmall" {...badge} /> : null}
         </StyleableText>

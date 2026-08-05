@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { TreeFocusable, TreeNodeId, TreeNodeProps, TreeSelectableType } from '../../Tree';
 
@@ -17,9 +17,9 @@ export const useFocusable = <T>({ nodes, type, defaultSelected }: UseFocusablePr
     type && defaultSelected?.length ? defaultSelected[0] : nodes[0].id,
   );
 
-  const onFocus: TreeFocusable['onFocus'] = (nodeId) => {
+  const onFocus = useCallback<TreeFocusable['onFocus']>((nodeId) => {
     setFocusedNode(nodeId);
-  };
+  }, []);
 
   return {
     focusedNode,

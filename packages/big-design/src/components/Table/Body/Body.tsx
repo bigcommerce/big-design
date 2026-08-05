@@ -10,9 +10,11 @@ interface PrivateProps {
   forwardedRef?: React.Ref<HTMLTableSectionElement>;
 }
 
-const RawBody: React.FC<BodyProps & PrivateProps> = (props) => (
-  <StyledTableBody ref={props.forwardedRef} {...props} />
-);
+const RawBody: React.FC<BodyProps & PrivateProps> = ({
+  forwardedRef,
+  withFirstRowBorder,
+  ...domProps
+}) => <StyledTableBody $withFirstRowBorder={withFirstRowBorder} ref={forwardedRef} {...domProps} />;
 
 export const Body = memo(
   forwardRef<HTMLTableSectionElement, BodyProps>((props, ref) => (

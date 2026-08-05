@@ -200,15 +200,15 @@ export const PillTabs: React.FC<PillTabsProps> = ({
           <Fragment key={id}>
             {showSeparator && (
               <StyledGroupSeparator
+                $isVisible={separatorVisible}
                 aria-orientation="vertical"
-                isVisible={separatorVisible}
                 role="separator"
               />
             )}
-            <StyledFlexItem isVisible={isVisible} ref={setPillRef(index)} role="listitem">
+            <StyledFlexItem $isVisible={isVisible} ref={setPillRef(index)} role="listitem">
               <StyledPillTab
+                $isActive={isActive}
                 disabled={!isVisible}
-                isActive={isActive}
                 marginRight="xSmall"
                 onClick={onClick}
                 type="button"
@@ -220,7 +220,11 @@ export const PillTabs: React.FC<PillTabsProps> = ({
           </Fragment>
         );
       })}
-      <StyledFlexItem isVisible={dropdownItemGroups.length > 0} ref={refs.dropdown} role="listitem">
+      <StyledFlexItem
+        $isVisible={dropdownItemGroups.length > 0}
+        ref={refs.dropdown}
+        role="listitem"
+      >
         <Dropdown
           items={dropdownItemGroups}
           maxWidth={dropdownMaxWidth}

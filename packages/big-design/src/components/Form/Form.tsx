@@ -1,6 +1,7 @@
 import React, { ComponentPropsWithoutRef, forwardRef, Ref } from 'react';
 
 import { MarginProps } from '../../helpers';
+import { toTransientMarginProps } from '../../helpers/margins/margins';
 import { typedMemo } from '../../utils';
 
 import { StyledForm } from './styled';
@@ -15,10 +16,28 @@ export type FormProps = ComponentPropsWithoutRef<'form'> &
     fullWidth?: boolean;
   };
 
-const StyleableForm: React.FC<PrivateProps & FormProps> = ({ forwardedRef, ...props }) => {
+const StyleableForm: React.FC<PrivateProps & FormProps> = (props) => {
+  const {
+    forwardedRef,
+    fullWidth,
+    margin,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft,
+    marginVertical,
+    marginHorizontal,
+    ...domProps
+  } = props;
+
   return (
-    <FormContext.Provider value={{ fullWidth: props.fullWidth }}>
-      <StyledForm {...props} ref={forwardedRef} />
+    <FormContext.Provider value={{ fullWidth }}>
+      <StyledForm
+        {...domProps}
+        {...toTransientMarginProps(props)}
+        $fullWidth={fullWidth}
+        ref={forwardedRef}
+      />
     </FormContext.Provider>
   );
 };

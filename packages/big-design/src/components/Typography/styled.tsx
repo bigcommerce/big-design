@@ -2,62 +2,79 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { ellipsis } from 'polished';
 import styled, { css } from 'styled-components';
 
-import { withMargins } from '../../helpers';
+import { MarginProps, withMargins } from '../../helpers';
+import { TransientMarginProps } from '../../helpers/margins/margins';
 
-import { HeadingProps, HRProps, TextProps, TypographyProps } from './types';
+import {
+  HeadingProps,
+  HRProps,
+  TextProps,
+  TransientTextModifiers,
+  TransientTypographyProps,
+  TypographyProps,
+} from './types';
 
-const commonTextStyles = (props: TypographyProps) => css`
+type StyledHeadingProps = Omit<HeadingProps, keyof MarginProps> &
+  TransientMarginProps &
+  TransientTypographyProps;
+type StyledTextProps = Omit<TextProps, keyof MarginProps> &
+  TransientMarginProps &
+  TransientTypographyProps &
+  TransientTextModifiers;
+type StyledHRProps = Omit<HRProps, keyof MarginProps> & TransientMarginProps;
+
+const commonTextStyles = (props: TypographyProps & TransientTypographyProps) => css`
   color: ${({ theme }) => (props.color ? theme.colors[props.color] : theme.colors.secondary70)};
   margin: 0 0 ${({ theme }) => theme.spacing.medium};
 
-  ${props.ellipsis && ellipsis()};
+  ${props.$ellipsis && ellipsis()};
 `;
 
-const textModifiers = (props: TextProps) => css`
+const textModifiers = (props: TextProps & TransientTextModifiers) => css`
   ${({ theme }) =>
-    props.bold &&
+    props.$bold &&
     css`
       font-weight: ${theme.typography.fontWeight.semiBold};
     `}
 
   ${() =>
-    props.italic &&
+    props.$italic &&
     css`
       font-style: italic;
     `}
 
   ${() =>
-    props.underline &&
+    props.$underline &&
     css`
       text-decoration: underline;
     `}
 
   ${() =>
-    props.strikethrough &&
+    props.$strikethrough &&
     css`
       text-decoration: line-through;
     `}
 
   ${() =>
-    props.capitalize &&
+    props.$capitalize &&
     css`
       text-transform: capitalize;
     `}
 
   ${() =>
-    props.lowercase &&
+    props.$lowercase &&
     css`
       text-transform: lowercase;
     `}
 
   ${() =>
-    props.uppercase &&
+    props.$uppercase &&
     css`
       text-transform: uppercase;
     `}
 `;
 
-export const StyledH0 = styled.h1<HeadingProps>`
+export const StyledH0 = styled.h1<StyledHeadingProps>`
   ${(props) => commonTextStyles(props)};
   font-size: ${({ theme }) => theme.typography.fontSize.xxxLarge};
   font-weight: ${({ theme }) => theme.typography.fontWeight.extraLight};
@@ -66,7 +83,7 @@ export const StyledH0 = styled.h1<HeadingProps>`
   ${withMargins()};
 `;
 
-export const StyledH1 = styled.h1<HeadingProps>`
+export const StyledH1 = styled.h1<StyledHeadingProps>`
   ${(props) => commonTextStyles(props)};
   font-size: ${({ theme }) => theme.typography.fontSize.xxLarge};
   font-weight: ${({ theme }) => theme.typography.fontWeight.light};
@@ -75,7 +92,7 @@ export const StyledH1 = styled.h1<HeadingProps>`
   ${withMargins()};
 `;
 
-export const StyledH2 = styled.h2<HeadingProps>`
+export const StyledH2 = styled.h2<StyledHeadingProps>`
   ${(props) => commonTextStyles(props)};
   font-size: ${({ theme }) => theme.typography.fontSize.xLarge};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
@@ -83,7 +100,7 @@ export const StyledH2 = styled.h2<HeadingProps>`
   ${withMargins()};
 `;
 
-export const StyledH3 = styled.h3<HeadingProps>`
+export const StyledH3 = styled.h3<StyledHeadingProps>`
   ${(props) => commonTextStyles(props)};
   font-size: ${({ theme }) => theme.typography.fontSize.large};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
@@ -92,7 +109,7 @@ export const StyledH3 = styled.h3<HeadingProps>`
   ${withMargins()};
 `;
 
-export const StyledH4 = styled.h4<HeadingProps>`
+export const StyledH4 = styled.h4<StyledHeadingProps>`
   ${(props) => commonTextStyles(props)};
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
@@ -101,7 +118,7 @@ export const StyledH4 = styled.h4<HeadingProps>`
   ${withMargins()};
 `;
 
-export const StyledText = styled.p<TextProps>`
+export const StyledText = styled.p<StyledTextProps>`
   ${(props) => commonTextStyles(props)}
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
@@ -115,7 +132,7 @@ export const StyledText = styled.p<TextProps>`
   ${withMargins()};
 `;
 
-export const StyledSmall = styled.p<TextProps>`
+export const StyledSmall = styled.p<StyledTextProps>`
   ${(props) => commonTextStyles(props)};
   color: ${({ color, theme }) => (color ? theme.colors[color] : theme.colors.secondary60)};
   font-size: ${({ theme }) => theme.typography.fontSize.small};
@@ -131,7 +148,7 @@ export const StyledSmall = styled.p<TextProps>`
   ${withMargins()};
 `;
 
-export const StyledHR = styled.hr<HRProps>`
+export const StyledHR = styled.hr<StyledHRProps>`
   ${withMargins()};
 
   border: 0;

@@ -1,17 +1,28 @@
-import { Breakpoints, breakpointsOrder, ThemeInterface } from '@bigcommerce/big-design-theme';
-import { css, FlattenSimpleInterpolation } from 'styled-components';
+import {
+  Breakpoints,
+  breakpointsOrder,
+  CSSRules,
+  ThemeInterface,
+} from '@bigcommerce/big-design-theme';
+import { css } from 'styled-components';
 
-import { DisplayOverload, DisplayProps } from './types';
+import { DisplayOverload, DisplayProps, TransientDisplayProps } from './types';
 
-export const withDisplay = () => css<DisplayProps>`
-  ${({ display, theme }) => display && getDisplayStyles(display, theme, 'display')};
+export const withDisplay = () => css<TransientDisplayProps>`
+  ${({ $display, theme }) => $display && getDisplayStyles($display, theme, 'display')};
 `;
+
+// Rename-and-keep helper: maps the public `display` prop to its transient (`$`-prefixed)
+// name for hand-off to a tag-target styled component.
+export function toTransientDisplayProps(props: DisplayProps): TransientDisplayProps {
+  return { $display: props.display };
+}
 
 const getDisplayStyles: DisplayOverload = (
   displayProp: any,
   theme: ThemeInterface,
   cssKey: any,
-): FlattenSimpleInterpolation => {
+): CSSRules => {
   if (typeof displayProp === 'object') {
     return getResponsiveDisplay(displayProp, theme, cssKey);
   }
@@ -23,10 +34,7 @@ const getDisplayStyles: DisplayOverload = (
   return [];
 };
 
-const getSimpleDisplay = (
-  displayProp: string | number,
-  cssKey: string,
-): FlattenSimpleInterpolation => css`
+const getSimpleDisplay = (displayProp: string | number, cssKey: string): CSSRules => css`
   ${cssKey}: ${displayProp}
 `;
 
@@ -34,7 +42,7 @@ const getResponsiveDisplay: DisplayOverload = (
   displayProp: any,
   theme: ThemeInterface,
   cssKey: string,
-): FlattenSimpleInterpolation[] => {
+): CSSRules[] => {
   const breakpointKeys = Object.keys(displayProp).sort(
     (firstBreakpoint, secondBreakpoint) =>
       // eslint-disable-next-line @typescript-eslint/consistent-type-assertions

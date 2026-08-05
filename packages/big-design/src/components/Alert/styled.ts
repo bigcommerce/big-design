@@ -1,5 +1,5 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
-import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { getBorderStyle } from '../../utils';
 import { Grid } from '../Grid';
@@ -9,7 +9,12 @@ import { TextProps } from '../Typography/types';
 
 import { AlertProps } from './Alert';
 
-export const StyledAlert = styled(Grid)<AlertProps>`
+interface StyledAlertProps {
+  type?: AlertProps['type'];
+  $onClose?: AlertProps['onClose'];
+}
+
+export const StyledAlert = styled(Grid)<StyledAlertProps>`
   ${({ theme }) => theme.shadow.floating}
 
   animation: ${({ theme }) => theme.keyframes.fadeIn} .5s ease-in-out;
@@ -22,8 +27,8 @@ export const StyledAlert = styled(Grid)<AlertProps>`
   top: ${({ theme }) => theme.spacing.medium};
   z-index: ${({ theme }) => theme.zIndex.fixed};
 
-  ${({ onClose }) =>
-    onClose
+  ${({ $onClose }) =>
+    $onClose
       ? css`
           grid-template-areas: 'icon messages close';
           grid-template-columns: ${({ theme }) =>
@@ -42,9 +47,7 @@ export const StyledHeader = styled(StyleableH4)`
   margin-bottom: ${({ theme }) => theme.spacing.xxSmall};
 `;
 
-export const StyledMessageItem = styled<StyledComponent<'span', DefaultTheme, Partial<TextProps>>>(
-  StyleableSmall,
-).attrs({ as: 'span' })`
+export const StyledMessageItem = styled(StyleableSmall).attrs({ as: 'span' })<Partial<TextProps>>`
   color: ${({ theme }) => theme.colors.secondary70};
   vertical-align: middle;
 `;

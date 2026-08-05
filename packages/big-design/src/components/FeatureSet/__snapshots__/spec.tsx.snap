@@ -18,12 +18,6 @@ exports[`render feature set 1`] = `
 .c2 {
   color: currentColor;
   margin: 0 0 1rem;
-  display: inline-block;
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  word-wrap: normal;
   color: currentColor;
   font-size: 0.875rem;
   font-weight: 400;

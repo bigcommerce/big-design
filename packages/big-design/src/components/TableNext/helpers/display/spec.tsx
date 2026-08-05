@@ -5,23 +5,23 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { withTableColumnDisplay } from './display';
-import { TableColumnDisplayProps } from './types';
+import { TransientTableColumnDisplayProps } from './types';
 
-const TestComponent = styled.div<TableColumnDisplayProps>`
+const TestComponent = styled.div<TransientTableColumnDisplayProps>`
   ${withTableColumnDisplay()};
 `;
 
 TestComponent.defaultProps = { theme: defaultTheme };
 
 test('display', () => {
-  const { container } = render(<TestComponent display="table-cell" />);
+  const { container } = render(<TestComponent $display="table-cell" />);
 
   expect(container.firstChild).toHaveStyle('display: table-cell');
 });
 
 test('responsive display', () => {
   const { container } = render(
-    <TestComponent display={{ mobile: 'none', tablet: 'table-cell' }} />,
+    <TestComponent $display={{ mobile: 'none', tablet: 'table-cell' }} />,
   );
 
   expect(container.firstChild).toMatchSnapshot();

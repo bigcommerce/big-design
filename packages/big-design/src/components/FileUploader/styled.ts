@@ -14,30 +14,30 @@ const getDropZoneHeight = (height = defaultDropZoneHeight) =>
 
 export const StyledDropzone = styled(Flex)<{
   disabled?: boolean;
-  isDragOver: boolean;
-  isValid: boolean;
+  $isDragOver: boolean;
+  $isValid: boolean;
 }>`
   width: 100%;
   height: ${remCalc(defaultDropZoneHeight)};
   border: 1px dashed
-    ${({ theme, isDragOver, isValid, disabled }) => {
+    ${({ theme, $isDragOver, $isValid, disabled }) => {
       if (disabled) {
         return theme.colors.secondary30;
       }
 
-      return !isDragOver || isValid ? theme.colors.primary : theme.colors.danger40;
+      return !$isDragOver || $isValid ? theme.colors.primary : theme.colors.danger40;
     }};
   border-radius: ${({ theme }) => theme.borderRadius.normal};
-  background-color: ${({ theme, isDragOver, isValid, disabled }) => {
+  background-color: ${({ theme, $isDragOver, $isValid, disabled }) => {
     if (disabled) {
       return theme.colors.secondary20;
     }
 
-    if (!isDragOver) {
+    if (!$isDragOver) {
       return theme.colors.white;
     }
 
-    return isValid ? theme.colors.primary10 : theme.colors.danger10;
+    return $isValid ? theme.colors.primary10 : theme.colors.danger10;
   }};
   cursor: pointer;
 
@@ -52,12 +52,12 @@ export const StyledDropzone = styled(Flex)<{
   svg {
     width: ${remCalc(40)};
     height: ${remCalc(40)};
-    fill: ${({ theme, disabled, isValid, isDragOver }) => {
+    fill: ${({ theme, disabled, $isValid, $isDragOver }) => {
       if (disabled) {
         return theme.colors.secondary50;
       }
 
-      if (!isValid && isDragOver) {
+      if (!$isValid && $isDragOver) {
         return theme.colors.danger30;
       }
 

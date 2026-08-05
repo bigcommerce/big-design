@@ -148,6 +148,11 @@ exports[`simple form render 1`] = `
 }
 
 .c5 {
+  color: #313440;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  margin: 0 0 0.5rem;
   cursor: pointer;
   display: inline-block;
   margin-bottom: 0.25rem;
@@ -182,7 +187,7 @@ exports[`simple form render 1`] = `
     >
       <div>
         <label
-          class="c1 c5"
+          class="c5"
           for=":r0:"
         >
           First Name
@@ -212,7 +217,7 @@ exports[`simple form render 1`] = `
     >
       <div>
         <label
-          class="c1 c5"
+          class="c5"
           for=":r1:"
         >
           Middle Name

@@ -54,12 +54,6 @@ const App = ({ Component, pageProps }) => {
         <link href={`${process.env.URL_PREFIX}/favicon.svg`} rel="icon" type="image/svg+xml" />
         <title>BigDesign</title>
         <meta content={`${process.env.URL_PREFIX}/og-image.png`} property="og:image" />
-        <link href="https://fonts.googleapis.com" rel="preconnect" />
-        <link crossOrigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200;300;400;600&display=swap"
-          rel="stylesheet"
-        />
       </Head>
       {/* eslint-disable-next-line react/no-unknown-property */}
       <style global jsx>

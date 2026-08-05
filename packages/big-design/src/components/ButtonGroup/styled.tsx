@@ -5,16 +5,16 @@ import { StyleableButton } from '../Button/private';
 import { FlexItem } from '../Flex';
 
 interface StyledButtonProps {
-  borderRadius?: boolean;
+  $borderRadius?: boolean;
 }
 
 interface StyledFlexItemProps {
-  isVisible: boolean;
+  $isVisible: boolean;
 }
 
 export const StyledButton = styled(StyleableButton)<StyledButtonProps>`
-  ${({ borderRadius, theme }) =>
-    borderRadius
+  ${({ $borderRadius, theme }) =>
+    $borderRadius
       ? css`
           border-radius: ${theme.borderRadius.normal};
         `
@@ -44,8 +44,8 @@ export const StyledFlexItem = styled(FlexItem)<StyledFlexItemProps>`
     border-top-right-radius: ${({ theme }) => theme.borderRadius.normal};
   }
 
-  ${({ isVisible }) =>
-    !isVisible &&
+  ${({ $isVisible }) =>
+    !$isVisible &&
     css`
       position: absolute;
       visibility: hidden;

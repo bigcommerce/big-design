@@ -28,12 +28,14 @@ test('renders a table row', async () => {
         <Row
           childrenRowsIds={[]}
           columns={defaultColumns}
-          headerCellWidths={[]}
+          index={0}
           isDraggable={false}
           item={item}
+          itemCount={1}
           onItemSelect={() => jest.fn}
           parentRowId="0"
           selectedItems={{}}
+          tableId="test-table"
         />
       </tbody>
     </table>,

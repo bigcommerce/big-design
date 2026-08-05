@@ -340,7 +340,7 @@ exports[`offset pagination renders a pagination component 1`] = `
 }
 
 <div
-  aria-controls=":r12:"
+  aria-controls=":r14:"
   aria-label="Table Controls"
   class="c0"
   role="toolbar"
@@ -361,11 +361,11 @@ exports[`offset pagination renders a pagination component 1`] = `
         >
           <button
             aria-activedescendant=""
-            aria-controls=":r13:-menu"
+            aria-controls=":r15:-menu"
             aria-expanded="false"
             aria-haspopup="menu"
             class="c7 c8"
-            id=":r13:-toggle-button"
+            id=":r15:-toggle-button"
             role="button"
             tabindex="0"
             type="button"
@@ -396,19 +396,15 @@ exports[`offset pagination renders a pagination component 1`] = `
           </button>
           <div
             class="c11"
-            data-popper-escaped="true"
-            data-popper-placement="bottom-start"
-            data-popper-reference-hidden="true"
-            display="none"
-            style="position: fixed; left: 0px; top: 0px; right: auto; bottom: auto; transform: translate(0px, 4px);"
+            style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
           >
             <div
               class="c12"
             >
               <ul
-                aria-labelledby=":r13:-label"
+                aria-labelledby=":r15:-label"
                 class="c13"
-                id=":r13:-menu"
+                id=":r15:-menu"
                 role="menu"
               />
             </div>
@@ -427,7 +423,7 @@ exports[`offset pagination renders a pagination component 1`] = `
             class="c9"
           >
             <svg
-              aria-labelledby=":r16:"
+              aria-labelledby=":r19:"
               class="c15"
               fill="currentColor"
               height="24"
@@ -437,7 +433,7 @@ exports[`offset pagination renders a pagination component 1`] = `
               width="24"
             >
               <title
-                id=":r16:"
+                id=":r19:"
               >
                 Previous page
               </title>
@@ -459,7 +455,7 @@ exports[`offset pagination renders a pagination component 1`] = `
             class="c9"
           >
             <svg
-              aria-labelledby=":r17:"
+              aria-labelledby=":r1a:"
               class="c15"
               fill="currentColor"
               height="24"
@@ -469,7 +465,7 @@ exports[`offset pagination renders a pagination component 1`] = `
               width="24"
             >
               <title
-                id=":r17:"
+                id=":r1a:"
               >
                 Next page
               </title>
@@ -568,6 +564,10 @@ exports[`renders a simple table 1`] = `
   transition-property: background-color;
   display: table-row;
   background-color: transparent;
+  opacity: 1;
+  outline: none;
+  outline-offset: -2px;
+  pointer-events: auto;
 }
 
 .c5:hover {
@@ -819,7 +819,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   box-sizing: border-box;
 }
 
-.c15 {
+.c14 {
   margin-right: 1rem;
   box-sizing: border-box;
 }
@@ -867,19 +867,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   flex-shrink: 0;
 }
 
-.c12 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-}
-
-.c12:last-child {
-  margin-bottom: 0;
-}
-
-.c14 {
+.c13 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -888,11 +876,11 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   margin-left: 0.75rem;
 }
 
-.c14:last-child {
+.c13:last-child {
   margin-bottom: 0;
 }
 
-.c16 {
+.c15 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -901,11 +889,16 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   margin: 0;
 }
 
-.c16:last-child {
+.c15:last-child {
   margin-bottom: 0;
 }
 
-.c13 {
+.c12 {
+  color: #313440;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin: 0 0 1rem;
   cursor: pointer;
   border: 0;
   -webkit-clip: rect(0 0 0 0);
@@ -917,6 +910,10 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+.c12:last-child {
+  margin-bottom: 0;
 }
 
 .c11 {
@@ -1014,7 +1011,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
 }
 
 <div
-  aria-controls=":r8j:"
+  aria-controls=":r91:"
   aria-label="Table Controls"
   class="c0"
   role="toolbar"
@@ -1030,15 +1027,15 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
       >
         <input
           aria-checked="false"
-          aria-labelledby=":r8l:"
+          aria-labelledby=":r93:"
           class="c6 c7"
-          id=":r8k:"
+          id=":r92:"
           type="checkbox"
         />
         <label
           aria-hidden="true"
           class="c8 c9"
-          for=":r8k:"
+          for=":r92:"
         >
           <svg
             aria-hidden="true"
@@ -1063,27 +1060,27 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
           class="c11"
         >
           <label
-            class="c12 c13"
-            for=":r8k:"
+            class="c12"
+            for=":r92:"
             hidden=""
-            id=":r8l:"
+            id=":r93:"
           >
             Select All
           </label>
         </div>
       </div>
       <p
-        class="c14"
+        class="c13"
       >
         5
       </p>
     </div>
   </div>
   <div
-    class="c15 c2"
+    class="c14 c2"
   >
     <p
-      class="c16"
+      class="c15"
     >
       Product
     </p>
@@ -1107,7 +1104,7 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
   box-sizing: border-box;
 }
 
-.c15 {
+.c14 {
   margin-right: 1rem;
   box-sizing: border-box;
 }
@@ -1155,19 +1152,7 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
   flex-shrink: 0;
 }
 
-.c12 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-}
-
-.c12:last-child {
-  margin-bottom: 0;
-}
-
-.c14 {
+.c13 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -1176,11 +1161,11 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
   margin-left: 0.75rem;
 }
 
-.c14:last-child {
+.c13:last-child {
   margin-bottom: 0;
 }
 
-.c16 {
+.c15 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -1189,11 +1174,16 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
   margin: 0;
 }
 
-.c16:last-child {
+.c15:last-child {
   margin-bottom: 0;
 }
 
-.c13 {
+.c12 {
+  color: #313440;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin: 0 0 1rem;
   cursor: pointer;
   border: 0;
   -webkit-clip: rect(0 0 0 0);
@@ -1205,6 +1195,10 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+.c12:last-child {
+  margin-bottom: 0;
 }
 
 .c11 {
@@ -1310,7 +1304,7 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
 }
 
 <div
-  aria-controls=":r99:"
+  aria-controls=":r9n:"
   aria-label="Table Controls"
   class="c0"
   role="toolbar"
@@ -1326,15 +1320,15 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
       >
         <input
           aria-checked="false"
-          aria-labelledby=":r9b:"
+          aria-labelledby=":r9p:"
           class="c6 c7"
-          id=":r9a:"
+          id=":r9o:"
           type="checkbox"
         />
         <label
           aria-hidden="true"
           class="c8 c9"
-          for=":r9a:"
+          for=":r9o:"
         >
           <svg
             aria-hidden="true"
@@ -1359,27 +1353,27 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
           class="c11"
         >
           <label
-            class="c12 c13"
-            for=":r9a:"
+            class="c12"
+            for=":r9o:"
             hidden=""
-            id=":r9b:"
+            id=":r9p:"
           >
             Select All
           </label>
         </div>
       </div>
       <p
-        class="c14"
+        class="c13"
       >
         5
       </p>
     </div>
   </div>
   <div
-    class="c15 c2"
+    class="c14 c2"
   >
     <p
-      class="c16"
+      class="c15"
     >
       Product
     </p>
@@ -1403,7 +1397,7 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
   box-sizing: border-box;
 }
 
-.c15 {
+.c14 {
   margin-right: 1rem;
   box-sizing: border-box;
 }
@@ -1451,19 +1445,7 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
   flex-shrink: 0;
 }
 
-.c12 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-}
-
-.c12:last-child {
-  margin-bottom: 0;
-}
-
-.c14 {
+.c13 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -1472,11 +1454,11 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
   margin-left: 0.75rem;
 }
 
-.c14:last-child {
+.c13:last-child {
   margin-bottom: 0;
 }
 
-.c16 {
+.c15 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -1485,11 +1467,16 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
   margin: 0;
 }
 
-.c16:last-child {
+.c15:last-child {
   margin-bottom: 0;
 }
 
-.c13 {
+.c12 {
+  color: #313440;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin: 0 0 1rem;
   cursor: pointer;
   border: 0;
   -webkit-clip: rect(0 0 0 0);
@@ -1501,6 +1488,10 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+.c12:last-child {
+  margin-bottom: 0;
 }
 
 .c11 {
@@ -1606,7 +1597,7 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
 }
 
 <div
-  aria-controls=":rd0:"
+  aria-controls=":rde:"
   aria-label="Table Controls"
   class="c0"
   role="toolbar"
@@ -1622,15 +1613,15 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
       >
         <input
           aria-checked="false"
-          aria-labelledby=":rd2:"
+          aria-labelledby=":rdg:"
           class="c6 c7"
-          id=":rd1:"
+          id=":rdf:"
           type="checkbox"
         />
         <label
           aria-hidden="true"
           class="c8 c9"
-          for=":rd1:"
+          for=":rdf:"
         >
           <svg
             aria-hidden="true"
@@ -1655,27 +1646,27 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
           class="c11"
         >
           <label
-            class="c12 c13"
-            for=":rd1:"
+            class="c12"
+            for=":rdf:"
             hidden=""
-            id=":rd2:"
+            id=":rdg:"
           >
             Select All
           </label>
         </div>
       </div>
       <p
-        class="c14"
+        class="c13"
       >
         5
       </p>
     </div>
   </div>
   <div
-    class="c15 c2"
+    class="c14 c2"
   >
     <p
-      class="c16"
+      class="c15"
     >
       Product
     </p>

@@ -1,9 +1,9 @@
-import { Modifier, Obj, Placement } from '@popperjs/core';
-import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset';
-import React, { useEffect, useId, useMemo, useRef, useState } from 'react';
-import { usePopper } from 'react-popper';
+import { autoUpdate, offset, shift, size, useFloating } from '@floating-ui/react';
+import { Placement } from '@popperjs/core';
+import React, { useEffect, useId, useRef, useState } from 'react';
 
 import { excludeMarginProps } from '../../helpers';
+import { getFloatingPlacement } from '../../utils';
 import { Box, BoxProps } from '../Box';
 
 // Margin can't be used with popper elements
@@ -81,37 +81,27 @@ const InternalPopover: React.FC<InternalPopoverProps> = ({
   const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null);
   const previousFocus = useRef(typeof document !== 'undefined' ? document.activeElement : null);
 
-  const popperModifiers = useMemo<[Partial<OffsetModifier>, Modifier<unknown, Obj>]>(
-    () => [
-      {
-        name: 'offset',
-        options: {
-          offset: [skidding, distance],
-        },
-      },
-      {
-        name: 'sameWidth',
-        enabled: matchAnchorElementWidth,
-        phase: 'beforeWrite',
-        requires: ['computeStyles'],
-        fn({ state }) {
-          state.styles.popper.width = `${state.rects.reference.width}px`;
-        },
-        effect({ state }) {
-          const element = state.elements.reference;
+  const { middleware: placementMiddleware, placement: floatingPlacement } =
+    getFloatingPlacement(placement);
 
-          if (element instanceof HTMLElement) {
-            state.elements.popper.style.width = `${element.offsetWidth}px`;
-          }
-        },
-      },
+  const { floatingStyles } = useFloating({
+    elements: { floating: popperElement, reference: anchorElement },
+    middleware: [
+      offset({ crossAxis: skidding, mainAxis: distance }),
+      placementMiddleware,
+      shift(),
+      ...(matchAnchorElementWidth
+        ? [
+            size({
+              apply({ elements, rects }) {
+                elements.floating.style.width = `${rects.reference.width}px`;
+              },
+            }),
+          ]
+        : []),
     ],
-    [skidding, distance, matchAnchorElementWidth],
-  );
-
-  const { styles, attributes } = usePopper(anchorElement, popperElement, {
-    modifiers: popperModifiers,
-    placement,
+    placement: floatingPlacement,
+    whileElementsMounted: autoUpdate,
   });
 
   useEffect(() => {
@@ -182,10 +172,9 @@ const InternalPopover: React.FC<InternalPopoverProps> = ({
       tabIndex={-1}
       zIndex="popover"
       {...props}
-      {...attributes.popper}
       id={id}
       ref={setPopperElement}
-      style={styles.popper}
+      style={floatingStyles}
     >
       {children}
     </Box>

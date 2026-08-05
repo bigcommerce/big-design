@@ -2,49 +2,59 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { withTableColumnDisplay } from '../helpers';
+import { TransientTableColumnDisplayProps } from '../helpers/display/types';
 
 import { DataCellProps } from './DataCell';
 
+interface StyledTableDataCellProps extends TransientTableColumnDisplayProps {
+  $align?: DataCellProps['align'];
+  $isCheckbox?: boolean;
+  $verticalAlign?: DataCellProps['verticalAlign'];
+  $width?: DataCellProps['width'];
+  $withBorder?: boolean;
+  $withPadding?: boolean;
+}
+
 // TODO: Use PaddingProps
-export const StyledTableDataCell = styled.td<DataCellProps>`
+export const StyledTableDataCell = styled.td<StyledTableDataCellProps>`
   ${withTableColumnDisplay()}
 
   background-color: ${({ theme }) => theme.colors.white};
   box-sizing: border-box;
   color: ${({ theme }) => theme.colors.secondary70};
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
-  padding: ${({ theme, withPadding }) => (withPadding ? theme.spacing.small : 0)};
+  padding: ${({ theme, $withPadding }) => ($withPadding ? theme.spacing.small : 0)};
 
   &:first-of-type {
-    padding-left: ${({ theme, withPadding }) => (withPadding ? theme.spacing.xLarge : 0)};
+    padding-left: ${({ theme, $withPadding }) => ($withPadding ? theme.spacing.xLarge : 0)};
   }
 
   &:last-of-type {
-    padding-right: ${({ theme, withPadding }) => (withPadding ? theme.spacing.xLarge : 0)};
+    padding-right: ${({ theme, $withPadding }) => ($withPadding ? theme.spacing.xLarge : 0)};
   }
 
-  ${({ theme, withBorder }) =>
-    withBorder &&
+  ${({ theme, $withBorder }) =>
+    $withBorder &&
     css`
       border-bottom: ${theme.border.box};
     `}
 
-  ${({ align }) =>
-    align &&
+  ${({ $align }) =>
+    $align &&
     css`
-      text-align: ${align};
+      text-align: ${$align};
     `};
 
-  ${({ verticalAlign }) =>
-    verticalAlign &&
+  ${({ $verticalAlign }) =>
+    $verticalAlign &&
     css`
-      vertical-align: ${verticalAlign};
+      vertical-align: ${$verticalAlign};
     `};
 
-  ${({ width }) =>
-    width !== undefined &&
+  ${({ $width }) =>
+    $width !== undefined &&
     css`
-      width: ${typeof width === 'string' ? width : `${width}px`};
+      width: ${typeof $width === 'string' ? $width : `${$width}px`};
     `};
 `;
 
@@ -63,7 +73,7 @@ export const StyledTableDataCheckbox = styled(StyledTableDataCell)`
   }
 
   ${(props) =>
-    props.isCheckbox &&
+    props.$isCheckbox &&
     css`
       width: ${({ theme }) => theme.helpers.addValues(theme.spacing.xLarge, theme.spacing.small)};
       white-space: nowrap;

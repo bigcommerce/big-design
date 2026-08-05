@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { depthFirstSearch } from '../../../utils';
 import { TreeNodeId, TreeSelectable } from '../../Tree';
@@ -88,26 +88,29 @@ export const useSelectable = <T>({
     }
   }, [onSelectionChange, selectedValues]);
 
-  const onSelect: TreeSelectable<T>['onSelect'] = (nodeId, value) => {
-    if (disabledNodes?.includes(nodeId)) {
-      return;
-    }
-
-    if (type === 'multi') {
-      if (selectedNodes.includes(nodeId)) {
-        setSelectedNodes((prevNodes) => prevNodes.filter((prevNodeId) => prevNodeId !== nodeId));
-        setSelectedValues((prevValues) => prevValues.filter((prevValue) => prevValue !== value));
-      } else {
-        setSelectedNodes([...selectedNodes, nodeId]);
-        setSelectedValues([...selectedValues, value]);
+  const onSelect = useCallback<NonNullable<TreeSelectable<T>['onSelect']>>(
+    (nodeId, value) => {
+      if (disabledNodes?.includes(nodeId)) {
+        return;
       }
-    }
 
-    if (type === 'radio' && !selectedNodes.includes(nodeId)) {
-      setSelectedNodes([nodeId]);
-      setSelectedValues([value]);
-    }
-  };
+      if (type === 'multi') {
+        if (selectedNodes.includes(nodeId)) {
+          setSelectedNodes((prevNodes) => prevNodes.filter((prevNodeId) => prevNodeId !== nodeId));
+          setSelectedValues((prevValues) => prevValues.filter((prevValue) => prevValue !== value));
+        } else {
+          setSelectedNodes([...selectedNodes, nodeId]);
+          setSelectedValues([...selectedValues, value]);
+        }
+      }
+
+      if (type === 'radio' && !selectedNodes.includes(nodeId)) {
+        setSelectedNodes([nodeId]);
+        setSelectedValues([value]);
+      }
+    },
+    [disabledNodes, selectedNodes, selectedValues, type],
+  );
 
   return {
     selectedNodes,

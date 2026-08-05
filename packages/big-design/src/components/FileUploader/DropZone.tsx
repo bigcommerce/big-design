@@ -162,8 +162,9 @@ export const DropZone = ({
     return (
       <StyledButton
         {...excludeMarginProps(actionProps)}
+        $marginTop={isRowView ? 'none' : 'medium'}
+        $variant="subtle"
         color="secondary"
-        marginTop={isRowView ? 'none' : 'medium'}
         onClick={(event) => {
           event.preventDefault();
           event.stopPropagation();
@@ -173,7 +174,6 @@ export const DropZone = ({
           }
         }}
         type="button"
-        variant="subtle"
       >
         {label}
       </StyledButton>
@@ -184,12 +184,12 @@ export const DropZone = ({
   return (
     <StyledDropzone
       {...props}
+      $isDragOver={isDragOver}
+      $isValid={isFilesValid}
       alignItems="center"
       aria-label="dropzone"
       disabled={disabled}
       flexDirection={isRowView ? 'row' : 'column'}
-      isDragOver={isDragOver}
-      isValid={isFilesValid}
       justifyContent={isRowView ? 'space-between' : 'center'}
       onClick={handleUploadClick}
       onDragEnter={handleDragEnter}
@@ -225,12 +225,12 @@ export const DropZone = ({
           <Flex flexDirection="row">
             {renderedAction}
             <StyledButton
+              $marginTop={isRowView ? 'none' : 'medium'}
+              $variant="subtle"
               color="secondary"
               disabled={disabled}
-              marginTop={isRowView ? 'none' : 'medium'}
               onClick={(e) => e.preventDefault()}
               type="button"
-              variant="subtle"
             >
               {localization.upload}
             </StyledButton>

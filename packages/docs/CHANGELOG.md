@@ -1,5 +1,26 @@
 # Change Log
 
+## 1.13.0
+
+### Minor Changes
+
+- 7b41ea7: feat(component): add optional virtualization to the `Tree`/`StatefulTree` component via the new `virtualization` prop (`{ maxHeight }`), so large trees (thousands of nodes) render only the rows within the viewport.
+
+### Patch Changes
+
+- Updated dependencies [b65cf6d]
+- Updated dependencies [9fc1f98]
+- Updated dependencies [07f0358]
+- Updated dependencies [7b41ea7]
+  - @bigcommerce/big-design@3.3.0
+  - @bigcommerce/big-design-theme@1.3.1
+
+## 1.12.1
+
+### Patch Changes
+
+- 9f6154c: Upgrade Next.js to 15.5.21+ to patch the July 2026 security release (CVE-2026-64641, CVE-2026-64642, CVE-2026-64643, CVE-2026-64644, CVE-2026-64645, CVE-2026-64646, CVE-2026-64647, CVE-2026-64648, CVE-2026-64649).
+
 ## 1.12.0
 
 ### Minor Changes

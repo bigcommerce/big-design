@@ -1,5 +1,4 @@
-import { ThemeInterface } from '@bigcommerce/big-design-theme';
-import { FlattenSimpleInterpolation } from 'styled-components';
+import { CSSRules, ThemeInterface } from '@bigcommerce/big-design-theme';
 
 import { ResponsiveProp } from '../../../../types';
 
@@ -9,8 +8,14 @@ export type TableColumnDisplayProps = Partial<{
   display: TableColumnDisplayProp;
 }>;
 
+// Internal-only transient shape for the styled boundary (LTRAC-1396); TableColumnDisplayProps
+// (public) is unchanged.
+export type TransientTableColumnDisplayProps = Partial<{
+  $display: TableColumnDisplayProp;
+}>;
+
 export type TableColumnDisplayOverload = (
   displayProp: TableColumnDisplayProp,
   theme: ThemeInterface,
   cssKey: 'display',
-) => FlattenSimpleInterpolation;
+) => CSSRules;

@@ -28,19 +28,28 @@ export type MessageProps = SharedMessagingProps &
   MarginProps & { localization?: MessageLocalization };
 
 export const Message: React.FC<MessageProps> = memo(
-  ({ className, localization = defaultLocalization, style, header, ...props }) => {
+  ({
+    className,
+    localization = defaultLocalization,
+    style,
+    header,
+    messages = [],
+    onClose,
+    type = 'success',
+    ...props
+  }) => {
     const filteredProps = excludePaddingProps(props);
-    const icon = useMemo(() => props.type && getMessagingIcon(props.type), [props.type]);
+    const icon = useMemo(() => type && getMessagingIcon(type), [type]);
 
     const renderedMessages = useMemo(
       () =>
-        props.messages.map(({ text, link }, index) => (
+        messages.map(({ text, link }, index) => (
           <Box key={index}>
             <StyledMessageItem>{text}</StyledMessageItem>{' '}
             {link && <StyledLink {...link}>{link.text}</StyledLink>}
           </Box>
         )),
-      [props.messages],
+      [messages],
     );
 
     const renderedHeader = useMemo(() => header && <StyledHeader>{header}</StyledHeader>, [header]);
@@ -67,18 +76,24 @@ export const Message: React.FC<MessageProps> = memo(
     );
 
     return (
-      <StyledMessage {...filteredProps} backgroundColor="white" role="alert">
+      <StyledMessage
+        {...filteredProps}
+        $onClose={onClose}
+        backgroundColor="white"
+        role="alert"
+        type={type}
+      >
         <GridItem gridArea="icon">{icon}</GridItem>
         <GridItem gridArea="messages">
           {renderedHeader}
           {renderedMessages}
           {renderedActions}
         </GridItem>
-        {props.onClose && (
+        {onClose && (
           <GridItem>
             <MessagingButton
               iconOnly={<CloseIcon size="large" title={localization.close} />}
-              onClick={props.onClose}
+              onClick={onClose}
             />
           </GridItem>
         )}
@@ -86,8 +101,3 @@ export const Message: React.FC<MessageProps> = memo(
     );
   },
 );
-
-Message.defaultProps = {
-  messages: [],
-  type: 'success',
-};

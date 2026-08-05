@@ -1,2 +1,2 @@
 export { StatefulTree, type StatefulTreeProps } from './StatefulTree';
-export { type TreeNodeProps } from '../Tree';
+export { type TreeNodeProps, type TreeVirtualizationProps } from '../Tree';

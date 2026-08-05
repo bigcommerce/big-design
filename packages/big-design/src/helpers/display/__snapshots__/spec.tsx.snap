@@ -18,6 +18,5 @@ exports[`responsive display 1`] = `
 
 <div
   class="c0"
-  display="[object Object]"
 />
 `;

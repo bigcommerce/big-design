@@ -3,14 +3,18 @@ import { ellipsis } from 'polished';
 import styled, { css } from 'styled-components';
 
 import { withMargins } from '../../helpers';
+import { TransientMarginProps } from '../../helpers/margins/margins';
 import { withTransition } from '../../helpers/transitions';
 
-import { LinkProps } from './Link';
+interface StyledLinkProps extends TransientMarginProps {
+  $ellipsis?: boolean;
+  $isExternal?: boolean;
+}
 
-export const StyledLink = styled.a<LinkProps & { isExternal?: boolean }>`
+export const StyledLink = styled.a<StyledLinkProps>`
   ${withMargins()};
   ${withTransition(['color'], '70ms')}
-  ${(props) => props.ellipsis && ellipsis()};
+  ${(props) => props.$ellipsis && ellipsis()};
 
   color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;
@@ -26,8 +30,8 @@ export const StyledLink = styled.a<LinkProps & { isExternal?: boolean }>`
     color: ${({ theme }) => theme.colors.primary70};
   }
 
-  ${({ isExternal, theme }) =>
-    isExternal &&
+  ${({ $isExternal, theme }) =>
+    $isExternal &&
     css`
       display: inline-flex;
       align-items: center;

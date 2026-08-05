@@ -2,6 +2,7 @@ import { OpenInNewIcon } from '@bigcommerce/big-design-icons';
 import React, { ComponentPropsWithoutRef, forwardRef, memo, Ref } from 'react';
 
 import { MarginProps } from '../../helpers';
+import { toTransientMarginProps } from '../../helpers/margins/margins';
 
 import { StyledLink } from './styled';
 
@@ -16,9 +17,29 @@ interface PrivateProps {
   isExternal?: boolean;
 }
 
-const StyleableLink: React.FC<LinkProps & PrivateProps> = memo((props) => (
-  <StyledLink {...props} />
-));
+const StyleableLink: React.FC<LinkProps & PrivateProps> = memo((props) => {
+  const {
+    ellipsis,
+    isExternal,
+    margin,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft,
+    marginVertical,
+    marginHorizontal,
+    ...domProps
+  } = props;
+
+  return (
+    <StyledLink
+      {...domProps}
+      {...toTransientMarginProps(props)}
+      $ellipsis={ellipsis}
+      $isExternal={isExternal}
+    />
+  );
+});
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
   ({ children, external, ...props }, ref) => {

@@ -3,16 +3,24 @@ import styled, { css } from 'styled-components';
 
 import { Flex, FlexItem } from '../../Flex';
 import { StyleableText } from '../../Typography/private';
+import { getTreeIndentUnit } from '../styled';
 
-export const StyledLi = styled.li`
+export const StyledLi = styled.li<{ $level?: number }>`
   outline: 0;
+
+  ${({ $level, theme }) =>
+    $level
+      ? css`
+          padding-left: calc(${getTreeIndentUnit(theme)} * ${$level});
+        `
+      : ''}
 `;
 
-export const StyledArrowWrapper = styled(FlexItem)<{ expanded: boolean }>`
+export const StyledArrowWrapper = styled(FlexItem)<{ $expanded: boolean }>`
   z-index: 1;
 
-  ${({ expanded }) =>
-    expanded &&
+  ${({ $expanded }) =>
+    $expanded &&
     css`
       transform: rotate(90deg);
     `};
@@ -34,7 +42,7 @@ const sharedAfterStyles = css`
   z-index: 0;
 `;
 
-export const StyledFlex = styled(Flex)<{ selected?: boolean }>`
+export const StyledFlex = styled(Flex)<{ $selected?: boolean }>`
   cursor: pointer;
   min-height: ${({ theme }) =>
     theme.helpers.addValues(theme.spacing.xxLarge, theme.spacing.xSmall)};
@@ -54,8 +62,8 @@ export const StyledFlex = styled(Flex)<{ selected?: boolean }>`
     vertical-align: middle;
   }
 
-  ${({ theme, selected }) =>
-    selected &&
+  ${({ theme, $selected }) =>
+    $selected &&
     css`
       &::after {
         ${sharedAfterStyles}

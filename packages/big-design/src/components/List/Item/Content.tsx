@@ -1,4 +1,5 @@
 import { IconProps } from '@bigcommerce/big-design-icons';
+import { offset, shift } from '@floating-ui/react';
 import React, { cloneElement, isValidElement, memo, useCallback, useMemo } from 'react';
 
 import { DropdownItem, DropdownLinkItem } from '../../Dropdown';
@@ -54,11 +55,7 @@ export const Content = memo(({ item, isHighlighted, wrapText = false }: ContentP
 
   const wrapInTooltip = useCallback(
     (tooltip: string, tooltipTrigger: React.ReactElement) => (
-      <Tooltip
-        modifiers={[{ name: 'preventOverflow' }, { name: 'offset', options: { offset: [0, 20] } }]}
-        placement="left"
-        trigger={tooltipTrigger}
-      >
+      <Tooltip middleware={[offset(20), shift()]} placement="left" trigger={tooltipTrigger}>
         {tooltip}
       </Tooltip>
     ),

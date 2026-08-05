@@ -6,11 +6,16 @@ import { Flex } from '../Flex';
 
 import { ModalProps } from './Modal';
 
+interface StyledModalProps {
+  $backdrop?: ModalProps['backdrop'];
+  $variant?: ModalProps['variant'];
+}
+
 export const StyledModal = styled.div.attrs({
   'aria-modal': true,
   role: 'dialog',
   tabIndex: -1,
-})<Partial<ModalProps>>`
+})<StyledModalProps>`
   align-items: center;
   display: flex;
   height: 100%;
@@ -22,10 +27,10 @@ export const StyledModal = styled.div.attrs({
   z-index: ${({ theme }) => theme.zIndex.modalBackdrop};
 
   ${(props) =>
-    props.backdrop &&
-    props.variant &&
+    props.$backdrop &&
+    props.$variant &&
     css`
-      background: ${rgba(props.theme.colors.secondary70, props.variant === 'dialog' ? 0.5 : 0.7)};
+      background: ${rgba(props.theme.colors.secondary70, props.$variant === 'dialog' ? 0.5 : 0.7)};
     `}
 `;
 

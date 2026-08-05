@@ -5,16 +5,16 @@ import { StyleableButton } from '../Button/private';
 import { FlexItem } from '../Flex';
 
 interface StyledPillTabProps {
-  isActive: boolean;
+  $isActive: boolean;
 }
 
 interface StyledFlexItemProps {
-  isVisible: boolean;
+  $isVisible: boolean;
 }
 
 export const StyledPillTab = styled(StyleableButton)<StyledPillTabProps>`
   ${(props) =>
-    props.isActive &&
+    props.$isActive &&
     css`
       background-color: ${({ theme }) => theme.colors.primary20};
     `}
@@ -22,7 +22,7 @@ export const StyledPillTab = styled(StyleableButton)<StyledPillTabProps>`
 
 export const StyledFlexItem = styled(FlexItem)<StyledFlexItemProps>`
   ${(props) =>
-    !props.isVisible &&
+    !props.$isVisible &&
     css`
       position: absolute;
       visibility: hidden;
@@ -39,7 +39,7 @@ export const StyledGroupSeparator = styled.div<StyledFlexItemProps>`
     `${theme.spacing.xxSmall} ${theme.spacing.xSmall} ${theme.spacing.xxSmall} 0`};
 
   ${(props) =>
-    !props.isVisible &&
+    !props.$isVisible &&
     css`
       position: absolute;
       visibility: hidden;

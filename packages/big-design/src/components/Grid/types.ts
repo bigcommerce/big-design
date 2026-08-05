@@ -1,5 +1,4 @@
-import { ThemeInterface } from '@bigcommerce/big-design-theme';
-import { FlattenSimpleInterpolation } from 'styled-components';
+import { CSSRules, ThemeInterface } from '@bigcommerce/big-design-theme';
 
 import { ResponsiveProp } from '../../types';
 
@@ -52,6 +51,19 @@ export type GridedProps = Partial<{
   gridTemplate: GridTemplate;
 }>;
 
+export type TransientGridedProps = Partial<{
+  $gridAreas: GridAreas;
+  $gridAutoColumns: GridAutoColumns;
+  $gridAutoFlow: GridAutoFlow;
+  $gridAutoRows: GridAutoRows;
+  $gridColumns: GridColumns;
+  $gridColumnGap: GridColumnGap;
+  $gridGap: GridGap;
+  $gridRows: GridRows;
+  $gridRowGap: GridRowGap;
+  $gridTemplate: GridTemplate;
+}>;
+
 export type GridedItemProps = Partial<{
   gridArea: GridArea;
   gridColumn: GridColumn;
@@ -62,74 +74,32 @@ export type GridedItemProps = Partial<{
   gridRowStart: GridRowStart;
 }>;
 
+export type TransientGridedItemProps = Partial<{
+  $gridArea: GridArea;
+  $gridColumn: GridColumn;
+  $gridColumnEnd: GridColumnEnd;
+  $gridColumnStart: GridColumnStart;
+  $gridRow: GridRow;
+  $gridRowEnd: GridRowEnd;
+  $gridRowStart: GridRowStart;
+}>;
+
 export interface GridedOverload {
-  (
-    gridedProp: GridAreas,
-    theme: ThemeInterface,
-    cssKey: 'grid-template-areas',
-  ): FlattenSimpleInterpolation;
-  (
-    gridedProp: GridAutoColumns,
-    theme: ThemeInterface,
-    cssKey: 'grid-auto-columns',
-  ): FlattenSimpleInterpolation;
-  (
-    gridedProp: GridAutoFlow,
-    theme: ThemeInterface,
-    cssKey: 'grid-auto-flow',
-  ): FlattenSimpleInterpolation;
-  (
-    gridedProp: GridAutoRows,
-    theme: ThemeInterface,
-    cssKey: 'grid-auto-rows',
-  ): FlattenSimpleInterpolation;
-  (
-    gridedProp: GridColumns,
-    theme: ThemeInterface,
-    cssKey: 'grid-template-columns',
-  ): FlattenSimpleInterpolation;
-  (
-    gridedPopr: GridColumnGap,
-    theme: ThemeInterface,
-    cssKey: 'column-gap',
-  ): FlattenSimpleInterpolation;
-  (gridedProp: GridGap, theme: ThemeInterface, cssKey: 'gap'): FlattenSimpleInterpolation;
-  (
-    gridedProp: GridRows,
-    theme: ThemeInterface,
-    cssKey: 'grid-template-rows',
-  ): FlattenSimpleInterpolation;
-  (gridedProp: GridRowGap, theme: ThemeInterface, cssKey: 'row-gap'): FlattenSimpleInterpolation;
-  (
-    gridedProp: GridTemplate,
-    theme: ThemeInterface,
-    cssKey: 'grid-template',
-  ): FlattenSimpleInterpolation;
-  (gridedProp: GridArea, theme: ThemeInterface, cssKey: 'grid-area'): FlattenSimpleInterpolation;
-  (
-    gridedProp: GridColumn,
-    theme: ThemeInterface,
-    cssKey: 'grid-column',
-  ): FlattenSimpleInterpolation;
-  (
-    gridedProp: GridColumnEnd,
-    theme: ThemeInterface,
-    cssKey: 'grid-column-end',
-  ): FlattenSimpleInterpolation;
-  (
-    gridedProp: GridColumnStart,
-    theme: ThemeInterface,
-    cssKey: 'grid-column-start',
-  ): FlattenSimpleInterpolation;
-  (gridedProp: GridRow, theme: ThemeInterface, cssKey: 'grid-row'): FlattenSimpleInterpolation;
-  (
-    gridedProp: GridRowEnd,
-    theme: ThemeInterface,
-    cssKey: 'grid-row-end',
-  ): FlattenSimpleInterpolation;
-  (
-    gridedProp: GridRowStart,
-    theme: ThemeInterface,
-    cssKey: 'grid-row-start',
-  ): FlattenSimpleInterpolation;
+  (gridedProp: GridAreas, theme: ThemeInterface, cssKey: 'grid-template-areas'): CSSRules;
+  (gridedProp: GridAutoColumns, theme: ThemeInterface, cssKey: 'grid-auto-columns'): CSSRules;
+  (gridedProp: GridAutoFlow, theme: ThemeInterface, cssKey: 'grid-auto-flow'): CSSRules;
+  (gridedProp: GridAutoRows, theme: ThemeInterface, cssKey: 'grid-auto-rows'): CSSRules;
+  (gridedProp: GridColumns, theme: ThemeInterface, cssKey: 'grid-template-columns'): CSSRules;
+  (gridedPopr: GridColumnGap, theme: ThemeInterface, cssKey: 'column-gap'): CSSRules;
+  (gridedProp: GridGap, theme: ThemeInterface, cssKey: 'gap'): CSSRules;
+  (gridedProp: GridRows, theme: ThemeInterface, cssKey: 'grid-template-rows'): CSSRules;
+  (gridedProp: GridRowGap, theme: ThemeInterface, cssKey: 'row-gap'): CSSRules;
+  (gridedProp: GridTemplate, theme: ThemeInterface, cssKey: 'grid-template'): CSSRules;
+  (gridedProp: GridArea, theme: ThemeInterface, cssKey: 'grid-area'): CSSRules;
+  (gridedProp: GridColumn, theme: ThemeInterface, cssKey: 'grid-column'): CSSRules;
+  (gridedProp: GridColumnEnd, theme: ThemeInterface, cssKey: 'grid-column-end'): CSSRules;
+  (gridedProp: GridColumnStart, theme: ThemeInterface, cssKey: 'grid-column-start'): CSSRules;
+  (gridedProp: GridRow, theme: ThemeInterface, cssKey: 'grid-row'): CSSRules;
+  (gridedProp: GridRowEnd, theme: ThemeInterface, cssKey: 'grid-row-end'): CSSRules;
+  (gridedProp: GridRowStart, theme: ThemeInterface, cssKey: 'grid-row-start'): CSSRules;
 }

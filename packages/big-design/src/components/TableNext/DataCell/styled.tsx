@@ -2,51 +2,62 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { withPaddings } from '../../../helpers';
+import { TransientPaddingProps } from '../../../helpers/paddings/paddings';
 import { withTableColumnDisplay } from '../helpers';
+import { TransientTableColumnDisplayProps } from '../helpers/display/types';
 
 import { DataCellProps } from './DataCell';
 
-export const StyledTableDataCell = styled.td<DataCellProps>`
+interface StyledTableDataCellProps extends TransientTableColumnDisplayProps, TransientPaddingProps {
+  $align?: DataCellProps['align'];
+  $isCheckbox?: boolean;
+  $isExpandable?: boolean;
+  $verticalAlign?: DataCellProps['verticalAlign'];
+  $width?: DataCellProps['width'];
+  $withBorder?: boolean;
+}
+
+export const StyledTableDataCell = styled.td<StyledTableDataCellProps>`
   ${withTableColumnDisplay()}
   ${withPaddings()}
-  
+
   background-color: ${({ theme }) => theme.colors.white};
   box-sizing: border-box;
   color: ${({ theme }) => theme.colors.secondary70};
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
 
   &:first-of-type {
-    padding-left: ${({ theme, paddingHorizontal, padding }) =>
-      padding || paddingHorizontal ? theme.spacing.xLarge : 0};
+    padding-left: ${({ theme, $paddingHorizontal, $padding }) =>
+      $padding || $paddingHorizontal ? theme.spacing.xLarge : 0};
   }
 
   &:last-of-type {
-    padding-right: ${({ theme, paddingHorizontal, padding }) =>
-      padding || paddingHorizontal ? theme.spacing.xLarge : 0};
+    padding-right: ${({ theme, $paddingHorizontal, $padding }) =>
+      $padding || $paddingHorizontal ? theme.spacing.xLarge : 0};
   }
 
-  ${({ theme, withBorder }) =>
-    withBorder &&
+  ${({ theme, $withBorder }) =>
+    $withBorder &&
     css`
       border-bottom: ${theme.border.box};
     `}
 
-  ${({ align }) =>
-    align &&
+  ${({ $align }) =>
+    $align &&
     css`
-      text-align: ${align};
+      text-align: ${$align};
     `};
 
-  ${({ verticalAlign }) =>
-    verticalAlign &&
+  ${({ $verticalAlign }) =>
+    $verticalAlign &&
     css`
-      vertical-align: ${verticalAlign};
+      vertical-align: ${$verticalAlign};
     `};
 
-  ${({ width }) =>
-    width !== undefined &&
+  ${({ $width }) =>
+    $width !== undefined &&
     css`
-      width: ${typeof width === 'string' ? width : `${width}px`};
+      width: ${typeof $width === 'string' ? $width : `${$width}px`};
     `};
 `;
 
@@ -60,14 +71,14 @@ export const StyledTableDataCheckbox = styled(StyledTableDataCell)`
     padding-left: ${({ theme }) => theme.spacing.xLarge};
   }
 
-  ${({ isExpandable }) =>
-    isExpandable &&
+  ${({ $isExpandable }) =>
+    $isExpandable &&
     css`
       padding-right: 0;
     `}
 
   ${(props) =>
-    props.isCheckbox &&
+    props.$isCheckbox &&
     css`
       width: ${({ theme }) => theme.helpers.addValues(theme.spacing.xLarge, theme.spacing.small)};
       white-space: nowrap;

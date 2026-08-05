@@ -15,7 +15,7 @@ export const Tag: React.FC<TagProps> = memo(({ icon, label }) => {
   return label ? (
     <StyledLi aria-labelledby={id}>
       {icon}
-      <StyleableSmall as="span" color="currentColor" ellipsis id={id} margin="none">
+      <StyleableSmall $margin="none" as="span" color="currentColor" ellipsis id={id}>
         {label}
       </StyleableSmall>
     </StyledLi>

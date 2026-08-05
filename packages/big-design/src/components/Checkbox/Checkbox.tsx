@@ -105,7 +105,7 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
   }, [description]);
 
   return (
-    <CheckboxContainer className={className} hasImg={Boolean(img)} onClick={onClick} style={style}>
+    <CheckboxContainer $hasImg={Boolean(img)} className={className} onClick={onClick} style={style}>
       <HiddenCheckbox
         checked={checked}
         disabled={disabled}
@@ -134,18 +134,18 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
       />
 
       <StyledCheckbox
+        $isIndeterminate={isIndeterminate}
         aria-hidden={true}
         checked={checked}
         disabled={disabled}
         htmlFor={id}
-        isIndeterminate={isIndeterminate}
       >
         {!checked && isIndeterminate ? <RemoveIcon /> : <CheckIcon />}
       </StyledCheckbox>
       {img ? (
         <CheckboxImgContainer height={40} width={40} {...imgProps} alt={img.alt ?? ''} />
       ) : null}
-      <CheckboxLabelContainer hasContent={Boolean(label) || Boolean(description)}>
+      <CheckboxLabelContainer $hasContent={Boolean(label) || Boolean(description)}>
         {renderedLabel}
         {renderedDescription}
       </CheckboxLabelContainer>

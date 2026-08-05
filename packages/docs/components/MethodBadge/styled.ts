@@ -1,9 +1,19 @@
-import { withMargins } from '@bigcommerce/big-design';
+import { MarginProps, withMargins } from '@bigcommerce/big-design';
 import styled from 'styled-components';
 
 import { MethodBadgeProps } from './MethodBadge';
 
-export const StyledMethodBadge = styled.span<Omit<MethodBadgeProps, 'label'>>`
+interface StyledMethodBadgeProps extends Omit<MethodBadgeProps, 'label' | keyof MarginProps> {
+  $margin?: MarginProps['margin'];
+  $marginTop?: MarginProps['marginTop'];
+  $marginRight?: MarginProps['marginRight'];
+  $marginBottom?: MarginProps['marginBottom'];
+  $marginLeft?: MarginProps['marginLeft'];
+  $marginVertical?: MarginProps['marginVertical'];
+  $marginHorizontal?: MarginProps['marginHorizontal'];
+}
+
+export const StyledMethodBadge = styled.span<StyledMethodBadgeProps>`
   ${withMargins()};
 
   background-color: ${({ theme }) => theme.colors.secondary70};
