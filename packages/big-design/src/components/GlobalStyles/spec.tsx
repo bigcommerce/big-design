@@ -18,6 +18,8 @@ test('renders global styles', () => {
 
     expect(styles).toContain('body');
     expect(styles).toContain('Source Sans Pro');
+    expect(styles).toContain(':root');
+    expect(styles).toContain('--color-primary40');
   } finally {
     sheet.seal();
   }

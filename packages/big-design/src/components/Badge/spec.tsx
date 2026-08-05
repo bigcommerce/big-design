@@ -1,60 +1,55 @@
-import { theme } from '@bigcommerce/big-design-theme';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
-import 'jest-styled-components';
 
 import { Badge } from './index';
 
 test('has margin props', () => {
-  const { container, rerender } = render(<Badge label="Badge" />);
+  const { rerender } = render(<Badge label="Badge" />);
 
-  expect(container.firstChild).not.toHaveStyle('margin: 1rem');
+  expect(screen.getByText('Badge')).not.toHaveClass('m-medium');
 
   rerender(<Badge label="Badge" margin="medium" />);
 
-  expect(container.firstChild).toHaveStyle('margin: 1rem');
+  expect(screen.getByText('Badge')).toHaveClass('m-medium');
 });
 
 test('render default Badge', () => {
-  const { container } = render(<Badge label="Badge" />);
+  render(<Badge label="Badge" />);
 
-  expect(container.firstChild).toMatchSnapshot();
-  expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.secondary60}`);
+  expect(screen.getByText('Badge')).toHaveClass('bg-secondary60');
 });
 
 test('render success Badge', () => {
-  const { container } = render(<Badge label="Badge" variant="success" />);
+  render(<Badge label="Badge" variant="success" />);
 
-  expect(container.firstChild).toMatchSnapshot();
-  expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.success50}`);
+  expect(screen.getByText('Badge')).toHaveClass('bg-success50');
 });
 
 test('render danger Badge', () => {
-  const { container } = render(<Badge label="Badge" variant="danger" />);
+  render(<Badge label="Badge" variant="danger" />);
 
-  expect(container.firstChild).toMatchSnapshot();
-  expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.danger40}`);
+  expect(screen.getByText('Badge')).toHaveClass('bg-danger40');
 });
 
 test('render warning Badge', () => {
-  const { container } = render(<Badge label="Badge" variant="warning" />);
+  render(<Badge label="Badge" variant="warning" />);
 
-  expect(container.firstChild).toMatchSnapshot();
-  expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.warning40}`);
+  const badge = screen.getByText('Badge');
+
+  expect(badge).toHaveClass('bg-warning40');
+  expect(badge).toHaveClass('text-secondary70');
 });
 
 test('render secondary Badge', () => {
-  const { container } = render(<Badge label="Badge" variant="secondary" />);
+  render(<Badge label="Badge" variant="secondary" />);
 
-  expect(container.firstChild).toMatchSnapshot();
-  expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.secondary60}`);
+  expect(screen.getByText('Badge')).toHaveClass('bg-secondary60');
 });
 
 test('render primary Badge', () => {
-  const { container } = render(<Badge label="Badge" variant="primary" />);
+  render(<Badge label="Badge" variant="primary" />);
 
-  expect(container.firstChild).toMatchSnapshot();
-  expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.primary40}`);
+  expect(screen.getByText('Badge')).toHaveClass('bg-primary40');
 });
 
 test("doesn't render if label prop is invalid", () => {

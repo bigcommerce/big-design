@@ -3,6 +3,10 @@ const defaultJestConfig = require('@bigcommerce/configs/jest');
 module.exports = {
   ...defaultJestConfig,
   setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
+  moduleNameMapper: {
+    ...defaultJestConfig.moduleNameMapper,
+    '\\.css$': '<rootDir>/src/styleMock.js',
+  },
   coverageThreshold: {
     global: {
       // Pointer drag-and-drop paths (native HTML5 drag) can't run in jsdom and are
