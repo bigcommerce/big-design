@@ -29,6 +29,9 @@ export const themeToCssVariables = (theme: ThemeInterface): string => {
     },
   );
 
+  // Badge (and similar) label size — remCalc(12), not on the public fontSize scale
+  declarations.push(`--text-badge: ${theme.helpers.remCalc(12)}`);
+
   (
     Object.keys(theme.typography.fontWeight) as Array<keyof typeof theme.typography.fontWeight>
   ).forEach((key) => {

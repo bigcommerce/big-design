@@ -91,6 +91,8 @@
   --text-xLarge: 1.5rem;
   --text-xxLarge: 2rem;
   --text-xxxLarge: 3rem;
+  /* Badge / similar labels use 12px; not on the public typography scale */
+  --text-badge: 0.75rem;
 
   --font-weight-extraLight: 200;
   --font-weight-light: 300;

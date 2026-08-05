@@ -10,6 +10,7 @@ test('maps theme tokens to CSS custom properties', () => {
   expect(css).toContain('--font-weight-semiBold: 600');
   expect(css).toContain('--radius-normal: 0.25rem');
   expect(css).toContain('--z-index-modal: 1050');
+  expect(css).toContain('--text-badge: 0.75rem');
 });
 
 test('respects custom htmlFontSize for rem-scaled tokens', () => {

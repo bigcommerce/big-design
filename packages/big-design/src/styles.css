@@ -13,3 +13,7 @@
 @import 'tailwindcss/utilities.css' layer(utilities) source(none);
 
 @import '../../big-design-theme/src/theme.css';
+
+@source './components/Badge/**/*.{ts,tsx}';
+@source './helpers/margins/marginClasses.ts';
+@source './helpers/cn.ts';

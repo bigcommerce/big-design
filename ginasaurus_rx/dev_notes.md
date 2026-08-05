@@ -18,7 +18,7 @@ Approach: **Plan 1-lite.** Internal refactor in 2.x, one component per PR, ship 
 - [x] Pick a variant lib. Lean `clsx` + handwritten variant maps. Add `cva` only if a real component proves the handwritten approach insufficient. *(clsx added in PR0a)*
 - [x] Decide on visual regression. Skip automated VR for now (overrides D5 in `tailwind-migration-notes.md`). Reassess after 5 components.
 - [x] Decide how published `big-design` emits Tailwind CSS: PostCSS → `dist/styles.css`, loaded via `<GlobalStyles />` side-effect import + runtime CSS var injection from live theme (`htmlFontSize` preserved). *(PR0a)*
-- [ ] Port one reference component (recommend Badge: small, has variants, no behavior). Ship it. This validates the toolchain works in production before any further investment. *(PR0b)*
+- [x] Port one reference component (recommend Badge: small, has variants, no behavior). Ship it. This validates the toolchain works in production before any further investment. *(PR0b — local, pending ship)*
 - [ ] Manual verification + start `ginasaurus_rx/phase-0-verification.md` after Badge ships.
 
 Exit Phase 0 when Badge ships in a 2.x minor on npm, rendering identically to its prior version.
@@ -99,7 +99,7 @@ Inventory source of truth: `packages/big-design/src/components/index.ts` (public
 
 (One paragraph per port. Future-you reads these to avoid re-deriving the pattern.)
 
-- _(empty so far; add the first entry after the Badge reference port)_
+- **Badge:** Plain `<span>` + `cn()` + `variantClasses` map; strip `className`/`style`/margins via destructure + `excludeMarginProps`. Margins go through `marginPropsToClassName` (Tailwind `m-*` / responsive `tablet:m-*`), not `withMargins()`. Font size 12px is not on the public type scale — added `--text-badge` / `text-badge` and inject `theme.helpers.remCalc(12)` in `themeToCssVariables`. Tests assert classes (`toHaveClass`), not `toHaveStyle` / snapshots (jsdom has no Tailwind CSS). Remember `@source` the component (and margin helper) in `styles.css` or utilities will not emit. Rebuild with `pnpm -F @bigcommerce/big-design run build:css`.
 
 
 
