@@ -103,10 +103,11 @@ export const ContentWrapper = styled.span<{ $isLoading?: boolean }>`
   grid-gap: ${({ theme }) => theme.spacing.xSmall};
 
   ${({ $isLoading }) =>
-    $isLoading &&
-    css`
-      visibility: hidden;
-    `};
+    $isLoading
+      ? css`
+          visibility: hidden;
+        `
+      : undefined};
 `;
 
 export const LoadingSpinnerWrapper = styled(Flex)`

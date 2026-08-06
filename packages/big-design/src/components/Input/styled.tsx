@@ -42,11 +42,12 @@ export const StyledInputWrapper = styled.span<StyledInputWrapperProps>`
   }
 
   ${({ $error, $focus, theme }) =>
-    $focus &&
-    css`
-      outline: none;
-      box-shadow: 0 0 0 4px ${$error ? theme.colors.danger20 : theme.colors.primary20};
-    `};
+    $focus
+      ? css`
+          outline: none;
+          box-shadow: 0 0 0 4px ${$error ? theme.colors.danger20 : theme.colors.primary20};
+        `
+      : undefined};
 
   &[disabled] {
     background-color: ${({ theme }) => theme.colors.secondary20};
@@ -101,24 +102,27 @@ export const StyledInput = styled.input<StyledInputProps>`
       : undefined};
 
   ${({ $chips, theme }) =>
-    $chips &&
-    css`
-      min-height: ${theme.spacing.xLarge};
-      padding-left: ${theme.spacing.xxSmall};
-      padding-right: ${theme.spacing.none};
-    `};
+    $chips
+      ? css`
+          min-height: ${theme.spacing.xLarge};
+          padding-left: ${theme.spacing.xxSmall};
+          padding-right: ${theme.spacing.none};
+        `
+      : undefined};
 
   ${({ $chips, theme }) =>
-    $chips?.length &&
-    css`
-      margin-top: ${theme.spacing.xxSmall};
-    `};
+    $chips?.length
+      ? css`
+          margin-top: ${theme.spacing.xxSmall};
+        `
+      : undefined};
 
   ${({ $chips }) =>
-    !$chips &&
-    css`
-      min-height: ${remCalc(34)};
-    `};
+    !$chips
+      ? css`
+          min-height: ${remCalc(34)};
+        `
+      : undefined};
 
   &[disabled] {
     background-color: ${({ theme }) => theme.colors.secondary20};
@@ -137,16 +141,18 @@ export const StyledIconWrapper = styled.div<TransientPaddingProps>`
   ${withPaddings()}
 
   ${({ $paddingLeft }) =>
-    $paddingLeft === 'xSmall' &&
-    css`
-      left: 0;
-    `}
+    $paddingLeft === 'xSmall'
+      ? css`
+          left: 0;
+        `
+      : undefined}
 
   ${({ $paddingRight }) =>
-    $paddingRight === 'xSmall' &&
-    css`
-      right: 0;
-    `}
+    $paddingRight === 'xSmall'
+      ? css`
+          right: 0;
+        `
+      : undefined}
 `;
 
 interface StyledInputContentProps {
@@ -162,17 +168,19 @@ export const StyledInputContent = styled.div<StyledInputContentProps>`
   height: 100%;
 
   ${({ $chips, theme }) =>
-    $chips &&
-    css`
-      margin-left: ${theme.spacing.xxSmall};
-      padding-right: ${addValues(theme.spacing.xxSmall, theme.spacing.xxLarge)};
-    `};
+    $chips
+      ? css`
+          margin-left: ${theme.spacing.xxSmall};
+          padding-right: ${addValues(theme.spacing.xxSmall, theme.spacing.xxLarge)};
+        `
+      : undefined};
 
   ${({ $chips, theme }) =>
-    $chips?.length &&
-    css`
-      margin-bottom: ${theme.spacing.xxSmall};
-    `};
+    $chips?.length
+      ? css`
+          margin-bottom: ${theme.spacing.xxSmall};
+        `
+      : undefined};
 `;
 
 StyledInput.defaultProps = { theme: defaultTheme };
