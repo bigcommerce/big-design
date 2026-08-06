@@ -58,5 +58,4 @@ export const StyledBadge = styled.span<StyledBadgeProps>`
 
 StyledBadge.defaultProps = {
   theme: defaultTheme,
-  $variant: 'secondary',
 };

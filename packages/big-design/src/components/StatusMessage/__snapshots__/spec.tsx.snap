@@ -8,11 +8,9 @@ exports[`renders with the "404" variant 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
   align-items: center;
   flex-direction: column;
   gap: 1rem;
-  flex-wrap: nowrap;
   justify-content: center;
   display: flex;
 }
@@ -76,11 +74,9 @@ exports[`renders with the "error" variant 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
   align-items: center;
   flex-direction: column;
   gap: 1rem;
-  flex-wrap: nowrap;
   justify-content: center;
   display: flex;
 }
@@ -144,11 +140,9 @@ exports[`renders with the "info" variant 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
   align-items: center;
   flex-direction: column;
   gap: 1rem;
-  flex-wrap: nowrap;
   justify-content: center;
   display: flex;
 }
@@ -212,11 +206,9 @@ exports[`renders with the "search" variant 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
   align-items: center;
   flex-direction: column;
   gap: 1rem;
-  flex-wrap: nowrap;
   justify-content: center;
   display: flex;
 }
@@ -280,11 +272,9 @@ exports[`renders with the "server-error" variant 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
   align-items: center;
   flex-direction: column;
   gap: 1rem;
-  flex-wrap: nowrap;
   justify-content: center;
   display: flex;
 }
@@ -348,11 +338,9 @@ exports[`renders with the "success" variant 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
   align-items: center;
   flex-direction: column;
   gap: 1rem;
-  flex-wrap: nowrap;
   justify-content: center;
   display: flex;
 }
@@ -416,11 +404,9 @@ exports[`renders with the "unauthorized" variant 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
   align-items: center;
   flex-direction: column;
   gap: 1rem;
-  flex-wrap: nowrap;
   justify-content: center;
   display: flex;
 }
@@ -484,11 +470,9 @@ exports[`renders with the "warning" variant 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
   align-items: center;
   flex-direction: column;
   gap: 1rem;
-  flex-wrap: nowrap;
   justify-content: center;
   display: flex;
 }

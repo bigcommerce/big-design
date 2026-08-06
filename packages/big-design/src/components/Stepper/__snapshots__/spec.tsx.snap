@@ -42,19 +42,14 @@ exports[`renders Stepper 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
 .c6 {
-  align-content: stretch;
   align-items: center;
   flex-direction: row;
-  flex-wrap: nowrap;
   justify-content: center;
   display: flex;
 }
@@ -67,12 +62,10 @@ exports[`renders Stepper 1`] = `
 }
 
 .c3 {
-  gap: 1rem;
   display: grid;
 }
 
 .c14 {
-  gap: 1rem;
   display: grid;
 }
 

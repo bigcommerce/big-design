@@ -22,7 +22,7 @@ interface Localization {
 export interface HeaderCellProps<T>
   extends ComponentPropsWithoutRef<'th'>,
     TableColumnDisplayProps {
-  actionsRef: RefObject<HTMLDivElement>;
+  actionsRef: RefObject<HTMLDivElement | null>;
   children?: React.ReactNode;
   column: TableColumn<T>;
   id: string;
@@ -35,12 +35,12 @@ export interface HeaderCellProps<T>
 }
 
 export interface HeaderCheckboxCellProps {
-  actionsRef: RefObject<HTMLDivElement>;
+  actionsRef: RefObject<HTMLDivElement | null>;
   stickyHeader?: boolean;
 }
 
 export interface DragIconCellProps {
-  actionsRef: RefObject<HTMLDivElement>;
+  actionsRef: RefObject<HTMLDivElement | null>;
 }
 
 const InternalHeaderCell = <T extends TableItem>({

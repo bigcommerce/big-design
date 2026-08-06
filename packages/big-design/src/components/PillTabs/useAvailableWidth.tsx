@@ -3,8 +3,8 @@ import { useCallback, useEffect, useState } from 'react';
 import { useWindowResizeListener } from '../../hooks';
 
 interface Refs {
-  parent: React.RefObject<HTMLElement>;
-  dropdown: React.RefObject<HTMLElement>;
+  parent: React.RefObject<HTMLElement | null>;
+  dropdown: React.RefObject<HTMLElement | null>;
 }
 
 export const useAvailableWidth = ({ parent, dropdown }: Refs) => {

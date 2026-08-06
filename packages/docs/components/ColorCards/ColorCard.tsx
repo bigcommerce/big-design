@@ -1,4 +1,5 @@
 import { Flex, Link, Small, Text } from '@bigcommerce/big-design';
+import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 
@@ -15,7 +16,7 @@ interface ColorCardProps {
 }
 
 const ColorCard: React.FC<ColorCardProps> = ({ colorCard }) => {
-  const { colors } = useContext(ThemeContext);
+  const { colors } = useContext(ThemeContext) ?? defaultTheme;
   const { description } = colorCard;
   const colorValue = colors[colorCard.name];
   const hasHexColor = colorValue.startsWith('#');

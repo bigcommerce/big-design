@@ -3,8 +3,6 @@
 exports[`renders all together 1`] = `
 .c4 {
   vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
 }
 
 .c1 {
@@ -125,7 +123,7 @@ exports[`renders all together 1`] = `
 <div>
   <label
     class="c0"
-    for=":rp:"
+    for="_r_p_"
   >
     This is a label
   </label>
@@ -165,7 +163,7 @@ exports[`renders all together 1`] = `
     >
       <input
         class="c6"
-        id=":rp:"
+        id="_r_p_"
       />
     </div>
     <div

@@ -9,8 +9,6 @@ exports[`renders worksheet 1`] = `
 
 .c17 {
   vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
 }
 
 .c18 {
@@ -113,7 +111,6 @@ exports[`renders worksheet 1`] = `
 }
 
 .c21 {
-  align-content: stretch;
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -121,10 +118,6 @@ exports[`renders worksheet 1`] = `
 }
 
 .c23 {
-  align-self: auto;
-  flex-basis: auto;
-  flex-grow: 0;
-  order: 0;
   flex-shrink: 1;
 }
 
@@ -445,18 +438,6 @@ exports[`renders worksheet 1`] = `
   overflow-y: auto;
 }
 
-@media (min-width: 0px) {
-  .c21 {
-    flex-direction: column;
-  }
-}
-
-@media (min-width: 720px) {
-  .c21 {
-    flex-direction: row;
-  }
-}
-
 @media (min-width: 720px) {
   .c25+.bd-button {
     margin-top: 0;
@@ -515,8 +496,8 @@ exports[`renders worksheet 1`] = `
             class="c6"
           >
             <svg
-              aria-describedby=":r0:"
-              aria-labelledby=":r2:"
+              aria-describedby="_r_0_"
+              aria-labelledby="_r_2_"
               class="c7"
               fill="currentColor"
               height="24"
@@ -526,7 +507,7 @@ exports[`renders worksheet 1`] = `
               width="24"
             >
               <title
-                id=":r2:"
+                id="_r_2_"
               >
                 Hover or focus for additional context.
               </title>
@@ -573,16 +554,16 @@ exports[`renders worksheet 1`] = `
             >
               <input
                 aria-checked="true"
-                aria-labelledby=":r6:"
+                aria-labelledby="_r_6_"
                 checked=""
                 class="c14 c15"
-                id=":r5:"
+                id="_r_5_"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
                 class="c16"
-                for=":r5:"
+                for="_r_5_"
               >
                 <svg
                   aria-hidden="true"
@@ -609,9 +590,9 @@ exports[`renders worksheet 1`] = `
                 <label
                   aria-hidden="false"
                   class="c19"
-                  for=":r5:"
+                  for="_r_5_"
                   hidden=""
-                  id=":r6:"
+                  id="_r_6_"
                 >
                   Checked
                 </label>
@@ -716,16 +697,16 @@ exports[`renders worksheet 1`] = `
             >
               <input
                 aria-checked="true"
-                aria-labelledby=":re:"
+                aria-labelledby="_r_e_"
                 checked=""
                 class="c14 c15"
-                id=":rd:"
+                id="_r_d_"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
                 class="c16"
-                for=":rd:"
+                for="_r_d_"
               >
                 <svg
                   aria-hidden="true"
@@ -752,9 +733,9 @@ exports[`renders worksheet 1`] = `
                 <label
                   aria-hidden="false"
                   class="c19"
-                  for=":rd:"
+                  for="_r_d_"
                   hidden=""
-                  id=":re:"
+                  id="_r_e_"
                 >
                   Checked
                 </label>
@@ -859,15 +840,15 @@ exports[`renders worksheet 1`] = `
             >
               <input
                 aria-checked="false"
-                aria-labelledby=":rm:"
+                aria-labelledby="_r_m_"
                 class="c14 c15"
-                id=":rl:"
+                id="_r_l_"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
                 class="c29"
-                for=":rl:"
+                for="_r_l_"
               >
                 <svg
                   aria-hidden="true"
@@ -894,9 +875,9 @@ exports[`renders worksheet 1`] = `
                 <label
                   aria-hidden="false"
                   class="c19"
-                  for=":rl:"
+                  for="_r_l_"
                   hidden=""
-                  id=":rm:"
+                  id="_r_m_"
                 >
                   Unchecked
                 </label>
@@ -999,16 +980,16 @@ exports[`renders worksheet 1`] = `
             >
               <input
                 aria-checked="true"
-                aria-labelledby=":ru:"
+                aria-labelledby="_r_u_"
                 checked=""
                 class="c14 c15"
-                id=":rt:"
+                id="_r_t_"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
                 class="c16"
-                for=":rt:"
+                for="_r_t_"
               >
                 <svg
                   aria-hidden="true"
@@ -1035,9 +1016,9 @@ exports[`renders worksheet 1`] = `
                 <label
                   aria-hidden="false"
                   class="c19"
-                  for=":rt:"
+                  for="_r_t_"
                   hidden=""
-                  id=":ru:"
+                  id="_r_u_"
                 >
                   Checked
                 </label>
@@ -1139,15 +1120,15 @@ exports[`renders worksheet 1`] = `
               class="c13"
             >
               <input
-                aria-labelledby=":r16:"
+                aria-labelledby="_r_16_"
                 class="c14 c15"
-                id=":r15:"
+                id="_r_15_"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
                 class="c29"
-                for=":r15:"
+                for="_r_15_"
               >
                 <svg
                   aria-hidden="true"
@@ -1174,9 +1155,9 @@ exports[`renders worksheet 1`] = `
                 <label
                   aria-hidden="false"
                   class="c19"
-                  for=":r15:"
+                  for="_r_15_"
                   hidden=""
-                  id=":r16:"
+                  id="_r_16_"
                 >
                   Unchecked
                 </label>
@@ -1275,16 +1256,16 @@ exports[`renders worksheet 1`] = `
             >
               <input
                 aria-checked="true"
-                aria-labelledby=":r1e:"
+                aria-labelledby="_r_1e_"
                 checked=""
                 class="c14 c15"
-                id=":r1d:"
+                id="_r_1d_"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
                 class="c16"
-                for=":r1d:"
+                for="_r_1d_"
               >
                 <svg
                   aria-hidden="true"
@@ -1311,9 +1292,9 @@ exports[`renders worksheet 1`] = `
                 <label
                   aria-hidden="false"
                   class="c19"
-                  for=":r1d:"
+                  for="_r_1d_"
                   hidden=""
-                  id=":r1e:"
+                  id="_r_1e_"
                 >
                   Checked
                 </label>
@@ -1418,15 +1399,15 @@ exports[`renders worksheet 1`] = `
             >
               <input
                 aria-checked="false"
-                aria-labelledby=":r1m:"
+                aria-labelledby="_r_1m_"
                 class="c14 c15"
-                id=":r1l:"
+                id="_r_1l_"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
                 class="c29"
-                for=":r1l:"
+                for="_r_1l_"
               >
                 <svg
                   aria-hidden="true"
@@ -1453,9 +1434,9 @@ exports[`renders worksheet 1`] = `
                 <label
                   aria-hidden="false"
                   class="c19"
-                  for=":r1l:"
+                  for="_r_1l_"
                   hidden=""
-                  id=":r1m:"
+                  id="_r_1m_"
                 >
                   Unchecked
                 </label>
@@ -1560,16 +1541,16 @@ exports[`renders worksheet 1`] = `
             >
               <input
                 aria-checked="true"
-                aria-labelledby=":r1u:"
+                aria-labelledby="_r_1u_"
                 checked=""
                 class="c14 c15"
-                id=":r1t:"
+                id="_r_1t_"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
                 class="c16"
-                for=":r1t:"
+                for="_r_1t_"
               >
                 <svg
                   aria-hidden="true"
@@ -1596,9 +1577,9 @@ exports[`renders worksheet 1`] = `
                 <label
                   aria-hidden="false"
                   class="c19"
-                  for=":r1t:"
+                  for="_r_1t_"
                   hidden=""
-                  id=":r1u:"
+                  id="_r_1u_"
                 >
                   Checked
                 </label>
@@ -1703,16 +1684,16 @@ exports[`renders worksheet 1`] = `
             >
               <input
                 aria-checked="true"
-                aria-labelledby=":r26:"
+                aria-labelledby="_r_26_"
                 checked=""
                 class="c14 c15"
-                id=":r25:"
+                id="_r_25_"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
                 class="c16"
-                for=":r25:"
+                for="_r_25_"
               >
                 <svg
                   aria-hidden="true"
@@ -1739,9 +1720,9 @@ exports[`renders worksheet 1`] = `
                 <label
                   aria-hidden="false"
                   class="c19"
-                  for=":r25:"
+                  for="_r_25_"
                   hidden=""
-                  id=":r26:"
+                  id="_r_26_"
                 >
                   Checked
                 </label>

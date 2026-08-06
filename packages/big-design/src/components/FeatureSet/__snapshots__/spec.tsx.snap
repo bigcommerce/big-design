@@ -54,25 +54,25 @@ exports[`render feature set 1`] = `
   class="c0"
 >
   <li
-    aria-labelledby=":r0:"
+    aria-labelledby="_r_0_"
     class="c1"
   >
     <span
       class="c2"
       color="currentColor"
-      id=":r0:"
+      id="_r_0_"
     >
       Feature 1
     </span>
   </li>
   <li
-    aria-labelledby=":r1:"
+    aria-labelledby="_r_1_"
     class="c1"
   >
     <span
       class="c2"
       color="currentColor"
-      id=":r1:"
+      id="_r_1_"
     >
       Feature 2
     </span>

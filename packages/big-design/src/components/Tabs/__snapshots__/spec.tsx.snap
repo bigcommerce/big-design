@@ -6,11 +6,7 @@ exports[`render Tabs 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
@@ -39,9 +35,9 @@ exports[`render Tabs 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   width: 100%;
-  background-color: transparent;
-  border-color: transparent;
-  color: #3C64F4;
+  background-color: #3C64F4;
+  border-color: #3C64F4;
+  font-weight: 600;
 }
 
 .c3:focus {
@@ -58,7 +54,7 @@ exports[`render Tabs 1`] = `
 }
 
 .c3:active {
-  background-color: #DBE3FE;
+  background-color: #0B38D9;
 }
 
 .c3:focus {
@@ -66,12 +62,11 @@ exports[`render Tabs 1`] = `
 }
 
 .c3:hover:not(:active) {
-  background-color: #F0F3FF;
+  background-color: #2852EB;
 }
 
 .c3[disabled] {
-  border-color: transparent;
-  color: #D9DCE9;
+  background-color: #D9DCE9;
 }
 
 .c5 {
@@ -150,11 +145,7 @@ exports[`render Tabs with disabled item 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
@@ -183,9 +174,9 @@ exports[`render Tabs with disabled item 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   width: 100%;
-  background-color: transparent;
-  border-color: transparent;
-  color: #3C64F4;
+  background-color: #3C64F4;
+  border-color: #3C64F4;
+  font-weight: 600;
 }
 
 .c3:focus {
@@ -202,7 +193,7 @@ exports[`render Tabs with disabled item 1`] = `
 }
 
 .c3:active {
-  background-color: #DBE3FE;
+  background-color: #0B38D9;
 }
 
 .c3:focus {
@@ -210,12 +201,11 @@ exports[`render Tabs with disabled item 1`] = `
 }
 
 .c3:hover:not(:active) {
-  background-color: #F0F3FF;
+  background-color: #2852EB;
 }
 
 .c3[disabled] {
-  border-color: transparent;
-  color: #D9DCE9;
+  background-color: #D9DCE9;
 }
 
 .c5 {

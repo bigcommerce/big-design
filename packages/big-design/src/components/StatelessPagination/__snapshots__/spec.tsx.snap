@@ -1,46 +1,32 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`render Stateless pagination component 1`] = `
-.c7 {
+.c6 {
   vertical-align: middle;
   height: 2rem;
   width: 2rem;
 }
 
-.c12 {
+.c11 {
   vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
 }
 
 .c0 {
   box-sizing: border-box;
 }
 
-.c8 {
+.c7 {
   display: none;
   box-sizing: border-box;
   z-index: 1060;
 }
 
 .c1 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
-.c2 {
-  align-self: auto;
-  flex-basis: auto;
-  flex-grow: 0;
-  order: 0;
-  flex-shrink: 1;
-}
-
-.c4 {
+.c3 {
   transition: all 150ms ease-out;
   transition-property: background-color,border-color,box-shadow,color;
   align-items: center;
@@ -71,37 +57,37 @@ exports[`render Stateless pagination component 1`] = `
   color: #3C64F4;
 }
 
-.c4:focus {
+.c3:focus {
   outline: none;
 }
 
-.c4[disabled] {
+.c3[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c4+.bd-button {
+.c3+.bd-button {
   margin-top: 0.5rem;
 }
 
-.c4:active {
+.c3:active {
   background-color: #DBE3FE;
 }
 
-.c4:focus {
+.c3:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c4:hover:not(:active) {
+.c3:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c4[disabled] {
+.c3[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c11 {
+.c10 {
   transition: all 150ms ease-out;
   transition-property: background-color,border-color,box-shadow,color;
   align-items: center;
@@ -131,37 +117,37 @@ exports[`render Stateless pagination component 1`] = `
   color: #3C64F4;
 }
 
-.c11:focus {
+.c10:focus {
   outline: none;
 }
 
-.c11[disabled] {
+.c10[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c11+.bd-button {
+.c10+.bd-button {
   margin-top: 0.5rem;
 }
 
-.c11:active {
+.c10:active {
   background-color: #DBE3FE;
 }
 
-.c11:focus {
+.c10:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c11:hover:not(:active) {
+.c10:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c11[disabled] {
+.c10[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c6 {
+.c5 {
   align-content: center;
   align-items: center;
   display: inline-grid;
@@ -169,7 +155,7 @@ exports[`render Stateless pagination component 1`] = `
   grid-gap: 0.5rem;
 }
 
-.c9 {
+.c8 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   height: 100%;
@@ -177,7 +163,7 @@ exports[`render Stateless pagination component 1`] = `
   overflow: hidden;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -190,37 +176,37 @@ exports[`render Stateless pagination component 1`] = `
   z-index: 1060;
 }
 
-.c3 {
+.c2 {
   position: relative;
 }
 
-.c5 {
+.c4 {
   color: #313440;
   width: auto;
 }
 
 @media (min-width: 720px) {
-  .c4+.bd-button {
+  .c3+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width: 720px) {
-  .c4 {
+  .c3 {
     width: auto;
   }
 }
 
 @media (min-width: 720px) {
-  .c11+.bd-button {
+  .c10+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width: 720px) {
-  .c11 {
+  .c10 {
     width: auto;
     padding: 0;
     min-width: 2.25rem;
@@ -233,29 +219,29 @@ exports[`render Stateless pagination component 1`] = `
   role="navigation"
 >
   <div
-    class="c0 c2"
+    class="c0 "
   >
     <div
-      class="c0 c3"
+      class="c0 c2"
     >
       <button
         aria-activedescendant=""
-        aria-controls=":r0:-menu"
+        aria-controls="_r_0_-menu"
         aria-expanded="false"
         aria-haspopup="menu"
-        class="c4 c5"
-        id=":r0:-toggle-button"
+        class="c3 c4"
+        id="_r_0_-toggle-button"
         role="button"
         tabindex="0"
         type="button"
       >
         <span
-          class="c6"
+          class="c5"
         >
           Show 3 items
           <svg
             aria-hidden="true"
-            class="c7"
+            class="c6"
             fill="currentColor"
             height="24"
             stroke="currentColor"
@@ -274,16 +260,16 @@ exports[`render Stateless pagination component 1`] = `
         </span>
       </button>
       <div
-        class="c8"
+        class="c7"
         style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <div
-          class="c9"
+          class="c8"
         >
           <ul
-            aria-labelledby=":r0:-label"
-            class="c10"
-            id=":r0:-menu"
+            aria-labelledby="_r_0_-label"
+            class="c9"
+            id="_r_0_-menu"
             role="menu"
           />
         </div>
@@ -291,18 +277,18 @@ exports[`render Stateless pagination component 1`] = `
     </div>
   </div>
   <div
-    class="c0 c2"
+    class="c0 "
   >
     <button
-      class="c11 c5"
+      class="c10 c4"
       type="button"
     >
       <span
-        class="c6"
+        class="c5"
       >
         <svg
-          aria-labelledby=":r4:"
-          class="c12"
+          aria-labelledby="_r_4_"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -311,7 +297,7 @@ exports[`render Stateless pagination component 1`] = `
           width="24"
         >
           <title
-            id=":r4:"
+            id="_r_4_"
           >
             Previous page
           </title>
@@ -326,15 +312,15 @@ exports[`render Stateless pagination component 1`] = `
       </span>
     </button>
     <button
-      class="c11 c5"
+      class="c10 c4"
       type="button"
     >
       <span
-        class="c6"
+        class="c5"
       >
         <svg
-          aria-labelledby=":r5:"
-          class="c12"
+          aria-labelledby="_r_5_"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -343,7 +329,7 @@ exports[`render Stateless pagination component 1`] = `
           width="24"
         >
           <title
-            id=":r5:"
+            id="_r_5_"
           >
             Next page
           </title>

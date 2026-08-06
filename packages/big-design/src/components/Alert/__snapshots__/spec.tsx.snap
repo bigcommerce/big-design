@@ -13,7 +13,6 @@ exports[`render default (success) Alert 1`] = `
 }
 
 .c1 {
-  gap: 1rem;
   display: grid;
 }
 
@@ -128,7 +127,6 @@ exports[`render error Alert 1`] = `
 }
 
 .c1 {
-  gap: 1rem;
   display: grid;
 }
 
@@ -239,7 +237,6 @@ exports[`render info Alert 1`] = `
 }
 
 .c1 {
-  gap: 1rem;
   display: grid;
 }
 
@@ -354,7 +351,6 @@ exports[`render warning Alert 1`] = `
 }
 
 .c1 {
-  gap: 1rem;
   display: grid;
 }
 
@@ -563,7 +559,6 @@ exports[`renders close button 1`] = `
 }
 
 .c1 {
-  gap: 1rem;
   display: grid;
 }
 
@@ -723,7 +718,6 @@ exports[`renders header 1`] = `
 }
 
 .c1 {
-  gap: 1rem;
   display: grid;
 }
 
@@ -796,7 +790,7 @@ exports[`renders header 1`] = `
 }
 
 <div
-  aria-labelledby=":rd:"
+  aria-labelledby="_r_d_"
   class="c0 c1 c2"
   role="alert"
   type="success"
@@ -828,7 +822,7 @@ exports[`renders header 1`] = `
   >
     <h4
       class="c6 c7"
-      id=":rd:"
+      id="_r_d_"
     >
       Header
     </h4>
@@ -865,7 +859,6 @@ exports[`renders with external link 1`] = `
 }
 
 .c1 {
-  gap: 1rem;
   display: grid;
 }
 
@@ -1037,7 +1030,6 @@ exports[`renders with link 1`] = `
 }
 
 .c1 {
-  gap: 1rem;
   display: grid;
 }
 
