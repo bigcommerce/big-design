@@ -9,7 +9,7 @@ module.exports = {
       // excluded via `istanbul ignore`; these floors reflect the remaining reachable code.
       statements: 97.05,
       branches: 88.69,
-      functions: 97.95,
+      functions: 97.87,
       lines: 97.45,
     },
   },

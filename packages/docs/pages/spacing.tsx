@@ -1,4 +1,5 @@
 import { Box, Button, Flex, H1, Panel, Table, Text } from '@bigcommerce/big-design';
+import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import React, { Fragment, useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 
@@ -29,7 +30,7 @@ const BlueBox = styled(Box)(({ theme }) => ({
 }));
 
 const SpacingPage = () => {
-  const { spacing } = useContext(ThemeContext);
+  const { spacing } = useContext(ThemeContext) ?? defaultTheme;
 
   return (
     <>
