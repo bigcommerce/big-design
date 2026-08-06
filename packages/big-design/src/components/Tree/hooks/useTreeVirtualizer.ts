@@ -1,5 +1,5 @@
 import { Rect, useVirtualizer, Virtualizer } from '@tanstack/react-virtual';
-import { MutableRefObject, RefObject, useEffect, useMemo, useRef } from 'react';
+import { RefObject, useEffect, useMemo, useRef } from 'react';
 
 import { useEventCallback } from '../../../hooks';
 import { TreeNodeId, TreeNodeProps } from '../types';
@@ -19,7 +19,7 @@ interface UseTreeVirtualizerProps<T> {
   maxHeight?: number;
   nodes: Array<TreeNodeProps<T>>;
   onFocus?: (nodeId: TreeNodeId) => void;
-  scrollRef: RefObject<HTMLUListElement>;
+  scrollRef: RefObject<HTMLUListElement | null>;
 }
 
 // Checks the full (unfiltered-by-expansion) tree, not just the flattened/visible
@@ -32,7 +32,7 @@ const nodeExistsInTree = <T>(nodes: Array<TreeNodeProps<T>>, id: TreeNodeId): bo
   );
 
 const createObserveElementRect =
-  (fallbackHeightRef: MutableRefObject<number>) =>
+  (fallbackHeightRef: RefObject<number>) =>
   <T extends Element>(instance: Virtualizer<T, Element>, cb: (rect: Rect) => void) => {
     const element = instance.scrollElement;
 

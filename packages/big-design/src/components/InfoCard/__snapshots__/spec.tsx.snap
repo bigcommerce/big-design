@@ -21,10 +21,7 @@ exports[`matches snapshot 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
   align-items: center;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
@@ -59,18 +56,6 @@ exports[`matches snapshot 1`] = `
   margin-inline-end: 0.5rem;
   object-fit: contain;
   flex-shrink: 0;
-}
-
-@media (min-width: 0px) {
-  .c1 {
-    flex-direction: column;
-  }
-}
-
-@media (min-width: 720px) {
-  .c1 {
-    flex-direction: row;
-  }
 }
 
 <div

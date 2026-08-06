@@ -87,16 +87,18 @@ export const StyledInput = styled.input<StyledInputProps>`
   }
 
   ${({ $iconRight, theme }) =>
-    $iconRight &&
-    css`
-      padding-right: ${addValues(theme.spacing.xxSmall, theme.spacing.xxLarge)};
-    `};
+    $iconRight
+      ? css`
+          padding-right: ${addValues(theme.spacing.xxSmall, theme.spacing.xxLarge)};
+        `
+      : undefined};
 
   ${({ $iconLeft, theme }) =>
-    $iconLeft &&
-    css`
-      padding-left: ${addValues(theme.spacing.xxSmall, theme.spacing.xxLarge)};
-    `};
+    $iconLeft
+      ? css`
+          padding-left: ${addValues(theme.spacing.xxSmall, theme.spacing.xxLarge)};
+        `
+      : undefined};
 
   ${({ $chips, theme }) =>
     $chips &&

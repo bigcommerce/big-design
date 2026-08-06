@@ -70,24 +70,27 @@ export const StyledButton = styled.button<StyledButtonProps>`
     width: auto;
 
     ${({ $iconOnly, theme }) =>
-      $iconOnly &&
-      css`
-        padding: 0;
-        min-width: ${addValues(theme.spacing.xxLarge, theme.spacing.xxSmall)};
-      `};
+      $iconOnly
+        ? css`
+            padding: 0;
+            min-width: ${addValues(theme.spacing.xxLarge, theme.spacing.xxSmall)};
+          `
+        : undefined};
   }
 
   ${({ $iconLeft, theme }) =>
-    $iconLeft &&
-    css`
-      padding-left: ${theme.spacing.xSmall};
-    `};
+    $iconLeft
+      ? css`
+          padding-left: ${theme.spacing.xSmall};
+        `
+      : undefined};
 
   ${({ $iconRight, theme }) =>
-    $iconRight &&
-    css`
-      padding-right: ${theme.spacing.xSmall};
-    `};
+    $iconRight
+      ? css`
+          padding-right: ${theme.spacing.xSmall};
+        `
+      : undefined};
 
   ${(props) => getButtonStyles(props)}
 `;

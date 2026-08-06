@@ -6,23 +6,7 @@ exports[`render flex 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
-  align-items: stretch;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
-}
-
-@media (min-width: 0px) {
-  .c1 {
-    flex-direction: column;
-  }
-}
-
-@media (min-width: 720px) {
-  .c1 {
-    flex-direction: row;
-  }
 }
 
 <div

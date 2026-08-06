@@ -6,10 +6,6 @@ exports[`render Switch checked 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
-  align-items: stretch;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
@@ -64,31 +60,19 @@ exports[`render Switch checked 1`] = `
   width: 1.5rem;
 }
 
-@media (min-width: 0px) {
-  .c1 {
-    flex-direction: column;
-  }
-}
-
-@media (min-width: 720px) {
-  .c1 {
-    flex-direction: row;
-  }
-}
-
 <div
   class="c0 c1"
 >
   <input
     checked=""
     class="c2"
-    id=":r0:"
+    id="_r_0_"
     type="checkbox"
   />
   <label
     aria-hidden="true"
     class="c3"
-    for=":r0:"
+    for="_r_0_"
   />
 </div>
 `;
@@ -99,10 +83,6 @@ exports[`render Switch disabled checked 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
-  align-items: stretch;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
@@ -167,18 +147,6 @@ exports[`render Switch disabled checked 1`] = `
   cursor: not-allowed;
 }
 
-@media (min-width: 0px) {
-  .c1 {
-    flex-direction: column;
-  }
-}
-
-@media (min-width: 720px) {
-  .c1 {
-    flex-direction: row;
-  }
-}
-
 <div
   class="c0 c1"
 >
@@ -186,14 +154,14 @@ exports[`render Switch disabled checked 1`] = `
     checked=""
     class="c2"
     disabled=""
-    id=":r2:"
+    id="_r_2_"
     type="checkbox"
   />
   <label
     aria-hidden="true"
     class="c3"
     disabled=""
-    for=":r2:"
+    for="_r_2_"
   />
 </div>
 `;
@@ -204,10 +172,6 @@ exports[`render Switch disabled unchecked 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
-  align-items: stretch;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
@@ -273,32 +237,20 @@ exports[`render Switch disabled unchecked 1`] = `
   transform: translateX(-100%);
 }
 
-@media (min-width: 0px) {
-  .c1 {
-    flex-direction: column;
-  }
-}
-
-@media (min-width: 720px) {
-  .c1 {
-    flex-direction: row;
-  }
-}
-
 <div
   class="c0 c1"
 >
   <input
     class="c2"
     disabled=""
-    id=":r3:"
+    id="_r_3_"
     type="checkbox"
   />
   <label
     aria-hidden="true"
     class="c3"
     disabled=""
-    for=":r3:"
+    for="_r_3_"
   />
 </div>
 `;
@@ -309,10 +261,6 @@ exports[`render Switch unchecked 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
-  align-items: stretch;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
@@ -368,30 +316,18 @@ exports[`render Switch unchecked 1`] = `
   transform: translateX(-100%);
 }
 
-@media (min-width: 0px) {
-  .c1 {
-    flex-direction: column;
-  }
-}
-
-@media (min-width: 720px) {
-  .c1 {
-    flex-direction: row;
-  }
-}
-
 <div
   class="c0 c1"
 >
   <input
     class="c2"
-    id=":r1:"
+    id="_r_1_"
     type="checkbox"
   />
   <label
     aria-hidden="true"
     class="c3"
-    for=":r1:"
+    for="_r_1_"
   />
 </div>
 `;

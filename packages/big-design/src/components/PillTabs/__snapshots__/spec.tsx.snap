@@ -1,40 +1,27 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`dropdown is not visible if items fit 1`] = `
-.c8 {
+.c7 {
   vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
 }
 
 .c0 {
   box-sizing: border-box;
 }
 
-.c9 {
+.c8 {
   display: none;
   box-sizing: border-box;
   z-index: 1060;
 }
 
 .c1 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
 .c2 {
-  align-self: auto;
-  flex-basis: auto;
-  flex-grow: 0;
-  order: 0;
-  flex-shrink: 1;
-}
-
-.c3 {
   transition: all 150ms ease-out;
   transition-property: background-color,border-color,box-shadow,color;
   align-items: center;
@@ -64,41 +51,41 @@ exports[`dropdown is not visible if items fit 1`] = `
   color: #3C64F4;
 }
 
-.c3.c3 {
+.c2.c2 {
   margin-right: 0.5rem;
 }
 
-.c3:focus {
+.c2:focus {
   outline: none;
 }
 
-.c3[disabled] {
+.c2[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c3+.bd-button {
+.c2+.bd-button {
   margin-top: 0.5rem;
 }
 
-.c3:active {
+.c2:active {
   background-color: #DBE3FE;
 }
 
-.c3:focus {
+.c2:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c3:hover:not(:active) {
+.c2:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c3[disabled] {
+.c2[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c7 {
+.c6 {
   transition: all 150ms ease-out;
   transition-property: background-color,border-color,box-shadow,color;
   align-items: center;
@@ -128,37 +115,37 @@ exports[`dropdown is not visible if items fit 1`] = `
   color: #3C64F4;
 }
 
-.c7:focus {
+.c6:focus {
   outline: none;
 }
 
-.c7[disabled] {
+.c6[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c7+.bd-button {
+.c6+.bd-button {
   margin-top: 0.5rem;
 }
 
-.c7:active {
+.c6:active {
   background-color: #DBE3FE;
 }
 
-.c7:focus {
+.c6:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c7:hover:not(:active) {
+.c6:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c7[disabled] {
+.c6[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c4 {
+.c3 {
   align-content: center;
   align-items: center;
   display: inline-grid;
@@ -166,7 +153,7 @@ exports[`dropdown is not visible if items fit 1`] = `
   grid-gap: 0.5rem;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   height: 100%;
@@ -174,7 +161,7 @@ exports[`dropdown is not visible if items fit 1`] = `
   overflow: hidden;
 }
 
-.c11 {
+.c10 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -187,38 +174,38 @@ exports[`dropdown is not visible if items fit 1`] = `
   z-index: 1060;
 }
 
-.c6 {
+.c5 {
   position: relative;
 }
 
-.c5 {
+.c4 {
   position: absolute;
   visibility: hidden;
   z-index: -1070;
 }
 
 @media (min-width: 720px) {
-  .c3+.bd-button {
+  .c2+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width: 720px) {
-  .c3 {
+  .c2 {
     width: auto;
   }
 }
 
 @media (min-width: 720px) {
-  .c7+.bd-button {
+  .c6+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width: 720px) {
-  .c7 {
+  .c6 {
     width: auto;
     padding: 0;
     min-width: 2.25rem;
@@ -230,44 +217,44 @@ exports[`dropdown is not visible if items fit 1`] = `
   role="list"
 >
   <div
-    class="c0 c2 "
+    class="c0 "
     role="listitem"
   >
     <button
-      class="c3 "
+      class="c2 "
       type="button"
     >
       <span
-        class="c4"
+        class="c3"
       >
         In stock
       </span>
     </button>
   </div>
   <div
-    class="c0 c2 c5"
+    class="c0 c4"
     role="listitem"
   >
     <div
-      class="c0 c6"
+      class="c0 c5"
     >
       <button
         aria-activedescendant=""
-        aria-controls=":r4:-menu"
+        aria-controls="_r_4_-menu"
         aria-expanded="false"
         aria-haspopup="menu"
-        class="c7 bd-button"
-        id=":r4:-toggle-button"
+        class="c6 bd-button"
+        id="_r_4_-toggle-button"
         role="button"
         tabindex="0"
         type="button"
       >
         <span
-          class="c4"
+          class="c3"
         >
           <svg
-            aria-labelledby=":r7:"
-            class="c8"
+            aria-labelledby="_r_7_"
+            class="c7"
             fill="currentColor"
             height="24"
             stroke="currentColor"
@@ -276,7 +263,7 @@ exports[`dropdown is not visible if items fit 1`] = `
             width="24"
           >
             <title
-              id=":r7:"
+              id="_r_7_"
             >
               add
             </title>
@@ -291,16 +278,16 @@ exports[`dropdown is not visible if items fit 1`] = `
         </span>
       </button>
       <div
-        class="c9"
+        class="c8"
         style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <div
-          class="c10"
+          class="c9"
         >
           <ul
-            aria-labelledby=":r4:-label"
-            class="c11"
-            id=":r4:-menu"
+            aria-labelledby="_r_4_-label"
+            class="c10"
+            id="_r_4_-menu"
             role="menu"
           />
         </div>
@@ -311,40 +298,27 @@ exports[`dropdown is not visible if items fit 1`] = `
 `;
 
 exports[`it renders the given tabs 1`] = `
-.c8 {
+.c7 {
   vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
 }
 
 .c0 {
   box-sizing: border-box;
 }
 
-.c9 {
+.c8 {
   display: none;
   box-sizing: border-box;
   z-index: 1060;
 }
 
 .c1 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
 .c2 {
-  align-self: auto;
-  flex-basis: auto;
-  flex-grow: 0;
-  order: 0;
-  flex-shrink: 1;
-}
-
-.c3 {
   transition: all 150ms ease-out;
   transition-property: background-color,border-color,box-shadow,color;
   align-items: center;
@@ -374,41 +348,41 @@ exports[`it renders the given tabs 1`] = `
   color: #3C64F4;
 }
 
-.c3.c3 {
+.c2.c2 {
   margin-right: 0.5rem;
 }
 
-.c3:focus {
+.c2:focus {
   outline: none;
 }
 
-.c3[disabled] {
+.c2[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c3+.bd-button {
+.c2+.bd-button {
   margin-top: 0.5rem;
 }
 
-.c3:active {
+.c2:active {
   background-color: #DBE3FE;
 }
 
-.c3:focus {
+.c2:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c3:hover:not(:active) {
+.c2:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c3[disabled] {
+.c2[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c7 {
+.c6 {
   transition: all 150ms ease-out;
   transition-property: background-color,border-color,box-shadow,color;
   align-items: center;
@@ -438,37 +412,37 @@ exports[`it renders the given tabs 1`] = `
   color: #3C64F4;
 }
 
-.c7:focus {
+.c6:focus {
   outline: none;
 }
 
-.c7[disabled] {
+.c6[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c7+.bd-button {
+.c6+.bd-button {
   margin-top: 0.5rem;
 }
 
-.c7:active {
+.c6:active {
   background-color: #DBE3FE;
 }
 
-.c7:focus {
+.c6:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c7:hover:not(:active) {
+.c6:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c7[disabled] {
+.c6[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c4 {
+.c3 {
   align-content: center;
   align-items: center;
   display: inline-grid;
@@ -476,7 +450,7 @@ exports[`it renders the given tabs 1`] = `
   grid-gap: 0.5rem;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   height: 100%;
@@ -484,7 +458,7 @@ exports[`it renders the given tabs 1`] = `
   overflow: hidden;
 }
 
-.c11 {
+.c10 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -497,38 +471,38 @@ exports[`it renders the given tabs 1`] = `
   z-index: 1060;
 }
 
-.c6 {
+.c5 {
   position: relative;
 }
 
-.c5 {
+.c4 {
   position: absolute;
   visibility: hidden;
   z-index: -1070;
 }
 
 @media (min-width: 720px) {
-  .c3+.bd-button {
+  .c2+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width: 720px) {
-  .c3 {
+  .c2 {
     width: auto;
   }
 }
 
 @media (min-width: 720px) {
-  .c7+.bd-button {
+  .c6+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width: 720px) {
-  .c7 {
+  .c6 {
     width: auto;
     padding: 0;
     min-width: 2.25rem;
@@ -540,44 +514,44 @@ exports[`it renders the given tabs 1`] = `
   role="list"
 >
   <div
-    class="c0 c2 "
+    class="c0 "
     role="listitem"
   >
     <button
-      class="c3 "
+      class="c2 "
       type="button"
     >
       <span
-        class="c4"
+        class="c3"
       >
         In stock
       </span>
     </button>
   </div>
   <div
-    class="c0 c2 c5"
+    class="c0 c4"
     role="listitem"
   >
     <div
-      class="c0 c6"
+      class="c0 c5"
     >
       <button
         aria-activedescendant=""
-        aria-controls=":r0:-menu"
+        aria-controls="_r_0_-menu"
         aria-expanded="false"
         aria-haspopup="menu"
-        class="c7 bd-button"
-        id=":r0:-toggle-button"
+        class="c6 bd-button"
+        id="_r_0_-toggle-button"
         role="button"
         tabindex="0"
         type="button"
       >
         <span
-          class="c4"
+          class="c3"
         >
           <svg
-            aria-labelledby=":r3:"
-            class="c8"
+            aria-labelledby="_r_3_"
+            class="c7"
             fill="currentColor"
             height="24"
             stroke="currentColor"
@@ -586,7 +560,7 @@ exports[`it renders the given tabs 1`] = `
             width="24"
           >
             <title
-              id=":r3:"
+              id="_r_3_"
             >
               add
             </title>
@@ -601,16 +575,16 @@ exports[`it renders the given tabs 1`] = `
         </span>
       </button>
       <div
-        class="c9"
+        class="c8"
         style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <div
-          class="c10"
+          class="c9"
         >
           <ul
-            aria-labelledby=":r0:-label"
-            class="c11"
-            id=":r0:-menu"
+            aria-labelledby="_r_0_-label"
+            class="c10"
+            id="_r_0_-menu"
             role="menu"
           />
         </div>
@@ -621,40 +595,27 @@ exports[`it renders the given tabs 1`] = `
 `;
 
 exports[`only the pills that fit are visible 1`] = `
-.c8 {
+.c7 {
   vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
 }
 
 .c0 {
   box-sizing: border-box;
 }
 
-.c9 {
+.c8 {
   display: none;
   box-sizing: border-box;
   z-index: 1060;
 }
 
 .c1 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
 .c2 {
-  align-self: auto;
-  flex-basis: auto;
-  flex-grow: 0;
-  order: 0;
-  flex-shrink: 1;
-}
-
-.c3 {
   transition: all 150ms ease-out;
   transition-property: background-color,border-color,box-shadow,color;
   align-items: center;
@@ -684,41 +645,41 @@ exports[`only the pills that fit are visible 1`] = `
   color: #3C64F4;
 }
 
-.c3.c3 {
+.c2.c2 {
   margin-right: 0.5rem;
 }
 
-.c3:focus {
+.c2:focus {
   outline: none;
 }
 
-.c3[disabled] {
+.c2[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c3+.bd-button {
+.c2+.bd-button {
   margin-top: 0.5rem;
 }
 
-.c3:active {
+.c2:active {
   background-color: #DBE3FE;
 }
 
-.c3:focus {
+.c2:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c3:hover:not(:active) {
+.c2:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c3[disabled] {
+.c2[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c7 {
+.c6 {
   transition: all 150ms ease-out;
   transition-property: background-color,border-color,box-shadow,color;
   align-items: center;
@@ -748,37 +709,37 @@ exports[`only the pills that fit are visible 1`] = `
   color: #3C64F4;
 }
 
-.c7:focus {
+.c6:focus {
   outline: none;
 }
 
-.c7[disabled] {
+.c6[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c7+.bd-button {
+.c6+.bd-button {
   margin-top: 0.5rem;
 }
 
-.c7:active {
+.c6:active {
   background-color: #DBE3FE;
 }
 
-.c7:focus {
+.c6:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c7:hover:not(:active) {
+.c6:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c7[disabled] {
+.c6[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c4 {
+.c3 {
   align-content: center;
   align-items: center;
   display: inline-grid;
@@ -786,7 +747,7 @@ exports[`only the pills that fit are visible 1`] = `
   grid-gap: 0.5rem;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   height: 100%;
@@ -794,7 +755,7 @@ exports[`only the pills that fit are visible 1`] = `
   overflow: hidden;
 }
 
-.c11 {
+.c10 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -807,38 +768,38 @@ exports[`only the pills that fit are visible 1`] = `
   z-index: 1060;
 }
 
-.c6 {
+.c5 {
   position: relative;
 }
 
-.c5 {
+.c4 {
   position: absolute;
   visibility: hidden;
   z-index: -1070;
 }
 
 @media (min-width: 720px) {
-  .c3+.bd-button {
+  .c2+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width: 720px) {
-  .c3 {
+  .c2 {
     width: auto;
   }
 }
 
 @media (min-width: 720px) {
-  .c7+.bd-button {
+  .c6+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width: 720px) {
-  .c7 {
+  .c6 {
     width: auto;
     padding: 0;
     min-width: 2.25rem;
@@ -850,76 +811,76 @@ exports[`only the pills that fit are visible 1`] = `
   role="list"
 >
   <div
-    class="c0 c2 "
+    class="c0 "
     role="listitem"
   >
     <button
-      class="c3 "
+      class="c2 "
       type="button"
     >
       <span
-        class="c4"
+        class="c3"
       >
         In stock
       </span>
     </button>
   </div>
   <div
-    class="c0 c2 c5"
+    class="c0 c4"
     role="listitem"
   >
     <button
-      class="c3 "
+      class="c2 "
       disabled=""
       type="button"
     >
       <span
-        class="c4"
+        class="c3"
       >
         Filter 2
       </span>
     </button>
   </div>
   <div
-    class="c0 c2 c5"
+    class="c0 c4"
     role="listitem"
   >
     <button
-      class="c3 "
+      class="c2 "
       disabled=""
       type="button"
     >
       <span
-        class="c4"
+        class="c3"
       >
         Filter 3
       </span>
     </button>
   </div>
   <div
-    class="c0 c2 "
+    class="c0 "
     role="listitem"
   >
     <div
-      class="c0 c6"
+      class="c0 c5"
     >
       <button
         aria-activedescendant=""
-        aria-controls=":rg:-menu"
+        aria-controls="_r_g_-menu"
         aria-expanded="false"
         aria-haspopup="menu"
-        class="c7 bd-button"
-        id=":rg:-toggle-button"
+        class="c6 bd-button"
+        id="_r_g_-toggle-button"
         role="button"
         tabindex="0"
         type="button"
       >
         <span
-          class="c4"
+          class="c3"
         >
           <svg
-            aria-labelledby=":rj:"
-            class="c8"
+            aria-labelledby="_r_j_"
+            class="c7"
             fill="currentColor"
             height="24"
             stroke="currentColor"
@@ -928,7 +889,7 @@ exports[`only the pills that fit are visible 1`] = `
             width="24"
           >
             <title
-              id=":rj:"
+              id="_r_j_"
             >
               add
             </title>
@@ -943,16 +904,16 @@ exports[`only the pills that fit are visible 1`] = `
         </span>
       </button>
       <div
-        class="c9"
+        class="c8"
         style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <div
-          class="c10"
+          class="c9"
         >
           <ul
-            aria-labelledby=":rg:-label"
-            class="c11"
-            id=":rg:-menu"
+            aria-labelledby="_r_g_-label"
+            class="c10"
+            id="_r_g_-menu"
             role="menu"
           />
         </div>
@@ -963,40 +924,27 @@ exports[`only the pills that fit are visible 1`] = `
 `;
 
 exports[`only the pills that fit are visible 2 1`] = `
-.c8 {
+.c7 {
   vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
 }
 
 .c0 {
   box-sizing: border-box;
 }
 
-.c9 {
+.c8 {
   display: none;
   box-sizing: border-box;
   z-index: 1060;
 }
 
 .c1 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
 .c2 {
-  align-self: auto;
-  flex-basis: auto;
-  flex-grow: 0;
-  order: 0;
-  flex-shrink: 1;
-}
-
-.c3 {
   transition: all 150ms ease-out;
   transition-property: background-color,border-color,box-shadow,color;
   align-items: center;
@@ -1026,41 +974,41 @@ exports[`only the pills that fit are visible 2 1`] = `
   color: #3C64F4;
 }
 
-.c3.c3 {
+.c2.c2 {
   margin-right: 0.5rem;
 }
 
-.c3:focus {
+.c2:focus {
   outline: none;
 }
 
-.c3[disabled] {
+.c2[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c3+.bd-button {
+.c2+.bd-button {
   margin-top: 0.5rem;
 }
 
-.c3:active {
+.c2:active {
   background-color: #DBE3FE;
 }
 
-.c3:focus {
+.c2:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c3:hover:not(:active) {
+.c2:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c3[disabled] {
+.c2[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c7 {
+.c6 {
   transition: all 150ms ease-out;
   transition-property: background-color,border-color,box-shadow,color;
   align-items: center;
@@ -1090,37 +1038,37 @@ exports[`only the pills that fit are visible 2 1`] = `
   color: #3C64F4;
 }
 
-.c7:focus {
+.c6:focus {
   outline: none;
 }
 
-.c7[disabled] {
+.c6[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c7+.bd-button {
+.c6+.bd-button {
   margin-top: 0.5rem;
 }
 
-.c7:active {
+.c6:active {
   background-color: #DBE3FE;
 }
 
-.c7:focus {
+.c6:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c7:hover:not(:active) {
+.c6:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c7[disabled] {
+.c6[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c4 {
+.c3 {
   align-content: center;
   align-items: center;
   display: inline-grid;
@@ -1128,7 +1076,7 @@ exports[`only the pills that fit are visible 2 1`] = `
   grid-gap: 0.5rem;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   height: 100%;
@@ -1136,7 +1084,7 @@ exports[`only the pills that fit are visible 2 1`] = `
   overflow: hidden;
 }
 
-.c11 {
+.c10 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -1149,38 +1097,38 @@ exports[`only the pills that fit are visible 2 1`] = `
   z-index: 1060;
 }
 
-.c6 {
+.c5 {
   position: relative;
 }
 
-.c5 {
+.c4 {
   position: absolute;
   visibility: hidden;
   z-index: -1070;
 }
 
 @media (min-width: 720px) {
-  .c3+.bd-button {
+  .c2+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width: 720px) {
-  .c3 {
+  .c2 {
     width: auto;
   }
 }
 
 @media (min-width: 720px) {
-  .c7+.bd-button {
+  .c6+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width: 720px) {
-  .c7 {
+  .c6 {
     width: auto;
     padding: 0;
     min-width: 2.25rem;
@@ -1192,75 +1140,75 @@ exports[`only the pills that fit are visible 2 1`] = `
   role="list"
 >
   <div
-    class="c0 c2 "
+    class="c0 "
     role="listitem"
   >
     <button
-      class="c3 "
+      class="c2 "
       type="button"
     >
       <span
-        class="c4"
+        class="c3"
       >
         In stock
       </span>
     </button>
   </div>
   <div
-    class="c0 c2 "
+    class="c0 "
     role="listitem"
   >
     <button
-      class="c3 "
+      class="c2 "
       type="button"
     >
       <span
-        class="c4"
+        class="c3"
       >
         Filter 2
       </span>
     </button>
   </div>
   <div
-    class="c0 c2 c5"
+    class="c0 c4"
     role="listitem"
   >
     <button
-      class="c3 "
+      class="c2 "
       disabled=""
       type="button"
     >
       <span
-        class="c4"
+        class="c3"
       >
         Filter 3
       </span>
     </button>
   </div>
   <div
-    class="c0 c2 "
+    class="c0 "
     role="listitem"
   >
     <div
-      class="c0 c6"
+      class="c0 c5"
     >
       <button
         aria-activedescendant=""
-        aria-controls=":rk:-menu"
+        aria-controls="_r_k_-menu"
         aria-expanded="false"
         aria-haspopup="menu"
-        class="c7 bd-button"
-        id=":rk:-toggle-button"
+        class="c6 bd-button"
+        id="_r_k_-toggle-button"
         role="button"
         tabindex="0"
         type="button"
       >
         <span
-          class="c4"
+          class="c3"
         >
           <svg
-            aria-labelledby=":rn:"
-            class="c8"
+            aria-labelledby="_r_n_"
+            class="c7"
             fill="currentColor"
             height="24"
             stroke="currentColor"
@@ -1269,7 +1217,7 @@ exports[`only the pills that fit are visible 2 1`] = `
             width="24"
           >
             <title
-              id=":rn:"
+              id="_r_n_"
             >
               add
             </title>
@@ -1284,16 +1232,16 @@ exports[`only the pills that fit are visible 2 1`] = `
         </span>
       </button>
       <div
-        class="c9"
+        class="c8"
         style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <div
-          class="c10"
+          class="c9"
         >
           <ul
-            aria-labelledby=":rk:-label"
-            class="c11"
-            id=":rk:-menu"
+            aria-labelledby="_r_k_-label"
+            class="c10"
+            id="_r_k_-menu"
             role="menu"
           />
         </div>
@@ -1304,40 +1252,27 @@ exports[`only the pills that fit are visible 2 1`] = `
 `;
 
 exports[`renders all the filters if they fit 1`] = `
-.c8 {
+.c7 {
   vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
 }
 
 .c0 {
   box-sizing: border-box;
 }
 
-.c9 {
+.c8 {
   display: none;
   box-sizing: border-box;
   z-index: 1060;
 }
 
 .c1 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
 .c2 {
-  align-self: auto;
-  flex-basis: auto;
-  flex-grow: 0;
-  order: 0;
-  flex-shrink: 1;
-}
-
-.c3 {
   transition: all 150ms ease-out;
   transition-property: background-color,border-color,box-shadow,color;
   align-items: center;
@@ -1367,41 +1302,41 @@ exports[`renders all the filters if they fit 1`] = `
   color: #3C64F4;
 }
 
-.c3.c3 {
+.c2.c2 {
   margin-right: 0.5rem;
 }
 
-.c3:focus {
+.c2:focus {
   outline: none;
 }
 
-.c3[disabled] {
+.c2[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c3+.bd-button {
+.c2+.bd-button {
   margin-top: 0.5rem;
 }
 
-.c3:active {
+.c2:active {
   background-color: #DBE3FE;
 }
 
-.c3:focus {
+.c2:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c3:hover:not(:active) {
+.c2:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c3[disabled] {
+.c2[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c7 {
+.c6 {
   transition: all 150ms ease-out;
   transition-property: background-color,border-color,box-shadow,color;
   align-items: center;
@@ -1431,37 +1366,37 @@ exports[`renders all the filters if they fit 1`] = `
   color: #3C64F4;
 }
 
-.c7:focus {
+.c6:focus {
   outline: none;
 }
 
-.c7[disabled] {
+.c6[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c7+.bd-button {
+.c6+.bd-button {
   margin-top: 0.5rem;
 }
 
-.c7:active {
+.c6:active {
   background-color: #DBE3FE;
 }
 
-.c7:focus {
+.c6:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c7:hover:not(:active) {
+.c6:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c7[disabled] {
+.c6[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c4 {
+.c3 {
   align-content: center;
   align-items: center;
   display: inline-grid;
@@ -1469,7 +1404,7 @@ exports[`renders all the filters if they fit 1`] = `
   grid-gap: 0.5rem;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   height: 100%;
@@ -1477,7 +1412,7 @@ exports[`renders all the filters if they fit 1`] = `
   overflow: hidden;
 }
 
-.c11 {
+.c10 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -1490,38 +1425,38 @@ exports[`renders all the filters if they fit 1`] = `
   z-index: 1060;
 }
 
-.c6 {
+.c5 {
   position: relative;
 }
 
-.c5 {
+.c4 {
   position: absolute;
   visibility: hidden;
   z-index: -1070;
 }
 
 @media (min-width: 720px) {
-  .c3+.bd-button {
+  .c2+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width: 720px) {
-  .c3 {
+  .c2 {
     width: auto;
   }
 }
 
 @media (min-width: 720px) {
-  .c7+.bd-button {
+  .c6+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width: 720px) {
-  .c7 {
+  .c6 {
     width: auto;
     padding: 0;
     min-width: 2.25rem;
@@ -1533,74 +1468,74 @@ exports[`renders all the filters if they fit 1`] = `
   role="list"
 >
   <div
-    class="c0 c2 "
+    class="c0 "
     role="listitem"
   >
     <button
-      class="c3 "
+      class="c2 "
       type="button"
     >
       <span
-        class="c4"
+        class="c3"
       >
         In stock
       </span>
     </button>
   </div>
   <div
-    class="c0 c2 "
+    class="c0 "
     role="listitem"
   >
     <button
-      class="c3 "
+      class="c2 "
       type="button"
     >
       <span
-        class="c4"
+        class="c3"
       >
         Filter 2
       </span>
     </button>
   </div>
   <div
-    class="c0 c2 "
+    class="c0 "
     role="listitem"
   >
     <button
-      class="c3 "
+      class="c2 "
       type="button"
     >
       <span
-        class="c4"
+        class="c3"
       >
         Filter 3
       </span>
     </button>
   </div>
   <div
-    class="c0 c2 c5"
+    class="c0 c4"
     role="listitem"
   >
     <div
-      class="c0 c6"
+      class="c0 c5"
     >
       <button
         aria-activedescendant=""
-        aria-controls=":rc:-menu"
+        aria-controls="_r_c_-menu"
         aria-expanded="false"
         aria-haspopup="menu"
-        class="c7 bd-button"
-        id=":rc:-toggle-button"
+        class="c6 bd-button"
+        id="_r_c_-toggle-button"
         role="button"
         tabindex="0"
         type="button"
       >
         <span
-          class="c4"
+          class="c3"
         >
           <svg
-            aria-labelledby=":rf:"
-            class="c8"
+            aria-labelledby="_r_f_"
+            class="c7"
             fill="currentColor"
             height="24"
             stroke="currentColor"
@@ -1609,7 +1544,7 @@ exports[`renders all the filters if they fit 1`] = `
             width="24"
           >
             <title
-              id=":rf:"
+              id="_r_f_"
             >
               add
             </title>
@@ -1624,16 +1559,16 @@ exports[`renders all the filters if they fit 1`] = `
         </span>
       </button>
       <div
-        class="c9"
+        class="c8"
         style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <div
-          class="c10"
+          class="c9"
         >
           <ul
-            aria-labelledby=":rc:-label"
-            class="c11"
-            id=":rc:-menu"
+            aria-labelledby="_r_c_-label"
+            class="c10"
+            id="_r_c_-menu"
             role="menu"
           />
         </div>
@@ -1644,40 +1579,27 @@ exports[`renders all the filters if they fit 1`] = `
 `;
 
 exports[`renders dropdown if items do not fit 1`] = `
-.c8 {
+.c7 {
   vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
 }
 
 .c0 {
   box-sizing: border-box;
 }
 
-.c9 {
+.c8 {
   display: none;
   box-sizing: border-box;
   z-index: 1060;
 }
 
 .c1 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
 .c2 {
-  align-self: auto;
-  flex-basis: auto;
-  flex-grow: 0;
-  order: 0;
-  flex-shrink: 1;
-}
-
-.c3 {
   transition: all 150ms ease-out;
   transition-property: background-color,border-color,box-shadow,color;
   align-items: center;
@@ -1707,41 +1629,41 @@ exports[`renders dropdown if items do not fit 1`] = `
   color: #3C64F4;
 }
 
-.c3.c3 {
+.c2.c2 {
   margin-right: 0.5rem;
 }
 
-.c3:focus {
+.c2:focus {
   outline: none;
 }
 
-.c3[disabled] {
+.c2[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c3+.bd-button {
+.c2+.bd-button {
   margin-top: 0.5rem;
 }
 
-.c3:active {
+.c2:active {
   background-color: #DBE3FE;
 }
 
-.c3:focus {
+.c2:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c3:hover:not(:active) {
+.c2:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c3[disabled] {
+.c2[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c7 {
+.c6 {
   transition: all 150ms ease-out;
   transition-property: background-color,border-color,box-shadow,color;
   align-items: center;
@@ -1771,37 +1693,37 @@ exports[`renders dropdown if items do not fit 1`] = `
   color: #3C64F4;
 }
 
-.c7:focus {
+.c6:focus {
   outline: none;
 }
 
-.c7[disabled] {
+.c6[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c7+.bd-button {
+.c6+.bd-button {
   margin-top: 0.5rem;
 }
 
-.c7:active {
+.c6:active {
   background-color: #DBE3FE;
 }
 
-.c7:focus {
+.c6:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c7:hover:not(:active) {
+.c6:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c7[disabled] {
+.c6[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c4 {
+.c3 {
   align-content: center;
   align-items: center;
   display: inline-grid;
@@ -1809,7 +1731,7 @@ exports[`renders dropdown if items do not fit 1`] = `
   grid-gap: 0.5rem;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   height: 100%;
@@ -1817,7 +1739,7 @@ exports[`renders dropdown if items do not fit 1`] = `
   overflow: hidden;
 }
 
-.c11 {
+.c10 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -1830,38 +1752,38 @@ exports[`renders dropdown if items do not fit 1`] = `
   z-index: 1060;
 }
 
-.c6 {
+.c5 {
   position: relative;
 }
 
-.c5 {
+.c4 {
   position: absolute;
   visibility: hidden;
   z-index: -1070;
 }
 
 @media (min-width: 720px) {
-  .c3+.bd-button {
+  .c2+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width: 720px) {
-  .c3 {
+  .c2 {
     width: auto;
   }
 }
 
 @media (min-width: 720px) {
-  .c7+.bd-button {
+  .c6+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width: 720px) {
-  .c7 {
+  .c6 {
     width: auto;
     padding: 0;
     min-width: 2.25rem;
@@ -1873,60 +1795,60 @@ exports[`renders dropdown if items do not fit 1`] = `
   role="list"
 >
   <div
-    class="c0 c2 "
+    class="c0 "
     role="listitem"
   >
     <button
-      class="c3 "
+      class="c2 "
       type="button"
     >
       <span
-        class="c4"
+        class="c3"
       >
         In stock
       </span>
     </button>
   </div>
   <div
-    class="c0 c2 c5"
+    class="c0 c4"
     role="listitem"
   >
     <button
-      class="c3 "
+      class="c2 "
       disabled=""
       type="button"
     >
       <span
-        class="c4"
+        class="c3"
       >
         Long filter name
       </span>
     </button>
   </div>
   <div
-    class="c0 c2 "
+    class="c0 "
     role="listitem"
   >
     <div
-      class="c0 c6"
+      class="c0 c5"
     >
       <button
         aria-activedescendant=""
-        aria-controls=":r8:-menu"
+        aria-controls="_r_8_-menu"
         aria-expanded="false"
         aria-haspopup="menu"
-        class="c7 bd-button"
-        id=":r8:-toggle-button"
+        class="c6 bd-button"
+        id="_r_8_-toggle-button"
         role="button"
         tabindex="0"
         type="button"
       >
         <span
-          class="c4"
+          class="c3"
         >
           <svg
-            aria-labelledby=":rb:"
-            class="c8"
+            aria-labelledby="_r_b_"
+            class="c7"
             fill="currentColor"
             height="24"
             stroke="currentColor"
@@ -1935,7 +1857,7 @@ exports[`renders dropdown if items do not fit 1`] = `
             width="24"
           >
             <title
-              id=":rb:"
+              id="_r_b_"
             >
               add
             </title>
@@ -1950,16 +1872,16 @@ exports[`renders dropdown if items do not fit 1`] = `
         </span>
       </button>
       <div
-        class="c9"
+        class="c8"
         style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <div
-          class="c10"
+          class="c9"
         >
           <ul
-            aria-labelledby=":r8:-label"
-            class="c11"
-            id=":r8:-menu"
+            aria-labelledby="_r_8_-label"
+            class="c10"
+            id="_r_8_-menu"
             role="menu"
           />
         </div>

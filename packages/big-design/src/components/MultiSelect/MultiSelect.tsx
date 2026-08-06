@@ -59,7 +59,7 @@ export const MultiSelect = typedMemo(
     value,
     ...props
   }: MultiSelectProps<T>): ReturnType<React.FC<MultiSelectProps<T>>> => {
-    const defaultRef: RefObject<HTMLInputElement> = createRef();
+    const defaultRef: RefObject<HTMLInputElement | null> = createRef();
     const multiSelectUniqueId = useId();
 
     const [inputValue, setInputValue] = useState('');

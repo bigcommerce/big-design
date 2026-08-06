@@ -13,5 +13,13 @@ export const AlertsManager: React.FC<AlertsManagerProps> = ({ manager }) => {
 
   useEffect(() => manager.subscribe(setAlert), [manager]);
 
-  return alert ? <Alert {...alert} /> : null;
+  if (!alert) {
+    return null;
+  }
+
+  // key is tracked by the manager internally; destructure before spread to satisfy React 19
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+  const { key, ...alertProps } = alert as AlertProps & { key?: string };
+
+  return <Alert key={key} {...alertProps} />;
 };

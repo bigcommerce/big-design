@@ -1,54 +1,36 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`offset pagination renders a pagination component 1`] = `
-.c10 {
+.c9 {
   vertical-align: middle;
   height: 2rem;
   width: 2rem;
 }
 
-.c15 {
+.c14 {
   vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
 }
 
 .c1 {
   box-sizing: border-box;
 }
 
-.c11 {
+.c10 {
   display: none;
   box-sizing: border-box;
   z-index: 1060;
 }
 
 .c4 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
 .c2 {
-  align-self: auto;
-  flex-basis: auto;
-  flex-grow: 0;
-  order: 0;
   flex-shrink: 0;
 }
 
-.c5 {
-  align-self: auto;
-  flex-basis: auto;
-  flex-grow: 0;
-  order: 0;
-  flex-shrink: 1;
-}
-
-.c7 {
+.c6 {
   transition: all 150ms ease-out;
   transition-property: background-color,border-color,box-shadow,color;
   align-items: center;
@@ -79,37 +61,37 @@ exports[`offset pagination renders a pagination component 1`] = `
   color: #3C64F4;
 }
 
-.c7:focus {
+.c6:focus {
   outline: none;
 }
 
-.c7[disabled] {
+.c6[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c7+.bd-button {
+.c6+.bd-button {
   margin-top: 0.5rem;
 }
 
-.c7:active {
+.c6:active {
   background-color: #DBE3FE;
 }
 
-.c7:focus {
+.c6:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c7:hover:not(:active) {
+.c6:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c7[disabled] {
+.c6[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c14 {
+.c13 {
   transition: all 150ms ease-out;
   transition-property: background-color,border-color,box-shadow,color;
   align-items: center;
@@ -139,37 +121,37 @@ exports[`offset pagination renders a pagination component 1`] = `
   color: #3C64F4;
 }
 
-.c14:focus {
+.c13:focus {
   outline: none;
 }
 
-.c14[disabled] {
+.c13[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c14+.bd-button {
+.c13+.bd-button {
   margin-top: 0.5rem;
 }
 
-.c14:active {
+.c13:active {
   background-color: #DBE3FE;
 }
 
-.c14:focus {
+.c13:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c14:hover:not(:active) {
+.c13:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c14[disabled] {
+.c13[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c9 {
+.c8 {
   align-content: center;
   align-items: center;
   display: inline-grid;
@@ -177,7 +159,7 @@ exports[`offset pagination renders a pagination component 1`] = `
   grid-gap: 0.5rem;
 }
 
-.c12 {
+.c11 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   height: 100%;
@@ -185,7 +167,7 @@ exports[`offset pagination renders a pagination component 1`] = `
   overflow: hidden;
 }
 
-.c13 {
+.c12 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -198,11 +180,11 @@ exports[`offset pagination renders a pagination component 1`] = `
   z-index: 1060;
 }
 
-.c6 {
+.c5 {
   position: relative;
 }
 
-.c8 {
+.c7 {
   color: #313440;
   width: auto;
 }
@@ -221,27 +203,27 @@ exports[`offset pagination renders a pagination component 1`] = `
 }
 
 @media (min-width: 720px) {
-  .c7+.bd-button {
+  .c6+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width: 720px) {
-  .c7 {
+  .c6 {
     width: auto;
   }
 }
 
 @media (min-width: 720px) {
-  .c14+.bd-button {
+  .c13+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width: 720px) {
-  .c14 {
+  .c13 {
     width: auto;
     padding: 0;
     min-width: 2.25rem;
@@ -249,7 +231,7 @@ exports[`offset pagination renders a pagination component 1`] = `
 }
 
 <div
-  aria-controls=":r14:"
+  aria-controls="_r_14_"
   aria-label="Table Controls"
   class="c0"
   role="toolbar"
@@ -263,29 +245,29 @@ exports[`offset pagination renders a pagination component 1`] = `
       role="navigation"
     >
       <div
-        class="c1 c5"
+        class="c1 "
       >
         <div
-          class="c1 c6"
+          class="c1 c5"
         >
           <button
             aria-activedescendant=""
-            aria-controls=":r15:-menu"
+            aria-controls="_r_15_-menu"
             aria-expanded="false"
             aria-haspopup="menu"
-            class="c7 c8"
-            id=":r15:-toggle-button"
+            class="c6 c7"
+            id="_r_15_-toggle-button"
             role="button"
             tabindex="0"
             type="button"
           >
             <span
-              class="c9"
+              class="c8"
             >
               1 - 3 of 5
               <svg
                 aria-hidden="true"
-                class="c10"
+                class="c9"
                 fill="currentColor"
                 height="24"
                 stroke="currentColor"
@@ -304,16 +286,16 @@ exports[`offset pagination renders a pagination component 1`] = `
             </span>
           </button>
           <div
-            class="c11"
+            class="c10"
             style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
           >
             <div
-              class="c12"
+              class="c11"
             >
               <ul
-                aria-labelledby=":r15:-label"
-                class="c13"
-                id=":r15:-menu"
+                aria-labelledby="_r_15_-label"
+                class="c12"
+                id="_r_15_-menu"
                 role="menu"
               />
             </div>
@@ -321,19 +303,19 @@ exports[`offset pagination renders a pagination component 1`] = `
         </div>
       </div>
       <div
-        class="c1 c5"
+        class="c1 "
       >
         <button
-          class="c14 c8"
+          class="c13 c7"
           disabled=""
           type="button"
         >
           <span
-            class="c9"
+            class="c8"
           >
             <svg
-              aria-labelledby=":r19:"
-              class="c15"
+              aria-labelledby="_r_19_"
+              class="c14"
               fill="currentColor"
               height="24"
               stroke="currentColor"
@@ -342,7 +324,7 @@ exports[`offset pagination renders a pagination component 1`] = `
               width="24"
             >
               <title
-                id=":r19:"
+                id="_r_19_"
               >
                 Previous page
               </title>
@@ -357,15 +339,15 @@ exports[`offset pagination renders a pagination component 1`] = `
           </span>
         </button>
         <button
-          class="c14 c8"
+          class="c13 c7"
           type="button"
         >
           <span
-            class="c9"
+            class="c8"
           >
             <svg
-              aria-labelledby=":r1a:"
-              class="c15"
+              aria-labelledby="_r_1a_"
+              class="c14"
               fill="currentColor"
               height="24"
               stroke="currentColor"
@@ -374,7 +356,7 @@ exports[`offset pagination renders a pagination component 1`] = `
               width="24"
             >
               <title
-                id=":r1a:"
+                id="_r_1a_"
               >
                 Next page
               </title>
@@ -400,11 +382,8 @@ exports[`renders a simple table 1`] = `
 }
 
 .c3 {
-  align-content: stretch;
   align-items: center;
   flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
@@ -473,7 +452,7 @@ exports[`renders a simple table 1`] = `
 
 <table
   class="c0"
-  id=":r0:"
+  id="_r_0_"
 >
   <thead
     class=""
@@ -635,8 +614,6 @@ exports[`renders a table figure 1`] = `
 exports[`selectable renders selectable actions and checkboxes 1`] = `
 .c9 {
   vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
 }
 
 .c1 {
@@ -654,19 +631,11 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
 }
 
 .c4 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
 .c2 {
-  align-self: auto;
-  flex-basis: auto;
-  flex-grow: 0;
-  order: 0;
   flex-shrink: 0;
 }
 
@@ -781,7 +750,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
 }
 
 <div
-  aria-controls=":r3c:"
+  aria-controls="_r_3c_"
   aria-label="Table Controls"
   class="c0"
   role="toolbar"
@@ -797,15 +766,15 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
       >
         <input
           aria-checked="false"
-          aria-labelledby=":r3e:"
+          aria-labelledby="_r_3e_"
           class="c6 c7"
-          id=":r3d:"
+          id="_r_3d_"
           type="checkbox"
         />
         <label
           aria-hidden="true"
           class="c8"
-          for=":r3d:"
+          for="_r_3d_"
         >
           <svg
             aria-hidden="true"
@@ -831,9 +800,9 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
         >
           <label
             class="c11"
-            for=":r3d:"
+            for="_r_3d_"
             hidden=""
-            id=":r3e:"
+            id="_r_3e_"
           >
             Select All
           </label>

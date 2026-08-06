@@ -18,7 +18,6 @@ exports[`render default (success) Message 1`] = `
 }
 
 .c1 {
-  gap: 1rem;
   display: grid;
 }
 
@@ -121,7 +120,6 @@ exports[`render error Message 1`] = `
 }
 
 .c1 {
-  gap: 1rem;
   display: grid;
 }
 
@@ -220,7 +218,6 @@ exports[`render info Message 1`] = `
 }
 
 .c1 {
-  gap: 1rem;
   display: grid;
 }
 
@@ -323,7 +320,6 @@ exports[`render warning Message 1`] = `
 }
 
 .c1 {
-  gap: 1rem;
   display: grid;
 }
 
@@ -427,11 +423,8 @@ exports[`renders actions 1`] = `
 }
 
 .c10 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: flex-start;
   display: flex;
 }
 
@@ -509,7 +502,6 @@ exports[`renders actions 1`] = `
 }
 
 .c1 {
-  gap: 1rem;
   display: grid;
 }
 
@@ -751,7 +743,6 @@ exports[`renders close button 1`] = `
 }
 
 .c1 {
-  gap: 1rem;
   display: grid;
 }
 
@@ -858,7 +849,7 @@ exports[`renders close button 1`] = `
         class="c11"
       >
         <svg
-          aria-labelledby=":ra:"
+          aria-labelledby="_r_a_"
           class="c12"
           fill="currentColor"
           height="24"
@@ -868,7 +859,7 @@ exports[`renders close button 1`] = `
           width="24"
         >
           <title
-            id=":ra:"
+            id="_r_a_"
           >
             Close
           </title>
@@ -904,7 +895,6 @@ exports[`renders header 1`] = `
 }
 
 .c1 {
-  gap: 1rem;
   display: grid;
 }
 
@@ -1032,7 +1022,6 @@ exports[`renders with external link 1`] = `
 }
 
 .c1 {
-  gap: 1rem;
   display: grid;
 }
 
@@ -1192,7 +1181,6 @@ exports[`renders with link 1`] = `
 }
 
 .c1 {
-  gap: 1rem;
   display: grid;
 }
 

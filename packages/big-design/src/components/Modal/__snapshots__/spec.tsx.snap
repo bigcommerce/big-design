@@ -12,8 +12,6 @@ exports[`render closed modal 1`] = `
 exports[`render open modal 1`] = `
 .c8 {
   vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
 }
 
 .c1 {
@@ -21,11 +19,7 @@ exports[`render open modal 1`] = `
 }
 
 .c2 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
@@ -210,7 +204,7 @@ exports[`render open modal 1`] = `
       tabindex="-1"
     >
       <div
-        aria-labelledby=":r0:"
+        aria-labelledby="_r_0_"
         class="c1 c2 c3"
       >
         <div
@@ -223,7 +217,7 @@ exports[`render open modal 1`] = `
               class="c7"
             >
               <svg
-                aria-labelledby=":r1:"
+                aria-labelledby="_r_1_"
                 class="c8"
                 fill="currentColor"
                 height="24"
@@ -233,7 +227,7 @@ exports[`render open modal 1`] = `
                 width="24"
               >
                 <title
-                  id=":r1:"
+                  id="_r_1_"
                 >
                   Close
                 </title>
@@ -262,8 +256,6 @@ exports[`render open modal 1`] = `
 exports[`render open modal without backdrop 1`] = `
 .c8 {
   vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
 }
 
 .c1 {
@@ -271,11 +263,7 @@ exports[`render open modal without backdrop 1`] = `
 }
 
 .c2 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
@@ -459,7 +447,7 @@ exports[`render open modal without backdrop 1`] = `
       tabindex="-1"
     >
       <div
-        aria-labelledby=":r2:"
+        aria-labelledby="_r_2_"
         class="c1 c2 c3"
       >
         <div
@@ -472,7 +460,7 @@ exports[`render open modal without backdrop 1`] = `
               class="c7"
             >
               <svg
-                aria-labelledby=":r3:"
+                aria-labelledby="_r_3_"
                 class="c8"
                 fill="currentColor"
                 height="24"
@@ -482,7 +470,7 @@ exports[`render open modal without backdrop 1`] = `
                 width="24"
               >
                 <title
-                  id=":r3:"
+                  id="_r_3_"
                 >
                   Close
                 </title>
