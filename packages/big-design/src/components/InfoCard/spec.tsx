@@ -16,6 +16,32 @@ test('renders the description when provided', () => {
   expect(screen.getByText('Card description')).toBeInTheDocument();
 });
 
+test('renders an object description without a link', () => {
+  render(<InfoCard description={{ text: 'Card description' }} title="Card title" />);
+
+  expect(screen.getByText('Card description')).toBeInTheDocument();
+  expect(screen.queryByRole('link')).not.toBeInTheDocument();
+});
+
+test('renders an object description with a link', () => {
+  render(
+    <InfoCard
+      description={{
+        text: 'Card description',
+        link: { text: 'Learn more', href: 'https://example.com', target: '_blank' },
+      }}
+      title="Card title"
+    />,
+  );
+
+  expect(screen.getByText('Card description')).toBeInTheDocument();
+
+  const link = screen.getByRole('link', { name: 'Learn more' });
+
+  expect(link).toHaveAttribute('href', 'https://example.com');
+  expect(link).toHaveAttribute('target', '_blank');
+});
+
 test('does not render a description when not provided', () => {
   render(<InfoCard title="Card title" />);
 
@@ -85,6 +111,22 @@ test('matches snapshot', () => {
     <InfoCard
       badge={{ label: 'New' }}
       description="Card description"
+      img={{ alt: 'Logo', src: 'logo.png' }}
+      title="Card title"
+    />,
+  );
+
+  expect(container.firstChild).toMatchSnapshot();
+});
+
+test('matches snapshot with object description and link', () => {
+  const { container } = render(
+    <InfoCard
+      badge={{ label: 'New' }}
+      description={{
+        text: 'Card description',
+        link: { text: 'Learn more', href: 'https://example.com', target: '_blank' },
+      }}
       img={{ alt: 'Logo', src: 'logo.png' }}
       title="Card title"
     />,

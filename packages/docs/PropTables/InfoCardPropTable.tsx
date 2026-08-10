@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components';
 
+import { messagingLinkItemProps } from './shared';
+
 const infoCardProps: Prop[] = [
   {
     name: 'title',
@@ -15,10 +17,30 @@ const infoCardProps: Prop[] = [
   },
   {
     name: 'description',
-    types: 'string',
+    types: [
+      'string',
+      <NextLink
+        href={{
+          hash: 'info-card-description-prop-table',
+          query: { props: 'info-card-description' },
+        }}
+        key="info-card-description"
+      >
+        InfoCardDescription
+      </NextLink>,
+    ],
     description: (
       <>
-        Secondary text rendered below the <Code primary>title</Code>.
+        Secondary text rendered below the <Code primary>title</Code>. See{' '}
+        <NextLink
+          href={{
+            hash: 'info-card-description-prop-table',
+            query: { props: 'info-card-description' },
+          }}
+        >
+          InfoCardDescription
+        </NextLink>{' '}
+        for usage.
       </>
     ),
   },
@@ -49,8 +71,66 @@ const infoCardProps: Prop[] = [
   },
 ];
 
+const infoCardDescriptionProps: Prop[] = [
+  {
+    name: 'text',
+    types: ['string'],
+    required: true,
+    description: (
+      <>
+        Description to display below <Code primary>title</Code>.
+      </>
+    ),
+  },
+  {
+    name: 'link',
+    types: (
+      <NextLink
+        href={{
+          hash: 'info-card-description-link-prop-table',
+          query: { props: 'info-card-description-link' },
+        }}
+      >
+        InfoCardDescriptionLink
+      </NextLink>
+    ),
+    description: (
+      <>
+        See{' '}
+        <NextLink
+          href={{
+            hash: 'info-card-description-link-prop-table',
+            query: { props: 'info-card-description-link' },
+          }}
+        >
+          InfoCardDescriptionLink
+        </NextLink>{' '}
+        for usage.
+      </>
+    ),
+  },
+];
+
 export const InfoCardPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable propList={infoCardProps} title="InfoCard" {...props} />
+);
+
+export const InfoCardDescriptionPropTable: React.FC<PropTableWrapper> = (props) => (
+  <PropTable
+    propList={infoCardDescriptionProps}
+    title="InfoCard[InfoCardDescription]"
+    {...props}
+    id="info-card-description-prop-table"
+  />
+);
+
+export const InfoCardDescriptionLinkPropTable: React.FC<PropTableWrapper> = (props) => (
+  <PropTable
+    propList={messagingLinkItemProps}
+    title="InfoCard[InfoCardDescriptionLink]"
+    {...props}
+    id="info-card-description-link-prop-table"
+  />
 );
 
 export const ImgPropTable: React.FC<PropTableWrapper> = (props) => (

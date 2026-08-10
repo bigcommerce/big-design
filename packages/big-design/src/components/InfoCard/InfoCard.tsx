@@ -1,21 +1,38 @@
-import React, { ComponentPropsWithoutRef } from 'react';
+import React, { ComponentPropsWithoutRef, useMemo } from 'react';
 
 import { Badge, BadgeProps } from '../Badge';
 import { Box } from '../Box';
 import { Flex } from '../Flex';
-import { Small, StyleableText } from '../Typography/Typography';
+import { FormControlDescription, FormControlDescriptionLinkProps } from '../Form';
+import { StyleableText } from '../Typography/Typography';
 
 import { InfoCardImgContainer } from './styled';
 
+interface InfoCardDescription {
+  text: string;
+  link?: FormControlDescriptionLinkProps;
+}
+
 export interface InfoCardProps {
   title: string;
-  description?: string;
+  description?: InfoCardDescription | string;
   badge?: BadgeProps;
   img?: ComponentPropsWithoutRef<'img'>;
 }
 
 export const InfoCard: React.FC<InfoCardProps> = ({ img, title, badge, description }) => {
   const { className: imgClassName, style: imgStyle, ...imgProps } = img ?? {};
+
+  const renderedDescription = useMemo(() => {
+    if (!description) {
+      return null;
+    }
+
+    const link = typeof description === 'object' ? description.link : undefined;
+    const text = typeof description === 'object' ? description.text : description;
+
+    return <FormControlDescription link={link}>{text}</FormControlDescription>;
+  }, [description]);
 
   return (
     <Flex alignItems="center">
@@ -25,7 +42,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({ img, title, badge, descripti
           {title}
           {badge ? <Badge marginLeft="xSmall" {...badge} /> : null}
         </StyleableText>
-        {description ? <Small>{description}</Small> : null}
+        {renderedDescription}
       </Box>
     </Flex>
   );
