@@ -3,7 +3,12 @@ import React, { Fragment } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, List } from '../components';
 import { GuidelinesTable } from '../components/GuidelinesTable';
-import { ImgPropTable, InfoCardPropTable } from '../PropTables';
+import {
+  ImgPropTable,
+  InfoCardDescriptionLinkPropTable,
+  InfoCardDescriptionPropTable,
+  InfoCardPropTable,
+} from '../PropTables';
 
 const InfoCardPage = () => {
   return (
@@ -50,13 +55,27 @@ const InfoCardPage = () => {
                 <Fragment key="description">
                   <Text>
                     Add supporting copy below the title with the <Code primary>description</Code>{' '}
-                    prop.
+                    prop. Pass a string for plain text, or an object with a{' '}
+                    <Code primary>text</Code> and an optional <Code primary>link</Code> to append a
+                    link to the description.
                   </Text>
 
                   <CodePreview>
                     {/* jsx-to-string:start */}
                     <InfoCard
                       description="Accept credit cards and digital wallets."
+                      title="Payment provider"
+                    />
+                    {/* jsx-to-string:end */}
+                  </CodePreview>
+
+                  <CodePreview>
+                    {/* jsx-to-string:start */}
+                    <InfoCard
+                      description={{
+                        text: 'Accept credit cards and digital wallets.',
+                        link: { text: 'Learn more', href: 'http://www.bigcommerce.com' },
+                      }}
                       title="Payment provider"
                     />
                     {/* jsx-to-string:end */}
@@ -122,6 +141,18 @@ const InfoCardPage = () => {
               id: 'info-card',
               title: 'InfoCard',
               render: () => <InfoCardPropTable />,
+            },
+            {
+              id: 'info-card-description',
+              title: 'InfoCardDescription',
+              render: () => <InfoCardDescriptionPropTable id="info-card-description-prop-table" />,
+            },
+            {
+              id: 'info-card-description-link',
+              title: 'InfoCardDescriptionLink',
+              render: () => (
+                <InfoCardDescriptionLinkPropTable id="info-card-description-link-prop-table" />
+              ),
             },
             {
               id: 'img',
