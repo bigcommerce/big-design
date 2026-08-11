@@ -1,5 +1,44 @@
 # Change Log
 
+## 1.14.0
+
+### Minor Changes
+
+- 20e27ac: feat(component): extend `InfoCard`'s `description` prop to accept an object with `text` and an optional `link`, in addition to a plain string
+
+### Patch Changes
+
+- b8e60f3: Clear Next.js warnings surfaced by `pnpm run start` and the docs build: move the Google Fonts stylesheet link out of `next/head` into `_document.tsx`, configure `images.qualities` for the logo's explicit quality prop, and drop `legacyBehavior`/`passHref` from `NextLink`/`SideNavLink` in favor of styling `next/link`'s `Link` directly. No visible change to the docs site.
+- Updated dependencies [5d5322c]
+- Updated dependencies [9d91895]
+- Updated dependencies [20e27ac]
+- Updated dependencies [6639ca2]
+- Updated dependencies [a1ac68f]
+- Updated dependencies [d737812]
+- Updated dependencies [0608331]
+- Updated dependencies [39f59f4]
+- Updated dependencies [0aa3c04]
+- Updated dependencies [15d44ac]
+- Updated dependencies [e639408]
+- Updated dependencies [a565ce3]
+- Updated dependencies [c1b0390]
+- Updated dependencies [4a7a8e7]
+- Updated dependencies [9633080]
+- Updated dependencies [8885756]
+- Updated dependencies [a3d820e]
+- Updated dependencies [3b92abf]
+- Updated dependencies [f3c77e0]
+- Updated dependencies [9107fa6]
+- Updated dependencies [1c41421]
+- Updated dependencies [847e43a]
+- Updated dependencies [99f5684]
+- Updated dependencies [5a45204]
+- Updated dependencies [08002ed]
+  - @bigcommerce/big-design@4.0.0
+  - @bigcommerce/big-design-icons@2.0.0
+  - @bigcommerce/big-design-patterns@6.0.0
+  - @bigcommerce/big-design-theme@2.0.0
+
 ## 1.13.0
 
 ### Minor Changes

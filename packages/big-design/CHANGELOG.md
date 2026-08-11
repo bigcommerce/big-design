@@ -1,5 +1,199 @@
 # Change Log
 
+## 4.0.0
+
+### Major Changes
+
+- d737812: Require styled-components 6: the `styled-components` peer dependency range moves from `^5.3.5` to `^6.1.14` across all four packages. Consumers must upgrade to styled-components 6 to use this release (v6 supports both React 18 and, ahead of our upcoming React 19 flip, React 19 — while v5 does not support React 19). Along with the peer bump, the packages now build and test against styled-components `^6.4.0`, `@types/styled-components` is dropped (v6 ships its own types), and `jest-styled-components` moves to `^7.4.0` for v6 support (7.4.0 also fixes `toHaveStyleRule`'s `media` option against stylis v4's spaced media-query output). `createTheme()` now returns `keyframes` as a plain object copy rather than a frozen module-namespace object, since styled-components 6 deep-merges themes when folding `defaultProps` and a getter-only namespace object makes that merge throw; the shape and values of `theme.keyframes` are unchanged.
+- 0aa3c04: Migrate `Tooltip` positioning from `react-popper` to `@floating-ui/react`, removing `react-popper` from `@bigcommerce/big-design`.
+
+  **Breaking changes:**
+
+  - `TooltipProps.modifiers` (typed as `PopperProps['modifiers']`) is replaced by `middleware?: Middleware[]` from `@floating-ui/react`. The default behavior (4px offset, shift to stay in viewport) is unchanged when no `middleware` prop is passed.
+  - `TooltipProps.placement` now accepts `@floating-ui/react`'s `Placement` values plus `"auto"`, `"auto-start"`, and `"auto-end"`. Explicit placements use `flip()` to reposition on overflow; `"auto*"` values use `autoPlacement()` to pick the side with the most space.
+
+  **Migration guide:**
+
+  The `middleware` prop replaces `modifiers`. Common popper modifier equivalents:
+
+  | Popper modifier                                   | Floating UI middleware          |
+  | ------------------------------------------------- | ------------------------------- |
+  | `{ name: 'offset', options: { offset: [0, N] } }` | `offset(N)`                     |
+  | `{ name: 'preventOverflow' }`                     | `shift()`                       |
+  | `{ name: 'flip' }`                                | `flip()` (included in defaults) |
+
+  The `middleware` prop replaces the entire default stack, so include everything you need:
+
+  ```tsx
+  import { offset, shift } from '@floating-ui/react';
+
+  // Before — increase offset, prevent overflow
+  <Tooltip
+    placement="left"
+    modifiers={[
+      { name: 'offset', options: { offset: [0, 20] } },
+      { name: 'preventOverflow' },
+    ]}
+    trigger={<button>Hover me</button>}
+  >
+    Content
+  </Tooltip>
+
+  // After
+  <Tooltip
+    placement="left"
+    middleware={[offset(20), shift()]}
+    trigger={<button>Hover me</button>}
+  >
+    Content
+  </Tooltip>
+  ```
+
+  ```tsx
+  // Before — custom skidding (cross-axis offset) and distance
+  <Tooltip
+    placement="bottom"
+    modifiers={[{ name: 'offset', options: { offset: [12, 8] } }]}
+    trigger={<button>Hover me</button>}
+  >
+    Content
+  </Tooltip>;
+
+  // After — floating-ui offset takes { mainAxis, crossAxis }
+  import { offset } from '@floating-ui/react';
+
+  <Tooltip
+    placement="bottom"
+    middleware={[offset({ mainAxis: 8, crossAxis: 12 })]}
+    trigger={<button>Hover me</button>}
+  >
+    Content
+  </Tooltip>;
+  ```
+
+  ```tsx
+  // Before — auto placement
+  <Tooltip placement="auto" trigger={<button>Hover me</button>}>
+    Content
+  </Tooltip>
+
+  // After — "auto" is now the default, placement can be omitted entirely
+  <Tooltip trigger={<button>Hover me</button>}>
+    Content
+  </Tooltip>
+  ```
+
+### Minor Changes
+
+- 20e27ac: feat(component): extend `InfoCard`'s `description` prop to accept an object with `text` and an optional `link`, in addition to a plain string
+- 6639ca2: Migrate Dropdown, Popover, Select, and MultiSelect positioning from `react-popper` to `@floating-ui/react`. Placement, offsets, flipping, and overflow behavior are unchanged, and the `placement` props keep accepting the same values (including `auto*` placements, now handled via floating-ui's `autoPlacement` middleware). Tooltip still uses `react-popper` and is migrated separately.
+- 0608331: Migrate `Table` (and `StatefulTable`) drag-and-drop from the archived `react-beautiful-dnd` to `@atlaskit/pragmatic-drag-and-drop`, unblocking React 19 consumers (`react-beautiful-dnd`'s React peer caps at 18). The public API is unchanged: `onRowDrop(from, to)` still fires with the same `from`/`to` indices and no drag-and-drop library types leak into public props. Pointer dragging shows a floating preview of the row under the cursor plus a phantom placeholder row at the drop position (the source row is hidden while it shows, so the table doesn't shift); keyboard-only reordering (grab with `Space`/`Enter`, move with the arrow keys, drop with `Space`/`Enter`, cancel with `Escape`) and screen-reader announcements are provided explicitly for WCAG 2.2 AA parity. `TableNext` continues to use `react-beautiful-dnd` for now.
+- 39f59f4: Migrate `TableNext` drag-and-drop from the archived `react-beautiful-dnd` to `@atlaskit/pragmatic-drag-and-drop`, mirroring the `Table` migration. The public API is unchanged: `onRowDrop(from, to)` still fires with the same `from`/`to` indices and no drag-and-drop library types leak into public props. Pointer dragging shows a floating preview of the row under the cursor plus a phantom placeholder row at the drop position (the source row is hidden while it shows, so the table doesn't shift); keyboard-only reordering (grab with `Space`/`Enter`, move with the arrow keys, drop with `Space`/`Enter`, cancel with `Escape`) and screen-reader announcements are provided explicitly for WCAG 2.2 AA parity. `react-beautiful-dnd` and `@types/react-beautiful-dnd` are removed entirely from `@bigcommerce/big-design` and `@bigcommerce/docs`, along with the rbd-specific `resetServerContext` SSR helper in the docs `_document.tsx`.
+
+### Patch Changes
+
+- 5d5322c: Bump `react-datepicker` from `^7.3.0` to `^7.6.0`, which widens its React peer range to include React 19. Drop the now-redundant `@types/react-datepicker` dependency since 7.6.0 ships its own types (`dist/index.d.ts`). No API or behavior change.
+- a1ac68f: Finish the transient-props migration for prop leaks that only surface under styled-components 6 and that `jest-fail-on-console` cannot catch (React only warns on camelCase or boolean-valued unknown props, so all-lowercase string/object props leak silently): `$`-prefix `variant` (Lozenge, Modal, StatusMessage), `percent` (ProgressBar), `isInvalid`/`isSelected` (Worksheet RowStatus), `isValid` (FileUploader's `StyledFile`), and bare `ellipsis` passes to Typography internals (FeatureSet Tag, Tree TreeNode); destructure `actions` (Message, InlineMessage) and `text` (the `<StyledLink {...link}>` sites in Alert/Message/InlineMessage/Form Description, and Panel's action button) out of blind spreads; and replace `.attrs({ theme: defaultTheme })` with the repo-standard `defaultProps` assignment (FeatureSet, StatelessPagination, patterns' Page/Header/ActionBar) — on v6 the attrs object leaks `theme="[object Object]"` onto the DOM, and unlike `defaultProps` it also overrode `ThemeProvider` for those components. `Link` now also binds its forwarded ref, which v5's attribute filtering silently dropped, so `<Link ref>` attaches for the first time. Fixing the bare `ellipsis` passes also restores text truncation on Tree node labels and FeatureSet tags, which broke when Typography's styled internals moved to `$ellipsis` (the two internal call sites were missed, so the truncation CSS silently stopped applying). No public API change; aside from that restored truncation styling, DOM and CSS output on styled-components 5 are unchanged.
+- 15d44ac: Continue migrating tag-target styled components to transient (`$`-prefixed) props ahead of styled-components 6 (LTRAC-1396, Stage 3). `Alert`, `Message`, and `InlineMessage` all blind-spread `onClose` onto their `styled(Grid)` target; destructure it out and route it as an explicit `$onClose` JSX prop. Also drop the `messages={messages}` prop pass to each styled target — none of the three ever read `messages` in their own CSS, so it was dead weight (the same pattern as `error` on `Input`'s `StyledInput` from a prior PR in this stage).
+
+  `type` is deliberately left un-prefixed on all three: it already leaks onto the real DOM node today (confirmed via the existing snapshots, e.g. a literal `type="success"` attribute), because their target is `styled(Grid)` — a component, not a plain tag — so styled-components' v5 attribute-name filtering never applied to it in the first place. Since `type` is a real HTML attribute name, this leak is identical on v5 and v6 (not the "only breaks under v6" problem this migration targets), and $-prefixing it would change existing DOM/snapshot output rather than being a no-op. Flagging as a separate, out-of-scope pre-existing bug.
+
+  Introduced internal `StyledAlertProps`/`StyledMessageProps`/`StyledInlineMessageProps` types (just `type` + `$onClose`) instead of reusing the public `AlertProps`/`MessageProps`/`InlineMessageProps` interfaces directly on the styled component's generic, matching the `Box` template.
+
+  Public prop interfaces and CSS output are unchanged; all 182 snapshots pass with zero diffs.
+
+- e639408: Continue migrating tag-target styled components to transient (`$`-prefixed) props ahead of styled-components 6 (LTRAC-1396, Stage 3). `Badge` and `Link` both blind-spread onto their styled `<span>`/`<a>`; destructure their bespoke props (`variant` on `Badge`; `ellipsis`, `isExternal` on `Link`) out and route them as explicit `$`-prefixed JSX props, plus route margins through the existing `toTransientMarginProps()` utility. Introduce internal-only `StyledBadgeProps`/`StyledLinkProps` types instead of reusing the public `BadgeProps`/`LinkProps` interfaces directly on the styled component's generic, matching the `Box` template. Public prop interfaces and CSS output are unchanged; all 182 snapshots pass with zero diffs.
+- a565ce3: Continue migrating tag-target styled components to transient (`$`-prefixed) props ahead of styled-components 6 (LTRAC-1396, Stage 3). `Button` blind-spread `iconOnly`/`iconLeft`/`iconRight` onto its styled `<button>` and read `actionType`/`variant`/`mobileWidth` (plus `isLoading` on its `ContentWrapper`) directly; destructure them out and route them as explicit `$`-prefixed JSX props, plus route margins through the existing `toTransientMarginProps()` utility. Introduce an internal `StyledButtonProps` type instead of reusing the public `ButtonProps` interface directly on the styled component's generic, matching the `Box` template.
+
+  `FileUploader/DropZone.tsx` renders `Button`'s `StyledButton` directly (via a thin wrapper in `FileUploader/styled.ts`) and passed it bare `marginTop`/`variant` — update those two call sites to the new `$`-prefixed names as a required knock-on fix; this does not touch `DropZone`'s own `StyledDropzone` bespoke props (`isDragOver`/`isValid`), which are a separate, later stage.
+
+  Public `ButtonProps` and CSS output are unchanged; all 182 snapshots pass with zero diffs, including `Button`'s especially heavy snapshot suite.
+
+- c1b0390: Continue migrating tag-target styled components to transient (`$`-prefixed) props ahead of styled-components 6 (LTRAC-1396, Stages 1-2). Rename the internal-only custom props read by `Checkbox`, `Toggle`, `Modal`, `List`, `List/Item`, `Form/Group`, and the Worksheet `TextEditor` to `$`-prefixed names at both the styled definition and the JSX call site (e.g. `$isActive`, `$hasImg`, `$isIndeterminate`, `$backdrop`, `$variant`, `$maxHeight`). Public prop interfaces (`ModalProps`, `ListProps`, `ListItemProps`, `CheckboxProps`, etc.) and CSS output are unchanged. This is a true no-op under styled-components 5 (these custom props were already filtered from the DOM, so all 182 snapshots are unchanged); the `$` prefix guarantees they stay off the DOM under v6's default forwarding. The remaining tag-target components audited in Stage 1 (`Tooltip`, `Select`, `Stepper/Step`, `Table`/`TableNext` roots, `Radio`, `Switch`, `Fieldset`, and the `Checkbox`/`Radio` labels) read only DOM-valid props and need no change.
+- 4a7a8e7: Continue migrating tag-target styled components to transient (`$`-prefixed) props ahead of styled-components 6 (LTRAC-1396, Stage 3). Route `FeatureSet`'s margin props through the existing `toTransientMarginProps()` utility instead of blind-spreading them onto its styled `<ul>`, matching the `Box` template. Public `FeatureSetProps` and CSS output are unchanged; all 182 snapshots pass with zero diffs.
+
+  `Form/Label` and `Radio/Label` were also audited in this pass: both call the shared `withMargins()` helper, but their public prop types (`FormControlLabelProps`, `StyledLabelProps`) don't extend `MarginProps`, so margin is not reachable via the typed public API today. Since this is a pre-existing type gap rather than something this migration renames, no changes were made to either component; closing that gap (if desired) is a separate, out-of-scope follow-up.
+
+- 9633080: Continue migrating tag-target styled components to transient (`$`-prefixed) props ahead of styled-components 6 (LTRAC-1396, Stage 3, final group). `FileUploader/DropZone`'s `StyledDropzone` reads `isDragOver`/`isValid` as explicit (never blind-spread) local-state props; `$`-prefix both at the styled definition and the `DropZone.tsx` call site. `disabled` stays un-prefixed (a recognized DOM attribute name, consistent with every other component in this migration).
+
+  Flagging, not fixing: `FileUploader/File.tsx`'s `StyledFile` has the identical `isValid` pattern but isn't on this stage's explicit target list; needs the same treatment in a follow-up.
+
+  This closes out Stage 3 (blind-spread + shared-helper components) of LTRAC-1396. Public `Props` and CSS output are unchanged; all 182 snapshots pass with zero diffs.
+
+- 8885756: Finish migrating tag-target styled components to transient (`$`-prefixed) props ahead of styled-components 6 (LTRAC-1454, catches misses from LTRAC-1396). SC5's automatic `is-prop-valid` filtering hid all of these — they only surface under v6's stricter tag-target handling.
+
+  Components fixed:
+
+  - **Flex** — `withFlexedContainer()` now reads `$`-prefixed fields; `StyledFlex.defaultProps` updated; `Flex.tsx` destructures all eight container props and hands them off via `toTransientFlexedContainerProps()`. Fixes the highest-volume leak (~70 DOM attribute hits per render).
+  - **Grid** — same pattern for `withGridedContainer()` / `withGridedItems()`; `Grid.tsx` and `Grid/Item/Item.tsx` use `toTransientGridedContainerProps()` / `toTransientGridedItemProps()`.
+  - **Table/Actions and TableNext/Actions** — `StyledFlex` in each actions bar now takes `$alignItems`, `$flexDirection`, `$justifyContent`, `$stickyHeader`.
+  - **Typography** — `commonTextStyles` and `textModifiers` helpers read `$ellipsis` / `$bold` / `$capitalize` / `$italic` / `$lowercase` / `$strikethrough` / `$underline` / `$uppercase`; `Text`, `Small`, and `H0`–`H4` destructure the public modifiers and spread them via a local `toTransientTextProps()`.
+  - **AccordionPanel** — `$isExpanded` and `$iconLeft` on `StyledAccordionButton` / `StyledAccordionContent`.
+  - **ButtonGroup** — `$borderRadius` and `$isVisible` on dropdown and item wrappers.
+  - **Collapse/CollapseTrigger** — `$isOpen`.
+  - **Lozenge** — `$hasTooltip`.
+  - **PillTabs** — `$isActive` on `StyledPillTab`; `$isVisible` on `StyledFlexItem` / `StyledGroupSeparator`.
+  - **Textarea** — `$resize`.
+  - **Worksheet** — `$minWidth`, `$hasStaticWidth`, `$hasExpandableRows` on the table; `$columnType`, `$columnWidth` on headers; `$containerHeight` on the scroll box; full `StyledCell` props (`$isFirstSelected`, `$isLastSelected`, `$isChild`, `$isLastChild`, `$isEdited`, `$isSelected`, `$isValid`, `$isNextCellValid`, `$type`) and `$isVisible` on `AutoFillHandler`.
+
+  Public prop interfaces and CSS output are unchanged; all 1152 tests pass with zero snapshot diffs on v5.
+
+- a3d820e: Continue migrating tag-target styled components to transient (`$`-prefixed) props ahead of styled-components 6 (LTRAC-1396, Stage 3). `$`-prefix the one bespoke custom prop each of `Form` (`$fullWidth`) and `Tabs` (`$activeTab`) reads at the styled layer, plus route `Form`'s margin props through the existing `toTransientMarginProps()` utility instead of blind-spreading them.
+
+  `Tabs`'s `activeTab` flows through `StyledTab` (`styled(StyleableButton)`) down to `Button`'s own blind `{...props}` spread onto its plain-tag `StyledButton`, so the rename has to happen at the `Tabs`/`StyledTab` layer where the value originates; it rides the existing blind spread through `Button`'s internals unaffected, since styled-components strips `$`-prefixed props at whichever tag-target layer finally renders, regardless of how many component layers it passes through first.
+
+  Public `FormProps`/`TabsProps` and CSS output are unchanged; all 182 snapshots pass with zero diffs.
+
+- 3b92abf: Begin migrating tag-target styled components to transient (`$`-prefixed) props ahead of styled-components 6, which drops v5's automatic prop filtering. This foundation change converts the shared `withMargins`/`withPaddings`/`withDisplay` helpers to read `$`-prefixed props (adding `toTransient{Margin,Padding,Display}Props` mapping utilities) and applies the pattern to its first consumer, `Box`. The helpers temporarily read both the public and `$`-prefixed names so remaining components can migrate one PR at a time; the fallback is removed once all consumers are converted. No public API change (consumers still write `<Box backgroundColor="primary" />`) and no CSS output change. Fixing `Box`'s internal prop hand-off does stop it leaking the `display` prop onto the real DOM node (`display` is a valid SVG attribute, so v5 forwarded it); snapshots for components that route `display` through `Box`/`Flex` are updated to drop that stray attribute.
+- f3c77e0: Continue migrating tag-target styled components to transient (`$`-prefixed) props ahead of styled-components 6 (LTRAC-1396, Stage 3). `Input` blind-spread `error`/`focus`/`chips`/`iconLeft`/`iconRight` across its four styled tag targets (`StyledInputWrapper`, `StyledInput`, `StyledIconWrapper`, `StyledInputContent`); destructure them out and route them as explicit `$`-prefixed JSX props, plus route `StyledIconWrapper`'s padding through the existing `toTransientPaddingProps()`-backed `withPaddings()` helper.
+
+  `Flex/Item` blind-spread its Flex-specific bespoke props (`alignSelf`, `flexBasis`, `flexGrow`, `flexOrder`, `flexShrink`) with zero destructuring onto `StyledFlexItem` (`styled(Box)`). Added a new `toTransientFlexedItemProps()` utility (`Flex/withFlex.ts`) and `TransientFlexedItemProps` type (`Flex/types.ts`), mirroring the shared margin/padding/display helpers; since `withFlexedItems()` has a single consumer, no dual-read shim was needed for a straight rename. `Flex`'s own container props (`backgroundColor`, `margin`, etc.) continue to flow through unchanged, since `Box` — already migrated — intercepts and converts them at its own layer regardless of how many `styled(Component)` wrapper layers sit above it.
+
+  A required knock-on fix outside this stage's own target list: `Counter` wraps `Input`'s `StyledInputWrapper`/`StyledInput` directly (via `Counter/styled.ts`) and passed bare `error`/`focus`; updated those call sites to `$error`/`$focus` (and dropped a redundant `error` prop pass to `StyledCounterInput`/`StyledInput`, which never read it internally in either component).
+
+  Also flagging, not fixing: `Flex` (the container, not `Flex/Item`) has the identical blind-spread pattern via `withFlexedContainer()` but isn't on this stage's explicit target list; it needs the same treatment in a follow-up.
+
+  Public `InputProps`/`FlexItemProps`/`CounterProps` and CSS output are unchanged; all 182 snapshots pass with zero diffs.
+
+- 1c41421: Migrate `ProgressCircle` to transient (`$`-prefixed) props ahead of styled-components 6 (LTRAC-1396, Stage 6). `ProgressCircleProps` (public) was reused directly as the styled generic across all four styled components, including inside `StyledCircle`'s `.attrs()` callback that computes SVG `cx`/`cy`/`r` geometry. Introduces an internal `StyledProgressCircleProps` (`$size`, `$percent`) and updates the `.attrs()` destructure, every CSS interpolation, and `ProgressCircle.tsx`'s JSX call sites together, since this one couldn't be split styled-file-vs-consumer like other components in this migration.
+
+  Public `ProgressCircleProps` and CSS output are unchanged; all 182 snapshots pass with zero diffs (neither `size` nor `percent` currently leaks onto the rendered `<svg>`/`<circle>`/`<text>` elements under styled-components 5, so this is a true no-op).
+
+- 847e43a: Complete the transient-props migration (LTRAC-1396) by removing the temporary dual-read shim from the three shared helpers, `withMargins()`, `withPaddings()`, and `withDisplay()`. They previously read both the public (`margin`) and transient (`$margin`) prop names (`$margin ?? margin`) so components could migrate one PR at a time; now that every consumer in this repo passes `$`-prefixed props, they read only the transient name.
+
+  This also converts the last few remaining consumers found by an audit of every `withMargins()`/`withPaddings()`/`withDisplay()` call site, none of which were on the original stage list:
+
+  - `Table`'s and `TableNext`'s `TableFigure`/`TableFigureNext` (margin)
+  - `Typography`'s `Text`, `Small`, `HR`, `H0`–`H4` (margin) — plus three forced fixes at cross-file call sites that bypass the public wrapper and use the internal `Styleable*` exports directly: `Tree/TreeNode.tsx`, `Panel.tsx`, `FileUploader/File.tsx`, `FeatureSet/Tag.tsx`, and `InfoCard.tsx`
+  - `Flex` and `Grid` (display) — previously flagged in Stage 3 as follow-up work, now required since they call `withDisplay()` directly on their own `styled(Box)` wrapper layer, independent of `Box`'s own (already-converted) internal handling
+
+  `withPaddings()` had no outstanding non-converted consumers.
+
+  All 182 snapshots pass; one snapshot updated (`helpers/display/spec.tsx`'s own test) reflecting a `display` leak removal, the same category of fix as Stage 0's `Box` and Stage 4's `Table`/`TableNext`. No public component `Props` interface changed.
+
+- 99f5684: Continue migrating tag-target styled components to transient (`$`-prefixed) props ahead of styled-components 6 (LTRAC-1396, Stage 4, Table half). `$`-prefix the bespoke props read by `Table`'s `Row`, `DataCell`, `HeaderCell`, `Head`, and `Body` styled components: `$isDragging`/`$isGrabbed`/`$isHidden`/`$isPhantom`/`$isSelected` (Row), `$align`/`$verticalAlign`/`$width`/`$withBorder`/`$withPadding`/`$isCheckbox` (DataCell), `$isSortable`/`$stickyHeader`/`$stickyHeight`/`$width`/`$align`/`$hide` (HeaderCell), and `$withFirstRowBorder` (Body). Public `Props` interfaces are unchanged.
+
+  Also fixes a genuine DOM leak in `Table`'s own `withTableColumnDisplay()` helper: `display` was forwarded as a literal DOM attribute (e.g. `display="[object Object]"` for responsive breakpoint objects), the same category of bug fixed for `Box` in Stage 0. Introduces an internal `TransientTableColumnDisplayProps` type (`$display`) so the public `display` prop is untouched.
+
+  `Head`'s `hidden` prop is deliberately left un-prefixed: it's a real DOM attribute, and an existing test relies on the native `hidden` attribute leaking through for `jest-dom`'s `toBeVisible()` assertion to resolve correctly (`hideVisually()` CSS alone doesn't satisfy it). Prefixing it would silently change tested behavior.
+
+  All 182 snapshots pass; one snapshot updated to reflect the `display` leak removal (a `-`-only diff, no CSS change). `TableNext`'s near-duplicate sub-files are addressed in a follow-up PR.
+
+- 5a45204: Continue migrating tag-target styled components to transient (`$`-prefixed) props ahead of styled-components 6 (LTRAC-1396, Stage 4, TableNext half — mirrors the `Table` PR). `$`-prefix the bespoke props read by `TableNext`'s `Row`, `DataCell`, `HeaderCell`, and `Body` styled components: `$isDragging`/`$isGrabbed`/`$isHidden`/`$isPhantom`/`$isSelected` (Row), `$align`/`$verticalAlign`/`$width`/`$withBorder`/`$isCheckbox`/`$isExpandable` plus transient padding props via the existing `toTransientPaddingProps()` helper (DataCell), `$isSortable`/`$stickyHeader`/`$stickyHeight`/`$width`/`$align`/`$hide` (HeaderCell), and `$withFirstRowBorder` (Body). Public `Props` interfaces are unchanged.
+
+  Also fixes the same `display` DOM leak found and fixed in the `Table` PR, but in `TableNext`'s own separate (byte-identical but independently-maintained) copy of the `withTableColumnDisplay()` helper. `Head`'s `hidden` prop is likewise left un-prefixed for the same reason as `Table`: an equivalent existing test relies on the leaked native `hidden` attribute for `jest-dom`'s `toBeVisible()` to resolve correctly.
+
+  All 182 snapshots pass; one snapshot updated to reflect the `display` leak removal (a `-`-only diff, no CSS change). This closes out Stage 4 (Table/TableNext dedupe) of LTRAC-1396.
+
+- 08002ed: Finish migrating `Tree` to transient (`$`-prefixed) props ahead of styled-components 6 (LTRAC-1396, Stage 5). `Tree` was the original precedent this migration is modeled on (`$maxHeight`, `$virtualized`, `$height`, `$level` were already transient); this closes the last few stragglers. `$`-prefix `TreeNode`'s `StyledArrowWrapper.expanded` and `StyledFlex.selected`. `Tree/styled.ts`'s `StyledUl.show` turned out to be dead code (never read in its template, never passed at its one call site), so it's removed entirely rather than renamed to an unused `$show`.
+
+  Public `Props` interfaces are unchanged; all 182 snapshots pass with zero diffs (none of these prop names collide with real DOM attributes, so this is a true no-op under styled-components 5).
+
+- Updated dependencies [9d91895]
+- Updated dependencies [d737812]
+  - @bigcommerce/big-design-icons@2.0.0
+  - @bigcommerce/big-design-theme@2.0.0
+
 ## 3.3.0
 
 ### Minor Changes
