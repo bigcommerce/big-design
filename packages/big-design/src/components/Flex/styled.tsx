@@ -22,11 +22,4 @@ export const StyledFlex = styled(Box)<StyledFlexProps>`
   ${withDisplay()}
 `;
 
-StyledFlex.defaultProps = {
-  $alignContent: 'stretch',
-  $alignItems: 'stretch',
-  $flexDirection: { mobile: 'column', tablet: 'row' },
-  $flexWrap: 'nowrap',
-  $justifyContent: 'flex-start',
-  theme: defaultTheme,
-};
+StyledFlex.defaultProps = { theme: defaultTheme };

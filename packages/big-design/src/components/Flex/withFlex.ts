@@ -42,14 +42,14 @@ export const withFlexedItems = () => css<TransientFlexedItemProps>`
 
 export function toTransientFlexedContainerProps(props: FlexedProps): TransientFlexedProps {
   const {
-    alignContent,
-    alignItems,
+    alignContent = 'stretch',
+    alignItems = 'stretch',
     flexColumnGap,
-    flexDirection,
+    flexDirection = { mobile: 'column', tablet: 'row' },
     flexGap,
     flexRowGap,
-    flexWrap,
-    justifyContent,
+    flexWrap = 'nowrap',
+    justifyContent = 'flex-start',
   } = props;
 
   return {
@@ -69,7 +69,13 @@ export function toTransientFlexedContainerProps(props: FlexedProps): TransientFl
 // has a single consumer (Flex/Item/styled.tsx), so unlike the shared margin/padding/
 // display helpers, no dual-read shim is needed here.
 export function toTransientFlexedItemProps(props: FlexedItemProps): TransientFlexedItemProps {
-  const { alignSelf, flexBasis, flexGrow, flexOrder, flexShrink } = props;
+  const {
+    alignSelf = 'auto',
+    flexBasis = 'auto',
+    flexGrow = 0,
+    flexOrder = 0,
+    flexShrink = 1,
+  } = props;
 
   return {
     $alignSelf: alignSelf,

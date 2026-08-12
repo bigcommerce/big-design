@@ -16,11 +16,4 @@ export const StyledFlexItem = styled(Box)<StyledFlexItemProps>`
   ${withFlexedItems()}
 `;
 
-StyledFlexItem.defaultProps = {
-  $alignSelf: 'auto',
-  $flexBasis: 'auto',
-  $flexGrow: 0,
-  $flexOrder: 0,
-  $flexShrink: 1,
-  theme: defaultTheme,
-};
+StyledFlexItem.defaultProps = { theme: defaultTheme };
