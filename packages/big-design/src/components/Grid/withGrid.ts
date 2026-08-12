@@ -25,7 +25,7 @@ export const withGridedContainer = () => css<TransientGridedProps>`
     $gridAutoRows && getGridedStyles($gridAutoRows, theme, 'grid-auto-rows')};
   ${({ $gridColumns, theme }) =>
     $gridColumns && getGridedStyles($gridColumns, theme, 'grid-template-columns')};
-  ${({ $gridGap, theme }) => $gridGap && getGridedStyles($gridGap, theme, 'gap')};
+  ${({ $gridGap, theme }) => getGridedStyles($gridGap ?? theme.spacing.medium, theme, 'gap')};
   ${({ $gridColumnGap, theme }) =>
     $gridColumnGap && getGridedStyles($gridColumnGap, theme, 'column-gap')};
   ${({ $gridRows, theme }) => $gridRows && getGridedStyles($gridRows, theme, 'grid-template-rows')};

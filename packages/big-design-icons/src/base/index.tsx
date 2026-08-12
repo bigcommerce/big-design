@@ -33,17 +33,13 @@ export function createStyledIcon(
 
     ${({ color, theme }) => color && { color: theme.colors[color] }}
 
-    ${({ size, theme }) =>
-      size && {
-        height: typeof size === 'number' ? theme.helpers.remCalc(size) : theme.spacing[size],
-        width: typeof size === 'number' ? theme.helpers.remCalc(size) : theme.spacing[size],
-      }}
+    ${({ size = 'xLarge', theme }) => ({
+      height: typeof size === 'number' ? theme.helpers.remCalc(size) : theme.spacing[size],
+      width: typeof size === 'number' ? theme.helpers.remCalc(size) : theme.spacing[size],
+    })}
   `;
 
-  StyledIcon.defaultProps = {
-    theme: defaultTheme,
-    size: 'xLarge',
-  };
+  StyledIcon.defaultProps = { theme: defaultTheme };
 
   return StyledIcon;
 }

@@ -22,4 +22,4 @@ export const StyledGrid = styled(Box)<StyledGridProps>`
   ${withDisplay()}
 `;
 
-StyledGrid.defaultProps = { theme: defaultTheme, $gridGap: defaultTheme.spacing.medium };
+StyledGrid.defaultProps = { theme: defaultTheme };
