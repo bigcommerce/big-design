@@ -41,7 +41,7 @@ export const Tree = <T,>({
   virtualization,
 }: TreeProps<T>): React.ReactElement<TreeProps<T>> => {
   const treeRef = useRef<HTMLUListElement>(null);
-  const pendingFocusNodeRef = useRef<TreeNodeId>();
+  const pendingFocusNodeRef = useRef<TreeNodeId | undefined>(undefined);
   const focusedNodeRef = useRef(focusable.focusedNode);
 
   focusedNodeRef.current = focusable.focusedNode;

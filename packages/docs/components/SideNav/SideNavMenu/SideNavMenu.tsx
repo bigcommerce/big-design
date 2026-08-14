@@ -22,9 +22,9 @@ export const SideNavMenu: React.FC<{ children?: React.ReactNode }> = ({ children
           />
         </StyledMenu>
         <StyledNavigation
+          $isExpanded={isExpanded}
           borderBottom="box"
           borderTop="box"
-          isExpanded={isExpanded}
           shadow="floating"
         >
           {children}

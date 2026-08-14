@@ -6,7 +6,7 @@ import { withTransition } from '../../helpers/transitions';
 
 interface StyledTextareaProps {
   $resize?: boolean;
-  error?: React.ReactNode | React.ReactNode[];
+  $error?: React.ReactNode | React.ReactNode[];
 }
 
 export const StyledTextareaWrapper = styled.span`
@@ -36,13 +36,13 @@ export const StyledTextarea = styled.textarea<StyledTextareaProps>`
           resize: none;
         `};
 
-  ${({ error, theme }) => css`
-    border: ${error ? theme.border.boxError : theme.border.box};
+  ${({ $error, theme }) => css`
+    border: ${$error ? theme.border.boxError : theme.border.box};
   `};
 
   &:hover:not([disabled]) {
-    ${({ error, theme }) =>
-      error
+    ${({ $error, theme }) =>
+      $error
         ? css`
             border: ${theme.border.boxError};
           `
@@ -54,7 +54,7 @@ export const StyledTextarea = styled.textarea<StyledTextareaProps>`
   &:focus {
     outline: none;
     box-shadow: 0 0 0 4px
-      ${(props) => (props.error ? props.theme.colors.danger20 : props.theme.colors.primary20)};
+      ${(props) => (props.$error ? props.theme.colors.danger20 : props.theme.colors.primary20)};
   }
 
   &[disabled] {

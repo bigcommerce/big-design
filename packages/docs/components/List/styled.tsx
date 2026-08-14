@@ -1,4 +1,4 @@
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { ListProps } from './List';
 
@@ -23,12 +23,7 @@ const SharedListStyles = css<StyledListProps>`
   ${({ $reset, theme }) =>
     $reset &&
     css`
-      ${
-        // Temporary until docs flips to styled-components 6: the theme dist now types
-        // CSSRules as v6's RuleSet, which v5's css typings can't accept.
-        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-        theme.helpers.listReset as unknown as FlattenSimpleInterpolation
-      };
+      ${theme.helpers.listReset};
     `}
 `;
 

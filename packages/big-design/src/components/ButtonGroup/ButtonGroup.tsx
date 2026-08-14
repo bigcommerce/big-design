@@ -40,7 +40,7 @@ export interface ButtonGroupProps extends ComponentPropsWithoutRef<'div'>, Margi
 interface ActionsState {
   isVisible: boolean;
   action: ButtonGroupAction;
-  ref: React.RefObject<HTMLDivElement>;
+  ref: React.RefObject<HTMLDivElement | null>;
 }
 
 const excludeIconProps = ({

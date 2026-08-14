@@ -27,7 +27,7 @@ export const Badge: React.FC<BadgeProps> = memo((props) => {
   } = props;
 
   return typeof label === 'string' ? (
-    <StyledBadge {...domProps} {...toTransientMarginProps(props)} $variant={variant}>
+    <StyledBadge {...domProps} {...toTransientMarginProps(props)} $variant={variant ?? 'secondary'}>
       {label}
     </StyledBadge>
   ) : null;

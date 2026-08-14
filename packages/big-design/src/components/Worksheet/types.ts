@@ -119,7 +119,7 @@ export interface InternalTableInterface {
   minWidth?: number;
   onKeyDown?: KeyboardEventHandler | undefined;
   onKeyUp?: ReactEventHandler | undefined;
-  tableRef: RefObject<HTMLTableElement>;
+  tableRef: RefObject<HTMLTableElement | null>;
 }
 
 export type WorksheetItem = Record<string, any>;

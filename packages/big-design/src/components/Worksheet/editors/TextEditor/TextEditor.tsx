@@ -33,7 +33,7 @@ const InternalTextEditor = <T extends WorksheetItem>({
   const [isMetaKeyValue, setIsMetaKeyValue] = useState(isMetaKey);
   const [isControlValue, setIsControlKeyValue] = useState(isControlKey);
 
-  const blurEventRef = useRef<React.FocusEvent<HTMLInputElement>>();
+  const blurEventRef = useRef<React.FocusEvent<HTMLInputElement> | undefined>(undefined);
   // const actionButtonRef = useRef<HTMLButtonElement | null>(null);
   const actionButtonId = useId();
 

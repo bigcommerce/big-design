@@ -76,7 +76,7 @@ export interface TreeContextState<T> {
   onKeyDown: TreeOnKeyDown<T>;
   onNodeClick?: TreeOnNodeClick;
   onNodeRefChange(nodeId: TreeNodeId, node: HTMLLIElement | null, wasFocused?: boolean): void;
-  treeRef: RefObject<HTMLUListElement>;
+  treeRef: RefObject<HTMLUListElement | null>;
   disabledNodesSet: Set<TreeNodeId>;
   expandedNodesSet: Set<TreeNodeId>;
   selectedNodesSet: Set<TreeNodeId>;

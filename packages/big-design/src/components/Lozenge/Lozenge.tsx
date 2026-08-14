@@ -55,7 +55,7 @@ const iconMap = {
 };
 
 // Ref helper: narrows to a ref object whose `current` is T | null
-function isRefObject<T>(r: React.ForwardedRef<T>): r is React.MutableRefObject<T | null> {
+function isRefObject<T>(r: React.ForwardedRef<T>): r is React.RefObject<T | null> {
   return r !== null && typeof r === 'object' && 'current' in r;
 }
 
@@ -99,11 +99,7 @@ export const Lozenge = forwardRef<HTMLDivElement | HTMLButtonElement, LozengePro
         <Tooltip
           placement="auto"
           trigger={
-            <StyledLozenge
-              $hasTooltip
-              $variant={variant}
-              ref={(node) => setForwardedRef(ref, node)}
-            >
+            <StyledLozenge $hasTooltip $variant={variant}>
               <VariantIcon aria-hidden="true" size="large" />
               {label}
               <InfoIcon aria-hidden="true" size="large" />

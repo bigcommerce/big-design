@@ -35,9 +35,6 @@ export const StyledTab = styled(StyleableButton)<TabProps>`
     `}
 `;
 
-StyledTab.defaultProps = {
-  theme: defaultTheme,
-  variant: 'subtle',
-};
+StyledTab.defaultProps = { theme: defaultTheme };
 
 StyledTabs.defaultProps = { theme: defaultTheme };

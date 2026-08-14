@@ -1,15 +1,19 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { normalize } from 'polished';
-import { createGlobalStyle } from 'styled-components';
+import React, { useContext } from 'react';
+import { createGlobalStyle, ThemeContext } from 'styled-components';
 
-export const GlobalStyles = createGlobalStyle`
+const BaseGlobalStyles = createGlobalStyle<{ $fontFamily: string }>`
   ${normalize()}
 
   body {
-    font-family: ${({ theme }) => theme.typography.fontFamily};
+    font-family: ${({ $fontFamily }) => $fontFamily};
   }
 `;
 
-// styled-components 6 types createGlobalStyle's return without `defaultProps`, but the
-// runtime still reads it as the theme fallback (determineTheme), so assign it untyped.
-Object.assign(GlobalStyles, { defaultProps: { theme: defaultTheme } });
+export const GlobalStyles: React.FC = () => {
+  // ThemeContext returns undefined when no ThemeProvider is present; fall back to defaultTheme
+  const theme = useContext(ThemeContext) ?? defaultTheme;
+
+  return <BaseGlobalStyles $fontFamily={theme.typography.fontFamily} />;
+};

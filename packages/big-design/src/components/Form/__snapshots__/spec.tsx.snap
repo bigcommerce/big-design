@@ -145,7 +145,7 @@ exports[`simple form render 1`] = `
       <div>
         <label
           class="c5"
-          for=":r0:"
+          for="_r_0_"
         >
           First Name
         </label>
@@ -162,7 +162,7 @@ exports[`simple form render 1`] = `
           >
             <input
               class="c8"
-              id=":r0:"
+              id="_r_0_"
               placeholder="Placeholder text"
             />
           </div>
@@ -175,7 +175,7 @@ exports[`simple form render 1`] = `
       <div>
         <label
           class="c5"
-          for=":r1:"
+          for="_r_1_"
         >
           Middle Name
         </label>
@@ -192,7 +192,7 @@ exports[`simple form render 1`] = `
           >
             <input
               class="c8"
-              id=":r1:"
+              id="_r_1_"
               placeholder="Placeholder text"
             />
           </div>

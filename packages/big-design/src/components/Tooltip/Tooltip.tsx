@@ -53,16 +53,19 @@ export const Tooltip: React.FC<TooltipProps> = memo(
       }
     };
 
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    const triggerWithRef = cloneElement(trigger as React.ReactElement<any>, {
+      ref: refs.setReference,
+      onBlur: hideTooltip,
+      onFocus: showTooltip,
+      onKeyDown,
+      onMouseEnter: showTooltip,
+      onMouseLeave: hideTooltip,
+    });
+
     return (
       <>
-        {cloneElement(trigger, {
-          ref: refs.setReference,
-          onBlur: hideTooltip,
-          onFocus: showTooltip,
-          onKeyDown,
-          onMouseEnter: showTooltip,
-          onMouseLeave: hideTooltip,
-        })}
+        {triggerWithRef}
         {createPortal(
           isVisible && (
             <StyledTooltip

@@ -7,12 +7,12 @@ interface ComponentSize {
   width: HTMLElement['offsetWidth'];
 }
 
-const getSize = <T extends HTMLElement>(element: RefObject<T>['current']): ComponentSize => ({
+const getSize = (element: RefObject<HTMLElement | null>['current']): ComponentSize => ({
   height: element ? element.offsetHeight : 0,
   width: element ? element.offsetWidth : 0,
 });
 
-export const useComponentSize = <T extends HTMLElement>(ref: RefObject<T>): ComponentSize => {
+export const useComponentSize = (ref: RefObject<HTMLElement | null>): ComponentSize => {
   const [size, setSize] = useRafState(getSize(ref.current));
 
   const handleResize = useCallback(() => {

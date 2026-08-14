@@ -31,9 +31,7 @@ export interface TableColumn<T> extends TableColumnDisplayProps {
   tooltip?: string;
   hideHeader?: boolean;
   isSortable?: boolean;
-  render:
-    | React.ComponentType<T & { children?: ReactNode }>
-    | ((props: T & { children?: ReactNode }, context?: any) => string | number);
+  render: (props: T, context?: any) => ReactNode;
   verticalAlign?: 'top' | 'middle';
   width?: number | string;
   withPadding?: boolean;

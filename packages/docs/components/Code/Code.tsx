@@ -8,8 +8,6 @@ export interface CodeProps {
   highlight?: boolean;
 }
 
-export const Code: React.FC<CodeProps> = ({ highlight, primary, ...domProps }) => (
+export const Code: React.FC<CodeProps> = ({ highlight = true, primary, ...domProps }) => (
   <StyledCode $highlight={highlight} $primary={primary} {...domProps} />
 );
-
-Code.defaultProps = { highlight: true };

@@ -74,8 +74,3 @@ export const CodeSnippet: React.FC<EditorProps> = (props) => {
     </Box>
   );
 };
-
-CodeSnippet.defaultProps = {
-  language: 'tsx',
-  showControls: true,
-};

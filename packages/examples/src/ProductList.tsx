@@ -29,11 +29,11 @@ export const ProductList: React.FC<Props> = ({ onDelete, products }) => {
         <TableFigure>
           <StatefulTable
             columns={[
-              { header: 'Name', hash: 'name', render: ({ name }) => name },
+              { header: 'Name', hash: 'name', render: ({ name }: Product) => name },
               {
                 header: 'Category',
                 hash: 'category',
-                render: ({ category }) => category,
+                render: ({ category }: Product) => category,
               },
               {
                 header: 'Stock',
