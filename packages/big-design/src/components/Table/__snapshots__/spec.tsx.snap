@@ -249,7 +249,7 @@ exports[`offset pagination renders a pagination component 1`] = `
 }
 
 <div
-  aria-controls=":r14:"
+  aria-controls="_r_14_"
   aria-label="Table Controls"
   class="c0"
   role="toolbar"
@@ -270,11 +270,11 @@ exports[`offset pagination renders a pagination component 1`] = `
         >
           <button
             aria-activedescendant=""
-            aria-controls=":r15:-menu"
+            aria-controls="_r_15_-menu"
             aria-expanded="false"
             aria-haspopup="menu"
             class="c7 c8"
-            id=":r15:-toggle-button"
+            id="_r_15_-toggle-button"
             role="button"
             tabindex="0"
             type="button"
@@ -311,9 +311,9 @@ exports[`offset pagination renders a pagination component 1`] = `
               class="c12"
             >
               <ul
-                aria-labelledby=":r15:-label"
+                aria-labelledby="_r_15_-label"
                 class="c13"
-                id=":r15:-menu"
+                id="_r_15_-menu"
                 role="menu"
               />
             </div>
@@ -332,7 +332,7 @@ exports[`offset pagination renders a pagination component 1`] = `
             class="c9"
           >
             <svg
-              aria-labelledby=":r19:"
+              aria-labelledby="_r_19_"
               class="c15"
               fill="currentColor"
               height="24"
@@ -342,7 +342,7 @@ exports[`offset pagination renders a pagination component 1`] = `
               width="24"
             >
               <title
-                id=":r19:"
+                id="_r_19_"
               >
                 Previous page
               </title>
@@ -364,7 +364,7 @@ exports[`offset pagination renders a pagination component 1`] = `
             class="c9"
           >
             <svg
-              aria-labelledby=":r1a:"
+              aria-labelledby="_r_1a_"
               class="c15"
               fill="currentColor"
               height="24"
@@ -374,7 +374,7 @@ exports[`offset pagination renders a pagination component 1`] = `
               width="24"
             >
               <title
-                id=":r1a:"
+                id="_r_1a_"
               >
                 Next page
               </title>
@@ -473,7 +473,7 @@ exports[`renders a simple table 1`] = `
 
 <table
   class="c0"
-  id=":r0:"
+  id="_r_0_"
 >
   <thead
     class=""
@@ -781,7 +781,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
 }
 
 <div
-  aria-controls=":r3c:"
+  aria-controls="_r_3c_"
   aria-label="Table Controls"
   class="c0"
   role="toolbar"
@@ -797,15 +797,15 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
       >
         <input
           aria-checked="false"
-          aria-labelledby=":r3e:"
+          aria-labelledby="_r_3e_"
           class="c6 c7"
-          id=":r3d:"
+          id="_r_3d_"
           type="checkbox"
         />
         <label
           aria-hidden="true"
           class="c8"
-          for=":r3d:"
+          for="_r_3d_"
         >
           <svg
             aria-hidden="true"
@@ -831,9 +831,9 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
         >
           <label
             class="c11"
-            for=":r3d:"
+            for="_r_3d_"
             hidden=""
-            id=":r3e:"
+            id="_r_3e_"
           >
             Select All
           </label>

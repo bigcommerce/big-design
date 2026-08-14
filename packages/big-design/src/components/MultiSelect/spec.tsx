@@ -767,7 +767,9 @@ test('should use the passed in ref object if provided', async () => {
 
 test('should call the provided refSetter if any', async () => {
   let inputRef: HTMLInputElement | null = null;
-  const refSetter = (ref: HTMLInputElement) => (inputRef = ref);
+  const refSetter = (ref: HTMLInputElement) => {
+    inputRef = ref;
+  };
 
   render(
     <MultiSelect

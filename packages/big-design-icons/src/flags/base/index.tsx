@@ -21,16 +21,12 @@ export function createStyledFlagIcon(
   >,
 ) {
   const StyledFlagIcon = styled(FlagIcon)`
-    ${({ size, theme }) =>
-      size && {
-        width: typeof size === 'number' ? theme.helpers.remCalc(size) : theme.spacing[size],
-      }}
+    ${({ size = 'xLarge', theme }) => ({
+      width: typeof size === 'number' ? theme.helpers.remCalc(size) : theme.spacing[size],
+    })}
   `;
 
-  StyledFlagIcon.defaultProps = {
-    size: 'xLarge',
-    theme: defaultTheme,
-  };
+  StyledFlagIcon.defaultProps = { theme: defaultTheme };
 
   return StyledFlagIcon;
 }

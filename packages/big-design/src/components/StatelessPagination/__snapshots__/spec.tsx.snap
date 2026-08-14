@@ -240,11 +240,11 @@ exports[`render Stateless pagination component 1`] = `
     >
       <button
         aria-activedescendant=""
-        aria-controls=":r0:-menu"
+        aria-controls="_r_0_-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c4 c5"
-        id=":r0:-toggle-button"
+        id="_r_0_-toggle-button"
         role="button"
         tabindex="0"
         type="button"
@@ -281,9 +281,9 @@ exports[`render Stateless pagination component 1`] = `
           class="c9"
         >
           <ul
-            aria-labelledby=":r0:-label"
+            aria-labelledby="_r_0_-label"
             class="c10"
-            id=":r0:-menu"
+            id="_r_0_-menu"
             role="menu"
           />
         </div>
@@ -301,7 +301,7 @@ exports[`render Stateless pagination component 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":r4:"
+          aria-labelledby="_r_4_"
           class="c12"
           fill="currentColor"
           height="24"
@@ -311,7 +311,7 @@ exports[`render Stateless pagination component 1`] = `
           width="24"
         >
           <title
-            id=":r4:"
+            id="_r_4_"
           >
             Previous page
           </title>
@@ -333,7 +333,7 @@ exports[`render Stateless pagination component 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":r5:"
+          aria-labelledby="_r_5_"
           class="c12"
           fill="currentColor"
           height="24"
@@ -343,7 +343,7 @@ exports[`render Stateless pagination component 1`] = `
           width="24"
         >
           <title
-            id=":r5:"
+            id="_r_5_"
           >
             Next page
           </title>

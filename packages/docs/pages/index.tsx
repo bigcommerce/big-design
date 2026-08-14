@@ -1,4 +1,5 @@
 import { Flex, FlexItem, H3, Link, Panel, Text } from '@bigcommerce/big-design';
+import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import React, { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 
@@ -7,7 +8,7 @@ import { Code, CodeSnippet, List } from '../components';
 const CodeSandboxUrl = process.env.CODE_SANDBOX_URL ?? '';
 
 const GettingStartedPage = () => {
-  const { spacing } = useContext(ThemeContext);
+  const { spacing } = useContext(ThemeContext) ?? defaultTheme;
 
   return (
     <Flex flexDirection="column">

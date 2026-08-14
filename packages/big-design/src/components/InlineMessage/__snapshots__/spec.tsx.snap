@@ -864,7 +864,7 @@ exports[`renders close button 1`] = `
         class="c11"
       >
         <svg
-          aria-labelledby=":ra:"
+          aria-labelledby="_r_a_"
           class="c12"
           fill="currentColor"
           height="24"
@@ -874,7 +874,7 @@ exports[`renders close button 1`] = `
           width="24"
         >
           <title
-            id=":ra:"
+            id="_r_a_"
           >
             Close
           </title>

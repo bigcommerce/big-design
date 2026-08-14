@@ -430,7 +430,7 @@ describe('useTreeVirtualizer', () => {
   const toFlatNodes = (nodes: Array<TreeNodeProps<number>>): Array<FlatTreeNode<number>> =>
     nodes.map((node, index) => ({ node, depth: 0, posinset: index + 1, setsize: nodes.length }));
 
-  const nullScrollRef = { current: null } as RefObject<HTMLUListElement>;
+  const nullScrollRef = { current: null } as RefObject<HTMLUListElement | null>;
 
   test('does not scroll or reassign focus while disabled', () => {
     const onFocus = jest.fn();

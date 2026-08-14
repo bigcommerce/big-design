@@ -1,3 +1,5 @@
+const path = require('path');
+
 const bdPkg = require('../big-design/package.json');
 const examplesPkg = require('../examples/package.json');
 
@@ -9,6 +11,7 @@ const EXAMPLES_VERSION = examplesPkg.version;
 /** @type {import('next').NextConfig} */
 module.exports = {
   basePath: isProduction ? URL_PREFIX : '',
+  outputFileTracingRoot: path.join(__dirname, '../../'),
   output: 'export',
   env: {
     CODE_SANDBOX_URL: `https://codesandbox.io/p/devbox/github/bigcommerce/big-design/tree/%40bigcommerce/examples%40${EXAMPLES_VERSION}/packages/examples`,

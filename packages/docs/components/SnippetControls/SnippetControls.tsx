@@ -37,7 +37,11 @@ function onCopy(setIsCopying: (copying: boolean) => void, copyToClipboard: () =>
 }
 
 export const SnippetControls: React.FC<SnippetControls> = (props) => {
-  const { copyToClipboard, helperText, resetCode } = props;
+  const {
+    copyToClipboard,
+    helperText = 'Edit the code below to see your changes live!',
+    resetCode,
+  } = props;
   const [isCopying, setIsCopying] = useState(false);
   const { toggleTheme: toggleEditorTheme, setLanguage } = useContext(CodeEditorContext);
 
@@ -87,8 +91,4 @@ export const SnippetControls: React.FC<SnippetControls> = (props) => {
       </FlexItem>
     </StyledFlex>
   );
-};
-
-SnippetControls.defaultProps = {
-  helperText: 'Edit the code below to see your changes live!',
 };

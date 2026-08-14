@@ -144,7 +144,7 @@ exports[`renders with close button if onRemove is present 1`] = `
       class="c5"
     >
       <svg
-        aria-labelledby=":r0:"
+        aria-labelledby="_r_0_"
         class="c6"
         fill="currentColor"
         height="24"
@@ -154,7 +154,7 @@ exports[`renders with close button if onRemove is present 1`] = `
         width="24"
       >
         <title
-          id=":r0:"
+          id="_r_0_"
         >
           Delete
         </title>

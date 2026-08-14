@@ -386,7 +386,7 @@ test('error shows when an array of Errors', () => {
 });
 
 test('input counter value does not change when using it inside a form', async () => {
-  const handleOnSubmit = jest.fn((e: React.FormEvent) => {
+  const handleOnSubmit = jest.fn((e: React.SubmitEvent) => {
     e.preventDefault();
   });
 

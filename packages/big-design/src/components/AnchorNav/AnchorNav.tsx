@@ -19,7 +19,7 @@ export interface AnchorNavProps {
 const useAnchorObserver = (
   id: string,
   setActiveId: React.Dispatch<React.SetStateAction<string | null>>,
-  suspendObserverRef: React.MutableRefObject<boolean>,
+  suspendObserverRef: React.RefObject<boolean>,
 ): React.RefCallback<HTMLElement> => {
   const { ref, inView } = useInView({
     threshold: 0.1,
@@ -39,7 +39,7 @@ interface AnchorSectionProps {
   id: string;
   children: React.ReactNode;
   setActiveId: React.Dispatch<React.SetStateAction<string | null>>;
-  suspendObserverRef: React.MutableRefObject<boolean>;
+  suspendObserverRef: React.RefObject<boolean>;
   registerSection: (id: string, el: HTMLElement | null) => void;
 }
 

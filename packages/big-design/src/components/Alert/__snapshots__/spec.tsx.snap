@@ -796,7 +796,7 @@ exports[`renders header 1`] = `
 }
 
 <div
-  aria-labelledby=":rd:"
+  aria-labelledby="_r_d_"
   class="c0 c1 c2"
   role="alert"
   type="success"
@@ -828,7 +828,7 @@ exports[`renders header 1`] = `
   >
     <h4
       class="c6 c7"
-      id=":rd:"
+      id="_r_d_"
     >
       Header
     </h4>

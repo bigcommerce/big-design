@@ -47,7 +47,7 @@ export const Select = typedMemo(
     value,
     ...props
   }: SelectProps<T>): ReturnType<React.FC<SelectProps<T>>> => {
-    const defaultRef: RefObject<HTMLInputElement> = createRef();
+    const defaultRef: RefObject<HTMLInputElement | null> = createRef();
     const selectUniqueId = useId();
 
     // aria-labelledby takes presedence over aria-label so we need to strip it out if there is no label

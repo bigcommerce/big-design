@@ -240,11 +240,11 @@ exports[`render offset pagination component 1`] = `
     >
       <button
         aria-activedescendant=""
-        aria-controls=":r0:-menu"
+        aria-controls="_r_0_-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c4 c5"
-        id=":r0:-toggle-button"
+        id="_r_0_-toggle-button"
         role="button"
         tabindex="0"
         type="button"
@@ -281,9 +281,9 @@ exports[`render offset pagination component 1`] = `
           class="c9"
         >
           <ul
-            aria-labelledby=":r0:-label"
+            aria-labelledby="_r_0_-label"
             class="c10"
-            id=":r0:-menu"
+            id="_r_0_-menu"
             role="menu"
           />
         </div>
@@ -302,7 +302,7 @@ exports[`render offset pagination component 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":r4:"
+          aria-labelledby="_r_4_"
           class="c12"
           fill="currentColor"
           height="24"
@@ -312,7 +312,7 @@ exports[`render offset pagination component 1`] = `
           width="24"
         >
           <title
-            id=":r4:"
+            id="_r_4_"
           >
             Previous page
           </title>
@@ -334,7 +334,7 @@ exports[`render offset pagination component 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":r5:"
+          aria-labelledby="_r_5_"
           class="c12"
           fill="currentColor"
           height="24"
@@ -344,7 +344,7 @@ exports[`render offset pagination component 1`] = `
           width="24"
         >
           <title
-            id=":r5:"
+            id="_r_5_"
           >
             Next page
           </title>
@@ -602,11 +602,11 @@ exports[`render offset pagination component with invalid page info 1`] = `
     >
       <button
         aria-activedescendant=""
-        aria-controls=":r6:-menu"
+        aria-controls="_r_6_-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c4 c5"
-        id=":r6:-toggle-button"
+        id="_r_6_-toggle-button"
         role="button"
         tabindex="0"
         type="button"
@@ -643,9 +643,9 @@ exports[`render offset pagination component with invalid page info 1`] = `
           class="c9"
         >
           <ul
-            aria-labelledby=":r6:-label"
+            aria-labelledby="_r_6_-label"
             class="c10"
-            id=":r6:-menu"
+            id="_r_6_-menu"
             role="menu"
           />
         </div>
@@ -664,7 +664,7 @@ exports[`render offset pagination component with invalid page info 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":ra:"
+          aria-labelledby="_r_a_"
           class="c12"
           fill="currentColor"
           height="24"
@@ -674,7 +674,7 @@ exports[`render offset pagination component with invalid page info 1`] = `
           width="24"
         >
           <title
-            id=":ra:"
+            id="_r_a_"
           >
             Previous page
           </title>
@@ -696,7 +696,7 @@ exports[`render offset pagination component with invalid page info 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":rb:"
+          aria-labelledby="_r_b_"
           class="c12"
           fill="currentColor"
           height="24"
@@ -706,7 +706,7 @@ exports[`render offset pagination component with invalid page info 1`] = `
           width="24"
         >
           <title
-            id=":rb:"
+            id="_r_b_"
           >
             Next page
           </title>
@@ -964,11 +964,11 @@ exports[`render offset pagination component with invalid range info 1`] = `
     >
       <button
         aria-activedescendant=""
-        aria-controls=":rc:-menu"
+        aria-controls="_r_c_-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c4 c5"
-        id=":rc:-toggle-button"
+        id="_r_c_-toggle-button"
         role="button"
         tabindex="0"
         type="button"
@@ -1005,9 +1005,9 @@ exports[`render offset pagination component with invalid range info 1`] = `
           class="c9"
         >
           <ul
-            aria-labelledby=":rc:-label"
+            aria-labelledby="_r_c_-label"
             class="c10"
-            id=":rc:-menu"
+            id="_r_c_-menu"
             role="menu"
           />
         </div>
@@ -1026,7 +1026,7 @@ exports[`render offset pagination component with invalid range info 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":rg:"
+          aria-labelledby="_r_g_"
           class="c12"
           fill="currentColor"
           height="24"
@@ -1036,7 +1036,7 @@ exports[`render offset pagination component with invalid range info 1`] = `
           width="24"
         >
           <title
-            id=":rg:"
+            id="_r_g_"
           >
             Previous page
           </title>
@@ -1059,7 +1059,7 @@ exports[`render offset pagination component with invalid range info 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":rh:"
+          aria-labelledby="_r_h_"
           class="c12"
           fill="currentColor"
           height="24"
@@ -1069,7 +1069,7 @@ exports[`render offset pagination component with invalid range info 1`] = `
           width="24"
         >
           <title
-            id=":rh:"
+            id="_r_h_"
           >
             Next page
           </title>
@@ -1327,11 +1327,11 @@ exports[`render offset pagination component with no items 1`] = `
     >
       <button
         aria-activedescendant=""
-        aria-controls=":ri:-menu"
+        aria-controls="_r_i_-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c4 c5"
-        id=":ri:-toggle-button"
+        id="_r_i_-toggle-button"
         role="button"
         tabindex="0"
         type="button"
@@ -1368,9 +1368,9 @@ exports[`render offset pagination component with no items 1`] = `
           class="c9"
         >
           <ul
-            aria-labelledby=":ri:-label"
+            aria-labelledby="_r_i_-label"
             class="c10"
-            id=":ri:-menu"
+            id="_r_i_-menu"
             role="menu"
           />
         </div>
@@ -1389,7 +1389,7 @@ exports[`render offset pagination component with no items 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":rm:"
+          aria-labelledby="_r_m_"
           class="c12"
           fill="currentColor"
           height="24"
@@ -1399,7 +1399,7 @@ exports[`render offset pagination component with no items 1`] = `
           width="24"
         >
           <title
-            id=":rm:"
+            id="_r_m_"
           >
             Previous page
           </title>
@@ -1422,7 +1422,7 @@ exports[`render offset pagination component with no items 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":rn:"
+          aria-labelledby="_r_n_"
           class="c12"
           fill="currentColor"
           height="24"
@@ -1432,7 +1432,7 @@ exports[`render offset pagination component with no items 1`] = `
           width="24"
         >
           <title
-            id=":rn:"
+            id="_r_n_"
           >
             Next page
           </title>

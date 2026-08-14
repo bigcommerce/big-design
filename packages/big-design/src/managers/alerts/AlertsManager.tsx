@@ -18,8 +18,12 @@ export const AlertsManager: React.FC<AlertsManagerProps> = ({ manager }) => {
   }
 
   // autoDismiss is consumed by the manager and must not reach the DOM via SC6's prop forwarding.
+  // key must be passed explicitly in React 19; the manager stores it on the alert object.
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-  const { autoDismiss, ...alertProps } = alert as AlertProps & { autoDismiss?: boolean };
+  const { key, autoDismiss, ...alertProps } = alert as AlertProps & {
+    key?: string;
+    autoDismiss?: boolean;
+  };
 
-  return <Alert {...alertProps} />;
+  return <Alert key={key} {...alertProps} />;
 };

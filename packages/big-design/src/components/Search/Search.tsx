@@ -1,5 +1,5 @@
 import { SearchIcon } from '@bigcommerce/big-design-icons';
-import React, { FormEvent } from 'react';
+import React from 'react';
 
 import { Button } from '../Button';
 import { Flex, FlexItem } from '../Flex';
@@ -22,7 +22,7 @@ export const Search: React.FC<SearchProps> = ({
   autoComplete = 'off',
   ...props
 }) => {
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     event.stopPropagation();
 

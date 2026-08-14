@@ -253,11 +253,11 @@ exports[`dropdown is not visible if items fit 1`] = `
     >
       <button
         aria-activedescendant=""
-        aria-controls=":r4:-menu"
+        aria-controls="_r_4_-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c7 bd-button"
-        id=":r4:-toggle-button"
+        id="_r_4_-toggle-button"
         role="button"
         tabindex="0"
         type="button"
@@ -266,7 +266,7 @@ exports[`dropdown is not visible if items fit 1`] = `
           class="c4"
         >
           <svg
-            aria-labelledby=":r7:"
+            aria-labelledby="_r_7_"
             class="c8"
             fill="currentColor"
             height="24"
@@ -276,7 +276,7 @@ exports[`dropdown is not visible if items fit 1`] = `
             width="24"
           >
             <title
-              id=":r7:"
+              id="_r_7_"
             >
               add
             </title>
@@ -298,9 +298,9 @@ exports[`dropdown is not visible if items fit 1`] = `
           class="c10"
         >
           <ul
-            aria-labelledby=":r4:-label"
+            aria-labelledby="_r_4_-label"
             class="c11"
-            id=":r4:-menu"
+            id="_r_4_-menu"
             role="menu"
           />
         </div>
@@ -563,11 +563,11 @@ exports[`it renders the given tabs 1`] = `
     >
       <button
         aria-activedescendant=""
-        aria-controls=":r0:-menu"
+        aria-controls="_r_0_-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c7 bd-button"
-        id=":r0:-toggle-button"
+        id="_r_0_-toggle-button"
         role="button"
         tabindex="0"
         type="button"
@@ -576,7 +576,7 @@ exports[`it renders the given tabs 1`] = `
           class="c4"
         >
           <svg
-            aria-labelledby=":r3:"
+            aria-labelledby="_r_3_"
             class="c8"
             fill="currentColor"
             height="24"
@@ -586,7 +586,7 @@ exports[`it renders the given tabs 1`] = `
             width="24"
           >
             <title
-              id=":r3:"
+              id="_r_3_"
             >
               add
             </title>
@@ -608,9 +608,9 @@ exports[`it renders the given tabs 1`] = `
           class="c10"
         >
           <ul
-            aria-labelledby=":r0:-label"
+            aria-labelledby="_r_0_-label"
             class="c11"
-            id=":r0:-menu"
+            id="_r_0_-menu"
             role="menu"
           />
         </div>
@@ -905,11 +905,11 @@ exports[`only the pills that fit are visible 1`] = `
     >
       <button
         aria-activedescendant=""
-        aria-controls=":rg:-menu"
+        aria-controls="_r_g_-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c7 bd-button"
-        id=":rg:-toggle-button"
+        id="_r_g_-toggle-button"
         role="button"
         tabindex="0"
         type="button"
@@ -918,7 +918,7 @@ exports[`only the pills that fit are visible 1`] = `
           class="c4"
         >
           <svg
-            aria-labelledby=":rj:"
+            aria-labelledby="_r_j_"
             class="c8"
             fill="currentColor"
             height="24"
@@ -928,7 +928,7 @@ exports[`only the pills that fit are visible 1`] = `
             width="24"
           >
             <title
-              id=":rj:"
+              id="_r_j_"
             >
               add
             </title>
@@ -950,9 +950,9 @@ exports[`only the pills that fit are visible 1`] = `
           class="c10"
         >
           <ul
-            aria-labelledby=":rg:-label"
+            aria-labelledby="_r_g_-label"
             class="c11"
-            id=":rg:-menu"
+            id="_r_g_-menu"
             role="menu"
           />
         </div>
@@ -1246,11 +1246,11 @@ exports[`only the pills that fit are visible 2 1`] = `
     >
       <button
         aria-activedescendant=""
-        aria-controls=":rk:-menu"
+        aria-controls="_r_k_-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c7 bd-button"
-        id=":rk:-toggle-button"
+        id="_r_k_-toggle-button"
         role="button"
         tabindex="0"
         type="button"
@@ -1259,7 +1259,7 @@ exports[`only the pills that fit are visible 2 1`] = `
           class="c4"
         >
           <svg
-            aria-labelledby=":rn:"
+            aria-labelledby="_r_n_"
             class="c8"
             fill="currentColor"
             height="24"
@@ -1269,7 +1269,7 @@ exports[`only the pills that fit are visible 2 1`] = `
             width="24"
           >
             <title
-              id=":rn:"
+              id="_r_n_"
             >
               add
             </title>
@@ -1291,9 +1291,9 @@ exports[`only the pills that fit are visible 2 1`] = `
           class="c10"
         >
           <ul
-            aria-labelledby=":rk:-label"
+            aria-labelledby="_r_k_-label"
             class="c11"
-            id=":rk:-menu"
+            id="_r_k_-menu"
             role="menu"
           />
         </div>
@@ -1586,11 +1586,11 @@ exports[`renders all the filters if they fit 1`] = `
     >
       <button
         aria-activedescendant=""
-        aria-controls=":rc:-menu"
+        aria-controls="_r_c_-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c7 bd-button"
-        id=":rc:-toggle-button"
+        id="_r_c_-toggle-button"
         role="button"
         tabindex="0"
         type="button"
@@ -1599,7 +1599,7 @@ exports[`renders all the filters if they fit 1`] = `
           class="c4"
         >
           <svg
-            aria-labelledby=":rf:"
+            aria-labelledby="_r_f_"
             class="c8"
             fill="currentColor"
             height="24"
@@ -1609,7 +1609,7 @@ exports[`renders all the filters if they fit 1`] = `
             width="24"
           >
             <title
-              id=":rf:"
+              id="_r_f_"
             >
               add
             </title>
@@ -1631,9 +1631,9 @@ exports[`renders all the filters if they fit 1`] = `
           class="c10"
         >
           <ul
-            aria-labelledby=":rc:-label"
+            aria-labelledby="_r_c_-label"
             class="c11"
-            id=":rc:-menu"
+            id="_r_c_-menu"
             role="menu"
           />
         </div>
@@ -1912,11 +1912,11 @@ exports[`renders dropdown if items do not fit 1`] = `
     >
       <button
         aria-activedescendant=""
-        aria-controls=":r8:-menu"
+        aria-controls="_r_8_-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c7 bd-button"
-        id=":r8:-toggle-button"
+        id="_r_8_-toggle-button"
         role="button"
         tabindex="0"
         type="button"
@@ -1925,7 +1925,7 @@ exports[`renders dropdown if items do not fit 1`] = `
           class="c4"
         >
           <svg
-            aria-labelledby=":rb:"
+            aria-labelledby="_r_b_"
             class="c8"
             fill="currentColor"
             height="24"
@@ -1935,7 +1935,7 @@ exports[`renders dropdown if items do not fit 1`] = `
             width="24"
           >
             <title
-              id=":rb:"
+              id="_r_b_"
             >
               add
             </title>
@@ -1957,9 +1957,9 @@ exports[`renders dropdown if items do not fit 1`] = `
           class="c10"
         >
           <ul
-            aria-labelledby=":r8:-label"
+            aria-labelledby="_r_8_-label"
             class="c11"
-            id=":r8:-menu"
+            id="_r_8_-menu"
             role="menu"
           />
         </div>

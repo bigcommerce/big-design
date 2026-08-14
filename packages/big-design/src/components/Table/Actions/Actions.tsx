@@ -11,7 +11,7 @@ import { StyledFlex } from './styled';
 
 export interface ActionsProps<T> {
   customActions?: React.ReactNode;
-  forwardedRef: RefObject<HTMLDivElement>;
+  forwardedRef: RefObject<HTMLDivElement | null>;
   itemName?: string;
   items: T[];
   pagination?: DiscriminatedTablePaginationProps;
