@@ -1,2 +1,7 @@
 packages:
   - 'packages/*'
+
+# Lets bare ranges like the "*" deps in packages/examples link to the local
+# workspace packages; standalone forks (e.g. CodeSandbox) resolve them from
+# the registry instead.
+linkWorkspacePackages: true

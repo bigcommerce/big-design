@@ -10,9 +10,9 @@
   },
   "prettier": "@bigcommerce/eslint-config/prettier",
   "dependencies": {
-    "@bigcommerce/big-design": "workspace:^",
-    "@bigcommerce/big-design-icons": "workspace:^",
-    "@bigcommerce/big-design-theme": "workspace:^",
+    "@bigcommerce/big-design": "*",
+    "@bigcommerce/big-design-icons": "*",
+    "@bigcommerce/big-design-theme": "*",
     "formik": "2.4.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
