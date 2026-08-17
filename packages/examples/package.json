@@ -24,7 +24,7 @@
     "@types/node": "^24.10.4",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "@vitejs/plugin-react": "4.3.4",
+    "@vitejs/plugin-react": "5.2.0",
     "eslint": "^8.33.0",
     "typescript": "5.9.3",
     "vite": "7.2.4"
