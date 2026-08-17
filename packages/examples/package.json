@@ -10,13 +10,13 @@
   },
   "prettier": "@bigcommerce/eslint-config/prettier",
   "dependencies": {
-    "@bigcommerce/big-design": "*",
-    "@bigcommerce/big-design-icons": "*",
-    "@bigcommerce/big-design-theme": "*",
+    "@bigcommerce/big-design": "workspace:^",
+    "@bigcommerce/big-design-icons": "workspace:^",
+    "@bigcommerce/big-design-theme": "workspace:^",
     "formik": "2.4.6",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "styled-components": "5.3.11",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "styled-components": "^6.4.0",
     "yup": "1.7.1"
   },
   "devDependencies": {
@@ -24,7 +24,6 @@
     "@types/node": "^24.10.4",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "@types/styled-components": "5.1.34",
     "@vitejs/plugin-react": "4.3.4",
     "eslint": "^8.33.0",
     "typescript": "5.9.3",
