@@ -5,3 +5,26 @@ packages:
 # workspace packages; standalone forks (e.g. CodeSandbox) resolve them from
 # the registry instead.
 linkWorkspacePackages: true
+patchedDependencies:
+  '@changesets/assemble-release-plan@6.0.9': patches/@changesets__assemble-release-plan@6.0.9.patch
+overrides:
+  babel-plugin-styled-components>@babel/plugin-syntax-jsx: ^8.0.1
+  babel-plugin-styled-components>@babel/helper-annotate-as-pure: ^8.0.0
+  babel-plugin-styled-components>@babel/helper-module-imports: ^8.0.0
+# These build scripts were already being silently ignored under pnpm 10;
+# v11 requires an explicit decision instead of failing quietly, so this
+# preserves existing behavior rather than newly opting them in.
+allowBuilds:
+  '@swc/core': false
+  esbuild: false
+  sharp: false
+  unrs-resolver: false
+# Already-pinned lockfile entries from a recent dependency bump that happen to
+# fall inside v11's new 24h minimumReleaseAge window; excluded by name (not by
+# lowering the global age) so the default policy still applies to everything else.
+minimumReleaseAgeExclude:
+  - '@tanstack/react-virtual'
+  - '@tanstack/virtual-core'
+  - '@testing-library/user-event'
+  - '@turbo/*'
+  - turbo
