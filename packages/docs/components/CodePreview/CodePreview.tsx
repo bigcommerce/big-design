@@ -38,7 +38,8 @@ function getInitialCode(children: CodePreviewChildren, language: Language): stri
   const transformResult = transform(children, {
     compact: false,
     retainLines: true,
-    presets: [['typescript', { allExtensions: true, isTSX: true, jsxPragma: 'preserve' }]],
+    presets: [['typescript', { ignoreExtensions: true, jsxPragma: 'preserve' }]],
+    plugins: ['syntax-jsx'],
   });
 
   const code = transformResult.code ?? children;
@@ -55,7 +56,10 @@ function getInitialCode(children: CodePreviewChildren, language: Language): stri
 function transformCode(input: string): string {
   try {
     const transformResult = transform(input, {
-      presets: [['typescript', { allExtensions: true, isTSX: true }], 'react'],
+      presets: [
+        ['typescript', { ignoreExtensions: true }],
+        ['react', { runtime: 'classic' }],
+      ],
     });
 
     return transformResult.code ?? input;

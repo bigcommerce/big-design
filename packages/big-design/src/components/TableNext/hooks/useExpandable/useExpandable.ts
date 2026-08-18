@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import { useEventCallback } from '../../../../hooks';
 import { TableExpandable } from '../../types';
 
-export const useExpandable = <T>(expandable?: TableExpandable<T>) => {
+// prettier-ignore
+export const useExpandable = <T,>(expandable?: TableExpandable<T>) => {
   const [expandedRows, setExpandedRows] = useState<TableExpandable<T>['expandedRows']>({});
   const isExpandable = Boolean(expandable);
 

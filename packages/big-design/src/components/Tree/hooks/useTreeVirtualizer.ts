@@ -26,7 +26,8 @@ interface UseTreeVirtualizerProps<T> {
 // `flatNodes` — a focused node can legitimately be absent from `flatNodes` simply
 // because one of its ancestors is collapsed, which is not the same as no longer
 // existing in `nodes` at all.
-const nodeExistsInTree = <T>(nodes: Array<TreeNodeProps<T>>, id: TreeNodeId): boolean =>
+// prettier-ignore
+const nodeExistsInTree = <T,>(nodes: Array<TreeNodeProps<T>>, id: TreeNodeId): boolean =>
   nodes.some(
     (node) => node.id === id || (node.children ? nodeExistsInTree(node.children, id) : false),
   );
@@ -64,7 +65,8 @@ const createObserveElementRect =
     return () => {};
   };
 
-export const useTreeVirtualizer = <T>({
+// prettier-ignore
+export const useTreeVirtualizer = <T,>({
   enabled,
   flatNodes,
   focusedNode,

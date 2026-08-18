@@ -7,7 +7,8 @@ interface CalculateColSpanArg<T> {
   isSelectable?: RowProps<T>['isSelectable'];
 }
 
-export const calculateColSpan = <T>({
+// prettier-ignore
+export const calculateColSpan = <T,>({
   columns,
   isExpandable,
   isDraggable,

@@ -48,7 +48,8 @@ export function depthFirstSearch<T>(
   return greedy ? null : list;
 }
 
-export const getSelectedChildrenCounts = <T>(
+// prettier-ignore
+export const getSelectedChildrenCounts = <T,>(
   nodes: TreeProps<T>['nodes'],
   selectedNodes: Set<TreeNodeId>,
 ): Map<TreeNodeId, number> => {

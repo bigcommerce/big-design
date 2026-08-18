@@ -11,7 +11,8 @@ interface BuildNodeMapProps<T> extends UseNodeMapProps<T> {
   parent?: TreeNodeId;
 }
 
-const buildNodeMap = <T>({ nodes, nodeMap, parent }: BuildNodeMapProps<T>): NodeMap => {
+// prettier-ignore
+const buildNodeMap = <T,>({ nodes, nodeMap, parent }: BuildNodeMapProps<T>): NodeMap => {
   if (!nodes || nodes.length < 1) {
     return nodeMap;
   }
@@ -35,6 +36,7 @@ const buildNodeMap = <T>({ nodes, nodeMap, parent }: BuildNodeMapProps<T>): Node
   }, nodeMap);
 };
 
-export const useNodeMap = <T>({ nodes }: UseNodeMapProps<T>): NodeMap => {
+// prettier-ignore
+export const useNodeMap = <T,>({ nodes }: UseNodeMapProps<T>): NodeMap => {
   return useMemo(() => buildNodeMap({ nodes, nodeMap: new Map() }), [nodes]);
 };

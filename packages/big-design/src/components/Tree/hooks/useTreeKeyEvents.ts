@@ -37,7 +37,8 @@ const getPreviousVisibleNode = (visibleNodeIds: TreeNodeId[], id: TreeNodeId): T
   return id;
 };
 
-export const useTreeKeyEvents = <T>({
+// prettier-ignore
+export const useTreeKeyEvents = <T,>({
   onFocus,
   onSelect,
   onToggle,
