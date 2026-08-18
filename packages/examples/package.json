@@ -13,15 +13,15 @@
     "@bigcommerce/big-design": "*",
     "@bigcommerce/big-design-icons": "*",
     "@bigcommerce/big-design-theme": "*",
-    "formik": "2.4.6",
+    "formik": "2.4.9",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "styled-components": "^6.4.0",
+    "styled-components": "^6.5.3",
     "yup": "1.7.1"
   },
   "devDependencies": {
     "@bigcommerce/eslint-config": "2.12.0",
-    "@types/node": "^24.10.4",
+    "@types/node": "^24.13.3",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "5.2.0",
