@@ -18,6 +18,18 @@ export const StyledDatepicker = styled.div`
     display: none;
   }
 
+  & .react-datepicker__sr-only {
+    border: 0;
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
   & .react-datepicker__month-container {
     margin: ${({ theme }) => theme.spacing.medium};
   }

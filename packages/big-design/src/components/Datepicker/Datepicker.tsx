@@ -1,3 +1,4 @@
+import { offset } from '@floating-ui/react';
 import React, { ComponentPropsWithoutRef, forwardRef, memo, Ref, useEffect, useState } from 'react';
 import { default as ReactDatePicker, registerLocale } from 'react-datepicker';
 
@@ -68,14 +69,7 @@ const RawDatepicker: React.FC<DatepickerProps & PrivateProps> = ({
         onChange={updateDate}
         onFocus={onFocus}
         placeholderText={placeholder}
-        popperModifiers={[
-          {
-            name: 'removeOffset',
-            fn: ({ y }) => ({
-              y: y - 10,
-            }),
-          },
-        ]}
+        popperModifiers={[offset(-10)]}
         popperPlacement="bottom-start"
         ref={forwardedRef}
         renderCustomHeader={({
