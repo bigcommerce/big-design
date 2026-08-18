@@ -17,8 +17,6 @@
     "@changesets/assemble-release-plan": "^6.0.9",
     "@changesets/changelog-git": "^1.0.0",
     "@changesets/cli": "^2.29.7",
-    "@commitlint/cli": "^20.1.0",
-    "@commitlint/config-conventional": "^20.2.0",
     "@swc/plugin-styled-components": "^13.0.0",
     "@types/babel__standalone": "^7.1.9",
     "turbo": "^2.10.11",
