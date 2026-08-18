@@ -38,7 +38,7 @@ test('calls onDateChange function when a date cell is clicked', async () => {
 
   await userEvent.click(input);
 
-  const cell = await screen.findByRole('option', { current: 'date' });
+  const cell = await screen.findByRole('gridcell', { current: 'date' });
 
   await userEvent.click(cell);
 
