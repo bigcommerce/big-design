@@ -3,7 +3,7 @@
 // **********************************
 import React, { forwardRef, memo, useId } from 'react';
 
-import { createStyledFlagIcon, FlagIconProps, PrivateIconProps } from '../base';
+import { createStyledFlagIcon, type FlagIconProps, type PrivateIconProps } from '../base';
 
 const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   svgRef,
