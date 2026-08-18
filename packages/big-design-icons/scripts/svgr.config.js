@@ -21,7 +21,7 @@ module.exports = {
       // **********************************
       import React, { forwardRef, memo, useId } from 'react';
 
-      import { createStyledIcon, IconProps, PrivateIconProps } from '../base';
+      import { createStyledIcon, type IconProps, type PrivateIconProps } from '../base';
 
       const Icon: React.FC<IconProps & PrivateIconProps> = ({ svgRef, title, theme, color, size, ...props }) => {
         const uniqueTitleId = useId();

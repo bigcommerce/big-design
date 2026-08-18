@@ -1,4 +1,8 @@
-import { theme as defaultTheme, Spacing, ThemeInterface } from '@bigcommerce/big-design-theme';
+import {
+  theme as defaultTheme,
+  type Spacing,
+  type ThemeInterface,
+} from '@bigcommerce/big-design-theme';
 import {
   ComponentPropsWithoutRef,
   ForwardRefExoticComponent,

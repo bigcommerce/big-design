@@ -1,8 +1,8 @@
 import {
-  Colors,
+  type Colors,
   theme as defaultTheme,
-  Spacing,
-  ThemeInterface,
+  type Spacing,
+  type ThemeInterface,
 } from '@bigcommerce/big-design-theme';
 import React, {
   ComponentPropsWithoutRef,
