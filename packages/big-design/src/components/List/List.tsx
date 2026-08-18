@@ -6,6 +6,7 @@ import React, {
   memo,
   Ref,
   useCallback,
+  useEffect,
   useMemo,
   useRef,
 } from 'react';
@@ -14,7 +15,9 @@ import { useIsomorphicLayoutEffect, useWindowSize } from '../../hooks';
 import { typedMemo } from '../../utils';
 import { Box } from '../Box';
 import { DropdownItem, DropdownItemGroup, DropdownLinkItem, DropdownProps } from '../Dropdown';
+import { Flex } from '../Flex';
 import { MultiSelectLocalization } from '../MultiSelect/types';
+import { ProgressCircle } from '../ProgressCircle';
 import { SelectAction, SelectOption, SelectOptionGroup, SelectProps } from '../Select';
 
 import { ListGroupHeader } from './GroupHeader';
@@ -46,6 +49,8 @@ export interface ListProps<T> extends ComponentPropsWithoutRef<'ul'> {
   update: (() => void) | null;
   localization?: { selectAll: MultiSelectLocalization['selectAll'] };
   removeItem?(item: SelectOption<T>): void;
+  onScrollToBottom?(): void;
+  loadingItems?: boolean;
 }
 
 interface PrivateProps {
@@ -74,6 +79,8 @@ const StyleableList = typedMemo(
     update,
     localization = { selectAll: 'Select All' },
     removeItem,
+    onScrollToBottom,
+    loadingItems = false,
     ...props
   }: ListProps<T> & PrivateProps): ReturnType<React.FC<ListProps<T> & PrivateProps>> => {
     const itemKey = useRef(0);
@@ -249,6 +256,8 @@ const StyleableList = typedMemo(
       [renderItems],
     );
 
+    const iORef = useRef<HTMLDivElement>(null);
+
     const renderChildren = useMemo(() => {
       // Reset the key every time we rerender children
       itemKey.current = 0;
@@ -265,6 +274,11 @@ const StyleableList = typedMemo(
           <>
             {selectAll && flattenOptions && renderSelectAll(flattenOptions)}
             {groupFragment(items)}
+            {loadingItems && (
+              <Flex justifyContent="center">
+                <ProgressCircle size="xSmall" />
+              </Flex>
+            )}
             {action && renderAction(action)}
           </>
         );
@@ -275,14 +289,62 @@ const StyleableList = typedMemo(
           <>
             {selectAll && isOptions(items) && renderSelectAll(items)}
             {renderItems(items)}
+            {loadingItems && (
+              <Flex justifyContent="center">
+                <ProgressCircle size="xSmall" />
+              </Flex>
+            )}
             {action && renderAction(action)}
+            <div aria-hidden={true} ref={iORef} />
           </>
         );
       }
-    }, [action, items, renderAction, renderGroup, renderItems, renderSelectAll, selectAll]);
+    }, [
+      action,
+      items,
+      renderAction,
+      renderGroup,
+      renderItems,
+      renderSelectAll,
+      selectAll,
+      loadingItems,
+    ]);
+
+    // Initialize intersection observer state for element
+    const owRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+      const iO = iORef.current;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              if (onScrollToBottom) {
+                onScrollToBottom();
+              }
+            }
+          });
+        },
+        {
+          root: owRef.current,
+          rootMargin: '15px',
+          threshold: 0,
+        },
+      );
+
+      if (iO) {
+        observer.observe(iO);
+      }
+
+      return () => {
+        if (iO) {
+          observer.unobserve(iO);
+        }
+      };
+    }, [renderChildren, onScrollToBottom]);
 
     return (
-      <StyledListOverflowWrapper>
+      <StyledListOverflowWrapper ref={owRef}>
         <StyledList
           {...getMenuProps({
             ...props,
