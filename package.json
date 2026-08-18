@@ -2,7 +2,7 @@
   "name": "big-design",
   "private": true,
   "license": "SEE LICENSE IN LICENSE.md",
-  "packageManager": "pnpm@10.26.2",
+  "packageManager": "pnpm@11.22.0",
   "scripts": {
     "build": "turbo build",
     "build:icons": "turbo build --filter @bigcommerce/big-design-icons",
@@ -21,15 +21,5 @@
     "@types/babel__standalone": "^7.1.9",
     "turbo": "^2.10.11",
     "typescript": "^5.9.3"
-  },
-  "pnpm": {
-    "patchedDependencies": {
-      "@changesets/assemble-release-plan@6.0.9": "patches/@changesets__assemble-release-plan@6.0.9.patch"
-    },
-    "overrides": {
-      "babel-plugin-styled-components>@babel/plugin-syntax-jsx": "^8.0.1",
-      "babel-plugin-styled-components>@babel/helper-annotate-as-pure": "^8.0.0",
-      "babel-plugin-styled-components>@babel/helper-module-imports": "^8.0.0"
-    }
   }
 }

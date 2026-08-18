@@ -30,7 +30,7 @@ commands:
           name: Install pnpm package manager
           command: |
             corepack enable --install-directory ~/bin
-            corepack prepare pnpm@10.26.2 --activate
+            corepack prepare pnpm@11.22.0 --activate
             pnpm config set store-dir .pnpm-store
       - run:
           name: Install Dependencies
