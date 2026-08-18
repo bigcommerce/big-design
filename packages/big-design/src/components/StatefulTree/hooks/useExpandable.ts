@@ -8,7 +8,8 @@ interface UseExpandableProps<T> {
   onExpandedChange: StatefulTreeProps<T>['onExpandedChange'];
 }
 
-export const useExpandable = <T>({ defaultExpanded, onExpandedChange }: UseExpandableProps<T>) => {
+// prettier-ignore
+export const useExpandable = <T,>({ defaultExpanded, onExpandedChange }: UseExpandableProps<T>) => {
   const [expandedNodes, setExpandedNodes] = useState(defaultExpanded ?? []);
 
   useEffect(() => {

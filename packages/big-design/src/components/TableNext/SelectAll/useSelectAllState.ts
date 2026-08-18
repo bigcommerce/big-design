@@ -1,7 +1,8 @@
 import { areAllInPageSelected, areSomeInPageSelected, getSelectAllState } from './helpers';
 import { SelectAllProps } from './SelectAll';
 
-export const useSelectAllState = <T>(props: SelectAllProps<T>) => {
+// prettier-ignore
+export const useSelectAllState = <T,>(props: SelectAllProps<T>) => {
   const { onChange } = props;
 
   const allInPageSelected = areAllInPageSelected(props);

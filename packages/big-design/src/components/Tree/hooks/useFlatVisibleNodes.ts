@@ -14,7 +14,8 @@ interface UseFlatVisibleNodesProps<T> {
   expandedNodes: Set<TreeNodeId>;
 }
 
-const flatten = <T>(
+// prettier-ignore
+const flatten = <T,>(
   nodes: Array<TreeNodeProps<T>>,
   expanded: Set<TreeNodeId>,
   depth: number,
@@ -33,5 +34,6 @@ const flatten = <T>(
   return acc;
 };
 
-export const useFlatVisibleNodes = <T>({ nodes, expandedNodes }: UseFlatVisibleNodesProps<T>) =>
+// prettier-ignore
+export const useFlatVisibleNodes = <T,>({ nodes, expandedNodes }: UseFlatVisibleNodesProps<T>) =>
   useMemo(() => flatten(nodes, expandedNodes, 0, []), [nodes, expandedNodes]);

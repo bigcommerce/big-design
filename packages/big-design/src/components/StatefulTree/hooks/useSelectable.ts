@@ -16,7 +16,8 @@ interface GetDefaultSelectedValuesProps<T> extends Pick<UseSelectableProps<T>, '
   selectedNodes: TreeNodeId[];
 }
 
-const getDefaultSelectedValues = <T>({
+// prettier-ignore
+const getDefaultSelectedValues = <T,>({
   nodes,
   selectedNodes,
   type,
@@ -46,7 +47,8 @@ const getDefaultSelectedValues = <T>({
   return [];
 };
 
-export const useSelectable = <T>({
+// prettier-ignore
+export const useSelectable = <T,>({
   defaultSelected,
   disabledNodes,
   nodes,

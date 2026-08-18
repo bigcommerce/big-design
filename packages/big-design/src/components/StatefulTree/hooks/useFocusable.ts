@@ -8,7 +8,8 @@ interface UseFocusableProps<T> {
   defaultSelected?: TreeNodeId[];
 }
 
-export const useFocusable = <T>({ nodes, type, defaultSelected }: UseFocusableProps<T>) => {
+// prettier-ignore
+export const useFocusable = <T,>({ nodes, type, defaultSelected }: UseFocusableProps<T>) => {
   /*
    * We purposefully want to focus on the first node if defaultSelected is empty,
    * with the assumption that the tree is fully collapsed.

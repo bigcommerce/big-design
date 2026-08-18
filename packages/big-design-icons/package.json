@@ -33,7 +33,7 @@
   },
   "prettier": "@bigcommerce/eslint-config/prettier",
   "dependencies": {
-    "@babel/runtime": "^7.26.10",
+    "@babel/runtime": "^8.0.0",
     "@bigcommerce/big-design-theme": "workspace:^"
   },
   "peerDependencies": {
@@ -42,12 +42,12 @@
     "styled-components": "^6.1.14"
   },
   "devDependencies": {
-    "@babel/cli": "^7.28.3",
-    "@babel/core": "^7.28.0",
-    "@babel/plugin-transform-runtime": "^7.28.5",
-    "@babel/preset-env": "^7.29.0",
-    "@babel/preset-react": "^7.28.5",
-    "@babel/preset-typescript": "^7.27.1",
+    "@babel/cli": "^8.0.4",
+    "@babel/core": "^8.0.1",
+    "@babel/plugin-transform-runtime": "^8.0.1",
+    "@babel/preset-env": "^8.0.2",
+    "@babel/preset-react": "^8.0.1",
+    "@babel/preset-typescript": "^8.0.1",
     "@bigcommerce/configs": "workspace:^",
     "@styled/typescript-styled-plugin": "^1.0.1",
     "@svgr/core": "^8.1.0",

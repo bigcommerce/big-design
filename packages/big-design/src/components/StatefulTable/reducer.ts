@@ -40,7 +40,8 @@ interface InitArgs<T> {
 }
 
 export const createReducerInit =
-  <T>() =>
+  // prettier-ignore
+  <T,>() =>
   ({ columns, defaultSelected, items, pagination }: InitArgs<T>): State<T> => {
     const currentPage = 1;
     const itemsPerPage = 25;
@@ -81,7 +82,8 @@ export type Action<T> =
   | { type: 'ON_SEARCH_SUBMIT'; filterPills?: StatefulTablePillTabFilter<T>['filter'] };
 
 export const createReducer =
-  <T>(): Reducer<State<T>, Action<T>> =>
+  // prettier-ignore
+  <T,>(): Reducer<State<T>, Action<T>> =>
   (state, action) => {
     switch (action.type) {
       case 'COLUMNS_CHANGED': {

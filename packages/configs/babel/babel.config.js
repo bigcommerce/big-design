@@ -29,11 +29,11 @@ module.exports = function (api) {
     ],
     env: {
       cjs: {
-        plugins: [...defaultPlugins, ['@babel/plugin-transform-runtime', { useESModules: false }]],
+        plugins: [...defaultPlugins, '@babel/plugin-transform-runtime'],
         ignore: [/node_modules/, '**/spec.ts', '**/spec.tsx', '**/*.spec.ts', '**/*.spec.tsx'],
       },
       es: {
-        plugins: [...defaultPlugins, ['@babel/plugin-transform-runtime', { useESModules: true }]],
+        plugins: [...defaultPlugins, '@babel/plugin-transform-runtime'],
         ignore: [/node_modules/, '**/spec.ts', '**/spec.tsx', '**/*.spec.ts', '**/*.spec.tsx'],
       },
       test: {
