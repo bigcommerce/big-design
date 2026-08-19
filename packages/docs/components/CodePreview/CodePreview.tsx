@@ -3,7 +3,8 @@ import * as BigDesign from '@bigcommerce/big-design';
 import * as BigDesignIcons from '@bigcommerce/big-design-icons';
 import * as BigDesignPatterns from '@bigcommerce/big-design-patterns';
 import clipboardCopy from 'clipboard-copy';
-import parser from 'prettier/parser-babel';
+import * as prettierPluginBabel from 'prettier/plugins/babel';
+import * as prettierPluginEstree from 'prettier/plugins/estree';
 import { format } from 'prettier/standalone';
 import React, { useContext, useEffect, useState } from 'react';
 import { LiveEditor, LivePreview, LiveProvider } from 'react-live';
@@ -26,7 +27,7 @@ const defaultScope = {
 
 type CodePreviewChildren = React.ReactNode | (() => React.JSX.Element);
 
-function getInitialCode(children: CodePreviewChildren, language: Language): string {
+async function getInitialCode(children: CodePreviewChildren, language: Language): Promise<string> {
   if (typeof children !== 'string') {
     throw new Error('<CodePreview> children must be of type string');
   }
@@ -46,7 +47,7 @@ function getInitialCode(children: CodePreviewChildren, language: Language): stri
 
   return format(code, {
     parser: 'babel',
-    plugins: [parser],
+    plugins: [prettierPluginBabel, prettierPluginEstree],
     printWidth: 100,
     singleQuote: true,
     trailingComma: 'all',
@@ -77,8 +78,8 @@ export const CodePreview: React.FC<CodePreviewProps> = (props) => {
   const { children } = props;
   const { theme: editorTheme, language } = useContext(CodeEditorContext);
 
-  const initialCode = getInitialCode(children, language);
-  const [code, setCode] = useState(initialCode);
+  const [initialCode, setInitialCode] = useState('');
+  const [code, setCode] = useState('');
   const [scope, setScope] = useState({ ...defaultScope, ...props.scope });
 
   useEffect(() => {
@@ -86,8 +87,19 @@ export const CodePreview: React.FC<CodePreviewProps> = (props) => {
   }, [props.scope, setScope]);
 
   useEffect(() => {
-    setCode(getInitialCode(children, language));
-  }, [children, language, setCode]);
+    let isCurrent = true;
+
+    getInitialCode(children, language).then((formattedCode) => {
+      if (isCurrent) {
+        setInitialCode(formattedCode);
+        setCode(formattedCode);
+      }
+    });
+
+    return () => {
+      isCurrent = false;
+    };
+  }, [children, language, setInitialCode, setCode]);
 
   return (
     <BigDesign.Box border="box">
