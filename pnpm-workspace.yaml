@@ -5,8 +5,6 @@ packages:
 # workspace packages; standalone forks (e.g. CodeSandbox) resolve them from
 # the registry instead.
 linkWorkspacePackages: true
-patchedDependencies:
-  '@changesets/assemble-release-plan@6.0.9': patches/@changesets__assemble-release-plan@6.0.9.patch
 overrides:
   babel-plugin-styled-components>@babel/plugin-syntax-jsx: ^8.0.1
   babel-plugin-styled-components>@babel/helper-annotate-as-pure: ^8.0.0

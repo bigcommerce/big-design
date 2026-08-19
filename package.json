@@ -14,9 +14,9 @@
   },
   "devDependencies": {
     "@bigcommerce/eslint-config": "^2.12.0",
-    "@changesets/assemble-release-plan": "^6.0.9",
+    "@changesets/assemble-release-plan": "^7.0.0",
     "@changesets/changelog-git": "^1.0.0",
-    "@changesets/cli": "^2.29.7",
+    "@changesets/cli": "^3.0.0",
     "@swc/plugin-styled-components": "^13.0.0",
     "@types/babel__standalone": "^7.1.9",
     "turbo": "^2.10.11",
