@@ -30,21 +30,13 @@ module.exports = {
   compiler: {
     styledComponents: true,
   },
-  webpack: (config) => {
-    return {
-      ...config,
-      module: {
-        ...config.module,
-        rules: [
-          ...config.module.rules,
-          {
-            test: /\.(ts|tsx)$/,
-            use: [require.resolve('jsx-to-string-loader')],
-          },
-        ],
-        noParse: /@babel\/standalone/,
+  turbopack: {
+    rules: {
+      '*.{ts,tsx}': {
+        loaders: [require.resolve('./build/jsx-to-string-loader.js')],
+        as: '*.tsx',
       },
-    };
+    },
   },
   exportPathMap: (defaultPathMap) => {
     if (isDev) {
