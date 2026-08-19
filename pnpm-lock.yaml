@@ -238,8 +238,8 @@ importers:
         specifier: ^2.0.7
         version: 2.1.4(@babel/core@8.0.1)(styled-components@6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8))
       camelcase:
-        specifier: ^6.3.0
-        version: 6.3.0
+        specifier: ^9.0.0
+        version: 9.0.0
       eslint:
         specifier: ^8.33.0
         version: 8.57.0(supports-color@8.1.1)
@@ -481,7 +481,7 @@ importers:
     dependencies:
       '@bigcommerce/eslint-config':
         specifier: ^2.12.0
-        version: 2.12.0(@testing-library/dom@10.4.1)(@types/eslint@8.56.10)(eslint@8.57.0(supports-color@8.1.1))(jest@30.2.0(@types/node@25.0.3)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@5.9.3)
+        version: 2.12.0(@testing-library/dom@10.4.1)(@types/eslint@8.56.10)(eslint@8.57.0(supports-color@8.1.1))(jest@30.2.0(@types/node@24.13.3)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@5.9.3)
       eslint:
         specifier: ^8.33.0
         version: 8.57.0(supports-color@8.1.1)
@@ -3094,6 +3094,10 @@ packages:
   camelcase@6.3.0:
     resolution: {integrity: sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==}
     engines: {node: '>=10'}
+
+  camelcase@9.0.0:
+    resolution: {integrity: sha512-TO9xmyXTZ9HUHI8M1OnvExxYB0eYVS/1e5s7IDMTAoIcwUd+aNcFODs6Xk83mobk0velyHFQgA1yIrvYc6wclw==}
+    engines: {node: '>=20'}
 
   caniuse-lite@1.0.30001767:
     resolution: {integrity: sha512-34+zUAMhSH+r+9eKmYG+k2Rpt8XttfE4yXAjoZvkAPs15xcYQhyBYdalJ65BzivAvGRMViEjy6oKr/S91loekQ==}
@@ -8664,6 +8668,8 @@ snapshots:
   camelcase@5.3.1: {}
 
   camelcase@6.3.0: {}
+
+  camelcase@9.0.0: {}
 
   caniuse-lite@1.0.30001767: {}
 
