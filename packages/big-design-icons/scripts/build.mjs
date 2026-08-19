@@ -1,16 +1,18 @@
-const { transform } = require('@svgr/core');
-const camelcase = require('camelcase');
-const { outputFile, readFile } = require('fs-extra');
-const { glob } = require('glob');
-const { cpus } = require('os');
-const { basename, join } = require('path');
-const { rimraf } = require('rimraf');
-const asyncPool = require('tiny-async-pool');
+import { transform } from '@svgr/core';
+import camelcase from 'camelcase';
+import fsExtra from 'fs-extra';
+import { glob } from 'glob';
+import { cpus } from 'os';
+import { basename, join } from 'path';
+import { rimraf } from 'rimraf';
+import asyncPool from 'tiny-async-pool';
 
-const config = require('./svgr.config');
+import config from './svgr.config.js';
 
-const SOURCE = join(__dirname, '..', 'svgs', '*', '*.svg');
-const DEST_PATH = join(__dirname, '..', 'src', 'components');
+const { outputFile, readFile } = fsExtra;
+
+const SOURCE = join(import.meta.dirname, '..', 'svgs', '*', '*.svg');
+const DEST_PATH = join(import.meta.dirname, '..', 'src', 'components');
 
 const componentNames = new Set();
 
@@ -47,16 +49,14 @@ function cleanDestDirectory() {
   return rimraf(DEST_PATH);
 }
 
-(async () => {
-  await cleanDestDirectory();
-  await generateIcons();
+await cleanDestDirectory();
+await generateIcons();
 
-  const indexFile = Array.from(componentNames)
-    .sort()
-    .map((name) => `export * from './${name}';`);
+const indexFile = Array.from(componentNames)
+  .sort()
+  .map((name) => `export * from './${name}';`);
 
-  await outputFile(join(DEST_PATH, 'index.ts'), indexFile.join('\n'));
+await outputFile(join(DEST_PATH, 'index.ts'), indexFile.join('\n'));
 
-  // eslint-disable-next-line no-console
-  console.log('Done!');
-})();
+// eslint-disable-next-line no-console
+console.log('Done!');

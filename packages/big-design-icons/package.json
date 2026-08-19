@@ -17,10 +17,10 @@
     "build:cjs": "NODE_ENV=production BABEL_ENV=cjs babel --extensions \".ts,.tsx\" ./src --out-dir ./dist/cjs",
     "build:es": "NODE_ENV=production BABEL_ENV=es babel --extensions \".ts,.tsx\" ./src --out-dir ./dist/es",
     "build:dt": "tsc --emitDeclarationOnly",
-    "build:icons": "node scripts/build.js",
+    "build:icons": "node scripts/build.mjs",
     "build:flags": "node scripts/build-flags.js",
     "download": "node scripts/downloader.js",
-    "lint": "eslint . --max-warnings 0",
+    "lint": "eslint . --ext .js,.mjs --max-warnings 0",
     "typecheck": "tsc --noEmit"
   },
   "files": [
@@ -57,7 +57,7 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "babel-plugin-styled-components": "^2.0.7",
-    "camelcase": "^6.3.0",
+    "camelcase": "^9.0.0",
     "eslint": "^8.33.0",
     "flag-icons": "^7.5.0",
     "fs-extra": "^11.4.0",
