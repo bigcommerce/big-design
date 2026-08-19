@@ -19,7 +19,7 @@
     "build:dt": "tsc --emitDeclarationOnly",
     "build:icons": "node scripts/build.mjs",
     "build:flags": "node scripts/build-flags.js",
-    "download": "node scripts/downloader.js",
+    "download": "node scripts/downloader.mjs",
     "lint": "eslint . --ext .js,.mjs --max-warnings 0",
     "typecheck": "tsc --noEmit"
   },
@@ -62,8 +62,7 @@
     "flag-icons": "^7.5.0",
     "fs-extra": "^11.4.0",
     "glob": "^13.0.6",
-    "inquirer": "^8.2.7",
-    "inquirer-autocomplete-prompt": "^2.0.1",
+    "inquirer": "^14.0.2",
     "prettier": "^3.9.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
