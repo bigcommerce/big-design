@@ -12,7 +12,7 @@ import React, {
 } from 'react';
 
 import { warning } from '../../utils';
-import { type DropdownItem } from '../Dropdown';
+import type { DropdownItem } from '../Dropdown';
 import { FormControlDescription, FormControlLabel } from '../Form';
 import { useInputErrors } from '../Form/useInputErrors';
 import { InlineMessage } from '../InlineMessage';
@@ -20,7 +20,7 @@ import { InlineMessage } from '../InlineMessage';
 import { defaultLocalization } from './constants';
 import { File } from './File';
 import { StyledDropZoneWrapper, StyledFileUploaderWrapper, StyledList } from './styled';
-import { type Action, type Localization, type ValidatorConfig } from './types';
+import type { Action, Localization, ValidatorConfig } from './types';
 import { getImagesPreview, validateFiles } from './utils';
 
 export interface FileAction extends Omit<DropdownItem, 'onItemClick'> {

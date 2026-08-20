@@ -2,11 +2,11 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { withPaddings } from '../../../helpers';
-import { type TransientPaddingProps } from '../../../helpers/paddings/paddings';
+import type { TransientPaddingProps } from '../../../helpers/paddings/paddings';
 import { withTableColumnDisplay } from '../helpers';
-import { type TransientTableColumnDisplayProps } from '../helpers/display/types';
+import type { TransientTableColumnDisplayProps } from '../helpers/display/types';
 
-import { type DataCellProps } from './DataCell';
+import type { DataCellProps } from './DataCell';
 
 interface StyledTableDataCellProps extends TransientTableColumnDisplayProps, TransientPaddingProps {
   $align?: DataCellProps['align'];

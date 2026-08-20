@@ -1,9 +1,9 @@
 import React, { forwardRef } from 'react';
 
-import { type BoxProps } from '../Box';
+import type { BoxProps } from '../Box';
 
 import { StyledFlex } from './styled';
-import { type FlexedProps } from './types';
+import type { FlexedProps } from './types';
 import { toTransientFlexedContainerProps } from './withFlex';
 
 export type FlexProps = BoxProps & FlexedProps;

@@ -9,8 +9,8 @@ import { useComponentSize } from '../../../hooks';
 import { typedMemo } from '../../../utils';
 import { Box } from '../../Box';
 import { Tooltip } from '../../Tooltip';
-import { type TableColumnDisplayProps } from '../helpers';
-import { type TableColumn, type TableItem } from '../types';
+import type { TableColumnDisplayProps } from '../helpers';
+import type { TableColumn, TableItem } from '../types';
 
 import { StyledFlex, StyledTableHeaderCell, StyledTableHeaderIcon } from './styled';
 

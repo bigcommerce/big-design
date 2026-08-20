@@ -1,7 +1,7 @@
-import { type Colors } from '@bigcommerce/big-design-theme';
+import type { Colors } from '@bigcommerce/big-design-theme';
 import type { KeyboardEventHandler, ReactEventHandler, ReactNode, RefObject } from 'react';
 
-import { type SelectOption } from '../Select';
+import type { SelectOption } from '../Select';
 
 export type ExpandableRows = Record<string, Array<string | number>>;
 

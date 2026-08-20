@@ -3,12 +3,12 @@ import React, { type Dispatch, type SetStateAction } from 'react';
 import { Checkbox } from '../../Checkbox';
 import { Flex, FlexItem } from '../../Flex';
 import { Text } from '../../Typography';
-import {
-  type TableExpandable,
-  type TableItem,
-  type TablePaginationProps,
-  type TableProps,
-  type TableSelectable,
+import type {
+  TableExpandable,
+  TableItem,
+  TablePaginationProps,
+  TableProps,
+  TableSelectable,
 } from '../types';
 
 import { useSelectAllState } from './useSelectAllState';

@@ -16,12 +16,7 @@ import { Box } from '../Box';
 import { List } from '../List';
 
 import { StyledBox } from './styled';
-import {
-  type DropdownItem,
-  type DropdownItemGroup,
-  type DropdownLinkItem,
-  type DropdownProps,
-} from './types';
+import type { DropdownItem, DropdownItemGroup, DropdownLinkItem, DropdownProps } from './types';
 
 export const isDropdownItemGroupArray = (
   items: Array<DropdownItemGroup | DropdownItem | DropdownLinkItem>,

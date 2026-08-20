@@ -1,6 +1,6 @@
 import React, { type ComponentPropsWithoutRef, forwardRef, type Ref } from 'react';
 
-import { type MarginProps } from '../../helpers';
+import type { MarginProps } from '../../helpers';
 import { toTransientMarginProps } from '../../helpers/margins/margins';
 import { typedMemo } from '../../utils';
 

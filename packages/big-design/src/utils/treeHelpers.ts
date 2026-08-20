@@ -1,4 +1,4 @@
-import { type TreeNodeId, type TreeNodeProps, type TreeProps } from '../components/Tree';
+import type { TreeNodeId, TreeNodeProps, TreeProps } from '../components/Tree';
 
 export function depthFirstSearch<T>(
   nodes: TreeProps<T>['nodes'],

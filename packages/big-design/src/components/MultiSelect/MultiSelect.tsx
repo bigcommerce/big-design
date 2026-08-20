@@ -23,10 +23,10 @@ import { Box } from '../Box';
 import { FormControlLabel } from '../Form';
 import { Input } from '../Input';
 import { List } from '../List';
-import { type SelectAction, type SelectOption, type SelectOptionGroup } from '../Select';
+import type { SelectAction, SelectOption, SelectOptionGroup } from '../Select';
 import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from '../Select/styled';
 
-import { type MultiSelectLocalization, type MultiSelectProps } from './types';
+import type { MultiSelectLocalization, MultiSelectProps } from './types';
 
 export const defaultLocalization: MultiSelectLocalization = {
   selectAll: 'Select All',

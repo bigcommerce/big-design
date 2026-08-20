@@ -3,7 +3,7 @@ import React from 'react';
 import { Checkbox } from '../../Checkbox';
 import { Flex, FlexItem } from '../../Flex';
 import { Text } from '../../Typography';
-import { type TableItem, type TablePaginationProps, type TableSelectable } from '../types';
+import type { TableItem, TablePaginationProps, TableSelectable } from '../types';
 
 export interface SelectAllProps<T> {
   items: T[];

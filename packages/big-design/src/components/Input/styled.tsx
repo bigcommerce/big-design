@@ -2,10 +2,10 @@ import { addValues, theme as defaultTheme, remCalc } from '@bigcommerce/big-desi
 import styled, { css } from 'styled-components';
 
 import { withPaddings } from '../../helpers';
-import { type TransientPaddingProps } from '../../helpers/paddings/paddings';
+import type { TransientPaddingProps } from '../../helpers/paddings/paddings';
 import { withTransition } from '../../helpers/transitions';
 
-import { type InputProps } from './Input';
+import type { InputProps } from './Input';
 
 export interface StyledInputWrapperProps {
   disabled?: boolean;

@@ -3,15 +3,15 @@ import { ellipsis } from 'polished';
 import styled, { css } from 'styled-components';
 
 import { type MarginProps, withMargins } from '../../helpers';
-import { type TransientMarginProps } from '../../helpers/margins/margins';
+import type { TransientMarginProps } from '../../helpers/margins/margins';
 
-import {
-  type HeadingProps,
-  type HRProps,
-  type TextProps,
-  type TransientTextModifiers,
-  type TransientTypographyProps,
-  type TypographyProps,
+import type {
+  HeadingProps,
+  HRProps,
+  TextProps,
+  TransientTextModifiers,
+  TransientTypographyProps,
+  TypographyProps,
 } from './types';
 
 type StyledHeadingProps = Omit<HeadingProps, keyof MarginProps> &

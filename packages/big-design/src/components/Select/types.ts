@@ -1,7 +1,7 @@
-import { type Placement } from '@popperjs/core';
+import type { Placement } from '@popperjs/core';
 import type { ComponentPropsWithoutRef, ReactElement, ReactNode, Ref, RefObject } from 'react';
 
-import { type InputProps } from '../Input';
+import type { InputProps } from '../Input';
 
 interface BaseSelect extends Omit<ComponentPropsWithoutRef<'input'>, 'children' | 'value'> {
   action?: SelectAction;

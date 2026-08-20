@@ -18,9 +18,9 @@ import { Box } from '../Box';
 import { FormControlLabel } from '../Form';
 import { Input } from '../Input';
 import { List } from '../List';
-import { type SelectOption, type SelectOptionGroup, type SelectProps } from '../Select';
+import type { SelectOption, SelectOptionGroup, SelectProps } from '../Select';
 import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from '../Select/styled';
-import { type SelectAction } from '../Select/types';
+import type { SelectAction } from '../Select/types';
 
 export const Select = typedMemo(
   <T,>({

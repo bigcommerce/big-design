@@ -5,12 +5,12 @@ import { FlexItem } from '../../Flex';
 import { Text } from '../../Typography';
 import { SelectAll } from '../SelectAll';
 import { TablePagination } from '../TablePagination';
-import {
-  type DiscriminatedTablePaginationProps,
-  type TableExpandable,
-  type TableItem,
-  type TableProps,
-  type TableSelectable,
+import type {
+  DiscriminatedTablePaginationProps,
+  TableExpandable,
+  TableItem,
+  TableProps,
+  TableSelectable,
 } from '../types';
 
 import { StyledFlex } from './styled';

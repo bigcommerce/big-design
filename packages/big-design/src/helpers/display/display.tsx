@@ -6,7 +6,7 @@ import {
 } from '@bigcommerce/big-design-theme';
 import { css } from 'styled-components';
 
-import { type DisplayOverload, type DisplayProps, type TransientDisplayProps } from './types';
+import type { DisplayOverload, DisplayProps, TransientDisplayProps } from './types';
 
 export const withDisplay = () => css<TransientDisplayProps>`
   ${({ $display, theme }) => $display && getDisplayStyles($display, theme, 'display')};

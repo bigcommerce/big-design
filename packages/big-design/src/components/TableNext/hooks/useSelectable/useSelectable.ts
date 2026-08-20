@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { useEventCallback } from '../../../../hooks';
-import { type TableSelectable } from '../../types';
+import type { TableSelectable } from '../../types';
 
 import {
   getTotalSelectedChildRows,

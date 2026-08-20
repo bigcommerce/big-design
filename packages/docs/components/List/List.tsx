@@ -1,4 +1,7 @@
-import React, { type CSSProperties, type ReactElement, type ReactNode } from 'react';
+// eslint-disable-next-line import/no-duplicates -- React below is a genuine value import; the rest is type-only
+import React from 'react';
+// eslint-disable-next-line import/no-duplicates -- see above
+import type { CSSProperties, ReactElement, ReactNode } from 'react';
 
 import { ListItem } from './Item';
 import { StyledOrderedList, StyledUnorderedList } from './styled';

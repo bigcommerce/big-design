@@ -3,7 +3,7 @@ import { useShallow } from 'zustand/shallow';
 
 import { typedMemo } from '../../../../utils';
 import { useWorksheetStore } from '../../hooks';
-import { type Cell, type WorksheetItem } from '../../types';
+import type { Cell, WorksheetItem } from '../../types';
 
 export interface UpdateItemsContextType<T> {
   updateItems(items: Array<Cell<T>>, newValue: unknown[]): void;

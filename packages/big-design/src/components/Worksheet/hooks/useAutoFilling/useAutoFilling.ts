@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo } from 'react';
 import { useShallow } from 'zustand/shallow';
 
-import { type Cell, type WorksheetItem } from '../../types';
+import type { Cell, WorksheetItem } from '../../types';
 import { useUpdateItems } from '../useUpdateItems';
 import { useWorksheetStore } from '../useWorksheetStore';
 

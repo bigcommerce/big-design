@@ -9,7 +9,7 @@ import { defaultLocalization } from './constants';
 import { DropZone } from './DropZone';
 import { File as FileComponent } from './File';
 import { type FileAction, FileUploader } from './FileUploader';
-import { type Action, type ValidatorConfig } from './types';
+import type { Action, ValidatorConfig } from './types';
 
 import 'jest-styled-components';
 

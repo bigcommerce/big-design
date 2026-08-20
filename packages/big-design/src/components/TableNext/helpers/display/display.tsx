@@ -6,7 +6,7 @@ import {
 } from '@bigcommerce/big-design-theme';
 import { css } from 'styled-components';
 
-import { type TableColumnDisplayOverload, type TransientTableColumnDisplayProps } from './types';
+import type { TableColumnDisplayOverload, TransientTableColumnDisplayProps } from './types';
 
 export const withTableColumnDisplay = () => css<TransientTableColumnDisplayProps>`
   ${({ $display, theme }) => $display && getDisplayStyles($display, theme, 'display')};

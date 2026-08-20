@@ -2,7 +2,7 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { withMargins } from '../../helpers';
-import { type TransientMarginProps } from '../../helpers/margins/margins';
+import type { TransientMarginProps } from '../../helpers/margins/margins';
 import { StyledFileUploaderWrapper } from '../FileUploader/styled';
 import { StyledInputWrapper } from '../Input/styled';
 import { StyledTextareaWrapper } from '../Textarea/styled';

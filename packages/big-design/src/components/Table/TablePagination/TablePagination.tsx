@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 
 import { OffsetPagination } from '../../OffsetPagination';
 import { StatelessPagination } from '../../StatelessPagination';
-import { type DiscriminatedTablePaginationProps } from '../types';
+import type { DiscriminatedTablePaginationProps } from '../types';
 
 import { StyledPaginationContainer } from './styled';
 

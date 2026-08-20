@@ -6,7 +6,7 @@ import { Flex, FlexItem } from '../Flex';
 import { Form } from '../Form';
 import { Input } from '../Input';
 
-import { type SearchLocalization, type SearchProps } from './types';
+import type { SearchLocalization, SearchProps } from './types';
 
 const defaultLocalization: SearchLocalization = {
   search: 'Search',

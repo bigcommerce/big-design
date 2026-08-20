@@ -4,12 +4,12 @@ import { userEvent } from '@testing-library/user-event';
 import React, { useContext } from 'react';
 
 import { Tree, TreeContext } from './Tree';
-import {
-  type TreeExpandable,
-  type TreeFocusable,
-  type TreeNodeProps,
-  type TreeOnKeyDown,
-  type TreeProps,
+import type {
+  TreeExpandable,
+  TreeFocusable,
+  TreeNodeProps,
+  TreeOnKeyDown,
+  TreeProps,
 } from './types';
 
 const nodes: Array<TreeNodeProps<number>> = [

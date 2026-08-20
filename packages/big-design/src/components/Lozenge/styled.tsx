@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 import { Box } from '../Box';
 
-import { type LozengeProps } from './Lozenge';
+import type { LozengeProps } from './Lozenge';
 
 interface StyledLozengeProps {
   $hasTooltip?: boolean;

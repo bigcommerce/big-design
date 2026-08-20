@@ -6,7 +6,7 @@ import {
 } from '@bigcommerce/big-design-theme';
 import { css } from 'styled-components';
 
-import { type Responsive } from '../../types';
+import type { Responsive } from '../../types';
 
 type SingleSpacingProp<T> = keyof Spacing | T;
 type ResponsiveSpacingProp<T> = Responsive<keyof Spacing | T>;

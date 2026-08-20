@@ -1,4 +1,4 @@
-import { type TableSelectable } from '../types';
+import type { TableSelectable } from '../types';
 
 interface UseRowStateProps {
   isParentRow: boolean;

@@ -5,13 +5,13 @@ import { typedMemo } from '../../../utils';
 import { Cell } from '../Cell';
 import { useWorksheetStore } from '../hooks';
 import { RowStatus } from '../RowStatus';
-import {
-  type InternalWorksheetColumn,
-  type WorksheetItem,
-  type WorksheetModalColumn,
-  type WorksheetNumberColumn,
-  type WorksheetSelectableColumn,
-  type WorksheetTextColumn,
+import type {
+  InternalWorksheetColumn,
+  WorksheetItem,
+  WorksheetModalColumn,
+  WorksheetNumberColumn,
+  WorksheetSelectableColumn,
+  WorksheetTextColumn,
 } from '../types';
 
 interface RowProps<Item> {

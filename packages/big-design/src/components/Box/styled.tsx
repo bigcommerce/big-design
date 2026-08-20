@@ -3,11 +3,11 @@ import { clearFix } from 'polished';
 import styled, { css } from 'styled-components';
 
 import { withDisplay, withMargins, withPaddings } from '../../helpers';
-import { type TransientDisplayProps } from '../../helpers/display/types';
-import { type TransientMarginProps } from '../../helpers/margins/margins';
-import { type TransientPaddingProps } from '../../helpers/paddings/paddings';
+import type { TransientDisplayProps } from '../../helpers/display/types';
+import type { TransientMarginProps } from '../../helpers/margins/margins';
+import type { TransientPaddingProps } from '../../helpers/paddings/paddings';
 
-import { type BoxProps } from './Box';
+import type { BoxProps } from './Box';
 
 // Internal-only prop shape: bespoke system props are `$`-prefixed so styled-components
 // never forwards them to the underlying DOM node. The public `BoxProps` is unchanged;

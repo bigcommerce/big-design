@@ -4,7 +4,7 @@ import React, { type CSSProperties } from 'react';
 import 'jest-styled-components';
 
 import { Table, TableFigure } from './Table';
-import { type TableColumn, type TableItem } from './types';
+import type { TableColumn, TableItem } from './types';
 
 interface SimpleTableOptions {
   className?: string;

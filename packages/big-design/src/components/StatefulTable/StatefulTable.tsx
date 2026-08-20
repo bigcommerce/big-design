@@ -3,11 +3,11 @@ import React, { useCallback, useEffect, useMemo, useReducer } from 'react';
 import { useDidUpdate } from '../../hooks';
 import { typedMemo } from '../../utils';
 import { Box } from '../Box';
-import { type OffsetPaginationProps } from '../OffsetPagination';
-import { type OffsetPaginationLocalization } from '../OffsetPagination/OffsetPagination';
+import type { OffsetPaginationProps } from '../OffsetPagination';
+import type { OffsetPaginationLocalization } from '../OffsetPagination/OffsetPagination';
 import { type PillTabItem, PillTabs, type PillTabsProps } from '../PillTabs';
 import { Search } from '../Search';
-import { type SearchLocalization } from '../Search/types';
+import type { SearchLocalization } from '../Search/types';
 import {
   Table,
   type TableColumn,

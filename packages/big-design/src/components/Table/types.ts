@@ -1,10 +1,10 @@
-import { type ComponentPropsWithoutRef, type ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-import { type MarginProps } from '../../helpers';
-import { type OffsetPaginationProps } from '../OffsetPagination';
-import { type StatelessPaginationProps } from '../StatelessPagination';
+import type { MarginProps } from '../../helpers';
+import type { OffsetPaginationProps } from '../OffsetPagination';
+import type { StatelessPaginationProps } from '../StatelessPagination';
 
-import { type TableColumnDisplayProps } from './helpers';
+import type { TableColumnDisplayProps } from './helpers';
 
 export interface TableSelectable<T> {
   selectedItems: T[];

@@ -2,10 +2,10 @@ import { createHelpers, type Helpers } from './helpers';
 import { type ThemeOptions, themeOptions } from './options';
 import { type Border, type BorderRadius, createBorder, createBorderRadius } from './system/border';
 import {
-  type Breakpoints,
   breakpoints,
-  type BreakpointValues,
+  type Breakpoints,
   breakpointValues,
+  type BreakpointValues,
 } from './system/breakpoints';
 import { type Colors, colors } from './system/colors';
 import * as keyframes from './system/keyframes';

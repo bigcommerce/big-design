@@ -1,7 +1,7 @@
 import { getPagedIndex } from '../helpers';
-import { type TableExpandable, type TableSelectable } from '../types';
+import type { TableExpandable, TableSelectable } from '../types';
 
-import { type SelectAllProps } from './SelectAll';
+import type { SelectAllProps } from './SelectAll';
 
 type SelectAllRowsArg<T> = Omit<SelectAllProps<T>, 'onChange'>;
 

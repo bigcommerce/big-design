@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 
-import { type Route } from './types';
+import type { Route } from './types';
 
 export const useContentRoutingTabs = (routes: Route[], id: string) => {
   const { query, push } = useRouter();

@@ -6,12 +6,12 @@ import {
 } from '@bigcommerce/big-design-theme';
 import { css } from 'styled-components';
 
-import {
-  type GridedItemProps,
-  type GridedOverload,
-  type GridedProps,
-  type TransientGridedItemProps,
-  type TransientGridedProps,
+import type {
+  GridedItemProps,
+  GridedOverload,
+  GridedProps,
+  TransientGridedItemProps,
+  TransientGridedProps,
 } from './types';
 
 export const withGridedContainer = () => css<TransientGridedProps>`

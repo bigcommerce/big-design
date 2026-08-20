@@ -27,9 +27,16 @@ module.exports = {
         // (Vite/Rollup/Rolldown, webpack with strictExportPresence). See LTRAC-1370.
         // Scoped to ts/tsx only: the rule needs type info, which isn't set up for the
         // plain .js config files (e.g. .eslintrc.js) this config also lints.
+        // fixStyle MUST be 'separate-type-imports', not 'inline-type-imports': when every
+        // binding from a specifier is type-only, Babel only removes the whole import
+        // statement's runtime footprint for the *whole-statement* `import type {...}` form.
+        // The inline `import { type X }` form still leaves a bare `require(...)` for the
+        // module (Babel can't prove it's side-effect-free), which reintroduces exactly the
+        // kind of stray runtime import this rule exists to eliminate, and can create real
+        // circular-require chains that a type-only import never should.
         '@typescript-eslint/consistent-type-imports': [
           'error',
-          { prefer: 'type-imports', fixStyle: 'inline-type-imports' },
+          { prefer: 'type-imports', fixStyle: 'separate-type-imports' },
         ],
       },
     },

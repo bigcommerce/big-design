@@ -7,12 +7,12 @@ import { Small } from '../../Typography';
 import { CheckboxEditor, ModalEditor, SelectEditor, TextEditor, ToggleEditor } from '../editors';
 import { MultiSelectEditor } from '../editors/MultiSelectEditor';
 import { useAutoFilling, useEditableCell, useWorksheetStore } from '../hooks';
-import {
-  type InternalWorksheetColumn,
-  type Cell as TCell,
-  type WorksheetItem,
-  type WorksheetSelectableColumn,
-  type WorksheetTextColumn,
+import type {
+  InternalWorksheetColumn,
+  Cell as TCell,
+  WorksheetItem,
+  WorksheetSelectableColumn,
+  WorksheetTextColumn,
 } from '../types';
 import { getCellIdx } from '../utils';
 

@@ -12,13 +12,13 @@ import {
   StyledSmall,
   StyledText,
 } from './styled';
-import {
-  type HeadingProps,
-  type HeadingTag,
-  type HRProps,
-  type TextModifiers,
-  type TextProps,
-  type TypographyProps,
+import type {
+  HeadingProps,
+  HeadingTag,
+  HRProps,
+  TextModifiers,
+  TextProps,
+  TypographyProps,
 } from './types';
 
 function toTransientTextProps(props: TypographyProps & TextModifiers) {

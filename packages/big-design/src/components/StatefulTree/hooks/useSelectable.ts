@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import { depthFirstSearch } from '../../../utils';
-import { type TreeNodeId, type TreeSelectable } from '../../Tree';
-import { type StatefulTreeProps } from '../StatefulTree';
+import type { TreeNodeId, TreeSelectable } from '../../Tree';
+import type { StatefulTreeProps } from '../StatefulTree';
 
 interface UseSelectableProps<T> {
   defaultSelected: StatefulTreeProps<T>['defaultSelected'];

@@ -1,5 +1,5 @@
 import { autoUpdate, offset, shift, size, useFloating } from '@floating-ui/react';
-import { type Placement } from '@popperjs/core';
+import type { Placement } from '@popperjs/core';
 import React, { useEffect, useId, useRef, useState } from 'react';
 
 import { excludeMarginProps } from '../../helpers';

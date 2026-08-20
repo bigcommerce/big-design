@@ -1,4 +1,4 @@
-import { type UseComboboxPropGetters, type UseSelectPropGetters } from 'downshift';
+import type { UseComboboxPropGetters, UseSelectPropGetters } from 'downshift';
 import React, {
   type ComponentPropsWithoutRef,
   forwardRef,
@@ -13,19 +13,9 @@ import React, {
 import { useIsomorphicLayoutEffect, useWindowSize } from '../../hooks';
 import { typedMemo } from '../../utils';
 import { Box } from '../Box';
-import {
-  type DropdownItem,
-  type DropdownItemGroup,
-  type DropdownLinkItem,
-  type DropdownProps,
-} from '../Dropdown';
-import { type MultiSelectLocalization } from '../MultiSelect/types';
-import {
-  type SelectAction,
-  type SelectOption,
-  type SelectOptionGroup,
-  type SelectProps,
-} from '../Select';
+import type { DropdownItem, DropdownItemGroup, DropdownLinkItem, DropdownProps } from '../Dropdown';
+import type { MultiSelectLocalization } from '../MultiSelect/types';
+import type { SelectAction, SelectOption, SelectOptionGroup, SelectProps } from '../Select';
 
 import { ListGroupHeader } from './GroupHeader';
 import { ListGroupSeparator } from './GroupSeparator';

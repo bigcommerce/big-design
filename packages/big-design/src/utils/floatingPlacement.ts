@@ -1,5 +1,5 @@
 import { autoPlacement, flip, type Middleware, type Placement } from '@floating-ui/react';
-import { type Placement as PopperPlacement } from '@popperjs/core';
+import type { Placement as PopperPlacement } from '@popperjs/core';
 
 // Placement props are still typed with popper's Placement, which includes 'auto*'
 // values that floating-ui only supports via the autoPlacement middleware.

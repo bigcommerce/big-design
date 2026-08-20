@@ -1,4 +1,4 @@
-import { type Cell, type ExpandableRows, type WorksheetError, type WorksheetItem } from './types';
+import type { Cell, ExpandableRows, WorksheetError, WorksheetItem } from './types';
 
 export const mergeCells = <T extends WorksheetItem>(
   oldCells: Array<Cell<T>>,
