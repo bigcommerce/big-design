@@ -19,6 +19,7 @@
     "@changesets/cli": "^3.0.0",
     "@swc/plugin-styled-components": "^13.0.0",
     "@types/babel__standalone": "^7.1.9",
+    "prettier": "^3.9.6",
     "turbo": "^2.10.11",
     "typescript": "^5.9.3"
   }

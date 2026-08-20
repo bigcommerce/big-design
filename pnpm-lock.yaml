@@ -31,6 +31,9 @@ importers:
       '@types/babel__standalone':
         specifier: ^7.1.9
         version: 7.1.9
+      prettier:
+        specifier: ^3.9.6
+        version: 3.9.6
       turbo:
         specifier: ^2.10.11
         version: 2.10.11
