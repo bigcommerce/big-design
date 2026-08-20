@@ -8,16 +8,16 @@ You can find documentation and examples on our [docs page](https://bigcommerce.g
 
 ### Quick start guide
 
-Add `@bigcommerce/big-design`, `@bigcommerce/big-design-patterns` and `styled-components@5` to your project using `npm`:
+Add `@bigcommerce/big-design`, `@bigcommerce/big-design-patterns` and `styled-components@6` to your project using `npm`:
 
 ```
-npm install @bigcommerce/big-design @bigcommerce/big-design-patterns styled-components@5
+npm install @bigcommerce/big-design @bigcommerce/big-design-patterns styled-components@6
 ```
 
 or with `pnpm`:
 
 ```
-pnpm add @bigcommerce/big-design @bigcommerce/big-design-patterns styled-components@5
+pnpm add @bigcommerce/big-design @bigcommerce/big-design-patterns styled-components@6
 ```
 
 Setup BigDesign as per the [Quick start guide](https://github.com/bigcommerce/big-design/tree/main/packages/big-design#quick-start-guide) and then import any pattern, such as `Page` and `Header`, to use it anywhere in your app.
