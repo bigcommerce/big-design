@@ -12,16 +12,16 @@ You can find documentation and examples on our [docs page](https://bigcommerce.g
 
 ### Quick start guide
 
-Add BigDesign and styled-components@5 to your project using `npm`:
+Add BigDesign and styled-components@6 to your project using `npm`:
 
 ```
-npm install @bigcommerce/big-design styled-components@5
+npm install @bigcommerce/big-design styled-components@6
 ```
 
 or with `pnpm`:
 
 ```
-pnpm add @bigcommerce/big-design styled-components@5
+pnpm add @bigcommerce/big-design styled-components@6
 ```
 
 Add the font as a `<link>` in your `index.html`/`<head>` element.
@@ -62,6 +62,14 @@ import { Button, GlobalStyles } from '@bigcommerce/big-design';
   <Button>Click me</Button>
 </App>
 ```
+
+### Version support
+
+| Versions | React | styled-components | Status |
+| --- | --- | --- | --- |
+| `big-design@5.x` / `icons@3.x` / `patterns@7.x` / `theme@3.x` (latest) | 19 | `^6.1.14` | Active |
+| `big-design@4.0.0` / `icons@2.0.0` / `patterns@6.0.0` / `theme@2.0.0` | 18 | `^6.1.14` | **Deprecated, do not use** (broken Flex/Grid/icon layout defaults; see npm deprecation notice) |
+| `big-design@3.x` / `icons@1.x` / `patterns@4.x`–`5.x` / `theme@1.x` | 18 | `^5` | Maintained; backports considered case-by-case |
 
 ### Monorepo
 

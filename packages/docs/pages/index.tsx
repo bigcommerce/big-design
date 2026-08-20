@@ -84,9 +84,18 @@ const GettingStartedPage = () => {
       </Panel>
 
       <Panel header="Getting started">
+        <Text>
+          The latest major requires React 19 and styled-components 6.1.14+. Staying on React 18? Use{' '}
+          <Code>big-design@3.x</Code> with styled-components 5 instead &mdash; see the{' '}
+          <Link href="https://github.com/bigcommerce/big-design#version-support" target="_blank">
+            version support matrix
+          </Link>
+          . <Code>big-design@4.0.0</Code> is deprecated, do not use it.
+        </Text>
+
         <Text>Add BigDesign and styled-components to your project:</Text>
         <CodeSnippet language="bash" showControls={false}>
-          npm install @bigcommerce/big-design styled-components@5
+          npm install @bigcommerce/big-design styled-components@6
         </CodeSnippet>
 
         <Text>
