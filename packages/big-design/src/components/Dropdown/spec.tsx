@@ -76,23 +76,23 @@ const DropdownWithItemsDescriptions = (
   />
 );
 
-test('renders dropdown toggle', () => {
+test('renders dropdown toggle', async () => {
   render(DropdownMock);
 
-  const toggle = screen.getByRole('button');
+  const toggle = await screen.findByRole('button');
 
   expect(toggle).toBeInTheDocument();
 });
 
-test('dropdown toggle has an id', () => {
+test('dropdown toggle has an id', async () => {
   render(DropdownMock);
 
-  const toggle = screen.getByRole('button');
+  const toggle = await screen.findByRole('button');
 
   expect(toggle.id).toBeDefined();
 });
 
-test('dropdown toggle accepts a custom id', () => {
+test('dropdown toggle accepts a custom id', async () => {
   render(
     <Dropdown
       items={[{ content: 'Option', onItemClick }]}
@@ -100,15 +100,15 @@ test('dropdown toggle accepts a custom id', () => {
     />,
   );
 
-  const toggle = screen.getByRole('button');
+  const toggle = await screen.findByRole('button');
 
   expect(toggle.id).toBe('testId');
 });
 
-test('dropdown toggle has aria-haspopup', () => {
+test('dropdown toggle has aria-haspopup', async () => {
   render(DropdownMock);
 
-  const toggle = screen.getByRole('button');
+  const toggle = await screen.findByRole('button');
 
   expect(toggle).toHaveAttribute('aria-haspopup', 'menu');
 });
@@ -123,8 +123,10 @@ test('dropdown toggle has aria-expanded when dropdown menu is open', async () =>
   expect(toggle).toHaveAttribute('aria-expanded', 'true');
 });
 
-test('renders the dropdown menu closed', () => {
+test('renders the dropdown menu closed', async () => {
   render(DropdownMock);
+
+  await screen.findByRole('button');
 
   expect(screen.queryByRole('menu')).not.toBeInTheDocument();
 });

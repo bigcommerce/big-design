@@ -1294,7 +1294,7 @@ test('input value clears on blur', async () => {
   expect(input).toHaveValue('');
 });
 
-test('does not render invalid label type', () => {
+test('does not render invalid label type', async () => {
   const consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation();
 
   render(
@@ -1305,6 +1305,8 @@ test('does not render invalid label type', () => {
       options={mockOptions}
     />,
   );
+
+  await screen.findByTestId('multi-select');
 
   // Invalid label should not be rendered
   expect(screen.queryByText('Invalid Label')).not.toBeInTheDocument();
