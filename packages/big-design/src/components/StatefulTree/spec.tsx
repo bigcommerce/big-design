@@ -7,7 +7,7 @@ import { warning } from '../../utils';
 
 import { useExpandable, useFocusable, useSelectable } from './hooks';
 
-import { StatefulTree, StatefulTreeProps, TreeNodeProps } from '.';
+import { StatefulTree, type StatefulTreeProps, type TreeNodeProps } from '.';
 
 const nodes: Array<TreeNodeProps<number>> = [
   {

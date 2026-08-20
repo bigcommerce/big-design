@@ -1,4 +1,4 @@
-import { RefObject, useCallback, useEffect } from 'react';
+import { type RefObject, useCallback, useEffect } from 'react';
 
 import { useRafState } from './useRafState';
 

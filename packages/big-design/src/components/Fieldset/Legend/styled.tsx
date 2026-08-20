@@ -2,7 +2,7 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { StyleableH4 } from '../../Typography/private';
-import { HeadingProps } from '../../Typography/types';
+import { type HeadingProps } from '../../Typography/types';
 
 export const StyledFieldsetLegend = styled(StyleableH4).attrs({ as: 'legend' })<
   Partial<HeadingProps>

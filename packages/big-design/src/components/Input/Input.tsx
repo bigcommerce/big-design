@@ -1,16 +1,16 @@
 import React, {
   cloneElement,
-  ComponentPropsWithoutRef,
+  type ComponentPropsWithoutRef,
   forwardRef,
   isValidElement,
-  Ref,
+  type Ref,
   useId,
   useMemo,
   useState,
 } from 'react';
 
 import { typedMemo, warning } from '../../utils';
-import { Chip, ChipProps } from '../Chip';
+import { Chip, type ChipProps } from '../Chip';
 import { FormControlDescription, FormControlLabel } from '../Form';
 import { useInputErrors } from '../Form/useInputErrors';
 

@@ -1,7 +1,7 @@
-import { Spacing } from '@bigcommerce/big-design-theme';
+import { type Spacing } from '@bigcommerce/big-design-theme';
 import { css } from 'styled-components';
 
-import { ResponsiveProp } from '../../types';
+import { type ResponsiveProp } from '../../types';
 import { getSpacingStyles } from '../spacings';
 
 type MarginProp = ResponsiveProp<keyof Spacing | 'auto'>;

@@ -4,7 +4,7 @@ import React from 'react';
 
 import 'jest-styled-components';
 
-import { Message, MessageProps } from './Message';
+import { Message, type MessageProps } from './Message';
 
 test('renders with margins', () => {
   const { container, rerender } = render(<Message messages={[{ text: 'Success' }]} />);

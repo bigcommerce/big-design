@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 
 import { Panel } from '../Panel';
 
-import { Accordion, AccordionProps } from './Accordion';
+import { Accordion, type AccordionProps } from './Accordion';
 import { StyledAccordionPanelWrapper } from './styled';
 
 export interface AccordionPanelProps {

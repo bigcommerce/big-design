@@ -4,7 +4,12 @@ import { render } from '@testing-library/react';
 import React from 'react';
 import styled from 'styled-components';
 
-import { excludeMarginProps, MarginProps, TransientMarginProps, withMargins } from './margins';
+import {
+  excludeMarginProps,
+  type MarginProps,
+  type TransientMarginProps,
+  withMargins,
+} from './margins';
 
 const TestComponent = styled.div<TransientMarginProps>`
   ${withMargins()};

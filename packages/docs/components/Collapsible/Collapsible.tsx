@@ -1,6 +1,6 @@
 import { Text } from '@bigcommerce/big-design';
 import { ChevronRightIcon, ExpandMoreIcon } from '@bigcommerce/big-design-icons';
-import React, { KeyboardEventHandler, useState } from 'react';
+import React, { type KeyboardEventHandler, useState } from 'react';
 
 import { StyledFlex } from './styled';
 

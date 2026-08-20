@@ -8,16 +8,22 @@ import { setCustomNativeDragPreview } from '@atlaskit/pragmatic-drag-and-drop/ut
 import { attachClosestEdge } from '@atlaskit/pragmatic-drag-and-drop-hitbox/closest-edge';
 import { announce } from '@atlaskit/pragmatic-drag-and-drop-live-region';
 import { ChevronRightIcon, DragIndicatorIcon, ExpandMoreIcon } from '@bigcommerce/big-design-icons';
-import React, { ComponentPropsWithoutRef, ReactNode, useEffect, useRef, useState } from 'react';
+import React, {
+  type ComponentPropsWithoutRef,
+  type ReactNode,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { createPortal } from 'react-dom';
 
 import { typedMemo } from '../../../utils';
 import { MessagingButton } from '../../Button/private';
 import { Checkbox } from '../../Checkbox';
 import { Flex } from '../../Flex';
-import { FlexedProps } from '../../Flex/types';
+import { type FlexedProps } from '../../Flex/types';
 import { DataCell } from '../DataCell';
-import { TableColumn, TableItem, TableSelectable } from '../types';
+import { type TableColumn, type TableItem, type TableSelectable } from '../types';
 
 import { StyledDragHandle, StyledDragPreview, StyledTableRow } from './styled';
 import { useRowState } from './useRowState';

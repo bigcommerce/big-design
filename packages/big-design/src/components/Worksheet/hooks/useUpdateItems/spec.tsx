@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react';
-import { Component, PropsWithChildren } from 'react';
+import { Component, type PropsWithChildren } from 'react';
 
 import { useUpdateItems } from './index';
 

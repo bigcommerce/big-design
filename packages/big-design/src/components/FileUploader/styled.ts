@@ -6,7 +6,7 @@ import { StyledButton as StyleableButton } from '../Button/styled';
 import { Flex } from '../Flex';
 import { StyledText as StyleableText } from '../Typography/styled';
 
-import { DropZone, Props } from './DropZone';
+import { DropZone, type Props } from './DropZone';
 
 const defaultDropZoneHeight = 68;
 const getDropZoneHeight = (height = defaultDropZoneHeight) =>

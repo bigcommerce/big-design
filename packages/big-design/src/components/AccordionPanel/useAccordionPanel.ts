@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { AccordionProps } from './Accordion';
+import { type AccordionProps } from './Accordion';
 
 type InitialPanels = Array<Omit<AccordionProps, 'isExpanded' | 'onClick'>>;
 

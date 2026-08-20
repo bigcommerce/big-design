@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import React from 'react';
 import 'jest-styled-components';
 
-import { StatusMessage, StatusMessageProps } from './index';
+import { StatusMessage, type StatusMessageProps } from './index';
 
 const baseProps: StatusMessageProps = {
   message: 'Basic status message',

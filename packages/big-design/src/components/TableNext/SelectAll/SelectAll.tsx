@@ -1,14 +1,14 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { type Dispatch, type SetStateAction } from 'react';
 
 import { Checkbox } from '../../Checkbox';
 import { Flex, FlexItem } from '../../Flex';
 import { Text } from '../../Typography';
 import {
-  TableExpandable,
-  TableItem,
-  TablePaginationProps,
-  TableProps,
-  TableSelectable,
+  type TableExpandable,
+  type TableItem,
+  type TablePaginationProps,
+  type TableProps,
+  type TableSelectable,
 } from '../types';
 
 import { useSelectAllState } from './useSelectAllState';

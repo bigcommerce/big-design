@@ -2,11 +2,11 @@ import { addValues, theme as defaultTheme } from '@bigcommerce/big-design-theme'
 import styled, { css } from 'styled-components';
 
 import { withMargins } from '../../helpers';
-import { TransientMarginProps } from '../../helpers/margins/margins';
+import { type TransientMarginProps } from '../../helpers/margins/margins';
 import { withTransition } from '../../helpers/transitions';
 import { Flex } from '../Flex';
 
-import { ButtonProps } from './index';
+import { type ButtonProps } from './index';
 
 export interface StyledButtonProps extends TransientMarginProps {
   $actionType?: ButtonProps['actionType'];

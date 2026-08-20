@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components';
+import { Code, NextLink, type Prop, PropTable, type PropTableWrapper } from '../components';
 
 const statefulTreeProps: Prop[] = [
   {

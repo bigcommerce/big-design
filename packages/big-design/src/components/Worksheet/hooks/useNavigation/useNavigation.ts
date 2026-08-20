@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react';
 import { useShallow } from 'zustand/shallow';
 
-import { Cell, InternalWorksheetColumn, WorksheetItem } from '../../types';
+import { type Cell, type InternalWorksheetColumn, type WorksheetItem } from '../../types';
 import { useWorksheetStore } from '../useWorksheetStore';
 
 interface Coordinate {

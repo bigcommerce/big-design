@@ -1,7 +1,13 @@
-import { Border, BorderRadius, Colors, Shadow, ZIndex } from '@bigcommerce/big-design-theme';
-import React, { ComponentPropsWithoutRef, forwardRef, memo } from 'react';
+import {
+  type Border,
+  type BorderRadius,
+  type Colors,
+  type Shadow,
+  type ZIndex,
+} from '@bigcommerce/big-design-theme';
+import React, { type ComponentPropsWithoutRef, forwardRef, memo } from 'react';
 
-import { DisplayProps, MarginProps, PaddingProps } from '../../helpers';
+import { type DisplayProps, type MarginProps, type PaddingProps } from '../../helpers';
 import { toTransientDisplayProps } from '../../helpers/display/display';
 import { toTransientMarginProps } from '../../helpers/margins/margins';
 import { toTransientPaddingProps } from '../../helpers/paddings/paddings';

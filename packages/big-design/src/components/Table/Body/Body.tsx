@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, forwardRef, memo } from 'react';
+import React, { type ComponentPropsWithoutRef, forwardRef, memo } from 'react';
 
 import { StyledTableBody } from './styled';
 

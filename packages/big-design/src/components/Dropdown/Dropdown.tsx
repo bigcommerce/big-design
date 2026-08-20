@@ -1,5 +1,5 @@
 import { autoUpdate, offset, shift, useFloating } from '@floating-ui/react';
-import { useSelect, UseSelectProps, UseSelectState } from 'downshift';
+import { useSelect, type UseSelectProps, type UseSelectState } from 'downshift';
 import React, {
   cloneElement,
   isValidElement,
@@ -16,7 +16,12 @@ import { Box } from '../Box';
 import { List } from '../List';
 
 import { StyledBox } from './styled';
-import { DropdownItem, DropdownItemGroup, DropdownLinkItem, DropdownProps } from './types';
+import {
+  type DropdownItem,
+  type DropdownItemGroup,
+  type DropdownLinkItem,
+  type DropdownProps,
+} from './types';
 
 export const isDropdownItemGroupArray = (
   items: Array<DropdownItemGroup | DropdownItem | DropdownLinkItem>,

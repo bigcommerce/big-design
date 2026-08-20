@@ -1,12 +1,12 @@
-import { Reducer } from 'react';
+import { type Reducer } from 'react';
 
-import { isPillTabItemGroupArray, PillTabItem, PillTabsProps } from '../PillTabs';
-import { TableSortDirection } from '../Table';
+import { isPillTabItemGroupArray, type PillTabItem, type PillTabsProps } from '../PillTabs';
+import { type TableSortDirection } from '../Table';
 
 import {
-  StatefulTableColumn,
-  StatefulTablePillTabFilter,
-  StatefulTableSortFn,
+  type StatefulTableColumn,
+  type StatefulTablePillTabFilter,
+  type StatefulTableSortFn,
 } from './StatefulTable';
 
 interface State<T> {

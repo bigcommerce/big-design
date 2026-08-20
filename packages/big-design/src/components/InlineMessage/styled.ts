@@ -6,9 +6,9 @@ import { Flex } from '../Flex';
 import { Grid } from '../Grid';
 import { Link } from '../Link';
 import { StyleableH4, StyleableSmall } from '../Typography/private';
-import { TextProps } from '../Typography/types';
+import { type TextProps } from '../Typography/types';
 
-import { InlineMessageProps } from './InlineMessage';
+import { type InlineMessageProps } from './InlineMessage';
 
 interface StyledInlineMessageProps {
   type?: InlineMessageProps['type'];

@@ -1,13 +1,13 @@
-import React, { FocusEvent, useCallback, useMemo } from 'react';
+import { type FocusEvent, type KeyboardEvent, useCallback, useMemo } from 'react';
 import { useShallow } from 'zustand/shallow';
 
-import { Cell, WorksheetItem } from '../../types';
+import { type Cell, type WorksheetItem } from '../../types';
 import { useTableFocus } from '../useTableFocus';
 import { useUpdateItems } from '../useUpdateItems';
 import { useWorksheetStore } from '../useWorksheetStore';
 
 export type EditableCellOnKeyDown = (
-  event: React.KeyboardEvent<HTMLInputElement>,
+  event: KeyboardEvent<HTMLInputElement>,
   newValue: unknown,
 ) => void;
 
@@ -66,7 +66,7 @@ export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
   );
 
   const handleKeyDown: EditableCellOnKeyDown = useCallback(
-    (event: React.KeyboardEvent<HTMLInputElement>, newValue) => {
+    (event: KeyboardEvent<HTMLInputElement>, newValue) => {
       const key = event.key;
 
       switch (key) {

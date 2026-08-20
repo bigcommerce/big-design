@@ -1,9 +1,9 @@
 import React, { forwardRef } from 'react';
 
-import { BoxProps } from '../Box';
+import { type BoxProps } from '../Box';
 
 import { StyledGrid } from './styled';
-import { GridedProps } from './types';
+import { type GridedProps } from './types';
 import { toTransientGridedContainerProps } from './withGrid';
 
 export type GridProps = BoxProps & GridedProps;

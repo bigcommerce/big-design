@@ -4,9 +4,9 @@ import {
   RemoveCircleOutlineIcon,
 } from '@bigcommerce/big-design-icons';
 import React, {
-  ChangeEvent,
-  ComponentPropsWithoutRef,
-  DragEvent,
+  type ChangeEvent,
+  type ComponentPropsWithoutRef,
+  type DragEvent,
   useCallback,
   useMemo,
   useRef,
@@ -19,7 +19,7 @@ import { Flex } from '../Flex';
 import { Small, Text } from '../Typography';
 
 import { StyledButton, StyledDropzone } from './styled';
-import { Action, Localization } from './types';
+import { type Action, type Localization } from './types';
 import { validateFileFormat } from './utils';
 
 export interface Props extends ComponentPropsWithoutRef<'input'> {

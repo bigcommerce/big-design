@@ -30,6 +30,8 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { Code, CodePreview, CodeSnippet, ContentRoutingTabs, List, NextLink } from '../components';
 import { FlagIconPropTable, IconPropTable } from '../PropTables';
 
+// Deliberately avoids a static top-level import so the real dynamic import() below stays code-split.
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 type BigDesignIcons = Omit<typeof import('@bigcommerce/big-design-icons'), 'createStyledIcon'>;
 
 const IconsPage = () => {

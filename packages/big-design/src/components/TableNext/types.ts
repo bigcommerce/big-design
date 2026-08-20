@@ -1,10 +1,10 @@
-import React, { ComponentPropsWithoutRef, ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, MouseEvent, ReactElement, ReactNode } from 'react';
 
-import { MarginProps } from '../../helpers';
-import { OffsetPaginationProps } from '../OffsetPagination';
-import { StatelessPaginationProps } from '../StatelessPagination';
+import { type MarginProps } from '../../helpers';
+import { type OffsetPaginationProps } from '../OffsetPagination';
+import { type StatelessPaginationProps } from '../StatelessPagination';
 
-import { TableColumnDisplayProps } from './helpers';
+import { type TableColumnDisplayProps } from './helpers';
 
 export interface TableSelectable {
   selectedItems: Record<string, true>;
@@ -14,7 +14,7 @@ export interface TableSelectable {
 }
 export interface LoadMoreAction {
   isLoading: boolean;
-  onClick: (event: React.MouseEvent<HTMLButtonElement>, parentRowIndex: number) => void;
+  onClick: (event: MouseEvent<HTMLButtonElement>, parentRowIndex: number) => void;
   text: string;
 }
 
@@ -71,9 +71,9 @@ interface Localization {
 }
 
 export interface TableProps<T> extends ComponentPropsWithoutRef<'table'> {
-  actions?: React.ReactNode;
+  actions?: ReactNode;
   columns: Array<TableColumn<T>>;
-  emptyComponent?: React.ReactElement;
+  emptyComponent?: ReactElement;
   expandable?: TableExpandable<T>;
   headerless?: boolean;
   itemName?: string;

@@ -5,8 +5,8 @@ import {
 } from '@bigcommerce/big-design-icons';
 import React, { memo, useCallback, useEffect, useState } from 'react';
 
-import { MarginProps } from '../../helpers';
-import { Dropdown, DropdownItem } from '../Dropdown';
+import { type MarginProps } from '../../helpers';
+import { Dropdown, type DropdownItem } from '../Dropdown';
 import { Flex, FlexItem } from '../Flex';
 
 import { StyledButton } from './styled';

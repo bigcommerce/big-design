@@ -2,7 +2,7 @@ import { CloseIcon } from '@bigcommerce/big-design-icons';
 import React, { memo, useId, useMemo } from 'react';
 
 import { excludePaddingProps } from '../../helpers';
-import { getMessagingIcon, SharedMessagingProps } from '../../utils';
+import { getMessagingIcon, type SharedMessagingProps } from '../../utils';
 import { Box } from '../Box';
 import { MessagingButton } from '../Button/private';
 import { GridItem } from '../Grid';

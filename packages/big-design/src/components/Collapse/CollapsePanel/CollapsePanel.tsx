@@ -1,7 +1,7 @@
 import type { Colors } from '@bigcommerce/big-design-theme';
 import React from 'react';
 
-import { MarginProps, PaddingProps } from '../../../helpers';
+import { type MarginProps, type PaddingProps } from '../../../helpers';
 import { Box } from '../../Box';
 import { useCollapseContext } from '../useCollapseContext';
 

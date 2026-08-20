@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 
 import { Flex } from '../Flex';
 
-import { ModalProps } from './Modal';
+import { type ModalProps } from './Modal';
 
 interface StyledModalProps {
   $backdrop?: ModalProps['backdrop'];

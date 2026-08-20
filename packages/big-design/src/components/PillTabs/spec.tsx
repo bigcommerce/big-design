@@ -5,7 +5,7 @@ import 'jest-styled-components';
 import React from 'react';
 import styled from 'styled-components';
 
-import { PillTabs, PillTabsProps } from './PillTabs';
+import { PillTabs, type PillTabsProps } from './PillTabs';
 
 const Wrapper = styled.div`
   width: 200px;

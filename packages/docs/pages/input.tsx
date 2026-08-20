@@ -1,4 +1,4 @@
-import { Form, FormGroup, H1, Input, InputProps, Panel, Text } from '@bigcommerce/big-design';
+import { Form, FormGroup, H1, Input, type InputProps, Panel, Text } from '@bigcommerce/big-design';
 import { CheckCircleIcon } from '@bigcommerce/big-design-icons';
 import React, { Fragment, useState } from 'react';
 

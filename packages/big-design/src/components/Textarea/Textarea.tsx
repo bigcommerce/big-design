@@ -1,9 +1,9 @@
 import React, {
   cloneElement,
-  ComponentPropsWithoutRef,
+  type ComponentPropsWithoutRef,
   forwardRef,
   isValidElement,
-  Ref,
+  type Ref,
   useId,
   useMemo,
 } from 'react';

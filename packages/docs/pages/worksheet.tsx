@@ -1,4 +1,11 @@
-import { H1, Panel, StatefulTree, Text, Worksheet, WorksheetColumn } from '@bigcommerce/big-design';
+import {
+  H1,
+  Panel,
+  StatefulTree,
+  Text,
+  Worksheet,
+  type WorksheetColumn,
+} from '@bigcommerce/big-design';
 import { AllInclusiveIcon } from '@bigcommerce/big-design-icons';
 import React, { useMemo, useState } from 'react';
 

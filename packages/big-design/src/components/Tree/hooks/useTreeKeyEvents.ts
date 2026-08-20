@@ -1,12 +1,12 @@
 import { useCallback } from 'react';
 
 import {
-  NodeMap,
-  TreeExpandable,
-  TreeFocusable,
-  TreeNodeId,
-  TreeOnKeyDown,
-  TreeSelectable,
+  type NodeMap,
+  type TreeExpandable,
+  type TreeFocusable,
+  type TreeNodeId,
+  type TreeOnKeyDown,
+  type TreeSelectable,
 } from '../types';
 
 interface UseTreeKeyEventsProps<T> {

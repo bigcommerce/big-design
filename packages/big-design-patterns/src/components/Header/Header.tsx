@@ -1,20 +1,20 @@
 import {
   Badge,
-  BadgeProps,
+  type BadgeProps,
   Button,
-  ButtonProps,
+  type ButtonProps,
   Dropdown,
-  DropdownProps,
+  type DropdownProps,
   excludeMarginProps,
   Flex,
   FlexItem,
   H1,
   Lozenge,
-  LozengeProps,
+  type LozengeProps,
   Text,
 } from '@bigcommerce/big-design';
 import { ArrowBackIcon } from '@bigcommerce/big-design-icons';
-import React, { ComponentPropsWithoutRef, isValidElement, memo, ReactNode } from 'react';
+import React, { type ComponentPropsWithoutRef, isValidElement, memo, type ReactNode } from 'react';
 
 import { warning } from '../../utils';
 

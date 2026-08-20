@@ -1,6 +1,6 @@
-import React, { ComponentPropsWithoutRef, memo } from 'react';
+import React, { type ComponentPropsWithoutRef, memo } from 'react';
 
-import { TableColumnDisplayProps } from '../helpers';
+import { type TableColumnDisplayProps } from '../helpers';
 
 import { StyledTableDataCell, StyledTableDataCheckbox } from './styled';
 

@@ -1,6 +1,6 @@
-import { CSSRules, ThemeInterface } from '@bigcommerce/big-design-theme';
+import { type CSSRules, type ThemeInterface } from '@bigcommerce/big-design-theme';
 
-import { ResponsiveProp } from '../../../../types';
+import { type ResponsiveProp } from '../../../../types';
 
 type TableColumnDisplayProp = ResponsiveProp<'table-cell' | 'none'>;
 

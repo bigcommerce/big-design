@@ -8,13 +8,13 @@ import { setCustomNativeDragPreview } from '@atlaskit/pragmatic-drag-and-drop/ut
 import { attachClosestEdge } from '@atlaskit/pragmatic-drag-and-drop-hitbox/closest-edge';
 import { announce } from '@atlaskit/pragmatic-drag-and-drop-live-region';
 import { DragIndicatorIcon } from '@bigcommerce/big-design-icons';
-import React, { ComponentPropsWithoutRef, useEffect, useRef, useState } from 'react';
+import React, { type ComponentPropsWithoutRef, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import { typedMemo } from '../../../utils';
 import { Checkbox } from '../../Checkbox';
 import { DataCell } from '../DataCell';
-import { TableColumn, TableItem } from '../types';
+import { type TableColumn, type TableItem } from '../types';
 
 import { StyledDragHandle, StyledDragPreview, StyledTableRow } from './styled';
 

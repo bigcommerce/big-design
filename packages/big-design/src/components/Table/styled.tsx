@@ -2,7 +2,7 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { withMargins } from '../../helpers';
-import { TransientMarginProps } from '../../helpers/margins/margins';
+import { type TransientMarginProps } from '../../helpers/margins/margins';
 
 export const StyledTableFigure = styled.figure<TransientMarginProps>`
   margin: 0;

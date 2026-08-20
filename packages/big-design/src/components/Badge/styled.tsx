@@ -2,9 +2,9 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { withMargins } from '../../helpers';
-import { TransientMarginProps } from '../../helpers/margins/margins';
+import { type TransientMarginProps } from '../../helpers/margins/margins';
 
-import { BadgeProps } from './Badge';
+import { type BadgeProps } from './Badge';
 
 interface StyledBadgeProps extends TransientMarginProps {
   $variant?: BadgeProps['variant'];

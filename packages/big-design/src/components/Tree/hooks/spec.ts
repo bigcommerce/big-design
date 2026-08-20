@@ -1,18 +1,18 @@
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
 import { renderHook } from '@testing-library/react';
-import { RefObject } from 'react';
+import { type RefObject } from 'react';
 
 import { getSelectedChildrenCounts } from '../../../utils';
 import {
-  NodeMap,
-  TreeExpandable,
-  TreeFocusable,
-  TreeNodeId,
-  TreeNodeProps,
-  TreeSelectable,
+  type NodeMap,
+  type TreeExpandable,
+  type TreeFocusable,
+  type TreeNodeId,
+  type TreeNodeProps,
+  type TreeSelectable,
 } from '../types';
 
-import { FlatTreeNode } from './useFlatVisibleNodes';
+import { type FlatTreeNode } from './useFlatVisibleNodes';
 import { useNodeMap } from './useNodeMap';
 import { useTreeKeyEvents } from './useTreeKeyEvents';
 import { useTreeVirtualizer } from './useTreeVirtualizer';

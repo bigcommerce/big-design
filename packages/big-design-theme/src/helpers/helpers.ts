@@ -1,4 +1,4 @@
-import { em, hideVisually, math, rem, transparentize } from 'polished';
+import { em, type hideVisually, math, rem, transparentize } from 'polished';
 import { css } from 'styled-components';
 
 import { themeOptions } from '../options';

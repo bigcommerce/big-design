@@ -1,4 +1,4 @@
-import { AlertProps, Button, H1, H3, Message, Panel, Text } from '@bigcommerce/big-design';
+import { type AlertProps, Button, H1, H3, Message, Panel, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview, CodeSnippet, ContentRoutingTabs, List } from '../components';

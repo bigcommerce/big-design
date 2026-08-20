@@ -6,7 +6,7 @@ import React from 'react';
 
 import { StatefulTree } from '../StatefulTree';
 
-import { WorksheetColumn } from './types';
+import { type WorksheetColumn } from './types';
 import { Worksheet } from './Worksheet';
 
 interface Product {

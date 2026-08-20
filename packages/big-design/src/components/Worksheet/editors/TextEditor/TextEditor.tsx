@@ -2,8 +2,8 @@ import React, { useCallback, useId, useMemo, useRef, useState } from 'react';
 
 import { typedMemo } from '../../../../utils';
 import { Flex } from '../../../Flex';
-import { EditableCellOnKeyDown } from '../../hooks';
-import { Cell, WorksheetItem, WorksheetTextColumn } from '../../types';
+import { type EditableCellOnKeyDown } from '../../hooks';
+import { type Cell, type WorksheetItem, type WorksheetTextColumn } from '../../types';
 
 import { ActionButton, StyledInput } from './styled';
 

@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 
 import { Text } from '../Typography';
 
-import { AccordionProps } from './Accordion';
+import { type AccordionProps } from './Accordion';
 
 import { AccordionPanel, useAccordionPanel } from '.';
 

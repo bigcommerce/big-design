@@ -1,6 +1,6 @@
 import { Flex, Grid } from '@bigcommerce/big-design';
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
-import styled, { css, CSSProperties } from 'styled-components';
+import styled, { css, type CSSProperties } from 'styled-components';
 
 export interface Background {
   src: string;

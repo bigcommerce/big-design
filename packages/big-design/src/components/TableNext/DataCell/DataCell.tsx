@@ -1,8 +1,8 @@
-import React, { ComponentPropsWithoutRef, memo } from 'react';
+import React, { type ComponentPropsWithoutRef, memo } from 'react';
 
-import { PaddingProps } from '../../../helpers';
+import { type PaddingProps } from '../../../helpers';
 import { toTransientPaddingProps } from '../../../helpers/paddings/paddings';
-import { TableColumnDisplayProps } from '../helpers';
+import { type TableColumnDisplayProps } from '../helpers';
 
 import { StyledTableDataCell, StyledTableDataCheckbox } from './styled';
 

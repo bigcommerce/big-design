@@ -1,9 +1,9 @@
-import React, { ComponentPropsWithoutRef, useMemo } from 'react';
+import React, { type ComponentPropsWithoutRef, useMemo } from 'react';
 
-import { Badge, BadgeProps } from '../Badge';
+import { Badge, type BadgeProps } from '../Badge';
 import { Box } from '../Box';
 import { Flex } from '../Flex';
-import { FormControlDescription, FormControlDescriptionLinkProps } from '../Form';
+import { FormControlDescription, type FormControlDescriptionLinkProps } from '../Form';
 import { StyleableText } from '../Typography/Typography';
 
 import { InfoCardImgContainer } from './styled';

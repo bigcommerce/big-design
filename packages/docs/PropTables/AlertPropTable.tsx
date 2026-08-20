@@ -1,7 +1,7 @@
 import { Small } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { Prop, PropTable, PropTableWrapper } from '../components';
+import { type Prop, PropTable, type PropTableWrapper } from '../components';
 
 import { sharedMessagingProps } from './shared';
 

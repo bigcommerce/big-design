@@ -1,7 +1,7 @@
 import { Flex, FlexItem } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { ColorDetails } from './availableColors';
+import { type ColorDetails } from './availableColors';
 import ColorCard from './ColorCard';
 
 interface ColorCardsProps {

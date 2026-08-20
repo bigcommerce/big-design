@@ -1,11 +1,17 @@
-import React, { ComponentPropsWithoutRef, forwardRef, isValidElement, memo, Ref } from 'react';
+import React, {
+  type ComponentPropsWithoutRef,
+  forwardRef,
+  isValidElement,
+  memo,
+  type Ref,
+} from 'react';
 
-import { MarginProps } from '../../helpers';
+import { type MarginProps } from '../../helpers';
 import { excludePaddingProps } from '../../helpers/paddings/paddings';
 import { warning } from '../../utils';
-import { Badge, BadgeProps } from '../Badge/Badge';
+import { Badge, type BadgeProps } from '../Badge/Badge';
 import { Box } from '../Box';
-import { Button, ButtonProps } from '../Button';
+import { Button, type ButtonProps } from '../Button';
 import { Flex } from '../Flex';
 import { Text } from '../Typography';
 

@@ -1,4 +1,4 @@
-import { TableColumn } from '../types';
+import { type TableColumn } from '../types';
 
 import { calculateColSpan } from './helpers';
 

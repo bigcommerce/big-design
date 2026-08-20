@@ -4,7 +4,12 @@ import { render } from '@testing-library/react';
 import React from 'react';
 import styled from 'styled-components';
 
-import { excludePaddingProps, PaddingProps, TransientPaddingProps, withPaddings } from './paddings';
+import {
+  excludePaddingProps,
+  type PaddingProps,
+  type TransientPaddingProps,
+  withPaddings,
+} from './paddings';
 
 const TestComponent = styled.div<TransientPaddingProps>`
   ${withPaddings()};

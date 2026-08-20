@@ -1,10 +1,10 @@
-import { IconProps } from '@bigcommerce/big-design-icons';
+import { type IconProps } from '@bigcommerce/big-design-icons';
 import { offset, shift } from '@floating-ui/react';
 import React, { cloneElement, isValidElement, memo, useCallback, useMemo } from 'react';
 
-import { DropdownItem, DropdownLinkItem } from '../../Dropdown';
+import { type DropdownItem, type DropdownLinkItem } from '../../Dropdown';
 import { Flex, FlexItem } from '../../Flex';
-import { SelectAction, SelectOption } from '../../Select';
+import { type SelectAction, type SelectOption } from '../../Select';
 import { Tooltip } from '../../Tooltip';
 import { Small } from '../../Typography';
 

@@ -2,7 +2,7 @@ import { act, fireEvent, render, screen } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
 
-import { AlertProps } from '../../components/Alert';
+import { type AlertProps } from '../../components/Alert';
 
 import { AlertsManager } from './AlertsManager';
 import { createAlertsManager } from './manager';

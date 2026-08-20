@@ -1,4 +1,11 @@
-import { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from 'react';
+import {
+  type Dispatch,
+  type SetStateAction,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 // prettier-ignore
 export const useRafState = <S,>(initialState: S | (() => S)): [S, Dispatch<SetStateAction<S>>] => {

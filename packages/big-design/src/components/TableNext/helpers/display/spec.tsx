@@ -5,7 +5,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { withTableColumnDisplay } from './display';
-import { TransientTableColumnDisplayProps } from './types';
+import { type TransientTableColumnDisplayProps } from './types';
 
 const TestComponent = styled.div<TransientTableColumnDisplayProps>`
   ${withTableColumnDisplay()};

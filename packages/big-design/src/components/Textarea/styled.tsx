@@ -1,12 +1,12 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
-import React from 'react';
+import type { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
 import { withTransition } from '../../helpers/transitions';
 
 interface StyledTextareaProps {
   $resize?: boolean;
-  $error?: React.ReactNode | React.ReactNode[];
+  $error?: ReactNode | ReactNode[];
 }
 
 export const StyledTextareaWrapper = styled.span`

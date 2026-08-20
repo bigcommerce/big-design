@@ -3,11 +3,11 @@ import React, { useCallback, useContext, useEffect, useMemo, useRef } from 'reac
 
 import { typedMemo } from '../../../utils';
 import { StyledCheckbox } from '../../Checkbox/private';
-import { FlexItemProps } from '../../Flex';
+import { type FlexItemProps } from '../../Flex';
 import { StyledRadio } from '../../Radio/styled';
 import { StyledUl } from '../styled';
 import { TreeContext } from '../Tree';
-import { TreeNodeProps } from '../types';
+import { type TreeNodeProps } from '../types';
 
 import {
   StyledArrowWrapper,

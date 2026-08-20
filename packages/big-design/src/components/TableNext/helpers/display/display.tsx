@@ -1,12 +1,12 @@
 import {
-  Breakpoints,
+  type Breakpoints,
   breakpointsOrder,
-  CSSRules,
-  ThemeInterface,
+  type CSSRules,
+  type ThemeInterface,
 } from '@bigcommerce/big-design-theme';
 import { css } from 'styled-components';
 
-import { TableColumnDisplayOverload, TransientTableColumnDisplayProps } from './types';
+import { type TableColumnDisplayOverload, type TransientTableColumnDisplayProps } from './types';
 
 export const withTableColumnDisplay = () => css<TransientTableColumnDisplayProps>`
   ${({ $display, theme }) => $display && getDisplayStyles($display, theme, 'display')};

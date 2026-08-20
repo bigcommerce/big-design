@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 import { withTransition } from '../../../helpers/transitions';
 
-import { ListItemProps } from '.';
+import { type ListItemProps } from '.';
 
 interface StyledListItemProps {
   disabled?: boolean;

@@ -3,14 +3,14 @@ import {
   ArrowUpwardIcon,
   BaselineHelpIcon,
 } from '@bigcommerce/big-design-icons';
-import React, { ComponentPropsWithoutRef, memo, RefObject, useId } from 'react';
+import React, { type ComponentPropsWithoutRef, memo, type RefObject, useId } from 'react';
 
 import { useComponentSize } from '../../../hooks';
 import { typedMemo } from '../../../utils';
 import { Box } from '../../Box';
 import { Tooltip } from '../../Tooltip';
-import { TableColumnDisplayProps } from '../helpers';
-import { TableColumn, TableItem } from '../types';
+import { type TableColumnDisplayProps } from '../helpers';
+import { type TableColumn, type TableItem } from '../types';
 
 import { StyledFlex, StyledTableHeaderCell, StyledTableHeaderIcon } from './styled';
 

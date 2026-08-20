@@ -3,7 +3,7 @@ import React, { Fragment, useCallback, useMemo, useRef, useState } from 'react';
 
 import { useIsomorphicLayoutEffect } from '../../hooks';
 import { Button } from '../Button';
-import { Dropdown, DropdownItem, DropdownProps } from '../Dropdown';
+import { Dropdown, type DropdownItem, type DropdownProps } from '../Dropdown';
 import { Flex } from '../Flex';
 
 import { StyledFlexItem, StyledGroupSeparator, StyledPillTab } from './styled';

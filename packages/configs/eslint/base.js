@@ -17,6 +17,23 @@ module.exports = {
     },
   },
   ignorePatterns: ['node_modules/', 'dist/'],
+  overrides: [
+    {
+      files: ['**/*.ts', '**/*.tsx'],
+      rules: {
+        // Babel's TS preset doesn't reliably elide cross-module type-only imports in this
+        // codebase's config, so an unmarked type import compiles into a runtime import
+        // specifier for a binding that doesn't exist, crashing under strict-ESM bundlers
+        // (Vite/Rollup/Rolldown, webpack with strictExportPresence). See LTRAC-1370.
+        // Scoped to ts/tsx only: the rule needs type info, which isn't set up for the
+        // plain .js config files (e.g. .eslintrc.js) this config also lints.
+        '@typescript-eslint/consistent-type-imports': [
+          'error',
+          { prefer: 'type-imports', fixStyle: 'inline-type-imports' },
+        ],
+      },
+    },
+  ],
   rules: {
     '@typescript-eslint/naming-convention': 'off',
     '@typescript-eslint/no-unsafe-return': 'off',

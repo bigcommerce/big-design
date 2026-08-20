@@ -1,6 +1,6 @@
-import { Dispatch, SetStateAction } from 'react';
+import { type Dispatch, type SetStateAction } from 'react';
 
-import { TableSelectable } from '../../types';
+import { type TableSelectable } from '../../types';
 
 export interface SelectRowArg {
   isTheOnlySelectedChildRow?: boolean;

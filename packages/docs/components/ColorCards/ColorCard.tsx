@@ -3,7 +3,7 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 
-import { ColorDetails } from './availableColors';
+import { type ColorDetails } from './availableColors';
 
 const StyledColor = styled(Flex)`
   height: ${({ theme }) => theme.helpers.remCalc(160)};

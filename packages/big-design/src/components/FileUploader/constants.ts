@@ -1,4 +1,4 @@
-import { Localization } from './types';
+import { type Localization } from './types';
 
 export const defaultLocalization: Localization = {
   upload: 'Upload',

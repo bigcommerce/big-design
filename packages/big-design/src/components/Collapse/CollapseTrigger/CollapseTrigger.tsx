@@ -1,7 +1,7 @@
 import { ExpandMoreIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
-import { MarginProps } from '../../../helpers';
+import { type MarginProps } from '../../../helpers';
 import { useCollapseContext } from '../useCollapseContext';
 
 import { StyledButton } from './styled';

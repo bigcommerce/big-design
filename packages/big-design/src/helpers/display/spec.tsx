@@ -5,7 +5,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { withDisplay } from './display';
-import { TransientDisplayProps } from './types';
+import { type TransientDisplayProps } from './types';
 
 const TestComponent = styled.div<TransientDisplayProps>`
   ${withDisplay()};

@@ -1,4 +1,4 @@
-import { LinkProps, default as NLink } from 'next/link';
+import { type LinkProps, default as NLink } from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
 

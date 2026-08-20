@@ -1,7 +1,7 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
-import { TransientFlexedProps } from '../../Flex/types';
+import { type TransientFlexedProps } from '../../Flex/types';
 import { withFlexedContainer } from '../../Flex/withFlex';
 
 interface StyledFlexProps extends TransientFlexedProps {

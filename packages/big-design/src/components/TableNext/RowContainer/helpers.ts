@@ -1,4 +1,4 @@
-import { RowProps } from '../Row';
+import { type RowProps } from '../Row';
 
 interface CalculateColSpanArg<T> {
   columns: RowProps<T>['columns'];
