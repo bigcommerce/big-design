@@ -3,11 +3,11 @@ import {
   type Spacing,
   type ThemeInterface,
 } from '@bigcommerce/big-design-theme';
-import {
-  type ComponentPropsWithoutRef,
-  type ForwardRefExoticComponent,
-  type PropsWithoutRef,
-  type RefAttributes,
+import type {
+  ComponentPropsWithoutRef,
+  ForwardRefExoticComponent,
+  PropsWithoutRef,
+  RefAttributes,
 } from 'react';
 import styled from 'styled-components';
 

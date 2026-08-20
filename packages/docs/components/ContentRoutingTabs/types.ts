@@ -1,4 +1,4 @@
-import { type PillTabItem } from '@bigcommerce/big-design';
+import type { PillTabItem } from '@bigcommerce/big-design';
 
 export interface Route extends PillTabItem {
   render(): React.JSX.Element;

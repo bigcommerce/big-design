@@ -1,4 +1,4 @@
-import { type ThemeInterface } from '@bigcommerce/big-design-theme';
+import type { ThemeInterface } from '@bigcommerce/big-design-theme';
 
 type Colors = ThemeInterface['colors'];
 type Color = keyof Colors;

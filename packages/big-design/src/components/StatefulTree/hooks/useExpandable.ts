@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { type TreeExpandable } from '../../Tree';
-import { type StatefulTreeProps } from '../StatefulTree';
+import type { TreeExpandable } from '../../Tree';
+import type { StatefulTreeProps } from '../StatefulTree';
 
 interface UseExpandableProps<T> {
   defaultExpanded: StatefulTreeProps<T>['defaultExpanded'];

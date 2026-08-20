@@ -1,6 +1,6 @@
-import { type CSSRules, type ThemeInterface } from '@bigcommerce/big-design-theme';
+import type { CSSRules, ThemeInterface } from '@bigcommerce/big-design-theme';
 
-import { type ResponsiveProp } from '../../types';
+import type { ResponsiveProp } from '../../types';
 
 type AlignContent = ResponsiveProp<
   | 'normal'

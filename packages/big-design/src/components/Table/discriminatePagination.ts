@@ -1,4 +1,4 @@
-import { type DiscriminatedTablePaginationProps, type TablePaginationProps } from './types';
+import type { DiscriminatedTablePaginationProps, TablePaginationProps } from './types';
 
 export const discriminatePagination = (
   pagination: TablePaginationProps,

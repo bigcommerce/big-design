@@ -1,11 +1,11 @@
 import { CheckIcon } from '@bigcommerce/big-design-icons';
-import { type UseComboboxPropGetters, type UseSelectPropGetters } from 'downshift';
+import type { UseComboboxPropGetters, UseSelectPropGetters } from 'downshift';
 import React, { type ComponentPropsWithoutRef, forwardRef, memo, type Ref } from 'react';
 
 import { typedMemo } from '../../../utils';
 import { Checkbox } from '../../Checkbox';
-import { type DropdownItem, type DropdownLinkItem } from '../../Dropdown';
-import { type SelectAction, type SelectOption } from '../../Select';
+import type { DropdownItem, DropdownLinkItem } from '../../Dropdown';
+import type { SelectAction, SelectOption } from '../../Select';
 
 import { Content } from './Content';
 import { StyledListItem } from './styled';

@@ -3,9 +3,9 @@ import React from 'react';
 import { typedMemo } from '../../../utils';
 import { StyleableButton } from '../../Button/Button';
 import { DataCell } from '../DataCell';
-import { type OnItemSelectFn } from '../hooks';
+import type { OnItemSelectFn } from '../hooks';
 import { Row, type RowProps } from '../Row';
-import { type TableExpandable, type TableItem, type TableProps } from '../types';
+import type { TableExpandable, TableItem, TableProps } from '../types';
 
 import { calculateColSpan } from './helpers';
 

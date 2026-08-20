@@ -1,11 +1,6 @@
 import { useCallback, useState } from 'react';
 
-import {
-  type TreeFocusable,
-  type TreeNodeId,
-  type TreeNodeProps,
-  type TreeSelectableType,
-} from '../../Tree';
+import type { TreeFocusable, TreeNodeId, TreeNodeProps, TreeSelectableType } from '../../Tree';
 
 interface UseFocusableProps<T> {
   nodes: Array<TreeNodeProps<T>>;

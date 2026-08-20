@@ -1,4 +1,4 @@
-import { type Breakpoints } from '@bigcommerce/big-design-theme';
+import type { Breakpoints } from '@bigcommerce/big-design-theme';
 
 export type Responsive<T> = { [key in keyof Breakpoints]?: T };
 

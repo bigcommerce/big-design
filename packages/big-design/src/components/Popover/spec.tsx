@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 import { Popover } from './Popover';
 
-import { type PopoverProps } from '.';
+import type { PopoverProps } from '.';
 
 const TestComponent: React.FC<Partial<PopoverProps>> = ({ isOpen = false, ...rest }) => {
   const [open, setOpen] = useState(isOpen);

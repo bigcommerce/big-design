@@ -10,7 +10,7 @@ import React, {
   useMemo,
   useRef,
 } from 'react';
-import { type StoreApi } from 'zustand';
+import type { StoreApi } from 'zustand';
 import { useShallow } from 'zustand/shallow';
 
 import { typedMemo } from '../../utils';
@@ -24,13 +24,13 @@ import { WorksheetModal } from './Modal';
 import { Row } from './Row';
 import { Status } from './RowStatus/styled';
 import { Header, StyledBox, Table } from './styled';
-import {
-  type InternalTableInterface,
-  type InternalWorksheetColumn,
-  type WorksheetItem,
-  type WorksheetLocalization,
-  type WorksheetModalColumn,
-  type WorksheetProps,
+import type {
+  InternalTableInterface,
+  InternalWorksheetColumn,
+  WorksheetItem,
+  WorksheetLocalization,
+  WorksheetModalColumn,
+  WorksheetProps,
 } from './types';
 import { editedRows, invalidRows } from './utils';
 

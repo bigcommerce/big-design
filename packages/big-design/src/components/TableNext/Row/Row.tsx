@@ -21,9 +21,9 @@ import { typedMemo } from '../../../utils';
 import { MessagingButton } from '../../Button/private';
 import { Checkbox } from '../../Checkbox';
 import { Flex } from '../../Flex';
-import { type FlexedProps } from '../../Flex/types';
+import type { FlexedProps } from '../../Flex/types';
 import { DataCell } from '../DataCell';
-import { type TableColumn, type TableItem, type TableSelectable } from '../types';
+import type { TableColumn, TableItem, TableSelectable } from '../types';
 
 import { StyledDragHandle, StyledDragPreview, StyledTableRow } from './styled';
 import { useRowState } from './useRowState';

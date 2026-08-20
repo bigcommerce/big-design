@@ -6,7 +6,7 @@ import React, {
   type Ref,
 } from 'react';
 
-import { type MarginProps } from '../../helpers';
+import type { MarginProps } from '../../helpers';
 import { excludePaddingProps } from '../../helpers/paddings/paddings';
 import { warning } from '../../utils';
 import { Badge, type BadgeProps } from '../Badge/Badge';

@@ -1,6 +1,6 @@
-import { type AlertProps } from '../../components/Alert';
+import type { AlertProps } from '../../components/Alert';
 
-import { type Subscriber, type TypeMap } from './types';
+import type { Subscriber, TypeMap } from './types';
 
 interface AddAlertConfig extends AlertProps {
   autoDismiss?: boolean;

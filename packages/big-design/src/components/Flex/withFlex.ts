@@ -6,12 +6,12 @@ import {
 } from '@bigcommerce/big-design-theme';
 import { css } from 'styled-components';
 
-import {
-  type FlexedItemProps,
-  type FlexedOverload,
-  type FlexedProps,
-  type TransientFlexedItemProps,
-  type TransientFlexedProps,
+import type {
+  FlexedItemProps,
+  FlexedOverload,
+  FlexedProps,
+  TransientFlexedItemProps,
+  TransientFlexedProps,
 } from './types';
 
 export const withFlexedContainer = () => css<TransientFlexedProps>`

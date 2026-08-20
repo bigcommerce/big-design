@@ -1,7 +1,7 @@
 import { type MarginProps, withMargins } from '@bigcommerce/big-design';
 import styled from 'styled-components';
 
-import { type MethodBadgeProps } from './MethodBadge';
+import type { MethodBadgeProps } from './MethodBadge';
 
 interface StyledMethodBadgeProps extends Omit<MethodBadgeProps, 'label' | keyof MarginProps> {
   $margin?: MarginProps['margin'];

@@ -5,9 +5,9 @@ import { getBorderStyle } from '../../utils';
 import { Grid } from '../Grid';
 import { Link } from '../Link';
 import { StyleableH4, StyleableSmall } from '../Typography/private';
-import { type TextProps } from '../Typography/types';
+import type { TextProps } from '../Typography/types';
 
-import { type AlertProps } from './Alert';
+import type { AlertProps } from './Alert';
 
 interface StyledAlertProps {
   type?: AlertProps['type'];

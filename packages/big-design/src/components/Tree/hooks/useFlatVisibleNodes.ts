@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { type TreeNodeId, type TreeNodeProps } from '../types';
+import type { TreeNodeId, TreeNodeProps } from '../types';
 
 export interface FlatTreeNode<T> {
   node: TreeNodeProps<T>;

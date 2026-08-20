@@ -1,6 +1,6 @@
 import { Box } from '@bigcommerce/big-design';
 import clipboardCopy from 'clipboard-copy';
-import { type Language } from 'prism-react-renderer';
+import type { Language } from 'prism-react-renderer';
 import React, { useContext } from 'react';
 import { Editor } from 'react-live';
 

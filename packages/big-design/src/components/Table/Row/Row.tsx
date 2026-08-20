@@ -14,7 +14,7 @@ import { createPortal } from 'react-dom';
 import { typedMemo } from '../../../utils';
 import { Checkbox } from '../../Checkbox';
 import { DataCell } from '../DataCell';
-import { type TableColumn, type TableItem } from '../types';
+import type { TableColumn, TableItem } from '../types';
 
 import { StyledDragHandle, StyledDragPreview, StyledTableRow } from './styled';
 

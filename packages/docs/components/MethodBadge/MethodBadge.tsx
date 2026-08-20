@@ -1,5 +1,8 @@
-import { type MarginProps } from '@bigcommerce/big-design';
-import React, { type ComponentPropsWithoutRef } from 'react';
+import type { MarginProps } from '@bigcommerce/big-design';
+// eslint-disable-next-line import/no-duplicates -- React below is a genuine value import; the rest is type-only
+import React from 'react';
+// eslint-disable-next-line import/no-duplicates -- see above
+import type { ComponentPropsWithoutRef, FC } from 'react';
 
 import { StyledMethodBadge } from './styled';
 
@@ -7,7 +10,7 @@ export interface MethodBadgeProps extends ComponentPropsWithoutRef<'div'>, Margi
   label: string;
 }
 
-export const MethodBadge: React.FC<MethodBadgeProps> = ({
+export const MethodBadge: FC<MethodBadgeProps> = ({
   className,
   style,
   label,

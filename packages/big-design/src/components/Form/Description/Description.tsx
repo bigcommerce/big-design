@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import { type LinkProps } from '../../Link';
+import type { LinkProps } from '../../Link';
 import { Small, type TextProps } from '../../Typography';
 
 import { StyledLink } from './styled';

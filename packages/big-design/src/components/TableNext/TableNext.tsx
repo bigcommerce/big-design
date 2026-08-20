@@ -7,7 +7,7 @@ import {
 } from '@atlaskit/pragmatic-drag-and-drop-live-region';
 import React, { memo, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 
-import { type MarginProps } from '../../helpers';
+import type { MarginProps } from '../../helpers';
 import { toTransientMarginProps } from '../../helpers/margins/margins';
 import { typedMemo } from '../../utils';
 
@@ -26,7 +26,7 @@ import { useExpandable, useSelectable } from './hooks';
 import { Row } from './Row';
 import { RowContainer } from './RowContainer';
 import { StyledTable, StyledTableFigure } from './styled';
-import { type TableColumn, type TableItem, type TableProps } from './types';
+import type { TableColumn, TableItem, TableProps } from './types';
 
 interface Localization {
   ascendingOrder: string;

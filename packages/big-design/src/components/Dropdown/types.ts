@@ -1,5 +1,5 @@
-import { type Placement } from '@popperjs/core';
-import { type ComponentPropsWithoutRef, type ReactElement } from 'react';
+import type { Placement } from '@popperjs/core';
+import type { ComponentPropsWithoutRef, ReactElement } from 'react';
 
 export interface DropdownProps extends Omit<ComponentPropsWithoutRef<'ul'>, 'children'> {
   autoWidth?: boolean;

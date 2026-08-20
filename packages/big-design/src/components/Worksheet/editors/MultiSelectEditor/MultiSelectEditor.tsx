@@ -4,7 +4,7 @@ import { useShallow } from 'zustand/shallow';
 import { typedMemo } from '../../../../utils';
 import { MultiSelect } from '../../../MultiSelect';
 import { useWorksheetStore } from '../../hooks';
-import { type Cell, type WorksheetItem, type WorksheetSelectableColumn } from '../../types';
+import type { Cell, WorksheetItem, WorksheetSelectableColumn } from '../../types';
 
 import { MultiSelectWrapper } from './styled';
 

@@ -1,7 +1,7 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
-import { type StatusMessageProps, type StatusMessageVariantType } from './StatusMessage';
+import type { StatusMessageProps, StatusMessageVariantType } from './StatusMessage';
 
 function svgToCssBackground(svgString: string): string {
   // Minify: remove newlines and excessive spaces

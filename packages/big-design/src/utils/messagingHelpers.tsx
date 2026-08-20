@@ -1,11 +1,11 @@
 import { CheckCircleIcon, ErrorIcon, InfoIcon, WarningIcon } from '@bigcommerce/big-design-icons';
-import { type ThemeInterface } from '@bigcommerce/big-design-theme';
+import type { ThemeInterface } from '@bigcommerce/big-design-theme';
 import React, { type ComponentPropsWithoutRef } from 'react';
 import { css } from 'styled-components';
 
-import { type ButtonProps } from '../components/Button';
-import { type LinkProps } from '../components/Link';
-import { type MarginProps } from '../helpers/margins';
+import type { ButtonProps } from '../components/Button';
+import type { LinkProps } from '../components/Link';
+import type { MarginProps } from '../helpers/margins';
 
 export interface SharedMessagingProps extends ComponentPropsWithoutRef<'div'> {
   actions?: MessageAction[];

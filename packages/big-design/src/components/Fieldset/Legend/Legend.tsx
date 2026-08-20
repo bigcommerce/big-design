@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-import { type HeadingProps } from '../../Typography';
+import type { HeadingProps } from '../../Typography';
 
 import { StyledFieldsetLegend } from './styled';
 

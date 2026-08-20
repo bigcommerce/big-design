@@ -4,7 +4,7 @@ import React, { type CSSProperties } from 'react';
 import 'jest-styled-components';
 
 import { TableFigureNext, TableNext } from './TableNext';
-import { type TableColumn } from './types';
+import type { TableColumn } from './types';
 
 interface Item {
   sku: string;

@@ -1,7 +1,7 @@
 import { type Colors, theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
-import { type Cell, type WorksheetItem } from '../types';
+import type { Cell, WorksheetItem } from '../types';
 
 interface StyledCellProps<Item> {
   $isFirstSelected: boolean;

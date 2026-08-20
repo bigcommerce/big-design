@@ -6,7 +6,7 @@ import { useFlatVisibleNodes } from './hooks/useFlatVisibleNodes';
 import { useTreeVirtualizer } from './hooks/useTreeVirtualizer';
 import { StyledUl, StyledVirtualSpacer } from './styled';
 import { TreeNode } from './TreeNode';
-import { type TreeContextState, type TreeNodeId, type TreeProps } from './types';
+import type { TreeContextState, TreeNodeId, TreeProps } from './types';
 
 const EMPTY_COUNTS: Map<TreeNodeId, number> = new Map();
 const EMPTY_NODES: never[] = [];

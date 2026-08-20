@@ -1,7 +1,7 @@
 import { type FocusEvent, type KeyboardEvent, useCallback, useMemo } from 'react';
 import { useShallow } from 'zustand/shallow';
 
-import { type Cell, type WorksheetItem } from '../../types';
+import type { Cell, WorksheetItem } from '../../types';
 import { useTableFocus } from '../useTableFocus';
 import { useUpdateItems } from '../useUpdateItems';
 import { useWorksheetStore } from '../useWorksheetStore';

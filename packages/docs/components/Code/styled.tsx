@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { type CodeProps } from './';
+import type { CodeProps } from './';
 
 interface StyledCodeProps {
   $highlight?: CodeProps['highlight'];

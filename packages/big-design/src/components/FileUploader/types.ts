@@ -1,5 +1,5 @@
-import { type MarginProps } from '../../helpers';
-import { type ButtonProps } from '../Button';
+import type { MarginProps } from '../../helpers';
+import type { ButtonProps } from '../Button';
 
 export interface Localization {
   upload: string;

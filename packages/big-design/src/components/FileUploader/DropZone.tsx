@@ -19,7 +19,7 @@ import { Flex } from '../Flex';
 import { Small, Text } from '../Typography';
 
 import { StyledButton, StyledDropzone } from './styled';
-import { type Action, type Localization } from './types';
+import type { Action, Localization } from './types';
 import { validateFileFormat } from './utils';
 
 export interface Props extends ComponentPropsWithoutRef<'input'> {

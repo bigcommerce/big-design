@@ -1,5 +1,5 @@
 import { areAllInPageSelected, areSomeInPageSelected, getSelectAllState } from './helpers';
-import { type SelectAllProps } from './SelectAll';
+import type { SelectAllProps } from './SelectAll';
 
 // prettier-ignore
 export const useSelectAllState = <T,>(props: SelectAllProps<T>) => {
