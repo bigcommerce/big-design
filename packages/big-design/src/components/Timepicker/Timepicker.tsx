@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, forwardRef, memo, Ref, useMemo } from 'react';
+import React, { type ComponentPropsWithoutRef, forwardRef, memo, type Ref, useMemo } from 'react';
 
 import { createLocalizationProvider, getTimeIntervals } from '../../utils';
 import { Select } from '../Select';

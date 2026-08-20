@@ -1,10 +1,10 @@
 import { CloseIcon } from '@bigcommerce/big-design-icons';
-import { createFocusTrap, FocusTrap } from 'focus-trap';
+import { createFocusTrap, type FocusTrap } from 'focus-trap';
 import React, { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import { typedMemo } from '../../utils';
-import { Button, ButtonProps } from '../Button';
+import { Button, type ButtonProps } from '../Button';
 import { MessagingButton } from '../Button/private';
 import { H2 } from '../Typography';
 

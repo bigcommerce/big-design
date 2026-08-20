@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { NodeMap, TreeNodeId, TreeNodeProps } from '../types';
+import { type NodeMap, type TreeNodeId, type TreeNodeProps } from '../types';
 
 interface UseNodeMapProps<T> {
   nodes: Array<TreeNodeProps<T>>;

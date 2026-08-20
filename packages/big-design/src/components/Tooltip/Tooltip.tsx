@@ -1,5 +1,18 @@
-import { autoUpdate, Middleware, offset, Placement, shift, useFloating } from '@floating-ui/react';
-import React, { cloneElement, ComponentPropsWithoutRef, memo, useEffect, useState } from 'react';
+import {
+  autoUpdate,
+  type Middleware,
+  offset,
+  type Placement,
+  shift,
+  useFloating,
+} from '@floating-ui/react';
+import React, {
+  cloneElement,
+  type ComponentPropsWithoutRef,
+  memo,
+  useEffect,
+  useState,
+} from 'react';
 import { createPortal } from 'react-dom';
 
 import { getFloatingPlacement } from '../../utils/floatingPlacement';

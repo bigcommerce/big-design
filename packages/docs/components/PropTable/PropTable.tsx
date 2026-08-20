@@ -1,5 +1,5 @@
 import { Flex, H3, Link, Small, Table, TableFigure, Text } from '@bigcommerce/big-design';
-import React, { FC, isValidElement, ReactNode } from 'react';
+import React, { type FC, isValidElement, type ReactNode } from 'react';
 
 import { Code } from '../Code';
 import { Collapsible } from '../Collapsible';

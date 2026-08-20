@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import 'jest-styled-components';
 
-import { InlineMessage, InlineMessageProps } from './InlineMessage';
+import { InlineMessage, type InlineMessageProps } from './InlineMessage';
 
 test('renders with margins', () => {
   const { container, rerender } = render(<InlineMessage messages={[{ text: 'Success' }]} />);

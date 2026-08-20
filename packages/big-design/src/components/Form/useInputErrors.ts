@@ -1,11 +1,11 @@
-import React, { isValidElement, useContext, useEffect, useMemo } from 'react';
+import { isValidElement, type ReactNode, useContext, useEffect, useMemo } from 'react';
 
 import { warning } from '../../utils';
 
 import { FormControlError } from './Error';
 import { FormGroupContext } from './Group';
 
-type InputError = React.ReactNode;
+type InputError = ReactNode;
 
 const isValidError = (err: InputError) => {
   if (!err) {

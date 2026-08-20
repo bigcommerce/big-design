@@ -4,7 +4,7 @@ import { useShallow } from 'zustand/shallow';
 import { typedMemo } from '../../../utils';
 import { Modal } from '../../Modal';
 import { useTableFocus, useUpdateItems, useWorksheetStore } from '../hooks';
-import { WorksheetItem, WorksheetModalColumn } from '../types';
+import { type WorksheetItem, type WorksheetModalColumn } from '../types';
 
 interface WorksheetModalProps<Item> {
   column: WorksheetModalColumn<Item>;

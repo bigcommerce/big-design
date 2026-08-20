@@ -1,10 +1,10 @@
 import { AddCircleOutlineIcon, RemoveCircleOutlineIcon } from '@bigcommerce/big-design-icons';
 import React, {
   cloneElement,
-  ComponentPropsWithoutRef,
+  type ComponentPropsWithoutRef,
   forwardRef,
   isValidElement,
-  Ref,
+  type Ref,
   useEffect,
   useId,
   useMemo,

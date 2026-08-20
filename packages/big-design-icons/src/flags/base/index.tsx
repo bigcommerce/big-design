@@ -4,10 +4,10 @@ import {
   type ThemeInterface,
 } from '@bigcommerce/big-design-theme';
 import {
-  ComponentPropsWithoutRef,
-  ForwardRefExoticComponent,
-  PropsWithoutRef,
-  RefAttributes,
+  type ComponentPropsWithoutRef,
+  type ForwardRefExoticComponent,
+  type PropsWithoutRef,
+  type RefAttributes,
 } from 'react';
 import styled from 'styled-components';
 

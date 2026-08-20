@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import { type KeyboardEvent, useCallback, useMemo } from 'react';
 import { useShallow } from 'zustand/shallow';
 
 import { useNavigation } from '../useNavigation';
@@ -71,7 +71,7 @@ export const useKeyEvents = () => {
   );
 
   const handleKeyUp = useCallback(
-    (event: React.KeyboardEvent) => {
+    (event: KeyboardEvent) => {
       const key = event.key;
 
       if (key === 'Shift') {
@@ -82,7 +82,7 @@ export const useKeyEvents = () => {
   );
 
   const handleKeyDown = useCallback(
-    (event: React.KeyboardEvent) => {
+    (event: KeyboardEvent) => {
       const key = event.key;
 
       if (event.metaKey || (event.key === 'c' && (event.ctrlKey || event.metaKey))) {

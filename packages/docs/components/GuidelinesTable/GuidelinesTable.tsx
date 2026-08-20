@@ -2,7 +2,7 @@ import { Box, Flex, FlexItem, StatefulTable } from '@bigcommerce/big-design';
 import { CheckCircleIcon, ErrorIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
-import { GuidelinesTableProps } from './types';
+import { type GuidelinesTableProps } from './types';
 
 export const GuidelinesTable: React.FC<GuidelinesTableProps> = ({ recommended, discouraged }) => {
   return (

@@ -13,12 +13,12 @@ import {
   StyledText,
 } from './styled';
 import {
-  HeadingProps,
-  HeadingTag,
-  HRProps,
-  TextModifiers,
-  TextProps,
-  TypographyProps,
+  type HeadingProps,
+  type HeadingTag,
+  type HRProps,
+  type TextModifiers,
+  type TextProps,
+  type TypographyProps,
 } from './types';
 
 function toTransientTextProps(props: TypographyProps & TextModifiers) {

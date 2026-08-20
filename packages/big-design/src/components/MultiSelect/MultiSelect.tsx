@@ -1,16 +1,16 @@
 import { autoUpdate, offset, shift, useFloating } from '@floating-ui/react';
 import {
   useCombobox,
-  UseComboboxState,
-  UseComboboxStateChange,
-  UseComboboxStateChangeOptions,
+  type UseComboboxState,
+  type UseComboboxStateChange,
+  type UseComboboxStateChangeOptions,
 } from 'downshift';
 import React, {
   cloneElement,
-  ComponentPropsWithoutRef,
+  type ComponentPropsWithoutRef,
   createRef,
   isValidElement,
-  RefObject,
+  type RefObject,
   useCallback,
   useEffect,
   useId,
@@ -23,10 +23,10 @@ import { Box } from '../Box';
 import { FormControlLabel } from '../Form';
 import { Input } from '../Input';
 import { List } from '../List';
-import { SelectAction, SelectOption, SelectOptionGroup } from '../Select';
+import { type SelectAction, type SelectOption, type SelectOptionGroup } from '../Select';
 import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from '../Select/styled';
 
-import { MultiSelectLocalization, MultiSelectProps } from './types';
+import { type MultiSelectLocalization, type MultiSelectProps } from './types';
 
 export const defaultLocalization: MultiSelectLocalization = {
   selectAll: 'Select All',

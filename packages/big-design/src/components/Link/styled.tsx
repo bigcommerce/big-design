@@ -3,7 +3,7 @@ import { ellipsis } from 'polished';
 import styled, { css } from 'styled-components';
 
 import { withMargins } from '../../helpers';
-import { TransientMarginProps } from '../../helpers/margins/margins';
+import { type TransientMarginProps } from '../../helpers/margins/margins';
 import { withTransition } from '../../helpers/transitions';
 
 interface StyledLinkProps extends TransientMarginProps {

@@ -2,7 +2,7 @@ import { theme as defaultTheme, remCalc } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { StyleableButton } from '../Button/private';
-import { StyledInput, StyledInputWrapper, StyledInputWrapperProps } from '../Input/private';
+import { StyledInput, StyledInputWrapper, type StyledInputWrapperProps } from '../Input/private';
 
 export const StyledCounterButton = styled(StyleableButton)`
   background-color: inherit;

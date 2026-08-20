@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 
 import { Flex } from '../../Flex';
 import { withTableColumnDisplay } from '../helpers';
-import { TransientTableColumnDisplayProps } from '../helpers/display/types';
+import { type TransientTableColumnDisplayProps } from '../helpers/display/types';
 
 interface StyledTableHeaderCellProps extends TransientTableColumnDisplayProps {
   $isSortable?: boolean;

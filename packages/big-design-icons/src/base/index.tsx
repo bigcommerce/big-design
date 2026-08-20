@@ -4,10 +4,11 @@ import {
   type Spacing,
   type ThemeInterface,
 } from '@bigcommerce/big-design-theme';
-import React, {
+import type {
   ComponentPropsWithoutRef,
   ForwardRefExoticComponent,
   PropsWithoutRef,
+  Ref,
   RefAttributes,
 } from 'react';
 import styled from 'styled-components';
@@ -21,7 +22,7 @@ export interface IconProps extends ComponentPropsWithoutRef<'svg'> {
 }
 
 export interface PrivateIconProps {
-  svgRef?: React.Ref<SVGSVGElement>;
+  svgRef?: Ref<SVGSVGElement>;
   titleId?: string;
 }
 

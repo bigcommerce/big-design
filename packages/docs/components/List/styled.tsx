@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { ListProps } from './List';
+import { type ListProps } from './List';
 
 interface StyledListProps {
   $columnCount?: ListProps['columnCount'];

@@ -1,5 +1,12 @@
 import { offset } from '@floating-ui/react';
-import React, { ComponentPropsWithoutRef, forwardRef, memo, Ref, useEffect, useState } from 'react';
+import React, {
+  type ComponentPropsWithoutRef,
+  forwardRef,
+  memo,
+  type Ref,
+  useEffect,
+  useState,
+} from 'react';
 import { default as ReactDatePicker, registerLocale } from 'react-datepicker';
 
 import { createLocalizationProvider } from '../../utils';

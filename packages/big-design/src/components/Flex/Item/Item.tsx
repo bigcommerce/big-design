@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 
-import { BoxProps } from '../../Box';
-import { FlexedItemProps } from '../types';
+import { type BoxProps } from '../../Box';
+import { type FlexedItemProps } from '../types';
 import { toTransientFlexedItemProps } from '../withFlex';
 
 import { StyledFlexItem } from './styled';

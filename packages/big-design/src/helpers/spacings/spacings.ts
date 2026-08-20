@@ -1,12 +1,12 @@
 import {
-  Breakpoints,
+  type Breakpoints,
   breakpointsOrder,
-  Spacing,
-  ThemeInterface,
+  type Spacing,
+  type ThemeInterface,
 } from '@bigcommerce/big-design-theme';
 import { css } from 'styled-components';
 
-import { Responsive } from '../../types';
+import { type Responsive } from '../../types';
 
 type SingleSpacingProp<T> = keyof Spacing | T;
 type ResponsiveSpacingProp<T> = Responsive<keyof Spacing | T>;

@@ -6,7 +6,7 @@ import 'jest-styled-components';
 
 import { warning } from '../../utils';
 
-import { TabItem, Tabs } from './Tabs';
+import { type TabItem, Tabs } from './Tabs';
 
 const items: TabItem[] = [
   { ariaControls: 'content1', id: 'tab1', title: 'Tab 1' },

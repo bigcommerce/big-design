@@ -1,4 +1,4 @@
-import React, { memo, ReactNode, useId } from 'react';
+import React, { memo, type ReactNode, useId } from 'react';
 
 import { StyleableSmall } from '../../Typography/private';
 

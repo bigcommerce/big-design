@@ -11,7 +11,7 @@ import { LiveEditor, LivePreview, LiveProvider } from 'react-live';
 import styled from 'styled-components';
 
 import { SnippetControls } from '../SnippetControls';
-import { CodeEditorContext, Language } from '../StoryWrapper/StoryWrapper';
+import { CodeEditorContext, type Language } from '../StoryWrapper/StoryWrapper';
 
 import { StyledLiveError } from './styled';
 

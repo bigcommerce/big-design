@@ -1,7 +1,7 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
-import { StyleableButton as _StyleableButton, ButtonProps } from './Button';
+import { StyleableButton as _StyleableButton, type ButtonProps } from './Button';
 
 export const StyleableButton = _StyleableButton;
 

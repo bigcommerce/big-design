@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
-import React, { createRef, Ref } from 'react';
+import React, { createRef, type Ref } from 'react';
 import 'jest-styled-components';
 
 import { Button } from '../Button';
@@ -12,7 +12,7 @@ import {
   FormGroup,
 } from '../Form';
 
-import { Counter, CounterProps } from './index';
+import { Counter, type CounterProps } from './index';
 
 interface MockCounterProps extends CounterProps {
   dataTestId?: string;

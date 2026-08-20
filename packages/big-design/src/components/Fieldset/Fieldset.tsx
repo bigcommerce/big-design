@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, isValidElement, memo, useMemo } from 'react';
+import React, { type ComponentPropsWithoutRef, isValidElement, memo, useMemo } from 'react';
 
 import { warning } from '../../utils';
 

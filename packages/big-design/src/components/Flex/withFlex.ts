@@ -1,17 +1,17 @@
 import {
-  Breakpoints,
+  type Breakpoints,
   breakpointsOrder,
-  CSSRules,
-  ThemeInterface,
+  type CSSRules,
+  type ThemeInterface,
 } from '@bigcommerce/big-design-theme';
 import { css } from 'styled-components';
 
 import {
-  FlexedItemProps,
-  FlexedOverload,
-  FlexedProps,
-  TransientFlexedItemProps,
-  TransientFlexedProps,
+  type FlexedItemProps,
+  type FlexedOverload,
+  type FlexedProps,
+  type TransientFlexedItemProps,
+  type TransientFlexedProps,
 } from './types';
 
 export const withFlexedContainer = () => css<TransientFlexedProps>`

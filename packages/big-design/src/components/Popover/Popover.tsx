@@ -1,10 +1,10 @@
 import { autoUpdate, offset, shift, size, useFloating } from '@floating-ui/react';
-import { Placement } from '@popperjs/core';
+import { type Placement } from '@popperjs/core';
 import React, { useEffect, useId, useRef, useState } from 'react';
 
 import { excludeMarginProps } from '../../helpers';
 import { getFloatingPlacement } from '../../utils';
-import { Box, BoxProps } from '../Box';
+import { Box, type BoxProps } from '../Box';
 
 // Margin can't be used with popper elements
 type BoxPropsWithoutMargins = Omit<

@@ -1,6 +1,6 @@
 import { MoreHorizIcon } from '@bigcommerce/big-design-icons';
 import React, {
-  ComponentPropsWithoutRef,
+  type ComponentPropsWithoutRef,
   createRef,
   memo,
   useCallback,
@@ -10,9 +10,9 @@ import React, {
   useState,
 } from 'react';
 
-import { MarginProps } from '../../helpers';
+import { type MarginProps } from '../../helpers';
 import { useWindowResizeListener } from '../../hooks';
-import { ButtonProps } from '../Button';
+import { type ButtonProps } from '../Button';
 import { Dropdown } from '../Dropdown';
 import { Flex } from '../Flex';
 

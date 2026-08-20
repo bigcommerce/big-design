@@ -1,7 +1,7 @@
 import { Small } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { NextLink, Prop, PropTable, PropTableWrapper } from '../components';
+import { NextLink, type Prop, PropTable, type PropTableWrapper } from '../components';
 
 const boxProps: Prop[] = [
   {

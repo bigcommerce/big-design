@@ -1,8 +1,8 @@
 import React, {
   cloneElement,
-  ComponentPropsWithoutRef,
+  type ComponentPropsWithoutRef,
   isValidElement,
-  MouseEvent,
+  type MouseEvent,
   useId,
   useMemo,
 } from 'react';

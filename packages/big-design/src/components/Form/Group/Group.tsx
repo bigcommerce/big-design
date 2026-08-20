@@ -1,7 +1,7 @@
 import { ErrorIcon } from '@bigcommerce/big-design-icons';
 import React, {
   Children,
-  ComponentPropsWithoutRef,
+  type ComponentPropsWithoutRef,
   createContext,
   Fragment,
   isValidElement,

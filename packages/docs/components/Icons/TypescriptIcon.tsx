@@ -1,7 +1,7 @@
 // **********************************
 // Auto-generated file, do NOT modify
 // **********************************
-import { createStyledIcon, IconProps } from '@bigcommerce/big-design-icons';
+import { createStyledIcon, type IconProps } from '@bigcommerce/big-design-icons';
 import React, { memo } from 'react';
 
 const Icon =

@@ -2,15 +2,15 @@ import { useContext } from 'react';
 import { createStore, useStore } from 'zustand';
 
 import {
-  Cell,
-  DisabledRows,
-  ExpandableRows,
-  InternalWorksheetColumn,
-  WorksheetItem,
+  type Cell,
+  type DisabledRows,
+  type ExpandableRows,
+  type InternalWorksheetColumn,
+  type WorksheetItem,
 } from '../../types';
 import { deleteCells, getCellsMap, getHiddenRows, mergeCells } from '../../utils';
 import { WorksheetContext } from '../../Worksheet';
-import { EditingCellsArgs } from '../useKeyEvents';
+import { type EditingCellsArgs } from '../useKeyEvents';
 
 export interface SetEditingCellArgs<T> extends EditingCellsArgs {
   cell: Cell<T> | null;

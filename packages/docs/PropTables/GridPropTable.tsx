@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Code, Prop, PropTable, PropTableWrapper } from '../components';
+import { Code, type Prop, PropTable, type PropTableWrapper } from '../components';
 
 const gridProps: Prop[] = [
   {

@@ -1,10 +1,10 @@
-import { Rect, useVirtualizer, Virtualizer } from '@tanstack/react-virtual';
-import { RefObject, useEffect, useMemo, useRef } from 'react';
+import { type Rect, useVirtualizer, type Virtualizer } from '@tanstack/react-virtual';
+import { type RefObject, useEffect, useMemo, useRef } from 'react';
 
 import { useEventCallback } from '../../../hooks';
-import { TreeNodeId, TreeNodeProps } from '../types';
+import { type TreeNodeId, type TreeNodeProps } from '../types';
 
-import { FlatTreeNode } from './useFlatVisibleNodes';
+import { type FlatTreeNode } from './useFlatVisibleNodes';
 
 const ROW_HEIGHT_ESTIMATE = 40;
 const OVERSCAN = 20;

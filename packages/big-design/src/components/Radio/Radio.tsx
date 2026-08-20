@@ -1,15 +1,15 @@
 import React, {
   cloneElement,
-  ComponentPropsWithoutRef,
+  type ComponentPropsWithoutRef,
   forwardRef,
   isValidElement,
-  Ref,
+  type Ref,
   useId,
   useMemo,
 } from 'react';
 
 import { typedMemo, warning } from '../../utils';
-import { FormControlDescription, FormControlDescriptionLinkProps } from '../Form';
+import { FormControlDescription, type FormControlDescriptionLinkProps } from '../Form';
 
 import { RadioLabel } from './Label';
 import {

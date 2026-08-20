@@ -8,11 +8,11 @@ import { CheckboxEditor, ModalEditor, SelectEditor, TextEditor, ToggleEditor } f
 import { MultiSelectEditor } from '../editors/MultiSelectEditor';
 import { useAutoFilling, useEditableCell, useWorksheetStore } from '../hooks';
 import {
-  InternalWorksheetColumn,
-  Cell as TCell,
-  WorksheetItem,
-  WorksheetSelectableColumn,
-  WorksheetTextColumn,
+  type InternalWorksheetColumn,
+  type Cell as TCell,
+  type WorksheetItem,
+  type WorksheetSelectableColumn,
+  type WorksheetTextColumn,
 } from '../types';
 import { getCellIdx } from '../utils';
 

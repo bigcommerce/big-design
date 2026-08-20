@@ -3,7 +3,7 @@ import React from 'react';
 import { useInView } from 'react-intersection-observer';
 
 import 'jest-styled-components';
-import { AnchorNav, AnchorNavElement } from './AnchorNav';
+import { AnchorNav, type AnchorNavElement } from './AnchorNav';
 
 jest.mock('react-intersection-observer', () => ({
   useInView: jest.fn(() => ({

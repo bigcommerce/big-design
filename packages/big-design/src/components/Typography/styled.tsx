@@ -2,16 +2,16 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { ellipsis } from 'polished';
 import styled, { css } from 'styled-components';
 
-import { MarginProps, withMargins } from '../../helpers';
-import { TransientMarginProps } from '../../helpers/margins/margins';
+import { type MarginProps, withMargins } from '../../helpers';
+import { type TransientMarginProps } from '../../helpers/margins/margins';
 
 import {
-  HeadingProps,
-  HRProps,
-  TextProps,
-  TransientTextModifiers,
-  TransientTypographyProps,
-  TypographyProps,
+  type HeadingProps,
+  type HRProps,
+  type TextProps,
+  type TransientTextModifiers,
+  type TransientTypographyProps,
+  type TypographyProps,
 } from './types';
 
 type StyledHeadingProps = Omit<HeadingProps, keyof MarginProps> &

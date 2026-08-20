@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Prop, PropTable, PropTableWrapper } from '../components';
+import { type Prop, PropTable, type PropTableWrapper } from '../components';
 
 export const FormErrorPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable nativeElement={['p', 'all']} propList={[]} title="FormControlError" {...props} />

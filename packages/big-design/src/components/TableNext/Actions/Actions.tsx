@@ -1,4 +1,4 @@
-import React, { Dispatch, RefObject, SetStateAction } from 'react';
+import React, { type Dispatch, type RefObject, type SetStateAction } from 'react';
 
 import { typedMemo } from '../../../utils';
 import { FlexItem } from '../../Flex';
@@ -6,11 +6,11 @@ import { Text } from '../../Typography';
 import { SelectAll } from '../SelectAll';
 import { TablePagination } from '../TablePagination';
 import {
-  DiscriminatedTablePaginationProps,
-  TableExpandable,
-  TableItem,
-  TableProps,
-  TableSelectable,
+  type DiscriminatedTablePaginationProps,
+  type TableExpandable,
+  type TableItem,
+  type TableProps,
+  type TableSelectable,
 } from '../types';
 
 import { StyledFlex } from './styled';

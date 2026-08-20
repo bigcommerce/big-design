@@ -3,7 +3,11 @@ import { userEvent } from '@testing-library/user-event';
 import React from 'react';
 import 'jest-styled-components';
 
-import { StatefulTable, StatefulTablePillTabFilter, StatefulTableProps } from './StatefulTable';
+import {
+  StatefulTable,
+  type StatefulTablePillTabFilter,
+  type StatefulTableProps,
+} from './StatefulTable';
 
 interface TestItem {
   name: string;

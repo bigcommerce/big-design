@@ -3,14 +3,14 @@ import { useVirtualizer } from '@tanstack/react-virtual';
 import React, {
   createContext,
   createRef,
-  PropsWithChildren,
+  type PropsWithChildren,
   useCallback,
   useEffect,
   useId,
   useMemo,
   useRef,
 } from 'react';
-import { StoreApi } from 'zustand';
+import { type StoreApi } from 'zustand';
 import { useShallow } from 'zustand/shallow';
 
 import { typedMemo } from '../../utils';
@@ -18,19 +18,19 @@ import { Box } from '../Box';
 import { Tooltip } from '../Tooltip';
 
 import { UpdateItemsProvider } from './context';
-import { BaseState, createWorksheetStore, useKeyEvents, useWorksheetStore } from './hooks';
+import { type BaseState, createWorksheetStore, useKeyEvents, useWorksheetStore } from './hooks';
 import { useCopyPasteHandler } from './hooks/useCopyPaste';
 import { WorksheetModal } from './Modal';
 import { Row } from './Row';
 import { Status } from './RowStatus/styled';
 import { Header, StyledBox, Table } from './styled';
 import {
-  InternalTableInterface,
-  InternalWorksheetColumn,
-  WorksheetItem,
-  WorksheetLocalization,
-  WorksheetModalColumn,
-  WorksheetProps,
+  type InternalTableInterface,
+  type InternalWorksheetColumn,
+  type WorksheetItem,
+  type WorksheetLocalization,
+  type WorksheetModalColumn,
+  type WorksheetProps,
 } from './types';
 import { editedRows, invalidRows } from './utils';
 

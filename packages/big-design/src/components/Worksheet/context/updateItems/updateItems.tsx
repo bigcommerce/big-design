@@ -1,9 +1,9 @@
-import React, { createContext, ReactNode, useCallback, useMemo } from 'react';
+import React, { createContext, type ReactNode, useCallback, useMemo } from 'react';
 import { useShallow } from 'zustand/shallow';
 
 import { typedMemo } from '../../../../utils';
 import { useWorksheetStore } from '../../hooks';
-import { Cell, WorksheetItem } from '../../types';
+import { type Cell, type WorksheetItem } from '../../types';
 
 export interface UpdateItemsContextType<T> {
   updateItems(items: Array<Cell<T>>, newValue: unknown[]): void;

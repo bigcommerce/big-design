@@ -3,7 +3,7 @@ import {
   Form,
   FormGroup,
   H1,
-  InputProps,
+  type InputProps,
   Panel,
   Radio,
   Text,

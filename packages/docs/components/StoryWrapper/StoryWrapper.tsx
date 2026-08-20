@@ -1,4 +1,4 @@
-import { PrismTheme, themes } from 'prism-react-renderer';
+import { type PrismTheme, themes } from 'prism-react-renderer';
 import React, { createContext, useState } from 'react';
 
 export type Language = 'jsx' | 'tsx';

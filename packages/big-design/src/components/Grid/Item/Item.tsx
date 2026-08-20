@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { BoxProps } from '../../Box';
-import { GridedItemProps } from '../types';
+import { type BoxProps } from '../../Box';
+import { type GridedItemProps } from '../types';
 import { toTransientGridedItemProps } from '../withGrid';
 
 import { StyledGridItem } from './styled';

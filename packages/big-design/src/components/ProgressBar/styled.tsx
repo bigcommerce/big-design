@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 import { withTransition } from '../../helpers/transitions';
 
-import { ProgressBarProps } from './ProgressBar';
+import { type ProgressBarProps } from './ProgressBar';
 
 export const StyledProgressBar = styled.div`
   background-color: ${({ theme }) => theme.colors.secondary20};

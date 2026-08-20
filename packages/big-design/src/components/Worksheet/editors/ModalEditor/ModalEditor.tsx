@@ -5,7 +5,7 @@ import { typedMemo } from '../../../../utils';
 import { Flex } from '../../../Flex';
 import { Small } from '../../../Typography';
 import { useWorksheetStore } from '../../hooks';
-import { Cell, WorksheetItem, WorksheetModalColumn } from '../../types';
+import { type Cell, type WorksheetItem, type WorksheetModalColumn } from '../../types';
 
 import { StyledButton, StyledFlexItem } from './styled';
 

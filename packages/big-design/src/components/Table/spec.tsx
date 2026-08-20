@@ -1,10 +1,10 @@
 import { fireEvent, render, screen, within } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
-import React, { CSSProperties } from 'react';
+import React, { type CSSProperties } from 'react';
 import 'jest-styled-components';
 
 import { Table, TableFigure } from './Table';
-import { TableColumn, TableItem } from './types';
+import { type TableColumn, type TableItem } from './types';
 
 interface SimpleTableOptions {
   className?: string;

@@ -6,12 +6,12 @@ import { Cell } from '../Cell';
 import { useWorksheetStore } from '../hooks';
 import { RowStatus } from '../RowStatus';
 import {
-  InternalWorksheetColumn,
-  WorksheetItem,
-  WorksheetModalColumn,
-  WorksheetNumberColumn,
-  WorksheetSelectableColumn,
-  WorksheetTextColumn,
+  type InternalWorksheetColumn,
+  type WorksheetItem,
+  type WorksheetModalColumn,
+  type WorksheetNumberColumn,
+  type WorksheetSelectableColumn,
+  type WorksheetTextColumn,
 } from '../types';
 
 interface RowProps<Item> {

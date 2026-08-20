@@ -2,7 +2,7 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css, keyframes } from 'styled-components';
 
 import { CIRCLE_CIRCUMFERENCES, CIRCLE_DIMENSIONS, CIRCLE_STROKE_WIDTHS } from './constants';
-import { ProgressCircleProps } from './ProgressCircle';
+import { type ProgressCircleProps } from './ProgressCircle';
 
 interface StyledProgressCircleProps {
   $percent?: ProgressCircleProps['percent'];

@@ -1,7 +1,7 @@
 import { Box, PillTabs } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { ContentRoutingTabsProps } from './types';
+import { type ContentRoutingTabsProps } from './types';
 import { useContentRoutingTabs } from './useContentRoutingTabs';
 
 const RawContentRoutingTabs: React.FC<ContentRoutingTabsProps> = ({ routes, id }) => {

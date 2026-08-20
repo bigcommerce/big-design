@@ -1,7 +1,7 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
-import { ListProps } from './List';
+import { type ListProps } from './List';
 
 export const StyledListOverflowWrapper = styled.div`
   ${({ theme }) => theme.shadow.raised}

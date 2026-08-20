@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, forwardRef, memo, Ref, useId } from 'react';
+import React, { type ComponentPropsWithoutRef, forwardRef, memo, type Ref, useId } from 'react';
 
 import { Flex } from '../Flex';
 

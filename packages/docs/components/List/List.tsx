@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactElement, ReactNode } from 'react';
+import React, { type CSSProperties, type ReactElement, type ReactNode } from 'react';
 
 import { ListItem } from './Item';
 import { StyledOrderedList, StyledUnorderedList } from './styled';

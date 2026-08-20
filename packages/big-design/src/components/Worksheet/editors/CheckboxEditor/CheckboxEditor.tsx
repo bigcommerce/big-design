@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 
 import { typedMemo } from '../../../../utils';
 import { Checkbox } from '../../../Checkbox';
-import { Cell, WorksheetItem } from '../../types';
+import { type Cell, type WorksheetItem } from '../../types';
 
 import { CheckboxWrapper } from './styled';
 

@@ -2,9 +2,9 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { withTableColumnDisplay } from '../helpers';
-import { TransientTableColumnDisplayProps } from '../helpers/display/types';
+import { type TransientTableColumnDisplayProps } from '../helpers/display/types';
 
-import { DataCellProps } from './DataCell';
+import { type DataCellProps } from './DataCell';
 
 interface StyledTableDataCellProps extends TransientTableColumnDisplayProps {
   $align?: DataCellProps['align'];

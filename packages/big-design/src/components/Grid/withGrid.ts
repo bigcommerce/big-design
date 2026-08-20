@@ -1,17 +1,17 @@
 import {
-  Breakpoints,
+  type Breakpoints,
   breakpointsOrder,
-  CSSRules,
-  ThemeInterface,
+  type CSSRules,
+  type ThemeInterface,
 } from '@bigcommerce/big-design-theme';
 import { css } from 'styled-components';
 
 import {
-  GridedItemProps,
-  GridedOverload,
-  GridedProps,
-  TransientGridedItemProps,
-  TransientGridedProps,
+  type GridedItemProps,
+  type GridedOverload,
+  type GridedProps,
+  type TransientGridedItemProps,
+  type TransientGridedProps,
 } from './types';
 
 export const withGridedContainer = () => css<TransientGridedProps>`

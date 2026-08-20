@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo } from 'react';
 import { useShallow } from 'zustand/shallow';
 
-import { Cell, InternalWorksheetColumn } from '../../types';
+import { type Cell, type InternalWorksheetColumn } from '../../types';
 import { useUpdateItems } from '../useUpdateItems';
 import { useWorksheetStore } from '../useWorksheetStore';
 

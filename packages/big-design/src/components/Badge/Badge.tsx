@@ -1,6 +1,6 @@
-import React, { ComponentPropsWithoutRef, memo } from 'react';
+import React, { type ComponentPropsWithoutRef, memo } from 'react';
 
-import { MarginProps } from '../../helpers';
+import { type MarginProps } from '../../helpers';
 import { toTransientMarginProps } from '../../helpers/margins/margins';
 
 import { StyledBadge } from './styled';

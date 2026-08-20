@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { useEventCallback } from '../../../../hooks';
-import { TableExpandable } from '../../types';
+import { type TableExpandable } from '../../types';
 
 // prettier-ignore
 export const useExpandable = <T,>(expandable?: TableExpandable<T>) => {

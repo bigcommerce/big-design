@@ -1,4 +1,4 @@
-import { DropdownItemGroup, DropdownProps } from '../Dropdown';
+import { type DropdownItemGroup, type DropdownProps } from '../Dropdown';
 import { isDropdownItemGroupArray } from '../Dropdown/Dropdown';
 
 type Items = DropdownProps['items'];

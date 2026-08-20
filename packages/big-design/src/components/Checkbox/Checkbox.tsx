@@ -1,17 +1,17 @@
 import { CheckIcon, RemoveIcon } from '@bigcommerce/big-design-icons';
 import React, {
   cloneElement,
-  ComponentPropsWithoutRef,
+  type ComponentPropsWithoutRef,
   forwardRef,
   isValidElement,
-  Ref,
+  type Ref,
   useId,
   useMemo,
 } from 'react';
 
 import { typedMemo, warning } from '../../utils';
-import { Badge, BadgeProps } from '../Badge';
-import { FormControlDescription, FormControlDescriptionLinkProps } from '../Form';
+import { Badge, type BadgeProps } from '../Badge';
+import { FormControlDescription, type FormControlDescriptionLinkProps } from '../Form';
 
 import { CheckboxLabel } from './Label';
 import {

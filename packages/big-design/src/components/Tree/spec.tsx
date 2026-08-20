@@ -1,10 +1,16 @@
 import { theme } from '@bigcommerce/big-design-theme';
-import { fireEvent, render, renderHook, RenderResult, screen } from '@testing-library/react';
+import { fireEvent, render, renderHook, type RenderResult, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import React, { useContext } from 'react';
 
 import { Tree, TreeContext } from './Tree';
-import { TreeExpandable, TreeFocusable, TreeNodeProps, TreeOnKeyDown, TreeProps } from './types';
+import {
+  type TreeExpandable,
+  type TreeFocusable,
+  type TreeNodeProps,
+  type TreeOnKeyDown,
+  type TreeProps,
+} from './types';
 
 const nodes: Array<TreeNodeProps<number>> = [
   {

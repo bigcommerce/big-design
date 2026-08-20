@@ -1,4 +1,4 @@
-import { theme as defaultTheme, ThemeInterface } from '@bigcommerce/big-design-theme';
+import { theme as defaultTheme, type ThemeInterface } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 // Per tree-depth indent, shared with TreeNode's virtualized row padding so both

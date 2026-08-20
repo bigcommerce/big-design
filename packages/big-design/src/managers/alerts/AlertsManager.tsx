@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-import { Alert, AlertProps } from '../../components';
+import { Alert, type AlertProps } from '../../components';
 
-import { createAlertsManager } from './manager';
+import { type createAlertsManager } from './manager';
 
 export interface AlertsManagerProps {
   manager: ReturnType<typeof createAlertsManager>;

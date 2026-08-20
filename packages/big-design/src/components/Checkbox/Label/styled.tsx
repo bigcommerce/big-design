@@ -1,10 +1,10 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { hideVisually } from 'polished';
-import { ComponentPropsWithoutRef } from 'react';
+import { type ComponentPropsWithoutRef } from 'react';
 import styled, { css } from 'styled-components';
 
 import { withMargins } from '../../../helpers';
-import { TransientMarginProps } from '../../../helpers/margins/margins';
+import { type TransientMarginProps } from '../../../helpers/margins/margins';
 
 export interface StyledLabelProps extends ComponentPropsWithoutRef<'label'> {
   hidden?: boolean;

@@ -1,7 +1,7 @@
-import { ComponentPropsWithoutRef } from 'react';
+import { type ComponentPropsWithoutRef } from 'react';
 
-import { FormProps } from '../Form';
-import { InputProps } from '../Input';
+import { type FormProps } from '../Form';
+import { type InputProps } from '../Input';
 
 export interface SearchLocalization {
   search: string;

@@ -2,15 +2,15 @@ import {
   excludeMarginProps,
   excludePaddingProps,
   Message,
-  MessageProps,
+  type MessageProps,
 } from '@bigcommerce/big-design';
-import React, { isValidElement, PropsWithChildren, ReactNode } from 'react';
+import React, { isValidElement, type PropsWithChildren, type ReactNode } from 'react';
 
 import { warning } from '../../utils';
 import { ActionBar } from '../ActionBar';
 import { Header } from '../Header';
 
-import { Background, StyledPage, StyledPageBackground } from './styled';
+import { type Background, StyledPage, StyledPageBackground } from './styled';
 
 export interface PageProps extends PropsWithChildren {
   header?: ReactNode;

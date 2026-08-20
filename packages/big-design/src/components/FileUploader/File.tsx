@@ -1,9 +1,9 @@
 import { DeleteIcon, DraftIcon, MoreHorizIcon } from '@bigcommerce/big-design-icons';
-import React, { ComponentPropsWithoutRef, useMemo } from 'react';
+import React, { type ComponentPropsWithoutRef, useMemo } from 'react';
 
 import { Button } from '../Button';
 import { Dropdown } from '../Dropdown';
-import { DropdownItem } from '../Dropdown/types';
+import { type DropdownItem } from '../Dropdown/types';
 
 import { StyledFile, StyledImage, StyledText } from './styled';
 

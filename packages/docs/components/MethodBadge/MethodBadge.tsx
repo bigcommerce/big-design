@@ -1,5 +1,5 @@
-import { MarginProps } from '@bigcommerce/big-design';
-import React, { ComponentPropsWithoutRef } from 'react';
+import { type MarginProps } from '@bigcommerce/big-design';
+import React, { type ComponentPropsWithoutRef } from 'react';
 
 import { StyledMethodBadge } from './styled';
 

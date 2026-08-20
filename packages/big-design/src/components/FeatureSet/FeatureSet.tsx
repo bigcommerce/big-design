@@ -1,10 +1,10 @@
-import React, { ComponentPropsWithoutRef, memo } from 'react';
+import React, { type ComponentPropsWithoutRef, memo } from 'react';
 
-import { MarginProps } from '../../helpers';
+import { type MarginProps } from '../../helpers';
 import { toTransientMarginProps } from '../../helpers/margins/margins';
 
 import { StyledUl } from './styled';
-import { Tag, TagProps } from './Tag';
+import { Tag, type TagProps } from './Tag';
 
 export interface FeatureSetProps extends ComponentPropsWithoutRef<'ul'>, MarginProps {
   tags: TagProps[];

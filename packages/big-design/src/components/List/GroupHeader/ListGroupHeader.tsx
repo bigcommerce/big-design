@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, memo } from 'react';
+import React, { type ComponentPropsWithoutRef, memo } from 'react';
 
 import { StyledGroupHeader } from './styled';
 

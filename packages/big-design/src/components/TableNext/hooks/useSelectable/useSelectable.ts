@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 
 import { useEventCallback } from '../../../../hooks';
-import { TableSelectable } from '../../types';
+import { type TableSelectable } from '../../types';
 
 import {
   getTotalSelectedChildRows,
   selectChildRow,
   selectParentRow,
-  SelectRowArg,
+  type SelectRowArg,
 } from './helpers';
 
 interface OnItemSelectFnArg

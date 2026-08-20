@@ -1,7 +1,7 @@
-import { Colors } from '@bigcommerce/big-design-theme';
-import React, { KeyboardEventHandler, ReactEventHandler, RefObject } from 'react';
+import { type Colors } from '@bigcommerce/big-design-theme';
+import type { KeyboardEventHandler, ReactEventHandler, ReactNode, RefObject } from 'react';
 
-import { SelectOption } from '../Select';
+import { type SelectOption } from '../Select';
 
 export type ExpandableRows = Record<string, Array<string | number>>;
 
@@ -36,7 +36,7 @@ export interface NotationConfig {
 
 interface CellActionConfig {
   transform: (value: number | string) => string;
-  icon: React.ReactNode;
+  icon: ReactNode;
 }
 
 export type WorksheetColumn<Item> =
@@ -92,7 +92,7 @@ export interface WorksheetModalColumn<Item> extends WorksheetBaseColumn<Item> {
   config: {
     cancelActionText?: string;
     header?: string;
-    render(value: Item[keyof Item], onChange: (value: Item[keyof Item]) => void): React.ReactNode;
+    render(value: Item[keyof Item], onChange: (value: Item[keyof Item]) => void): ReactNode;
     saveActionText?: string;
   };
   formatting?(value: Item[keyof Item] | ''): string;

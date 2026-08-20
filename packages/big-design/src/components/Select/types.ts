@@ -1,18 +1,18 @@
-import { Placement } from '@popperjs/core';
-import React, { ComponentPropsWithoutRef, RefObject } from 'react';
+import { type Placement } from '@popperjs/core';
+import type { ComponentPropsWithoutRef, ReactElement, ReactNode, Ref, RefObject } from 'react';
 
-import { InputProps } from '../Input';
+import { type InputProps } from '../Input';
 
 interface BaseSelect extends Omit<ComponentPropsWithoutRef<'input'>, 'children' | 'value'> {
   action?: SelectAction;
   autoComplete?: string;
   autoWidth?: boolean;
-  description?: React.ReactNode;
+  description?: ReactNode;
   disabled?: boolean;
   error?: InputProps['error'];
   filterable?: boolean;
-  inputRef?: RefObject<HTMLInputElement | null> | React.Ref<HTMLInputElement>;
-  label?: React.ReactNode;
+  inputRef?: RefObject<HTMLInputElement | null> | Ref<HTMLInputElement>;
+  label?: ReactNode;
   labelId?: string;
   maxHeight?: number;
   name?: string;
@@ -33,7 +33,7 @@ interface BaseItem extends Omit<ComponentPropsWithoutRef<'li'>, 'value'> {
   content: string;
   description?: string;
   disabled?: boolean;
-  icon?: React.ReactElement;
+  icon?: ReactElement;
   tooltip?: string;
 }
 

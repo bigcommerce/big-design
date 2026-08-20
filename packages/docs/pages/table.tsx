@@ -1,4 +1,12 @@
-import { H1, Panel, Small, Table, TableFigure, TableItem, Text } from '@bigcommerce/big-design';
+import {
+  H1,
+  Panel,
+  Small,
+  Table,
+  TableFigure,
+  type TableItem,
+  Text,
+} from '@bigcommerce/big-design';
 import React, { Fragment, useEffect, useState } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';

@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import { StyleableButton } from '../Button/private';
 import { Flex } from '../Flex';
 
-import { TabItem } from './Tabs';
+import { type TabItem } from './Tabs';
 
 interface TabProps extends Omit<TabItem, 'title'> {
   $activeTab?: string;

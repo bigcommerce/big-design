@@ -1,4 +1,4 @@
-import { Button, ButtonProps, excludeMarginProps } from '@bigcommerce/big-design';
+import { Button, type ButtonProps, excludeMarginProps } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { warning } from '../../utils';

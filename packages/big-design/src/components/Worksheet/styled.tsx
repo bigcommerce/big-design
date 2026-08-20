@@ -1,7 +1,7 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
-import { InternalWorksheetColumn } from './types';
+import { type InternalWorksheetColumn } from './types';
 
 export const Table = styled.table<{
   $minWidth?: number;
