@@ -368,7 +368,7 @@ describe('stateless pagination', () => {
   });
 
   describe('selectable', () => {
-    test('renders a summary of the selected items, without reference to the total number of items', () => {
+    test('renders a summary of the selected items, without reference to the total number of items', async () => {
       const selectedItems = [
         { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
         { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
@@ -404,7 +404,7 @@ describe('stateless pagination', () => {
         />,
       );
 
-      const tableControls = screen.getByRole('toolbar', { name: 'Table Controls' });
+      const tableControls = await screen.findByRole('toolbar', { name: 'Table Controls' });
 
       expect(within(tableControls).queryByText('2/6')).not.toBeInTheDocument();
       expect(within(tableControls).getByText('2')).toBeInTheDocument();

@@ -60,7 +60,7 @@ test('renders with dropdown action', async () => {
   expect(dropdownItemCallback).toHaveBeenCalled();
 });
 
-test('renders with both button and dropdown actions', () => {
+test('renders with both button and dropdown actions', async () => {
   render(
     <Header
       actions={[
@@ -74,7 +74,7 @@ test('renders with both button and dropdown actions', () => {
     />,
   );
 
-  expect(screen.getByRole('button', { name: 'Action 1' })).toBeInTheDocument();
+  expect(await screen.findByRole('button', { name: 'Action 1' })).toBeInTheDocument();
   expect(screen.getByRole('button', { name: 'Open menu' })).toBeInTheDocument();
 });
 
