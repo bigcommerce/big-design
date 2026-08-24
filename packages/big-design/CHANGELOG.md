@@ -1,5 +1,115 @@
 # Change Log
 
+## 5.0.0
+
+### Major Changes
+
+- 753478b: Bump peer dependencies to React 19. All packages now require `react` and `react-dom` `^19.0.0`. `@types/react` and `@types/react-dom` are updated to `^19.0.0` as well.
+
+  Breaking changes driven by React 19 type updates:
+
+  - `TableColumn.render` type narrowed from `ComponentType<T> | ((props: T) => ReactNode)` to `(props: T, context?: any) => ReactNode` — class-component render references are no longer typed (they remain callable at runtime via their call signature).
+  - `RefObject<T>` is now `RefObject<T | null>` throughout the public prop API, matching React 19's revised `createRef`/`useRef` signatures.
+  - `MutableRefObject` removed from public types; use `RefObject` instead.
+  - `FormEvent` replaced with `SubmitEvent` for `onSubmit` handlers, matching React 19's new `SubmitEventHandler` type.
+
+### Patch Changes
+
+- 3e9c1e0: fix(ci): add `prettier` as a root devDependency to fix the Changesets release job
+
+  `@changesets/cli` 3.0.0 (`@changesets/apply-release-plan` 8.0.0 → `@changesets/format` 0.1.2) added a new post-`version` step that auto-detects a formatter and runs it over the touched CHANGELOG.md files. It found the root `prettier.config.js` and picked `prettier`, then ran `pnpm exec prettier --write ...` — but `prettier` was only ever a devDependency of `packages/big-design-icons` and `packages/docs`, never the workspace root, so a clean `pnpm install --frozen-lockfile` (as CI does) never resolves a `prettier` bin at the root and `pnpm exec prettier` fails with `Command "prettier" not found`, breaking the `Changesets / Release` job on every push to `main`.
+
+  Adding `prettier@^3.9.6` (matching the version already pinned elsewhere) as a root devDependency gives `pnpm exec prettier` something to resolve. Verified by reproducing the exact CI failure in an isolated worktree with a genuine `pnpm install --frozen-lockfile`, then confirming `pnpm exec changeset version` completes cleanly after the fix.
+
+- 5646eb5: fix: mark `big-design`, `big-design-icons`, and `big-design-patterns` as React Server Components client boundaries
+
+  All three packages export components built on `styled-components`, which reads theme context and holds internal state via hooks (`useContext`, `useState`, `useMemo`) at render time — none of that is supported when a component is rendered as a true Server Component. Apps that re-export BigDesign into a React Server Components tree (e.g. Next.js App Router) without an intervening `'use client'` boundary hit a hard runtime error.
+
+  Since each package's build emits a per-file compile (not a single bundle), `'use client'` only needs to live on the root `src/index.ts` entry point — the directive on the module a consumer's import resolves to is what establishes the client boundary; files the entry re-exports don't need it themselves.
+
+  Babel's CommonJS module transform unconditionally injects `"use strict"` ahead of any existing directive, which would otherwise push `'use client'` out of first position in the `cjs` build. Each package's `babel.config.js` now adds a build override, scoped to `src/index.ts` in the `cjs` build only, that runs an explicit `@babel/plugin-transform-modules-commonjs` with `strictMode: false` for that one file so `'use client'` stays the literal first line. The `es` build is unaffected since it already preserves source directives as-is.
+
+  `@bigcommerce/big-design-theme` is untouched — it only exports plain theme tokens and helper functions, no components or hooks, so it has no client/server distinction and works unmodified inside Server Components.
+
+- b4e207d: chore(deps): batch ~20 dependency bumps, drop-in or effectively drop-in
+
+  Patch/minor bumps and majors with no breaking API surface actually used in this repo: `styled-components` 6.5.0 → 6.5.3, `@testing-library/react` 16.3.0 → 16.3.2, `@testing-library/user-event` 14.6.1 → 14.6.5, `@testing-library/jest-dom` 6.9.1 → 7.0.1, `zustand` 5.0.11 → 5.0.15, `date-fns` 4.1.0 → 4.4.0, `downshift` 9.0.10 → 9.4.0, `@tanstack/react-virtual` 3.13.23 → 3.14.10, `focus-trap` 7.6.4 → 8.2.2, `react-intersection-observer` 10.0.0 → 11.0.0, `turbo` 2.6.1 → 2.10.11, `@swc/core` 1.15.3 → 1.16.0, `@swc/plugin-styled-components` 12.x → 13.0.0, `glob`/`fs-extra`/`rimraf` patch bumps, `@radix-ui/react-scroll-area` 1.2.9 → 1.2.18, `formik` 2.4.6 → 2.4.9, `@changesets/changelog-git` 0.2.1 → 1.0.0, `prettier` (big-design-icons devDependency) 2.x → 3.9.6, and `@types/node` bumped to the latest 24.x patch.
+
+  Also aligns CI's pinned pnpm version (`.circleci/config.yml`) with the root `packageManager` field.
+
+- 38823b2: Fix React `act(...)` warnings in tests for `Dropdown`, `Header`, `Table`, and `MultiSelect`.
+
+  Each of these components mounts a `@floating-ui/react` positioned element even while closed (to have a ref for positioning), which triggers an async state update right after mount. Tests that synchronously rendered and asserted without ever giving that update a chance to flush inside an `act(...)` boundary logged a `console.error`. Switched the affected assertions to `screen.findBy*` queries, which flush the pending update via Testing Library's own `act`-wrapped polling instead of adding a bare `act(() => Promise.resolve())` flush.
+
+- 86e3149: Fix a regression from the type-only-import fix (see the "ESM build shipping runtime imports for type-only names" changeset): using inline `type` modifiers (`import { type X }`) instead of the whole-statement form (`import type { X }`) still left a bare `require(...)` of the module behind, since Babel can't prove a plain import specifier has no side effects. In `utils/messagingHelpers.ts` and `utils/treeHelpers.ts`, that bare require created a real circular `require` chain back through `utils/index.ts` before its `typedMemo` export was assigned, crashing with `(0, _utils.typedMemo) is not a function` on `require('@bigcommerce/big-design')` — reproducible with no bundler involved, and present even under CommonJS/Node.js. `@typescript-eslint/consistent-type-imports`'s `fixStyle` is now `separate-type-imports`, which fully elides the runtime footprint whenever every binding from a specifier is type-only.
+- 6bb03a2: Fix a long-standing bug where TypeScript-only type imports (e.g. `Border`, `ThemeOptions`, `Colors`) were compiled into the ESM build (`dist/es`) as runtime import specifiers for bindings that don't actually exist at runtime. Babel's default type-import elision wasn't catching these, since they were never marked `import type`. This was silently tolerated by CJS consumers and lenient/non-validating bundlers, but crashes any strict-ESM bundler that validates named exports (Vite/Rollup/Rolldown, or webpack with `strictExportPresence`) — found via the LTRAC-1370 packed-tarball smoke test against store-control-panel's Vite 8 build. All 4 packages' type-only imports are now explicitly marked, and `@typescript-eslint/consistent-type-imports` is enabled repo-wide to prevent this from regressing.
+- 606e210: fix: restore layout defaults broken by styled-components v6 and fix `autoDismiss` DOM leak in `AlertsManager`
+
+  `styled-components` v6 returns function components, and React 18/19 no longer applies `defaultProps` to function components. `Flex`, `FlexItem`, `Grid`, and icon components lost their layout defaults silently. Defaults are now applied at the call site rather than via `defaultProps`.
+
+  `AlertsManager` also leaked the internal `autoDismiss` option onto the DOM: SC6 no longer strips unknown props before forwarding, so the option was reaching the DOM as an unrecognised attribute. It is now stripped before rendering.
+
+- 00fed99: chore(ci): remove Commitlint
+
+  Drops `@commitlint/cli` and `@commitlint/config-conventional` devDependencies, deletes `commitlint.config.js`, and removes the `commitlint` CircleCI job (and its workflow entry) since it's no longer useful.
+
+- 92aa841: Add a version support matrix to the README(s) and docs site: the current major requires React 19 + styled-components >= 6.1.14, the 4.0.0-era release (`big-design@4.0.0` / `icons@2.0.0` / `patterns@6.0.0` / `theme@2.0.0`) is deprecated and should not be used, and the 3.x-era majors remain on React 18 + styled-components 5 with case-by-case backports. Also fixes the quick-start install snippets, which still referenced `styled-components@5`.
+- 78b0c8d: chore(deps): upgrade Babel toolchain 7 → 8 across `big-design`, `-icons`, `-theme`, `-patterns`, `docs`
+
+  Bumps `@babel/core`, `-cli`, `-preset-env`, `-preset-react`, `-preset-typescript`, `-plugin-transform-runtime`, `-runtime`, and (docs) `-standalone` to their 8.x releases.
+
+  - Dropped `useESModules` from `packages/configs/babel/babel.config.js`'s `@babel/plugin-transform-runtime` config; it's removed in Babel 8 (`@babel/runtime` now picks CJS/ESM via `package.json#exports` automatically).
+  - The classic→automatic JSX runtime default flip changes build output (now imports `react/jsx-runtime` instead of calling `React.createElement`); verified fine for React 19 consumers.
+  - `packages/docs/components/CodePreview/CodePreview.tsx`: `@babel/standalone`'s `transform()` no longer accepts `allExtensions`/`isTSX` on the `typescript` preset. Replaced with `ignoreExtensions: true` plus an explicit `syntax-jsx` plugin for the type-stripping-only pass (`getInitialCode`), and pinned `runtime: 'classic'` on the `react` preset for the live-eval pass (`transformCode`) since `react-live` evaluates transpiled code directly (no module resolution), so it can't handle the automatic runtime's `import ... from "react/jsx-runtime"`.
+  - Kept `@types/babel__standalone` (root devDependency): `@babel/standalone@8.x` ships no bundled `.d.ts`/`types` field, so it's still required for typechecking `docs`.
+  - `babel-plugin-styled-components` (even its latest release) still pins `@babel/plugin-syntax-jsx`, `@babel/helper-annotate-as-pure`, and `@babel/helper-module-imports` to `^7.x`, which fail Babel 8's `assertVersion` check at build time. Added a root `pnpm.overrides` block forcing those three transitive deps to their `^8.x` releases.
+  - Babel 8's TypeScript parser now requires the trailing-comma disambiguator (`<T,>`) for single-type-param generic arrow functions in **all** `.ts`/`.tsx` files, not just `.tsx` (previously only `.tsx` needed it). Added the comma at the 18 affected call sites in `big-design`, each with a `// prettier-ignore` since Prettier's own formatter still treats the comma as redundant in `.ts` files and would otherwise strip it back out.
+
+- a47cc5f: build(deps): upgrade `@changesets/cli` 2.29.7 → 3.0.0, `@changesets/assemble-release-plan` 6.0.9 → 7.0.0
+
+  `@changesets/changelog-git` stays on `^1.0.0` (already current; cli 3.0.0 now hard-depends on it directly rather than pulling its own older copy). These three move together since cli 3.0.0 hard-depends on the other two.
+
+  Dropped the local `patches/@changesets__assemble-release-plan@6.0.9.patch` and its `pnpm.patchedDependencies` entry in `pnpm-workspace.yaml`, along with the now-stale dependabot `ignore` rule blocking all updates to `@changesets/assemble-release-plan` in `.github/dependabot.yml`. The patch stopped a peer-only _minor_ bump on a dependency from forcing a _major_ bump on peer-dependents (`big-design-patterns`) that peer-depend on the versioned packages via `workspace:^`. Upstream 7.0.0 fixes this more broadly: peer-triggered dependent bumps are now capped at `patch` unconditionally, regardless of the dependency's own release type.
+
+  Verified with `changeset status --verbose` against an isolated scratch changeset: a peer-only **major** bump on `@bigcommerce/big-design` now caps `@bigcommerce/big-design-patterns` and `@bigcommerce/docs` at `patch` instead of cascading to `major`.
+
+  Process note: a genuinely breaking peer change no longer bumps dependents automatically — it now requires an explicit manual major changeset on each affected dependent.
+
+- 62bed89: build(deps): upgrade pnpm 10 → 11
+
+  Bumps the root `packageManager` pin from `pnpm@10.26.2` to `pnpm@11.22.0` and aligns CI's pinned pnpm version (`.circleci/config.yml`) with it. Node 24 already satisfies v11's Node 22+ requirement.
+
+  Ran pnpm's official `pnpm-v10-to-v11` codemod to migrate the root `package.json#pnpm` field (`patchedDependencies`, `overrides`) into `pnpm-workspace.yaml`, since v11 no longer reads settings from `package.json#pnpm`.
+
+  v11 also turns previously-silent "ignored build scripts" into a hard install failure unless explicitly decided. `@swc/core`, `esbuild`, `sharp`, and `unrs-resolver` were already having their build scripts skipped under v10 with no ill effect, so `pnpm-workspace.yaml` now sets `allowBuilds: false` for each to preserve that behavior explicitly rather than newly opting them in.
+
+  Be aware v11's new `minimumReleaseAge: 1440` default blocks installing packages published less than 24h ago, which is good for CI reliability but can transiently block installs right after a fresh dependency bump.
+
+- a915f36: chore(deps): upgrade `@atlaskit/pragmatic-drag-and-drop` 2.0.1 → 3.0.0 and `-hitbox` 2.0.0 → 2.1.0 (coupled release), used in `Table`/`TableNext` row DnD. Also migrates off the now-`@deprecated` `element/adapter`, `combine`, `element/preserve-offset-on-source`, and `element/set-custom-native-drag-preview` import paths in favor of `adapter/element-adapter` and `utils/*`. No functional or API changes.
+- 856d6a7: chore(deps): upgrade `react-datepicker` 7.6.0 → 9.1.0, used in `Datepicker`. No functional or public API changes.
+
+  The underlying library reworked the calendar's ARIA markup: day cells changed `role` from `option` to `gridcell` (now wrapped in `table`/`rowgroup`/`row`, matching the WAI-ARIA date picker pattern), and the day-name header row (Sun/Mon/Tue/...) now renders a visually-hidden full name alongside the visible abbreviation for screen readers. Since we don't import `react-datepicker`'s base stylesheet, that visually-hidden span had no CSS to hide it and rendered overlapping text in the header row; fixed by adding the missing `.react-datepicker__sr-only` visually-hidden rule to `Datepicker`'s styles. Test suite updated to match the new `gridcell` role.
+
+  Also replaces the pre-existing popper.js-v2-shaped custom `popperModifiers` object (a `{ name, fn }` pair that manually subtracted 10px from `y`) with `@floating-ui/react`'s built-in `offset(-10)` middleware, canceling out `react-datepicker`'s internal `offset(10)` to keep the calendar flush against the input, same as before. No visual change.
+
+- Updated dependencies [3e9c1e0]
+- Updated dependencies [5646eb5]
+- Updated dependencies [b4e207d]
+- Updated dependencies [86e3149]
+- Updated dependencies [6bb03a2]
+- Updated dependencies [915f235]
+- Updated dependencies [606e210]
+- Updated dependencies [753478b]
+- Updated dependencies [00fed99]
+- Updated dependencies [18b4d51]
+- Updated dependencies [48ff345]
+- Updated dependencies [92aa841]
+- Updated dependencies [78b0c8d]
+- Updated dependencies [a47cc5f]
+- Updated dependencies [62bed89]
+  - @bigcommerce/big-design-icons@3.0.0
+  - @bigcommerce/big-design-theme@3.0.0
+
 ## 4.0.0
 
 ### Major Changes

@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/big-design-theme",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "sideEffects": false,
   "main": "src/index.ts",
   "license": "(MIT AND CC-BY-3.0)",
