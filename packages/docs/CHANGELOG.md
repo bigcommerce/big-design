@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.15.1
+
+### Patch Changes
+
+- 57e24bb: No-op release to verify this changesets/action v2 upgrade fixes the GitHub Pages docs deploy. No code changes.
+
 ## 1.15.0
 
 ### Minor Changes
