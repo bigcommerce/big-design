@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -60,15 +61,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Pages
-        if: steps.changesets.outputs.published == 'true'
+        if: contains(github.event.head_commit.message, 'chore(release): publish') || github.event_name == 'workflow_dispatch'
         uses: actions/configure-pages@v4
-  
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
-        if: steps.changesets.outputs.published == 'true'
+        if: contains(github.event.head_commit.message, 'chore(release): publish') || github.event_name == 'workflow_dispatch'
         with:
           path: packages/docs/out/
 
       - name: Deploy to GitHub Pages
-        if: steps.changesets.outputs.published == 'true'
+        if: contains(github.event.head_commit.message, 'chore(release): publish') || github.event_name == 'workflow_dispatch'
         uses: actions/deploy-pages@v4
