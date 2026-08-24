@@ -1,0 +1,70 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,67327,(e,t,n)=>{"use strict";function r(e,t,n,r){return!1}e.i(434),Object.defineProperty(n,"__esModule",{value:!0}),Object.defineProperty(n,"getDomainLocale",{enumerable:!0,get:function(){return r}}),e.r(13144),("function"==typeof n.default||"object"==typeof n.default&&null!==n.default)&&void 0===n.default.__esModule&&(Object.defineProperty(n.default,"__esModule",{value:!0}),Object.assign(n.default,n),t.exports=n.default)},48637,(e,t,n)=>{"use strict";e.i(434),Object.defineProperty(n,"__esModule",{value:!0});var r={default:function(){return _},useLinkStatus:function(){return k}};for(var o in r)Object.defineProperty(n,o,{enumerable:!0,get:r[o]});let i=e.r(10375),a=e.r(80447),l=i._(e.r(99161)),s=e.r(30766),u=e.r(61148),c=e.r(98993),d=e.r(81677),f=e.r(74962),p=e.r(16262),h=e.r(7398),m=e.r(67327),g=e.r(66263),y=e.r(55279),x=new Set;function v(e,t,n,r){if(!("u"<typeof window)&&(0,u.isLocalURL)(t)){if(!r.bypassPrefetchedCheck){let o=t+"%"+n+"%"+(void 0!==r.locale?r.locale:"locale"in e?e.locale:void 0);if(x.has(o))return;x.add(o)}e.prefetch(t,n,r).catch(e=>{})}}function b(e){return"string"==typeof e?e:(0,c.formatUrl)(e)}let j=l.default.forwardRef(function(e,t){let n,r,{href:o,as:i,children:c,prefetch:x=null,passHref:j,replace:C,shallow:k,scroll:_,locale:P,onClick:w,onNavigate:S,onMouseEnter:L,onTouchStart:T,legacyBehavior:M=!1,transitionTypes:O,...I}=e;n=c,M&&("string"==typeof n||"number"==typeof n)&&(n=(0,a.jsx)("a",{children:n}));let B=l.default.useContext(p.RouterContext),N=!1!==x,{href:R,as:$}=l.default.useMemo(()=>{if(!B){let e=b(o);return{href:e,as:i?b(i):e}}let[e,t]=(0,s.resolveHref)(B,o,!0);return{href:e,as:i?(0,s.resolveHref)(B,i):t||e}},[B,o,i]),D=l.default.useRef(R),E=l.default.useRef($);M&&(r=l.default.Children.only(n));let A=M?r&&"object"==typeof r&&r.ref:t,[U,z,F]=(0,h.useIntersection)({rootMargin:"200px"}),H=l.default.useCallback(e=>{(E.current!==$||D.current!==R)&&(F(),E.current=$,D.current=R),U(e)},[$,R,F,U]),K=(0,y.useMergedRef)(H,A);l.default.useEffect(()=>{!B||z&&N&&v(B,R,$,{bypassPrefetchedCheck:!1,locale:P})},[$,R,z,P,N,B?.locale,B]);let W={ref:K,onClick(e){M||"function"!=typeof w||w(e),M&&r.props&&"function"==typeof r.props.onClick&&r.props.onClick(e),!B||e.defaultPrevented||function(e,t,n,r,o,i,a,l,s){let c,{nodeName:d}=e.currentTarget;if(!("A"===d.toUpperCase()&&((c=e.currentTarget.getAttribute("target"))&&"_self"!==c||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.nativeEvent&&2===e.nativeEvent.which)||e.currentTarget.hasAttribute("download"))){if(!(0,u.isLocalURL)(n)){o&&(e.preventDefault(),location.replace(n));return}e.preventDefault(),(()=>{if(s){let e=!1;if(s({preventDefault:()=>{e=!0}}),e)return}let e=a??!0;"beforePopState"in t?t[o?"replace":"push"](n,r,{shallow:i,locale:l,scroll:e}):t[o?"replace":"push"](r||n,{scroll:e})})()}}(e,B,R,$,C,k,_,P,S)},onMouseEnter(e){M||"function"!=typeof L||L(e),M&&r.props&&"function"==typeof r.props.onMouseEnter&&r.props.onMouseEnter(e),B&&v(B,R,$,{locale:P,priority:!0,bypassPrefetchedCheck:!0})},onTouchStart:function(e){M||"function"!=typeof T||T(e),M&&r.props&&"function"==typeof r.props.onTouchStart&&r.props.onTouchStart(e),B&&v(B,R,$,{locale:P,priority:!0,bypassPrefetchedCheck:!0})}};if((0,d.isAbsoluteUrl)($))W.href=$;else if(!M||j||"a"===r.type&&!("href"in r.props)){let e=void 0!==P?P:B?.locale;W.href=B?.isLocaleDomain&&(0,m.getDomainLocale)($,e,B?.locales,B?.domainLocales)||(0,g.addBasePath)((0,f.addLocale)($,e,B?.defaultLocale))}return M?l.default.cloneElement(r,W):(0,a.jsx)("a",{...I,...W,children:n})}),C=(0,l.createContext)({pending:!1}),k=()=>(0,l.useContext)(C),_=j;("function"==typeof n.default||"object"==typeof n.default&&null!==n.default)&&void 0===n.default.__esModule&&(Object.defineProperty(n.default,"__esModule",{value:!0}),Object.assign(n.default,n),t.exports=n.default)},41662,(e,t,n)=>{t.exports=e.r(48637)},7398,(e,t,n)=>{"use strict";Object.defineProperty(n,"__esModule",{value:!0}),Object.defineProperty(n,"useIntersection",{enumerable:!0,get:function(){return s}});let r=e.r(99161),o=e.r(11229),i="function"==typeof IntersectionObserver,a=new Map,l=[];function s({rootRef:e,rootMargin:t,disabled:n}){let u=n||!i,[c,d]=(0,r.useState)(!1),f=(0,r.useRef)(null),p=(0,r.useCallback)(e=>{f.current=e},[]);return(0,r.useEffect)(()=>{if(i){if(u||c)return;let n=f.current;if(n&&n.tagName)return function(e,t,n){let{id:r,observer:o,elements:i}=function(e){let t,n={root:e.root||null,margin:e.rootMargin||""},r=l.find(e=>e.root===n.root&&e.margin===n.margin);if(r&&(t=a.get(r)))return t;let o=new Map;return t={id:n,observer:new IntersectionObserver(e=>{e.forEach(e=>{let t=o.get(e.target),n=e.isIntersecting||e.intersectionRatio>0;t&&n&&t(n)})},e),elements:o},l.push(n),a.set(n,t),t}(n);return i.set(e,t),o.observe(e),function(){if(i.delete(e),o.unobserve(e),0===i.size){o.disconnect(),a.delete(r);let e=l.findIndex(e=>e.root===r.root&&e.margin===r.margin);e>-1&&l.splice(e,1)}}}(n,e=>e&&d(e),{root:e?.current,rootMargin:t})}else if(!c){let e=(0,o.requestIdleCallback)(()=>d(!0));return()=>(0,o.cancelIdleCallback)(e)}},[u,t,e,c,f.current]),[p,c,(0,r.useCallback)(()=>{d(!1)},[])]}("function"==typeof n.default||"object"==typeof n.default&&null!==n.default)&&void 0===n.default.__esModule&&(Object.defineProperty(n.default,"__esModule",{value:!0}),Object.assign(n.default,n),t.exports=n.default)},55279,(e,t,n)=>{"use strict";Object.defineProperty(n,"__esModule",{value:!0}),Object.defineProperty(n,"useMergedRef",{enumerable:!0,get:function(){return o}});let r=e.r(99161);function o(e,t){let n=(0,r.useRef)(null),o=(0,r.useRef)(null);return(0,r.useCallback)(r=>{if(null===r){let e=n.current;e&&(n.current=null,e());let t=o.current;t&&(o.current=null,t())}else e&&(n.current=i(e,r)),t&&(o.current=i(t,r))},[e,t])}function i(e,t){if("function"!=typeof e)return e.current=t,()=>{e.current=null};{let n=e(t);return"function"==typeof n?n:()=>e(null)}}("function"==typeof n.default||"object"==typeof n.default&&null!==n.default)&&void 0===n.default.__esModule&&(Object.defineProperty(n.default,"__esModule",{value:!0}),Object.assign(n.default,n),t.exports=n.default)},84223,e=>{e.v(t=>Promise.all(["static/chunks/0h0fandno2j3p.js"].map(t=>e.l(t))).then(()=>t(35465)))},46915,e=>{e.v(t=>Promise.all(["static/chunks/2bk7_uthx7f7l.js"].map(t=>e.l(t))).then(()=>t(43232)))},83158,(e,t,n)=>{"use strict";e.i(434),Object.defineProperty(n,"__esModule",{value:!0}),Object.defineProperty(n,"ImageConfigContext",{enumerable:!0,get:function(){return i}});let r=e.r(80763)._(e.r(99161)),o=e.r(3221),i=r.default.createContext(o.imageConfigDefault)},3221,(e,t,n)=>{"use strict";Object.defineProperty(n,"__esModule",{value:!0});var r={VALID_LOADERS:function(){return i},imageConfigDefault:function(){return a}};for(var o in r)Object.defineProperty(n,o,{enumerable:!0,get:r[o]});let i=["default","imgix","cloudinary","akamai","custom"],a={deviceSizes:[640,750,828,1080,1200,1920,2048,3840],imageSizes:[32,48,64,96,128,256,384],path:"/_next/image",loader:"default",loaderFile:"",domains:[],disableStaticImages:!1,minimumCacheTTL:14400,formats:["image/webp"],maximumDiskCacheSize:void 0,maximumRedirects:3,maximumResponseBody:5e7,dangerouslyAllowLocalIP:!1,dangerouslyAllowSVG:!1,contentSecurityPolicy:"script-src 'none'; frame-src 'none'; sandbox;",contentDispositionType:"attachment",localPatterns:void 0,remotePatterns:[],qualities:[75],unoptimized:!1,customCacheHandler:!1}},52510,e=>{"use strict";var t=e.i(80447),n=e.i(81542);let r=n.css`
+  color: ${({theme:e})=>e.colors.secondary70};
+  font-size: ${({theme:e})=>e.typography.fontSize.medium};
+  font-weight: ${({theme:e})=>e.typography.fontWeight.regular};
+  line-height: ${({theme:e})=>e.lineHeight.medium};
+  padding-left: ${({theme:e})=>e.spacing.xLarge};
+
+  ${({theme:e})=>e.breakpoints.tablet} {
+    column-count: ${({$columnCount:e})=>e};
+    column-gap: ${({$columnGap:e})=>e};
+  }
+
+  ${({$reset:e,theme:t})=>e&&n.css`
+      ${t.helpers.listReset};
+    `}
+`,o=n.default.ol.withConfig({displayName:"styled.tsx__StyledOrderedList",componentId:"sc-6a6922be-0"})`
+  ${r};
+`,i=n.default.ul.withConfig({displayName:"styled.tsx__StyledUnorderedList",componentId:"sc-6a6922be-1"})`
+  ${r}
+`,a=({columnCount:e=1,columnGap:n="normal",as:r="ul",children:a,reset:l,...s})=>(0,t.jsx)("ol"===r?o:i,{$columnCount:e,$columnGap:n,$reset:l,...s,children:a});a.Item=({...e})=>(0,t.jsx)("li",{...e}),e.s(["List",0,a],52510)},29636,e=>{"use strict";var t=e.i(80447),n=e.i(41662),r=e.i(81542);let o=(0,r.default)(n.default).withConfig({displayName:"NextLink.tsx__StyledLink",componentId:"sc-72da42e3-0"})`
+  color: ${({theme:e})=>e.colors.primary};
+  cursor: pointer;
+  font-size: ${({theme:e})=>e.typography.fontSize.medium};
+  font-weight: ${({theme:e})=>e.typography.fontWeight.regular};
+  text-decoration: none;
+
+  &:active {
+    color: ${({theme:e})=>e.colors.primary70};
+  }
+
+  &:hover:not(:active) {
+    color: ${({theme:e})=>e.colors.primary70};
+  }
+`;e.s(["NextLink",0,({children:e,href:n})=>(0,t.jsx)(o,{href:n,children:e})])},39594,e=>{"use strict";var t=e.i(80447),n=e.i(1304),r=e.i(65059),o=e.i(13332),i=e.i(7277),a=e.i(18995),l=e.i(99161),s=e.i(81542),u=e.i(77136),c=e.i(27746),d=e.i(21908),f=e.i(52510),p=e.i(29636);let h=["xxxLarge","xxLarge","xLarge","large","medium","small","xSmall","xxSmall","none"],m=(0,s.default)(n.Box).withConfig({displayName:"spacing.tsx__BlueBox",componentId:"sc-e58acc60-0"})(({theme:e})=>({backgroundColor:e.colors.primary,display:"inline-block",height:e.spacing.large,width:e.spacing.large}));e.s(["default",0,()=>{let{spacing:e}=(0,l.useContext)(s.ThemeContext)??a.theme;return(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)(o.H1,{children:"Spacing"}),(0,t.jsxs)(i.Panel,{header:"Overview",headerId:"overview",children:[(0,t.jsxs)(o.Text,{children:["BigDesign core theme provides a pre-defined set of spacing values that are primarily used with any of the ",(0,t.jsx)(u.Code,{primary:!0,children:"padding"})," and ",(0,t.jsx)(u.Code,{primary:!0,children:"margin"})," props. There are a few ways we can consume these values."]}),(0,t.jsx)(o.Text,{bold:!0,children:"When to use:"}),(0,t.jsxs)(f.List,{children:[(0,t.jsxs)(f.List.Item,{children:["Using the ",(0,t.jsx)(p.NextLink,{href:"/margin",children:"Margin"})," and"," ",(0,t.jsx)(p.NextLink,{href:"/padding",children:"Padding"})," props."]}),(0,t.jsx)(f.List.Item,{children:"Consuming spacing from the theme in custom components."}),(0,t.jsxs)(f.List.Item,{children:["Using negative spacing tokens (e.g. ",(0,t.jsx)(u.Code,{children:"xSmallN"}),") for controlled overlap or gutter adjustments."]})]})]}),(0,t.jsx)(i.Panel,{header:"Implementation",headerId:"implementation",children:(0,t.jsx)(d.ContentRoutingTabs,{id:"implementation",routes:[{id:"property",title:"Applying to a property",render:()=>(0,t.jsxs)(l.Fragment,{children:[(0,t.jsxs)(o.Text,{children:["Certain components will include ",(0,t.jsx)(u.Code,{primary:!0,children:"padding"})," and"," ",(0,t.jsx)(u.Code,{primary:!0,children:"margin"})," props. You can use the spacing keys to apply spacing values to those props."]}),(0,t.jsx)(c.CodePreview,{children:`<>
+  <Button marginRight="medium">Button</Button>
+  <Button>Button</Button>
+</>`})]},"property")},{id:"style",title:"Applying to a style",render:()=>(0,t.jsxs)(l.Fragment,{children:[(0,t.jsx)(o.Text,{children:"You can also read spacing directly from the theme in styled code."}),(0,t.jsx)(c.CodePreview,{children:`function Example() {
+  const StyledBox = styled(Box)(({ theme }) => ({
+    backgroundColor: theme.colors.primary,
+    height: theme.spacing.large,
+    width: theme.spacing.large,
+  }));
+
+  return <StyledBox />;
+}`})]},"style")},{id:"negative",title:"Negative spacing",render:()=>(0,t.jsxs)(l.Fragment,{children:[(0,t.jsxs)(o.Text,{children:["Every positive token has a negative counterpart formed by appending"," ",(0,t.jsx)(u.Code,{children:"N"}),". These are especially useful for collapsing gutters or creating controlled overlap, as demonstrated in the table within a panel component in the following example."]}),(0,t.jsx)(c.CodePreview,{children:`<Panel
+  description="The contents of the panel can have negative margins to collapse gutters."
+  header="Negative Margins"
+>
+  <Box marginHorizontal={{ mobile: 'mediumN', tablet: 'xLargeN' }}>
+    <Table
+      columns={[
+        {
+          header: 'Sku',
+          hash: 'sku',
+          tooltip: 'Header tooltip',
+          render: ({ sku }) => sku,
+        },
+        { header: 'Name', hash: 'name', render: ({ name }) => name },
+        { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
+      ]}
+      items={[
+        { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+        { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+        { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+        { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+        { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+      ]}
+    />
+  </Box>
+</Panel>`})]},"negative")}]})}),(0,t.jsxs)(i.Panel,{header:"Spacing values",headerId:"spacing-values",children:[(0,t.jsxs)(o.Text,{children:["The grid below shows the"," ",(0,t.jsx)(o.Text,{as:"span",bold:!0,children:"positive"})," ","spacing tokens. To use the same tokens for negative spacing, just append an ",(0,t.jsx)(u.Code,{children:"N"})," ","(e.g. ",(0,t.jsx)(u.Code,{children:"mediumN"}),")."]}),(0,t.jsx)(r.Flex,{flexWrap:"wrap",justifyContent:"space-around",children:h.map(n=>(0,t.jsxs)(r.Flex,{alignItems:"center",flexDirection:"column",margin:"xSmall",paddingBottom:"small",children:[(0,t.jsx)(u.Code,{children:n}),(0,t.jsx)(m,{marginTop:"medium",style:{width:e[n],height:e[n]}})]},n))})]})]})}])},43354,(e,t,n)=>{let r="/spacing";(window.__NEXT_P=window.__NEXT_P||[]).push([r,()=>e.r(39594)]),t.hot&&t.hot.dispose(function(){window.__NEXT_P.push([r])})}]);
