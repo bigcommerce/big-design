@@ -1,5 +1,75 @@
 # Change Log
 
+## 1.2.0
+
+### Minor Changes
+
+- 9789172: Move the docs site and examples app to React 19 and styled-components 6. The examples app keeps its `*` ranges on the BigDesign packages so standalone forks (CodeSandbox) resolve from the registry, with `linkWorkspacePackages: true` linking them to workspace source in-repo, and gains a Vite config with `resolve.dedupe` and `@vitejs/plugin-react` 5.
+
+### Patch Changes
+
+- 3e9c1e0: fix(ci): add `prettier` as a root devDependency to fix the Changesets release job
+
+  `@changesets/cli` 3.0.0 (`@changesets/apply-release-plan` 8.0.0 → `@changesets/format` 0.1.2) added a new post-`version` step that auto-detects a formatter and runs it over the touched CHANGELOG.md files. It found the root `prettier.config.js` and picked `prettier`, then ran `pnpm exec prettier --write ...` — but `prettier` was only ever a devDependency of `packages/big-design-icons` and `packages/docs`, never the workspace root, so a clean `pnpm install --frozen-lockfile` (as CI does) never resolves a `prettier` bin at the root and `pnpm exec prettier` fails with `Command "prettier" not found`, breaking the `Changesets / Release` job on every push to `main`.
+
+  Adding `prettier@^3.9.6` (matching the version already pinned elsewhere) as a root devDependency gives `pnpm exec prettier` something to resolve. Verified by reproducing the exact CI failure in an isolated worktree with a genuine `pnpm install --frozen-lockfile`, then confirming `pnpm exec changeset version` completes cleanly after the fix.
+
+- b4e207d: chore(deps): batch ~20 dependency bumps, drop-in or effectively drop-in
+
+  Patch/minor bumps and majors with no breaking API surface actually used in this repo: `styled-components` 6.5.0 → 6.5.3, `@testing-library/react` 16.3.0 → 16.3.2, `@testing-library/user-event` 14.6.1 → 14.6.5, `@testing-library/jest-dom` 6.9.1 → 7.0.1, `zustand` 5.0.11 → 5.0.15, `date-fns` 4.1.0 → 4.4.0, `downshift` 9.0.10 → 9.4.0, `@tanstack/react-virtual` 3.13.23 → 3.14.10, `focus-trap` 7.6.4 → 8.2.2, `react-intersection-observer` 10.0.0 → 11.0.0, `turbo` 2.6.1 → 2.10.11, `@swc/core` 1.15.3 → 1.16.0, `@swc/plugin-styled-components` 12.x → 13.0.0, `glob`/`fs-extra`/`rimraf` patch bumps, `@radix-ui/react-scroll-area` 1.2.9 → 1.2.18, `formik` 2.4.6 → 2.4.9, `@changesets/changelog-git` 0.2.1 → 1.0.0, `prettier` (big-design-icons devDependency) 2.x → 3.9.6, and `@types/node` bumped to the latest 24.x patch.
+
+  Also aligns CI's pinned pnpm version (`.circleci/config.yml`) with the root `packageManager` field.
+
+- 00fed99: chore(ci): remove Commitlint
+
+  Drops `@commitlint/cli` and `@commitlint/config-conventional` devDependencies, deletes `commitlint.config.js`, and removes the `commitlint` CircleCI job (and its workflow entry) since it's no longer useful.
+
+- a47cc5f: build(deps): upgrade `@changesets/cli` 2.29.7 → 3.0.0, `@changesets/assemble-release-plan` 6.0.9 → 7.0.0
+
+  `@changesets/changelog-git` stays on `^1.0.0` (already current; cli 3.0.0 now hard-depends on it directly rather than pulling its own older copy). These three move together since cli 3.0.0 hard-depends on the other two.
+
+  Dropped the local `patches/@changesets__assemble-release-plan@6.0.9.patch` and its `pnpm.patchedDependencies` entry in `pnpm-workspace.yaml`, along with the now-stale dependabot `ignore` rule blocking all updates to `@changesets/assemble-release-plan` in `.github/dependabot.yml`. The patch stopped a peer-only _minor_ bump on a dependency from forcing a _major_ bump on peer-dependents (`big-design-patterns`) that peer-depend on the versioned packages via `workspace:^`. Upstream 7.0.0 fixes this more broadly: peer-triggered dependent bumps are now capped at `patch` unconditionally, regardless of the dependency's own release type.
+
+  Verified with `changeset status --verbose` against an isolated scratch changeset: a peer-only **major** bump on `@bigcommerce/big-design` now caps `@bigcommerce/big-design-patterns` and `@bigcommerce/docs` at `patch` instead of cascading to `major`.
+
+  Process note: a genuinely breaking peer change no longer bumps dependents automatically — it now requires an explicit manual major changeset on each affected dependent.
+
+- 62bed89: build(deps): upgrade pnpm 10 → 11
+
+  Bumps the root `packageManager` pin from `pnpm@10.26.2` to `pnpm@11.22.0` and aligns CI's pinned pnpm version (`.circleci/config.yml`) with it. Node 24 already satisfies v11's Node 22+ requirement.
+
+  Ran pnpm's official `pnpm-v10-to-v11` codemod to migrate the root `package.json#pnpm` field (`patchedDependencies`, `overrides`) into `pnpm-workspace.yaml`, since v11 no longer reads settings from `package.json#pnpm`.
+
+  v11 also turns previously-silent "ignored build scripts" into a hard install failure unless explicitly decided. `@swc/core`, `esbuild`, `sharp`, and `unrs-resolver` were already having their build scripts skipped under v10 with no ill effect, so `pnpm-workspace.yaml` now sets `allowBuilds: false` for each to preserve that behavior explicitly rather than newly opting them in.
+
+  Be aware v11's new `minimumReleaseAge: 1440` default blocks installing packages published less than 24h ago, which is good for CI reliability but can transiently block installs right after a fresh dependency bump.
+
+- 1710405: build(deps): upgrade `vite` 7.2.4 → 8.2.1 and `@vitejs/plugin-react` 5.2.0 → 6.0.5
+
+  Vite 8's default production bundler moves from Rollup to Rolldown. No `vite.config.ts` changes were needed (no `build.rollupOptions` usage to rename to `build.rolldownOptions`), but Rolldown enforces stricter named-export validation than Rollup at build time. See the `@bigcommerce/big-design-icons` changeset in this same batch for a downstream fix that was required to keep `pnpm run build` passing under Rolldown's stricter checks.
+
+- Updated dependencies [3e9c1e0]
+- Updated dependencies [5646eb5]
+- Updated dependencies [b4e207d]
+- Updated dependencies [38823b2]
+- Updated dependencies [86e3149]
+- Updated dependencies [6bb03a2]
+- Updated dependencies [915f235]
+- Updated dependencies [606e210]
+- Updated dependencies [753478b]
+- Updated dependencies [00fed99]
+- Updated dependencies [18b4d51]
+- Updated dependencies [48ff345]
+- Updated dependencies [92aa841]
+- Updated dependencies [78b0c8d]
+- Updated dependencies [a47cc5f]
+- Updated dependencies [62bed89]
+- Updated dependencies [a915f36]
+- Updated dependencies [856d6a7]
+  - @bigcommerce/big-design@5.0.0
+  - @bigcommerce/big-design-icons@3.0.0
+  - @bigcommerce/big-design-theme@3.0.0
+
 ## 1.1.0
 
 ### Minor Changes
