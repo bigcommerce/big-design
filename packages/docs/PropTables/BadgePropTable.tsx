@@ -11,9 +11,16 @@ const badgeProps: Prop[] = [
   },
   {
     name: 'variant',
-    types: ['danger', 'secondary', 'success', 'warning', 'primary'],
+    types: ['danger', 'secondary', 'success', 'warning', 'primary', 'primary-subtle'],
     description: 'Determines which badge to display.',
     defaultValue: 'secondary',
+  },
+  {
+    name: 'size',
+    types: ['small', 'normal'],
+    description:
+      'Determines the size of the badge. Small renders a 28 x 16px badge with 10px text.',
+    defaultValue: 'normal',
   },
 ];
 

@@ -48,20 +48,42 @@ const BadgePage = () => {
               render: () => (
                 <Fragment key="variants">
                   <Text>
-                    There are five types of variants to choose from: <Code>success</Code>,{' '}
-                    <Code>secondary</Code>, <Code>warning</Code>, <Code>danger</Code>, and{' '}
-                    <Code>primary</Code>. You can determine what type by using the{' '}
-                    <Code primary>variant</Code> prop.
+                    There are six types of variants to choose from: <Code>success</Code>,{' '}
+                    <Code>secondary</Code>, <Code>warning</Code>, <Code>danger</Code>,{' '}
+                    <Code>primary</Code>, and <Code>primary-subtle</Code>. You can determine what
+                    type by using the <Code primary>variant</Code> prop.
                   </Text>
 
                   <CodePreview>
                     {/* jsx-to-string:start */}
-                    <Grid gridColumns="repeat(5, min-content)">
+                    <Grid gridColumns="repeat(6, min-content)">
                       <Badge label="secondary" variant="secondary" />
                       <Badge label="success" variant="success" />
                       <Badge label="warning" variant="warning" />
                       <Badge label="danger" variant="danger" />
                       <Badge label="primary" variant="primary" />
+                      <Badge label="primary-subtle" variant="primary-subtle" />
+                    </Grid>
+                    {/* jsx-to-string:end */}
+                  </CodePreview>
+                </Fragment>
+              ),
+            },
+            {
+              id: 'sizes',
+              title: 'Sizes',
+              render: () => (
+                <Fragment key="sizes">
+                  <Text>
+                    Use the <Code primary>size</Code> prop to render a <Code>small</Code> badge (28
+                    x 16px with 10px text), best suited for short labels such as counts.
+                  </Text>
+
+                  <CodePreview>
+                    {/* jsx-to-string:start */}
+                    <Grid gridColumns="repeat(2, min-content)">
+                      <Badge label="normal" />
+                      <Badge label="12" size="small" />
                     </Grid>
                     {/* jsx-to-string:end */}
                   </CodePreview>

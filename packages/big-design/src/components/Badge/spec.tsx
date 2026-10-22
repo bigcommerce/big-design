@@ -57,6 +57,21 @@ test('render primary Badge', () => {
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.primary40}`);
 });
 
+test('render primary-subtle Badge', () => {
+  const { container } = render(<Badge label="Badge" variant="primary-subtle" />);
+
+  expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.primary30}`);
+  expect(container.firstChild).toHaveStyle(`color: ${theme.colors.primary70}`);
+});
+
+test('render small Badge', () => {
+  const { container } = render(<Badge label="1" size="small" />);
+
+  expect(container.firstChild).toHaveStyle('font-size: 0.625rem');
+  expect(container.firstChild).toHaveStyle('height: 1rem');
+  expect(container.firstChild).toHaveStyle('width: 1.75rem');
+});
+
 test("doesn't render if label prop is invalid", () => {
   // @ts-expect-error ignoring since label={Component} is not a valid prop
   const { container } = render(<Badge label={<p>Label</p>} />);

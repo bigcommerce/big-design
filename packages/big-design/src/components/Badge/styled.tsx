@@ -7,6 +7,7 @@ import type { TransientMarginProps } from '../../helpers/margins/margins';
 import type { BadgeProps } from './Badge';
 
 interface StyledBadgeProps extends TransientMarginProps {
+  $size?: BadgeProps['size'];
   $variant?: BadgeProps['variant'];
 }
 
@@ -23,6 +24,20 @@ export const StyledBadge = styled.span<StyledBadgeProps>`
   text-transform: uppercase;
   vertical-align: middle;
   padding: 0 ${({ theme }) => theme.spacing.xSmall};
+
+  ${({ theme, $size }) =>
+    $size === 'small' &&
+    css`
+      box-sizing: border-box;
+      font-size: ${theme.helpers.remCalc(10)};
+      height: ${theme.helpers.remCalc(16)};
+      line-height: ${theme.helpers.remCalc(16)};
+      overflow: hidden;
+      padding: 0;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: ${theme.helpers.remCalc(28)};
+    `}
 
   ${({ theme, $variant }) =>
     $variant === 'secondary' &&
@@ -53,6 +68,13 @@ export const StyledBadge = styled.span<StyledBadgeProps>`
     $variant === 'primary' &&
     css`
       background-color: ${theme.colors.primary40};
+    `}
+
+  ${({ theme, $variant }) =>
+    $variant === 'primary-subtle' &&
+    css`
+      color: ${theme.colors.primary70};
+      background-color: ${theme.colors.primary30};
     `}
 `;
 
