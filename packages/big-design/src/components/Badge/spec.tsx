@@ -61,7 +61,7 @@ test('render primary-subtle Badge', () => {
   const { container } = render(<Badge label="Badge" variant="primary-subtle" />);
 
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.primary30}`);
-  expect(container.firstChild).toHaveStyle(`color: ${theme.colors.primary70}`);
+  expect(container.firstChild).toHaveStyle('color: #031033');
 });
 
 test('render small Badge', () => {

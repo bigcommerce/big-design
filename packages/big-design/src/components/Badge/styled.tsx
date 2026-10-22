@@ -73,7 +73,7 @@ export const StyledBadge = styled.span<StyledBadgeProps>`
   ${({ theme, $variant }) =>
     $variant === 'primary-subtle' &&
     css`
-      color: ${theme.colors.primary70};
+      color: #031033;
       background-color: ${theme.colors.primary30};
     `}
 `;
