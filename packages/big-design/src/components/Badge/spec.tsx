@@ -69,7 +69,7 @@ test('render small Badge', () => {
 
   expect(container.firstChild).toHaveStyle('font-size: 0.625rem');
   expect(container.firstChild).toHaveStyle('height: 1rem');
-  expect(container.firstChild).toHaveStyle('width: 1.75rem');
+  expect(container.firstChild).toHaveStyle('min-width: 1.75rem');
 });
 
 test("doesn't render if label prop is invalid", () => {

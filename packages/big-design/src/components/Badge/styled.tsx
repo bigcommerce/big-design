@@ -32,11 +32,8 @@ export const StyledBadge = styled.span<StyledBadgeProps>`
       font-size: ${theme.helpers.remCalc(10)};
       height: ${theme.helpers.remCalc(16)};
       line-height: ${theme.helpers.remCalc(16)};
-      overflow: hidden;
-      padding: 0;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      width: ${theme.helpers.remCalc(28)};
+      min-width: ${theme.helpers.remCalc(28)};
+      padding: 0 ${theme.spacing.xxSmall};
     `}
 
   ${({ theme, $variant }) =>
