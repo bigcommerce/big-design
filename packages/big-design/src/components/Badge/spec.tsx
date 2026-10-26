@@ -57,19 +57,39 @@ test('render primary Badge', () => {
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.primary40}`);
 });
 
-test('render primary-subtle Badge', () => {
-  const { container } = render(<Badge label="Badge" variant="primary-subtle" />);
+test.each([
+  ['secondary', theme.colors.secondary20, theme.colors.secondary70],
+  ['success', theme.colors.success20, theme.colors.success70],
+  ['warning', theme.colors.warning20, theme.colors.secondary70],
+  ['danger', theme.colors.danger20, theme.colors.danger70],
+  ['primary', theme.colors.primary20, theme.colors.primary70],
+] as const)('render subtle %s Badge', (variant, backgroundColor, color) => {
+  const { container } = render(<Badge label="Badge" subtle variant={variant} />);
 
-  expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.primary30}`);
-  expect(container.firstChild).toHaveStyle('color: #031033');
+  expect(container.firstChild).toHaveStyle(`background-color: ${backgroundColor}`);
+  expect(container.firstChild).toHaveStyle(`color: ${color}`);
+});
+
+test('render subtle small Badge', () => {
+  const { container } = render(<Badge label="1" size="small" subtle />);
+
+  expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.secondary20}`);
+  expect(container.firstChild).toHaveStyle('line-height: 1rem');
 });
 
 test('render small Badge', () => {
   const { container } = render(<Badge label="1" size="small" />);
 
   expect(container.firstChild).toHaveStyle('font-size: 0.625rem');
-  expect(container.firstChild).toHaveStyle('height: 1rem');
+  expect(container.firstChild).toHaveStyle('line-height: 1rem');
   expect(container.firstChild).toHaveStyle('min-width: 1.75rem');
+});
+
+test('render medium Badge without a min-width', () => {
+  const { container } = render(<Badge label="1" size="medium" />);
+
+  expect(container.firstChild).toHaveStyle('font-size: 0.75rem');
+  expect(container.firstChild).not.toHaveStyle('min-width: 1.75rem');
 });
 
 test("doesn't render if label prop is invalid", () => {

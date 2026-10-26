@@ -48,21 +48,44 @@ const BadgePage = () => {
               render: () => (
                 <Fragment key="variants">
                   <Text>
-                    There are six types of variants to choose from: <Code>success</Code>,{' '}
-                    <Code>secondary</Code>, <Code>warning</Code>, <Code>danger</Code>,{' '}
-                    <Code>primary</Code>, and <Code>primary-subtle</Code>. You can determine what
-                    type by using the <Code primary>variant</Code> prop.
+                    There are five types of variants to choose from: <Code>success</Code>,{' '}
+                    <Code>secondary</Code>, <Code>warning</Code>, <Code>danger</Code>, and{' '}
+                    <Code>primary</Code>. You can determine what type by using the{' '}
+                    <Code primary>variant</Code> prop.
                   </Text>
 
                   <CodePreview>
                     {/* jsx-to-string:start */}
-                    <Grid gridColumns="repeat(6, min-content)">
+                    <Grid gridColumns="repeat(5, min-content)">
                       <Badge label="secondary" variant="secondary" />
                       <Badge label="success" variant="success" />
                       <Badge label="warning" variant="warning" />
                       <Badge label="danger" variant="danger" />
                       <Badge label="primary" variant="primary" />
-                      <Badge label="primary-subtle" variant="primary-subtle" />
+                    </Grid>
+                    {/* jsx-to-string:end */}
+                  </CodePreview>
+                </Fragment>
+              ),
+            },
+            {
+              id: 'subtle',
+              title: 'Subtle',
+              render: () => (
+                <Fragment key="subtle">
+                  <Text>
+                    Use the <Code primary>subtle</Code> prop to render a lighter version of any
+                    variant, for less prominent labels.
+                  </Text>
+
+                  <CodePreview>
+                    {/* jsx-to-string:start */}
+                    <Grid gridColumns="repeat(5, min-content)">
+                      <Badge label="secondary" subtle variant="secondary" />
+                      <Badge label="success" subtle variant="success" />
+                      <Badge label="warning" subtle variant="warning" />
+                      <Badge label="danger" subtle variant="danger" />
+                      <Badge label="primary" subtle variant="primary" />
                     </Grid>
                     {/* jsx-to-string:end */}
                   </CodePreview>
@@ -82,7 +105,7 @@ const BadgePage = () => {
                   <CodePreview>
                     {/* jsx-to-string:start */}
                     <Grid gridColumns="repeat(2, min-content)">
-                      <Badge label="normal" />
+                      <Badge label="medium" />
                       <Badge label="12" size="small" />
                     </Grid>
                     {/* jsx-to-string:end */}
