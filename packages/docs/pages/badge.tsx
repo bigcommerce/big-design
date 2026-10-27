@@ -63,7 +63,7 @@ const BadgePage = () => {
                       <Badge label="warning" variant="warning" />
                       <Badge label="danger" variant="danger" />
                       <Badge label="primary" variant="primary" />
-                      <Badge label="primary" variant="primary" subtle />
+                      <Badge label="primary" subtle variant="primary" />
                     </Grid>
                     {/* jsx-to-string:end */}
                   </CodePreview>
