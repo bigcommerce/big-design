@@ -17,10 +17,10 @@ const badgeProps: Prop[] = [
   },
   {
     name: 'size',
-    types: ['small', 'normal'],
+    types: ['small', 'medium'],
     description:
       'Determines the size of the badge. Small renders a 28 x 16px badge with 10px text.',
-    defaultValue: 'normal',
+    defaultValue: 'medium',
   },
 ];
 

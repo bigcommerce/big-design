@@ -8,7 +8,7 @@ import { StyledBadge } from './styled';
 export interface BadgeProps extends ComponentPropsWithoutRef<'span'>, MarginProps {
   label: string;
   variant?: 'danger' | 'secondary' | 'success' | 'warning' | 'primary' | 'primary-subtle';
-  size?: 'small' | 'normal';
+  size?: 'small' | 'medium';
 }
 
 export const Badge: React.FC<BadgeProps> = memo((props) => {
@@ -32,7 +32,7 @@ export const Badge: React.FC<BadgeProps> = memo((props) => {
     <StyledBadge
       {...domProps}
       {...toTransientMarginProps(props)}
-      $size={size ?? 'normal'}
+      $size={size ?? 'medium'}
       $variant={variant ?? 'secondary'}
     >
       {label}

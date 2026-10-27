@@ -82,7 +82,7 @@ const BadgePage = () => {
                   <CodePreview>
                     {/* jsx-to-string:start */}
                     <Grid gridColumns="repeat(2, min-content)">
-                      <Badge label="normal" />
+                      <Badge label="medium" />
                       <Badge label="12" size="small" />
                     </Grid>
                     {/* jsx-to-string:end */}
