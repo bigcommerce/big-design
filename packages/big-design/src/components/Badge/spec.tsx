@@ -57,19 +57,18 @@ test('render primary Badge', () => {
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.primary40}`);
 });
 
-test('render primary-subtle Badge', () => {
-  const { container } = render(<Badge label="Badge" variant="primary-subtle" />);
+test('render subtle Badge', () => {
+  const { container } = render(<Badge label="Badge" subtle variant="primary" />);
 
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.primary30}`);
-  expect(container.firstChild).toHaveStyle('color: #031033');
+  expect(container.firstChild).toHaveStyle(`color: ${theme.colors.secondary70}`);
 });
 
 test('render small Badge', () => {
   const { container } = render(<Badge label="1" size="small" />);
 
   expect(container.firstChild).toHaveStyle('font-size: 0.625rem');
-  expect(container.firstChild).toHaveStyle('height: 1rem');
-  expect(container.firstChild).toHaveStyle('min-width: 1.75rem');
+  expect(container.firstChild).toHaveStyle('line-height: 1rem');
 });
 
 test("doesn't render if label prop is invalid", () => {
