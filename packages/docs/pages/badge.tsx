@@ -1,4 +1,4 @@
-import { Badge, Grid, H1, Panel, Text } from '@bigcommerce/big-design';
+import { Badge, Flex, Grid, H1, Panel, Text } from '@bigcommerce/big-design';
 import React, { Fragment } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, List } from '../components';
@@ -51,18 +51,41 @@ const BadgePage = () => {
                     There are five types of variants to choose from: <Code>success</Code>,{' '}
                     <Code>secondary</Code>, <Code>warning</Code>, <Code>danger</Code>, and{' '}
                     <Code>primary</Code>. You can determine what type by using the{' '}
-                    <Code primary>variant</Code> prop.
+                    <Code primary>variant</Code> prop. Add the <Code primary>subtle</Code> prop for
+                    a lighter treatment (currently <Code>primary</Code> only).
                   </Text>
 
                   <CodePreview>
                     {/* jsx-to-string:start */}
-                    <Grid gridColumns="repeat(5, min-content)">
+                    <Grid gridColumns="repeat(6, min-content)">
                       <Badge label="secondary" variant="secondary" />
                       <Badge label="success" variant="success" />
                       <Badge label="warning" variant="warning" />
                       <Badge label="danger" variant="danger" />
                       <Badge label="primary" variant="primary" />
+                      <Badge label="primary" subtle variant="primary" />
                     </Grid>
+                    {/* jsx-to-string:end */}
+                  </CodePreview>
+                </Fragment>
+              ),
+            },
+            {
+              id: 'sizes',
+              title: 'Sizes',
+              render: () => (
+                <Fragment key="sizes">
+                  <Text>
+                    Use the <Code primary>size</Code> prop to render a <Code>small</Code> badge
+                    (10px text), best suited for short labels such as counts.
+                  </Text>
+
+                  <CodePreview>
+                    {/* jsx-to-string:start */}
+                    <Flex alignItems="center" flexGap="1rem">
+                      <Badge label="medium" />
+                      <Badge label="small" size="small" />
+                    </Flex>
                     {/* jsx-to-string:end */}
                   </CodePreview>
                 </Fragment>

@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { theme as defaultTheme, type ThemeInterface } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { withMargins } from '../../helpers';
@@ -7,53 +7,89 @@ import type { TransientMarginProps } from '../../helpers/margins/margins';
 import type { BadgeProps } from './Badge';
 
 interface StyledBadgeProps extends TransientMarginProps {
+  $size?: BadgeProps['size'];
+  $subtle?: BadgeProps['subtle'];
   $variant?: BadgeProps['variant'];
 }
+
+interface BadgeColors {
+  backgroundColor: string;
+  color: string;
+}
+
+interface BadgeSizeStyles {
+  fontSize: string;
+  lineHeight: string;
+  padding: string;
+}
+
+// Colors for each variant. Add a new variant here, or add an extra property to an existing one.
+const getVariantColors = (
+  theme: ThemeInterface,
+): Record<NonNullable<BadgeProps['variant']>, { solid: BadgeColors; subtle?: BadgeColors }> => ({
+  secondary: {
+    solid: { backgroundColor: theme.colors.secondary60, color: theme.colors.white },
+  },
+  success: {
+    solid: { backgroundColor: theme.colors.success50, color: theme.colors.white },
+  },
+  warning: {
+    solid: { backgroundColor: theme.colors.warning40, color: theme.colors.secondary70 },
+  },
+  danger: {
+    solid: { backgroundColor: theme.colors.danger40, color: theme.colors.white },
+  },
+  primary: {
+    solid: { backgroundColor: theme.colors.primary40, color: theme.colors.white },
+    subtle: { backgroundColor: theme.colors.primary30, color: theme.colors.secondary70 },
+  },
+});
+
+// Styles for each size. Add a new size here, or extend `BadgeSizeStyles` to style more properties.
+const getSizeStyles = (
+  theme: ThemeInterface,
+): Record<NonNullable<BadgeProps['size']>, BadgeSizeStyles> => ({
+  small: {
+    fontSize: theme.helpers.remCalc(10),
+    lineHeight: theme.helpers.remCalc(16),
+    padding: theme.spacing.xxSmall,
+  },
+  medium: {
+    fontSize: theme.helpers.remCalc(12),
+    lineHeight: theme.lineHeight.small,
+    padding: theme.spacing.xSmall,
+  },
+});
 
 export const StyledBadge = styled.span<StyledBadgeProps>`
   ${withMargins()};
 
-  color: ${({ theme }) => theme.colors.white};
   border-radius: ${({ theme }) => theme.borderRadius.normal};
   display: inline-block;
-  font-size: ${({ theme }) => theme.helpers.remCalc(12)};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
-  line-height: ${({ theme }) => theme.lineHeight.small};
   text-align: center;
   text-transform: uppercase;
   vertical-align: middle;
-  padding: 0 ${({ theme }) => theme.spacing.xSmall};
 
-  ${({ theme, $variant }) =>
-    $variant === 'secondary' &&
-    css`
-      background-color: ${theme.colors.secondary60};
-    `}
+  ${({ theme, $size = 'medium' }) => {
+    const { fontSize, lineHeight, padding } = getSizeStyles(theme)[$size];
 
-  ${({ theme, $variant }) =>
-    $variant === 'success' &&
-    css`
-      background-color: ${theme.colors.success50};
-    `}
+    return css`
+      font-size: ${fontSize};
+      line-height: ${lineHeight};
+      padding: 0 ${padding};
+    `;
+  }}
 
-  ${({ theme, $variant }) =>
-    $variant === 'warning' &&
-    css`
-      color: ${theme.colors.secondary70};
-      background-color: ${theme.colors.warning40};
-    `}
+  ${({ theme, $variant = 'secondary', $subtle }) => {
+    const colors = getVariantColors(theme)[$variant];
+    const { backgroundColor, color } = ($subtle && colors.subtle) || colors.solid;
 
-  ${({ theme, $variant }) =>
-    $variant === 'danger' &&
-    css`
-      background-color: ${theme.colors.danger40};
-    `}
-
-  ${({ theme, $variant }) =>
-    $variant === 'primary' &&
-    css`
-      background-color: ${theme.colors.primary40};
-    `}
+    return css`
+      background-color: ${backgroundColor};
+      color: ${color};
+    `;
+  }}
 `;
 
 StyledBadge.defaultProps = {
