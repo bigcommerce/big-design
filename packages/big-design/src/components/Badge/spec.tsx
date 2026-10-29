@@ -64,6 +64,13 @@ test('render subtle Badge', () => {
   expect(container.firstChild).toHaveStyle(`color: ${theme.colors.secondary70}`);
 });
 
+test('falls back to the solid style when subtle is unsupported for the variant', () => {
+  // @ts-expect-error subtle is only supported by the primary variant
+  const { container } = render(<Badge label="Badge" subtle variant="danger" />);
+
+  expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.danger40}`);
+});
+
 test('render small Badge', () => {
   const { container } = render(<Badge label="1" size="small" />);
 

@@ -43,9 +43,14 @@ export const withMargins = () => css<TransientMarginProps>`
     $marginHorizontal && getSpacingStyles($marginHorizontal, theme, 'margin-left', 'margin-right')};
 `;
 
-export function excludeMarginProps<T extends Record<string, any>>(
-  props: T,
-): Pick<T, Exclude<keyof T, keyof MarginProps>> {
+// Distributes over unions so discriminated prop types (e.g. `BadgeProps`) keep their pairings.
+type WithoutMarginProps<T> = T extends unknown
+  ? Pick<T, Exclude<keyof T, keyof MarginProps>>
+  : never;
+
+export function excludeMarginProps<T extends Record<string, any>>(props: T): WithoutMarginProps<T>;
+
+export function excludeMarginProps(props: Record<string, any>) {
   const {
     margin,
     marginTop,
