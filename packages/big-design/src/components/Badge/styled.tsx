@@ -23,6 +23,7 @@ interface BadgeSizeStyles {
   padding: string;
 }
 
+// Colors for each variant. Add a new variant here, or add an extra property to an existing one.
 const getVariantColors = (
   theme: ThemeInterface,
 ): Record<NonNullable<BadgeProps['variant']>, { solid: BadgeColors; subtle?: BadgeColors }> => ({
@@ -44,6 +45,7 @@ const getVariantColors = (
   },
 });
 
+// Styles for each size. Add a new size here, or extend `BadgeSizeStyles` to style more properties.
 const getSizeStyles = (
   theme: ThemeInterface,
 ): Record<NonNullable<BadgeProps['size']>, BadgeSizeStyles> => ({
