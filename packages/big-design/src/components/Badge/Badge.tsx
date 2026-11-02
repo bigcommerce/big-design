@@ -7,8 +7,9 @@ import { StyledBadge } from './styled';
 
 export type BadgeVariant = 'danger' | 'secondary' | 'success' | 'warning' | 'primary';
 
-// Variants that define a `subtle` style in `getVariantColors`. Keep in sync when adding one.
-type SubtleBadgeVariant = Extract<BadgeVariant, 'primary'>;
+// Variants that support `subtle`. `getVariantColors` is typed against this, so it must define a
+// `subtle` style for exactly these variants.
+export type SubtleBadgeVariant = Extract<BadgeVariant, 'primary'>;
 
 type BadgeVariantProps =
   | { variant: SubtleBadgeVariant; subtle?: boolean }

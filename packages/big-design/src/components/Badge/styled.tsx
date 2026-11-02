@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import { withMargins } from '../../helpers';
 import type { TransientMarginProps } from '../../helpers/margins/margins';
 
-import type { BadgeProps } from './Badge';
+import type { BadgeProps, BadgeVariant, SubtleBadgeVariant } from './Badge';
 
 interface StyledBadgeProps extends TransientMarginProps {
   $size?: BadgeProps['size'];
@@ -17,16 +17,21 @@ interface BadgeColors {
   color: string;
 }
 
+type BadgeVariantColors = {
+  [V in BadgeVariant]: V extends SubtleBadgeVariant
+    ? { solid: BadgeColors; subtle: BadgeColors }
+    : { solid: BadgeColors; subtle?: never };
+};
+
 interface BadgeSizeStyles {
   fontSize: string;
   lineHeight: string;
   padding: string;
 }
 
-// Colors for each variant. Add a new variant here, or add an extra property to an existing one.
-const getVariantColors = (
-  theme: ThemeInterface,
-): Record<NonNullable<BadgeProps['variant']>, { solid: BadgeColors; subtle?: BadgeColors }> => ({
+// Colors for each variant. Add a new variant here. To give a variant a `subtle` style, add it to
+// `SubtleBadgeVariant` in Badge.tsx; the compiler requires the two to match.
+const getVariantColors = (theme: ThemeInterface): BadgeVariantColors => ({
   secondary: {
     solid: { backgroundColor: theme.colors.secondary60, color: theme.colors.white },
   },
