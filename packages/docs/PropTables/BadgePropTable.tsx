@@ -15,6 +15,20 @@ const badgeProps: Prop[] = [
     description: 'Determines which badge to display.',
     defaultValue: 'secondary',
   },
+  {
+    name: 'subtle',
+    types: 'boolean',
+    description:
+      'Renders a lighter background with darker text. Currently only supported by the primary variant.',
+    defaultValue: 'false',
+  },
+  {
+    name: 'size',
+    types: ['small', 'medium'],
+    description:
+      'Determines the size of the badge. Small renders a badge with 10px text and a 16px line height.',
+    defaultValue: 'medium',
+  },
 ];
 
 export const BadgePropTable: React.FC<PropTableWrapper> = (props) => (

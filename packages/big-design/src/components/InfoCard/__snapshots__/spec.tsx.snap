@@ -3,17 +3,17 @@
 exports[`matches snapshot 1`] = `
 .c4 {
   margin-left: 0.5rem;
-  color: #FFFFFF;
   border-radius: 0.25rem;
   display: inline-block;
-  font-size: 0.75rem;
   font-weight: 600;
-  line-height: 1.25rem;
   text-align: center;
   text-transform: uppercase;
   vertical-align: middle;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
   padding: 0 0.5rem;
   background-color: #5E637A;
+  color: #FFFFFF;
 }
 
 .c0 {
@@ -108,17 +108,17 @@ exports[`matches snapshot 1`] = `
 exports[`matches snapshot with object description and link 1`] = `
 .c4 {
   margin-left: 0.5rem;
-  color: #FFFFFF;
   border-radius: 0.25rem;
   display: inline-block;
-  font-size: 0.75rem;
   font-weight: 600;
-  line-height: 1.25rem;
   text-align: center;
   text-transform: uppercase;
   vertical-align: middle;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
   padding: 0 0.5rem;
   background-color: #5E637A;
+  color: #FFFFFF;
 }
 
 .c0 {
