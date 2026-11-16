@@ -7,7 +7,9 @@ import React, {
   useCallback,
   useEffect,
   useId,
+  useLayoutEffect,
   useMemo,
+  useRef,
 } from 'react';
 import { createPortal } from 'react-dom';
 
@@ -61,6 +63,10 @@ export const Dropdown = memo(
       return false;
     });
 
+    const selectItemRef = useRef<((item: DropdownItem | DropdownLinkItem | null) => void) | null>(
+      null,
+    );
+
     const handleOnSelectedItemChange = useCallback(
       ({ selectedItem }: Partial<UseSelectState<DropdownItem | DropdownLinkItem | null>>) => {
         if (
@@ -71,6 +77,13 @@ export const Dropdown = memo(
         ) {
           selectedItem.onItemClick(selectedItem);
         }
+
+        // Clear Downshift's internal selection. selectedItem is controlled as
+        // null, but Downshift keeps the selected item internally until its next
+        // action. If its change effect re-runs before then (React re-runs effects
+        // when a hidden <Activity> boundary is shown again, and once more under
+        // StrictMode), it would call this handler again with the same item.
+        selectItemRef.current?.(null);
       },
       [],
     );
@@ -104,18 +117,28 @@ export const Dropdown = memo(
       }
     };
 
-    const { getItemProps, getMenuProps, getToggleButtonProps, highlightedIndex, isOpen } =
-      useSelect({
-        defaultHighlightedIndex: defaultHighlightedIndex > -1 ? defaultHighlightedIndex : 0,
-        id: dropdownUniqueId,
-        itemToString: (item) => (item ? item.content : ''),
-        items: flattenedItems,
-        menuId: id,
-        onSelectedItemChange: handleOnSelectedItemChange,
-        selectedItem: null, // We never set a selected item
-        stateReducer,
-        toggleButtonId: toggle.props.id,
-      });
+    const {
+      getItemProps,
+      getMenuProps,
+      getToggleButtonProps,
+      highlightedIndex,
+      isOpen,
+      selectItem,
+    } = useSelect({
+      defaultHighlightedIndex: defaultHighlightedIndex > -1 ? defaultHighlightedIndex : 0,
+      id: dropdownUniqueId,
+      itemToString: (item) => (item ? item.content : ''),
+      items: flattenedItems,
+      menuId: id,
+      onSelectedItemChange: handleOnSelectedItemChange,
+      selectedItem: null, // We never set a selected item
+      stateReducer,
+      toggleButtonId: toggle.props.id,
+    });
+
+    useLayoutEffect(() => {
+      selectItemRef.current = selectItem;
+    }, [selectItem]);
 
     const { middleware: placementMiddleware, placement: floatingPlacement } =
       getFloatingPlacement(placement);
