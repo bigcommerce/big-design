@@ -2,7 +2,7 @@ import { CheckCircleIcon } from '@bigcommerce/big-design-icons';
 import { remCalc } from '@bigcommerce/big-design-theme';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
-import React from 'react';
+import React, { Activity } from 'react';
 import 'jest-styled-components';
 
 import { Button } from '../Button';
@@ -781,4 +781,61 @@ test('disabled item does not trigger onItemClick via mouse click', async () => {
   await userEvent.click(options[1]);
 
   expect(onItemClick).not.toHaveBeenCalled();
+});
+
+test('does not call onItemClick again when a hidden Activity is shown again', async () => {
+  const handleItemClick = jest.fn();
+
+  const ActivityDropdown = ({ mode }: { mode: 'hidden' | 'visible' }) => (
+    <Activity mode={mode}>
+      <Dropdown
+        items={[
+          { content: 'Option 1', onItemClick: handleItemClick },
+          { content: 'Option 2', onItemClick: handleItemClick },
+        ]}
+        toggle={<Button>Button</Button>}
+      />
+    </Activity>
+  );
+
+  const { rerender } = render(<ActivityDropdown mode="visible" />);
+
+  await userEvent.click(screen.getByRole('button'));
+  await userEvent.keyboard('{Enter}');
+
+  expect(handleItemClick).toHaveBeenCalledTimes(1);
+
+  // Hide and show again, the way a router keeps a page in a hidden Activity
+  // and shows it on back navigation. React re-runs the Dropdown's effects.
+  rerender(<ActivityDropdown mode="hidden" />);
+  rerender(<ActivityDropdown mode="visible" />);
+
+  expect(handleItemClick).toHaveBeenCalledTimes(1);
+});
+
+test('calls onItemClick each time the same item is chosen', async () => {
+  const handleItemClick = jest.fn();
+
+  render(
+    <Dropdown
+      items={[
+        { content: 'Option 1', onItemClick: handleItemClick },
+        { content: 'Option 2', onItemClick: handleItemClick },
+      ]}
+      toggle={<Button>Button</Button>}
+    />,
+  );
+
+  const toggle = screen.getByRole('button');
+
+  await userEvent.click(toggle);
+  await userEvent.keyboard('{Enter}');
+  await userEvent.click(toggle);
+  await userEvent.keyboard('{Enter}');
+
+  expect(handleItemClick).toHaveBeenCalledTimes(2);
+  expect(handleItemClick).toHaveBeenNthCalledWith(
+    2,
+    expect.objectContaining({ content: 'Option 1' }),
+  );
 });
